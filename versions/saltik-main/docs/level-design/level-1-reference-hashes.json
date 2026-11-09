@@ -1,0 +1,17 @@
+{
+  "source_commit": "9f0aafbca8588004fc6666942d833f3dbe0e9488",
+  "files": {
+    "src/engine.js": "b1c94fd52cc5152655fe3f7b5ff27d939093fa0d8a903eea68fc4a1c5604a51f",
+    "src/ink-scene.js": "9586bc6d10a957fe958389466b61900f9c602eb63822952de8ce584571b011d7",
+    "src/ink-demo-layout.js": "e2156f8e84940379a5ea760a155f15e1ac6e0bd9e02c3456946b6c31617ee8b1",
+    "src/ink-renderer.js": "b527213b7c730bb7da9902c2f57be2d2cfda0956e71b2d247b29905b860ec1f7",
+    "src/ink-world.js": "9c310d17b932f8cd2a9c03ada0e8b082b21e2fe4fb1150e2a427fbdb1e3fa604",
+    "src/ink-saltik.js": "578dd1996bca6747c2a53ec446df2299fee8466d1f47d9ef4595086da7849743",
+    "src/ink-enemy-saltik.js": "e2781064a6bf64cbf9a7f38ebc1e7b805d61e890a8a57e06090ba161db35d44a",
+    "src/ink-carrier.js": "001454b3fd004f65c6429e1d805b3e91e014ffc23bd865bb5b81f0305bea9bbc",
+    "src/audio.js": "defcbf95aaad9e321d29bc6730650cfe8852a81e397c785897164c5c03b62a4b",
+    "src/main.js": "4333e0b41c50adaf10f52b09edd9c8f9122dc567effbb9df8e99b7b389f4a6fc",
+    "src/world.js": "ff959b64c728949a139b0d0af69dbac30bf80981ddc572090ea1b0120ee051e6",
+    "src/input.js": "be732eaa5175524372695387191acb97e26b4ed6afe101ce382fcbf909feab1a"
+  }
+}
