@@ -39,3 +39,7 @@ Tous les fichiers des commits source ou du dossier de travail du brouillon sont 
 ## Livraison suivante : version17
 
 La version principale inclut maintenant le niveau2 Les Archives lunaires, accessible directement depuis le menu et après le film du niveau1. Le jeu est publié sur son URL Sites d’origine ;612tests réussissent, les essais ordinateur/téléphone passent et le parcours automatisé ordinaire termine en82,02s. Le tir principal est20%plus fort. Le rapport complet est dans lunar-release.json. Les données de la sauvegarde initiale ci-dessus restent une trace historique ; les autres éditions ne sont pas modifiées.
+
+## Révision publiée : version 18
+
+Les treize commits GitHub jusqu’à `4c9b8e6` sont intégrés et les Archives lunaires affinées : architecture, maçonnerie des escaliers, gravures, bannières, portail ancré et objectifs par secteur. Source `1c65baccc0e11e8683c7b5339a61033c21c4b052`, publiée en v18. [Accès direct au niveau 2](https://saltik-v2-matin-dore.ser-adrien.chatgpt.site?level=2). 615 tests réussis, build valide, campagne simulée de 82,02 s, essais Chromium ordinateur et téléphone émulé réussis. Les sept ressources publiées vérifiées correspondent octet par octet au build. La limite temporaire du contrôle automatique est résolue. Voir `lunar-revision-status.json`. Les quatre autres éditions sont inchangées.

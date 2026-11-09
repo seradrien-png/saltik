@@ -30,17 +30,106 @@
     }
   },
   "browser": {
-    "status": "blocked",
-    "reason": "Sandbox denied creation of local HTTP socket (EPERM); no fresh visual validation"
+    "status": "passed",
+    "devices": [
+      {
+        "device": "desktop",
+        "menu_choice": true,
+        "level2_movement_and_fire": true,
+        "paused_simulation_frozen": true,
+        "restart_same_level": true,
+        "level2_result_without_film": true,
+        "level1_film_preserved": true,
+        "next_level_after_film": true,
+        "errors": [],
+        "bad_responses": [],
+        "first_level2": {
+          "x": 180,
+          "hp": 100
+        },
+        "played_level2": {
+          "x": 613.1666666666666,
+          "shots": 20
+        }
+      },
+      {
+        "device": "phone",
+        "menu_choice": true,
+        "level2_movement_and_fire": true,
+        "paused_simulation_frozen": true,
+        "restart_same_level": true,
+        "level2_result_without_film": true,
+        "level1_film_preserved": true,
+        "next_level_after_film": true,
+        "errors": [],
+        "bad_responses": [],
+        "first_level2": {
+          "x": 180,
+          "hp": 100
+        },
+        "played_level2": {
+          "x": 628.5000000000001,
+          "shots": 20
+        }
+      }
+    ],
+    "views_rendered": [
+      "citadel",
+      "observatory",
+      "ramparts",
+      "portal"
+    ],
+    "views_javascript_errors": []
   },
   "review": {
     "completed": true,
     "fixed": "Paint terrace engravings and banners after opaque slab"
   },
   "site_publication": {
-    "status": "blocked",
-    "reason": "Automatic approval review failed due to usage limit before Git network operation; official source commit not pushed"
+    "status": "succeeded",
+    "site_version": 18,
+    "deployment_id": "appgdep_6af214854c488191a2ccfa05bb83006e",
+    "source_commit": "1c65baccc0e11e8683c7b5339a61033c21c4b052",
+    "url": "https://saltik-v2-matin-dore.ser-adrien.chatgpt.site?level=2",
+    "previous_quota_block": "Resolved after announced retry time; source push and publication succeeded."
   },
   "other_game_snapshots_changed": false,
-  "local_source_commit": "1c65baccc0e11e8683c7b5339a61033c21c4b052"
+  "local_source_commit": "1c65baccc0e11e8683c7b5339a61033c21c4b052",
+  "published_resources": [
+    {
+      "path": "src/main.js",
+      "status": 200,
+      "sha256": "5ce7647e362bbc53e1119fecdc6b34eb146ef3abf992dda380c1b49b52a5c1e5"
+    },
+    {
+      "path": "src/lunar-architecture.js",
+      "status": 200,
+      "sha256": "c1eb7b42baec02ca72082ab52c34acb76a174105bf8bbf9f97f10d0ef919f4bf"
+    },
+    {
+      "path": "src/lunar-level.js",
+      "status": 200,
+      "sha256": "98119390830f5ec85d365e9ff4188240fc38f302ea1be7648e2d3524af5b7040"
+    },
+    {
+      "path": "src/lunar-world.js",
+      "status": 200,
+      "sha256": "98d8c679a8f0af6fef53a5386bf9c596f9726b7c07e82ac80cf9ec2ba60eb349"
+    },
+    {
+      "path": "src/audio.js",
+      "status": 200,
+      "sha256": "02d8eabb355c7390c8bf771052a5e3c54a4142ae81d5542dfb2f6e92aa3b3ec3"
+    },
+    {
+      "path": "assets/lunar-archives-sky.png",
+      "status": 200,
+      "sha256": "3fe694c1dc93178d2ce8efd499e7acdceb06e688b9924a4b3731d14379729d40"
+    },
+    {
+      "path": "assets/lunar-archives-stone.png",
+      "status": 200,
+      "sha256": "8b42934e777fff24cb9cafbba2908ed1fb46ea24be8451ae9e4f200f3972b547"
+    }
+  ]
 }

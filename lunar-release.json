@@ -1,24 +1,23 @@
 {
   "site_url": "https://saltik-v2-matin-dore.ser-adrien.chatgpt.site",
-  "site_version": 17,
-  "site_deployment": "appgdep_6af1e6375ed0819191557dd3fdc396f6",
+  "site_version": 18,
+  "site_deployment": "appgdep_6af214854c488191a2ccfa05bb83006e",
   "site_deployment_status": "succeeded",
-  "source_commit": "75f3484645fffcc5485a4c0abcbd563efd37626e",
+  "source_commit": "1c65baccc0e11e8683c7b5339a61033c21c4b052",
   "levels": {
     "1": "Matin Doré / Le Canyon",
     "2": "Les Archives lunaires"
   },
-  "entry": "level selection in menu, next-level button after level1 film",
+  "entry": "level selection in menu, ?level=2 link, next-level button after level1 film",
   "primary_cannon_gain_increase": 0.2,
   "complete_test_suite": {
-    "passed": 612,
+    "passed": 615,
     "failed": 0
   },
   "campaign_run": {
     "status": "won",
     "seconds": 82.0166666666633,
     "hp": 92,
-    "maxHp": 100,
     "falls": 0,
     "wave": 3,
     "boss": null,
@@ -29,7 +28,7 @@
       "homingSalvos": 9,
       "meleeSwings": 5,
       "meleeHits": 4,
-      "interceptions": 1,
+      "interceptions": 2,
       "score": 9525,
       "obstacles": 0
     }
@@ -51,8 +50,8 @@
         "hp": 100
       },
       "played_level2": {
-        "x": 463.66666666666583,
-        "shots": 13
+        "x": 613.1666666666666,
+        "shots": 20
       }
     },
     {
@@ -71,15 +70,11 @@
         "hp": 100
       },
       "played_level2": {
-        "x": 643.8333333333336,
-        "shots": 21
+        "x": 628.5000000000001,
+        "shots": 20
       }
     }
   ],
   "other_game_snapshots_unchanged": true,
-  "pending_revision": {
-    "source_commit": "1c65baccc0e11e8683c7b5339a61033c21c4b052",
-    "report": "lunar-revision-status.json",
-    "published": false
-  }
+  "revision_report": "lunar-revision-status.json"
 }

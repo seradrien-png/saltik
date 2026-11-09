@@ -8,7 +8,7 @@
       "repo": "saltik-v2-matin-dore",
       "title": "SALTIK V2 — Matin Doré",
       "commit": "1c65baccc0e11e8683c7b5339a61033c21c4b052",
-      "published_version": 17,
+      "published_version": 18,
       "url": "https://saltik-v2-matin-dore.ser-adrien.chatgpt.site",
       "base_commit": "1c65baccc0e11e8683c7b5339a61033c21c4b052",
       "source_path": "/workspace/sites/saltik-v2-matin-dore",
@@ -1859,8 +1859,8 @@
         }
       ],
       "update_note": "Level2 Archives lunaires, menu/after-level1 access, primary cannon gain +20 percent; Sites v17 deployment succeeded.",
-      "published_source_commit": "75f3484645fffcc5485a4c0abcbd563efd37626e",
-      "publication_status": "revision prepared; published Sites version remains 17",
+      "published_source_commit": "1c65baccc0e11e8683c7b5339a61033c21c4b052",
+      "publication_status": "succeeded",
       "github_import_base": "4c9b8e64bf3232c222f9b6f534ca37d660da3f7b"
     },
     {
