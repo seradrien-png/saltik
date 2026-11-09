@@ -14,7 +14,8 @@ const $=id=>document.getElementById(id),app=$('app'),renderer=createRenderer($('
 // A dock replacement can discard every weapon source and buffered tap while
 // leaving the independently held movement sources untouched.
 setupHomeShortcut();
-let selectedLevel=1;
+// A shareable link can open the revised Archives directly: ?level=2.
+let selectedLevel=new URLSearchParams(location.search).get('level')==='2'?2:1;
 let game=createGame({level:selectedLevel}),view='title',lastFrame=0,accumulator=0,uiAt=0,resultAt=0,best=0,artReady=false,duelPhase=null,breachPhase=null,carrierActive=false,introActive=false;
 game.status='title';
 try{best=Number(localStorage.getItem('feral-steel-best'))||0;audio.setEnabled(localStorage.getItem('feral-steel-sound')!=='off');}catch{}
@@ -91,7 +92,7 @@ function syncLevelMenu(){
  document.querySelector('.title-content .eyebrow').lastChild.textContent=lunar?' MISSION 02 · LES ARCHIVES LUNAIRES':' MISSION V2 · MATIN DORÉ';
  document.querySelector('.title-content .tagline').innerHTML=lunar?'QUATRE PATTES. TROIS ARMES.<br>DES TEMPLES AU-DESSUS DES NUAGES.':'QUATRE PATTES. TROIS ARMES.<br>UNE JUNGLE AUX COULEURS DOUCES.';
  document.querySelector('#title em').textContent=lunar?'ARCHIVES LUNAIRES':'MATIN DORÉ';
- document.querySelector('.title-content .intro').innerHTML=lunar?'Des îles gravées au-dessus des nuages.<br>Traversez les ruines. Ouvrez le portail.':'Sous la lumière dorée, la jungle s’éveille.<br>Traversez la forêt jusqu’au Colosse.';
+ document.querySelector('.title-content .intro').innerHTML=lunar?'Traversez les citadelles lunaires.<br>Explorez les ruines. Ouvrez le portail.':'Sous la lumière dorée, la jungle s’éveille.<br>Traversez la forêt jusqu’au Colosse.';
  $('next-level').hidden=!(view==='won'&&selectedLevel===1&&resultAt);
 }
 function chooseLevel(level){if(view!=='title')return;selectedLevel=level===2?2:1;game=createGame({level:selectedLevel});game.status='title';renderer.reset();syncLevelMenu();}
