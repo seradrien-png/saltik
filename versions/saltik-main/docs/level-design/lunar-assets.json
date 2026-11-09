@@ -1,0 +1,13 @@
+{
+  "provenance": "Original images generated for this level from the supplied visual direction; background contains no HUD or characters, limestone material is separately drawn. Native Saltik art unchanged.",
+  "assets": {
+    "lunar-archives-sky.png": {
+      "sha256": "3fe694c1dc93178d2ce8efd499e7acdceb06e688b9924a4b3731d14379729d40",
+      "bytes": 3276750
+    },
+    "lunar-archives-stone.png": {
+      "sha256": "8b42934e777fff24cb9cafbba2908ed1fb46ea24be8451ae9e4f200f3972b547",
+      "bytes": 4288004
+    }
+  }
+}

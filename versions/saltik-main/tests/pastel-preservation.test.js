@@ -11,7 +11,7 @@ test('V2 preserves V1 native pixels, walkable geometry, native motions and encou
   // Carrier cues are additive. Only the approved primary-shot lift changes the mix.
   if(path==='src/audio.js')content=Buffer.from(content.toString()
    .replace(/^    else if\(e.type==='carrier-(?:drone-deploy|bay-disabled|disconnected)'\)\{[^\n]+\}\n/gm,'')
-   .replace('.0462875*1.15','.0462875').replace('.06348*1.15','.06348').replace('.034385*1.15','.034385')
+   .replace('.0462875*1.15*1.20','.0462875').replace('.06348*1.15*1.20','.06348').replace('.034385*1.15*1.20','.034385')
    // Approved subtitle hooks expose speech timing without changing any mix values.
    .replace('export function createAudio({onSpeech=()=>{}}={}){','export function createAudio(){')
    .replace('speech=createVoiceLines(ctx,speechBus,(duration,id)=>{duck(.13,duration+.12,.30);onSpeech({id,duration});},()=>onSpeech(null));','speech=createVoiceLines(ctx,speechBus,duration=>duck(.13,duration+.12,.30));'));

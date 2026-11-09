@@ -86,3 +86,12 @@ The painted canyon, native ruins and wreck, physical terrain, combat and foregro
 Le menu et l’écran d’accueil vertical proposent « Ajouter à l’accueil ». Chrome peut afficher sa confirmation d’installation ; un guide reste disponible quand le navigateur ne propose pas cette boîte de dialogue. Sur iPhone, ouvrir le jeu dans Safari puis Partager → Sur l’écran d’accueil → Ajouter. Le raccourci s’appelle SALTIK et utilise son icône dédiée. Le manifeste ouvre le jeu en mode autonome avec une préférence pour le paysage ; iOS conserve son écran de rotation si nécessaire. Aucun cache de jeu ni mode hors connexion n’est ajouté.
 
 Sur Android, le guide propose un lien `intent://` vers Chrome déclenché uniquement par un appui, avec retour HTTPS et copie manuelle du lien si nécessaire. Si une icône installée ne s’ouvre pas, `/android.html` propose le même jeu sous forme de raccourci Chrome ordinaire : menu ⋮ → Installer et créer un raccourci → Créer un raccourci → Ajouter (ou Ajouter à l’écran d’accueil sur les anciennes versions). Cette page est générée depuis `index.html` sans manifeste ni mode autonome. Elle ne répare pas l’application déjà installée. Le problème du lanceur Android n’a pas été reproduit sur un appareil physique ; les vérifications navigateur couvrent les liens, le démarrage et la réouverture du jeu, la copie de secours et l’absence de lancement externe automatique.
+
+
+## Niveau 2 — Les Archives lunaires
+
+Le menu permet de choisir directement le canyon du niveau1 ou les Archives lunaires du niveau2. Après la victoire du niveau1, le film reste disponible et les résultats proposent de continuer vers le niveau2. Redéployer/recommencer relance le niveau sélectionné.
+
+Les Archives proposent un nouveau parcours de ruines suspendues avec marches, cinq franchissements et points de reprise. Une chute retire10points de blindage. La porte finale s’ouvre après trois vagues effectivement vaincues, sans second Colosse. Une partie automatisée avec les commandes normales termine en environ82secondes, proche de la campagne initiale. Les dessins natifs des Saltiks restent inchangés. Le tir principal est20%plus fort que dans la version16 ; la musique et les autres effets restent identiques.
+
+Validation détaillée : docs/level-design/lunar-implementation-validation.md.

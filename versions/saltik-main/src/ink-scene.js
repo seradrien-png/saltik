@@ -1,4 +1,5 @@
 import {createGame,update,LEVEL_END} from './engine.js';
+import {applyLunarLevel,advanceLunarObjective} from './lunar-level.js';
 import {inkSaltikGeometry} from './ink-saltik.js';
 import {inkPlayerPodGeometry} from './ink-pods.js';
 import {applyInkLandmarkLayout} from './ink-demo-layout.js';
@@ -15,6 +16,8 @@ export function inkWeaponGeometry(p,time){
 export function createInkScene(options={}){
  const g=createGame(options);g.inkPreview=true;g.inkCampaign=true;g.weaponGeometry=inkWeaponGeometry;
  g.enemyWeaponGeometry=inkEnemyGeometry;g.enemySaltikGeometry=inkEnemySaltikGeometry;
+ g.level=1;g.levelTitle='Le Canyon';
+ if(options.level===2)return applyLunarLevel(g);
  applyInkLandmarkLayout(g);
  // This rock previously occupied the carrier's exact spawn and trapped it.
  // Move the authored cover to the far shoulder; preserve physical collisions.
@@ -27,5 +30,6 @@ export function createInkScene(options={}){
  return g;
 }
 export function updateInkScene(g,input,dt){
- update(g,input,dt);
+ const before=g.time;update(g,input,dt);
+ if(g.level===2)advanceLunarObjective(g,g.time-before);
 }

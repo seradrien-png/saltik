@@ -1,6 +1,6 @@
 # Proposition — niveau 2 : Les Archives lunaires
 
-Statut : proposition de réalisation, aucune nouvelle campagne jouable n’est encore annoncée. Demande utilisateur : créer le niveau 2 à partir de son image, préserver les Saltiks et changer les passages et affrontements du niveau 1 ; les autres ennemis peuvent être adaptés.
+Statut : réalisation autorisée par l’utilisateur ; accès après le niveau 1 et par le menu, durée similaire au niveau 1, tir principal +20 % par rapport au volume actuel. Demande utilisateur : créer le niveau 2 à partir de son image, préserver les Saltiks et changer les passages et affrontements du niveau 1 ; les autres ennemis peuvent être adaptés.
 
 ## Direction visuelle
 
@@ -33,6 +33,3 @@ Les Saltiks restent les assets natifs existants. Le porte-drones bleu/ivoire app
 
 Passage réel des marches et ponts avec roues sur leurs supports ; absence de blocages ; combat et objectifs finissables avec les commandes normales ; comportements annoncés et lisibles ; pause/reprise/rejouer ; ordinateur et téléphone paysage. Comparaison visuelle au document utilisateur et contrôle de non-régression du niveau 1.
 
-## Choix encore à confirmer
-
-Mode d’accès au niveau 2. Le reste du déroulé et le nom sont des propositions du réalisateur, pas des éléments déjà validés par l’utilisateur.

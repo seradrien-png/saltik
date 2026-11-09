@@ -5122,7 +5122,87 @@
   "physical_phone_test": false,
   "github_target": "seradrien-png/saltik",
   "github_target_access": "Contents write verified by successful native blob creation and actual git push",
-  "status_note": "All five source snapshots and histories were pushed successfully; Pages activation is separately blocked by a GitHub integration permission (403).",
+  "status_note": "Original backup checks are retained; latest_main_update records the current published level2 release and its new validations.",
   "github_backup_commit": "55e0af78812ba737a6758403be9c2993ef2fa903",
-  "github_remote_tree_verified": true
+  "github_remote_tree_verified": true,
+  "latest_main_update": {
+    "site_url": "https://saltik-v2-matin-dore.ser-adrien.chatgpt.site",
+    "site_version": 17,
+    "site_deployment": "appgdep_6af1e6375ed0819191557dd3fdc396f6",
+    "site_deployment_status": "succeeded",
+    "source_commit": "75f3484645fffcc5485a4c0abcbd563efd37626e",
+    "levels": {
+      "1": "Matin Doré / Le Canyon",
+      "2": "Les Archives lunaires"
+    },
+    "entry": "level selection in menu, next-level button after level1 film",
+    "primary_cannon_gain_increase": 0.2,
+    "complete_test_suite": {
+      "passed": 612,
+      "failed": 0
+    },
+    "campaign_run": {
+      "status": "won",
+      "seconds": 82.0166666666633,
+      "hp": 92,
+      "maxHp": 100,
+      "falls": 0,
+      "wave": 3,
+      "boss": null,
+      "stats": {
+        "kills": 33,
+        "shots": 608,
+        "mirvs": 12,
+        "homingSalvos": 9,
+        "meleeSwings": 5,
+        "meleeHits": 4,
+        "interceptions": 1,
+        "score": 9525,
+        "obstacles": 0
+      }
+    },
+    "browser_tests": [
+      {
+        "device": "desktop",
+        "menu_choice": true,
+        "level2_movement_and_fire": true,
+        "paused_simulation_frozen": true,
+        "restart_same_level": true,
+        "level2_result_without_film": true,
+        "level1_film_preserved": true,
+        "next_level_after_film": true,
+        "errors": [],
+        "bad_responses": [],
+        "first_level2": {
+          "x": 180,
+          "hp": 100
+        },
+        "played_level2": {
+          "x": 463.66666666666583,
+          "shots": 13
+        }
+      },
+      {
+        "device": "phone",
+        "menu_choice": true,
+        "level2_movement_and_fire": true,
+        "paused_simulation_frozen": true,
+        "restart_same_level": true,
+        "level2_result_without_film": true,
+        "level1_film_preserved": true,
+        "next_level_after_film": true,
+        "errors": [],
+        "bad_responses": [],
+        "first_level2": {
+          "x": 180,
+          "hp": 100
+        },
+        "played_level2": {
+          "x": 643.8333333333336,
+          "shots": 21
+        }
+      }
+    ],
+    "other_game_snapshots_unchanged": true
+  }
 }

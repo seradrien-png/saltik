@@ -427,7 +427,7 @@ function movePlayer(g,input,dt){
   else if(jumpNow&&p.onGround){p.vy=-720;p.onGround=false;p.rampId=null;p.platformId=null;p.obstacleId=null;p.bossSupport=null;p.landingCompression=0;emit(g,'jump',p.x,p.y);}
   g.jumpHeld=!!input.jump;g.dropHeld=!!input.drop;
   if(p.bossEject?.time>0){p.vx=p.bossEject.vx;p.bossEject.time=Math.max(0,p.bossEject.time-dt);}
-  p.x=clamp(p.x+p.vx*dt,70,LEVEL_END-150);
+  p.x=clamp(p.x+p.vx*dt,70,(g.levelEnd??LEVEL_END)-150);
   if(p.bossPush&&g.boss?.hp>0){
     if(g.boss.dx<0&&!input.shift){p.x=bossGeometry(g.boss).front.x-HULL_HALF;p.vx=g.boss.dx/dt;}
     else p.bossPush=false;
@@ -453,12 +453,13 @@ function movePlayer(g,input,dt){
   if(p.onGround&&p.platformId&&!support){p.onGround=false;p.platformId=null;}
   if(p.onGround&&p.obstacleId&&!obstacleSupport){p.onGround=false;p.obstacleId=null;}
   if(p.onGround&&p.bossSupport&&tankRoof?.id!==p.bossSupport){p.onGround=false;p.bossSupport=null;}
+  if(p.onGround&&!support&&!obstacleSupport&&!p.bossSupport&&g.isGroundGap?.(p.x)){p.onGround=false;p.vy=0;}
   if(p.onGround){p.y=stairY??(p.bossSupport&&tankRoof?.id===p.bossSupport?tankRoof.y:obstacleSupport?obstacleSupport.y-obstacleSupport.h:support?surfaceHeight(support,p.x):terrainAt(g,p.x));p.vy=0;}
   else {
     p.vy+=1550*dt;p.y+=p.vy*dt;
     // Crates are solid underneath as well as at their sides and tops.
     if(p.vy<0)for(const o of solids){if(Math.abs(p.x-o.x)>=o.w/2+HULL_HALF-8)continue;if(oldY-p.h>=o.y&&p.y-p.h<o.y){p.y=o.y+p.h;p.vy=0;}}
-    if(p.vy>=0){let landing={y:terrainAt(g,p.x),tier:0,id:null,obstacleId:null,bossSupport:null};
+    if(p.vy>=0){const floorY=terrainAt(g,p.x),groundY=g.isGroundGap&&oldY>floorY+1?1800:floorY;let landing={y:groundY,tier:0,id:null,obstacleId:null,bossSupport:null};
       for(const a of g.platforms){if(a.id===p.dropThrough||p.x<a.x1||p.x>a.x2)continue;const y=surfaceHeight(a,p.x);if(oldY<=surfaceHeight(a,oldX)+1&&p.y>=y&&y<landing.y)landing={y,tier:a.tier,id:a.id,obstacleId:null};}
       for(const stair of walkableLanding(g,p,oldX,oldY))if(stair.y<landing.y)landing=stair;
       for(const o of solids){const y=o.y-o.h;if(oldY<=y+1&&p.y>=y&&y<landing.y&&obstacleHasWheelSupport(p,o))landing={y,tier:o.tier,id:null,obstacleId:o.id};}
@@ -998,7 +999,7 @@ export function update(g,input={},dt=1/60){
   for(const o of g.obstacles)o.hit=Math.max(0,o.hit-dt);
   g.maxX=Math.max(g.maxX,p.x);g.progress=clamp(g.maxX/LEVEL_END,0,.96);
   while(g.nextSpawn<g.schedule.length&&g.schedule[g.nextSpawn].x<g.maxX+940)spawn(g,g.schedule[g.nextSpawn++]);
-  if(!g.bossActivated&&p.x>=BOSS_TRIGGER){g.bossActivated=true;g.boss=createBossTank(17520,g.groundAt??terrainHeight);emit(g,'boss',g.boss.x,g.boss.y);}
+  if(!g.disableBoss&&!g.bossActivated&&p.x>=BOSS_TRIGGER){g.bossActivated=true;g.boss=createBossTank(17520,g.groundAt??terrainHeight);emit(g,'boss',g.boss.x,g.boss.y);}
   emitSaltikVoiceCues(g);
   const grappler=g.enemies.find(e=>canGrapple(p,e));
   if(grappler){startDuel(g,grappler);return;}
@@ -1056,8 +1057,8 @@ export function update(g,input={},dt=1/60){
       for(const descriptor of result.shots)if(!g.inkCampaign||descriptor.kind!=='enemy-missile')projectile(g,descriptor,descriptor);
       for(const event of result.events)if(!g.inkCampaign||event.type!=='enemy-missile')g.events.push(event);continue;
     }
-    if(e.type==='drone'){e.y=terrainAt(g,e.origin??e.x)-140+Math.sin(e.phase*2.1)*38;e.x-=dt*12;}
-    if(e.type==='walker'||e.type==='soldier'){e.vx=-23;e.x+=dt*e.vx;const ledge=g.platforms.find(a=>a.id===e.platformId);if(ledge)e.x=clamp(e.x,ledge.x1+50,ledge.x2-50);e.y=ledge?surfaceHeight(ledge,e.x):terrainAt(g,e.x);}
+    if(e.type==='drone'){e.y=terrainAt(g,e.origin??e.x)-140+Math.sin(e.phase*2.1)*38;if(e.lunarWave)e.x=clamp((e.origin??e.x)+Math.sin(e.phase*.55)*110,16350,17650);else e.x-=dt*12;}
+    if(e.type==='walker'||e.type==='soldier'){e.vx=e.lunarWave?(Math.sign(p.x-e.x)||-1)*23:-23;e.x+=dt*e.vx;if(e.lunarWave)e.x=clamp(e.x,16350,17650);const ledge=g.platforms.find(a=>a.id===e.platformId);if(ledge)e.x=clamp(e.x,ledge.x1+50,ledge.x2-50);e.y=ledge?surfaceHeight(ledge,e.x):terrainAt(g,e.x);}
     e.cooldown-=dt;if(e.cooldown<=0&&Math.abs(e.x-p.x)<1050){e.firePose=.16;hostileShot(g,e);e.cooldown=e.type==='turret'?1.8:2.7+random(g)*.7;}
   }
   updateBossRider(g,dt);
@@ -1083,7 +1084,7 @@ export function update(g,input={},dt=1/60){
   updateProjectiles(g,dt,{x:p.x-playerStart.x,y:p.y-playerStart.y});
   emitSaltikVoiceCues(g);
   advanceEvasion(p.evasion,dt);
-  g.enemies=g.enemies.filter(e=>(e.hp>0||e.type==='carrier'&&e.knockedOut)&&e.x>p.x-1800);
+  g.enemies=g.enemies.filter(e=>(e.hp>0||e.type==='carrier'&&e.knockedOut)&&(e.lunarWave||e.x>p.x-1800));
   g.pickups=g.pickups.filter(item=>{if(Math.abs(item.x-p.x)<75&&Math.abs(item.y-(p.y-30))<80){p.hp=Math.min(p.maxHp,p.hp+30);g.stats.score+=75;emit(g,'repair',item.x,item.y);return false;}return item.x>p.x-1500;});
   if(g.events.length>200)g.events.splice(0,g.events.length-200);
 }

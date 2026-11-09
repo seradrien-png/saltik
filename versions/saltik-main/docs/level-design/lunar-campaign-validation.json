@@ -1,0 +1,20 @@
+{
+  "status": "won",
+  "seconds": 82.0166666666633,
+  "hp": 92,
+  "maxHp": 100,
+  "falls": 0,
+  "wave": 3,
+  "boss": null,
+  "stats": {
+    "kills": 33,
+    "shots": 608,
+    "mirvs": 12,
+    "homingSalvos": 9,
+    "meleeSwings": 5,
+    "meleeHits": 4,
+    "interceptions": 1,
+    "score": 9525,
+    "obstacles": 0
+  }
+}

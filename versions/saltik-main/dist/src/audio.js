@@ -109,9 +109,9 @@ export function createAudio({onSpeech=()=>{}}={}){
       if(ctx.currentTime-lastShot<.055)return;lastShot=ctx.currentTime;
       duck(.90,.06,.12);
       // A low pulse with a soft puff stays behind the score during sustained fire.
-      burst(.12,.0462875*1.15,900,0,'lowpass',.016);
-      tone(115,62,.15,.06348*1.15,'sine',0,false,.016);
-      tone(82,48,.13,.034385*1.15,'triangle',.012,false,.014);
+      burst(.12,.0462875*1.15*1.20,900,0,'lowpass',.016);
+      tone(115,62,.15,.06348*1.15*1.20,'sine',0,false,.016);
+      tone(82,48,.13,.034385*1.15*1.20,'triangle',.012,false,.014);
     }
     else if(e.type==='missile'){
       duck(.70,.44,.22);

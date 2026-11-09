@@ -1,7 +1,7 @@
 {
   "repository": "seradrien-png/saltik",
   "repository_private": false,
-  "state": "backup_verified_on_github",
+  "state": "backup_verified_on_github_and_main_update_prepared",
   "backup_commit": "55e0af78812ba737a6758403be9c2993ef2fa903",
   "backup_commit_url": "https://github.com/seradrien-png/saltik/commit/55e0af78812ba737a6758403be9c2993ef2fa903",
   "preserved_parent_commit": "a2658100e8259a69c772a6dd4cfbfcdb833f1221",
@@ -12,5 +12,9 @@
   "snapshots_saved": 5,
   "pages_verified": false,
   "pages_configuration_error": "HTTP403 Resource not accessible by integration",
-  "pages_next_step": "Owner selects GitHub Actions as source at https://github.com/seradrien-png/saltik/settings/pages; then dispatch saltik-pages.yml."
+  "pages_next_step": "Owner selects GitHub Actions as source at https://github.com/seradrien-png/saltik/settings/pages; then dispatch saltik-pages.yml.",
+  "latest_main_source_commit": "75f3484645fffcc5485a4c0abcbd563efd37626e",
+  "latest_site_version": 17,
+  "latest_site_deployment_status": "succeeded",
+  "other_snapshots_unchanged": true
 }

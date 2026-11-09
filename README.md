@@ -8,7 +8,7 @@ Les cinq états ci-dessous sont conservés dans des dossiers indépendants, sans
 
 | Jeu / sources | État réel | GitHub Pages après activation | Commit source |
 | --- | --- | --- | --- |
-| [SALTIK V2 — Matin Doré](versions/saltik-main) | Publiée v16 | [Jouer](https://seradrien-png.github.io/saltik/versions/saltik-main/dist/) | `9f0aafbca858` |
+| [SALTIK V2 — Matin Doré](versions/saltik-main) | Publiée v17 — 2 niveaux | [Jouer](https://seradrien-png.github.io/saltik/versions/saltik-main/dist/) | `75f3484645ff` |
 | [SALTIK — Ink Edition publiée](versions/saltik-ink) | Publiée v4 | [Jouer](https://seradrien-png.github.io/saltik/versions/saltik-ink/dist/) | `44110aa2dd80` |
 | [SALTIK INK — brouillon local avec épilogue](versions/autres-versions/saltik-ink-brouillon) | Brouillon local non publié | [Jouer](https://seradrien-png.github.io/saltik/versions/autres-versions/saltik-ink-brouillon/dist/) | `21dcc4ca32c5` |
 | [Feral Steel — Opération Canopée, référence Saltik](versions/autres-versions/saltik-feral-steel) | Publiée v24 | [Jouer](https://seradrien-png.github.io/saltik/versions/autres-versions/saltik-feral-steel/dist/) | `dbc331d0b7a2` |
@@ -42,3 +42,9 @@ Les quatre historiques Git source accessibles sont archivés dans `history/`, en
 Le workflow `.github/workflows/saltik-pages.yml` prépare uniquement les `dist/` existants, sans reconstruire ni modifier les jeux, puis publie avec GitHub Pages. Il peut être lancé manuellement depuis Actions. Les historiques et fichiers de développement ne sont pas copiés dans le site Pages. Les URL Sites d’origine utilisées par les liens d’installation Android restent inchangées.
 
 Le propriétaire peut sélectionner **GitHub Actions** dans [Settings → Pages](https://github.com/seradrien-png/saltik/settings/pages), puis lancer le workflow **Saltik independent games on Pages** dans Actions. [Rapport du transfert vérifié](github-transfer-report.json).
+
+## Mise à jour — niveau 2, Archives lunaires
+
+**[Jouer à la version17](https://saltik-v2-matin-dore.ser-adrien.chatgpt.site)** : choisir **NIVEAU2** dans le menu pour tester directement, ou continuer après le film de victoire du niveau1. Redémarrer/rejouer conserve le niveau choisi. Le niveau1 et les dessins des Saltiks sont conservés. Le tir principal gagne20%de volume par rapport à la version16.
+
+Les Archives ont leur propre parcours de17 800unités, six accès surélevés, cinq franchissements avec reprise sûre et une finale de trois vagues pour ouvrir le portail. Une partie automatisée avec commandes normales termine en82,02s,92blindage restants,0chute. Suite complète612/612 ; essais navigateur ordinateur/téléphone de sélection, pause, redémarrage et transition réussis. [Rapport de livraison](lunar-release.json). Les autres éditions et les archives source initiales sont conservées ; les mises à jour suivantes du jeu sont historisées par les commits de ce dépôt.

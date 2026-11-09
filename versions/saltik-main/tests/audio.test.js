@@ -109,7 +109,7 @@ test('primary reports are low, rounded, and substantially quieter than before',(
     const gain=(filter??source).connections[0].gain;
     const attack=gain.events.find(e=>e[0]==='linear');
     assert.ok(attack?.[2]-args[0]>=.012-1e-9,'every layer should ease in for at least 12 ms');
-    assert.ok(attack[1]<=.08,'the requested additional 15 percent lift preserves the soft primary report');
+    assert.ok(attack[1]<=.09,'the additional 20 percent lift preserves the rounded primary report');
     if(kind==='tone')assert.ok(source.frequency.events[0][1]<=150,'the pulse should stay in a low register');
   }
   const duck=f.context.mediaSource.connections[0].gain.events.find(e=>e[0]==='linear');

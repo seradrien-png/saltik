@@ -336,3 +336,11 @@ kbd{display:inline-flex;align-items:center;justify-content:center;min-width:19px
 .victory-film-play:active{transform:translate(-50%,calc(-50% + 2px))}
 @media(max-height:500px),(max-width:650px){.victory-film{padding:8px max(12px,env(safe-area-inset-right)) 6px max(12px,env(safe-area-inset-left))}.victory-film-header{gap:8px;padding-bottom:7px}.victory-film-header p{font-size:6px;letter-spacing:1px}.victory-film-header h2{font-size:19px;letter-spacing:1px}.victory-film-controls{gap:6px}.film-button{min-width:54px;padding:8px 10px;font-size:8px;letter-spacing:.7px}.victory-film-play{min-width:220px;height:50px;font-size:10px}}
 @media(max-width:400px) and (orientation:portrait){.victory-film-header{flex-wrap:wrap}.victory-film-controls{width:100%;justify-content:flex-end}}
+
+/* Independent campaign selection, available without replaying the first mission. */
+.level-picker{display:flex;gap:8px;margin:0 0 14px;width:min(360px,100%)}
+.level-choice{flex:1;display:flex;flex-direction:column;gap:3px;padding:9px 10px;text-align:left;border:1px solid #f1dfb980;border-radius:7px;background:#17282cbb;color:#eee0bd;font:700 12px Arial;min-height:48px}
+.level-choice small{font:700 9px Arial;letter-spacing:1.4px;opacity:.7}
+.level-choice[aria-pressed="true"]{background:#efdfb9;color:#17282c;border-color:#efdfb9;box-shadow:inset 0 0 0 2px #596355}
+#next-level:not([hidden]){margin-bottom:12px}.mission-status{position:absolute;left:50%;top:14px;transform:translateX(-50%);max-width:46vw;padding:7px 12px;border:1px solid #ddc69280;border-radius:7px;background:#17282cba;color:#f2dfb4;font:700 11px Arial;letter-spacing:.7px;text-align:center;pointer-events:none}
+@media(max-height:520px){.level-picker{margin-bottom:8px;gap:6px}.level-choice{min-height:37px;padding:5px 8px;font-size:10px}.level-choice small{font-size:8px}.title-content .intro{margin-bottom:8px}.mission-status{top:10px;font-size:9px;padding:5px 7px;max-width:41vw}.title-content .title-credit{margin:5px 0 7px}.title-content .tagline{margin-bottom:7px}}

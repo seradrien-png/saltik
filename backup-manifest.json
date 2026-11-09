@@ -7,15 +7,15 @@
       "slug": "saltik-main",
       "repo": "saltik-v2-matin-dore",
       "title": "SALTIK V2 — Matin Doré",
-      "commit": "9f0aafbca8588004fc6666942d833f3dbe0e9488",
-      "published_version": 16,
+      "commit": "75f3484645fffcc5485a4c0abcbd563efd37626e",
+      "published_version": 17,
       "url": "https://saltik-v2-matin-dore.ser-adrien.chatgpt.site",
-      "base_commit": "9f0aafbca8588004fc6666942d833f3dbe0e9488",
+      "base_commit": "75f3484645fffcc5485a4c0abcbd563efd37626e",
       "source_path": "/workspace/sites/saltik-v2-matin-dore",
       "export_path": "versions/saltik-main",
       "web_entry": "versions/saltik-main/dist/index.html",
-      "file_count": 436,
-      "bytes": 114875484,
+      "file_count": 452,
+      "bytes": 122498789,
       "uncommitted_changes": "",
       "files": {
         ".gitignore": {
@@ -27,12 +27,12 @@
           "size": 106
         },
         "README.md": {
-          "sha256": "eca07899ad1026fa7026c4c49d5f5a9df52d21fc96930cacf371bd79be2a0e5b",
-          "size": 15063
+          "sha256": "373603e413ff2b8714c9541049ebf2df40506a8b7112ad99b230f68fa89f7dc0",
+          "size": 15976
         },
         "dist/android.html": {
-          "sha256": "badee1f3ea5e8c821a2886c09ba58573f20bb13a7acec653b9ba2d2ee18f8b7c",
-          "size": 15260
+          "sha256": "00ef9edacb5f9060a32003cd413968308f1137f6db24f4872690304cfb630b7d",
+          "size": 15792
         },
         "dist/assets/ink-approach-atlas-paint.png": {
           "sha256": "363c2fe35f3b7a78fd5e6c76baea8b73534c402b2f2cd72e8fb2745c47da571d",
@@ -166,6 +166,14 @@
           "sha256": "98d2559aa9e38b6ec173f5ff863a7be9d20cef002655f29bf1d260b6fc8179bd",
           "size": 1712348
         },
+        "dist/assets/lunar-archives-sky.png": {
+          "sha256": "3fe694c1dc93178d2ce8efd499e7acdceb06e688b9924a4b3731d14379729d40",
+          "size": 3276750
+        },
+        "dist/assets/lunar-archives-stone.png": {
+          "sha256": "8b42934e777fff24cb9cafbba2908ed1fb46ea24be8451ae9e4f200f3972b547",
+          "size": 4288004
+        },
         "dist/assets/pastel-boss-parts.png": {
           "sha256": "c27b39df8d41e791d879d9b497b3d363cd3171fadf1e6004df64643a934f5663",
           "size": 1956144
@@ -231,8 +239,8 @@
           "size": 253204
         },
         "dist/index.html": {
-          "sha256": "6ae9fc7ebc8598923844409db7cc8724b48a71c8308a7cfe91e0dd82bf7ac7ba",
-          "size": 15531
+          "sha256": "10fb4452ed68768be959ecebbb0fd63f615ae0c2f419d423df20f4ed841b4afe",
+          "size": 16063
         },
         "dist/manifest.webmanifest": {
           "sha256": "1046044adaf490fa877cf9b0cac214237c2a4d52636476abaf1bd80dbede48e8",
@@ -243,8 +251,8 @@
           "size": 3073
         },
         "dist/src/audio.js": {
-          "sha256": "defcbf95aaad9e321d29bc6730650cfe8852a81e397c785897164c5c03b62a4b",
-          "size": 12721
+          "sha256": "02d8eabb355c7390c8bf771052a5e3c54a4142ae81d5542dfb2f6e92aa3b3ec3",
+          "size": 12736
         },
         "dist/src/background-motion.js": {
           "sha256": "3678cee146d7d6f5c57ce4f0218b809c0befc002fd2809e9f7a05c895c7711f5",
@@ -307,8 +315,8 @@
           "size": 7983
         },
         "dist/src/engine.js": {
-          "sha256": "b1c94fd52cc5152655fe3f7b5ff27d939093fa0d8a903eea68fc4a1c5604a51f",
-          "size": 69783
+          "sha256": "cd5276dbb96a79640f7d7038ad865222da57c59489c3cbb8fefbea84edec5a4d",
+          "size": 70174
         },
         "dist/src/evasion.js": {
           "sha256": "3b9e6a5daafd5098d12f20a67279e98eca7b85ef500b79b67ea5862199992aeb",
@@ -359,16 +367,16 @@
           "size": 5269
         },
         "dist/src/ink-renderer.js": {
-          "sha256": "b527213b7c730bb7da9902c2f57be2d2cfda0956e71b2d247b29905b860ec1f7",
-          "size": 11439
+          "sha256": "69a63bfb8df449b37afeb2dc313b98a9e62b18d82320237e715344ea532cb7ce",
+          "size": 11750
         },
         "dist/src/ink-saltik.js": {
           "sha256": "578dd1996bca6747c2a53ec446df2299fee8466d1f47d9ef4595086da7849743",
           "size": 19631
         },
         "dist/src/ink-scene.js": {
-          "sha256": "9586bc6d10a957fe958389466b61900f9c602eb63822952de8ce584571b011d7",
-          "size": 1983
+          "sha256": "cde7e28f60dfc8e0262e4c354fed1cc40cb55597d7de830ea1e1d0c42023092f",
+          "size": 2217
         },
         "dist/src/ink-turn.js": {
           "sha256": "ce598e86a76256f20d0c1c487b4116ea247424d71b9bb1bb2ea8bc6bf047f685",
@@ -386,9 +394,17 @@
           "sha256": "b908e80e6a6e039b99021c48ecf1ff21d88a9ac26c216ee7d91422c7216dec65",
           "size": 4938
         },
+        "dist/src/lunar-level.js": {
+          "sha256": "810b2a7e7477148b3086eed3647c6f5b7f94bdf813efecd53a13afeb975664bd",
+          "size": 4476
+        },
+        "dist/src/lunar-world.js": {
+          "sha256": "a70b24ed9c075991c735dc160d9e1e2ff8bda8f7e88678858640885ab620025e",
+          "size": 5719
+        },
         "dist/src/main.js": {
-          "sha256": "4333e0b41c50adaf10f52b09edd9c8f9122dc567effbb9df8e99b7b389f4a6fc",
-          "size": 20147
+          "sha256": "978e2bff544063ea782487630b408096cc04cbcb9b3862e4f209badf21d5c10e",
+          "size": 22481
         },
         "dist/src/melee-state.js": {
           "sha256": "f24e08a07354668edbe7d54291517edc973dd34f9dfa9653c4f5776fe2b1eb87",
@@ -487,8 +503,8 @@
           "size": 9418
         },
         "dist/style.css": {
-          "sha256": "86e57ff76944c84c074177adb984a281299d72e9769afb411b34516787d2aea7",
-          "size": 38811
+          "sha256": "42c9b1cf38e6088ad3e69e38126e8a800f0b3be48289ede80b131603475a2aab",
+          "size": 40057
         },
         "dist/video/saltik-free-together-poster.jpg": {
           "sha256": "de77c185c42f5b31e582f895bda0a8e5ea1c54cc0f9670bef8946a7c2cf3c767",
@@ -533,6 +549,34 @@
         "docs/ink-v1-source.json": {
           "sha256": "41422d490984e34988f6be9b8e0de9d649ff491dcdb5054e966146e588e2ca50",
           "size": 262
+        },
+        "docs/level-design/level-1-reference-hashes.json": {
+          "sha256": "b1247f7140bdd7338be141cacb322915e346cc86a6833d48f0c84b7271a6e1ae",
+          "size": 1185
+        },
+        "docs/level-design/lunar-assets.json": {
+          "sha256": "a8c1743a4dad416fe16c9db2856d7612c0bb391c32fdda31f14034d13202d982",
+          "size": 521
+        },
+        "docs/level-design/lunar-browser-validation.json": {
+          "sha256": "9b9bc2b4c3601be2ab25f358d9ab9046925f3dbf43fd7bbc69218411fe75db7a",
+          "size": 917
+        },
+        "docs/level-design/lunar-campaign-validation.json": {
+          "sha256": "e07825928cec4be2fe962021f98f84a9cd139859ac43ce23ce968399298be585",
+          "size": 320
+        },
+        "docs/level-design/lunar-implementation-validation.md": {
+          "sha256": "825908e8ea11a2e560045d1ad852f67426144a885dd2f7d998f826e1ad425be6",
+          "size": 2914
+        },
+        "docs/level-design/niveau-1-reference.md": {
+          "sha256": "7a12700cc0e6383cafdb3a1ab76126a85ae50c0a7be5e09cada2b5d378b08e19",
+          "size": 1658
+        },
+        "docs/level-design/niveau-2-proposition.md": {
+          "sha256": "97779095572d31481dc1941999426e24d8ec1bc89c1d86499485927a6742cc0e",
+          "size": 4220
         },
         "docs/live-saltiks-verification.md": {
           "sha256": "7b376932d066342db9dfcef1c1d2456ec431e830a0c9cdde99b15a60861e38ed",
@@ -714,6 +758,10 @@
           "sha256": "7a33777d3536e0381bf9832eea58887d2886048650503d7331a4c35055973a73",
           "size": 2411
         },
+        "docs/superpowers/plans/2026-11-09-lunar-level-two.md": {
+          "sha256": "74340caae50fbefd88ab60ad0326ec63e2310674fa69e8e8190fe5c9e63a46bf",
+          "size": 4051
+        },
         "docs/superpowers/platform-combat-validation-2026-11-02.md": {
           "sha256": "d9c70c0fb0cfee3a448ee230fe67717dc9c6b77de7174183e325a1951356601d",
           "size": 5307
@@ -871,8 +919,8 @@
           "size": 253204
         },
         "index.html": {
-          "sha256": "6ae9fc7ebc8598923844409db7cc8724b48a71c8308a7cfe91e0dd82bf7ac7ba",
-          "size": 15531
+          "sha256": "10fb4452ed68768be959ecebbb0fd63f615ae0c2f419d423df20f4ed841b4afe",
+          "size": 16063
         },
         "manifest.webmanifest": {
           "sha256": "1046044adaf490fa877cf9b0cac214237c2a4d52636476abaf1bd80dbede48e8",
@@ -953,6 +1001,10 @@
         "scripts/faithful-film/preview.js": {
           "sha256": "9e766cfd7ea2836785aa0c0bdc1fdc6aa544def14b548b412134d7a1f5760960",
           "size": 6358
+        },
+        "scripts/lunar/verify_ui.py": {
+          "sha256": "d964f1f68cd7c4b83bcb75cdb02de9c2ccb343c311ba655d1d15776fbe7d2d20",
+          "size": 4193
         },
         "scripts/promo/BRIEF.md": {
           "sha256": "2ddd24f9de14e195267a19fbd3e5527f770f3bb6ec72a545495bb15fddbda4cc",
@@ -1051,8 +1103,8 @@
           "size": 2320
         },
         "src/audio.js": {
-          "sha256": "defcbf95aaad9e321d29bc6730650cfe8852a81e397c785897164c5c03b62a4b",
-          "size": 12721
+          "sha256": "02d8eabb355c7390c8bf771052a5e3c54a4142ae81d5542dfb2f6e92aa3b3ec3",
+          "size": 12736
         },
         "src/background-motion.js": {
           "sha256": "3678cee146d7d6f5c57ce4f0218b809c0befc002fd2809e9f7a05c895c7711f5",
@@ -1115,8 +1167,8 @@
           "size": 7983
         },
         "src/engine.js": {
-          "sha256": "b1c94fd52cc5152655fe3f7b5ff27d939093fa0d8a903eea68fc4a1c5604a51f",
-          "size": 69783
+          "sha256": "cd5276dbb96a79640f7d7038ad865222da57c59489c3cbb8fefbea84edec5a4d",
+          "size": 70174
         },
         "src/evasion.js": {
           "sha256": "3b9e6a5daafd5098d12f20a67279e98eca7b85ef500b79b67ea5862199992aeb",
@@ -1167,16 +1219,16 @@
           "size": 5269
         },
         "src/ink-renderer.js": {
-          "sha256": "b527213b7c730bb7da9902c2f57be2d2cfda0956e71b2d247b29905b860ec1f7",
-          "size": 11439
+          "sha256": "69a63bfb8df449b37afeb2dc313b98a9e62b18d82320237e715344ea532cb7ce",
+          "size": 11750
         },
         "src/ink-saltik.js": {
           "sha256": "578dd1996bca6747c2a53ec446df2299fee8466d1f47d9ef4595086da7849743",
           "size": 19631
         },
         "src/ink-scene.js": {
-          "sha256": "9586bc6d10a957fe958389466b61900f9c602eb63822952de8ce584571b011d7",
-          "size": 1983
+          "sha256": "cde7e28f60dfc8e0262e4c354fed1cc40cb55597d7de830ea1e1d0c42023092f",
+          "size": 2217
         },
         "src/ink-turn.js": {
           "sha256": "ce598e86a76256f20d0c1c487b4116ea247424d71b9bb1bb2ea8bc6bf047f685",
@@ -1194,9 +1246,17 @@
           "sha256": "b908e80e6a6e039b99021c48ecf1ff21d88a9ac26c216ee7d91422c7216dec65",
           "size": 4938
         },
+        "src/lunar-level.js": {
+          "sha256": "810b2a7e7477148b3086eed3647c6f5b7f94bdf813efecd53a13afeb975664bd",
+          "size": 4476
+        },
+        "src/lunar-world.js": {
+          "sha256": "a70b24ed9c075991c735dc160d9e1e2ff8bda8f7e88678858640885ab620025e",
+          "size": 5719
+        },
         "src/main.js": {
-          "sha256": "4333e0b41c50adaf10f52b09edd9c8f9122dc567effbb9df8e99b7b389f4a6fc",
-          "size": 20147
+          "sha256": "978e2bff544063ea782487630b408096cc04cbcb9b3862e4f209badf21d5c10e",
+          "size": 22481
         },
         "src/melee-state.js": {
           "sha256": "f24e08a07354668edbe7d54291517edc973dd34f9dfa9653c4f5776fe2b1eb87",
@@ -1295,8 +1355,8 @@
           "size": 9418
         },
         "style.css": {
-          "sha256": "86e57ff76944c84c074177adb984a281299d72e9769afb411b34516787d2aea7",
-          "size": 38811
+          "sha256": "42c9b1cf38e6088ad3e69e38126e8a800f0b3be48289ede80b131603475a2aab",
+          "size": 40057
         },
         "tests/arsenal-integration.test.js": {
           "sha256": "73a6ad38b4bc4243d05dc5b48af82396520cdc4248d0b6116776ac01f48937b5",
@@ -1307,8 +1367,8 @@
           "size": 4040
         },
         "tests/audio.test.js": {
-          "sha256": "45d05d6b3299a3635adae7cde5819e5adcb66db37d3bf2a87a9ccb514023f730",
-          "size": 16739
+          "sha256": "1fb413a650109ff83eea812b7989466cf188420b1b5c41a6538be744ff142c29",
+          "size": 16732
         },
         "tests/background-motion.test.js": {
           "sha256": "b2ed18c174b699460961c74362aade366d189d00462dba78c0e885bd1b7ec050",
@@ -1610,6 +1670,10 @@
           "sha256": "0f526f4eb743f3e6a95cfb3806ea8795417707ab5f2927db6b3fc9bc3cb79440",
           "size": 6475
         },
+        "tests/lunar-level.test.js": {
+          "sha256": "de3730b61363efc4d6aba664f7a3a292799f14e517db94cc3bcb7f9e43da6ff0",
+          "size": 6603
+        },
         "tests/manual-controls.test.js": {
           "sha256": "aa25357e0c836e0528d860c831e23d52d41bebc84732ea558ef240068c461a89",
           "size": 1393
@@ -1667,8 +1731,8 @@
           "size": 1507
         },
         "tests/pastel-preservation.test.js": {
-          "sha256": "15bc2d681bad8d07c43eebfce562ffe3c20972ac4f0d412c2a225877bb2c300e",
-          "size": 1530
+          "sha256": "4acd5c7e5282c1b8e3ee556efb36b5c7bf656b7c8856b19c65474a70c101fb5c",
+          "size": 1545
         },
         "tests/pastel-rider.test.js": {
           "sha256": "bdcb9235ba7eee78560cbdb06f4b9334dda35a425581fa3b5b4ed441ccf5bb53",
@@ -1762,7 +1826,19 @@
           "sha256": "0093dfda8aed420be006b09e0de0c4d2745b80fd069479c1ca5d89533598113e",
           "size": 12963
         }
-      }
+      },
+      "levels": [
+        {
+          "number": 1,
+          "name": "Matin Doré"
+        },
+        {
+          "number": 2,
+          "name": "Les Archives lunaires",
+          "duration_native_run_seconds": 82.0166666666633
+        }
+      ],
+      "update_note": "Level2 Archives lunaires, menu/after-level1 access, primary cannon gain +20 percent; Sites v17 deployment succeeded."
     },
     {
       "slug": "saltik-ink",
@@ -6128,5 +6204,7 @@
   "original_files_preserved": true,
   "github_repository": "seradrien-png/saltik",
   "preserved_github_parent": "a2658100e8259a69c772a6dd4cfbfcdb833f1221",
-  "github_backup_commit": "55e0af78812ba737a6758403be9c2993ef2fa903"
+  "github_backup_commit": "55e0af78812ba737a6758403be9c2993ef2fa903",
+  "latest_main_source_commit": "75f3484645fffcc5485a4c0abcbd563efd37626e",
+  "history_note": "Source bundles preserve the initial backup capture. Subsequent project updates are preserved by commits of this GitHub repository."
 }
