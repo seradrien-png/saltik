@@ -39,6 +39,14 @@ function audioFixture(run){
   }
 }
 
+test('level two can silence only its score while combat effects remain audible',()=>audioFixture(f=>{
+ const audio=createAudio();audio.setMusicEnabled(false);audio.setPlaying(true,{restart:true});audio.unlock();
+ assert.equal(f.media.playCalls,0);assert.equal(f.media.paused,true);
+ audio.play({type:'shot'});assert.ok(f.context.starts.length>=3);
+ audio.setEnabled(false);audio.setEnabled(true);audio.unlock();assert.equal(f.media.paused,true);
+ audio.setMusicEnabled(true);assert.equal(f.media.paused,false);
+ audio.setPlaying(false);audio.setMusicEnabled(false);assert.equal(f.media.paused,true);
+}));
 test('the very first primary shot creates sound at audio time zero',()=>audioFixture(f=>{
   const audio=createAudio();audio.unlock();audio.play({type:'shot'});
   const count=f.context.starts.length;

@@ -6,6 +6,14 @@ import {createGame} from '../src/engine.js';
 
 const near=(a,b)=>assert.ok(Math.abs(a-b)<1e-6,`${a} != ${b}`);
 const game={player:{x:180,y:690},duel:null,boss:null,time:0};
+test('deep lunar lower paths keep Striker feet inside desktop and phone views',()=>{
+ for(const [cssWidth,cssHeight] of [[1366,768],[844,390]]){
+  const g={...game,level:2,player:{x:1500,y:880}};
+  const p=projectMissionCamera({cssWidth,cssHeight,zoom:BASE_ZOOM,game:g,playerTop:760,dt:1,camera:0,cameraY:0});
+  assert.ok(g.player.y+p.cameraY<=p.height-60,'lower path must stay fully visible');
+  assert.ok(760+p.cameraY>=85,'native pod keeps its HUD margin');
+ }
+});
 
 test('mission zoom starts close, eases to 1.155 in 2.2 seconds, and reverses at victory',()=>{
   near(BASE_ZOOM,1.155);near(MOVE_DURATION,2.2);

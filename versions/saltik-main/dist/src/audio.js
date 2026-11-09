@@ -6,7 +6,7 @@ export function createAudio({onSpeech=()=>{}}={}){
   let effectsActive=true,speech=null;
   const voices=new Set();
   let duckUntil=0,duckLevel=1,duckRelease=.15;
-  const music=document.getElementById('game-music');let playing=false;
+  const music=document.getElementById('game-music');let playing=false,musicEnabled=true;
   // The local melancholic score uses the native media loop and existing lifecycle.
   // Effects retain a separate bus under the same protected output.
   if(music){music.loop=true;music.volume=.20;}
@@ -31,10 +31,10 @@ export function createAudio({onSpeech=()=>{}}={}){
   }
   function syncMusic(){
     if(!music)return;music.muted=!enabled;
-    if(!playing||!enabled){music.pause();return;}
+    if(!playing||!enabled||!musicEnabled){music.pause();return;}
     // Media starts inside the same play/resume gesture as the game. Rejected
     // autoplay or a missing local track never interrupts the simulation.
-    if(music.paused)try{music.play()?.then(()=>{if(!playing||!enabled)music.pause();}).catch(()=>{});}catch{}
+    if(music.paused)try{music.play()?.then(()=>{if(!playing||!enabled||!musicEnabled)music.pause();}).catch(()=>{});}catch{}
   }
   function setPlaying(value,{restart=false}={}){
     playing=!!value;
@@ -234,6 +234,6 @@ export function createAudio({onSpeech=()=>{}}={}){
     else if(e.type==='start'){tone(220,660,.4,.18,'triangle');}
     else if(e.type==='won'){tone(330,660,.5,.22,'triangle',0,true);tone(440,880,.6,.18,'triangle',.18,true);}
   }
-  return {unlock,play,setPlaying,setEnabled(value){enabled=!!value;if(output){hold(output.gain,ctx.currentTime);output.gain.setTargetAtTime(enabled?1:0,ctx.currentTime,.012);}if(!enabled){stopVoices();speech?.cancel();clearDucking();}syncMusic();},get enabled(){return enabled;},
+  return {unlock,play,setPlaying,setMusicEnabled(value){musicEnabled=!!value;syncMusic();},setEnabled(value){enabled=!!value;if(output){hold(output.gain,ctx.currentTime);output.gain.setTargetAtTime(enabled?1:0,ctx.currentTime,.012);}if(!enabled){stopVoices();speech?.cancel();clearDucking();}syncMusic();},get enabled(){return enabled;},
     get speechSnapshot(){return speech?.snapshot()??Object.freeze({playing:null,queued:0,loading:0,lastLine:null,played:Object.freeze({}),failed:0});}};
 }

@@ -1,0 +1,152 @@
+{
+  "publication": {
+    "version": 19,
+    "version_id": "appgprj_6ae77e1b6da081918600675fc2e2b738~appgver_4640383731b081918c0356fe20c988ce",
+    "deployment": "appgdep_6af21c2b87f881919ba003bd08b15285",
+    "status": "succeeded",
+    "source_commit": "b629bb43cb35f1edcecfa0f2a4fdf9643e92355c",
+    "url": "https://saltik-v2-matin-dore.ser-adrien.chatgpt.site"
+  },
+  "complete_test_suite": {
+    "passed": 619,
+    "failed": 0
+  },
+  "build": "passed",
+  "campaign": {
+    "status": "won",
+    "seconds": 93.01666666666267,
+    "hp": 100,
+    "falls": 0,
+    "wave": 3,
+    "stats": {
+      "kills": 34,
+      "shots": 608,
+      "mirvs": 12,
+      "homingSalvos": 9,
+      "meleeSwings": 5,
+      "meleeHits": 5,
+      "interceptions": 1,
+      "score": 10225,
+      "obstacles": 0,
+      "neutralized": 3
+    }
+  },
+  "browser": [
+    {
+      "device": "desktop",
+      "level2_music_silent_effects_available": true,
+      "level1_music_preserved": true,
+      "menu_choice": true,
+      "level2_movement_and_fire": true,
+      "paused_simulation_frozen": true,
+      "restart_same_level": true,
+      "level2_result_without_film": true,
+      "level1_film_preserved": true,
+      "next_level_after_film": true,
+      "errors": [],
+      "bad_responses": [],
+      "first_level2": {
+        "x": 180,
+        "hp": 100
+      },
+      "played_level2": {
+        "x": 295,
+        "shots": 6
+      }
+    },
+    {
+      "device": "phone",
+      "level2_music_silent_effects_available": true,
+      "level1_music_preserved": true,
+      "menu_choice": true,
+      "level2_movement_and_fire": true,
+      "paused_simulation_frozen": true,
+      "restart_same_level": true,
+      "level2_result_without_film": true,
+      "level1_film_preserved": true,
+      "next_level_after_film": true,
+      "errors": [],
+      "bad_responses": [],
+      "first_level2": {
+        "x": 180,
+        "hp": 100
+      },
+      "played_level2": {
+        "x": 617,
+        "shots": 20
+      }
+    }
+  ],
+  "enemy_rendering": {
+    "draws": {
+      "soldier": 52,
+      "turret": 42,
+      "drone": 55,
+      "walker": 19
+    },
+    "nonfinite_geometry": false,
+    "page_errors": []
+  },
+  "main_files_verified": 463,
+  "other_game_snapshots_changed": false,
+  "music": {
+    "level1": "preserved",
+    "level2": "disabled; sound effects and voices retained"
+  },
+  "review": "completed; no important or critical issue remaining",
+  "visual_views": [
+    "arrival",
+    "aqueduct",
+    "bastion",
+    "observatory",
+    "portal"
+  ],
+  "phone_physical_tested": false,
+  "published_resources": [
+    {
+      "path": "src/main.js",
+      "status": 200,
+      "sha256": "be70e2fefc43dc3c85904870a6e96cf0a20efcbb3cdae1b6e27c386539b113a2"
+    },
+    {
+      "path": "src/lunar-level.js",
+      "status": 200,
+      "sha256": "c7916838513039f7ec2a9839891c7ea4d8d6c345ae7cdfc4cae7c1388e638278"
+    },
+    {
+      "path": "src/lunar-world.js",
+      "status": 200,
+      "sha256": "17a544cf1eabb562fae7bebe479c54db7591187ece25c7d815345e79342d9cb0"
+    },
+    {
+      "path": "src/lunar-landmarks.js",
+      "status": 200,
+      "sha256": "97c66508b3ee4cbf9a25aedd90308fbb3984a44e893fc96d20dcc096d0b68489"
+    },
+    {
+      "path": "src/ink-actors.js",
+      "status": 200,
+      "sha256": "2f035047ce8795374b3d191f652c0b64e3a607e3d557a0439fe99bf7b45269cf"
+    },
+    {
+      "path": "src/mission-camera.js",
+      "status": 200,
+      "sha256": "5343a30d32157047c64cce9dac0d49c77596285faba05f6c8db854b7963cc2d4"
+    },
+    {
+      "path": "src/audio.js",
+      "status": 200,
+      "sha256": "c9b5736aaf13846c18a7fcb0b751b3b9540a0a269a513c0d7bb32b80c2a46479"
+    },
+    {
+      "path": "assets/lunar-monuments.png",
+      "status": 200,
+      "sha256": "911ff06bdd6d056b9aa7b2646487b69db9bcb8cd58d75de1668d513fca2436b0"
+    },
+    {
+      "path": "assets/lunar-aqueduct.png",
+      "status": 200,
+      "sha256": "431df709ab92509c6eb7cc746cac2ea9b12ff9bbd14c971ad910745fbf21fd02"
+    }
+  ]
+}

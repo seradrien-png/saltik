@@ -1,4 +1,5 @@
 import {clearPlayerWeaponQueue} from './engine.js';
+import {LUNAR_SITES} from './lunar-landmarks.js';
 export const LUNAR_END=17800;
 // The Archives are a continuous, traversable world; no forced pit-jump sections.
 export const LUNAR_GAPS=Object.freeze([]);
@@ -21,16 +22,31 @@ export function lunarGroundAt(x){
  const t=(at-a[0])/(b[0]-a[0]),smooth=t*t*(3-2*t);
  // Crest and eroded shoulders meet every anchor without a discontinuity.
  const ridge=Math.sin(Math.PI*t)*(22*Math.sin(at/440+i*1.27)+8*Math.sin(at/128));
- return a[1]+(b[1]-a[1])*smooth+ridge;
+ let floor=a[1]+(b[1]-a[1])*smooth+ridge;
+ for(const site of LUNAR_SITES){
+  const bankStart=Math.min(site.x1,site.nativeStair?.[0][0]??site.x1),bankEnd=Math.max(site.x2,site.nativeStair?.[0][0]??site.x2);
+  const at=Math.max(bankStart,Math.min(bankEnd,x)),outside=Math.abs(x-at),weight=Math.max(0,1-outside/380);
+  // Eroded lower banks expose the full painted arches and foundations.
+  // Blend into adjoining terrain; never introduce a pit or a hidden wall.
+  let foundation=site.floor;
+  if(site.groundPoints){
+   const pts=site.groundPoints,index=pts.findIndex((p,i)=>i<pts.length-1&&at<=pts[i+1][0]);
+   const a=pts[Math.max(0,index<0?pts.length-2:index)],b=pts[Math.max(1,index<0?pts.length-1:index+1)];
+   const u=Math.max(0,Math.min(1,(at-a[0])/(b[0]-a[0])));
+   foundation=Math.min(880,a[1]+(b[1]-a[1])*u);
+  }
+  floor=Math.max(floor,floor+(foundation-floor)*weight*weight*(3-2*weight));
+ }
+ return floor;
 }
 export function createLunarRoutes(){
- return [[950,2050,410],[3540,4240,400],[5410,6580,360],[7460,8260,410],[11750,13000,355],[14500,15700,410]].map(([x1,x2,y],i)=>({
-  id:`lunar-terrace-${i}`,tier:1,x1,x2,points:[[x1,y],[x1+180,y-12],[x2-160,y-12],[x2,y]],bodyDepth:65,seed:300+i,
-  walkableEntries:[{id:`lunar-stairs-${i}`,lowerId:null,points:[[x1-300,lunarGroundAt(x1-300)],[x1,y]],stepRun:22}],
+ return LUNAR_SITES.map(({id,x1,x2,y,points,kind,nativeStair},i)=>({
+  id,tier:1,x1,x2,points:points.map(p=>[...p]),bodyDepth:65,seed:300+i,lunarKind:kind,
+  walkableEntries:[{id:`lunar-stairs-${i}`,lowerId:null,nativeArt:!!nativeStair,points:nativeStair?.map(p=>[...p])??[[x1-300,lunarGroundAt(x1-300)],[x1,y]],stepRun:22}],
  }));
 }
 export function applyLunarLevel(g){
- g.level=2;g.levelTitle='Les Archives lunaires';g.levelEnd=LUNAR_END;g.disableBoss=true;g.groundAt=lunarGroundAt;g.isGroundGap=lunarGapAt;
+ g.level=2;g.levelTitle='Les Archives lunaires';g.levelEnd=LUNAR_END;g.disableBoss=true;g.groundAt=lunarGroundAt;g.isGroundGap=LUNAR_GAPS.length?lunarGapAt:undefined;
  g.platforms=createLunarRoutes();g.obstacles=[];
  g.schedule=[['soldier',1260],['drone',2200],['turret',3700],['drone',4010],['walker',5160],['saltik',7650],['drone',8050],['saltik',8660],['carrier',8940],['turret',10150],['drone',11480],['walker',12360],['saltik',13140],['drone',14350],['turret',15320],['soldier',15920]].map(([type,x],i)=>({id:`lunar-encounter-${i}`,type,x}));
  // Carrier native movement remains in its approved arena; its escort is the second Saltik.

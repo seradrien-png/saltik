@@ -9,7 +9,15 @@ test('V2 preserves V1 native pixels, walkable geometry, native motions and encou
   if(approvedChanges.has(path))continue;
   let content=readFileSync(new URL('../'+path,import.meta.url));
   // Carrier cues are additive. Only the approved primary-shot lift changes the mix.
+  if(path==='src/ink-actors.js')content=Buffer.from(content.toString()
+   // Numeric V1 ids retain the exact native animation; lunar text ids use a finite seed.
+   .replace(' const bobSeed=Number.isFinite(e.id)?e.id:Number.isFinite(e.phase)?e.phase:0;\n const bob=walking?Math.sin(time*10+bobSeed)*.9:0;',
+    ' const bob=walking?Math.sin(time*10+(e.id??0))*.9:0;'));
   if(path==='src/audio.js')content=Buffer.from(content.toString()
+   // Only level two opts out of the score; the default mix remains byte-for-byte identical.
+   .replace('let playing=false,musicEnabled=true;','let playing=false;')
+   .replaceAll('!playing||!enabled||!musicEnabled','!playing||!enabled')
+   .replace('setMusicEnabled(value){musicEnabled=!!value;syncMusic();},','')
    .replace(/^    else if\(e.type==='carrier-(?:drone-deploy|bay-disabled|disconnected)'\)\{[^\n]+\}\n/gm,'')
    .replace('.0462875*1.15*1.20','.0462875').replace('.06348*1.15*1.20','.06348').replace('.034385*1.15*1.20','.034385')
    // Approved subtitle hooks expose speech timing without changing any mix values.

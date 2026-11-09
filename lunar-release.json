@@ -1,9 +1,9 @@
 {
   "site_url": "https://saltik-v2-matin-dore.ser-adrien.chatgpt.site",
-  "site_version": 18,
-  "site_deployment": "appgdep_6af214854c488191a2ccfa05bb83006e",
+  "site_version": 19,
+  "site_deployment": "appgdep_6af21c2b87f881919ba003bd08b15285",
   "site_deployment_status": "succeeded",
-  "source_commit": "1c65baccc0e11e8683c7b5339a61033c21c4b052",
+  "source_commit": "b629bb43cb35f1edcecfa0f2a4fdf9643e92355c",
   "levels": {
     "1": "Matin Doré / Le Canyon",
     "2": "Les Archives lunaires"
@@ -11,31 +11,33 @@
   "entry": "level selection in menu, ?level=2 link, next-level button after level1 film",
   "primary_cannon_gain_increase": 0.2,
   "complete_test_suite": {
-    "passed": 615,
+    "passed": 619,
     "failed": 0
   },
   "campaign_run": {
     "status": "won",
-    "seconds": 82.0166666666633,
-    "hp": 92,
+    "seconds": 93.01666666666267,
+    "hp": 100,
     "falls": 0,
     "wave": 3,
-    "boss": null,
     "stats": {
-      "kills": 33,
+      "kills": 34,
       "shots": 608,
       "mirvs": 12,
       "homingSalvos": 9,
       "meleeSwings": 5,
-      "meleeHits": 4,
-      "interceptions": 2,
-      "score": 9525,
-      "obstacles": 0
+      "meleeHits": 5,
+      "interceptions": 1,
+      "score": 10225,
+      "obstacles": 0,
+      "neutralized": 3
     }
   },
   "browser_tests": [
     {
       "device": "desktop",
+      "level2_music_silent_effects_available": true,
+      "level1_music_preserved": true,
       "menu_choice": true,
       "level2_movement_and_fire": true,
       "paused_simulation_frozen": true,
@@ -50,12 +52,14 @@
         "hp": 100
       },
       "played_level2": {
-        "x": 613.1666666666666,
-        "shots": 20
+        "x": 295,
+        "shots": 6
       }
     },
     {
       "device": "phone",
+      "level2_music_silent_effects_available": true,
+      "level1_music_preserved": true,
       "menu_choice": true,
       "level2_movement_and_fire": true,
       "paused_simulation_frozen": true,
@@ -70,11 +74,12 @@
         "hp": 100
       },
       "played_level2": {
-        "x": 628.5000000000001,
+        "x": 617,
         "shots": 20
       }
     }
   ],
   "other_game_snapshots_unchanged": true,
-  "revision_report": "lunar-revision-status.json"
+  "revision_report": "lunar-depth-release.json",
+  "level2_music_enabled": false
 }

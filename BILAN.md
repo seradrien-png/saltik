@@ -43,3 +43,7 @@ La version principale inclut maintenant le niveau2 Les Archives lunaires, access
 ## Révision publiée : version 18
 
 Les treize commits GitHub jusqu’à `4c9b8e6` sont intégrés et les Archives lunaires affinées : architecture, maçonnerie des escaliers, gravures, bannières, portail ancré et objectifs par secteur. Source `1c65baccc0e11e8683c7b5339a61033c21c4b052`, publiée en v18. [Accès direct au niveau 2](https://saltik-v2-matin-dore.ser-adrien.chatgpt.site?level=2). 615 tests réussis, build valide, campagne simulée de 82,02 s, essais Chromium ordinateur et téléphone émulé réussis. Les sept ressources publiées vérifiées correspondent octet par octet au build. La limite temporaire du contrôle automatique est résolue. Voir `lunar-revision-status.json`. Les quatre autres éditions sont inchangées.
+
+## Refonte lunaire publiée : version 19
+
+Source `b629bb43cb35f1edcecfa0f2a4fdf9643e92355c`, publiée avec succès. Architecture illustrée et relief traversable, profondeur en plusieurs plans, correction des ennemis invisibles et du cadrage des passages bas. Musique du seul niveau 2 désactivée. 619 tests réussis, contrôles Chromium ordinateur/téléphone émulé réussis, campagne à commandes ordinaires gagnée en 93,02 s sans chute. 463 fichiers de la version principale comparés au source et au manifeste. Aucun autre jeu sauvegardé modifié. Voir `lunar-depth-release.json`.

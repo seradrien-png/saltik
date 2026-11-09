@@ -8,7 +8,8 @@ export function inkEnemyGeometry(e,time=0){
  const cell=cells[e.type];if(!cell)return null;
  const [sx,sy,sw,sh]=cell.crop,k=cell.height/sh*(e.scale??1),flip=e.dir===1?-1:1;
  const walking=Math.abs(e.vx??-20)>2&&e.type!=='drone';
- const bob=walking?Math.sin(time*10+(e.id??0))*.9:0;
+ const bobSeed=Number.isFinite(e.id)?e.id:Number.isFinite(e.phase)?e.phase:0;
+ const bob=walking?Math.sin(time*10+bobSeed)*.9:0;
  const rotation=walking?Math.sin(time*10)*.012:e.type==='drone'&&Number.isFinite(e.aimRotation)?e.aimRotation:0;
  const co=Math.cos(rotation),si=Math.sin(rotation);
  const sourcePoint=([px,py])=>{const x=(px-cell.anchor[0])*k*flip,y=(py-cell.anchor[1])*k;return{x:e.x+x*co-y*si,y:e.y-bob+x*si+y*co};};

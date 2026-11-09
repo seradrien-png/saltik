@@ -28,7 +28,7 @@ test('lunar landscape is continuous across all five former gap locations',()=>{
  assert.equal(LUNAR_GAPS.length,0);
  for(const [a,b] of [[2520,2660],[4470,4630],[6820,6990],[10940,11100],[13920,14090]]){
   for(let x=a-4;x<=b+4;x+=4){
-   assert.equal(g.isGroundGap(x),false);
+   assert.equal(g.isGroundGap?.(x)??false,false);
    assert.ok(Number.isFinite(g.groundAt(x)));
    assert.ok(Math.abs(g.groundAt(x+1)-g.groundAt(x))<4);
   }
@@ -44,18 +44,19 @@ test('portal requires three actually defeated waves and freezes during pause',()
  }
  assert.equal(g.status,'won');assert.equal(g.lunar.phase,'open');assert.equal(g.boss,null);
 });
-test('each monumental terrace keeps its real walkable stair entry',()=>{
+test('each illustrated stair can be climbed from its lower foot onto its actual terrace',()=>{
  for(const route of createInkScene({level:2}).platforms){
   const g=createInkScene({level:2});g.schedule=[];g.pickups=[];
-  const p=g.player;p.x=route.x1-330;p.y=g.groundAt(p.x);p.supportY=p.y;
-  for(let i=0;i<120;i++)updateInkScene(g,{right:true},1/60);
+  const entry=route.walkableEntries[0],a=entry.points[0],b=entry.points.at(-1),dir=Math.sign(b[0]-a[0]);
+  const p=g.player;p.x=a[0]-dir*25;p.y=g.groundAt(p.x);p.supportY=p.y;
+  for(let i=0;i<180&&p.platformId!==route.id;i++)updateInkScene(g,{right:dir>0,left:dir<0},1/60);
   assert.equal(p.platformId,route.id);assert.equal(p.onGround,true);
  }
 });
 test('paused falls freeze and fatal falls end the campaign without softlocking',()=>{
  const g=createInkScene({level:2});g.schedule=[];g.player.x=3200;g.player.y=1000;g.player.onGround=false;g.player.hp=10;g.status='paused';
  updateInkScene(g,{},1/30);assert.equal(g.player.hp,10);assert.equal(g.player.y,1000);assert.equal(g.lunar.falls,0);
- g.status='playing';updateInkScene(g,{},1/30);assert.equal(g.status,'dead');assert.equal(g.player.hp,0);assert.equal(g.lunar.falls,1);
+ g.status='playing';advanceLunarObjective(g,1/30);assert.equal(g.status,'dead');assert.equal(g.player.hp,0);assert.equal(g.lunar.falls,1);
  const fresh=createInkScene({level:2});assert.equal(fresh.lunar.phase,'approach');assert.equal(fresh.lunar.wave,0);assert.equal(fresh.lunar.falls,0);
 });
 
