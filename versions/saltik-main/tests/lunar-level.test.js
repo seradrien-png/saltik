@@ -1,7 +1,16 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {createInkScene,updateInkScene} from '../src/ink-scene.js';
-import {LUNAR_GAPS,LUNAR_END,advanceLunarObjective} from '../src/lunar-level.js';
+import {LUNAR_GAPS,LUNAR_END,advanceLunarObjective,lunarMissionLabel} from '../src/lunar-level.js';
+test('lunar objectives identify the route and the real portal wave state',()=>{
+ const g=createInkScene({level:2});
+ assert.match(lunarMissionLabel(g),/CITADELLES/);
+ g.player.x=8600;assert.match(lunarMissionLabel(g),/OBSERVATOIRE/);
+ g.player.x=12000;assert.match(lunarMissionLabel(g),/REMPARTS/);
+ g.lunar.phase='defense';g.lunar.wave=2;assert.match(lunarMissionLabel(g),/VAGUE 2\/3/);
+ g.lunar.phase='intermission';assert.match(lunarMissionLabel(g),/VAGUE 3\/3/);
+ g.lunar.phase='open';assert.match(lunarMissionLabel(g),/PORTAIL OUVERT/);
+});
 test('waiting without firing cannot clear a live portal defense wave through native distance cleanup',()=>{
  const g=createInkScene({level:2});g.schedule=[];g.enemies=[];g.pickups=[];g.player.x=17650;g.player.y=g.groundAt(17650);g.player.supportY=g.player.y;g.player.invulnerable=1000;
  for(let i=0;i<7200;i++)updateInkScene(g,{},1/60);

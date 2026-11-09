@@ -76,5 +76,10 @@
       }
     }
   ],
-  "other_game_snapshots_unchanged": true
+  "other_game_snapshots_unchanged": true,
+  "pending_revision": {
+    "source_commit": "1c65baccc0e11e8683c7b5339a61033c21c4b052",
+    "report": "lunar-revision-status.json",
+    "published": false
+  }
 }

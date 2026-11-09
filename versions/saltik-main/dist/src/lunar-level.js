@@ -3,6 +3,16 @@ export const LUNAR_END=17800;
 // The Archives are a continuous, traversable world; no forced pit-jump sections.
 export const LUNAR_GAPS=Object.freeze([]);
 export const lunarGapAt=x=>LUNAR_GAPS.some(([a,b])=>x>a&&x<b);
+export function lunarMissionLabel(g){
+ const l=g.lunar;
+ if(l.phase==='open')return 'ARCHIVES · PORTAIL OUVERT';
+ if(l.phase==='defense')return `PORTE DES ARCHIVES · VAGUE ${l.wave}/3`;
+ if(l.phase==='intermission')return `PRÉPAREZ-VOUS · VAGUE ${l.wave+1}/3`;
+ if(g.player.x>=15400)return 'REJOIGNEZ LA PORTE DES ARCHIVES';
+ if(g.player.x>=11000)return 'TRAVERSEZ LES REMPARTS';
+ if(g.player.x>=7300)return 'FRANCHISSEZ L’OBSERVATOIRE';
+ return 'EXPLOREZ LES CITADELLES LUNAIRES';
+}
 // Broad banks and ridges give the lower traversal a native silhouette.
 const anchors=[[0,580],[1100,540],[2300,601],[3500,556],[4800,592],[6100,516],[7600,570],[9100,536],[10500,584],[11800,505],[13200,562],[14800,590],[16200,530],[17800,550]];
 export function lunarGroundAt(x){

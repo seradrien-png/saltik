@@ -1,0 +1,45 @@
+{
+  "github_base": "4c9b8e64bf3232c222f9b6f534ca37d660da3f7b",
+  "base_published_version": 17,
+  "tests": {
+    "passed": 615,
+    "failed": 0
+  },
+  "build": "passed",
+  "assets": {
+    "checked": 27,
+    "missing": 0
+  },
+  "campaign": {
+    "status": "won",
+    "seconds": 82.0166666666633,
+    "hp": 92,
+    "falls": 0,
+    "wave": 3,
+    "boss": null,
+    "stats": {
+      "kills": 33,
+      "shots": 608,
+      "mirvs": 12,
+      "homingSalvos": 9,
+      "meleeSwings": 5,
+      "meleeHits": 4,
+      "interceptions": 2,
+      "score": 9525,
+      "obstacles": 0
+    }
+  },
+  "browser": {
+    "status": "blocked",
+    "reason": "Sandbox denied creation of local HTTP socket (EPERM); no fresh visual validation"
+  },
+  "review": {
+    "completed": true,
+    "fixed": "Paint terrace engravings and banners after opaque slab"
+  },
+  "site_publication": {
+    "status": "blocked",
+    "reason": "Automatic approval review failed due to usage limit before Git network operation; official source commit not pushed"
+  },
+  "other_game_snapshots_changed": false
+}

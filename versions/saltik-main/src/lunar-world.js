@@ -1,5 +1,5 @@
 import {lunarGroundAt} from './lunar-level.js';
-import {drawLunarAtmosphere,drawLunarArchitecture,drawLunarGround,drawLunarTerraceSupports,drawLunarForeground as foreground} from './lunar-architecture.js';
+import {drawLunarAtmosphere,drawLunarArchitecture,drawLunarGround,drawLunarTerraceSupports,drawLunarTerraceDetails,drawLunarForeground as foreground} from './lunar-architecture.js';
 import {surfaceHeight} from './world.js';
 import {stairTreads} from './walkable-routes.js';
 const INK='#343b45',IVORY='#eee5ce',GOLD='#c4a163',COPPER='#ab7256',TAU=Math.PI*2;
@@ -48,6 +48,7 @@ export function drawLunarWorld(c,g,{camera,width,time,texture}){
   if(p.x2<camera-150||p.x1>camera+width+150)continue;
   drawLunarTerraceSupports(c,p,{camera,texture});
   slab(c,p.points.map(([x,y])=>[x-camera,y]),Math.max(...p.points.map(point=>point[1]))+71,texture,camera);
+  drawLunarTerraceDetails(c,p,{camera});
   for(const entry of p.walkableEntries??[])for(const tread of stairTreads(entry)){
    c.fillStyle=IVORY;c.strokeStyle=INK;c.lineWidth=1.2;
    c.fillRect(tread.x1-camera,tread.y,tread.x2-tread.x1,15);
@@ -56,9 +57,19 @@ export function drawLunarWorld(c,g,{camera,width,time,texture}){
   }
   foliage(c,p.x2-camera-30,surfaceHeight(p,p.x2)+34,.3);
  }
- const l=g.lunar,x=l.portalX-camera,y=550;
+ const l=g.lunar,x=l.portalX-camera,y=lunarGroundAt(l.portalX);
  if(x>-250&&x<width+250){
+  // A planted instrument, with the same limestone foundation as the terrain.
+  c.fillStyle='#8d8d80';c.strokeStyle=INK;c.lineWidth=2;
+  for(const side of [-1,1]){
+   const xx=x+side*116;c.fillRect(xx-22,y-112,44,122);c.strokeRect(xx-22,y-112,44,122);
+   c.fillStyle=IVORY;c.fillRect(xx-29,y-113,58,15);c.fillStyle='#8d8d80';
+  }
   orbit(c,x,y-160,148,time);
+  // The warm nucleus grows brighter as each defense is overcome.
+  c.save();c.globalAlpha=.35+l.wave*.15;c.fillStyle=GOLD;
+  c.beginPath();c.arc(x,y-160,17+Math.sin(time*1.5)*2,0,TAU);c.fill();
+  c.strokeStyle=GOLD;c.lineWidth=1;c.beginPath();c.moveTo(x,y-137);c.lineTo(x,y-24);c.stroke();c.restore();
   c.save();c.globalAlpha=l.phase==='open'?.7:.16;
   c.fillStyle=l.phase==='open'?'#f9eac2':'#8db9c6';
   c.beginPath();c.ellipse(x,y-160,115,130,0,0,TAU);c.fill();c.restore();

@@ -1,4 +1,5 @@
 import {inkSaltikGeometry} from './ink-saltik.js';
+import {lunarMissionLabel} from './lunar-level.js';
 import {padCoversPlayer} from './control-layout.js';
 import {endEvasion} from './evasion.js';
 import {setupHomeShortcut} from './install.js';
@@ -107,7 +108,7 @@ function recharge(buttonId,textId,barId,remaining,total,ready,label){
   button.setAttribute('aria-label',waiting?`${label}, recharge ${remaining.toFixed(1)} secondes`:label);
 }
 function updateUI(){
-  const mission=$('mission-status');mission.hidden=selectedLevel!==2||view==='title';if(!mission.hidden){const l=game.lunar;mission.textContent=l?.phase==='defense'?`PORTE DES ARCHIVES · VAGUE ${l.wave??1}/3`:'NIVEAU 2 · LES ARCHIVES LUNAIRES';}
+  const mission=$('mission-status');mission.hidden=selectedLevel!==2||view==='title';if(!mission.hidden)mission.textContent=lunarMissionLabel(game);
   const p=game.player,hpRatio=clamp(p.hp/(p.maxHp||100),0,1),shifting=p.evasion.active;
   syncActionDock();
   const bounds=$('game').getBoundingClientRect();

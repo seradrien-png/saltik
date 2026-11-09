@@ -164,6 +164,18 @@ export function drawLunarGround(c,{camera,width,texture}){
 }
 export function drawLunarTerraceSupports(c,p,{camera,texture}){
  const total=p.x2-p.x1;
+ // Retaining masonry reaches the actual terrain under each painted tread.
+ // The drawing follows the existing climb; collision stays in native routes.
+ for(const entry of p.walkableEntries??[]){
+  const [a,b]=[entry.points[0],entry.points.at(-1)],pts=[];
+  for(let x=b[0];x>=a[0];x-=24)pts.push([x-camera,lunarGroundAt(x)+24]);
+  polygon(c,[[a[0]-camera,a[1]+10],[b[0]-camera,b[1]+10],...pts,[a[0]-camera,lunarGroundAt(a[0])+24]],'#aaa799');
+  c.strokeStyle='#777e7a';c.lineWidth=1;
+  for(let x=a[0]+36;x<b[0];x+=44){
+   const top=a[1]+(b[1]-a[1])*(x-a[0])/(b[0]-a[0])+17;
+   c.beginPath();c.moveTo(x-camera,top);c.lineTo(x-camera,lunarGroundAt(x)+20);c.stroke();
+  }
+ }
  for(const fraction of [.10,.32,.55,.78,.94]){
   const wx=p.x1+fraction*total,yTop=surfaceHeight(p,wx)+29,yBase=lunarGroundAt(wx)+24;
   if(yBase<=yTop+9)continue;
@@ -183,6 +195,18 @@ export function drawLunarTerraceSupports(c,p,{camera,texture}){
   c.strokeStyle='#828a8b';c.lineWidth=18;c.beginPath();c.moveTo(sx1,y+55);
   c.quadraticCurveTo((sx1+sx2)/2,y-22,sx2,y+55);c.stroke();
   c.strokeStyle='#c6bdab';c.lineWidth=5;c.stroke();
+ }
+}
+export function drawLunarTerraceDetails(c,p,{camera}){
+ // Paint these over the finished stone facing, after its opaque slab.
+ // Copper archive standards and engraved phases echo the reference image.
+ const bx=p.x2-104-camera,by=surfaceHeight(p,p.x2-104)+35;
+ polygon(c,[[bx-18,by],[bx+18,by],[bx+16,by+85],[bx,by+72],[bx-17,by+93]],'#a76851',INK,1.4);
+ c.strokeStyle='#e4c79a';c.lineWidth=1.2;c.beginPath();c.arc(bx,by+29,10,0,TAU);c.moveTo(bx,by+12);c.lineTo(bx,by+47);c.stroke();
+ for(let k=0;k<5;k++){
+  const x=p.x1+110+k*41-camera,y=surfaceHeight(p,p.x1+110+k*41)+36;
+  c.strokeStyle='#7f8175';c.lineWidth=1.2;c.beginPath();c.arc(x,y,7,0,TAU);c.stroke();
+  c.fillStyle='#8a8979';c.beginPath();c.ellipse(x,y,Math.abs(k-2)*2+1,7,0,0,TAU);c.fill();
  }
 }
 export function drawLunarForeground(c,{camera,width,time}){
