@@ -1,4 +1,5 @@
-import {LUNAR_GAPS,lunarGroundAt} from './lunar-level.js';
+import {lunarGroundAt} from './lunar-level.js';
+import {drawLunarAtmosphere,drawLunarArchitecture,drawLunarGround,drawLunarTerraceSupports,drawLunarForeground as foreground} from './lunar-architecture.js';
 import {surfaceHeight} from './world.js';
 import {stairTreads} from './walkable-routes.js';
 const INK='#343b45',IVORY='#eee5ce',GOLD='#c4a163',COPPER='#ab7256',TAU=Math.PI*2;
@@ -12,7 +13,8 @@ export function drawLunarBackdrop(c,{camera,width,height,time,image}){
  c.fillStyle='#536779';c.fillRect(0,0,width,height);
  if(image){const h=Math.max(height,width*image.height/image.width),w=h*image.width/image.height;c.drawImage(image,(width-w)/2-camera*.012%80,0,w+80,h);}
  else{c.fillStyle='#bba477';c.beginPath();c.arc(width*.72-camera*.012,170,155,0,TAU);c.fill();}
- // Restrained clouds, distant suspended sanctuaries: world geometry is painted separately.
+ drawLunarAtmosphere(c,{camera,width,height,time});
+ // Slow atmospheric clouds above the far architectural layers.
  c.save();c.globalAlpha=.23;c.fillStyle='#e8e4d7';
  for(let i=-1;i<7;i++){const x=i*420-(camera*.1%420);c.beginPath();c.ellipse(x,height*.67+Math.sin(i*3)*45,330,48,0,0,TAU);c.fill();}
  c.restore();
@@ -38,31 +40,29 @@ function foliage(c,x,y,seed){
  for(let j=0;j<5;j++){c.fillStyle=j%2?COPPER:'#788677';c.beginPath();c.ellipse(x+(j%2?9:-3),y+j*15+12,12,4,(j%2?-.6:.6)+seed,0,TAU);c.fill();c.stroke();}
 }
 export function drawLunarWorld(c,g,{camera,width,time,texture}){
- // Temple columns and astronomical monuments behind the traversable surfaces.
- for(const x of [700,3100,5350,7620,10100,12100,14900,17050]){
-  if(x<camera-500||x>camera+width+500)continue;
-  const sx=x-camera,y=lunarGroundAt(x);c.save();c.globalAlpha=.94;
-  for(const dx of [-125,125]){c.fillStyle='#bfc4be';c.strokeStyle=INK;c.lineWidth=2;c.fillRect(sx+dx-20,y-210,40,210);if(texture)c.drawImage(texture,90,20,220,1100,sx+dx-20,y-210,40,210);c.strokeRect(sx+dx-20,y-210,40,210);c.fillRect(sx+dx-31,y-222,62,16);c.strokeRect(sx+dx-31,y-222,62,16);}
-  if(x===700||x===17050)orbit(c,sx,y-180,x===17050?156:100,time);else{c.fillStyle=COPPER;c.beginPath();c.moveTo(sx+90,y-212);c.lineTo(sx+122,y-212);c.lineTo(sx+122,y-91);c.lineTo(sx+106,y-106);c.lineTo(sx+90,y-91);c.closePath();c.fill();c.stroke();orbit(c,sx+106,y-169,12,time);}c.restore();
- }
- const spans=[];let left=0;for(const [a,b] of LUNAR_GAPS){spans.push([left,a]);left=b;}spans.push([left,17800]);
- for(const [a,b] of spans){if(b<camera-100||a>camera+width+100)continue;const start=a,end=b,points=[];
-  for(let x=start;x<end;x+=25)points.push([x-camera,lunarGroundAt(x)]);points.push([end-camera,lunarGroundAt(end===b?end-.01:end)]);
-  // The underside is suspended and never hides an invisible floor in a gap.
-  slab(c,points,Math.max(...points.map(p=>p[1]))+130,texture,camera);
-  for(let x=Math.ceil(start/310)*310;x<end;x+=310){const y=lunarGroundAt(x);c.strokeStyle='#a89570';c.lineWidth=1;foliage(c,x-camera+32,y+72,x*.01);}
- }
- for(const p of g.platforms){if(p.x2<camera-100||p.x1>camera+width+100)continue;
-  slab(c,p.points.map(([x,y])=>[x-camera,y]),Math.max(...p.points.map(p=>p[1]))+65,texture,camera);
+ // The complete city has distinct atmospheric, mid-range, monument, ground
+ // and foreground planes. Only the native roofs and soil are walkable.
+ drawLunarArchitecture(c,{camera,width,time,texture});
+ drawLunarGround(c,{camera,width,texture});
+ for(const p of g.platforms){
+  if(p.x2<camera-150||p.x1>camera+width+150)continue;
+  drawLunarTerraceSupports(c,p,{camera,texture});
+  slab(c,p.points.map(([x,y])=>[x-camera,y]),Math.max(...p.points.map(point=>point[1]))+71,texture,camera);
   for(const entry of p.walkableEntries??[])for(const tread of stairTreads(entry)){
-   c.fillStyle=IVORY;c.strokeStyle=INK;c.lineWidth=1.2;c.fillRect(tread.x1-camera,tread.y,tread.x2-tread.x1,15);if(texture)c.drawImage(texture,0,0,300,120,tread.x1-camera,tread.y,tread.x2-tread.x1,15);c.strokeRect(tread.x1-camera,tread.y,tread.x2-tread.x1,15);
+   c.fillStyle=IVORY;c.strokeStyle=INK;c.lineWidth=1.2;
+   c.fillRect(tread.x1-camera,tread.y,tread.x2-tread.x1,15);
+   if(texture)c.drawImage(texture,0,0,300,120,tread.x1-camera,tread.y,tread.x2-tread.x1,15);
+   c.strokeRect(tread.x1-camera,tread.y,tread.x2-tread.x1,15);
   }
   foliage(c,p.x2-camera-30,surfaceHeight(p,p.x2)+34,.3);
  }
- // Gold edge marks tell the player where to jump without adding false supports.
- for(const [a,b] of LUNAR_GAPS)for(const x of [a-22,b+22]){if(x<camera-50||x>camera+width+50)continue;const y=lunarGroundAt(x);c.fillStyle=GOLD;c.fillRect(x-camera-10,y-5,20,5);}
  const l=g.lunar,x=l.portalX-camera,y=550;
- if(x>-250&&x<width+250){orbit(c,x,y-160,148,time);c.save();c.globalAlpha=l.phase==='open'?.7:.16;c.fillStyle=l.phase==='open'?'#f9eac2':'#8db9c6';c.beginPath();c.ellipse(x,y-160,115,130,0,0,TAU);c.fill();c.restore();
+ if(x>-250&&x<width+250){
+  orbit(c,x,y-160,148,time);
+  c.save();c.globalAlpha=l.phase==='open'?.7:.16;
+  c.fillStyle=l.phase==='open'?'#f9eac2':'#8db9c6';
+  c.beginPath();c.ellipse(x,y-160,115,130,0,0,TAU);c.fill();c.restore();
   for(let i=0;i<3;i++){c.fillStyle=i<l.wave?GOLD:'#657579';c.beginPath();c.arc(x-36+i*36,y-319,8,0,TAU);c.fill();}
  }
 }
+export function drawLunarForeground(c,opts){foreground(c,opts);}
