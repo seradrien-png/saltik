@@ -5118,9 +5118,11 @@
     }
   ],
   "original_export_hashes_verified": true,
-  "github_transfer_performed": false,
+  "github_transfer_performed": true,
   "physical_phone_test": false,
   "github_target": "seradrien-png/saltik",
-  "github_target_access": "owner push access confirmed",
-  "status_note": "Validation snapshot before push; consult the repository commit and final transfer report for remote verification."
+  "github_target_access": "Contents write verified by successful native blob creation and actual git push",
+  "status_note": "All five source snapshots and histories were pushed successfully; Pages activation is separately blocked by a GitHub integration permission (403).",
+  "github_backup_commit": "55e0af78812ba737a6758403be9c2993ef2fa903",
+  "github_remote_tree_verified": true
 }

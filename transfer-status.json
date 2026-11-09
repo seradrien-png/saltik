@@ -1,11 +1,16 @@
 {
   "repository": "seradrien-png/saltik",
   "repository_private": false,
-  "access": "read and push access confirmed",
+  "state": "backup_verified_on_github",
+  "backup_commit": "55e0af78812ba737a6758403be9c2993ef2fa903",
+  "backup_commit_url": "https://github.com/seradrien-png/saltik/commit/55e0af78812ba737a6758403be9c2993ef2fa903",
   "preserved_parent_commit": "a2658100e8259a69c772a6dd4cfbfcdb833f1221",
-  "state": "prepared_for_push",
-  "original_files_preserved": true,
-  "github_push_verified": false,
+  "original_readme_preserved": true,
+  "github_push_verified": true,
+  "backup_commit_files_verified": 1510,
+  "original_snapshot_files_verified": 1485,
+  "snapshots_saved": 5,
   "pages_verified": false,
-  "note": "This is the pre-push preparation record; successful remote transfer is verified separately."
+  "pages_configuration_error": "HTTP403 Resource not accessible by integration",
+  "pages_next_step": "Owner selects GitHub Actions as source at https://github.com/seradrien-png/saltik/settings/pages; then dispatch saltik-pages.yml."
 }

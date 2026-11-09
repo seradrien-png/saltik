@@ -32,4 +32,6 @@ Tous les fichiers des commits source ou du dossier de travail du brouillon sont 
 
 ## État de publication
 
-Ce document est préparé avant l’envoi GitHub : consulter le commit présent sur main et le rapport final de transfert pour confirmer le succès du push et du déploiement Pages. Aucun lien Pages n’est annoncé comme vérifié avant le succès de son déploiement et de sa lecture HTTP.
+**Sauvegarde GitHub effectuée et vérifiée** : [commit `55e0af7`](https://github.com/seradrien-png/saltik/commit/55e0af78812ba737a6758403be9c2993ef2fa903). Les 1 510 fichiers du commit ont été comparés par leurs identifiants de blobs à la copie locale, avec correspondance complète. Les 1 485 fichiers source originaux et leurs historiques sont présents. Le commit initial du dépôt et le début exact du README sont préservés.
+
+**GitHub Pages non déployé** : la création du site est refusée à la connexion avec HTTP 403 « Resource not accessible by integration ». Le workflow et les chemins indépendants sont prêts ; le propriétaire doit sélectionner GitHub Actions comme source dans Settings → Pages avant de lancer le workflow. Aucun lien Pages n’est annoncé comme opérationnel. Les sites Sites d’origine restent inchangés.

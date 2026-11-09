@@ -1,0 +1,14 @@
+{
+  "repository": "seradrien-png/saltik",
+  "backup_commit": "55e0af78812ba737a6758403be9c2993ef2fa903",
+  "remote_tree": "606ccd36c30faeea1f4e57df1353299cb56e263b",
+  "remote_files_verified": 1510,
+  "all_remote_blob_ids_match": true,
+  "original_commit_preserved": "a2658100e8259a69c772a6dd4cfbfcdb833f1221",
+  "original_readme_preserved": true,
+  "original_snapshot_files": 1485,
+  "snapshots": 5,
+  "pages_configuration_error": "HTTP403 Resource not accessible by integration",
+  "github_push_verified": true,
+  "pages_deployed": false
+}

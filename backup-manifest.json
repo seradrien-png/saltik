@@ -1,7 +1,7 @@
 {
   "format_version": 1,
   "prepared_at": "2026-11-09",
-  "github_transfer": "Prepared for push to user-provided existing public repository seradrien-png/saltik; remote success verified separately.",
+  "github_transfer": "Verified successful push; all remote blob IDs match backup commit 55e0af78812ba737a6758403be9c2993ef2fa903",
   "projects": [
     {
       "slug": "saltik-main",
@@ -6127,5 +6127,6 @@
   ],
   "original_files_preserved": true,
   "github_repository": "seradrien-png/saltik",
-  "preserved_github_parent": "a2658100e8259a69c772a6dd4cfbfcdb833f1221"
+  "preserved_github_parent": "a2658100e8259a69c772a6dd4cfbfcdb833f1221",
+  "github_backup_commit": "55e0af78812ba737a6758403be9c2993ef2fa903"
 }

@@ -14,7 +14,7 @@ Les cinq états ci-dessous sont conservés dans des dossiers indépendants, sans
 | [Feral Steel — Opération Canopée, référence Saltik](versions/autres-versions/saltik-feral-steel) | Publiée v24 | [Jouer](https://seradrien-png.github.io/saltik/versions/autres-versions/saltik-feral-steel/dist/) | `dbc331d0b7a2` |
 | [SALTIK V2 — Missile Link](versions/autres-versions/saltik-missile-link) | Publiée v3 | [Jouer](https://seradrien-png.github.io/saltik/versions/autres-versions/saltik-missile-link/dist/) | `1af9f1f9bd1e` |
 
-[Catalogue des jeux sur Pages](https://seradrien-png.github.io/saltik/) · [Bilan de sauvegarde](BILAN.md) · [Manifeste SHA-256](backup-manifest.json) · [Résultats des contrôles](validation-report.json). Les liens Pages nécessitent la réussite du déploiement ; ils ne constituent pas une affirmation qu’il a déjà réussi.
+[Catalogue des jeux sur Pages](https://seradrien-png.github.io/saltik/) · [Bilan de sauvegarde](BILAN.md) · [Manifeste SHA-256](backup-manifest.json) · [Résultats des contrôles](validation-report.json). **Sauvegarde GitHub confirmée** dans le [commit `55e0af7`](https://github.com/seradrien-png/saltik/commit/55e0af78812ba737a6758403be9c2993ef2fa903). Les empreintes des 1 510 fichiers de ce commit ont été vérifiées sur GitHub. **Pages n’est pas encore actif** : son activation par cette connexion a été refusée avec HTTP 403. Les liens de la colonne Pages ne fonctionneront qu’après activation et déploiement.
 
 ### Vérifications et limites
 
@@ -40,3 +40,5 @@ Les quatre historiques Git source accessibles sont archivés dans `history/`, en
 ### Publication web
 
 Le workflow `.github/workflows/saltik-pages.yml` prépare uniquement les `dist/` existants, sans reconstruire ni modifier les jeux, puis publie avec GitHub Pages. Il peut être lancé manuellement depuis Actions. Les historiques et fichiers de développement ne sont pas copiés dans le site Pages. Les URL Sites d’origine utilisées par les liens d’installation Android restent inchangées.
+
+Le propriétaire peut sélectionner **GitHub Actions** dans [Settings → Pages](https://github.com/seradrien-png/saltik/settings/pages), puis lancer le workflow **Saltik independent games on Pages** dans Actions. [Rapport du transfert vérifié](github-transfer-report.json).
