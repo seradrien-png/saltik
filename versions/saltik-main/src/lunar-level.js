@@ -1,12 +1,17 @@
 import {clearPlayerWeaponQueue} from './engine.js';
 export const LUNAR_END=17800;
-export const LUNAR_GAPS=Object.freeze([[2520,2660],[4470,4630],[6820,6990],[10940,11100],[13920,14090]].map(Object.freeze));
+// The Archives are a continuous, traversable world; no forced pit-jump sections.
+export const LUNAR_GAPS=Object.freeze([]);
 export const lunarGapAt=x=>LUNAR_GAPS.some(([a,b])=>x>a&&x<b);
-const anchors=[[0,574],[1700,535],[3300,585],[5400,510],[7800,565],[9400,565],[11600,490],[13200,535],[14900,575],[16300,550],[17800,550]];
+// Broad banks and ridges give the lower traversal a native silhouette.
+const anchors=[[0,580],[1100,540],[2300,601],[3500,556],[4800,592],[6100,516],[7600,570],[9100,536],[10500,584],[11800,505],[13200,562],[14800,590],[16200,530],[17800,550]];
 export function lunarGroundAt(x){
- if(lunarGapAt(x))return 1800;
- const i=Math.max(0,anchors.findIndex((a,i)=>i<anchors.length-1&&x<=anchors[i+1][0])),a=anchors[i],b=anchors[i+1];
- const t=Math.max(0,Math.min(1,(x-a[0])/(b[0]-a[0])));return a[1]+(b[1]-a[1])*t;
+ const at=Math.max(0,Math.min(LUNAR_END,x));
+ const i=Math.max(0,Math.min(anchors.length-2,anchors.findIndex((a,i)=>i<anchors.length-1&&at<=anchors[i+1][0]))),a=anchors[i],b=anchors[i+1];
+ const t=(at-a[0])/(b[0]-a[0]),smooth=t*t*(3-2*t);
+ // Crest and eroded shoulders meet every anchor without a discontinuity.
+ const ridge=Math.sin(Math.PI*t)*(22*Math.sin(at/440+i*1.27)+8*Math.sin(at/128));
+ return a[1]+(b[1]-a[1])*smooth+ridge;
 }
 export function createLunarRoutes(){
  return [[950,2050,410],[3540,4240,400],[5410,6580,360],[7460,8260,410],[11750,13000,355],[14500,15700,410]].map(([x1,x2,y],i)=>({
@@ -44,7 +49,7 @@ export function advanceLunarObjective(g,dt){
   p.supportY=p.y;clearPlayerWeaponQueue(p);g.projectiles=[];g.events.push({type:'lunar-fall',x:p.x,y:p.y});
   if(!p.hp){g.status='dead';p.knockedOut=true;}return;
  }
- // Checkpoints are the centers of broad safe ground, never the edge of a gap.
+ // Checkpoints remain available after combat knockback or unexpected falls.
  for(const x of [180,2820,4830,7200,9750,11300,14300,16200])if(p.x>=x&&p.onGround&&!p.platformId&&!p.obstacleId&&x>l.checkpoint)l.checkpoint=x;
  if(l.phase==='approach'&&p.x>=16550){startWave(g);return;}
  if(l.phase==='intermission'){if(l.elapsed>=2.6)startWave(g);return;}

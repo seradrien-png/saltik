@@ -1,4 +1,4 @@
-import {drawLunarBackdrop,drawLunarWorld} from './lunar-world.js';
+import {drawLunarBackdrop,drawLunarWorld,drawLunarForeground} from './lunar-world.js';
 import {terrainHeight,clamp} from './engine.js';
 import {BASE_ZOOM,missionZoom,projectMissionCamera} from './mission-camera.js';
 import {drawInkGround,drawInkRoutes,drawInkObstacles,drawInkForeground,setInkTerrainTexture,setInkLandmarkArt} from './ink-world.js';
@@ -121,7 +121,7 @@ export function createRenderer(canvas){
    }
    for(const s of g.projectiles)drawInkProjectile(c,s,camera,time);drawInkLocks(c,g,camera);drawsEffects();
   }
-  if(g.level!==2)drawInkForeground(c,g,opts);if(view!=='title')mirvPreview.draw(c,g,{camera,cameraY,width,height});c.restore();
+  if(g.level===2)drawLunarForeground(c,opts);else drawInkForeground(c,g,opts);if(view!=='title')mirvPreview.draw(c,g,{camera,cameraY,width,height});c.restore();
   if(view==='title'){
    const x=width*.73,y=height*.82,scale=width>1100?2.5:1.95;oval(c,x,y,140,11,'#15150f66');drawInkSaltik(c,images['ink-saltik'],{x,y,dir:1,onGround:true,supportY:y,vx:0},{time,scale});
   }
