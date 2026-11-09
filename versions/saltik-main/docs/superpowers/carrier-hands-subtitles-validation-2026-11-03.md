@@ -1,0 +1,11 @@
+# Carrier hero arms and voice cartouche validation
+
+User approved the short ivory forearm / graphite three-finger hand visual. The carrier now renders the actual original hero atlas arm patches, mirrored into the carrier source facing and scaled to the same world size as the hero. Original tiny claws are masked out. Walking gives gentle arm swing and K.O. folds them up clear of the planted wheels. Existing chassis, exact Gatling mouth, drone docks, intact K.O. and grounded service/unplug rig remain unchanged. No new textures or dependencies.
+
+A small ivory/petroleum hand-inked cartouche follows the actual decoded voice start, including queue order. English captions match all seven established clips. Audio mix, effects and existing voices stay unchanged. Pause/home/restart/mute clear stale captions. Victory can show after the playing state. DOM is aria-live polite/atomic with pointer-events none. Caption expiration gives short lines at least 2.2 seconds to read.
+
+584/584 Node tests passed. New meaningful regressions cover exact hero source atlas/scale/both facings/grounded KO, actual audio queue starts and cancellations, caption coverage/lifetime/replacement. Preservation check normalizes only the approved additive subtitle callback wrappers and still asserts the entire original audio mix hash.
+
+Actual local Chromium QA exercises initial ready caption, queued Target lock then Saltik detected, pause clear, original close-contact unplug and its exact spoken subtitle, native carrier arms with normal docked drones, intact KO and quiet aftermath, home clear, physical touch MIRV release/cancel and all five real impact predictions within 3 world units. Phone viewports 851x393 and 667x375 keep cartouches in viewport, clear of directional pad and firing controls. No page errors or failed responses. Report: /workspace/deliverables/saltik-hands-subtitles-qa/report.json. This is browser verification rather than physical phone FPS measurement.
+
+Backup branch backup/v2-before-hands-subtitles-20261103 preserves public version 10. Original pre-ink and ink V1 repositories remain unchanged. Source and standalone artifacts are packaged from the committed state for publication to the same existing public V2 project.

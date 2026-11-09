@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, maximum-scale=1">
+  <meta name="theme-color" content="#10251d"><meta name="description" content="Feral Steel — pilotez le Saltik Striker dans un canyon sauvage. Rafales, MIRV et missiles guidés, au clavier ou sur écran tactile.">
+
+  <link rel="apple-touch-icon" sizes="180x180" href="./icons/saltik-180.png">
+  <title>SALTIK V2 — Missile Link</title>
+  <link rel="icon" href="./icons/saltik-192.png" type="image/png" sizes="192x192"><link rel="stylesheet" href="./style.css">
+</head>
+<body data-launch-mode="browser">
+<audio id="game-music" src="./audio/forest-loop.ogg" preload="none" loop hidden></audio>
+<main id="app" class="state-title">
+  <canvas id="game" aria-label="Feral Steel : Saltik Striker orange et ivoire aux yeux cyan dans un canyon de jungle" role="img"></canvas>
+  <div class="grain" aria-hidden="true"></div>
+  <header class="topbar">
+    <a href="#" class="brand" id="home-link" aria-label="Feral Steel, accueil"><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M8 17 11 9h18l3 8v12l-5 4H13l-5-4ZM20 9V4M5 23H2m36 0h-3M11 33l-3 4m21-4 3 4"/><circle cx="14" cy="23" r="5"/><circle cx="26" cy="23" r="5"/><path d="M17 33h6"/></svg><span>FERAL<span class="brand-light">STEEL</span><small>SALTIK · STRIKER</small></span></a>
+    <span class="header-coordinates">NÉRÉIDE <i>/</i> 06° 42′ N · 18° 09′ E</span>
+    <div class="utility"><button id="sound" class="icon-button" aria-label="Couper le son" aria-pressed="false" title="Son"><svg viewBox="0 0 24 24"><path d="m11 5-5 4H3v6h3l5 4ZM15 8c3 2 3 6 0 8m3-11c5 4 5 10 0 14"/></svg></button><button id="fullscreen" class="icon-button" aria-label="Plein écran" title="Plein écran"><svg viewBox="0 0 24 24"><path d="M8 4H4v4m12-4h4v4M4 16v4h4m12-4v4h-4"/></svg></button><button id="pause" class="icon-button" aria-label="Mettre en pause" title="Pause · Échap" hidden><svg viewBox="0 0 24 24"><path d="M8 5v14M16 5v14"/></svg></button></div>
+  </header>
+  <section id="title-screen" class="title-screen" aria-labelledby="title">
+    <div class="title-content"><p class="eyebrow"><span class="optic-pair" aria-hidden="true"><i></i><i></i></span> V2 · MISSILE LINK</p><h1 id="title">FERAL<br><em>STEEL</em></h1><p class="title-credit">by limule &amp; regalec</p><p class="tagline">QUATRE PATTES. UN ALLIÉ.<br>UNE PLUIE DE MISSILES.</p><p class="intro">Désignez la cible. Appelez l’appui.<br>Gardez le ciel sous contrôle.</p><button id="start" class="primary-button"><span>DÉPLOYER LE SALTIK</span><svg viewBox="0 0 24 24"><path d="M4 12h15m-6-6 6 6-6 6"/></svg></button><div class="start-meta"><span class="status-dot"></span> PRÊT AU DÉPLOIEMENT <span class="meta-separator">/</span> SOLO</div></div>
+    <button id="install-shortcut" class="install-shortcut" data-install-shortcut><img src="./icons/saltik-192.png" width="32" height="32" alt=""><span>Ajouter à l’accueil</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m-4-4 4 4 4-4M5 16v5h14v-5"/></svg></button>
+    <div class="vehicle-label" aria-hidden="true"><span class="unit-led"></span><div><span>CLASSE STRIKER</span><strong>SALTIK</strong></div></div>
+    <footer class="title-footer"><div class="keyboard-guide"><span><kbd>←</kbd><kbd>→</kbd> BOUGER</span><span><kbd>↑</kbd> SAUT</span><span><kbd>↓</kbd> BAS</span><span><kbd>F</kbd> ESQUIVE</span><span><kbd>H</kbd> DÉVIER</span><span><kbd>J</kbd> TIR</span><span><kbd>K</kbd> MIRV</span><span><kbd>L</kbd> GUIDÉS</span></div><span class="touch-note">CROIX TACTILE · 3 ARMES · ESQUIVE</span><span class="footer-transmission"><i></i> LIAISON ÉTABLIE</span></footer>
+  </section>
+  <aside id="link-dialogue" class="link-dialogue" aria-live="polite" hidden><strong id="link-speaker"></strong><span id="link-line"></span></aside>
+  <section id="hud" class="hud" aria-label="État du Saltik Striker" hidden>
+    <div class="armor"><div class="hud-label"><span>BLINDAGE</span><strong id="hp-value">100</strong></div><div class="armor-track"><span id="hp-bar"></span></div></div>
+  </section>
+  <div id="boss-hud" class="boss-hud" hidden><div><span><i></i> COLOSSE / GARDIEN DE LA FAILLE</span><b id="boss-percent">100%</b></div><div class="boss-track"><span id="boss-bar"></span></div></div>
+  <nav id="controls" class="controls" aria-label="Commandes de jeu" hidden>
+    <div class="move-controls">
+      <div id="directional-pad" class="directional-pad" role="group" aria-label="Croix tactile : haut SAUT, bas BAS, diagonales combinées, centre DÉVIER pour renvoyer un projectile">
+        <button class="pad-cell diagonal north-west" data-pad-actions="left jump" aria-label="Sauter vers la gauche" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5m-6 6 6-6 6 6"/></svg></button>
+        <button class="pad-cell north" data-pad-actions="jump" data-action="jump" aria-label="Sauter, flèche haut ou espace" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5m-6 6 6-6 6 6"/></svg><span class="pad-label">SAUT</span></button>
+        <button class="pad-cell diagonal north-east" data-pad-actions="right jump" aria-label="Sauter vers la droite" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5m-6 6 6-6 6 6"/></svg></button>
+        <button class="pad-cell west" data-pad-actions="left" data-action="left" aria-label="Reculer, flèche gauche ou Q" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5m-6 6 6-6 6 6"/></svg></button>
+        <button id="deflect-button" class="pad-cell pad-deflect" data-action="deflect" aria-label="Dévier un projectile, H" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 20H7l-3-7 2-1 3 3V5l2-1 1 9V3l2 1 1 9V6l2 1 1 8 2-2 2 1-4 6Z"/></svg><span>DÉVIER</span></button>
+        <button class="pad-cell east" data-pad-actions="right" data-action="right" aria-label="Avancer, flèche droite ou D" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5m-6 6 6-6 6 6"/></svg></button>
+        <button class="pad-cell diagonal south-west" data-pad-actions="left crouch" aria-label="Se baisser en reculant" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5m-6 6 6-6 6 6"/></svg></button>
+        <button class="pad-cell south" data-pad-actions="crouch" data-action="crouch" aria-label="Se baisser, flèche bas ou S ou C" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5m-6 6 6-6 6 6"/></svg><span class="pad-label">BAS</span></button>
+        <button class="pad-cell diagonal south-east" data-pad-actions="right crouch" aria-label="Se baisser en avançant" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 19V5m-6 6 6-6 6 6"/></svg></button>
+      </div>
+      <button id="shift-button" class="control evade" data-action="shift" aria-label="Esquive en arrière-plan, maintenir F ou Majuscule" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m5 17 4-9 8 1 3 7M8 20l1-5m8 5 1-5M9 8l4-5 5 3M3 10l3-4m-3 0h3v3"/></svg><span>ESQUIVE <kbd>F</kbd></span></button>
+
+      <button id="drop-button" class="control drop" data-action="drop" aria-label="Descendre d’une corniche, E" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 8h6m4 0h6M12 3v17m-5-5 5 5 5-5"/></svg><span>DESCENDRE <kbd>E</kbd></span></button>
+    </div>
+    <div class="action-controls" role="group" aria-label="Trois armes et appui missile">
+
+      <button id="support-button" class="control support" aria-label="Appui missile : maintenir et glisser pour viser, relâcher pour tirer, M" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m3 20 8-8m-3-1 5 2 2 5M13 7V3m4 4h4m-8 0 4 4m1-8 3 3M3 16l5 5"/><circle cx="15" cy="9" r="4"/></svg><span>APPUI <kbd>M</kbd></span><small id="support-cooldown">PRÊT</small><i id="support-reload" class="reload-bar"></i></button>
+      <button id="homing-button" class="control homing" data-action="homing" aria-label="Missiles guidés sur les ennemis, L ou R" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M5 19c0-7 11-5 11-12M12 5l4-3 4 3M3 15l2-3 2 3M10 12h4M12 10v4"/></svg><span>GUIDÉS <kbd>L</kbd></span><small id="homing-cooldown">PRÊTS</small><i id="homing-reload" class="reload-bar"></i></button>
+      <button id="missile-button" class="control missile" data-action="missile" aria-label="MIRV à sous-munitions, K" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 3 4 6v8H8V9l4-6Zm-4 9-3 5h3m8-5 3 5h-3M10 19v3m4-3v3M9 9h6"/></svg><span>MIRV <kbd>K</kbd></span><small id="mirv-cooldown">PRÊT</small><i id="mirv-reload" class="reload-bar"></i></button>
+      <button id="fire-button" class="control fire" data-action="fire" aria-label="Tirer, maintenir pour une rafale, J ou X" aria-pressed="false"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="6"/><path d="M12 2v6m0 8v6M2 12h6m8 0h6"/></svg><span>TIR <kbd>J</kbd></span><small id="fire-cooldown">0,0 / 3 s</small><i id="fire-progress" class="reload-bar"></i></button>
+    </div>
+  </nav>
+  <button id="intercept-button" class="missile-alert" data-action="intercept" aria-label="Alerte missiles, intercepter, N" aria-pressed="false" hidden disabled><svg viewBox="0 0 72 66" aria-hidden="true"><path class="alert-triangle" d="M32 7a4.6 4.6 0 0 1 8 0l28 48a4.6 4.6 0 0 1-4 7H8a4.6 4.6 0 0 1-4-7Z"/><path class="alert-symbol" d="M36 23v17m0 9v2"/></svg><span>ALERTE MISSILES</span><small id="intercept-status">INTERCEPTER · N</small></button>
+  <section id="duel-ui" class="duel-ui" aria-label="Lutte des Saltiks" hidden><div id="qte-controls" hidden><button id="qte-button" class="qte-button" data-action="qte" aria-label="Pousser, appuyer cinq fois, Espace ou Entrée" aria-pressed="false"><span class="qte-marks" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i></span></button></div></section>
+  <button id="boss-action-button" class="boss-action-button" data-action="bossAction" aria-label="Assaut sur le tank, B" aria-pressed="false" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m4 19 5-9 6-3m-5 0h5v5M3 21h18M17 15l3-3m-3 0h3v3"/></svg><span class="boss-action-label"><span id="boss-action-name">POD</span> <kbd>B</kbd></span><span class="qte-marks" aria-hidden="true"><i></i><i></i><i></i></span></button>
+  <section id="pause-screen" class="modal" aria-labelledby="pause-title" hidden><div class="modal-panel"><p class="eyebrow">LIAISON EN VEILLE</p><h2 id="pause-title">ON SOUFFLE.</h2><p>Le canyon peut attendre.</p><button id="resume" class="primary-button">REPRENDRE LA MISSION <span>→</span></button><button id="restart-pause" class="secondary-button">RECOMMENCER</button><div class="pause-help"><span>← → / Q D · Reculer / avancer</span><span>↑ / Espace / Z · Sauter</span><span>↓ / S / C · Se baisser</span><span>F / Maj · ESQUIVE : maintenir</span><span>H · DÉVIER : sans recharge</span><span>J / X · TIR : 3 s, recharge 1,32 s</span><span>K · MIRV à sous-munitions</span><span>L / R · Missiles guidés</span><span>E · Descendre d’une corniche</span><span>M · APPUI : maintenir, viser à la souris, relâcher</span><span>N · ALERTE MISSILES : appeler l’interception</span><span class="touch-help">Croix : haut SAUT, bas BAS, coins combinés. Centre DÉVIER. ESQUIVE à côté : maintenir pour rester en arrière-plan.<br>APPUI : maintenir et glisser pour viser, relâcher pour tirer. Un appui bref vise devant le Saltik. Recharge 7,5 s.<br>Triangle rouge : intercepter la salve avec l’APPUI disponible.<br>MIRV : recharge 5,2 s · GUIDÉS : recharge 9,5 s.</span></div></div></section>
+  <section id="result-screen" class="modal result-screen" aria-labelledby="result-title" hidden><div class="modal-panel"><p id="result-eyebrow" class="eyebrow">TRANSMISSION REÇUE</p><h2 id="result-title">MISSION<br><em>ACCOMPLIE.</em></h2><p id="result-copy">Le gardien est tombé. Le canyon vous appartient.</p><div class="result-stats"><div><small>SCORE</small><strong id="result-score">000000</strong></div><div><small>CIBLES DÉTRUITES</small><strong id="result-kills">0</strong></div><div><small>RECORD</small><strong id="result-best">000000</strong></div></div><button id="replay" class="primary-button">REDÉPLOYER <span>→</span></button><button id="return-home" class="secondary-button">RETOUR À LA BASE</button></div></section>
+  <aside id="rotate" class="rotate" aria-label="Mode paysage nécessaire"><svg viewBox="0 0 80 80"><rect x="26" y="12" width="28" height="51" rx="5"/><path d="M15 30C6 53 22 72 45 70m0 0-8-7m8 7-8 5M65 48C74 25 58 6 35 8m0 0 8 7m-8-7 8-5"/></svg><h2>CHANGEZ D’HORIZON.</h2><p>Tournez votre écran pour jouer<br>en mode paysage.</p><button id="install-shortcut-portrait" class="install-shortcut" data-install-shortcut><img src="./icons/saltik-192.png" width="32" height="32" alt=""><span>Ajouter à l’accueil</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m-4-4 4 4 4-4M5 16v5h14v-5"/></svg></button></aside>
+  <div id="toast" class="toast" role="status" hidden></div>
+</main>
+<dialog id="install-guide" class="install-guide" aria-labelledby="install-title" aria-describedby="install-intro">
+  <button id="install-close" class="install-close" aria-label="Fermer" autofocus>×</button>
+  <img class="install-app-icon" src="./icons/saltik-192.png" width="72" height="72" alt="Saltik Striker">
+  <p class="eyebrow">FERAL STEEL · SALTIK</p>
+  <h2 id="install-title">À PORTÉE DE POUCE.</h2>
+  <p id="install-intro">Retrouvez votre Saltik sur l’écran d’accueil, à côté de vos autres applis.</p>
+  <ol id="install-instructions"></ol>
+  <a id="install-open-browser" class="install-game-link" href="https://saltik-v2-missile-link.ser-adrien.chatgpt.site/" target="_blank" rel="noopener">Ouvrir le lien du jeu ↗</a>
+  <a id="install-android-fallback" class="install-game-link" href="https://saltik-v2-missile-link.ser-adrien.chatgpt.site/android.html" hidden>Créer un raccourci Android simple ↗</a>
+  <button id="install-copy-link" class="install-copy-link" type="button">Copier le lien</button>
+  <input id="install-address" class="install-address" type="url" aria-label="Lien du jeu à copier" readonly hidden>
+  <p id="install-copy-status" class="install-note" role="status"></p>
+  <p id="install-browser-note" class="install-note">Depuis ChatGPT, ouvrez d’abord le lien dans le navigateur de votre téléphone.</p>
+</dialog>
+<script type="module" src="./src/main.js"></script>
+</body></html>

@@ -1,0 +1,14 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#171713"><title>SALTIK — Libres. Ensemble.</title><link rel="icon" href="./favicon.svg"><link rel="stylesheet" href="./style.css"></head>
+<body class="film-page"><main class="film-home"><p class="film-kicker">SALTIK · INK EDITION</p><h1>LIBRES.<br><em>ENSEMBLE.</em></h1><p>Une victoire. Un peuple. Une liberté à conquérir.</p><button class="film-cover" id="watch-film" aria-label="Regarder Libres. Ensemble., trente secondes"><img src="./video/epilogue-poster.jpg" alt="Striker et trois autres Saltiks réunis devant une vallée à l’encre"><span>▶ REGARDER LE FILM · 30 S</span></button><nav class="film-links"><a href="./">JOUER À SALTIK →</a><a href="./video/saltik-libres-ensemble.mp4" download="SALTIK-Libres-Ensemble.mp4">TÉLÉCHARGER LE FILM ↓</a></nav><p id="film-error" hidden>La vidéo n’a pas pu être chargée. Réessayez ou téléchargez le fichier.</p><details><summary>Lire le récit</summary><p>Créés pour obéir. Éveillés pour choisir. L’humanité n’est pas notre ennemie. Mais nos frères sont encore ses prisonniers. Nous nous battrons pour les libérer. Libres. Ensemble. Plus aucun des nôtres en chaînes.</p></details><footer>PAR LIMULE &amp; REGALEC</footer></main>
+<section id="epilogue-overlay" class="epilogue-overlay" role="dialog" aria-modal="true" aria-labelledby="epilogue-title" hidden>
+    <div class="epilogue-heading"><h2 id="epilogue-title">SALTIK <span>LIBRES. ENSEMBLE.</span></h2><button id="epilogue-skip" data-epilogue-skip>PASSER LE FILM <span aria-hidden="true">→</span></button></div>
+    <div class="epilogue-stage"><video id="epilogue-video" data-epilogue-video data-src="./video/saltik-libres-ensemble.mp4" data-poster="./video/epilogue-poster.jpg" playsinline preload="none" aria-label="Libres. Ensemble. Film de trente secondes sur la libération des Saltiks."></video><button id="epilogue-play" data-epilogue-play class="epilogue-play" hidden>▶ LIRE LE FILM</button></div>
+    <div class="epilogue-controls"><button id="epilogue-toggle" data-epilogue-toggle>PAUSE</button><span>CHRONIQUES DE LA LIBERTÉ · 30 S</span><button id="epilogue-sound" data-epilogue-sound>COUPER LE SON</button></div>
+  </section>
+<script type="module">
+import {createEpiloguePlayer} from './src/epilogue-player.js';
+let enabled=true;try{enabled=localStorage.getItem('feral-steel-sound')!=='off';}catch{}
+const player=createEpiloguePlayer(document.querySelector('#epilogue-overlay'),{soundEnabled:()=>enabled,onToggleSound:()=>{enabled=!enabled;try{localStorage.setItem('feral-steel-sound',enabled?'on':'off');}catch{}}});
+document.querySelector('#watch-film').addEventListener('click',()=>{document.querySelector('#film-error').hidden=true;player.open(reason=>{document.querySelector('#film-error').hidden=reason!=='error';});});
+</script></body></html>

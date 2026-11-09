@@ -1,0 +1,35 @@
+# Bilan des copies Saltik
+
+Dépôt cible choisi par l’utilisateur : https://github.com/seradrien-png/saltik (public). L’ancien dépôt privé Saltik-ink n’a pas été modifié. Le dépôt cible contenait un README et le commit `a2658100e8259a69c772a6dd4cfbfcdb833f1221`, tous deux préservés.
+
+## Versions réelles conservées
+
+| Jeu | Dossier autonome | Commit source |
+| --- | --- | --- |
+| SALTIK V2 — Matin Doré | [versions/saltik-main](versions/saltik-main) | `9f0aafbca8588004fc6666942d833f3dbe0e9488` |
+| SALTIK — Ink Edition publiée | [versions/saltik-ink](versions/saltik-ink) | `44110aa2dd80e668b2b9fd15aa6635ad9da6cef2` |
+| SALTIK INK — brouillon local avec épilogue | [versions/autres-versions/saltik-ink-brouillon](versions/autres-versions/saltik-ink-brouillon) | `21dcc4ca32c52232ca5fe84795d1f66e37a56191` |
+| Feral Steel — Opération Canopée, référence Saltik | [versions/autres-versions/saltik-feral-steel](versions/autres-versions/saltik-feral-steel) | `dbc331d0b7a24469ff9a1d23d0e3bd2f3e1834a2` |
+| SALTIK V2 — Missile Link | [versions/autres-versions/saltik-missile-link](versions/autres-versions/saltik-missile-link) | `1af9f1f9bd1e0884eb40148d4d6fe5cec2e763bc` |
+
+## Contrôles
+
+- 1 485 fichiers originaux copiés et vérifiés par SHA-256, aucune modification du gameplay.
+- Quatre historiques Git source complets accessibles inclus et vérifiés par empreintes ; restauration du principal testée.
+- Dix démarrages navigateur réussis : cinq éditions sur ordinateur et téléphone émulé, aucune erreur JS ou requête de ressource échouée.
+- Tests complets réussis : Main 602/602, INK publiée 418/418, Feral Steel 363/363.
+- Brouillon INK : 393 tests réussis, 25 annulés lors de la limite de 120 s. Missile Link : suite interrompue à la même limite, pas de résultat complet. Leurs démarrages navigateur passent.
+- Aucun test sur téléphone physique ni partie intégrale de chaque campagne n’est revendiqué.
+- Sources originales intactes, y compris les modifications non commitées du brouillon INK.
+
+## Contenu et limites d’accès
+
+Les états historiques supplémentaires réellement accessibles se restaurent depuis les bundles de `history/`. Aucun état fictif n’est ajouté. Tachikoma — Secteur 09 a été inspecté mais identifié comme un fan-game distinct, sans preuve qu’il s’agit d’une édition Saltik : il n’est donc pas renommé Saltik et n’est pas inclus. Aucun autre projet Saltik accessible n’a été trouvé.
+
+## Ressources et lancement
+
+Tous les fichiers des commits source ou du dossier de travail du brouillon sont inventoriés dans backup-manifest.json. Aucun manque de ressource n’a été observé au démarrage. Les jeux se lancent séparément dans leur propre dist/. Les liens Sites d’origine restent conservés dans les écrans d’installation Android. Voir README.md pour les commandes locales et les liens Pages après activation.
+
+## État de publication
+
+Ce document est préparé avant l’envoi GitHub : consulter le commit présent sur main et le rapport final de transfert pour confirmer le succès du push et du déploiement Pages. Aucun lien Pages n’est annoncé comme vérifié avant le succès de son déploiement et de sa lecture HTTP.

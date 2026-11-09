@@ -1,0 +1,10 @@
+# Only reinstallable dependencies, secrets and local temporary outputs.
+node_modules/
+__pycache__/
+*.pyc
+.venv/
+.env
+.env.local
+.env.*.local
+_site/
+.DS_Store

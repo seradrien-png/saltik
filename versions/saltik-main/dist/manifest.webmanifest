@@ -1,0 +1,25 @@
+{
+  "id": "/",
+  "name": "SALTIK V2 — Matin Doré",
+  "short_name": "SALTIK V2",
+  "description": "Une jungle pastel et un petit explorateur abricot et ivoire. Par limule & regalec.",
+  "lang": "fr",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "landscape",
+  "background_color": "#f5ead2",
+  "theme_color": "#f5ead2",
+  "categories": [
+    "games",
+    "entertainment"
+  ],
+  "icons": [
+    {
+      "src": "./icons/ink-icon.png",
+      "sizes": "1254x1254",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

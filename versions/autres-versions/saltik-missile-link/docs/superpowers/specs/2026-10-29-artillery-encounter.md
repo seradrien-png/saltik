@@ -1,0 +1,17 @@
+# SALTIK V2 — artillery encounter and companion
+
+The user approves the existing background placement but wants a clearer, closer blue/lime ally, powerful artillery, two advance warnings, a charging hostile battery and a three-tap struggle followed by escape, and the ally joining the boss battle and victory. Implement in the existing public V2; preserve original v24 and the published B snapshot.
+
+Use existing Canvas sprites, physics, manual support designator and voice chain. Keep the approved original-image rock anchor; increase its sprite height from 26 to 44 source pixels and restore saturation/contrast. No columns, duplicate robot or floating support. The foreground ally remains the same gabarit as the player.
+
+Enemy battery rockets cause 50 damage per impact against 100 player HP. Existing hit invulnerability prevents an unavoidable instant kill from simultaneous impacts. Allied artillery damage increases from 8 to 18 per missile (boss 5 to 10). Artillery impacts use larger hot blast clouds, shock light and heavy smoke, not confetti. Other weapon balance stays unchanged.
+
+Exactly two approach salvos at progress x8200 and x10100: three-second visible warning, four actual shootable/homing rockets from ahead and above. A red triangle action appears during warning/incoming volley. It can launch the existing allied support only when its 7.5-second cooldown is ready; during warning it may arm the interception and launches on missile arrival. Disabled cooldown remains visible. Holding, pause/resume and cancel must not retrigger or bypass recharge.
+
+On visibility the navy/red Saltik announces “Long range Saltik detected”, once, then aggressively closes on the player's tangible route. At contact it initiates a protected short clash: three distinct presses, each a visible effort with the two native small hands, no added large arms. Then it releases and retreats, shedding smoke and decoy flares that divert incoming player guided missiles. It is not projected at the screen. Earlier military Saltik duels stay as they are. The artillery enemy can take normal damage but survives at low health until this authored clash, then escapes.
+
+At boss activation the blue/lime ally arrives from behind on real terrain. It stays near the player, dodges independently, and automatically releases flares to divert the tank's homing rockets. It does not autonomously fire any damaging missile: APPUI remains manual and now launches from its foreground pods. Boss QTEs and pause freeze the encounter. After victory both Saltiks approach each other, bump their existing small hands and celebrate together; preserve the normal face plate.
+
+Chosen engineering approach: a small state module for warning/clash/companion lifecycle, real engine projectiles for damage and countermeasures, original sprite compositing for art. A scripted movie would bypass actual interceptions; unrelated new sprite models would risk the already approved proportions. These are implementation choices within the user's detailed request, not new approval gates.
+
+Interfaces: game.batteryEncounter={salvos,warning,activeSalvo,nextAllowed,interceptArmed,interceptHeld,engaged,escaped}; game.batteryClash={phase,elapsed,taps,effortsCompleted,effortElapsed,enemyId,playerX,playerY,enemyX,enemyY,x,y,dir,qteHeld,qteArmed}; game.missileCompanion={active,x,y,dir,vx,groundY,tilt,dodge,flareFlash,arriving}; game.countermeasures=[] with {id,team,x,y,vx,vy,life,age}. State uses world coordinates. Drawing consumes these fields, never mutates combat.

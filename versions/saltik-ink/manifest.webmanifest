@@ -1,0 +1,25 @@
+{
+  "id": "/",
+  "name": "SALTIK — Ink Edition",
+  "short_name": "SALTIK",
+  "description": "Le premier tableau de SALTIK, à l’encre et sur papier ivoire. Par limule & regalec.",
+  "lang": "fr",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "orientation": "landscape",
+  "background_color": "#1c1b18",
+  "theme_color": "#1c1b18",
+  "categories": [
+    "games",
+    "entertainment"
+  ],
+  "icons": [
+    {
+      "src": "./icons/ink-icon.png",
+      "sizes": "1254x1254",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}

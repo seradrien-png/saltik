@@ -1,0 +1,198 @@
+{
+  "duration": 20,
+  "width": 1920,
+  "height": 1080,
+  "fps": 30,
+  "frames": 600,
+  "audio": "AAC stereo 48kHz",
+  "sha256": "a04c62d3d49987381e7b1620887899fe6b0763cbf68da3c65db25df935f5a0af",
+  "source": "unmodified createInkScene/updateInkScene and createRenderer",
+  "clips": [
+    {
+      "start": 0.2,
+      "duration": 2.2,
+      "label": "opening"
+    },
+    {
+      "start": 8.5,
+      "duration": 3,
+      "label": "firefight"
+    },
+    {
+      "start": 19.1,
+      "duration": 2.1,
+      "label": "saltik-duel"
+    },
+    {
+      "start": 40,
+      "duration": 2,
+      "label": "drone-carrier"
+    },
+    {
+      "start": 48.2,
+      "duration": 1.6,
+      "label": "guided-missiles"
+    },
+    {
+      "start": 84.5,
+      "duration": 1.8,
+      "label": "boss"
+    },
+    {
+      "start": 88,
+      "duration": 1.6,
+      "label": "tank-counterattack"
+    },
+    {
+      "start": 104,
+      "duration": 1.5,
+      "label": "boss-firefight"
+    },
+    {
+      "start": 83.4,
+      "duration": 1.2,
+      "label": "final-boss-leap"
+    }
+  ],
+  "trace": [
+    {
+      "edit": 0,
+      "source": 0.2,
+      "label": "opening",
+      "playerX": 180,
+      "hp": 100,
+      "duel": null,
+      "breach": null,
+      "bossHP": null,
+      "actors": []
+    },
+    {
+      "edit": 2.2,
+      "source": 8.5,
+      "label": "firefight",
+      "playerX": 1620.333333333329,
+      "hp": 92,
+      "duel": null,
+      "breach": null,
+      "bossHP": null,
+      "actors": []
+    },
+    {
+      "edit": 5.2,
+      "source": 19.1,
+      "label": "saltik-duel",
+      "playerX": 4051.0000000000327,
+      "hp": 100,
+      "duel": null,
+      "breach": null,
+      "bossHP": null,
+      "actors": [
+        "saltik"
+      ]
+    },
+    {
+      "edit": 7.3,
+      "source": 40,
+      "label": "drone-carrier",
+      "playerX": 8601.166666666442,
+      "hp": 95,
+      "duel": "qte",
+      "breach": null,
+      "bossHP": null,
+      "actors": [
+        "saltik",
+        "saltik",
+        "carrier",
+        "soldier"
+      ]
+    },
+    {
+      "edit": 9.3,
+      "source": 48.2,
+      "label": "guided-missiles",
+      "playerX": 9855.166666666772,
+      "hp": 82,
+      "duel": null,
+      "breach": null,
+      "bossHP": null,
+      "actors": [
+        "saltik",
+        "saltik",
+        "carrier",
+        "drone",
+        "drone",
+        "drone",
+        "crate"
+      ]
+    },
+    {
+      "edit": 10.9,
+      "source": 84.5,
+      "label": "boss",
+      "playerX": 17555,
+      "hp": 100,
+      "duel": null,
+      "breach": "qte",
+      "bossHP": 174,
+      "actors": []
+    },
+    {
+      "edit": 12.7,
+      "source": 88,
+      "label": "tank-counterattack",
+      "playerX": 17154.047116183465,
+      "hp": 100,
+      "duel": null,
+      "breach": null,
+      "bossHP": 139,
+      "actors": []
+    },
+    {
+      "edit": 14.3,
+      "source": 104,
+      "label": "boss-firefight",
+      "playerX": 17650,
+      "hp": 88,
+      "duel": null,
+      "breach": null,
+      "bossHP": 4,
+      "actors": []
+    },
+    {
+      "edit": 15.8,
+      "source": 83.4,
+      "label": "final-boss-leap",
+      "playerX": 17153.16666666696,
+      "hp": 100,
+      "duel": null,
+      "breach": "leap",
+      "bossHP": 174,
+      "actors": []
+    }
+  ],
+  "browser": [
+    {
+      "device": "desktop",
+      "duration": 20,
+      "w": 1920,
+      "h": 1080,
+      "playback": true,
+      "naturalEnd": true,
+      "download": true,
+      "gameLink": true,
+      "errors": []
+    },
+    {
+      "device": "phone",
+      "duration": 20,
+      "w": 1920,
+      "h": 1080,
+      "playback": true,
+      "naturalEnd": false,
+      "download": true,
+      "gameLink": true,
+      "errors": []
+    }
+  ],
+  "review": "No Critical/Important source findings; media decoding and frames checked independently. Exporter requires this workspace and configured Chromium."
+}

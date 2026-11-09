@@ -1,0 +1,9 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {createInput,KEY_ACTIONS} from '../src/input.js';
+import {bindSupportDesignator} from '../src/support-input.js';
+function harness(){const listeners=new Map();const button={dataset:{},disabled:false,classList:{toggle(){}},setAttribute(){},setPointerCapture(){},releasePointerCapture(){},addEventListener(n,fn){listeners.set(n,fn);}};const input=createInput(),aim=[],cancel=[];const binding=bindSupportDesignator(button,input,()=>true,()=>{},p=>aim.push(p),()=>cancel.push(true));return {input,aim,cancel,binding,send:(n,props={})=>listeners.get(n)?.({pointerId:1,button:0,clientX:100,clientY:200,preventDefault(){},stopPropagation(){},...props})};}
+test('quick support tap survives a frame and binds to M',()=>{const h=harness();h.send('pointerdown');h.send('pointerup');assert.equal(KEY_ACTIONS.KeyM,'support');assert.equal(h.input.consume().support,true);assert.equal(h.input.consume().support,false);});
+test('support drag supplies displacement without canceling another movement finger',()=>{const h=harness();h.input.set('movement','right',true);h.send('pointerdown');h.send('pointermove',{clientX:140,clientY:160});assert.deepEqual(h.aim.at(-1),{dx:40,dy:-40,manual:true});assert.ok(h.input.actions.right&&h.input.actions.support);h.send('pointerup');assert.ok(h.input.actions.right);});
+test('pointer cancellation discards a queued tap without calling a salvo',()=>{const h=harness();h.send('pointerdown');h.send('pointercancel');assert.equal(h.input.consume().support,false);assert.equal(h.cancel.length,1);});
+test('clear on pause drops designator ownership and queued support',()=>{const h=harness();h.send('pointerdown');h.binding.clear();assert.equal(h.input.consume().support,false);assert.ok(h.cancel.length);});

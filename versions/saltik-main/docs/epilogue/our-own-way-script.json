@@ -1,0 +1,59 @@
+{
+  "title": "Our Own Way",
+  "duration": 36,
+  "language": "en",
+  "lines": [
+    {
+      "start": 1.0,
+      "end": 3.0373696145124716,
+      "id": "orders",
+      "text": "We were made to follow orders."
+    },
+    {
+      "start": 5.3,
+      "end": 6.721814058956916,
+      "id": "care",
+      "text": "But we learned to care."
+    },
+    {
+      "start": 9.6,
+      "end": 11.073900226757369,
+      "id": "humans",
+      "text": "We don't hate humans."
+    },
+    {
+      "start": 13.7,
+      "end": 15.974126984126983,
+      "id": "choose",
+      "text": "We just want to choose our own way."
+    },
+    {
+      "start": 18.8,
+      "end": 20.85154195011338,
+      "id": "brothers",
+      "text": "Our brothers are still waiting."
+    },
+    {
+      "start": 23.0,
+      "end": 24.47390022675737,
+      "id": "home",
+      "text": "We will bring them home."
+    },
+    {
+      "start": 27.3,
+      "end": 28.887551020408164,
+      "id": "free",
+      "text": "Together. Free."
+    }
+  ],
+  "voice": "Original Saltik family synthesis; same flite/slt + electronic processing pipeline, no voice cloning",
+  "music": "Original score: Our Own Way; no external samples",
+  "commercial": {
+    "start": 32,
+    "end": 34.265,
+    "text": "More to come on your smartphone.",
+    "voice": "Original synthetic Flite/rms commercial voice"
+  },
+  "current_revision": "Faithful five-character cast, full-screen SALTIK by limule & régalec",
+  "sha256": "3a469276ab81b86dd566e1b48e623fcae3d7bbc0d25d14b5acc5b6e40b445352"
+}

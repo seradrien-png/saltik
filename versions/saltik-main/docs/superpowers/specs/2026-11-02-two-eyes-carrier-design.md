@@ -1,0 +1,8 @@
+# Approved two-eyed DR-01 variation
+
+User authorizes replacing the one-eyed carrier with the exact blue DR-01 from approved same-size preview exec-0e489b36-9c30-4bd4-bfe0-690320fdb71d.png. One Saltik chassis with specialized equipment: cabin/head/eye/knee/wheel scale comparable to yellow player, two clearly visible separate ivory-ringed black eyes, original four bent wheeled legs, tiny claws and rigid lower plate. Same sloping blue forehead spine, top rectangular camera, two circular cyan shoulder pads and side Gatling. No flat emoji face or strict one-eye profile. Two existing normal drones remain separate actors.
+
+Change bounded to native four-state carrier atlas and its drawing/geometry rig. Preserve mobile medium-range fight, bursts/reload, drones,60% platform destruction,85% leg disabled, nonlethal hand unplug with terrain-aware loose cable, voice, all controls/MIRV/boss and saved original versions. Native bodies remain normal scale, equipment adds roof height only. Inspect actual game-sized carrier alongside hero; both facings, slopes, muzzle, pads and damage states must align.
+
+## User steering before publication: coherent Gatling axis
+User reported the forced horizontal-right native gun points sideways relative to original three-quarter face. Correct anatomical orientation before publication: original face is native LEFT; put compact Gatling on native front-left outer shoulder with a clear left bore in front of eyes, replace former right-side gun by original cyan module/armor. Preserve all head/eyes/legs/pads and same size. Decouple logical world heading from paint mirror, retain exact physical projectile origin/direction, service lead on native rear-right side and existing nonlethal reach. No separate gameplay balance change.

@@ -1,0 +1,87 @@
+# SALTIK V2 — Missile Link
+
+V2 is isolated from the preserved v24 reference (`dbc331d0b7a24469ff9a1d23d0e3bd2f3e1834a2`, tag `saltik-reference-2026-10-28`). Its separate Site is `appgprj_6ae1eeb9f9f48191807e8d81133eef1a`.
+
+The blue/lime battery matches Striker’s height at the opening and is now brighter and 44 source pixels tall on the approved canyon rock. Two approach salvos (x8200 and x10100) give a three-second warning: tap the red triangle or N to reserve an interception using the same 7.5-second APPUI recharge. Each hostile artillery missile deals 50 damage. Allied support deals 18 per missile, or 10 against the boss, with heavier blast clouds and smoke.
+
+The navy/red battery charges when seen, with the cue “Long range Saltik detected”. Its armour can be reduced to 12 HP before an automatic small-hand clash: three separate presses, three visible efforts, then escape under smoke and missile-decoy flares. Existing military Saltik five-press duels stay separate. At the boss, the ally joins on terrain, dodges and automatically decoys hostile homing missiles. It only fires on manual APPUI designation (hold/drag/release, or M and mouse); missiles now leave its foreground pods. Both Saltiks celebrate with their native small hands after victory.
+
+The two additional robot voice lines use the same local synthesis chain as the existing voice. The new battery atlas is generated from the user's two reference images. The greeting reuses one native small hand from the idle sprite, excluding its original pixels before animation; the unused generated wave cells are never displayed.
+
+A complete French browser arcade game, with a Saltik shell menu in orange, ivory, anthracite and cyan and the signature “by limule & regalec” after the title. Pilot the orange/ivory **Saltik, class Striker**, through a reclaimed canyon and an immense ancient transport wreck. Fight infantry, robots, drones, three enemy Saltiks and the terminal Colosse. The expedition takes approximately 80–100 seconds with ordinary forward combat; there is **no time limit**.
+
+Seven raised paths alternate with ground-only stretches. Rooted stone arches, a broken deck, wreck rubble, a gorge crossing, a military gallery and its roof, scree and the final spur create changing one-, two- and three-path sections. Substantial sloped banks and thick physical vaults connect upper paths to dense rock, earth and root masses. The vessel and old buildings remain intact native landmarks behind the terrain, without pasted facade or hull textures on driving banks. Playable surfaces use the canyon’s earth, rock, vegetation and weathered materials. Physical support, projectile collision and artwork share route heights and slab thickness.
+
+## Play
+
+Serve `dist/` over HTTP. Runtime is HTML/CSS and native JavaScript modules, local lossless WebP artwork and synthesized Web Audio. There are no runtime dependencies or external requests. The supplied “Feral_Steel_Black_Canopy_Dark_Phonk.ogg” plays locally in a continuous native media loop during a run and follows the sound and pause controls. Runtime audio is an exact copy of the supplied file. Music is more present at a 0.20 playback level. The primary report is raised 15% from the quieter mix and remains a quiet low pulse and 900 Hz puff with a smooth attack, and firing leaves the score at 90% of its normal gain. Other launch reports are quieter, simultaneous hostile shots share one bounded cue, and reload and speech stay legible. Resume preserves its position; a new run restarts it. A separate effects bus and shared limiter keep gunfire, reloads and missiles audible over the music, with gentle ducking during transients. Weapon sounds use authored layered Web Audio noise, low-frequency impulse and metal mechanisms; reloading adds magazine withdrawal, insertion and a bolt clack. Active and scheduled sounds cancel on pause, mute or restart. Six locally generated V2 robot voice clips share a dedicated speech bus: “Limule and Regalec, ready!” at deployment, “Target lock!” per successful guided salvo, “Saltik detected!” when an opposing Saltik enters view, “Grab him!” when its melee guard is ready, “Goodbye!” as an opposing Saltik is thrown toward the screen, and “Victory!” after the boss falls. Lines queue without overlap, duck the music briefly and cancel with pause, mute, home and restart; missing voice files cannot interrupt play.
+
+- Move: arrow keys, A/D or Q/D.
+- Jump: Space, Up, W or Z. Release before jumping again.
+- Crouch: Down, S or C.
+- Deflect: **DÉVIER** in the centre of the left pad, or H. One manually timed small bullet/plasma reflection during the hand gesture, followed by sore-hand recovery. The 0.78-second gesture has no recharge: a fresh press immediately restarts it, including during sore-hand recovery. Holding never repeats it.
+- Evade: **ESQUIVE** just outside the pad’s lower-right corner, or F/Shift. Hold to stay in the static native inner-leg rear pose; release to return immediately to the foreground. There is no timer or recharge. The painted far wheel stays registered on the real local slope. Contact, projectiles and hostile blasts cannot hurt while held in the rear plane; shots continue through the foreground. Requires grounded support; jumping, blur, pause and input cancellation release it.
+- Descend: E or **DESCENDRE**. Each press drops one tier.
+- Primary fire: hold J or X. After three seconds of actual firing, a 1.32-second mechanical reload interrupts the gun; held fire then resumes. Pausing, turning and evading do not consume firing time. The gun can aim at visible approaching hostile missiles with a clear shot.
+- MIRV: K. The native roof cannon elevates for 0.24 seconds before launching its carrier, which splits into five explosive grenades. Recharge: 5.2 seconds.
+- Guided missiles: L or R. Three native pod mouths launch distinct obstacle-avoiding approaches toward living visible targets, marked by red lock brackets. Missiles reacquire if a target dies. Recharge: 9.5 seconds; no target leaves the weapon ready.
+- Melee: an automatic native arm strike when an enemy is in contact range.
+- Boss assaults: the nearby red **POD** button or B becomes available after at least one real rocket volley. Three separate presses on the button above Saltik rip off the launcher, disable it permanently and remove 20 armor. At 45% armor or less, the red central **ARRACHER** button takes priority and stays available independently of pod destruction and distance. It launches the original hull assault: three full pulling strokes, a native hatch tear and six animated shots into the machinery for 60 armor. Both actions end with a cannon sweep and safe physical return jump; each is optional and usable once, has no QTE deadline and pauses with the game. The enemy-Saltik duel still takes five presses.
+- Pause: Escape or P. Sound and fullscreen buttons are at top right.
+
+On mobile, use landscape. The left pad supports eight directions and combined diagonals; directly pressing its centre deflects, while dragging across the centre remains neutral. DESCENDRE sits above the pad. ESQUIVE sits outside the lower-right corner of the pad. GUIDÉS, MIRV and TIR remain on the right. Each has independent input ownership. The pad keys are 10% larger than the prior compact version (55.44 px desktop, 48.4 px landscape phone), with 6 px / 5 px seams and translucent surfaces and at least 44-pixel touch cells; ordinary world zoom is 1.155 (the previous 1.1 view enlarged another 5%). Portrait rotation, blur and pause clear every input. In-play explanatory popups and QTE instruction text are removed; Only player armor, boss armor and control readiness remain in the live HUD; mission progress, live score and its weapon-status line are removed. End results retain the score.
+
+Native action, direction, melee and evasion sheets preserve the Saltik’s two cyan optics, four wheeled legs and weapon apertures. Reversals show intermediate perspectives over 0.60 seconds. Weapons wait for the turn to settle; pause or evasion discards delayed shots. Native gun geometry drives projectile origins and cannon elevation.
+
+Rock piles, metal barriers and checkpoints can be crossed or destroyed. The olive enemy Saltik has 24 armor and alternates aimed gun bursts and a visible lock followed by two homing missiles, which player bullets and blasts can intercept in flight. At 6 armor (25% remaining), it dodges or deflects every ranged hit. Approach it on the same grounded support to lock hands automatically. Press the simple red button five separate times, or Space/Enter. Its five marks show accepted inputs, and every press queues a complete 0.24-second native bracing effort with the original short manipulator hands. All five efforts finish before the throw; the native frontal enemy hits and cracks the glass, slides down and falls away. Other combat freezes during the contest; pause freezes the animation and all held input clears at phase changes. Each opponent awards one kill. There is no QTE deadline. Explosions combine animated fire and smoke, light, pressure and irregular debris. Repair packs restore 30 armor. The boss telegraphs its attacks and becomes more aggressive below 45% armor. Its native cannon barrel recoils on every volley. One shared weapon schedule alternates a deployed pod volley and a cannon volley. The pod launches eight distinct interceptable homing rockets after a 0.72-second raise; the cannon follows 4.5 seconds later. The next pod waits 12 seconds after its previous launch before raising. The first pod waits 2 seconds. After pod destruction, cannon volleys are five seconds apart. A painted rocket pod rises on its own hydraulics before launching eight interceptable guided missiles, then retracts; the first assault leaves a ruined socket and disables this weapon permanently. Its charge crosses about three quarters of the visible world width over about 1.94 seconds (15% less forward velocity), preceded by a 0.85-second warning; returning takes 1.5 seconds. The exposed nose damages grounded players; rear evasion, a high jump and roof riding avoid it. Jump from the front onto its physical deck or turret, ride the moving hull and fire real downward shots into its armor. After 3.2 seconds the turret turns and automatically throws Saltik clear into a safe landing arc, then returns to its forward profile.
+
+The mission opens with a 2.2-second close view that pulls back to the ordinary camera. Simulation and controls wait during that shot; pausing freezes the camera and held intro inputs cannot fire later. Victory reverses the camera over 2.2 seconds, reuses the exact ordinary idle Saltik sprite for a four-stage little-hand victory flourish, keeping its original lower-eye service housing, cabin and wheeled legs rigid on the physical ground before the result screen at 4.5 seconds. A final hit from the tank roof or an ordinary jump waits for a natural landing before victory begins. Only walker and soldier bipeds are reduced 15%, including their native art, muzzles and collision bounds. The larger white heavy, Saltiks, drones and boss retain their size.
+
+## Develop and verify
+
+Node 22+ is sufficient; no dependency installation is needed.
+
+```sh
+npm test
+npm run build
+python -m http.server 4173 --bind 127.0.0.1 --directory dist
+```
+
+Deterministic checks cover real ground and elevated campaigns, support and route headroom, native art and weapon geometry, evasion collision windows, cannon preparation, reload input boundaries, guided navigation around terrain and cover, target reacquisition, and chronological swept interception. Campaign checks exercise ordinary forward fighting and every raised path, including the manual QTE input sequence.
+
+Browser checks use an existing Python Playwright installation and Chromium:
+
+```sh
+python tests/browser_menu_balance.py
+python tests/browser_controls.py
+python tests/browser_tachikoma.py
+python tests/browser_turn_queue.py
+python tests/browser_arsenal.py
+python tests/browser_manual_defense.py
+python tests/browser_manual_reflect.py
+python tests/browser_saltik_duel.py
+python tests/browser_mission_cinematics.py
+python tests/browser_audio_mix.py
+python tests/browser_music.py
+python tests/browser_enemy_saltik.py
+python tests/browser_saltik_expedition.py
+python tests/browser_routes.py
+python tests/browser_boss_ride.py
+python tests/browser_dual_boss.py
+python tests/browser_voice_lines.py
+python tests/browser_background_motion.py
+python tests/browser_waterfall_visibility.py
+```
+
+These exercise normal keyboard/touch inputs and read-only snapshots: three screen sizes, input ownership, pause and portrait handling, required-art failures, local music playback and pause/mute/restart, the rear balance, centre manual parry and five-press grapple, MIRV elevation, reload interruption, red locks, hostile missile interception, melee, the full campaign and every raised route. `tests/browser_standalone.py` verifies the separately packaged single-file game on a second server at port 4174, including no subresource requests.
+
+Source lives in root `index.html`, `style.css` and `src/`. The build copies these to `dist/` while preserving `dist/assets/`. Twenty-one lossless WebP sheets preserve source dimensions, alpha and every visible pixel. Hosting identity remains in `.openai/hosting.json`.
+
+The painted canyon, native ruins and wreck, physical terrain, combat and foreground foliage retain depth and parallax. Five actual painted waterfall regions now use a continuously descending loop of their own water texture, bright foam ribbons and small clipped spray; the original contours stay fixed. Three leafy regions keep local sway. All movement follows the original mirrored sky tiles and freezes on pause; the unrelated translucent procedural waterfalls are removed. The translucent procedural ridges, cliff polygons and jungle silhouettes have been removed; rooted lianas have opaque stems and leaves. Simulation runs at a fixed 60 Hz with seeded gameplay randomness; cosmetic randomness does not affect combat.
+
+
+### Raccourci sur smartphone
+
+Le menu et l’écran d’accueil vertical proposent « Ajouter à l’accueil ». Chrome peut afficher sa confirmation d’installation ; un guide reste disponible quand le navigateur ne propose pas cette boîte de dialogue. Sur iPhone, ouvrir le jeu dans Safari puis Partager → Sur l’écran d’accueil → Ajouter. Le raccourci s’appelle SALTIK et utilise son icône dédiée. Le manifeste ouvre le jeu en mode autonome avec une préférence pour le paysage ; iOS conserve son écran de rotation si nécessaire. Aucun cache de jeu ni mode hors connexion n’est ajouté.
+
+Sur Android, le guide propose un lien `intent://` vers Chrome déclenché uniquement par un appui, avec retour HTTPS et copie manuelle du lien si nécessaire. Si une icône installée ne s’ouvre pas, `/android.html` propose le même jeu sous forme de raccourci Chrome ordinaire : menu ⋮ → Installer et créer un raccourci → Créer un raccourci → Ajouter (ou Ajouter à l’écran d’accueil sur les anciennes versions). Cette page est générée depuis `index.html` sans manifeste ni mode autonome. Elle ne répare pas l’application déjà installée. Le problème du lanceur Android n’a pas été reproduit sur un appareil physique ; les vérifications navigateur couvrent les liens, le démarrage et la réouverture du jeu, la copie de secours et l’absence de lancement externe automatique.

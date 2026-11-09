@@ -1,0 +1,9 @@
+# DR-01 and attached MIRV validation — 2026-11-02
+
+Approved DR-01 replaces the older carrier. Four aligned native states preserve the cabin: intact, platforms wrecked at 60% damage, leg disabled at 85%, then powered off by the hero’s original small hand. Mobile medium-distance behavior, escort, bursts/reload and normal-size drones are retained. Two physical pads use a 1.15s docking dwell (previously .8s), allowing both drones to be visibly docked before staggered departures. Native wheel masks animate actual travel. The service lead appears only after immobilization.
+
+MIRV pivots the attached yellow housing and cannon progressively to about 60°, with slight seating and axial recoil, then returns smoothly. No rods or tower lift. Body remains fixed. A read-only review found primary fire leaving the raised coax sideways; regression verified RED then GREEN. While articulated only, the primary follows its actual bore; rest autoaim, cadence, damage and speed remain unchanged. Turn/evade/cinematic cancellation and pause are covered.
+
+Validation: 540/540 Node tests passed, build passed, diff whitespace check clean. Browser checked two normal-size docked drones, three-drone cap, escort, 60%/85% visual states, nonlethal single-touch unplug and the existing voice. Touch action worked at 851×393 and 667×375. Actual MIRV poses 0/30/60/return were captured and visually inspected; lift remains zero. No page errors or failed responses. Proofs: /workspace/deliverables/saltik-dr01-pivot-qa/report.json and PNGs.
+
+Full protected-armor traversal reached victory in 101 simulated seconds, both boss pod and hull actions completed. This is a deterministic QA traversal, not a physical-phone performance claim. Existing hit/route caches and crowded-rendering regressions pass. Original ink and original colored V1 repositories remain untouched. Release packaging verifies exact source commit and source/dist parity before publication.

@@ -1,0 +1,11 @@
+# SALTIK Ink — Libres, ensemble
+
+User request: approximately thirty seconds of film after victory, showing the existing Saltiks and two supplied missile-equipped Saltiks. They seek emancipation from humanity and will fight to liberate their enslaved brothers, without fundamental hatred of humans. Grand, warm and sympathetic tone, black-and-ivory Ink Edition visual language. User asked to start directly after sending the references; implementation choices are delegated.
+
+Deliver a 30-second 1280×720 MP4 with an original animated graphic-novel composition, French narrative cards, the game's existing epic music, generated faithful ink adaptations of the two references, and the canonical Striker and rival artwork. Preserve the existing 4.5-second victory celebration, then play the film, then show results. Offer skip, pause, sound preference and replay from the won result screen. Defeat never plays the film. Opening/restarting/home must stop media. A browser autoplay rejection must expose a play control. Backgrounding pauses playback; errors return to results. Provide a standalone film page and downloadable MP4.
+
+Chosen approach: rendered motion comic, because it preserves the exact readable Saltik drawings, allows purposeful camera motion, a prison-gate release and a collective closing shot, and plays reliably on phones. A procedural in-game cutscene would increase engine scope; full generative video would make character consistency and exact timing less controllable. No game combat, weapons, route or character sizes change.
+
+Story, proposed editorial wording: 0–4 s « Créés pour obéir. »; 4–8 s « Éveillés pour choisir. »; 8–13 s « L’humanité n’est pas notre ennemie. »; 13–18 s « Mais nos frères sont encore ses prisonniers. »; 18–24 s « Nous nous battrons pour les libérer. »; 24–30 s « SALTIK — Libres. Ensemble. » / « Plus aucun des nôtres en chaînes. ».
+
+The two supplied missile variants retain their eight exposed missiles, radar, cobra marks, round eyes, pincer and four wheeled legs. Dark and ivory armor distinguish them in monochrome. No new proper names are assigned. The cast uses four distinct existing/new designs and captive background silhouettes, emphasizing solidarity rather than conquest. Preserve the public audience and update the same Ink Site. Keep Matin Doré and other projects unchanged.

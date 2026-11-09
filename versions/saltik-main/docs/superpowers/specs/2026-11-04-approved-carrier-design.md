@@ -1,0 +1,5 @@
+# Approved DR-01 replacement
+
+The user approved the five visual previews and proposed proportions on 4 November: “C’est parfait !!!!”. Integrate that exact cutout, preserving the blue/ivory angular cabin, low eyes, small native claws and two raised H pads in the current color Matin Doré game (published v15). Proposed height: 140 world units; similar width to the previous carrier. Preserve the encounter rules, independent normal drones, nonlethal KO and unplug sequence. Re-register all native masks and gameplay anchors against the approved drawing. Keep old art files as historical assets; use a separately named new asset. Existing renderer/geometry architecture is the appropriate approach: replacing only the image would detach the weapons and wheels. Approval covers this implementation and publication; no additional design gate is needed.
+
+Additional request: raise only Striker’s primary cannon shot source amplitudes by 15% relative to v15. Keep music, other effects, cadence, envelopes and output limiter unchanged.

@@ -1,0 +1,14 @@
+# Approved DR-01 integration — verification
+
+Base: published color Matin Doré v15, commit dfc8d56cba0552914f81df7d7269b31a24a42ac3. User explicitly approved the proposed model and proportions, then requested an additional 15% primary cannon sound lift.
+
+- Approved transparent PNG preserved byte for byte as `dist/assets/ink-carrier-raised-dr01.png`, SHA256 `ee45864e7aa3947a187d8e137d86e8b660f95387d5671d4b547291db9117e31d`. Historical assets remain untouched.
+- New native masks, raised H-pad anchors, low eyes, small claws and right-facing Gatling registered. Four terrain contacts remain; the far fourth wheel is hidden behind the near leg in the approved three-quarter painting, so only the three visible tires are rendered.
+- New cannon exposes its elevation transform sign to the tracker; projectile direction and recoil follow the actual bore. Existing encounter timings, health, independent drone actors and nonlethal unplug behavior retained.
+- Only the primary shot's three amplitude values are multiplied by 1.15. Music, other effects, envelopes, cadence, limiter and ducking are unchanged. Preservation test normalizes only those three explicitly approved coefficients.
+- Baseline 603/603 tests passed. Geometry tests first failed on old dimensions/orientation and grafted hero hands. Updated real-pixel assertions cover the new approved painting instead of obsolete v15 coordinates. Final full suite: **602/602 passed** (one fewer test after consolidating obsolete art checks); build and diff whitespace check passed.
+- Playwright, real Chromium: 12 close-up poses (idle, moving, firing, docked, KO, powered off; both facings), authored encounter forward/reverse motion, 27 real carrier shots, three independent deployed drones, frozen pause, and exactly one completed nonlethal disconnect. Desktop 1440×900 and landscape phone 844×390 built UI both reach playing. No JavaScript errors. Evidence: `/workspace/recovery-saltik/carrier-preview/integrated/validation.json` and sibling PNGs. This is browser/device emulation, not a physical phone test.
+- Independent review: no substantive findings; focused carrier/audio/rendering/preservation suite **85/85 passed**. Native masks and screenshots reviewed.
+- The original preview script now uses the archived v15 renderer to keep its before/after comparison reproducible. `validate.py` exercises the actual integrated production modules.
+
+Environment note: bundled Sites `site-workflow.mjs` was not installed or readable through the cloud skill resource. Source synchronization therefore uses the established Git fallback with the native Sites credential delivered on hidden stdin, retained only in subprocess memory. Deployment archive contains only `.openai/hosting.json` and `dist/`; source is pushed to the existing official Sites repository. Existing public audience preserved.

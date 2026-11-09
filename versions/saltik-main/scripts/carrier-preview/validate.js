@@ -1,0 +1,23 @@
+import {createInkScene,updateInkScene} from '/src/ink-scene.js';
+import {createRenderer,loadArt} from '/src/ink-renderer.js';
+import {drawInkCarrier,inkCarrierGeometry,INK_CARRIER_ASSET} from '/src/ink-carrier.js';
+import {drawInkSaltik} from '/src/ink-saltik.js';
+import {drawInkEnemy} from '/src/ink-actors.js';
+import {damageCarrierBay} from '/src/drone-carrier.js';
+import {bakePastelArt} from '/src/pastel-paint.js';
+const canvas=document.querySelector('#game'),renderer=createRenderer(canvas),detail=document.querySelector('#detail'),c=detail.getContext('2d');
+const load=async n=>{const i=new Image();i.src='/assets/'+n+'.png';await i.decode();return i;};
+const images={};let game,carrier,serial=0;
+window.ready=(async()=>{await loadArt();const [carrier,striker,sp,enemies,ep,back,bp]=await Promise.all([INK_CARRIER_ASSET,'ink-saltik','ink-saltik-paint','ink-enemies','ink-enemies-paint','ink-canyon','ink-canyon-paint'].map(load));images.carrier=carrier;images.striker=bakePastelArt(striker,sp,{strength:1,outline:2});images.enemies=bakePastelArt(enemies,ep,{strength:.85});images.back=bakePastelArt(back,bp,{strength:1});await document.fonts.load('40px Ink');window.reset();})();
+window.reset=()=>{game=createInkScene();Object.assign(game.player,{x:8550,y:game.groundAt(8550),supportY:game.groundAt(8550),invulnerable:999});game.maxX=8550;renderer.reset();serial=0;};
+window.step=(count,input={})=>{for(let i=0;i<count;i++){updateInkScene(game,input,1/60);carrier=game.enemies.find(e=>e.type==='carrier');serial++;if(i%6===0||i===count-1)renderer.render(game,serial*1000/60,'playing');}return{time:game.time,carrier:carrier?{x:carrier.x,dir:carrier.dir,vx:carrier.vx,hp:carrier.hp,knockedOut:carrier.knockedOut,neutralized:carrier.neutralized}:null,drones:game.enemies.filter(e=>e.carrierId===carrier?.id).map(e=>({state:e.carrierState,bay:e.bayIndex})),shots:game.events.filter(e=>e.type==='enemyshot'&&e.enemyId===carrier?.id).length,deployments:game.events.filter(e=>e.type==='carrier-drone-deploy').length,disconnects:game.events.filter(e=>e.type==='carrier-disconnected').length};};
+window.prepareShutdown=()=>{for(const e of game.enemies)if(e.type==='saltik'){e.neutralized=true;e.harmless=true;}damageCarrierBay(carrier,0,1000);window.step(45);game.player.x=carrier.x-110;game.player.y=game.groundAt(game.player.x);game.player.onGround=true;game.player.supportY=game.player.y;};
+window.pauseProbe=()=>{const before=JSON.stringify([game.time,game.enemies]);game.status='paused';for(let i=0;i<10;i++)updateInkScene(game,{},1/60);const equal=before===JSON.stringify([game.time,game.enemies]);game.status='playing';return equal;};
+window.detail=(kind,dir=1)=>{
+ c.setTransform(1,0,0,1,0,0);c.clearRect(0,0,1920,1080);c.drawImage(images.back,0,0,1920,1080);
+ const e={x:1250,y:970,supportY:970,dir,hp:100,vx:kind==='walking'?32:0,motionDistance:17,bays:[{hp:12},{hp:12}],cannonElevation:kind==='fire'?.12:0,firePose:kind==='fire'?.14:0,cannonRecoil:kind==='fire'?1:0,...(kind==='ko'?{knockedOut:true,koElapsed:.8}:{}),...(kind==='off'?{neutralized:true,neutralizedAt:0}:{})};
+ const geo=drawInkCarrier(c,images.carrier,e,{time:2,scale:4.3,handsImage:images.striker});drawInkSaltik(c,images.striker,{x:430,y:970,supportY:970,dir:1,vx:0,onGround:true},{time:2,scale:4.3});
+ if(kind==='docked')for(const bay of geo.bays)drawInkEnemy(c,images.enemies,{id:bay.index,type:'drone',x:bay.droneAnchor.x,y:bay.droneAnchor.y,dir,scale:4.3,hp:3,vx:0},{time:2});
+ c.fillStyle='#102018';c.fillRect(0,0,1920,105);c.fillStyle='#efdfba';c.font='40px Ink';c.fillText('DR-01 — '+kind.toUpperCase()+' — '+(dir===1?'DROITE':'GAUCHE'),40,65);
+ return{bounds:geo.bounds,muzzle:geo.muzzle,axis:geo.muzzleDirection,feet:geo.legs.map(l=>l.contact),bays:geo.bays.map(b=>b.muzzle)};
+};
