@@ -14,10 +14,16 @@ test('lunar campaign has its own route and encounter order at canyon duration sc
  assert.notDeepEqual(a.platforms.map(p=>p.x1),b.platforms.map(p=>p.x1));assert.notDeepEqual(a.schedule.map(p=>[p.type,p.x]),b.schedule.map(p=>[p.type,p.x]));assert.ok(b.schedule.some(e=>e.type==='carrier'));
  b.player.x=16500;updateInkScene(b,{},1/60);assert.equal(b.boss,null);
 });
-test('real gaps drop under gravity and safe checkpoint costs ten armor',()=>{
- const g=createInkScene({level:2});g.enemies=[];g.schedule=[];const p=g.player,gap=LUNAR_GAPS[0];p.x=gap[0]-1;p.y=g.groundAt(p.x);p.onGround=true;
- updateInkScene(g,{right:true},1/60);assert.equal(p.onGround,false);assert.ok(p.y<900);
- const hp=p.hp;p.y=1000;updateInkScene(g,{},1/60);assert.equal(p.hp,hp-10);assert.equal(p.onGround,true);assert.ok(g.groundAt(p.x)<900);assert.equal(p.y,g.groundAt(p.x));assert.equal(p.platformId,null);
+test('lunar landscape is continuous across all five former gap locations',()=>{
+ const g=createInkScene({level:2});
+ assert.equal(LUNAR_GAPS.length,0);
+ for(const [a,b] of [[2520,2660],[4470,4630],[6820,6990],[10940,11100],[13920,14090]]){
+  for(let x=a-4;x<=b+4;x+=4){
+   assert.equal(g.isGroundGap(x),false);
+   assert.ok(Number.isFinite(g.groundAt(x)));
+   assert.ok(Math.abs(g.groundAt(x+1)-g.groundAt(x))<4);
+  }
+ }
 });
 test('portal requires three actually defeated waves and freezes during pause',()=>{
  const g=createInkScene({level:2});g.schedule=[];g.player.x=16650;advanceLunarObjective(g,1/60);assert.equal(g.lunar.wave,1);assert.equal(g.status,'playing');
@@ -29,18 +35,16 @@ test('portal requires three actually defeated waves and freezes during pause',()
  }
  assert.equal(g.status,'won');assert.equal(g.lunar.phase,'open');assert.equal(g.boss,null);
 });
-test('each gap is crossable with native jump and every terrace has a real walking entry',()=>{
- for(const [a,b] of LUNAR_GAPS){const g=createInkScene({level:2});g.schedule=[];g.pickups=[];const p=g.player;p.x=a-25;p.y=g.groundAt(p.x);p.supportY=p.y;
-  for(let i=0;i<100;i++)updateInkScene(g,{right:true,jump:i===0},1/60);
-  assert.ok(p.x>b);assert.equal(g.lunar.falls,0);assert.equal(p.hp,100);assert.equal(p.onGround,true);
- }
- for(const route of createInkScene({level:2}).platforms){const g=createInkScene({level:2});g.schedule=[];g.pickups=[];const p=g.player;p.x=route.x1-330;p.y=g.groundAt(p.x);p.supportY=p.y;
+test('each monumental terrace keeps its real walkable stair entry',()=>{
+ for(const route of createInkScene({level:2}).platforms){
+  const g=createInkScene({level:2});g.schedule=[];g.pickups=[];
+  const p=g.player;p.x=route.x1-330;p.y=g.groundAt(p.x);p.supportY=p.y;
   for(let i=0;i<120;i++)updateInkScene(g,{right:true},1/60);
   assert.equal(p.platformId,route.id);assert.equal(p.onGround,true);
  }
 });
 test('paused falls freeze and fatal falls end the campaign without softlocking',()=>{
- const g=createInkScene({level:2});g.schedule=[];g.player.x=(LUNAR_GAPS[0][0]+LUNAR_GAPS[0][1])/2;g.player.y=1000;g.player.onGround=false;g.player.hp=10;g.status='paused';
+ const g=createInkScene({level:2});g.schedule=[];g.player.x=3200;g.player.y=1000;g.player.onGround=false;g.player.hp=10;g.status='paused';
  updateInkScene(g,{},1/30);assert.equal(g.player.hp,10);assert.equal(g.player.y,1000);assert.equal(g.lunar.falls,0);
  g.status='playing';updateInkScene(g,{},1/30);assert.equal(g.status,'dead');assert.equal(g.player.hp,0);assert.equal(g.lunar.falls,1);
  const fresh=createInkScene({level:2});assert.equal(fresh.lunar.phase,'approach');assert.equal(fresh.lunar.wave,0);assert.equal(fresh.lunar.falls,0);
@@ -62,10 +66,14 @@ test('native engine spawns all three portal waves and only actual cleared waves 
  assert.equal(g.status,'won');assert.equal(g.lunar.wave,3);assert.equal(g.boss,null);
 });
 
-test('walking into a gap cannot teleport up through the far ledge',()=>{
- const g=createInkScene({level:2});g.schedule=[];g.pickups=[];const p=g.player;p.x=LUNAR_GAPS[0][0]-10;p.y=g.groundAt(p.x);p.supportY=p.y;
- for(let i=0;i<65;i++)updateInkScene(g,{right:true},1/60);
- assert.equal(g.lunar.falls,1);assert.equal(p.hp,90);assert.ok(p.x<LUNAR_GAPS[0][0]);
+test('former pits are ordinary safe ground and need no forced jumps',()=>{
+ const former=[[2520,2660],[4470,4630],[6820,6990],[10940,11100],[13920,14090]];
+ for(const [a,b] of former){
+  const g=createInkScene({level:2});g.schedule=[];g.pickups=[];g.platforms=[];
+  const p=g.player;p.x=a-35;p.y=g.groundAt(p.x);p.supportY=p.y;p.onGround=true;
+  for(let i=0;i<90;i++)updateInkScene(g,{right:true},1/60);
+  assert.ok(p.x>b);assert.equal(g.lunar.falls,0);assert.equal(p.hp,100);assert.equal(p.onGround,true);
+ }
 });
 test('ordinary controls complete the distinct lunar campaign with native armor in comparable time',()=>{
  const g=createInkScene({level:2}),jumped=new Set();
@@ -75,7 +83,7 @@ test('ordinary controls complete the distinct lunar campaign with native armor i
   updateInkScene(g,{right:p.x<16700,fire:true,missile:i%220<60,homing:true,jump:!!gap,qte:i%10<5},1/60);
  }
  assert.equal(g.status,'won');assert.equal(g.lunar.wave,3);assert.equal(g.lunar.falls,0);assert.ok(g.player.hp>0);assert.equal(g.player.maxHp,100);
- assert.ok(g.time>=75&&g.time<=125,`campaign duration ${g.time}`);assert.equal(g.boss,null);
+ assert.ok(g.time>=55&&g.time<=125,`campaign duration ${g.time}`);assert.equal(g.boss,null);
 });
 
 test('zero simulation time cannot start or clear a portal wave',()=>{
