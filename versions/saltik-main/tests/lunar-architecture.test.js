@@ -36,6 +36,21 @@ test('animation can render before the asynchronous lunar illustrations finish lo
  drawLunarForeground(context,{camera:0,width:1280,time:0,art});
  assert.equal(calls.images.length,0,'unloaded images must never be passed to Canvas');
 });
+test('extracted island silhouettes move independently of the far sky without a wrap jump',()=>{
+ const sky={width:1672,height:941},layers={width:1921,height:819};
+ const paint=camera=>{
+  const {context,calls}=recordingCanvas();
+  drawLunarBackdrop(context,{camera,width:1280,height:720,time:0,image:sky,layers});
+  return calls.images;
+ };
+ const a=paint(3990),b=paint(4010);
+ const skyShift=b.find(d=>d[0]===sky)[1]-a.find(d=>d[0]===sky)[1];
+ const firstFace=a.find(d=>d[0]===layers&&d[1]===0),nextFace=b.find(d=>d[0]===layers&&d[1]===0);
+ assert.ok(firstFace&&nextFace,'the face island is an actual independent cutout');
+ const faceShift=nextFace[5]-firstFace[5];
+ assert.ok(Math.abs(skyShift)<1,'the far moon plate must never jump at an old modulo boundary');
+ assert.ok(Math.abs(faceShift)>Math.abs(skyShift),'nearer islands must visibly move against the sky');
+});
 test('illustrated scenery renders on several depth planes with finite projections throughout the route',()=>{
  const g=createInkScene({level:2});
  const art={atlas:{width:1536,height:1024},bridge:{width:1774,height:887}};

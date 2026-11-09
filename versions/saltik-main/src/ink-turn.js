@@ -55,7 +55,7 @@ export function inkTurnGeometry(p,{camera=0,scale=1,sampleGround}={}){
   };
   const legs=view.legs.map(leg=>{
     const native=point(leg.foot);let offset=airborne?-25:0,roll=0,grounded=false;
-    if(!airborne)({offset,roll,grounded}=plantInkWheel(native,{k,cos,sin,maxOffset:120,floor:at=>groundY+(floor(p.x+(at-x)/scale)-groundY)*scale}));
+    if(!airborne)({offset,roll,grounded}=plantInkWheel(native,{k,cos,sin,maxOffset:120,floor:at=>Number.isFinite(p.artScale)&&p.artScale!==1?floor(at+camera):groundY+(floor(p.x+(at-x)/scale)-groundY)*scale}));
     return {...leg,offset,roll,grounded,stretch:1+offset/(leg.wheelTop-leg.hinge),contact:point([leg.foot[0]+roll,leg.foot[1]+offset])};
   });
   return {frame,view,k,x,y,tilt,legs,point};

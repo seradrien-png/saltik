@@ -129,7 +129,7 @@ function rotatePoint(point,pivot,rotation,offsetX=0,offsetY=0){
 }
 
 export function inkSaltikGeometry(p,{camera=0,time=0,scale=1,victoryAge=null,sampleGround}={}){
-  scale=Math.max(.01,finite(scale,1));
+  scale=Math.max(.01,finite(scale,1)*finite(p.artScale,1));
   const k=PIXEL_SCALE*scale,x=finite(p.x)-camera,y=finite(p.y);
   const yaw=Number.isFinite(p.turn?.yaw)?p.turn.yaw:(p.dir===-1?Math.PI:0);
   // The actual front and quarter views handle intermediate yaw. The side
@@ -168,7 +168,14 @@ export function inkSaltikGeometry(p,{camera=0,time=0,scale=1,victoryAge=null,sam
     const native=sourcePoint(part.foot);
     let offset=airborne?-(22+compression*30)+Math.sin(time*7+index*1.9)*3:0,roll=0,grounded=false;
     if(!airborne){
-      const floor=at=>{const support=sampleSupportSurface(p.supportPose,finite(p.x)+(at-x)/scale);if(p.supportPose?.surface&&!Number.isFinite(support))return NaN;return y+((support??finite(p.supportY,y))-y)*scale;};
+      const floor=at=>{
+        if(finite(p.artScale,1)!==1){
+          const worldX=at+camera,support=sampleGround?.(worldX)??sampleSupportSurface(p.supportPose,worldX);
+          if(p.supportPose?.surface&&!Number.isFinite(support))return NaN;
+          return support??finite(p.supportY,y);
+        }
+        const support=sampleSupportSurface(p.supportPose,finite(p.x)+(at-x)/scale);if(p.supportPose?.surface&&!Number.isFinite(support))return NaN;return y+((support??finite(p.supportY,y))-y)*scale;
+      };
       ({offset,roll,grounded}=plantInkWheel(native,{k,cos,sin,floor,orientation}));
     }
     const stretch=1+offset/(part.wheelTop-part.hinge);
@@ -272,7 +279,7 @@ export function drawInkSaltik(c,image,p,{camera=0,time=0,scale=1,victoryAge=null
   const draw=()=>c.drawImage(image,...INK_SALTIK_CROP,...INK_SALTIK_CROP);
   c.save();c.imageSmoothingEnabled=true;
   if(p.invulnerable>0&&Math.floor(time*18)%2)c.globalAlpha*=.65;
-  if(drawInkTurn(c,turnImage,p,{camera,scale,sampleGround})){c.restore();drawInkPlayerPods(c,p,geo,{time});return geo;}
+  if(drawInkTurn(c,turnImage,p,{camera,scale:geo.scale,sampleGround})){c.restore();drawInkPlayerPods(c,p,geo,{time});return geo;}
   c.translate(geo.x,geo.y+geo.heave+geo.bodyDrop);c.rotate(geo.tilt);
   c.scale(geo.k*geo.orientation,geo.k);c.translate(-INK_SALTIK_ANCHOR[0],-INK_SALTIK_ANCHOR[1]);
   for(const part of geo.legs){

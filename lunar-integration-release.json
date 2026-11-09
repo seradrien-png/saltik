@@ -1,0 +1,157 @@
+{
+  "publication": {
+    "version": 20,
+    "version_id": "appgprj_6ae77e1b6da081918600675fc2e2b738~appgver_c0f16deea6088191840cbb6838816eec",
+    "deployment": "appgdep_6af222cef004819182b74b0aa8a467a3",
+    "status": "succeeded",
+    "source_commit": "dea7b563da107570378a626983f506e350aedafd",
+    "url": "https://saltik-v2-matin-dore.ser-adrien.chatgpt.site"
+  },
+  "complete_test_suite": {
+    "passed": 623,
+    "failed": 0
+  },
+  "build": "passed",
+  "campaign": {
+    "status": "won",
+    "seconds": 93.08333333332934,
+    "hp": 100,
+    "falls": 0,
+    "wave": 3,
+    "stats": {
+      "kills": 34,
+      "shots": 608,
+      "mirvs": 12,
+      "homingSalvos": 9,
+      "meleeSwings": 5,
+      "meleeHits": 5,
+      "interceptions": 1,
+      "score": 10225,
+      "obstacles": 0,
+      "neutralized": 3
+    }
+  },
+  "browser": [
+    {
+      "device": "desktop",
+      "level2_music_silent_effects_available": true,
+      "level1_music_preserved": true,
+      "menu_choice": true,
+      "level2_movement_and_fire": true,
+      "paused_simulation_frozen": true,
+      "restart_same_level": true,
+      "level2_result_without_film": true,
+      "level1_film_preserved": true,
+      "next_level_after_film": true,
+      "errors": [],
+      "bad_responses": [],
+      "first_level2": {
+        "x": 180,
+        "hp": 100
+      },
+      "played_level2": {
+        "x": 455.9999999999992,
+        "shots": 14
+      }
+    },
+    {
+      "device": "phone",
+      "level2_music_silent_effects_available": true,
+      "level1_music_preserved": true,
+      "menu_choice": true,
+      "level2_movement_and_fire": true,
+      "paused_simulation_frozen": true,
+      "restart_same_level": true,
+      "level2_result_without_film": true,
+      "level1_film_preserved": true,
+      "next_level_after_film": true,
+      "errors": [],
+      "bad_responses": [],
+      "first_level2": {
+        "x": 180,
+        "hp": 100
+      },
+      "played_level2": {
+        "x": 613.1666666666666,
+        "shots": 20
+      }
+    }
+  ],
+  "main_files_verified": 468,
+  "other_game_snapshots_changed": false,
+  "striker_scale": {
+    "level2": 0.8,
+    "level1": 1,
+    "weapons_and_turns_follow_same_scale": true,
+    "feet_follow_actual_world_ground": true
+  },
+  "foreground_illustration_dimensions_changed": false,
+  "ground_material": "warm honey/ivory sandstone matching aqueduct foundations",
+  "background_planes": {
+    "sky_moon": 0.004,
+    "face_island": 0.075,
+    "astronomical_islands": 0.135,
+    "far_district": 0.2,
+    "near_district": 0.47,
+    "world": 1,
+    "foreground": 1.09
+  },
+  "music": {
+    "level1": "preserved",
+    "level2": "disabled; sound effects and voices retained"
+  },
+  "review": "one reduced-turn footing issue identified, regression reproduced and fixed; all tests pass",
+  "visual_views": [
+    "arrival",
+    "stair-foot",
+    "aqueduct",
+    "bridge-end",
+    "observatory-west",
+    "bastion",
+    "observatory",
+    "portal"
+  ],
+  "phone_physical_tested": false,
+  "published_resources": [
+    {
+      "path": "src/ink-saltik.js",
+      "status": 200,
+      "sha256": "284f838c7fd4b7cf1a930981aa3b564c89f7014408b2474c5985bdff8a55b97f"
+    },
+    {
+      "path": "src/ink-turn.js",
+      "status": 200,
+      "sha256": "e2e281634ce901d5e484fe5c5a6770ddc9365574f832550ee3ee2ff1162f8050"
+    },
+    {
+      "path": "src/lunar-world.js",
+      "status": 200,
+      "sha256": "60ebdf76d7db21eca6850d1d1711ac68dff1d401058ffc36b7cb350d96e4531c"
+    },
+    {
+      "path": "src/lunar-level.js",
+      "status": 200,
+      "sha256": "2830897efefaaddd06697923d7267c79b9465620c933ca68c01b7fb328e98849"
+    },
+    {
+      "path": "src/ink-renderer.js",
+      "status": 200,
+      "sha256": "98d92e61b38cbf5412d425ec84aee58760eaa0a06fe66273cf261de860d219ec"
+    },
+    {
+      "path": "assets/lunar-sandstone.png",
+      "status": 200,
+      "sha256": "97dd6a8ed871219209337c2b596e445a2d33abdc7f7ea22794052ca2ac980479"
+    },
+    {
+      "path": "assets/lunar-sky-layer.png",
+      "status": 200,
+      "sha256": "253ada3c626bad7ee2ca003c3451a05599c13df0e4b8cd2066e5098fa7d99d1b"
+    },
+    {
+      "path": "assets/lunar-island-layers.png",
+      "status": 200,
+      "sha256": "a123dd7e7f9287169dbe29dfa921bd3cb6bc03c0fdb04054c0d01a17461b96d4"
+    }
+  ]
+}

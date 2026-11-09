@@ -8,6 +8,9 @@ test('V2 preserves V1 native pixels, walkable geometry, native motions and encou
  for(const [path,sha] of Object.entries(preserved)){
   if(approvedChanges.has(path))continue;
   let content=readFileSync(new URL('../'+path,import.meta.url));
+  if(path==='src/ink-turn.js')content=Buffer.from(content.toString()
+   // Only the reduced lunar player uses true-size terrain in turn views.
+   .replace('Number.isFinite(p.artScale)&&p.artScale!==1?floor(at+camera):',''));
   // Carrier cues are additive. Only the approved primary-shot lift changes the mix.
   if(path==='src/ink-actors.js')content=Buffer.from(content.toString()
    // Numeric V1 ids retain the exact native animation; lunar text ids use a finite seed.

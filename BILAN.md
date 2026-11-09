@@ -47,3 +47,7 @@ Les treize commits GitHub jusqu’à `4c9b8e6` sont intégrés et les Archives l
 ## Refonte lunaire publiée : version 19
 
 Source `b629bb43cb35f1edcecfa0f2a4fdf9643e92355c`, publiée avec succès. Architecture illustrée et relief traversable, profondeur en plusieurs plans, correction des ennemis invisibles et du cadrage des passages bas. Musique du seul niveau 2 désactivée. 619 tests réussis, contrôles Chromium ordinateur/téléphone émulé réussis, campagne à commandes ordinaires gagnée en 93,02 s sans chute. 463 fichiers de la version principale comparés au source et au manifeste. Aucun autre jeu sauvegardé modifié. Voir `lunar-depth-release.json`.
+
+## Intégration publiée : version 20
+
+Source `dea7b563da107570378a626983f506e350aedafd`, publiée avec succès. Taille du seul Striker lunaire à 80 %, illustrations inchangées ; raccords au sol recalés ; nouvelle texture chaude et arrière-plan séparé en couches indépendantes. 623 tests réussis, huit zones inspectées, essais Chromium ordinateur et téléphone émulé réussis. Le niveau 1 et les autres jeux sauvegardés restent préservés. Voir `lunar-integration-release.json`.

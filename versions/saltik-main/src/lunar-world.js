@@ -6,9 +6,22 @@ function path(c,pts,fill,stroke=INK,lineWidth=1){
  c.beginPath();pts.forEach(([x,y],i)=>i?c.lineTo(x,y):c.moveTo(x,y));c.closePath();c.fillStyle=fill;c.fill();
  if(stroke){c.strokeStyle=stroke;c.lineWidth=lineWidth;c.stroke();}
 }
-export function drawLunarBackdrop(c,{camera,width,height,time,image,art}){
+export function drawLunarBackdrop(c,{camera,width,height,time,image,art,layers}){
  c.fillStyle='#77818a';c.fillRect(0,0,width,height);
- if(image){const h=Math.max(height,width*image.height/image.width),w=h*image.width/image.height;c.drawImage(image,(width-w)/2-(camera*.025%100),0,w+100,h);}
+ if(image){const h=Math.max(height,width*image.height/image.width),w=h*image.width/image.height;c.drawImage(image,(width-w)/2-camera*.004,0,w+100,h);}
+ // The former flat background is reconstructed from independent painted
+ // silhouettes. Transparent openings reveal the moon and cloud plate.
+ if(layers)for(const layer of [
+  {crop:[0,0,880,819],rate:.075,step:3100,w:850,top:.035,alpha:.65,offset:-80},
+  {crop:[920,0,1001,819],rate:.135,step:2300,w:1120,top:.10,alpha:.84,offset:620},
+ ]){
+  const first=Math.floor((camera*layer.rate-layer.offset)/layer.step)-1;
+  for(let i=first;i<first+Math.ceil(width/layer.step)+3;i++){
+   const x=i*layer.step+layer.offset-camera*layer.rate,h=layer.w*layer.crop[3]/layer.crop[2];
+   if(x+layer.w<0||x>width)continue;c.save();c.globalAlpha=layer.alpha;
+   c.drawImage(layers,...layer.crop,x,height*layer.top,layer.w,h);c.restore();
+  }
+ }
  // Nearer city districts have their own illustration, silhouette and speed.
  // No single flat wash separates the walker from the world.
  for(const layer of [{rate:.20,step:1600,w:1080,base:1.02,alpha:.42},{rate:.47,step:1900,w:1350,base:1.20,alpha:.72}]){
@@ -26,23 +39,27 @@ function ground(c,{camera,width,texture}){
  for(let x=left;x<=right;x+=20)points.push([x-camera,lunarGroundAt(x)]);
  const bottom=1320;
  c.save();c.beginPath();points.forEach(([x,y],i)=>i?c.lineTo(x,y):c.moveTo(x,y));c.lineTo(right-camera,bottom);c.lineTo(left-camera,bottom);c.closePath();
- c.fillStyle='#8d887a';c.fill();c.clip();
- if(texture){c.save();c.globalAlpha=.82;for(let x=Math.floor(left/460)*460;x<right;x+=460)for(let y=500;y<1200;y+=350)c.drawImage(texture,x-camera,y,460,350);c.restore();}
+ c.fillStyle='#b18a55';c.fill();c.clip();
+ if(texture){
+  const tileW=460,tileH=tileW*texture.height/texture.width,top=Math.min(...points.map(p=>p[1]));
+  for(let x=Math.floor(left/tileW)*tileW;x<right;x+=tileW)for(let y=Math.floor(top/tileH)*tileH;y<bottom;y+=tileH)c.drawImage(texture,x-camera,y,tileW,tileH);
+ }
  // Deep beveled strata, chips and irregular cut faces, anchored in world space.
  for(let x=Math.floor(left/120)*120;x<right;x+=120){
   const y=lunarGroundAt(x),seed=Math.floor(x/120);
-  path(c,[[x-camera-70,y+23],[x-camera+16,y+17],[x-camera+73,y+95],[x-camera+21,y+178],[x-camera-72,y+133]],seed%2?'#bba88c55':'#565b5366',null);
-  c.strokeStyle='#5e615a';c.lineWidth=1;c.beginPath();c.moveTo(x-camera+15,y+44);c.lineTo(x-camera+7,y+78);c.lineTo(x-camera+22,y+104);c.lineTo(x-camera+14,y+141);c.stroke();
-  for(let j=0;j<14;j++){const xx=x-camera+hash(seed*33+j)*110-55,yy=y+35+hash(j*19+seed)*180;c.strokeStyle=j%3?'#5b615b66':'#f6e5bb99';c.beginPath();c.moveTo(xx,yy);c.lineTo(xx-4,yy+7);c.stroke();}
+  path(c,[[x-camera-70,y+23],[x-camera+16,y+17],[x-camera+73,y+95],[x-camera+21,y+178],[x-camera-72,y+133]],seed%2?'#be90501c':'#694d2e20',null);
+  c.strokeStyle='#7d5b3d66';c.lineWidth=1;c.beginPath();c.moveTo(x-camera+15,y+44);c.lineTo(x-camera+7,y+78);c.lineTo(x-camera+22,y+104);c.lineTo(x-camera+14,y+141);c.stroke();
+  for(let j=0;j<8;j++){const xx=x-camera+hash(seed*33+j)*110-55,yy=y+35+hash(j*19+seed)*180;c.strokeStyle=j%3?'#77553444':'#f6ddb466';c.beginPath();c.moveTo(xx,yy);c.lineTo(xx-4,yy+7);c.stroke();}
  }
  c.restore();
- c.strokeStyle=INK;c.lineWidth=3;c.beginPath();points.forEach(([x,y],i)=>i?c.lineTo(x,y):c.moveTo(x,y));c.stroke();
- c.strokeStyle='#efdcb4';c.lineWidth=6;c.beginPath();points.forEach(([x,y],i)=>i?c.lineTo(x,y+5):c.moveTo(x,y+5));c.stroke();
+ c.strokeStyle='#705333';c.lineWidth=2;c.beginPath();points.forEach(([x,y],i)=>i?c.lineTo(x,y):c.moveTo(x,y));c.stroke();
+ c.strokeStyle='#e8c890';c.lineWidth=3;c.beginPath();points.forEach(([x,y],i)=>i?c.lineTo(x,y+3):c.moveTo(x,y+3));c.stroke();
 }
 function plantedRuins(c,art,{camera,width}){
  for(const [i,x] of [340,2860,4870,10240,13600,16100].entries()){
-  const w=880+(i%2)*160,h=w*500/768;if(x<camera-w||x>camera+width+w)continue;
-  paintLunarCutout(c,art,i%2?'bastion':'observatory',{x:x-camera-w*.5,y:lunarGroundAt(x)-h*.86,w,h});
+  const kind=i%2?'bastion':'observatory',cell=LUNAR_CELLS[kind],w=880+(i%2)*160,h=w*cell.crop[3]/cell.crop[2];if(x<camera-w||x>camera+width+w)continue;
+  // Register the actual painted foot rather than an arbitrary 86% of height.
+  paintLunarCutout(c,art,kind,{x:x-camera-w*.5,y:lunarGroundAt(x)-h*(cell.foot??475)/cell.crop[3],w,h});
  }
 }
 export function drawLunarWorld(c,g,{camera,width,time,texture,art}){

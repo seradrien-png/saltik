@@ -7,15 +7,15 @@
       "slug": "saltik-main",
       "repo": "saltik-v2-matin-dore",
       "title": "SALTIK V2 — Matin Doré",
-      "commit": "b629bb43cb35f1edcecfa0f2a4fdf9643e92355c",
-      "published_version": 19,
+      "commit": "dea7b563da107570378a626983f506e350aedafd",
+      "published_version": 20,
       "url": "https://saltik-v2-matin-dore.ser-adrien.chatgpt.site",
-      "base_commit": "b629bb43cb35f1edcecfa0f2a4fdf9643e92355c",
+      "base_commit": "dea7b563da107570378a626983f506e350aedafd",
       "source_path": "/workspace/sites/saltik-v2-matin-dore",
       "export_path": "versions/saltik-main",
       "web_entry": "versions/saltik-main/dist/index.html",
-      "file_count": 463,
-      "bytes": 128295663,
+      "file_count": 468,
+      "bytes": 137030864,
       "uncommitted_changes": "",
       "files": {
         ".gitignore": {
@@ -178,9 +178,21 @@
           "sha256": "8b42934e777fff24cb9cafbba2908ed1fb46ea24be8451ae9e4f200f3972b547",
           "size": 4288004
         },
+        "dist/assets/lunar-island-layers.png": {
+          "sha256": "a123dd7e7f9287169dbe29dfa921bd3cb6bc03c0fdb04054c0d01a17461b96d4",
+          "size": 2178217
+        },
         "dist/assets/lunar-monuments.png": {
           "sha256": "911ff06bdd6d056b9aa7b2646487b69db9bcb8cd58d75de1668d513fca2436b0",
           "size": 3239098
+        },
+        "dist/assets/lunar-sandstone.png": {
+          "sha256": "97dd6a8ed871219209337c2b596e445a2d33abdc7f7ea22794052ca2ac980479",
+          "size": 3937649
+        },
+        "dist/assets/lunar-sky-layer.png": {
+          "sha256": "253ada3c626bad7ee2ca003c3451a05599c13df0e4b8cd2066e5098fa7d99d1b",
+          "size": 2609612
         },
         "dist/assets/pastel-boss-parts.png": {
           "sha256": "c27b39df8d41e791d879d9b497b3d363cd3171fadf1e6004df64643a934f5663",
@@ -375,20 +387,20 @@
           "size": 5269
         },
         "dist/src/ink-renderer.js": {
-          "sha256": "0130642542541063a69959fa3ca6dbf5ddb65ea7f355b3132ac41f85b6b1b7ae",
-          "size": 12053
+          "sha256": "98d92e61b38cbf5412d425ec84aee58760eaa0a06fe66273cf261de860d219ec",
+          "size": 12112
         },
         "dist/src/ink-saltik.js": {
-          "sha256": "578dd1996bca6747c2a53ec446df2299fee8466d1f47d9ef4595086da7849743",
-          "size": 19631
+          "sha256": "284f838c7fd4b7cf1a930981aa3b564c89f7014408b2474c5985bdff8a55b97f",
+          "size": 19958
         },
         "dist/src/ink-scene.js": {
           "sha256": "cde7e28f60dfc8e0262e4c354fed1cc40cb55597d7de830ea1e1d0c42023092f",
           "size": 2217
         },
         "dist/src/ink-turn.js": {
-          "sha256": "ce598e86a76256f20d0c1c487b4116ea247424d71b9bb1bb2ea8bc6bf047f685",
-          "size": 4800
+          "sha256": "e2e281634ce901d5e484fe5c5a6770ddc9365574f832550ee3ee2ff1162f8050",
+          "size": 4861
         },
         "dist/src/ink-world.js": {
           "sha256": "9c310d17b932f8cd2a9c03ada0e8b082b21e2fe4fb1150e2a427fbdb1e3fa604",
@@ -411,12 +423,12 @@
           "size": 2679
         },
         "dist/src/lunar-level.js": {
-          "sha256": "c7916838513039f7ec2a9839891c7ea4d8d6c345ae7cdfc4cae7c1388e638278",
-          "size": 6195
+          "sha256": "2830897efefaaddd06697923d7267c79b9465620c933ca68c01b7fb328e98849",
+          "size": 6216
         },
         "dist/src/lunar-world.js": {
-          "sha256": "17a544cf1eabb562fae7bebe479c54db7591187ece25c7d815345e79342d9cb0",
-          "size": 4973
+          "sha256": "60ebdf76d7db21eca6850d1d1711ac68dff1d401058ffc36b7cb350d96e4531c",
+          "size": 5968
         },
         "dist/src/main.js": {
           "sha256": "be70e2fefc43dc3c85904870a6e96cf0a20efcbb3cdae1b6e27c386539b113a2",
@@ -593,6 +605,10 @@
         "docs/level-design/lunar-implementation-validation.md": {
           "sha256": "825908e8ea11a2e560045d1ad852f67426144a885dd2f7d998f826e1ad425be6",
           "size": 2914
+        },
+        "docs/level-design/lunar-integration-v20.md": {
+          "sha256": "e0a82def6a212f7a673d0bcb99a46c6681efc5ed09258b1eb1a56dcf5d778141",
+          "size": 3725
         },
         "docs/level-design/lunar-revision-validation.json": {
           "sha256": "dd12bd24a0124d06ea3f7fcea5db8ddde86fc502f7896bb445ef55393a115ee4",
@@ -1247,20 +1263,20 @@
           "size": 5269
         },
         "src/ink-renderer.js": {
-          "sha256": "0130642542541063a69959fa3ca6dbf5ddb65ea7f355b3132ac41f85b6b1b7ae",
-          "size": 12053
+          "sha256": "98d92e61b38cbf5412d425ec84aee58760eaa0a06fe66273cf261de860d219ec",
+          "size": 12112
         },
         "src/ink-saltik.js": {
-          "sha256": "578dd1996bca6747c2a53ec446df2299fee8466d1f47d9ef4595086da7849743",
-          "size": 19631
+          "sha256": "284f838c7fd4b7cf1a930981aa3b564c89f7014408b2474c5985bdff8a55b97f",
+          "size": 19958
         },
         "src/ink-scene.js": {
           "sha256": "cde7e28f60dfc8e0262e4c354fed1cc40cb55597d7de830ea1e1d0c42023092f",
           "size": 2217
         },
         "src/ink-turn.js": {
-          "sha256": "ce598e86a76256f20d0c1c487b4116ea247424d71b9bb1bb2ea8bc6bf047f685",
-          "size": 4800
+          "sha256": "e2e281634ce901d5e484fe5c5a6770ddc9365574f832550ee3ee2ff1162f8050",
+          "size": 4861
         },
         "src/ink-world.js": {
           "sha256": "9c310d17b932f8cd2a9c03ada0e8b082b21e2fe4fb1150e2a427fbdb1e3fa604",
@@ -1283,12 +1299,12 @@
           "size": 2679
         },
         "src/lunar-level.js": {
-          "sha256": "c7916838513039f7ec2a9839891c7ea4d8d6c345ae7cdfc4cae7c1388e638278",
-          "size": 6195
+          "sha256": "2830897efefaaddd06697923d7267c79b9465620c933ca68c01b7fb328e98849",
+          "size": 6216
         },
         "src/lunar-world.js": {
-          "sha256": "17a544cf1eabb562fae7bebe479c54db7591187ece25c7d815345e79342d9cb0",
-          "size": 4973
+          "sha256": "60ebdf76d7db21eca6850d1d1711ac68dff1d401058ffc36b7cb350d96e4531c",
+          "size": 5968
         },
         "src/main.js": {
           "sha256": "be70e2fefc43dc3c85904870a6e96cf0a20efcbb3cdae1b6e27c386539b113a2",
@@ -1707,8 +1723,8 @@
           "size": 6475
         },
         "tests/lunar-architecture.test.js": {
-          "sha256": "a0d3c13fd0b7e2783f66abd81f0ab491dc6b114314168a990b56d476b30cddc9",
-          "size": 2681
+          "sha256": "7ef7d733a2095c99c9db069f3abb3df9aa5b9d2cdd0a2136520020c16e522adf",
+          "size": 3552
         },
         "tests/lunar-enemy-visibility.test.js": {
           "sha256": "031322ab0f2724f55a0028253dd555338b2ed9525d41db46d15f46dabaf78c2c",
@@ -1717,6 +1733,10 @@
         "tests/lunar-level.test.js": {
           "sha256": "71faaee086a6fadf7de9bca8a36e3cf23eeb54b28a828279706e75b573882270",
           "size": 7019
+        },
+        "tests/lunar-scale.test.js": {
+          "sha256": "67b5e98fdc8177c258db069f683b4517091d93140b305423c9f0af6273dee04a",
+          "size": 1976
         },
         "tests/manual-controls.test.js": {
           "sha256": "aa25357e0c836e0528d860c831e23d52d41bebc84732ea558ef240068c461a89",
@@ -1775,8 +1795,8 @@
           "size": 1507
         },
         "tests/pastel-preservation.test.js": {
-          "sha256": "3ea7e315e9ef1623ee676f5f405056019b0a817d822c784f66b4acf98b91e958",
-          "size": 2229
+          "sha256": "e92b37477564019bf6be9407e5c5f284665220aa6b9e444d6b52246e1e52e8d8",
+          "size": 2454
         },
         "tests/pastel-rider.test.js": {
           "sha256": "bdcb9235ba7eee78560cbdb06f4b9334dda35a425581fa3b5b4ed441ccf5bb53",
@@ -1883,7 +1903,7 @@
         }
       ],
       "update_note": "Level2 Archives lunaires, menu/after-level1 access, primary cannon gain +20 percent; Sites v17 deployment succeeded.",
-      "published_source_commit": "b629bb43cb35f1edcecfa0f2a4fdf9643e92355c",
+      "published_source_commit": "dea7b563da107570378a626983f506e350aedafd",
       "publication_status": "succeeded",
       "github_import_base": "4c9b8e64bf3232c222f9b6f534ca37d660da3f7b"
     },
