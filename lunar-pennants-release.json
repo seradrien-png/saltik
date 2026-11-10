@@ -1,0 +1,169 @@
+{
+  "source_commit": "02bccd706ef5856062a9d9c53d4cc19e3d8dcab3",
+  "complete_test_suite": {
+    "passed": 664,
+    "failed": 0
+  },
+  "browser": {
+    "opaque_atlas": {
+      "solid": 828196,
+      "empty": 745342,
+      "partial": 0
+    },
+    "states": [
+      {
+        "x": 180,
+        "foot": 585.3212220186372,
+        "scale": 0.8008
+      },
+      {
+        "x": 3200,
+        "foot": 586.2116149095283,
+        "scale": 0.8008
+      },
+      {
+        "x": 6400,
+        "foot": 733.3865546218489,
+        "scale": 0.8008
+      },
+      {
+        "x": 8700,
+        "foot": 549.1640496102505,
+        "scale": 0.8008
+      },
+      {
+        "x": 11600,
+        "foot": 633.8104066426683,
+        "scale": 0.8008
+      },
+      {
+        "x": 15500,
+        "foot": 693.3819241982508,
+        "scale": 0.8008
+      }
+    ],
+    "actors": [
+      {
+        "type": "saltik",
+        "dir": 1,
+        "ko": false,
+        "level": 2,
+        "enemyScale": 0.9,
+        "count": 1
+      },
+      {
+        "type": "saltik",
+        "dir": -1,
+        "ko": false,
+        "level": 2,
+        "enemyScale": 0.9,
+        "count": 1
+      },
+      {
+        "type": "carrier",
+        "dir": 1,
+        "ko": false,
+        "level": 2,
+        "enemyScale": 0.9,
+        "count": 1
+      },
+      {
+        "type": "carrier",
+        "dir": -1,
+        "ko": true,
+        "level": 2,
+        "enemyScale": 0.9,
+        "count": 1
+      },
+      {
+        "type": "saltik",
+        "dir": 1,
+        "ko": false,
+        "level": 1,
+        "enemyScale": null,
+        "count": 1
+      },
+      {
+        "type": "saltik",
+        "dir": 1,
+        "ko": false,
+        "level": 3,
+        "enemyScale": null,
+        "count": 1
+      }
+    ],
+    "phone": {
+      "firing": true,
+      "pause": true,
+      "restart": true,
+      "skin": "lunar"
+    },
+    "errors": []
+  },
+  "preservation": {
+    "base": "f6268033d616c2525b16be25e3f8527d8b704bfa",
+    "unchanged": {
+      "engine.js": "8871bb2d4aa4c73251c8b061fd3caacb0ef4a33c95ffe082e13fed60799158c7",
+      "ink-scene.js": "ec66a3079efed66f31eb59b12bd2c612029fa9d8f84370a1f339b4ef13df6a51",
+      "lunar-level.js": "de672b81f052e45c87b6c8b2cf1fcb0bcf609d6b306b737dc9d56302c5e1322f",
+      "lunar-architecture.js": "c1eb7b42baec02ca72082ab52c34acb76a174105bf8bbf9f97f10d0ef919f4bf",
+      "lunar-landmarks.js": "86a139c1f8428a4a6fae44485bdf017678b489203584712259ff9e0a90555a5b",
+      "lunar-terrain.js": "0f0944489e7dd6496308fc5365ef472cf214a4ff271af83f0299f3c57af2b77e",
+      "royal-world.js": "27c10e2c4342abbc4ad9eb5721c047003fbf36ca0516085e0a9bd21820991e15",
+      "royal-level.js": "4837ecbf243cc65f171759a417441ddba09255cd135d6f2a02c9f0f17634dcae",
+      "enemy-styles.js": "c6fbfd4e2ba732d54408c7af95ce531e915100d5c9e3594e2f51cffb3d90c922",
+      "main.js": "f44f9bc1bc0effb44d6deb908bd2baf4fc43ff14f68ad6ac7cda831c1ce2682a"
+    },
+    "native_geometry_unchanged_except_flag_draw_hooks": true,
+    "level1_and_3_materials_have_no_flag_tag": true
+  },
+  "review": "No Critical/Important/Minor findings; scenery, both Saltik directions, normal and KO carrier, and unchanged level1/3 visuals checked.",
+  "changes": [
+    "Only level2: both new low layers fixed to terrain coordinates, rate1, stable world position and dimensions under camera/resize.",
+    "Two red/gold crescent-laurel pennants attached to native enemy Saltik pods and carrier platforms.",
+    "Existing colors, sizes, mechanics preserved; levels1/3 have no added pennants."
+  ],
+  "limitations": [
+    "Small screen in Chromium; no physical handset."
+  ],
+  "publication": {
+    "version": 28,
+    "version_id": "appgprj_6ae77e1b6da081918600675fc2e2b738~appgver_9f6fe221ca9c81918e84d42c04a5fb8e",
+    "deployment": "appgdep_6af313d2a0e0819197c4191adfdc22ad",
+    "status": "succeeded",
+    "source_commit": "02bccd706ef5856062a9d9c53d4cc19e3d8dcab3",
+    "url": "https://saltik-v2-matin-dore.ser-adrien.chatgpt.site"
+  },
+  "published_resources": [
+    {
+      "path": "src/ink-renderer.js",
+      "status": 200,
+      "sha256": "9235ddb9b845cbb9e6ec790df268cac7e568f6a471d324a61e71f69d2ff83695"
+    },
+    {
+      "path": "src/lunar-midground.js",
+      "status": 200,
+      "sha256": "4d7c144b6efb161b80cebf3481ee912955330d2d653faac43652e2f91e67a4a5"
+    },
+    {
+      "path": "src/lunar-pennants.js",
+      "status": 200,
+      "sha256": "d7bd1c6f82596227c0f415fec0f04d1487ee3a951a1ae67ea2f1379cc673169e"
+    },
+    {
+      "path": "src/ink-enemy-saltik.js",
+      "status": 200,
+      "sha256": "8e51901a15ccadbf6da5623e65d3da2a4a548816268e93e4a96df6ed1ff06131"
+    },
+    {
+      "path": "src/ink-carrier.js",
+      "status": 200,
+      "sha256": "d15e6cf5e086c18ae27edb8ae0a36bc5d3dafb97b57d08c3b44679ecf4aba161"
+    },
+    {
+      "path": "assets/lunar-pennant.png",
+      "status": 200,
+      "sha256": "1fc490f4d37d3dec6dd85f0500f34022ee2290b1fc8a4270809b08258c710087"
+    }
+  ]
+}

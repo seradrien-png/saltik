@@ -8,7 +8,7 @@ Les cinq états ci-dessous sont conservés dans des dossiers indépendants, sans
 
 | Jeu / sources | État réel | GitHub Pages après activation | Commit source |
 | --- | --- | --- | --- |
-| [SALTIK V2 — Matin Doré](versions/saltik-main) | Publiée v27 — 3 niveaux | [Jouer](https://seradrien-png.github.io/saltik/versions/saltik-main/dist/) | `f6268033d616` |
+| [SALTIK V2 — Matin Doré](versions/saltik-main) | Publiée v28 — 3 niveaux | [Jouer](https://seradrien-png.github.io/saltik/versions/saltik-main/dist/) | `02bccd706ef5` |
 | [SALTIK — Ink Edition publiée](versions/saltik-ink) | Publiée v4 | [Jouer](https://seradrien-png.github.io/saltik/versions/saltik-ink/dist/) | `44110aa2dd80` |
 | [SALTIK INK — brouillon local avec épilogue](versions/autres-versions/saltik-ink-brouillon) | Brouillon local non publié | [Jouer](https://seradrien-png.github.io/saltik/versions/autres-versions/saltik-ink-brouillon/dist/) | `21dcc4ca32c5` |
 | [Feral Steel — Opération Canopée, référence Saltik](versions/autres-versions/saltik-feral-steel) | Publiée v24 | [Jouer](https://seradrien-png.github.io/saltik/versions/autres-versions/saltik-feral-steel/dist/) | `dbc331d0b7a2` |
@@ -100,3 +100,9 @@ Les ennemis des Archives lunaires et des Jardins de velours reprennent les mati�
 Deux nouveaux plans opaques de maçonnerie et de roche occupent le bas de la vue, derrière la route et les personnages, avec deux vitesses de défilement. Le ciel conserve la grande lune, la tête de pierre et les architectures ; les écritures, diagrammes astronomiques et rubans flottants sont retirés. La base des nouveaux plans reprend la vraie texture de pierre sans étirement dans les creux du terrain. L’ancien panorama est conservé. Aucune modification du gameplay ou des autres niveaux.
 
 661 tests réussis ; six positions inspectées dans Chromium, tir tactile/pause/redémarrage validés sur petit écran, aucune erreur JS. Atlas converti en silhouettes aux surfaces entièrement opaques. Source `f6268033d616c2525b16be25e3f8527d8b704bfa`. [Bilan détaillé](lunar-low-depth-release.json) · [Jouer au niveau 2](https://saltik-v2-matin-dore.ser-adrien.chatgpt.site?level=2).
+
+### Niveau 2 — couches fixes et fanions, version 28
+
+Les deux nouveaux plans bas restent fixés au même repère que le terrain : même déplacement, altitude et dimensions constantes en coordonnées du monde. Les Saltiks ennemis portent deux fanions rouges à lune/laurier dorés, attachés aux vrais supports des pods ; ceux du porte-drone suivent ses plateformes. Leurs couleurs et tailles sont conservées. Aucun fanion ajouté aux niveaux 1 et 3, aucun changement de mécanique.
+
+664 tests réussis, six positions et six états de robots inspectés dans Chromium, petit écran et commandes validés, aucune erreur JS. Source `02bccd706ef5856062a9d9c53d4cc19e3d8dcab3`. [Bilan détaillé](lunar-pennants-release.json) · [Niveau 2](https://saltik-v2-matin-dore.ser-adrien.chatgpt.site?level=2).

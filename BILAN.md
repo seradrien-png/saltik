@@ -87,3 +87,7 @@ Source `808ac762df53ed0a001488865673fc92c9fb4848`, publication réussie le 10 no
 ## Niveau 2 — profondeur basse et ciel naturel, v27
 
 Source `f6268033d616c2525b16be25e3f8527d8b704bfa`, version 27 publiée le 10 novembre 2026. Deux plans opaques bas, ciel sans diagrammes ni rubans écrits, lune/visage/structures conservés. Aucun changement de la route physique, des personnages, des armes ou des autres missions. 524 fichiers du principal copiés et comparés ; cinq éditions totalisant 1573 fichiers et toutes les archives vérifiées. 661 tests réussis, six positions inspectées, petit écran et commandes validés, revue indépendante sans point restant après correction de la base dans la vallée. Voir lunar-low-depth-release.json.
+
+## Niveau 2 — couches fixes et fanions, v28
+
+Source `02bccd706ef5856062a9d9c53d4cc19e3d8dcab3`, version 28 publiée le 10 novembre 2026. Plans bas fixés au terrain, fanions rouges/or raccordés aux pods des Saltiks et plateformes du porte-drone. Couleurs, tailles, mécanique et autres missions préservées. 529 fichiers du principal comparés ; cinq éditions totalisant 1578 fichiers et toutes les archives vérifiées. 664 tests réussis, captures normales/miroir/KO et absence de nouveaux fanions aux niveaux 1/3 validées, commandes sur petit écran,0erreurJS, revue sans point restant. Voir lunar-pennants-release.json.

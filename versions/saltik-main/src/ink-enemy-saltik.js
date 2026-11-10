@@ -2,6 +2,7 @@ import {sampleSupportSurface} from './support-pose.js';
 import {plantInkWheel} from './ink-leg-support.js';
 import {drawInkEnemyPods,inkEnemyPodGeometry} from './ink-pods.js';
 import {inkHitImage} from './ink-hit-cache.js';
+import {drawLunarPennants} from './lunar-pennants.js';
 
 // Two native cream-and-ink views of the same four-legged enemy. Apertures are
 // measured in the 1983 × 793 reference atlas, so drawing and launches share pixels.
@@ -172,6 +173,7 @@ export function drawInkEnemySaltik(c,image,e,{camera=0,time=0,scale=1,view='side
   for(const [x,y] of [[607,541],[704,541]]){c.beginPath();c.ellipse(x+Math.sin(time*.8)*1.4,y,2.4,3.2,0,0,Math.PI*2);c.fill();}
  }
  c.restore();
+ drawLunarPennants(c,image,geo);
  drawInkEnemyPods(c,e,geo,{time});
  if(geo.view==='side')drawDefenseAndLock(c,e,geo,time);
  if(e.firePose>0&&geo.view==='side'){

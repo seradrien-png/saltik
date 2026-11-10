@@ -21,7 +21,7 @@ import {drawCarrierShutdown} from './carrier-shutdown-art.js';
 import {inkHitImage} from './ink-hit-cache.js';
 import {createMirvPreview} from './mirv-preview.js';
 const PAINT={...PASTEL_ENVIRONMENT_PAINT,...PASTEL_CHARACTER_PAINT};
-const BASE_ART=['lunar-low-depth','royal-rail-mask','royal-organic-landmarks','royal-foreground-props','lunar-hero-map','lunar-turn-map','royal-world','royal-velvet-ground','royal-flora','royal-structures','royal-quarter-bridge','royal-hero-map','royal-turn-map','boss-assault-atlas','lunar-natural-world','lunar-island-layers','lunar-sandstone','lunar-aqueduct','lunar-monuments','ink-canyon','ink-saltik','ink-enemies','ink-rock','ink-bridge','ink-turn','ink-observatory',...INK_LANDMARK_ASSETS.map(a=>a.name),'ink-enemy-saltik',INK_CARRIER_ASSET];
+const BASE_ART=['lunar-pennant','lunar-low-depth','royal-rail-mask','royal-organic-landmarks','royal-foreground-props','lunar-hero-map','lunar-turn-map','royal-world','royal-velvet-ground','royal-flora','royal-structures','royal-quarter-bridge','royal-hero-map','royal-turn-map','boss-assault-atlas','lunar-natural-world','lunar-island-layers','lunar-sandstone','lunar-aqueduct','lunar-monuments','ink-canyon','ink-saltik','ink-enemies','ink-rock','ink-bridge','ink-turn','ink-observatory',...INK_LANDMARK_ASSETS.map(a=>a.name),'ink-enemy-saltik',INK_CARRIER_ASSET];
 export const INK_ART_NAMES=[...BASE_ART,...Object.values(PAINT),...ENEMY_MATERIALS.map(v=>v.asset),'pastel-boss','pastel-boss-parts'];
 const images={},TAU=Math.PI*2,INK='#181815',PAPER='#EFE2BC';
 const hash=n=>{const v=Math.sin(n*127.1+311.7)*43758.5453;return v-Math.floor(v);};
@@ -57,6 +57,7 @@ export async function loadArt(onProgress=()=>{}){
   const material=await load(style.asset);images[style.name]=bakeEnemyArt(images[style.base],material);
   material.onload=material.onerror=null;material.src='';report();
  }
+ images['lunar-enemy-saltik'].lunarPennant=images['lunar-pennant'];images['lunar-carrier'].lunarPennant=images['lunar-pennant'];
  // Prime native hit flashes during loading, ahead of the first crowded fight.
  inkHitImage(images['ink-enemies']);inkHitImage(images['ink-enemy-saltik']);
  setInkTerrainTexture(images['ink-rock']);

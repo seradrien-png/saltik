@@ -9,13 +9,14 @@ export function drawLunarMidground(c,{camera,width,height,layers}){
  c.restore();
 }
 
-// Both opaque scenery planes sit behind the playable world and only occupy
-// the lower view. Native road samples bury their base beneath the real ground.
+// The new low planes share the road's world coordinates. Neither their size
+// nor their world elevation changes when the camera or viewport changes.
+const fixedGroundBounds=new WeakMap();
 export function lunarLowPlanes({camera,cameraY=0,width,height,groundAt}){
- const road=[];for(let x=-80;x<=width+160;x+=40)road.push(groundAt(camera+x)+cameraY);
- const floor=Math.max(...road)+180,ceiling=height*.55;
- return [{rate:.42,w:960,lift:190,row:0,capH:210,cut:.22},{rate:.7,w:1280,lift:115,row:1,capH:190,cut:.04}].map(p=>{
-  const y=Math.max(ceiling,Math.min(...road)-p.lift),h=Math.max(180,floor-y),first=Math.floor(camera*p.rate/p.w);
+ let bounds=fixedGroundBounds.get(groundAt);
+ if(!bounds){let floor=-Infinity;for(let x=0;x<=17800;x+=40)floor=Math.max(floor,groundAt(x));bounds={floor:floor+180,anchor:groundAt(180)};fixedGroundBounds.set(groundAt,bounds);}
+ return [{rate:1,w:960,lift:190,row:0,capH:210,cut:.22},{rate:1,w:1280,lift:115,row:1,capH:190,cut:.04}].map(p=>{
+  const y=bounds.anchor-p.lift+cameraY,h=bounds.floor-(y-cameraY),first=Math.floor(camera/p.w);
   const tiles=[];for(let i=first;i<=first+Math.ceil(width/p.w);i++)tiles.push({x:i*p.w-camera*p.rate,flip:Math.abs(i%2)===1});
   return {...p,y,h:Math.max(h,p.capH),tiles};
  });

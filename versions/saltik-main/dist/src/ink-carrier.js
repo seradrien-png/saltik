@@ -1,6 +1,7 @@
 import {sampleSupportSurface,computeSupportPose} from './support-pose.js';
 import {inkSaltikGeometry} from './ink-saltik.js';
 import {plantInkWheel} from './ink-leg-support.js';
+import {drawLunarPennants} from './lunar-pennants.js';
 
 // One intact approved painting serves the entire encounter. The raised, empty H
 // platforms belong to the carrier; normal drones remain independent actors.
@@ -123,7 +124,7 @@ export function drawInkCarrier(c,image,e,{camera=0,time=0,scale=1,handsImage=nul
  if(g.knockedOut){const [sx,sy]=g.serviceSocketNative,[px,py]=g.servicePortNative,outward=Math.sign(px-sx)||1;
   c.strokeStyle='#17242b';c.lineWidth=13;c.lineCap='round';c.beginPath();c.moveTo(sx,sy);c.bezierCurveTo(sx+outward*150,sy+45,px-outward*100,py-20,px,py);c.stroke();c.strokeStyle=e.neutralized?'#657477':'#9ee9df';c.lineWidth=4;c.stroke();
   c.fillStyle='#233138';c.strokeStyle='#161f25';c.lineWidth=5;c.beginPath();c.rect(px-22,py-17,44,34);c.fill();c.stroke();c.fillStyle='#d7c8a7';c.beginPath();c.rect(px-18,py-13,36,26);c.fill();c.stroke();
- }c.restore();koStars(c,g);
+ }c.restore();drawLunarPennants(c,image,g,true);koStars(c,g);
  if(e.firePose>0&&!g.knockedOut){c.save();c.translate(g.muzzle.x,g.muzzle.y);c.rotate(Math.atan2(g.muzzleDirection.y,g.muzzleDirection.x));c.scale(scale,scale);c.globalAlpha*=clamp(e.firePose/.14);c.fillStyle='#ffe6a6';c.strokeStyle='#405052';c.lineWidth=.8;c.beginPath();polygon(c,[[0,-1.8],[5,-4],[6,-1.6],[13,0],[6,1.6],[5,4],[0,1.8]]);c.fill();c.stroke();c.restore();}
  return g;
 }
