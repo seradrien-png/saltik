@@ -119,3 +119,7 @@ Au niveau 3, Saltik est agrandi de 20 % à toute profondeur (.96 près / .792 lo
 ### Échelle du niveau 2
 
 Saltik joueur : augmentation littérale de 0,10 % par rapport à la taille précédente (multiplicateur 1,001 ; échelle .8008). Tous les ennemis de cette mission sont réduits de 10 %, y compris les Saltiks, le porte-drone et ses drones déployés. Dessins, départs de tir et zones de collision utilisent le même facteur .9. Les niveaux 1 et 3 gardent leurs échelles.
+
+### Ennemis par univers
+
+Les niveaux 2 et 3 disposent de six cartes de matière dédiées : atlas des troupes, Saltik ennemi et porte-drone pour chaque mission. Les Archives lunaires reprennent l’émail, les gravures célestes et l’or du Striker lunaire ; les Jardins de velours reprennent le matelassage, le tissu et les broderies dorées du Striker royal. Les Saltiks ennemis conservent leur coque verte et leurs pattes/pods orange ; le porte-drone conserve son bleu et ses garnitures bleu clair. Les contours et l’alpha des dessins natifs, leurs articulations et leurs armes restent les références géométriques. Aucune modification des rencontres, comportements ou échelles approuvées ; le niveau 1 garde ses dessins.

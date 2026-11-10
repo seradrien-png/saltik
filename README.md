@@ -8,7 +8,7 @@ Les cinq états ci-dessous sont conservés dans des dossiers indépendants, sans
 
 | Jeu / sources | État réel | GitHub Pages après activation | Commit source |
 | --- | --- | --- | --- |
-| [SALTIK V2 — Matin Doré](versions/saltik-main) | Publiée v25 — 3 niveaux | [Jouer](https://seradrien-png.github.io/saltik/versions/saltik-main/dist/) | `ed9756349619` |
+| [SALTIK V2 — Matin Doré](versions/saltik-main) | Publiée v26 — 3 niveaux | [Jouer](https://seradrien-png.github.io/saltik/versions/saltik-main/dist/) | `808ac762df53` |
 | [SALTIK — Ink Edition publiée](versions/saltik-ink) | Publiée v4 | [Jouer](https://seradrien-png.github.io/saltik/versions/saltik-ink/dist/) | `44110aa2dd80` |
 | [SALTIK INK — brouillon local avec épilogue](versions/autres-versions/saltik-ink-brouillon) | Brouillon local non publié | [Jouer](https://seradrien-png.github.io/saltik/versions/autres-versions/saltik-ink-brouillon/dist/) | `21dcc4ca32c5` |
 | [Feral Steel — Opération Canopée, référence Saltik](versions/autres-versions/saltik-feral-steel) | Publiée v24 | [Jouer](https://seradrien-png.github.io/saltik/versions/autres-versions/saltik-feral-steel/dist/) | `dbc331d0b7a2` |
@@ -88,3 +88,9 @@ Nouveau blindé ivoire/orange avec quatre états et épave conservée au sol apr
 ## Échelle du niveau 2 — version 25 publiée
 
 Saltik joueur augmenté littéralement de 0,10 % (×1,001, échelle .8008) ; tous les ennemis de la mission réduits de 10 % (×.9), Saltiks et drones déployés compris. Les points de tir et zones de collision suivent les dessins. Échelles des niveaux 1 et 3 conservées. 655 tests réussis, six familles inspectées dans Chromium, téléphone émulé validé. [Jouer au niveau 2](https://saltik-v2-matin-dore.ser-adrien.chatgpt.site?level=2). [Bilan exact](lunar-scale-release.json). Source `ed97563496192fa2481f5d6b6a6bc963ed7a9697`.
+
+### Habillage des ennemis — version 26
+
+Les ennemis des Archives lunaires et des Jardins de velours reprennent les matières de leur Striker : émail et gravures célestes au niveau 2, velours matelassé et broderies dorées au niveau 3. Les Saltiks ennemis gardent leur vert/orange et le porte-drone son bleu. Contours natifs conservés pixel par pixel, aucune modification des comportements, rencontres ou tailles. Niveau 1 préservé.
+
+658 tests réussis ; six cartes de matière sans différence d’alpha ; douze scènes d’ennemis contrôlées dans Chromium, tir tactile/pause/redémarrage validés sur téléphone émulé. Source `808ac762df53ed0a001488865673fc92c9fb4848`, version 26 publiée. [Bilan détaillé](enemy-style-release.json). [Niveau 2](https://saltik-v2-matin-dore.ser-adrien.chatgpt.site?level=2) · [Niveau 3](https://saltik-v2-matin-dore.ser-adrien.chatgpt.site?level=3).

@@ -1,7 +1,8 @@
+import {ENEMY_MATERIALS,sceneArtImages,bakeEnemyArt} from './enemy-styles.js';
 import {bakeBridgeForeground} from './royal-bridge-front.js';
 import {drawRoyalBackdrop,drawRoyalWorld,drawRoyalForeground} from './royal-world.js';
 import {drawLunarMidground} from './lunar-midground.js';
-import {bakeRoyalArt,royalPlayerImages} from './royal-skin.js';
+import {bakeRoyalArt} from './royal-skin.js';
 import {drawLunarBackdrop,drawLunarWorld,drawLunarForeground} from './lunar-world.js';
 import {terrainHeight,clamp} from './engine.js';
 import {BASE_ZOOM,missionZoom,projectMissionCamera} from './mission-camera.js';
@@ -21,7 +22,7 @@ import {inkHitImage} from './ink-hit-cache.js';
 import {createMirvPreview} from './mirv-preview.js';
 const PAINT={...PASTEL_ENVIRONMENT_PAINT,...PASTEL_CHARACTER_PAINT};
 const BASE_ART=['royal-rail-mask','royal-organic-landmarks','royal-foreground-props','lunar-hero-map','lunar-turn-map','royal-world','royal-velvet-ground','royal-flora','royal-structures','royal-quarter-bridge','royal-hero-map','royal-turn-map','boss-assault-atlas','lunar-coherent-world','lunar-island-layers','lunar-sandstone','lunar-aqueduct','lunar-monuments','ink-canyon','ink-saltik','ink-enemies','ink-rock','ink-bridge','ink-turn','ink-observatory',...INK_LANDMARK_ASSETS.map(a=>a.name),'ink-enemy-saltik',INK_CARRIER_ASSET];
-export const INK_ART_NAMES=[...BASE_ART,...Object.values(PAINT),'pastel-boss','pastel-boss-parts'];
+export const INK_ART_NAMES=[...BASE_ART,...Object.values(PAINT),...ENEMY_MATERIALS.map(v=>v.asset),'pastel-boss','pastel-boss-parts'];
 const images={},TAU=Math.PI*2,INK='#181815',PAPER='#EFE2BC';
 const hash=n=>{const v=Math.sin(n*127.1+311.7)*43758.5453;return v-Math.floor(v);};
 export function inkBackdropTiles(camera,width,height,imageWidth,imageHeight){
@@ -29,7 +30,7 @@ export function inkBackdropTiles(camera,width,height,imageWidth,imageHeight){
  return [first,first+1].map(index=>({index,x:index*w-camera*.07,w,h,flip:Math.abs(index%2)===1}));
 }
 export async function loadArt(onProgress=()=>{}){
- let complete=0;const report=()=>onProgress(++complete/(BASE_ART.length+2));
+ let complete=0;const report=()=>onProgress(++complete/(BASE_ART.length+2+ENEMY_MATERIALS.length));
  const load=name=>new Promise((resolve,reject)=>{
   const image=new Image();image.decoding='async';image.onload=()=>resolve(image);image.onerror=()=>reject(new Error(`Image manquante : ${name}`));
   image.src=new URL(`../assets/${name}.png`,import.meta.url).href;
@@ -51,6 +52,10 @@ export async function loadArt(onProgress=()=>{}){
  images['royal-saltik']=bakeRoyalArt(images['ink-saltik'],images['royal-hero-map']);
  images['royal-turn']=bakeRoyalArt(images['ink-turn'],images['royal-turn-map']);
  images['ink-carrier']=images[INK_CARRIER_ASSET];
+ for(const style of ENEMY_MATERIALS){
+  const material=await load(style.asset);images[style.name]=bakeEnemyArt(images[style.base],material);
+  material.onload=material.onerror=null;material.src='';report();
+ }
  // Prime native hit flashes during loading, ahead of the first crowded fight.
  inkHitImage(images['ink-enemies']);inkHitImage(images['ink-enemy-saltik']);
  setInkTerrainTexture(images['ink-rock']);
@@ -108,7 +113,7 @@ export function createRenderer(canvas){
    const q=projectMissionCamera({cssWidth:canvas.width,cssHeight:canvas.height,zoom,game:g,playerTop:inkSaltikGeometry(g.player,{time:g.time}).bounds.y,view,intro:g.introElapsed<g.introDuration,dt,camera,cameraY,phone:canvas.clientWidth<900});
    ({width,height,camera,cameraY}=q);
   }
-  const playerImages=royalPlayerImages(images,g.level),royalArt={atlas:images['royal-structures'],bridge:images['royal-quarter-bridge'],ground:images['royal-velvet-ground'],flora:images['royal-flora'],organic:images['royal-organic-landmarks'],props:images['royal-foreground-props'],railFront:images['royal-bridge-front']};
+  const playerImages=sceneArtImages(images,g.level),royalArt={atlas:images['royal-structures'],bridge:images['royal-quarter-bridge'],ground:images['royal-velvet-ground'],flora:images['royal-flora'],organic:images['royal-organic-landmarks'],props:images['royal-foreground-props'],railFront:images['royal-bridge-front']};
   const time=view==='title'?now/1000:g.time;c.setTransform(canvas.width/width,0,0,canvas.height/height,0,0);c.clearRect(0,0,width,height);g.level===3?drawRoyalBackdrop(c,{camera,width,height,time,image:images['royal-world'],art:royalArt}):g.level===2?drawLunarBackdrop(c,{camera,width,height,time,image:images['lunar-coherent-world'],layers:images['lunar-island-layers'],art:{atlas:images['lunar-monuments'],bridge:images['lunar-aqueduct']}}):backdrop(time);
   if(g.level===2)drawLunarMidground(c,{camera,width,height,layers:images['lunar-island-layers']});
   c.save();if(g.shake>0&&view==='playing')c.translate(Math.sin(time*103)*Math.min(g.shake,6)*.3,Math.cos(time*119)*Math.min(g.shake,6)*.2);
@@ -116,7 +121,7 @@ export function createRenderer(canvas){
   if(g.level===3)drawRoyalWorld(c,g,{...opts,art:royalArt});else if(g.level===2)drawLunarWorld(c,g,{...opts,texture:images['lunar-sandstone'],art:{atlas:images['lunar-monuments'],bridge:images['lunar-aqueduct']}});else{drawInkRoutes(c,g,opts);drawInkGround(c,g,opts);drawInkObstacles(c,g,opts);}
   if(view!=='title'){
    for(const item of g.pickups){const x=item.x-camera;if(x<-20||x>width+20)continue;c.save();c.translate(x,item.y);c.fillStyle=INK;c.strokeStyle=PAPER;c.lineWidth=2;c.fillRect(-12,-13,24,26);c.strokeRect(-12,-13,24,26);c.fillStyle=PAPER;c.fillRect(-2,-8,4,16);c.fillRect(-8,-2,16,4);c.restore();}
-   for(const e of g.enemies)if(!(e.type==='saltik'&&e.neutralized)&&e.id!==g.duel?.enemyId&&e.x>camera-200&&e.x<camera+width+200){if(e.type==='saltik')drawInkEnemySaltik(c,images['ink-enemy-saltik'],e,{camera,time});else if(e.type==='carrier')drawInkCarrier(c,images['ink-carrier'],e,{camera,time,handsImage:images['ink-saltik']});else drawInkEnemy(c,images['ink-enemies'],e,{camera,time});}
+   for(const e of g.enemies)if(!(e.type==='saltik'&&e.neutralized)&&e.id!==g.duel?.enemyId&&e.x>camera-200&&e.x<camera+width+200){if(e.type==='saltik')drawInkEnemySaltik(c,playerImages['ink-enemy-saltik'],e,{camera,time});else if(e.type==='carrier')drawInkCarrier(c,playerImages['ink-carrier'],e,{camera,time,handsImage:images['ink-saltik']});else drawInkEnemy(c,playerImages['ink-enemies'],e,{camera,time});}
    drawInkBossTank(c,images,g.boss,{camera,time,breach:g.bossBreach});
    const paired=drawInkBossBreach(c,playerImages,g.bossBreach,g.boss,{camera,time,player:g.player});
    const disconnecting=drawCarrierShutdown(c,playerImages,g.carrierShutdown,g.enemies.find(e=>e.id===g.carrierShutdown?.enemyId),{camera,time,player:g.player});

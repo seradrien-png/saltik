@@ -1,0 +1,223 @@
+{
+  "source_commit": "808ac762df53ed0a001488865673fc92c9fb4848",
+  "complete_test_suite": {
+    "passed": 658,
+    "failed": 0
+  },
+  "browser": {
+    "states": [
+      {
+        "playerScale": 0.8008,
+        "type": "soldier",
+        "enemyScale": 0.9,
+        "enemyCount": 1,
+        "x": 8949.616666666667,
+        "level": 2
+      },
+      {
+        "playerScale": 0.8008,
+        "type": "walker",
+        "enemyScale": 0.9,
+        "enemyCount": 1,
+        "x": 8949.616666666667,
+        "level": 2
+      },
+      {
+        "playerScale": 0.8008,
+        "type": "turret",
+        "enemyScale": 0.9,
+        "enemyCount": 1,
+        "x": 8950,
+        "level": 2
+      },
+      {
+        "playerScale": 0.8008,
+        "type": "drone",
+        "enemyScale": 0.9,
+        "enemyCount": 1,
+        "x": 8949.8,
+        "level": 2
+      },
+      {
+        "playerScale": 0.8008,
+        "type": "saltik",
+        "enemyScale": 0.9,
+        "enemyCount": 1,
+        "x": 8950.922705871659,
+        "level": 2
+      },
+      {
+        "playerScale": 0.8008,
+        "type": "carrier",
+        "enemyScale": 0.9,
+        "enemyCount": 1,
+        "x": 8948.7,
+        "level": 2
+      },
+      {
+        "playerScale": 0.96,
+        "type": "soldier",
+        "enemyScale": null,
+        "enemyCount": 1,
+        "x": 8949.616666666667,
+        "level": 3
+      },
+      {
+        "playerScale": 0.96,
+        "type": "walker",
+        "enemyScale": null,
+        "enemyCount": 1,
+        "x": 8949.616666666667,
+        "level": 3
+      },
+      {
+        "playerScale": 0.96,
+        "type": "turret",
+        "enemyScale": null,
+        "enemyCount": 1,
+        "x": 8950,
+        "level": 3
+      },
+      {
+        "playerScale": 0.96,
+        "type": "drone",
+        "enemyScale": null,
+        "enemyCount": 1,
+        "x": 8949.8,
+        "level": 3
+      },
+      {
+        "playerScale": 0.96,
+        "type": "saltik",
+        "enemyScale": null,
+        "enemyCount": 1,
+        "x": 8950.922705871659,
+        "level": 3
+      },
+      {
+        "playerScale": 0.96,
+        "type": "carrier",
+        "enemyScale": null,
+        "enemyCount": 1,
+        "x": 8948.7,
+        "level": 3
+      }
+    ],
+    "native_entries_walked": [],
+    "errors": []
+  },
+  "phone": {
+    "menu": true,
+    "lunar_skin": true,
+    "firing": true,
+    "pause": true,
+    "restart": true,
+    "errors": []
+  },
+  "alpha": [
+    {
+      "name": "lunar-enemy-saltik",
+      "width": 1983,
+      "height": 793,
+      "alphaDifferences": 0,
+      "changedPixels": 360898
+    },
+    {
+      "name": "royal-enemy-saltik",
+      "width": 1983,
+      "height": 793,
+      "alphaDifferences": 0,
+      "changedPixels": 364164
+    },
+    {
+      "name": "lunar-enemies",
+      "width": 2172,
+      "height": 724,
+      "alphaDifferences": 0,
+      "changedPixels": 250599
+    },
+    {
+      "name": "royal-enemies",
+      "width": 2172,
+      "height": 724,
+      "alphaDifferences": 0,
+      "changedPixels": 251928
+    },
+    {
+      "name": "lunar-carrier",
+      "width": 1319,
+      "height": 1192,
+      "alphaDifferences": 0,
+      "changedPixels": 583110
+    },
+    {
+      "name": "royal-carrier",
+      "width": 1319,
+      "height": 1192,
+      "alphaDifferences": 0,
+      "changedPixels": 582394
+    }
+  ],
+  "review": "No Critical/Important/Minor findings after actual royal enemy screenshots.",
+  "changes": {
+    "level2": "Celestial enamel and engraved ornaments matching lunar Striker",
+    "level3": "Velvet quilting and gold embroidery matching royal Striker",
+    "saltik_colors": "olive green / orange",
+    "carrier_colors": "blue / light blue",
+    "gameplay_and_scales": "preserved",
+    "level1": "preserved"
+  },
+  "limitations": [
+    "Emulated phone; no physical handset test."
+  ],
+  "publication": {
+    "version": 26,
+    "version_id": "appgprj_6ae77e1b6da081918600675fc2e2b738~appgver_ac0c69b89b248191b2605cb8f3c1b837",
+    "deployment": "appgdep_6af3079f0bb481919b2250687e04b894",
+    "status": "succeeded",
+    "source_commit": "808ac762df53ed0a001488865673fc92c9fb4848",
+    "url": "https://saltik-v2-matin-dore.ser-adrien.chatgpt.site"
+  },
+  "published_resources": [
+    {
+      "path": "src/enemy-styles.js",
+      "status": 200,
+      "sha256": "c6fbfd4e2ba732d54408c7af95ce531e915100d5c9e3594e2f51cffb3d90c922"
+    },
+    {
+      "path": "src/ink-renderer.js",
+      "status": 200,
+      "sha256": "0e16a6982314fec974c431f96efb2707881ca6a3238ef4a34c36fb1bbfae87f5"
+    },
+    {
+      "path": "assets/lunar-enemies-material.png",
+      "status": 200,
+      "sha256": "453bd69bb1d3ad19d3154e26b553424faea97d91ed1eaa1ecd5f9fa64aedf40f"
+    },
+    {
+      "path": "assets/lunar-enemy-saltik-material.png",
+      "status": 200,
+      "sha256": "079f0e1054cfcf42b6d70af15791ecb25f462684200b8a0fccc7620b31639db0"
+    },
+    {
+      "path": "assets/lunar-carrier-material.png",
+      "status": 200,
+      "sha256": "782fedebf99e2772780cf63a8301df78f4c10bb5a0a39f565fd11abb14bb2042"
+    },
+    {
+      "path": "assets/royal-enemies-material.png",
+      "status": 200,
+      "sha256": "2b0f4686130eca0d3696b6605788079e29e94651aebd60bc8ebdbce38a0e168a"
+    },
+    {
+      "path": "assets/royal-enemy-saltik-material.png",
+      "status": 200,
+      "sha256": "efa7b6189c4b09dce29f88d34a71a5453a67e38f42c8dcb8fa4583214d8d300b"
+    },
+    {
+      "path": "assets/royal-carrier-material.png",
+      "status": 200,
+      "sha256": "21d98f3dc8b9cc3ec4de241365b178225a716f02736b6bfe2c37ede8ed78927c"
+    }
+  ]
+}

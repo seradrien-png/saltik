@@ -79,3 +79,7 @@ Nouveau blindé ivoire/orange avec quatre états et épave conservée au sol apr
 ## Échelle du niveau 2 — version 25 publiée
 
 Saltik joueur augmenté littéralement de 0,10 % (×1,001, échelle .8008) ; tous les ennemis de la mission réduits de 10 % (×.9), Saltiks et drones déployés compris. Les points de tir et zones de collision suivent les dessins. Échelles des niveaux 1 et 3 conservées. 655 tests réussis, six familles inspectées dans Chromium, téléphone émulé validé. [Jouer au niveau 2](https://saltik-v2-matin-dore.ser-adrien.chatgpt.site?level=2). [Bilan exact](lunar-scale-release.json). Source `ed97563496192fa2481f5d6b6a6bc963ed7a9697`.
+
+## Habillage des ennemis — v26
+
+Source `808ac762df53ed0a001488865673fc92c9fb4848`, publication réussie le 10 novembre 2026. Six cartes de matière propres aux niveaux 2/3, sélection en combat et dans les interactions existantes ; silhouettes, couleurs respectives, échelles et gameplay préservés. 520 fichiers du jeu principal copiés et comparés ; cinq éditions totalisant 1569 fichiers et toutes les archives historiques vérifiées. Les autres éditions sont inchangées. Validation : 658 tests, douze scènes visibles, alpha natif identique pour les six textures, tir tactile/pause/redémarrage et revue indépendante sans point restant. Voir enemy-style-release.json.
