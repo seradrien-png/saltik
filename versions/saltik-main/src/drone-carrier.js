@@ -124,7 +124,7 @@ function deployEscort(e,drones,dt,deployments,events){
   if(bayIndex<0)return;
   const mouth=e.bayMuzzles[bayIndex];
   deployments.push({type:'drone',carrierId:e.id,slot,bayIndex,x:mouth.x,y:mouth.y,
-    dockOffsetX:mouth.x-e.x,dockOffsetY:mouth.y-e.y,scale:1,dir:e.dir,
+    dockOffsetX:mouth.x-e.x,dockOffsetY:mouth.y-e.y,scale:1,...(e.artScale?{artScale:e.artScale}:{}),dir:e.dir,
     hp:3,maxHp:3,vx:0,vy:0,phase:slot*1.7,hit:0,firePose:0,
     carrierState:'docked',dockElapsed:0,dockDuration:CARRIER_DOCK_SECONDS,undockElapsed:0,undockDuration:CARRIER_UNDOCK_SECONDS,
     role:'screen',roleElapsed:0,swarmElapsed:0,cooldown:1.1,harmless:false,retired:false});

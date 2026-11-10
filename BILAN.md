@@ -74,3 +74,8 @@ Nouveau blindé ivoire/orange avec quatre états et épave conservée au sol apr
 [Niveau 3](https://saltik-v2-matin-dore.ser-adrien.chatgpt.site?level=3) : Saltik agrandi de 20 % à toute profondeur, poteaux et rambardes proches réellement devant lui, trois formes praticables nouvelles (racine arquée, roue à eau, racines autour d’une bobine), végétation plus dense et neuf grands objets opaques de premier plan pouvant le masquer brièvement. Les pixels de la rambarde proviennent du pont d’origine via un masque complet, sans décalage de texture. [Niveau 2](https://saltik-v2-matin-dore.ser-adrien.chatgpt.site?level=2) : nouveau Saltik ivoire/or, drapés lunaires rouges et lumières cyan d’après la photographie fournie. Ses animations et commandes sont conservées.
 
 651 tests réussis, deux campagnes terminées sans chute avec blindage natif, sept accès réellement parcourus dans Chromium, téléphone émulé et transition 2→3 validés, aucune erreur JS. Source `e7625a06befc829bd4a6a111ee495d3bcf7d8516`. [Bilan exact](density-release.json). Autres éditions, niveau 1 et architecture lunaire préservés.
+
+
+## Échelle du niveau 2 — version 25 publiée
+
+Saltik joueur augmenté littéralement de 0,10 % (×1,001, échelle .8008) ; tous les ennemis de la mission réduits de 10 % (×.9), Saltiks et drones déployés compris. Les points de tir et zones de collision suivent les dessins. Échelles des niveaux 1 et 3 conservées. 655 tests réussis, six familles inspectées dans Chromium, téléphone émulé validé. [Jouer au niveau 2](https://saltik-v2-matin-dore.ser-adrien.chatgpt.site?level=2). [Bilan exact](lunar-scale-release.json). Source `ed97563496192fa2481f5d6b6a6bc963ed7a9697`.

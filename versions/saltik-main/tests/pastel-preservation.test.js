@@ -17,6 +17,8 @@ test('V2 preserves V1 native pixels, walkable geometry, native motions and encou
    .replace('Number.isFinite(p.artScale)&&p.artScale!==1?floor(at+camera):',''));
   // Carrier cues are additive. Only the approved primary-shot lift changes the mix.
   if(path==='src/ink-actors.js')content=Buffer.from(content.toString()
+   // Only explicitly scaled lunar enemies change size; defaults remain native.
+   .replaceAll('*(e.artScale??1)','')
    // Numeric V1 ids retain the exact native animation; lunar text ids use a finite seed.
    .replace(' const bobSeed=Number.isFinite(e.id)?e.id:Number.isFinite(e.phase)?e.phase:0;\n const bob=walking?Math.sin(time*10+bobSeed)*.9:0;',
     ' const bob=walking?Math.sin(time*10+(e.id??0))*.9:0;'));

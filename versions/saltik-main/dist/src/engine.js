@@ -85,7 +85,7 @@ function emitSaltikVoiceCues(g){
     }
   }
 }
-export function combatBounds(e,time=0){if(e.type==='carrier')return inkCarrierGeometry(e,time).bounds;if(e.type==='saltik')return enemySaltikGeometry(e,time).bounds;if(e.w&&e.h)return{x:e.x-e.w/2,y:e.y-e.h,w:e.w,h:e.h};if(e.type==='boss')return bossGeometry(e).hitBounds;if(e.type==='drone'){const k=e.scale??1;return{x:e.x-34*k,y:e.y-22*k,w:68*k,h:44*k};}if(e.type==='crate')return{x:e.x-24,y:e.y-47,w:48,h:47};return enemyGeometry(e)?.bounds??{x:e.x-34,y:e.y-70,w:68,h:70};}
+export function combatBounds(e,time=0){if(e.artScale&&e.artScale!==1&&e.type!=='carrier'){const r=combatBounds({...e,artScale:undefined},time),k=e.artScale;return{x:e.x+(r.x-e.x)*k,y:e.y+(r.y-e.y)*k,w:r.w*k,h:r.h*k};}if(e.type==='carrier')return inkCarrierGeometry(e,time).bounds;if(e.type==='saltik')return enemySaltikGeometry(e,time).bounds;if(e.w&&e.h)return{x:e.x-e.w/2,y:e.y-e.h,w:e.w,h:e.h};if(e.type==='boss')return bossGeometry(e).hitBounds;if(e.type==='drone'){const k=e.scale??1;return{x:e.x-34*k,y:e.y-22*k,w:68*k,h:44*k};}if(e.type==='crate')return{x:e.x-24,y:e.y-47,w:48,h:47};return enemyGeometry(e)?.bounds??{x:e.x-34,y:e.y-70,w:68,h:70};}
 const bounds=combatBounds;
 // Slab intersection tests the entire motion segment, preventing tunnelling.
 function segmentRectInterval(x0,y0,x1,y1,r,pad=0){
@@ -433,6 +433,7 @@ function bossRocketVolley(g,b){
   emit(g,'boss-pod-volley',mouth.x,mouth.y,{count:8});
 }
 function spawn(g,s){
+  if(g.enemyArtScale)s={...s,artScale:g.enemyArtScale};
   const route=g.platforms.find(p=>p.id===s.platformId),y=s.type==='drone'?terrainAt(g,s.x)-140:route?surfaceHeight(route,s.x):terrainAt(g,s.x);
   if(s.type==='carrier'){g.enemies.push(createDroneCarrier(s,{y,random:random(g)}));return;}
   if(s.type==='saltik'){g.enemies.push(createEnemySaltik(s,{y,random:random(g)}));return;}

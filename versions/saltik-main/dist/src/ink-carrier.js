@@ -48,7 +48,7 @@ for(const part of INK_CARRIER_PARTS.legs){part.strutPolygon=halfPolygon(part.pol
 function rotate(point,pivot,a,dx=0){const x=point[0]+dx-pivot[0],y=point[1]-pivot[1],co=Math.cos(a),si=Math.sin(a);return[pivot[0]+x*co-y*si,pivot[1]+x*si+y*co];}
 
 export function inkCarrierGeometry(e,time=0,{camera=0,scale=1}={}){
- scale=Math.max(.01,finite(scale,1));const k=PIXEL_SCALE*scale,flip=e.dir===-1?-1:1,paintFlip=flip,x=finite(e.x)-camera,y=finite(e.y);
+ scale=Math.max(.01,finite(scale,1))*(e.artScale??1);const k=PIXEL_SCALE*scale,flip=e.dir===-1?-1:1,paintFlip=flip,x=finite(e.x)-camera,y=finite(e.y);
  const settled=!!(e.shutdownSettled||e.shuttingDown||e.neutralized),knockedOut=!!(e.knockedOut||settled),koTime=Math.max(0,finite(e.koElapsed)),koProgress=settled?1:knockedOut?smooth(koTime/.6):0;
  const powerFade=e.neutralized?(Number.isFinite(e.neutralizedAt)?clamp((time-e.neutralizedAt)/.6):1):0;
  const effectsTime=e.neutralized?finite(e.neutralizedAt,time):time;
@@ -107,7 +107,7 @@ function koEyes(c,g){
 }
 function koStars(c,g){for(const star of g.stars){if(star.alpha<=0)continue;c.save();c.globalAlpha*=star.alpha;c.translate(star.x,star.y);c.rotate(star.rotation);c.fillStyle='#edcf78';c.strokeStyle='#26373a';c.lineWidth=.8*g.scale;c.beginPath();polygon(c,Array.from({length:10},(_,i)=>{const a=-Math.PI/2+i*Math.PI/5,r=star.radius*(i%2?.43:1);return[Math.cos(a)*r,Math.sin(a)*r];}));c.fill();c.stroke();c.restore();}}
 export function drawInkCarrier(c,image,e,{camera=0,time=0,scale=1,handsImage=null}={}){
- if(!image)return null;const g=inkCarrierGeometry(e,time,{camera,scale}),draw=()=>nativeFrame(c,image);
+ if(!image)return null;const g=inkCarrierGeometry(e,time,{camera,scale}),draw=()=>nativeFrame(c,image);scale=g.scale;
  c.save();c.imageSmoothingEnabled=true;c.translate(g.x,g.y+g.heave+g.bodyDrop);c.rotate(g.tilt);c.scale(g.k*g.aspect*g.paintFlip,g.k);c.translate(-INK_CARRIER_ANCHOR[0],-INK_CARRIER_ANCHOR[1]);
  c.save();clipPart(c,rectangle(INK_CARRIER_CROP),[...g.legs,g.cannonPart,g.headPart,...g.hands]);draw();c.restore();
  for(const part of g.legs){

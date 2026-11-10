@@ -69,7 +69,7 @@ function rotatePoint(point,pivot,angle,offsetX=0){
 }
 
 export function inkEnemySaltikGeometry(e,time=0,{camera=0,scale=1,view='side'}={}){
- view=view==='front'?'front':'side';scale=Math.max(.01,finite(scale,1));
+ view=view==='front'?'front':'side';scale=Math.max(.01,finite(scale,1))*(e.artScale??1);
  const frame=INK_ENEMY_SALTIK_VIEWS[view]??INK_ENEMY_SALTIK_VIEWS.side;
  const k=PIXEL_SCALE*scale,flip=view==='front'?1:e.dir===-1?-1:1;
  const dodging=view==='side'&&e.guardFlash>0&&e.guardResponse==='dodge';
@@ -138,7 +138,7 @@ function polygon(c,points){c.moveTo(...points[0]);for(let i=1;i<points.length;i+
 
 export function drawInkEnemySaltik(c,image,e,{camera=0,time=0,scale=1,view='side'}={}){
  if(!image||e.hp<=0)return null;
- const geo=inkEnemySaltikGeometry(e,time,{camera,scale,view});
+ const geo=inkEnemySaltikGeometry(e,time,{camera,scale,view});scale=geo.scale;
  const hit=e.hit>0?inkHitImage(image):null;
  const draw=()=>c.drawImage(hit??image,...geo.crop,...geo.crop);
  c.save();c.translate(geo.x+geo.offsetX,geo.y+geo.heave+geo.bodyDrop);c.rotate(geo.rotation);

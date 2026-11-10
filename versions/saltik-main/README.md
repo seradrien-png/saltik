@@ -115,3 +115,7 @@ Le niveau 2 reçoit quelques îlots astronomiques opaques au plan intermédiaire
 Le Saltik lunaire du niveau 2 reprend la nouvelle référence ivoire/or, drapés rouges, motifs de lune et lumières cyan, avec atlas normal et trois vues de retournement aux coordonnées natives. Les autres apparences restent propres à leur mission.
 
 Au niveau 3, Saltik est agrandi de 20 % à toute profondeur (.96 près / .792 loin). Le pont possède désormais une passe de premier plan extraite de ses pixels d’origine : poteaux, cordes et bord proche masquent réellement Saltik, sans duplication décalée de texture. Trois anciens ensembles à escaliers sont remplacés par une racine arquée praticable, une roue à eau avec dos arrondi et un passage de racines autour d’une bobine. Des buissons plus fréquents et neuf grands objets de premier plan (lys, vase, bobine-lanterne, troncs) densifient le monde et masquent brièvement le joueur. Les troncs se prolongent hors de l’écran pour éviter un bord de découpe flottant. Les gros objets sont des éléments du premier plan, pas des obstacles physiques.
+
+### Échelle du niveau 2
+
+Saltik joueur : augmentation littérale de 0,10 % par rapport à la taille précédente (multiplicateur 1,001 ; échelle .8008). Tous les ennemis de cette mission sont réduits de 10 %, y compris les Saltiks, le porte-drone et ses drones déployés. Dessins, départs de tir et zones de collision utilisent le même facteur .9. Les niveaux 1 et 3 gardent leurs échelles.

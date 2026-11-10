@@ -7,15 +7,15 @@
       "slug": "saltik-main",
       "repo": "saltik-v2-matin-dore",
       "title": "SALTIK V2 — Matin Doré",
-      "commit": "e7625a06befc829bd4a6a111ee495d3bcf7d8516",
-      "published_version": 24,
+      "commit": "ed97563496192fa2481f5d6b6a6bc963ed7a9697",
+      "published_version": 25,
       "url": "https://saltik-v2-matin-dore.ser-adrien.chatgpt.site",
-      "base_commit": "e7625a06befc829bd4a6a111ee495d3bcf7d8516",
+      "base_commit": "ed97563496192fa2481f5d6b6a6bc963ed7a9697",
       "source_path": "/workspace/sites/saltik-v2-matin-dore",
       "export_path": "versions/saltik-main",
       "web_entry": "versions/saltik-main/dist/index.html",
-      "file_count": 509,
-      "bytes": 172244440,
+      "file_count": 510,
+      "bytes": 172248168,
       "uncommitted_changes": "",
       "files": {
         ".gitignore": {
@@ -27,8 +27,8 @@
           "size": 106
         },
         "README.md": {
-          "sha256": "78e9d54ae31283a1ca17277b7b014f782e4e85f85e14c1d0f80d28f9a295e61c",
-          "size": 19256
+          "sha256": "d4e5284220a222ab57ca2344ff989bec717786550087c9f9879b986260fc216d",
+          "size": 19655
         },
         "dist/android.html": {
           "sha256": "e9ac1d2184db443c2daaf0bd28e707aaac01eec5e711d674965cebb576345a16",
@@ -375,8 +375,8 @@
           "size": 952
         },
         "dist/src/drone-carrier.js": {
-          "sha256": "c0349da0597ec91ebde59e60114780618fc8071a36de66cda5ad828295f0a408",
-          "size": 15756
+          "sha256": "d8d973eea1cb1208581a133cecac62a82294708e8e587da909243067955da62b",
+          "size": 15797
         },
         "dist/src/duel-art.js": {
           "sha256": "1ca530c5aac585073b91205b45920dc6cfa6ed0d9e1dde0c2aea5bf8e66c56b5",
@@ -395,8 +395,8 @@
           "size": 7983
         },
         "dist/src/engine.js": {
-          "sha256": "89e4f41812af928f1fd1394434696de2af7cf44cccbe4bd4cbf9298383a51b06",
-          "size": 71690
+          "sha256": "8871bb2d4aa4c73251c8b061fd3caacb0ef4a33c95ffe082e13fed60799158c7",
+          "size": 71924
         },
         "dist/src/evasion.js": {
           "sha256": "3b9e6a5daafd5098d12f20a67279e98eca7b85ef500b79b67ea5862199992aeb",
@@ -407,16 +407,16 @@
           "size": 14682
         },
         "dist/src/ink-actors.js": {
-          "sha256": "2f035047ce8795374b3d191f652c0b64e3a607e3d557a0439fe99bf7b45269cf",
-          "size": 5041
+          "sha256": "973d744306eb34f4806d67e56cb9b6b7eff8648b760ce34ee6731f09d6a60435",
+          "size": 5169
         },
         "dist/src/ink-campaign-art.js": {
           "sha256": "77cae3fa716cf5d1477227d7d27493309b8e391792886dca9c9a32b1f37b4b4d",
           "size": 3054
         },
         "dist/src/ink-carrier.js": {
-          "sha256": "001454b3fd004f65c6429e1d805b3e91e014ffc23bd865bb5b81f0305bea9bbc",
-          "size": 15981
+          "sha256": "6e99319e53245687709c53bcbb8309f8155ce98b9fa8ae670390ddbf2463e3b9",
+          "size": 16011
         },
         "dist/src/ink-demo-layout.js": {
           "sha256": "e2156f8e84940379a5ea760a155f15e1ac6e0bd9e02c3456946b6c31617ee8b1",
@@ -427,8 +427,8 @@
           "size": 34495
         },
         "dist/src/ink-enemy-saltik.js": {
-          "sha256": "e2781064a6bf64cbf9a7f38ebc1e7b805d61e890a8a57e06090ba161db35d44a",
-          "size": 13843
+          "sha256": "661ed8e684cff445e7527419cd4ad0b0a720e2bc1f55a24721cead7d9e8d3965",
+          "size": 13875
         },
         "dist/src/ink-hit-cache.js": {
           "sha256": "7e9903deb9b50802faa19d302bb0c118da012ebf4213be0882c5bc493b113a80",
@@ -483,8 +483,8 @@
           "size": 4376
         },
         "dist/src/lunar-level.js": {
-          "sha256": "01f55ff83731aa11aad43b9ff930078b5176ffac7918e41e605b8630231236bb",
-          "size": 5896
+          "sha256": "de672b81f052e45c87b6c8b2cf1fcb0bcf609d6b306b737dc9d56302c5e1322f",
+          "size": 5921
         },
         "dist/src/lunar-midground.js": {
           "sha256": "1fe53f5eee4a27418eddf5bf97be1ffcc4b0529959f1e9d7939742180951254e",
@@ -1303,8 +1303,8 @@
           "size": 952
         },
         "src/drone-carrier.js": {
-          "sha256": "c0349da0597ec91ebde59e60114780618fc8071a36de66cda5ad828295f0a408",
-          "size": 15756
+          "sha256": "d8d973eea1cb1208581a133cecac62a82294708e8e587da909243067955da62b",
+          "size": 15797
         },
         "src/duel-art.js": {
           "sha256": "1ca530c5aac585073b91205b45920dc6cfa6ed0d9e1dde0c2aea5bf8e66c56b5",
@@ -1323,8 +1323,8 @@
           "size": 7983
         },
         "src/engine.js": {
-          "sha256": "89e4f41812af928f1fd1394434696de2af7cf44cccbe4bd4cbf9298383a51b06",
-          "size": 71690
+          "sha256": "8871bb2d4aa4c73251c8b061fd3caacb0ef4a33c95ffe082e13fed60799158c7",
+          "size": 71924
         },
         "src/evasion.js": {
           "sha256": "3b9e6a5daafd5098d12f20a67279e98eca7b85ef500b79b67ea5862199992aeb",
@@ -1335,16 +1335,16 @@
           "size": 14682
         },
         "src/ink-actors.js": {
-          "sha256": "2f035047ce8795374b3d191f652c0b64e3a607e3d557a0439fe99bf7b45269cf",
-          "size": 5041
+          "sha256": "973d744306eb34f4806d67e56cb9b6b7eff8648b760ce34ee6731f09d6a60435",
+          "size": 5169
         },
         "src/ink-campaign-art.js": {
           "sha256": "77cae3fa716cf5d1477227d7d27493309b8e391792886dca9c9a32b1f37b4b4d",
           "size": 3054
         },
         "src/ink-carrier.js": {
-          "sha256": "001454b3fd004f65c6429e1d805b3e91e014ffc23bd865bb5b81f0305bea9bbc",
-          "size": 15981
+          "sha256": "6e99319e53245687709c53bcbb8309f8155ce98b9fa8ae670390ddbf2463e3b9",
+          "size": 16011
         },
         "src/ink-demo-layout.js": {
           "sha256": "e2156f8e84940379a5ea760a155f15e1ac6e0bd9e02c3456946b6c31617ee8b1",
@@ -1355,8 +1355,8 @@
           "size": 34495
         },
         "src/ink-enemy-saltik.js": {
-          "sha256": "e2781064a6bf64cbf9a7f38ebc1e7b805d61e890a8a57e06090ba161db35d44a",
-          "size": 13843
+          "sha256": "661ed8e684cff445e7527419cd4ad0b0a720e2bc1f55a24721cead7d9e8d3965",
+          "size": 13875
         },
         "src/ink-hit-cache.js": {
           "sha256": "7e9903deb9b50802faa19d302bb0c118da012ebf4213be0882c5bc493b113a80",
@@ -1411,8 +1411,8 @@
           "size": 4376
         },
         "src/lunar-level.js": {
-          "sha256": "01f55ff83731aa11aad43b9ff930078b5176ffac7918e41e605b8630231236bb",
-          "size": 5896
+          "sha256": "de672b81f052e45c87b6c8b2cf1fcb0bcf609d6b306b737dc9d56302c5e1322f",
+          "size": 5921
         },
         "src/lunar-midground.js": {
           "sha256": "1fe53f5eee4a27418eddf5bf97be1ffcc4b0529959f1e9d7939742180951254e",
@@ -1878,6 +1878,10 @@
           "sha256": "1a6a8fb4e77ecff5e1e5ee0882e6afc818f80914918561ac5fc97a2cb8b7b2ed",
           "size": 1507
         },
+        "tests/lunar-enemy-scale.test.js": {
+          "sha256": "70c0d0f1927c6a329ee1ba957e02ffb8ae9726b967e095c04bef7fc3146a02ff",
+          "size": 2208
+        },
         "tests/lunar-enemy-visibility.test.js": {
           "sha256": "031322ab0f2724f55a0028253dd555338b2ed9525d41db46d15f46dabaf78c2c",
           "size": 528
@@ -1887,8 +1891,8 @@
           "size": 7019
         },
         "tests/lunar-scale.test.js": {
-          "sha256": "67b5e98fdc8177c258db069f683b4517091d93140b305423c9f0af6273dee04a",
-          "size": 1976
+          "sha256": "e5ae6d43a93775c1fe33e92fe126fc5e2a735d3b4b6ff42c04b9c7afabb649f2",
+          "size": 1993
         },
         "tests/manual-controls.test.js": {
           "sha256": "aa25357e0c836e0528d860c831e23d52d41bebc84732ea558ef240068c461a89",
@@ -1947,8 +1951,8 @@
           "size": 1507
         },
         "tests/pastel-preservation.test.js": {
-          "sha256": "8e8be57a8fa9ca63c7af5e41bfb9a19148e0b4603b4b68a7b0ab4306d67e9940",
-          "size": 2724
+          "sha256": "bb8c39d4d9386fd59e9047ede33f2617e2f86a70377b8a70a9d1cf62c07d4719",
+          "size": 2842
         },
         "tests/pastel-rider.test.js": {
           "sha256": "969e183bb7a0573ab07b43dbac3990e1cf1a2fd28c0bc32f2f6a51cb665d11c5",
@@ -1987,8 +1991,8 @@
           "size": 1639
         },
         "tests/royal-density.test.js": {
-          "sha256": "c5474284f546dbe80a6f4c4481ce81d9ef8f85ae854d02e69e5bd0b5944f99aa",
-          "size": 2279
+          "sha256": "9853df3b26719bcdb4d907f113de6b9ad537b9a8001c57aafd7888937d5883fd",
+          "size": 2285
         },
         "tests/royal-level.test.js": {
           "sha256": "241d948fe1883475dc0cbab68d79956795835b7cc74879f6dea4b64c5ef6a137",
@@ -2067,7 +2071,7 @@
         }
       ],
       "update_note": "Level2 Archives lunaires, menu/after-level1 access, primary cannon gain +20 percent; Sites v17 deployment succeeded.",
-      "published_source_commit": "e7625a06befc829bd4a6a111ee495d3bcf7d8516",
+      "published_source_commit": "ed97563496192fa2481f5d6b6a6bc963ed7a9697",
       "publication_status": "succeeded",
       "github_import_base": "4c9b8e64bf3232c222f9b6f534ca37d660da3f7b"
     },

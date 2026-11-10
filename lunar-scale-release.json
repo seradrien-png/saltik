@@ -1,0 +1,104 @@
+{
+  "publication": {
+    "version": 25,
+    "version_id": "appgprj_6ae77e1b6da081918600675fc2e2b738~appgver_6beb1b9cec308191a3d709b5d532fc0b",
+    "deployment": "appgdep_6af2cc293df481919336f2938a588d09",
+    "status": "succeeded",
+    "source_commit": "ed97563496192fa2481f5d6b6a6bc963ed7a9697",
+    "url": "https://saltik-v2-matin-dore.ser-adrien.chatgpt.site"
+  },
+  "complete_test_suite": {
+    "passed": 655,
+    "failed": 0
+  },
+  "browser": {
+    "states": [
+      {
+        "playerScale": 0.8008,
+        "type": "soldier",
+        "enemyScale": 0.9
+      },
+      {
+        "playerScale": 0.8008,
+        "type": "walker",
+        "enemyScale": 0.9
+      },
+      {
+        "playerScale": 0.8008,
+        "type": "turret",
+        "enemyScale": 0.9
+      },
+      {
+        "playerScale": 0.8008,
+        "type": "drone",
+        "enemyScale": 0.9
+      },
+      {
+        "playerScale": 0.8008,
+        "type": "saltik",
+        "enemyScale": 0.9
+      },
+      {
+        "playerScale": 0.8008,
+        "type": "carrier",
+        "enemyScale": 0.9
+      }
+    ],
+    "native_entries_walked": [],
+    "phone": {
+      "menu": true,
+      "lunar_skin": true,
+      "firing": true,
+      "pause": true,
+      "restart": true
+    },
+    "errors": []
+  },
+  "published_resources": [
+    {
+      "path": "src/lunar-level.js",
+      "status": 200,
+      "sha256": "de672b81f052e45c87b6c8b2cf1fcb0bcf609d6b306b737dc9d56302c5e1322f"
+    },
+    {
+      "path": "src/engine.js",
+      "status": 200,
+      "sha256": "8871bb2d4aa4c73251c8b061fd3caacb0ef4a33c95ffe082e13fed60799158c7"
+    },
+    {
+      "path": "src/ink-actors.js",
+      "status": 200,
+      "sha256": "973d744306eb34f4806d67e56cb9b6b7eff8648b760ce34ee6731f09d6a60435"
+    },
+    {
+      "path": "src/ink-enemy-saltik.js",
+      "status": 200,
+      "sha256": "661ed8e684cff445e7527419cd4ad0b0a720e2bc1f55a24721cead7d9e8d3965"
+    },
+    {
+      "path": "src/ink-carrier.js",
+      "status": 200,
+      "sha256": "6e99319e53245687709c53bcbb8309f8155ce98b9fa8ae670390ddbf2463e3b9"
+    },
+    {
+      "path": "src/drone-carrier.js",
+      "status": 200,
+      "sha256": "d8d973eea1cb1208581a133cecac62a82294708e8e587da909243067955da62b"
+    },
+    {
+      "path": "src/royal-level.js",
+      "status": 200,
+      "sha256": "4837ecbf243cc65f171759a417441ddba09255cd135d6f2a02c9f0f17634dcae"
+    }
+  ],
+  "review": {
+    "important_findings_remaining": 0
+  },
+  "player_increase_percent": 0.1,
+  "player_multiplier": 1.001,
+  "lunar_player_scale": 0.8008,
+  "enemy_multiplier": 0.9,
+  "all_enemies_including_carrier_escorts": true,
+  "other_levels_unchanged": true,
+  "source_files": 510
+}
