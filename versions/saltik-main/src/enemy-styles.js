@@ -8,8 +8,10 @@ export const ENEMY_MATERIALS=Object.freeze([
  {name:'royal-carrier',base:'ink-carrier',asset:'royal-carrier-material'},
 ]);
 const sets={2:{'ink-enemies':'lunar-enemies','ink-enemy-saltik':'lunar-enemy-saltik','ink-carrier':'lunar-carrier'},3:{'ink-enemies':'royal-enemies','ink-enemy-saltik':'royal-enemy-saltik','ink-carrier':'royal-carrier'}};
-export function sceneArtImages(images,level){
- const player=royalPlayerImages(images,level),set=sets[level];if(!set)return player;
+export function sceneArtImages(images,level,character){
+ let player=royalPlayerImages(images,level);const set=sets[level];
+ if(character==='gatling')player={...player,'ink-saltik':images[level===2?'gatling-lunar':level===3?'gatling-velvet':'gatling-snow']??images['ink-saltik'],'ink-turn':null};
+ if(!set)return player;
  const result={...player};for(const [native,name] of Object.entries(set))result[native]=images[name]??images[native];return result;
 }
 export function applyEnemyMaterialPixels(base,paint){

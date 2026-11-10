@@ -9,6 +9,7 @@ import {inkEnemySaltikGeometry} from './ink-enemy-saltik.js';
 export const INK_SCENE_END=LEVEL_END;
 export function inkWeaponGeometry(p,time){
  const pose=inkSaltikGeometry(p,{time,scale:p.evasion?.active ? .92 : 1});
+ if(p.character==='gatling')return {...pose,armDirection:pose.gatlingDirections[0],cannonDirection:{x:p.dir===-1?-1:1,y:0},tubes:pose.rocketMuzzles,cabinTubes:pose.rocketMuzzles.map(muzzle=>({muzzle,base:{x:muzzle.x-(p.dir===-1?-8:8),y:muzzle.y}}))};
  const armBase=pose.coaxPoint(pose.coaxPart.pivot),dx=pose.arm.x-armBase.x,dy=pose.arm.y-armBase.y,length=Math.hypot(dx,dy)||1;
  const armDirection={x:dx/length,y:dy/length};
  const tubes=inkPlayerPodGeometry(p,pose).filter(slot=>slot.activeIndex>=0).sort((a,b)=>a.activeIndex-b.activeIndex).map(slot=>({muzzle:slot.muzzle,base:slot.base}));

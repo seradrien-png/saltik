@@ -29,6 +29,8 @@ import {createDroneCarrier,damageDroneCarrier,isCarrierTargetable,advanceDroneCa
 import {createCarrierShutdown,advanceCarrierShutdown,CARRIER_SHUTDOWN_PHASE_SECONDS} from './carrier-shutdown.js';
 import {inkCarrierGeometry,carrierShutdownPlacement} from './ink-carrier.js';
 import {MIRV_SPLASH,MIRV_STEP,MIRV_AIM_MIN,MIRV_AIM_MAX,MIRV_AIM_PERIOD,MIRV_TAP_TIME,mirvLaunch,advanceMirvBallistic,shouldSplitMirv,splitMirv} from './mirv-trajectory.js';
+import {initializeGatling,stopGatling,gatlingCanFire,advanceGatling} from './gatling-combat.js';
+export {initializeGatling} from './gatling-combat.js';
 const HULL_HALF=58;
 const PLAYER_COLLISION_SCALE=1.25;
 // Artwork scale can change without changing the original combat ballistics.
@@ -38,16 +40,18 @@ const CANNON_ELEVATION=Math.atan2(600,325);
 export function clearPlayerWeaponQueue(p){
   p.weaponQueue={fire:false,missile:false,homing:false};
   p.weaponHeld={fire:false,missile:false,homing:false};
+  stopGatling(p);
   cancelMirvAim(p);
 }
 function random(g){g.seed=(Math.imul(g.seed,1664525)+1013904223)>>>0;return g.seed/4294967296;}
-export function createGame({seed=92741,intro=false}={}) {
+export function createGame({seed=92741,intro=false,character}={}) {
   // Armor stays on the canyon's 100-point scale; feet are the world-space y.
   const player={x:180,y:terrainHeight(180),vx:0,vy:0,dir:1,hp:100,maxHp:100,w:76*PLAYER_COLLISION_SCALE,h:54*PLAYER_COLLISION_SCALE,
     onGround:true,tier:0,platformId:null,obstacleId:null,bossSupport:null,bossPush:false,dropThrough:null,invulnerable:0,damagePose:false,
     fireIn:0,fireSpent:0,reloadIn:0,mirvIn:0,mirvPending:false,mirvAiming:false,mirvAimElapsed:0,mirvPrepareFrom:0,mirvPrepare:0,mirvDuration:0,cannonElevation:0,cannonHold:0,cannonReturnFrom:0,cannonReturnElapsed:0,turretLift:0,turretReturnFrom:0,turretReturnElapsed:0,homingIn:0,muzzle:0,mirvFlash:0,homingFlash:0,aim:0,crouching:false,
     evasion:createEvasionState(),shiftHeld:false,tilt:0,landingCompression:0,supportY:terrainHeight(180),supportPose:null,supportClearance:Infinity,turn:null,melee:createMeleeState(),
     weaponQueue:{fire:false,missile:false,homing:false},weaponHeld:{fire:false,missile:false,homing:false}};
+  if(character==='gatling'){player.character=character;initializeGatling(player);}
   const schedule=[];let id=10;
   for(let x=1350,i=0;x<16000;x+=680,i++){
     const type=['walker','drone','turret','soldier','drone'][i%5];
@@ -449,11 +453,13 @@ function movePlayer(g,input,dt){
   const p=g.player;
   if(p.bossSupport&&g.boss?.hp>0){p.x+=g.boss.dx||0;p.y+=g.boss.dy||0;}
   const oldX=p.x,oldY=p.y;
-  const jumpNow=input.jump&&!g.jumpHeld;
+  const firingLock=p.character==='gatling'&&gatlingCanFire(p,input);
+  const jumpNow=input.jump&&!g.jumpHeld&&!firingLock;
   p.crouching=!!input.crouch&&p.onGround&&!jumpNow;p.h=(p.crouching?30:54)*PLAYER_COLLISION_SCALE;
-  const move=(input.right?1:0)-(input.left?1:0);p.turn??=createTachikomaTurn(p.dir);
+  const move=firingLock?0:(input.right?1:0)-(input.left?1:0);p.turn??=createTachikomaTurn(p.dir);
   p.vx=move*(p.crouching?100:230);if(move)p.dir=move;advanceTachikomaTurn(p.turn,p.dir,dt);
-  const dropping=input.drop&&!g.dropHeld&&p.onGround&&(p.platformId||p.bossSupport||p.rampId);
+  if(firingLock){const streak=p.gatling.sustained;p.vx=-p.dir*12*Math.max(0,Math.min(dt,streak+dt-2))/dt;}
+  const dropping=!firingLock&&input.drop&&!g.dropHeld&&p.onGround&&(p.platformId||p.bossSupport||p.rampId);
   if(dropping){p.dropThrough=p.rampId||p.platformId||`boss:${p.bossSupport}`;p.rampId=null;p.platformId=null;p.bossSupport=null;p.onGround=false;p.vy=45;emit(g,'drop',p.x,p.y);}
   // Original immediate jump response; canyon gravity/apex retain all 3 routes.
   else if(jumpNow&&p.onGround){p.vy=-720;p.onGround=false;p.rampId=null;p.platformId=null;p.obstacleId=null;p.bossSupport=null;p.landingCompression=0;emit(g,'jump',p.x,p.y);}
@@ -574,7 +580,27 @@ function updateInkMirv(g,input,dt,locked){
  }
  p.weaponHeld.missile=held;
 }
+function updateGatlingWeapons(g,input,dt){
+  const p=g.player;
+  advanceGatling(p,input,dt,{
+    event:type=>emit(g,type,p.x,p.y-45),
+    shot:index=>{
+      const pose=g.weaponGeometry?.(p,g.time)??tachikomaGeometry(p,g.time),mount=pose.gatlingMuzzles?.[index]??pose.arm;
+      const a=aim(g,mount);
+      projectile(g,mount,{vx:Math.cos(a)*BULLET_SPEED,vy:Math.sin(a)*BULLET_SPEED,damage:.55,life:1.5,radius:3,kind:'bullet',gatling:true,gunIndex:index});
+      p.muzzle=.07;g.stats.shots++;emit(g,'gatling-shot',mount.x,mount.y,{dir:p.dir,gunIndex:index});
+    },
+    rocket:index=>{
+      const pose=g.weaponGeometry?.(p,g.time)??tachikomaGeometry(p,g.time),mount=pose.rocketMuzzles?.[index]??pose.cannon;
+      const a=(p.dir===1?0:Math.PI)+(random(g)*2-1)*.30,speed=410+random(g)*190;
+      projectile(g,mount,{vx:Math.cos(a)*speed,vy:Math.sin(a)*speed,damage:8,splash:46,life:2.8,radius:5,kind:'gatling-rocket',rocketIndex:index});
+      if(index===0)g.stats.mirvs++;emit(g,'gatling-rocket',mount.x,mount.y,{dir:p.dir,rocketIndex:index});
+    }
+  });
+  p.mirvIn=p.gatling.rocketRecharge;
+}
 function updatePlayerWeapons(g,input,dt){
+  if(g.player.character==='gatling'){updateGatlingWeapons(g,input,dt);return;}
   const p=g.player,defending=p.evasion.active,locked=defending||p.turn.active;
   const wasReloading=p.reloadIn>0,oldReload=p.reloadIn;
   let available=dt;
@@ -705,7 +731,7 @@ function deployMirv(g,shot,children){
 }
 function updateProjectiles(g,dt,playerMovement,collisionCache=null){
   if(!g.projectiles.length)return;
-  const children=[],pendingSplits=[],p=g.player,context=g.projectiles.some(s=>s.kind==='homing'||s.kind==='enemy-missile')?navigationContext(g):null,collisions=[],resolved=new Set();
+  const children=[],pendingSplits=[],p=g.player,context=g.projectiles.some(s=>s.kind==='homing'||s.kind==='enemy-missile'||s.kind==='gatling-rocket')?navigationContext(g):null,collisions=[],resolved=new Set();
   const liveTargets=collisionCache?collisionCache.targets.filter(entry=>{
     if(entry.target.hp<=0||!targetable(entry.target))return false;
     refreshCachedProjectileTarget(g,entry);
@@ -746,7 +772,7 @@ function updateProjectiles(g,dt,playerMovement,collisionCache=null){
     }
     const groundPad=shot.kind==='homing'||shot.kind==='enemy-missile'?shot.radius||0:0;
     let fraction=terrainImpact(g,x0,y0+groundPad,shot.x,shot.y+groundPad,groundPad?0:3);
-    if(shot.kind==='homing'||shot.kind==='enemy-missile'){
+    if(shot.kind==='homing'||shot.kind==='enemy-missile'||shot.kind==='gatling-rocket'){
       for(const blocker of context.blockers){
         if(blocker.obstacle)continue; // Live obstacle candidates already carry their actual damageable target.
         const t=segmentRect(x0,y0,shot.x,shot.y,blocker,shot.radius||0);
@@ -776,7 +802,7 @@ function updateProjectiles(g,dt,playerMovement,collisionCache=null){
     if(response==='avoid')continue;
     shot.x=point.x;shot.y=point.y;
     if(kind==='expire'){
-      if(shot.kind==='grenade'||shot.team==='enemy'&&shot.splash)areaBlast(g,point.x,point.y,shot.splash,shot.damage,{dt,fraction,team:shot.team,collisionCache});
+      if(shot.kind==='grenade'||shot.kind==='gatling-rocket'||shot.team==='enemy'&&shot.splash)areaBlast(g,point.x,point.y,shot.splash,shot.damage,{dt,fraction,team:shot.team,collisionCache});
       shot.life=0;continue;
     }
     if(kind==='player'){
@@ -966,6 +992,7 @@ export function update(g,input={},dt=1/60){
     return;
   }
   dt=clamp(Number.isFinite(dt)?dt:0,0,1/30);if(dt===0)return;g.time+=dt;const p=g.player;
+  if(p.character==='gatling'&&(g.bossBreach||g.carrierShutdown||g.duel||g.pendingVictory||g.introElapsed<g.introDuration))stopGatling(p);
   const bossHeld=!!input.bossAction;
   const bossPressed=!g.bossActionSuspended&&bossHeld&&!g.bossActionHeld;
   g.bossActionHeld=bossHeld;g.bossActionSuspended=false;
@@ -1019,6 +1046,9 @@ export function update(g,input={},dt=1/60){
   g.shake=Math.max(0,g.shake-dt*30);g.flash=Math.max(0,g.flash-dt);
   p.damagePose=g.flash>.17;
   if(g.boss?.hp>0)advanceBossTank(g.boss,dt,{viewport:g.viewport,groundAt:g.groundAt??terrainHeight});
+  // Eligibility before movement also gates firing later in this frame: a turn
+  // or evasion completing during physics must not fire after allowing input.
+  const gatlingFireEligible=p.character!=='gatling'||gatlingCanFire(p,input);
   const playerStart={x:p.x,y:p.y,vx:p.vx};movePlayer(g,input,dt);
   if(g.inkCampaign){advanceMotorMotion(p,dt,{previousVx:playerStart.vx,distance:p.x-playerStart.x});advancePlayerPods(g,dt);}
   if(p.evasion.active&&(!p.onGround||!input.shift))endEvasion(p.evasion);
@@ -1099,7 +1129,7 @@ export function update(g,input={},dt=1/60){
   emitSaltikVoiceCues(g);
   const meleeGrappler=g.enemies.find(e=>canGrapple(p,e));
   if(meleeGrappler){startDuel(g,meleeGrappler);return;}
-  updatePlayerWeapons(g,input,dt);
+  updatePlayerWeapons(g,gatlingFireEligible?input:{...input,fire:false},dt);
   if(!input.fire||p.evasion.active||p.turn.active)p.aim+=((p.dir===1?0:Math.PI)-p.aim)*Math.min(1,dt*10);
   for(const e of g.enemies)if(e.hp>0&&e.type!=='crate'&&!(e.type==='carrier'&&(e.disabled||e.neutralized))&&!e.harmless&&Math.abs(e.x-p.x)<70&&Math.abs(e.y-p.y)<75&&!meleeGuard(p,e))contactPlayer(g,10,dt);
   if(g.boss&&g.boss.hp>0){const b=g.boss;

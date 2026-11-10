@@ -44,7 +44,7 @@ export function drawInkProjectile(c,s,camera,time){
  c.save();c.lineCap='round';
  if(s.trail?.length>1){c.strokeStyle=`${color}AA`;c.lineWidth=3;c.beginPath();s.trail.forEach((p,i)=>i?c.lineTo(p.x-camera,p.y):c.moveTo(p.x-camera,p.y));c.stroke();}
  c.translate(s.x-camera,s.y);c.rotate(Math.atan2(s.vy,s.vx));c.strokeStyle=INK;c.fillStyle=color;c.lineWidth=1.5;
- if(['homing','mirv','enemy-missile','grenade'].includes(s.kind)){
+ if(['homing','mirv','enemy-missile','grenade','gatling-rocket'].includes(s.kind)){
   c.beginPath();c.moveTo(-9,-3);c.lineTo(7,-3);c.lineTo(12,0);c.lineTo(7,3);c.lineTo(-9,3);c.closePath();c.fill();c.stroke();
   c.fillStyle=s.kind==='mirv'?'#B7A4CC':INK;c.fillRect(-5,-5,3,10);c.fillStyle=PAPER;c.beginPath();c.moveTo(-10,-2);c.lineTo(-21-Math.sin(time*61)*4,0);c.lineTo(-10,2);c.fill();
  }else{c.fillStyle=PAPER;c.strokeStyle=color;c.lineWidth=1.4;c.beginPath();c.roundRect(-12,-2.2,19,4.4,2.2);c.fill();c.stroke();}

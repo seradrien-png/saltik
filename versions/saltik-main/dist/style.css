@@ -351,3 +351,31 @@ kbd{display:inline-flex;align-items:center;justify-content:center;min-width:19px
 #app[data-level="3"] .level-choice[aria-pressed="true"]{background:#f4c25e;color:#35122e;border-color:#ffe6a3}
 #app[data-level="3"] .mission-status{background:#281039;color:#ffe0a1;border-color:#d9ad55}
 @media(max-height:520px){.level-choice{font-size:9px;padding:5px;min-height:38px}.level-choice small{font-size:7px;letter-spacing:.8px}}
+/* Two Saltiks share the campaign and retain their own weapon vocabulary. */
+.character-picker{display:flex;gap:8px;margin:0 0 10px;width:100%}
+.character-choice{display:flex;align-items:center;gap:7px;flex:1;min-width:0;min-height:58px;padding:5px 8px;border:1px solid #bca477;border-radius:9px;background:#f5ead2d9;color:#393b32;text-align:left;cursor:pointer;font:12px InkLettering,'Arial Black',sans-serif}
+.character-choice[aria-pressed="true"]{border-color:#695c37;background:#fff1c7;box-shadow:inset 0 0 0 1px #695c37}
+.character-choice:focus-visible{outline:3px solid #efaa43;outline-offset:2px}
+.character-choice img{width:58px;height:43px;object-fit:contain;flex-shrink:0}
+.character-choice small{display:block;font:8px/1.4 'Trebuchet MS',sans-serif;margin-top:3px}
+#app[data-character="gatling"] .action-controls{grid-template-rows:var(--action-primary)}
+#app[data-character="gatling"] .action-controls .control:is(.fire,.missile){grid-row:1}
+#app[data-character="gatling"] .action-controls .missile{font-size:10px}
+.heat-meter{margin-top:8px;width:200px;color:#ffb365;font:10px InkLettering,'Arial Black',sans-serif;text-shadow:1px 1px #171917}
+.heat-meter>div{height:7px;margin-top:4px;background:#171917bb;border:1px solid currentColor;border-radius:3px;overflow:hidden}
+.heat-meter i{display:block;height:100%;background:currentColor;width:0}
+.heat-meter[data-state="hot"]{color:#ff8e43}.heat-meter[data-state="overheat"]{color:#ff6659}
+@media(max-height:520px) and (orientation:landscape){
+ .title-content{top:17%}
+ .title-content h1{font-size:clamp(48px,7.3vw,67px)}
+ .title-content .eyebrow{margin-bottom:5px}
+ .title-content .title-credit{margin:3px 0 4px}
+ .title-content .tagline{display:none}
+ .character-picker{gap:6px;margin-bottom:6px}
+ .character-choice{min-height:45px;padding:3px 5px;font-size:10px;gap:4px}
+ .character-choice img{width:43px;height:35px}
+ .character-choice small{font-size:7px;line-height:1.1;margin-top:2px}
+ .title-content .start-meta{margin-top:5px}
+ .heat-meter{width:160px;font-size:9px;margin-top:5px}
+ #app[data-character="gatling"] #fire-cooldown{font-size:8px;letter-spacing:0}
+}

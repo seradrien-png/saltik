@@ -2,6 +2,7 @@ import {sampleSupportSurface} from './support-pose.js';
 import {inkTurnFrame,inkTurnGeometry,drawInkTurn} from './ink-turn.js';
 import {plantInkWheel} from './ink-leg-support.js';
 import {drawInkPlayerPods} from './ink-pods.js';
+import {augmentGatlingGeometry,drawGatling} from './gatling-art.js';
 
 // The single native cream/ink cutout is 1422 × 1106. Alpha above 32 has
 // bounds [102,24]–[1347,1079]; the wider file contains almost transparent noise.
@@ -146,19 +147,20 @@ export function inkSaltikGeometry(p,{camera=0,time=0,scale=1,victoryAge=null,sam
   const speed=clamp(Math.abs(finite(p.vx))/230,0,1);
   const gait=walking?Math.sin(time*14)*(1+.35*speed):Math.sin(time*1.8)*.24;
   const ceilingCompression=Number.isFinite(p.supportClearance)?clamp(INK_SALTIK_HEIGHT-p.supportClearance+4,0,20):0;
-  const bodyDrop=(Math.max(crouch?12:0,ceilingCompression)+compression*7.4+landing*6.5+gait)*scale;
+  let bodyDrop=(Math.max(crouch?12:0,ceilingCompression)+compression*7.4+landing*6.5+gait)*scale;
   const back=sampleSupportSurface(p.supportPose,finite(p.x)-50),front=sampleSupportSurface(p.supportPose,finite(p.x)+50);
   const slope=!airborne&&Number.isFinite(back)&&Number.isFinite(front)?Math.atan2(front-back,100):finite(p.tilt,finite(p.supportPose?.tilt));
   // Momentum is smoothed by the fixed-step simulation. It changes only the
   // rigid cabin transform; the same support solver still plants every wheel.
   const motionLean=clamp(finite(p.motionLean),-.055,.055);
   let tilt=clamp(slope+motionLean,-.42,.42);
-  const heave=(finite(p.supportPose?.heave)+clamp(finite(p.motionHeave),-1.35,1.35))*scale;
+  let heave=(finite(p.supportPose?.heave)+clamp(finite(p.motionHeave),-1.35,1.35))*scale;
   if(!airborne&&Number.isFinite(p.supportClearance)){
     const rise=angle=>-Math.min(...CROP_POLYGON.map(([px,py])=>(px-INK_SALTIK_ANCHOR[0])*k*orientation*Math.sin(angle)+(py-INK_SALTIK_ANCHOR[1])*k*Math.cos(angle)));
     const available=p.supportClearance*scale+heave+bodyDrop;
     if(rise(tilt)>available){const sign=Math.sign(tilt);let lo=0,hi=Math.abs(tilt);for(let i=0;i<24;i++){const mid=(lo+hi)/2;if(rise(sign*mid)<=available)lo=mid;else hi=mid;}tilt=sign*lo;}
   }
+  if(p.character==='gatling'&&p.gatlingStage){tilt=finite(p.gatlingStage.tilt,tilt);heave=finite(p.gatlingStage.heave,heave);bodyDrop=finite(p.gatlingStage.bodyDrop,bodyDrop);}
   const cos=Math.cos(tilt),sin=Math.sin(tilt);
   const sourcePoint=([px,py])=>{
     const xx=(px-INK_SALTIK_ANCHOR[0])*k*orientation,yy=(py-INK_SALTIK_ANCHOR[1])*k;
@@ -240,10 +242,11 @@ export function inkSaltikGeometry(p,{camera=0,time=0,scale=1,victoryAge=null,sam
     ...turretPart.polygon.map(turretPoint)];
   const xs=boundsPoints.map(point=>point.x),ys=boundsPoints.map(point=>point.y);
   const bounds={x:Math.min(...xs),y:Math.min(...ys),w:Math.max(...xs)-Math.min(...xs),h:Math.max(...ys)-Math.min(...ys)};
-  return {x,y,k,scale,yaw,orientation,tilt,heave,bodyDrop,compression,airborne,legs,arms,eyeReflections,coaxPart,cannonPart,cannon,cannonBase,
+  const result={x,y,k,scale,yaw,orientation,tilt,heave,bodyDrop,compression,airborne,legs,arms,eyeReflections,coaxPart,cannonPart,cannon,cannonBase,
     turretLift:0,turretArticulated,turretPart,turretPoint,turretSupports:[],turnTurret,cannonPoint,coaxPoint,
     cannonAngle:Math.atan2(cannon.y-cannonBase.y,cannon.x-cannonBase.x),arm,face,sourcePoint,bounds,
     visibleHeight:INK_SALTIK_HEIGHT*scale,weaponsLocked};
+  return p.character==='gatling'?augmentGatlingGeometry(p,result,{camera,time,sampleGround}):result;
 }
 
 function polygon(c,points){
@@ -271,6 +274,7 @@ function transformPart(c,part){
 export function drawInkSaltik(c,image,p,{camera=0,time=0,scale=1,victoryAge=null,turnImage=null,sampleGround}={}){
   if(!image)return null;
   let geo=inkSaltikGeometry(p,{camera,time,scale,victoryAge,sampleGround});
+  if(p.character==='gatling')return drawGatling(c,image,p,geo,{time});
   if(geo.turnTurret&&!turnImage){
     // Match the established side-view fallback when the optional atlas is
     // unavailable; its returned mouth positions must match that same draw.

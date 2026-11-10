@@ -1,0 +1,157 @@
+{
+  "saved": {
+    "id": "appgprj_6ae77e1b6da081918600675fc2e2b738~appgver_9fcb01dad7ec8191ac11a54a8ca21bd6",
+    "project_id": "appgprj_6ae77e1b6da081918600675fc2e2b738",
+    "version_number": 30,
+    "source": {
+      "commit_sha": "b8f4d160d7e209aa979a6cd2840c4a7a1600433c"
+    },
+    "archive_storage": {
+      "archive_format": "tar",
+      "sediment_file_id": "file_000000005d2481f4bf566e0b69be7c24",
+      "content_hash": "sha256:7162df8e8d1a11c9c5c0a9618f868eaef5259e48ebac1187c1eeacf379373c1c",
+      "size_bytes": 189870080,
+      "file_count": 171
+    },
+    "screenshot_url": null,
+    "deployment_id": null
+  },
+  "deployment": {
+    "id": "appgdep_6af3a9db4bb48191b846b7ef69f878a1",
+    "project_id": "appgprj_6ae77e1b6da081918600675fc2e2b738",
+    "title": "SALTIK V2 — Matin Doré",
+    "version_id": "appgprj_6ae77e1b6da081918600675fc2e2b738~appgver_9fcb01dad7ec8191ac11a54a8ca21bd6",
+    "type": "publish",
+    "status": "succeeded",
+    "url": "https://saltik-v2-matin-dore.ser-adrien.chatgpt.site",
+    "has_mcp": false,
+    "screenshot_asset_pointer": null,
+    "provider_deployment_id": "site---6ae77e1b6da081918600675fc2e2b738",
+    "failure_message": null,
+    "env_set_revision": 0,
+    "updated_at": "2026-11-10T23:34:09.464355+00:00"
+  },
+  "tests": {
+    "passed": 689,
+    "failed": 0
+  },
+  "browser": {
+    "primary": {
+      "locked_x": 180,
+      "start_x": 180,
+      "recoil_x": 173.6000000000004,
+      "overheated_after": 0,
+      "cooldown": 4.983333333333333,
+      "resumed_shots": 154
+    },
+    "rockets": {
+      "index": 8,
+      "visible": 8,
+      "unguided": true
+    },
+    "pause": true,
+    "restart_character": true,
+    "levels": [
+      {
+        "character": "gatling",
+        "level": 1,
+        "scale": 1
+      },
+      {
+        "character": "gatling",
+        "level": 2,
+        "scale": 0.8008
+      },
+      {
+        "character": "gatling",
+        "level": 3,
+        "scale": 0.96
+      }
+    ],
+    "transitions_1_2_3": true,
+    "phone": {
+      "menu_boxes": {
+        "#start": {
+          "x": 46.40625,
+          "y": 279.53125,
+          "width": 245,
+          "height": 44
+        },
+        ".character-picker": {
+          "x": 46.40625,
+          "y": 182.53125,
+          "width": 362.90625,
+          "height": 45
+        },
+        ".level-picker": {
+          "x": 46.40625,
+          "y": 233.53125,
+          "width": 362.90625,
+          "height": 38
+        }
+      },
+      "firing": true,
+      "two_weapons": true,
+      "switchback_striker_three_weapons": true
+    },
+    "errors": []
+  },
+  "preservation": {
+    "other_editions": 4,
+    "unchanged": true,
+    "all_exports_files": 1593,
+    "source_files": 544
+  },
+  "published_resources": [
+    {
+      "path": "index.html",
+      "status": 200,
+      "sha256": "1c844d74f78d158a7117a37cc16212caca2cf8c03e08270fa37b3f1466b41c7f"
+    },
+    {
+      "path": "style.css",
+      "status": 200,
+      "sha256": "5f12ddeceb7ff1c57a12524381ce1f28794ec9a2326dc170876f08afd0d9f1c5"
+    },
+    {
+      "path": "src/main.js",
+      "status": 200,
+      "sha256": "d7289d7550c98c5c85242558cbda0e7c290f192b89daeb77f42c565302d6e282"
+    },
+    {
+      "path": "src/engine.js",
+      "status": 200,
+      "sha256": "e459f3cda33d5337249f6a5ed7aaf15ececd48415b18c311e9c2988f20a16032"
+    },
+    {
+      "path": "src/gatling-combat.js",
+      "status": 200,
+      "sha256": "3fc7204583007c8ece714fe41cc5727ceaec2486c305977b67e1832661182d87"
+    },
+    {
+      "path": "src/gatling-art.js",
+      "status": 200,
+      "sha256": "800e1efc3721363fd636944ca50b4b5b88948b6778a8a0c01b84faa4aacf1972"
+    },
+    {
+      "path": "src/ink-renderer.js",
+      "status": 200,
+      "sha256": "81e4eb02ecb22ee0afbf85b65523886a94ca193f095c79ad894bf57d910e3a6f"
+    },
+    {
+      "path": "assets/gatling-snow.png",
+      "status": 200,
+      "sha256": "6fec090c39dfdf0bdcee825620b6a470c06155d1778db1439e76156321cdcb52"
+    },
+    {
+      "path": "assets/gatling-lunar-material.png",
+      "status": 200,
+      "sha256": "c6d6b2bc5f9d66ff5cddb790f19862d5d3b9bfcebaa026ffd74b6eaf6d61c9ce"
+    },
+    {
+      "path": "assets/gatling-velvet-material.png",
+      "status": 200,
+      "sha256": "12e19f6d383b77576b54ddfc9899a25f3f74b6d3dc4c024d74f4869f6daa2f17"
+    }
+  ]
+}

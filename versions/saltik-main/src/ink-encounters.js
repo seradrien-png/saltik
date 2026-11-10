@@ -5,6 +5,7 @@ import {drawInkEnemySaltik,inkEnemySaltikGeometry,INK_ENEMY_SALTIK_HEIGHT} from 
 import {inkFlash} from './ink-actors.js';
 import {plantInkWheel} from './ink-leg-support.js';
 import {drawInkPlayerPods} from './ink-pods.js';
+import {gatlingBreachPlayer} from './gatling-art.js';
 
 const INK='#181815',PAPER='#f0e3c9',GRAY='#b9b1a4',TAU=Math.PI*2;
 const clamp=(n,a=0,b=1)=>Math.max(a,Math.min(b,n));
@@ -260,7 +261,11 @@ function breachEjectPose(q,b,{camera,time,player}){
  const part=start.fire.part??INK_SALTIK_PARTS.cannon,rotation=start.fire.rotation*(1-u),pivot=sourcePoint(part.pivot),muzzle=sourcePoint(rotate(part.muzzle,part.pivot,rotation));
  return{...start,v:inkBreachVisual(q,b,{camera}),p,geo,arms,handPoints,targets:handPoints,effort:0,shooting:false,fire:{...start.fire,rotation,pivot,muzzle,recoil:0,aim:Math.atan2(muzzle.y-pivot.y,muzzle.x-pivot.x)}};
 }
-function drawBreachActor(c,image,g,{camera=0,time=0}={}){
+function drawBreachActor(c,image,g,{camera=0,time=0,phase}={}){
+ if(g.p.character==='gatling'){
+  const p=gatlingBreachPlayer(g,{camera,time,phase});
+  drawInkSaltik(c,image,p,{camera,time});return;
+ }
  const {geo,arms,shooting,fire}=g,draw=()=>c.drawImage(image,...INK_SALTIK_CROP,...INK_SALTIK_CROP);
  c.save();c.imageSmoothingEnabled=true;c.translate(geo.x,geo.y+geo.heave+geo.bodyDrop);c.rotate(geo.tilt);c.scale(geo.k*geo.orientation,geo.k);c.translate(-INK_SALTIK_ANCHOR[0],-INK_SALTIK_ANCHOR[1]);
  // Draw the native pieces once. Clipping a second whole actor would leave
@@ -293,7 +298,7 @@ function drawBreachActor(c,image,g,{camera=0,time=0}={}){
 export function drawInkBossBreach(c,images,q,b,{camera=0,time=0,player={}}={}){
  const g=inkBreachPoseGeometry(q,b,{camera,time,player});if(!g||!images['ink-saltik'])return false;
  if(['tear','fire','eject'].includes(q.phase)&&g.lid&&!g.lid.release&&images['ink-boss-parts'])drawBreachLid(c,images['ink-boss-parts'],g.lid);
- drawBreachActor(c,images['ink-saltik'],g,{camera,time});
+ drawBreachActor(c,images['ink-saltik'],g,{camera,time,phase:q.phase});
  if(g.effort>.2){
   const targets=q.kind==='pod'?g.targets:g.lid?.handles??g.targets;c.save();c.strokeStyle=INK;c.lineWidth=1.5;
   for(const target of targets)for(let i=0;i<3;i++){const angle=-2.8+i*.6;c.beginPath();c.moveTo(target.x+Math.cos(angle)*8,target.y+Math.sin(angle)*8);c.lineTo(target.x+Math.cos(angle)*(11+g.effort*6),target.y+Math.sin(angle)*(11+g.effort*6));c.stroke();}c.restore();
@@ -366,10 +371,15 @@ export function drawInkDuelWorld(c,images,q,{camera=0,time=0,player={},...viewpo
  withoutNativeParts(c,eg,[...enemyArms,DUEL_ENEMY_FRONT_LEG],()=>drawInkEnemySaltik(c,images['ink-enemy-saltik'],e,{camera,time:0}));
  c.save();c.translate(e.x-camera,e.y);c.scale(eg.k*eg.flip,eg.k);c.translate(-eg.anchor[0],-eg.anchor[1]);
  drawTuckedLeg(c,images['ink-enemy-saltik'],eg.crop,DUEL_ENEMY_FRONT_LEG,.23);c.restore();
- withoutNativeParts(c,pg,[...playerArms,front],()=>drawInkSaltik(c,images['ink-saltik'],p,{camera,time:0}));
- c.save();c.translate(pg.x,pg.y);c.scale(pg.k*pg.orientation,pg.k);c.translate(-INK_SALTIK_ANCHOR[0],-INK_SALTIK_ANCHOR[1]);
- drawTuckedLeg(c,images['ink-saltik'],INK_SALTIK_CROP,{...front,pivot:[1144,742]},.27);
- for(const arm of playerArms)drawGripArm(c,images['ink-saltik'],INK_SALTIK_CROP,arm);c.restore();
+ if(p.character==='gatling'){
+  const targets=playerArms.map((arm,index)=>{const h=arm.handPoint(NATIVE_HAND_POINTS[index]);return{x:h.x+camera,y:h.y};});
+  drawInkSaltik(c,images['ink-saltik'],{...p,gatlingInteraction:true,gatlingGripTargets:targets},{camera,time});
+ }else{
+  withoutNativeParts(c,pg,[...playerArms,front],()=>drawInkSaltik(c,images['ink-saltik'],p,{camera,time:0}));
+  c.save();c.translate(pg.x,pg.y);c.scale(pg.k*pg.orientation,pg.k);c.translate(-INK_SALTIK_ANCHOR[0],-INK_SALTIK_ANCHOR[1]);
+  drawTuckedLeg(c,images['ink-saltik'],INK_SALTIK_CROP,{...front,pivot:[1144,742]},.27);
+  for(const arm of playerArms)drawGripArm(c,images['ink-saltik'],INK_SALTIK_CROP,arm);c.restore();
+ }
  c.save();c.translate(e.x-camera,e.y);c.scale(eg.k*eg.flip,eg.k);c.translate(-eg.anchor[0],-eg.anchor[1]);
  for(const arm of enemyArms)drawGripArm(c,images['ink-enemy-saltik'],eg.crop,arm);c.restore();
  if(v.effort>.3){const x=(g.playerGrip.x+g.enemyGrip.x)/2,y=(g.playerGrip.y+g.enemyGrip.y)/2;c.save();c.strokeStyle=INK;c.lineWidth=1.3;for(let i=0;i<3;i++){c.beginPath();c.moveTo(x-7+i*6,y-5);c.lineTo(x-4+i*6,y-12-v.effort*4);c.stroke();}c.restore();}

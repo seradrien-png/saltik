@@ -7,15 +7,15 @@
       "slug": "saltik-main",
       "repo": "saltik-v2-matin-dore",
       "title": "SALTIK V2 — Matin Doré",
-      "commit": "75f051926ca13331f3eb4466792fc09f58dedaba",
-      "published_version": 29,
+      "commit": "b8f4d160d7e209aa979a6cd2840c4a7a1600433c",
+      "published_version": 30,
       "url": "https://saltik-v2-matin-dore.ser-adrien.chatgpt.site",
       "base_commit": "75f051926ca13331f3eb4466792fc09f58dedaba",
       "source_path": "/workspace/sites/saltik-v2-matin-dore",
       "export_path": "versions/saltik-main",
       "web_entry": "versions/saltik-main/dist/index.html",
-      "file_count": 531,
-      "bytes": 196236846,
+      "file_count": 544,
+      "bytes": 203127835,
       "uncommitted_changes": "",
       "files": {
         ".gitignore": {
@@ -27,16 +27,28 @@
           "size": 106
         },
         "README.md": {
-          "sha256": "ef4ad9016664ebf086561c213e95f17c358e122da573837afd4026cf02610879",
-          "size": 22696
+          "sha256": "19412851a8625454fa4bbf35fe9ec5e3edf352706ad936c4beda87352526c63e",
+          "size": 23462
         },
         "dist/android.html": {
-          "sha256": "e9ac1d2184db443c2daaf0bd28e707aaac01eec5e711d674965cebb576345a16",
-          "size": 15934
+          "sha256": "d0147521aa5489d8ac770fd6d9efa6b80c667423c2b228dd09cbc9bca495c48d",
+          "size": 16650
         },
         "dist/assets/boss-assault-atlas.png": {
           "sha256": "f9859847a2d5a0f2b630bafaaef3f9f2eba725ace3629396825f5d2fd6986b63",
           "size": 3304293
+        },
+        "dist/assets/gatling-lunar-material.png": {
+          "sha256": "c6d6b2bc5f9d66ff5cddb790f19862d5d3b9bfcebaa026ffd74b6eaf6d61c9ce",
+          "size": 2186061
+        },
+        "dist/assets/gatling-snow.png": {
+          "sha256": "6fec090c39dfdf0bdcee825620b6a470c06155d1778db1439e76156321cdcb52",
+          "size": 2041885
+        },
+        "dist/assets/gatling-velvet-material.png": {
+          "sha256": "12e19f6d383b77576b54ddfc9899a25f3f74b6d3dc4c024d74f4869f6daa2f17",
+          "size": 2589405
         },
         "dist/assets/ink-approach-atlas-paint.png": {
           "sha256": "363c2fe35f3b7a78fd5e6c76baea8b73534c402b2f2cd72e8fb2745c47da571d",
@@ -355,8 +367,8 @@
           "size": 253204
         },
         "dist/index.html": {
-          "sha256": "1210f7ce7ff7e01e0ebefd73ae9493e81b8aa5cd645e8975be4fb5d35ffe21a1",
-          "size": 16205
+          "sha256": "1c844d74f78d158a7117a37cc16212caca2cf8c03e08270fa37b3f1466b41c7f",
+          "size": 16921
         },
         "dist/manifest.webmanifest": {
           "sha256": "1046044adaf490fa877cf9b0cac214237c2a4d52636476abaf1bd80dbede48e8",
@@ -367,8 +379,8 @@
           "size": 3073
         },
         "dist/src/audio.js": {
-          "sha256": "c9b5736aaf13846c18a7fcb0b751b3b9540a0a269a513c0d7bb32b80c2a46479",
-          "size": 12842
+          "sha256": "14906e425392670152a6d2c50f2aba4e4f87a4ad2a38e882adb7119c47b6d88c",
+          "size": 13478
         },
         "dist/src/background-motion.js": {
           "sha256": "3678cee146d7d6f5c57ce4f0218b809c0befc002fd2809e9f7a05c895c7711f5",
@@ -399,8 +411,8 @@
           "size": 6191
         },
         "dist/src/carrier-shutdown-art.js": {
-          "sha256": "8e2f418a79693e36fc722a4a665ea44ac9ade45f857db427b4597f2fb3edc1d6",
-          "size": 4480
+          "sha256": "63c9a2c0c5d10ba27227bc3cb6b1261732cfe193cb5baddea117547292b7049e",
+          "size": 4747
         },
         "dist/src/carrier-shutdown.js": {
           "sha256": "4238495ca9d1a59f90dd6b178ece5e1f662451f23d826952f2c3f925f42843e4",
@@ -435,24 +447,32 @@
           "size": 7983
         },
         "dist/src/enemy-styles.js": {
-          "sha256": "05e5150f60c18282df3e04bafe45bc4d83bbad3e875d6567dd42137d8d9701e0",
-          "size": 2111
+          "sha256": "f97941831e3799c184214f220c6e4aa506efd85d4a474a17064086bfe11d1b0d",
+          "size": 2300
         },
         "dist/src/engine.js": {
-          "sha256": "8871bb2d4aa4c73251c8b061fd3caacb0ef4a33c95ffe082e13fed60799158c7",
-          "size": 71924
+          "sha256": "e459f3cda33d5337249f6a5ed7aaf15ececd48415b18c311e9c2988f20a16032",
+          "size": 74079
         },
         "dist/src/evasion.js": {
           "sha256": "3b9e6a5daafd5098d12f20a67279e98eca7b85ef500b79b67ea5862199992aeb",
           "size": 3615
+        },
+        "dist/src/gatling-art.js": {
+          "sha256": "800e1efc3721363fd636944ca50b4b5b88948b6778a8a0c01b84faa4aacf1972",
+          "size": 10114
+        },
+        "dist/src/gatling-combat.js": {
+          "sha256": "3fc7204583007c8ece714fe41cc5727ceaec2486c305977b67e1832661182d87",
+          "size": 2111
         },
         "dist/src/guided-navigation.js": {
           "sha256": "adc9ef558a36437adc80c58724fccafd63b1186a67b7bb1c81e308d5941e6957",
           "size": 14682
         },
         "dist/src/ink-actors.js": {
-          "sha256": "973d744306eb34f4806d67e56cb9b6b7eff8648b760ce34ee6731f09d6a60435",
-          "size": 5169
+          "sha256": "0f6e6d84145c6e7970f78d8fd1e7fb55181fe05695f41af8448c51c1cd600d25",
+          "size": 5186
         },
         "dist/src/ink-campaign-art.js": {
           "sha256": "77cae3fa716cf5d1477227d7d27493309b8e391792886dca9c9a32b1f37b4b4d",
@@ -467,8 +487,8 @@
           "size": 7487
         },
         "dist/src/ink-encounters.js": {
-          "sha256": "3c43d9e1576098d37b4c44e2e0bda7a470f6abcdc23a93cccf98067eaccbdaa4",
-          "size": 34495
+          "sha256": "8ad2e8f713ad69f372a892c4bea8294a49b8a54b33f9bb17d77f9951844ea4d6",
+          "size": 34990
         },
         "dist/src/ink-enemy-saltik.js": {
           "sha256": "8e51901a15ccadbf6da5623e65d3da2a4a548816268e93e4a96df6ed1ff06131",
@@ -491,16 +511,16 @@
           "size": 5269
         },
         "dist/src/ink-renderer.js": {
-          "sha256": "1483933ff4376ac8d154b54074d3ee4bd34c4c9550a5faaac637abde0b6ddd14",
-          "size": 14398
+          "sha256": "81e4eb02ecb22ee0afbf85b65523886a94ca193f095c79ad894bf57d910e3a6f",
+          "size": 14983
         },
         "dist/src/ink-saltik.js": {
-          "sha256": "284f838c7fd4b7cf1a930981aa3b564c89f7014408b2474c5985bdff8a55b97f",
-          "size": 19958
+          "sha256": "fc86d43da8c3cf57b363d057ee52a4101bb95678f3efacf2c063b8a7cbd133e8",
+          "size": 20378
         },
         "dist/src/ink-scene.js": {
-          "sha256": "ec66a3079efed66f31eb59b12bd2c612029fa9d8f84370a1f339b4ef13df6a51",
-          "size": 2394
+          "sha256": "9314c0af56d260c49fa7a6975ea372ed9e9e215ee494a6d272b01d5d45b26e26",
+          "size": 2645
         },
         "dist/src/ink-turn.js": {
           "sha256": "e2e281634ce901d5e484fe5c5a6770ddc9365574f832550ee3ee2ff1162f8050",
@@ -547,8 +567,8 @@
           "size": 4153
         },
         "dist/src/main.js": {
-          "sha256": "f44f9bc1bc0effb44d6deb908bd2baf4fc43ff14f68ad6ac7cda831c1ce2682a",
-          "size": 23551
+          "sha256": "d7289d7550c98c5c85242558cbda0e7c290f192b89daeb77f42c565302d6e282",
+          "size": 27687
         },
         "dist/src/melee-state.js": {
           "sha256": "f24e08a07354668edbe7d54291517edc973dd34f9dfa9653c4f5776fe2b1eb87",
@@ -671,8 +691,8 @@
           "size": 9418
         },
         "dist/style.css": {
-          "sha256": "9698b2d9e718baa489ac7b7c20c3c43438753ff66774f7b0888adefb21655017",
-          "size": 40635
+          "sha256": "5f12ddeceb7ff1c57a12524381ce1f28794ec9a2326dc170876f08afd0d9f1c5",
+          "size": 42769
         },
         "dist/video/saltik-free-together-poster.jpg": {
           "sha256": "de77c185c42f5b31e582f895bda0a8e5ea1c54cc0f9670bef8946a7c2cf3c767",
@@ -970,6 +990,10 @@
           "sha256": "aa06bb858cf1ee49f0a83070add630758ff33827b60f6769cd828b98b9a02c79",
           "size": 1273
         },
+        "docs/superpowers/plans/2026-11-10-playable-gatling.md": {
+          "sha256": "82e6d85776f28988553605a7324d6c21d52280b9dec6a0284616daac2ce4bf0e",
+          "size": 2928
+        },
         "docs/superpowers/plans/2026-11-10-royal-density.md": {
           "sha256": "c6949fcc3ce0256982461f861c9828e205bbd88c45d55d048e38db64c1cba3a6",
           "size": 1061
@@ -1102,6 +1126,10 @@
           "sha256": "50fb54cf6aef5016e217411bae66c79dd93e71c8d6d6cd0ae479aeab10425d4b",
           "size": 1039
         },
+        "docs/superpowers/specs/2026-11-10-gatling-design.md": {
+          "sha256": "4a8328dbe6134842642dcff938fc5ae5bb0299ff3a4a60c3cda07a932231d269",
+          "size": 1678
+        },
         "docs/superpowers/support-carrier-ko-validation-2026-11-03.md": {
           "sha256": "98b985fdd5e457c3e5828c9b218340b7923c13d73190f116f2bc1ed796ecf994",
           "size": 1747
@@ -1135,8 +1163,8 @@
           "size": 253204
         },
         "index.html": {
-          "sha256": "1210f7ce7ff7e01e0ebefd73ae9493e81b8aa5cd645e8975be4fb5d35ffe21a1",
-          "size": 16205
+          "sha256": "1c844d74f78d158a7117a37cc16212caca2cf8c03e08270fa37b3f1466b41c7f",
+          "size": 16921
         },
         "manifest.webmanifest": {
           "sha256": "1046044adaf490fa877cf9b0cac214237c2a4d52636476abaf1bd80dbede48e8",
@@ -1319,8 +1347,8 @@
           "size": 2317
         },
         "src/audio.js": {
-          "sha256": "c9b5736aaf13846c18a7fcb0b751b3b9540a0a269a513c0d7bb32b80c2a46479",
-          "size": 12842
+          "sha256": "14906e425392670152a6d2c50f2aba4e4f87a4ad2a38e882adb7119c47b6d88c",
+          "size": 13478
         },
         "src/background-motion.js": {
           "sha256": "3678cee146d7d6f5c57ce4f0218b809c0befc002fd2809e9f7a05c895c7711f5",
@@ -1351,8 +1379,8 @@
           "size": 6191
         },
         "src/carrier-shutdown-art.js": {
-          "sha256": "8e2f418a79693e36fc722a4a665ea44ac9ade45f857db427b4597f2fb3edc1d6",
-          "size": 4480
+          "sha256": "63c9a2c0c5d10ba27227bc3cb6b1261732cfe193cb5baddea117547292b7049e",
+          "size": 4747
         },
         "src/carrier-shutdown.js": {
           "sha256": "4238495ca9d1a59f90dd6b178ece5e1f662451f23d826952f2c3f925f42843e4",
@@ -1387,24 +1415,32 @@
           "size": 7983
         },
         "src/enemy-styles.js": {
-          "sha256": "05e5150f60c18282df3e04bafe45bc4d83bbad3e875d6567dd42137d8d9701e0",
-          "size": 2111
+          "sha256": "f97941831e3799c184214f220c6e4aa506efd85d4a474a17064086bfe11d1b0d",
+          "size": 2300
         },
         "src/engine.js": {
-          "sha256": "8871bb2d4aa4c73251c8b061fd3caacb0ef4a33c95ffe082e13fed60799158c7",
-          "size": 71924
+          "sha256": "e459f3cda33d5337249f6a5ed7aaf15ececd48415b18c311e9c2988f20a16032",
+          "size": 74079
         },
         "src/evasion.js": {
           "sha256": "3b9e6a5daafd5098d12f20a67279e98eca7b85ef500b79b67ea5862199992aeb",
           "size": 3615
+        },
+        "src/gatling-art.js": {
+          "sha256": "800e1efc3721363fd636944ca50b4b5b88948b6778a8a0c01b84faa4aacf1972",
+          "size": 10114
+        },
+        "src/gatling-combat.js": {
+          "sha256": "3fc7204583007c8ece714fe41cc5727ceaec2486c305977b67e1832661182d87",
+          "size": 2111
         },
         "src/guided-navigation.js": {
           "sha256": "adc9ef558a36437adc80c58724fccafd63b1186a67b7bb1c81e308d5941e6957",
           "size": 14682
         },
         "src/ink-actors.js": {
-          "sha256": "973d744306eb34f4806d67e56cb9b6b7eff8648b760ce34ee6731f09d6a60435",
-          "size": 5169
+          "sha256": "0f6e6d84145c6e7970f78d8fd1e7fb55181fe05695f41af8448c51c1cd600d25",
+          "size": 5186
         },
         "src/ink-campaign-art.js": {
           "sha256": "77cae3fa716cf5d1477227d7d27493309b8e391792886dca9c9a32b1f37b4b4d",
@@ -1419,8 +1455,8 @@
           "size": 7487
         },
         "src/ink-encounters.js": {
-          "sha256": "3c43d9e1576098d37b4c44e2e0bda7a470f6abcdc23a93cccf98067eaccbdaa4",
-          "size": 34495
+          "sha256": "8ad2e8f713ad69f372a892c4bea8294a49b8a54b33f9bb17d77f9951844ea4d6",
+          "size": 34990
         },
         "src/ink-enemy-saltik.js": {
           "sha256": "8e51901a15ccadbf6da5623e65d3da2a4a548816268e93e4a96df6ed1ff06131",
@@ -1443,16 +1479,16 @@
           "size": 5269
         },
         "src/ink-renderer.js": {
-          "sha256": "1483933ff4376ac8d154b54074d3ee4bd34c4c9550a5faaac637abde0b6ddd14",
-          "size": 14398
+          "sha256": "81e4eb02ecb22ee0afbf85b65523886a94ca193f095c79ad894bf57d910e3a6f",
+          "size": 14983
         },
         "src/ink-saltik.js": {
-          "sha256": "284f838c7fd4b7cf1a930981aa3b564c89f7014408b2474c5985bdff8a55b97f",
-          "size": 19958
+          "sha256": "fc86d43da8c3cf57b363d057ee52a4101bb95678f3efacf2c063b8a7cbd133e8",
+          "size": 20378
         },
         "src/ink-scene.js": {
-          "sha256": "ec66a3079efed66f31eb59b12bd2c612029fa9d8f84370a1f339b4ef13df6a51",
-          "size": 2394
+          "sha256": "9314c0af56d260c49fa7a6975ea372ed9e9e215ee494a6d272b01d5d45b26e26",
+          "size": 2645
         },
         "src/ink-turn.js": {
           "sha256": "e2e281634ce901d5e484fe5c5a6770ddc9365574f832550ee3ee2ff1162f8050",
@@ -1499,8 +1535,8 @@
           "size": 4153
         },
         "src/main.js": {
-          "sha256": "f44f9bc1bc0effb44d6deb908bd2baf4fc43ff14f68ad6ac7cda831c1ce2682a",
-          "size": 23551
+          "sha256": "d7289d7550c98c5c85242558cbda0e7c290f192b89daeb77f42c565302d6e282",
+          "size": 27687
         },
         "src/melee-state.js": {
           "sha256": "f24e08a07354668edbe7d54291517edc973dd34f9dfa9653c4f5776fe2b1eb87",
@@ -1623,8 +1659,8 @@
           "size": 9418
         },
         "style.css": {
-          "sha256": "9698b2d9e718baa489ac7b7c20c3c43438753ff66774f7b0888adefb21655017",
-          "size": 40635
+          "sha256": "5f12ddeceb7ff1c57a12524381ce1f28794ec9a2326dc170876f08afd0d9f1c5",
+          "size": 42769
         },
         "tests/arsenal-integration.test.js": {
           "sha256": "73a6ad38b4bc4243d05dc5b48af82396520cdc4248d0b6116776ac01f48937b5",
@@ -1882,6 +1918,22 @@
           "sha256": "f31b12cc6dc652b704a38064a1c00f05b6677176b7a63af446da854ad7686011",
           "size": 2216
         },
+        "tests/gatling-art.test.js": {
+          "sha256": "3a5b4dab93394107118283ee38deb7da27c04806803edbdc7ec3f02b674a72de",
+          "size": 6510
+        },
+        "tests/gatling-combat.test.js": {
+          "sha256": "ba6ebcaebbcb9309c014feae7c6e67650b9de06ca62238c86c510cd3846bc046",
+          "size": 5571
+        },
+        "tests/gatling-title.test.js": {
+          "sha256": "8337f46825f60ebe20b1f5b3faf39bbfe0cf62ba92c24428bf77a308a2b9dda3",
+          "size": 1779
+        },
+        "tests/gatling-ui.test.js": {
+          "sha256": "18f9ac107213cf4a4355330d457116881f60ee903bca4fc482e64a1a54ad5d8e",
+          "size": 4836
+        },
         "tests/guided-navigation.test.js": {
           "sha256": "bea7e471a2fcc7043ba2954a1daadb7ae57c75e743f7215f526ae8190fc98ec2",
           "size": 8965
@@ -2035,8 +2087,8 @@
           "size": 1507
         },
         "tests/pastel-preservation.test.js": {
-          "sha256": "bb8c39d4d9386fd59e9047ede33f2617e2f86a70377b8a70a9d1cf62c07d4719",
-          "size": 2842
+          "sha256": "a7f07c3bc04b6f368d3608f2092db3284400b03a59462dae2a0fd1df6bce38db",
+          "size": 3244
         },
         "tests/pastel-rider.test.js": {
           "sha256": "969e183bb7a0573ab07b43dbac3990e1cf1a2fd28c0bc32f2f6a51cb665d11c5",

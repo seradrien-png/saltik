@@ -37,6 +37,10 @@ function drawServiceCover(c,g){
 export function drawCarrierShutdown(c,images,q,e,options={}){
  const g=carrierShutdownGeometry(q,e,options),image=images['ink-saltik'];if(!g||!image)return false;
  if(q.phase!=='approach')drawServiceCover(c,g);
+ if(g.player.character==='gatling'){
+  const targets=[null,{x:g.connector.x+(options.camera??0),y:g.connector.y}];
+  drawInkSaltik(c,image,{...g.player,gatlingInteraction:true,gatlingGripTargets:q.phase==='approach'?null:targets},{...options,time:0});return true;
+ }
  const {geo,arms}=g,part=INK_SALTIK_PARTS.arms[1];
  // Remove the small resting native hand before drawing its rigid moving claw.
  c.save();c.beginPath();c.rect(-100000,-100000,200000,200000);polygon(c,part.polygon.map(geo.sourcePoint).map(p=>[p.x,p.y]));c.clip('evenodd');drawInkSaltik(c,image,g.player,{...options,time:0,turnImage:null});c.restore();

@@ -19,10 +19,16 @@ test('V2 preserves V1 native pixels, walkable geometry, native motions and encou
   if(path==='src/ink-actors.js')content=Buffer.from(content.toString()
    // Only explicitly scaled lunar enemies change size; defaults remain native.
    .replaceAll('*(e.artScale??1)','')
+   // Gatling rockets share the existing projectile illustration only.
+   .replace(",'gatling-rocket'",'')
    // Numeric V1 ids retain the exact native animation; lunar text ids use a finite seed.
    .replace(' const bobSeed=Number.isFinite(e.id)?e.id:Number.isFinite(e.phase)?e.phase:0;\n const bob=walking?Math.sin(time*10+bobSeed)*.9:0;',
     ' const bob=walking?Math.sin(time*10+(e.id??0))*.9:0;'));
   if(path==='src/audio.js')content=Buffer.from(content.toString()
+   // New Gatling-only audio branches must leave the original Striker mix intact.
+   .replace('  let lastGatlingShot=-Infinity;\n','')
+   .replace('lastGatlingShot=-Infinity;','')
+   .replace(/    if\(e.type==='gatling-shot'\)\{[\s\S]*?    else if\(e.type==='shot'\)/,"    if(e.type==='shot')")
    // Only level two opts out of the score; the default mix remains byte-for-byte identical.
    .replace('let playing=false,musicEnabled=true;','let playing=false;')
    .replaceAll('!playing||!enabled||!musicEnabled','!playing||!enabled')

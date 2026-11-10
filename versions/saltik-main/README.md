@@ -1,5 +1,13 @@
 # SALTIK V2 — Matin Doré
 
+## Saltik Gatling jouable
+
+Choisissez Striker ou Gatling dans le menu, pour chacun des trois niveaux. Le Gatling conserve son camouflage neige et ses deux canons rotatifs ; ses matériaux et ornements s’adaptent aux citadelles lunaires et au monde de velours. Son pod comporte huit roquettes, sans mortier.
+
+Maintenez TIR (J) : le mouvement est bloqué pendant le tir, avec un léger recul après deux secondes. Après cinq secondes de tir continu, les canons surchauffent et refroidissent pendant cinq secondes. ROQUETTES (K) lance huit projectiles puissants, dispersés et non guidés vers l’avant. Les commandes et armes du Striker sont conservées.
+
+[Lancer avec le Gatling](https://saltik-v2-matin-dore.ser-adrien.chatgpt.site/?level=1&character=gatling).
+
 Independent pastel edition of Encre V1. Player: amber/ivory/petroleum; enemy Saltik: olive/orange. Pencil controls partially fade over the player. Enemy Saltiks have 40 HP, varied seeded movement/attacks, and autonomously approach for a five-press duel at 8 HP (20%). V1 remains at https://saltik-ink-edition.ser-adrien.chatgpt.site; this edition uses https://saltik-v2-matin-dore.ser-adrien.chatgpt.site.
 
 The original ink geometry and source pixels remain intact; generated material washes are baked once at load. Bastion boss art uses new integrated pod/hatch anchors. See docs/superpowers/specs/2026-11-01-pastel-v2.md for scope and docs/ink-v1-source.json for provenance.

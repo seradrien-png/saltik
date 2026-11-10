@@ -2,6 +2,7 @@ import {createVoiceLines,VOICE_EVENTS} from './voice-lines.js';
 
 export function createAudio({onSpeech=()=>{}}={}){
   let ctx=null,master=null,output=null,musicBus=null,enabled=true,noise=null,lastShot=-Infinity;
+  let lastGatlingShot=-Infinity;
   let lastEnemyShot=-Infinity,lastExplosion=-Infinity,lastVolley=-Infinity;
   let effectsActive=true,speech=null;
   const voices=new Set();
@@ -40,7 +41,7 @@ export function createAudio({onSpeech=()=>{}}={}){
     playing=!!value;
     effectsActive=playing;
     if(!playing||restart){stopVoices();speech?.cancel();clearDucking();}
-    if(restart){lastShot=-Infinity;lastEnemyShot=-Infinity;lastExplosion=-Infinity;lastVolley=-Infinity;}
+    if(restart){lastGatlingShot=-Infinity;lastShot=-Infinity;lastEnemyShot=-Infinity;lastExplosion=-Infinity;lastVolley=-Infinity;}
     if(restart&&music){music.pause();try{music.currentTime=0;}catch{}}
     syncMusic();
   }
@@ -105,7 +106,18 @@ export function createAudio({onSpeech=()=>{}}={}){
   function play(e){
     if(!ctx||!enabled||(!effectsActive&&e.type!=='won'))return;
     const line=VOICE_EVENTS[e.type];if(line)speech?.enqueue(line);
-    if(e.type==='shot'){
+    if(e.type==='gatling-shot'){
+      if(ctx.currentTime-lastGatlingShot<1/15-.001)return;lastGatlingShot=ctx.currentTime;
+      burst(.045,.055,1900,0,'bandpass');tone(135,62,.055,.065,'triangle');
+    }
+    else if(e.type==='gatling-rocket'){
+      burst(.26,.13,1600,0,'lowpass',.012);tone(165,52,.24,.09,'triangle');
+    }
+    else if(e.type==='gatling-overheat'){
+      duck(.65,.5,.2);burst(.7,.15,3600,0,'highpass',.015);tone(340,110,.32,.07,'triangle');
+    }
+    else if(e.type==='gatling-cooled'){tone(420,650,.13,.07,'sine');tone(650,880,.14,.06,'sine',.12);}
+    else if(e.type==='shot'){
       if(ctx.currentTime-lastShot<.055)return;lastShot=ctx.currentTime;
       duck(.90,.06,.12);
       // A low pulse with a soft puff stays behind the score during sustained fire.
