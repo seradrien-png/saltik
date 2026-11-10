@@ -57,7 +57,7 @@ export async function loadArt(onProgress=()=>{}){
   const material=await load(style.asset);images[style.name]=bakeEnemyArt(images[style.base],material);
   material.onload=material.onerror=null;material.src='';report();
  }
- images['lunar-enemy-saltik'].lunarPennant=images['lunar-pennant'];images['lunar-carrier'].lunarPennant=images['lunar-pennant'];
+ images['lunar-enemy-saltik'].lunarPennant=images['lunar-pennant'];
  // Prime native hit flashes during loading, ahead of the first crowded fight.
  inkHitImage(images['ink-enemies']);inkHitImage(images['ink-enemy-saltik']);
  setInkTerrainTexture(images['ink-rock']);
@@ -117,9 +117,10 @@ export function createRenderer(canvas){
   }
   const playerImages=sceneArtImages(images,g.level),royalArt={atlas:images['royal-structures'],bridge:images['royal-quarter-bridge'],ground:images['royal-velvet-ground'],flora:images['royal-flora'],organic:images['royal-organic-landmarks'],props:images['royal-foreground-props'],railFront:images['royal-bridge-front']};
   const time=view==='title'?now/1000:g.time;c.setTransform(canvas.width/width,0,0,canvas.height/height,0,0);c.clearRect(0,0,width,height);g.level===3?drawRoyalBackdrop(c,{camera,width,height,time,image:images['royal-world'],art:royalArt}):g.level===2?drawLunarBackdrop(c,{camera,width,height,time,image:images['lunar-natural-world'],layers:images['lunar-island-layers'],art:{atlas:images['lunar-monuments'],bridge:images['lunar-aqueduct']}}):backdrop(time);
-  if(g.level===2){drawLunarMidground(c,{camera,width,height,layers:images['lunar-island-layers']});drawLunarLowDepth(c,{camera,cameraY,width,height,groundAt:g.groundAt,image:images['lunar-low-depth'],texture:images['lunar-sandstone']});}
+  if(g.level===2)drawLunarMidground(c,{camera,width,height,layers:images['lunar-island-layers']});
   c.save();if(g.shake>0&&view==='playing')c.translate(Math.sin(time*103)*Math.min(g.shake,6)*.3,Math.cos(time*119)*Math.min(g.shake,6)*.2);
   c.translate(0,cameraY);const opts={camera,width,height:Math.max(900,height-cameraY),time};
+  if(g.level===2)drawLunarLowDepth(c,{...opts,groundAt:g.groundAt,image:images['lunar-low-depth'],texture:images['lunar-sandstone']});
   if(g.level===3)drawRoyalWorld(c,g,{...opts,art:royalArt});else if(g.level===2)drawLunarWorld(c,g,{...opts,texture:images['lunar-sandstone'],art:{atlas:images['lunar-monuments'],bridge:images['lunar-aqueduct']}});else{drawInkRoutes(c,g,opts);drawInkGround(c,g,opts);drawInkObstacles(c,g,opts);}
   if(view!=='title'){
    for(const item of g.pickups){const x=item.x-camera;if(x<-20||x>width+20)continue;c.save();c.translate(x,item.y);c.fillStyle=INK;c.strokeStyle=PAPER;c.lineWidth=2;c.fillRect(-12,-13,24,26);c.strokeRect(-12,-13,24,26);c.fillStyle=PAPER;c.fillRect(-2,-8,4,16);c.fillRect(-8,-2,16,4);c.restore();}

@@ -8,7 +8,7 @@ Les cinq états ci-dessous sont conservés dans des dossiers indépendants, sans
 
 | Jeu / sources | État réel | GitHub Pages après activation | Commit source |
 | --- | --- | --- | --- |
-| [SALTIK V2 — Matin Doré](versions/saltik-main) | Publiée v28 — 3 niveaux | [Jouer](https://seradrien-png.github.io/saltik/versions/saltik-main/dist/) | `02bccd706ef5` |
+| [SALTIK V2 — Matin Doré](versions/saltik-main) | Publiée v29 — 3 niveaux | [Jouer](https://seradrien-png.github.io/saltik/versions/saltik-main/dist/) | `75f051926ca1` |
 | [SALTIK — Ink Edition publiée](versions/saltik-ink) | Publiée v4 | [Jouer](https://seradrien-png.github.io/saltik/versions/saltik-ink/dist/) | `44110aa2dd80` |
 | [SALTIK INK — brouillon local avec épilogue](versions/autres-versions/saltik-ink-brouillon) | Brouillon local non publié | [Jouer](https://seradrien-png.github.io/saltik/versions/autres-versions/saltik-ink-brouillon/dist/) | `21dcc4ca32c5` |
 | [Feral Steel — Opération Canopée, référence Saltik](versions/autres-versions/saltik-feral-steel) | Publiée v24 | [Jouer](https://seradrien-png.github.io/saltik/versions/autres-versions/saltik-feral-steel/dist/) | `dbc331d0b7a2` |
@@ -106,3 +106,9 @@ Deux nouveaux plans opaques de maçonnerie et de roche occupent le bas de la vue
 Les deux nouveaux plans bas restent fixés au même repère que le terrain : même déplacement, altitude et dimensions constantes en coordonnées du monde. Les Saltiks ennemis portent deux fanions rouges à lune/laurier dorés, attachés aux vrais supports des pods ; ceux du porte-drone suivent ses plateformes. Leurs couleurs et tailles sont conservées. Aucun fanion ajouté aux niveaux 1 et 3, aucun changement de mécanique.
 
 664 tests réussis, six positions et six états de robots inspectés dans Chromium, petit écran et commandes validés, aucune erreur JS. Source `02bccd706ef5856062a9d9c53d4cc19e3d8dcab3`. [Bilan détaillé](lunar-pennants-release.json) · [Niveau 2](https://saltik-v2-matin-dore.ser-adrien.chatgpt.site?level=2).
+
+### Niveau 2 — continuité de caméra et DR01 habillé, version 29
+
+Le découpage lié à l’écran qui effaçait les toits dans les vallées est supprimé. Les deux plans bas passent par la même transformation de caméra et de secousse que le terrain, en conservant leur ancrage fixe et leur opacité. Le DR01 bleu reçoit un mantelet cramoisi/or et des panneaux brodés ajustés à la coque, sans fanions pendants. Les fanions du Saltik vert/orange sont conservés ; les autres niveaux et les mécaniques restent inchangés.
+
+664 tests réussis, traversée de la vallée profonde avec caméra jusqu’à-336, comparaison de pixels reproduisant l’ancien défaut puis sa correction, captures bureau/petit écran et commandes validées, aucune erreur JS. Source `75f051926ca13331f3eb4466792fc09f58dedaba`. [Bilan détaillé](lunar-continuity-release.json) · [Niveau 2](https://saltik-v2-matin-dore.ser-adrien.chatgpt.site?level=2).

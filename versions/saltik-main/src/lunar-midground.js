@@ -23,8 +23,10 @@ export function lunarLowPlanes({camera,cameraY=0,width,height,groundAt}){
 }
 export function drawLunarLowDepth(c,opts){
  if(!opts.image)return;
- const {width,height,image,texture}=opts,sourceH=image.height/2;
- c.save();c.globalAlpha=1;c.beginPath();c.rect(0,height*.55,width,height*.45);c.clip();
+ const {image,texture}=opts,sourceH=image.height/2;
+ // These are world objects: a screen-relative sky mask would erase their
+ // roofs as the camera follows a valley. The native viewport clips them.
+ c.save();c.globalAlpha=1;
  for(const plane of lunarLowPlanes(opts))for(const tile of plane.tiles){
   // Adjacent mirrored tiles meet at the exact same painted edge.
   c.save();c.translate(tile.x+(tile.flip?plane.w+1:0),plane.y);if(tile.flip)c.scale(-1,1);

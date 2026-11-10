@@ -1,6 +1,7 @@
 // The attachment is present only on the level-two material canvases. Native
 // geometry supplies the pod/roof transform, including slopes, turns and KO.
 export function drawLunarPennants(c,image,geo,carrier=false){
+ if(carrier)return 0;
  const flag=image?.lunarPennant;if(!flag)return 0;
  const places=carrier?[[48,331,180,240],[1030,349,180,235]]:
   geo.view==='front'?[[1168,165,145,190],[1660,165,150,190]]:

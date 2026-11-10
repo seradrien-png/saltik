@@ -1,0 +1,348 @@
+{
+  "source_commit": "75f051926ca13331f3eb4466792fc09f58dedaba",
+  "complete_test_suite": {
+    "passed": 664,
+    "failed": 0
+  },
+  "reproduction": [
+    {
+      "cameraY": -100,
+      "clipTop": 342.8571428571429,
+      "planes": [
+        {
+          "top": 295.3212220186372,
+          "bottom": 505.3212220186372,
+          "viewportVisible": 210,
+          "clippedVisible": 162.46407916149428
+        },
+        {
+          "top": 370.3212220186372,
+          "bottom": 560.3212220186372,
+          "viewportVisible": 190,
+          "clippedVisible": 190
+        }
+      ]
+    },
+    {
+      "cameraY": -180,
+      "clipTop": 342.8571428571429,
+      "planes": [
+        {
+          "top": 215.32122201863717,
+          "bottom": 425.3212220186372,
+          "viewportVisible": 210,
+          "clippedVisible": 82.46407916149428
+        },
+        {
+          "top": 290.3212220186372,
+          "bottom": 480.3212220186372,
+          "viewportVisible": 190,
+          "clippedVisible": 137.46407916149428
+        }
+      ]
+    },
+    {
+      "cameraY": -260,
+      "clipTop": 342.8571428571429,
+      "planes": [
+        {
+          "top": 135.32122201863717,
+          "bottom": 345.3212220186372,
+          "viewportVisible": 210,
+          "clippedVisible": 2.4640791614942827
+        },
+        {
+          "top": 210.32122201863717,
+          "bottom": 400.3212220186372,
+          "viewportVisible": 190,
+          "clippedVisible": 57.46407916149428
+        }
+      ]
+    },
+    {
+      "cameraY": -320,
+      "clipTop": 342.8571428571429,
+      "planes": [
+        {
+          "top": 75.32122201863717,
+          "bottom": 285.3212220186372,
+          "viewportVisible": 210,
+          "clippedVisible": 0
+        },
+        {
+          "top": 150.32122201863717,
+          "bottom": 340.3212220186372,
+          "viewportVisible": 190,
+          "clippedVisible": 0
+        }
+      ]
+    }
+  ],
+  "browser": {
+    "camera_motion": [
+      {
+        "x": 16226.833333333338,
+        "y": 867.3498064542657,
+        "camera": 15894.110569985573,
+        "cameraY": -316.59583124970504,
+        "height": 623.3766233766233,
+        "status": "playing"
+      },
+      {
+        "x": 16280.500000000013,
+        "y": 883.3333333333334,
+        "camera": 15934.397542722203,
+        "cameraY": -334.8997281228039,
+        "height": 623.3766233766233,
+        "status": "playing"
+      },
+      {
+        "x": 16318.833333333352,
+        "y": 883.3333333333334,
+        "camera": 15967.237281984038,
+        "cameraY": -335.77913700861376,
+        "height": 623.3766233766233,
+        "status": "playing"
+      },
+      {
+        "x": 16357.166666666692,
+        "y": 883.3333333333334,
+        "camera": 16008.995399911,
+        "cameraY": -335.94013648155436,
+        "height": 623.3766233766233,
+        "status": "playing"
+      },
+      {
+        "x": 16391.666666666693,
+        "y": 883.3333333333334,
+        "camera": 16044.326061763177,
+        "cameraY": -335.95472113969134,
+        "height": 623.3766233766233,
+        "status": "playing"
+      },
+      {
+        "x": 16430.000000000015,
+        "y": 883.3333333333334,
+        "camera": 16081.976624672252,
+        "cameraY": -335.95648897704126,
+        "height": 623.3766233766233,
+        "status": "playing"
+      },
+      {
+        "x": 16476,
+        "y": 883.3333333333334,
+        "camera": 16130.318851024387,
+        "cameraY": -335.95670504605073,
+        "height": 623.3766233766233,
+        "status": "playing"
+      },
+      {
+        "x": 16521.999999999985,
+        "y": 883.3333333333334,
+        "camera": 16178.751568077556,
+        "cameraY": -335.95670984758425,
+        "height": 623.3766233766233,
+        "status": "playing"
+      },
+      {
+        "x": 16564.16666666664,
+        "y": 883.3333333333334,
+        "camera": 16219.203199058677,
+        "cameraY": -335.956709949435,
+        "height": 623.3766233766233,
+        "status": "playing"
+      },
+      {
+        "x": 16602.49999999996,
+        "y": 883.3333333333334,
+        "camera": 16255.261816713617,
+        "cameraY": -335.95670995603103,
+        "height": 623.3766233766233,
+        "status": "playing"
+      },
+      {
+        "x": 16644.666666666613,
+        "y": 883.3333333333334,
+        "camera": 16298.53952157751,
+        "cameraY": -335.9567099566648,
+        "height": 623.3766233766233,
+        "status": "playing"
+      },
+      {
+        "x": 16686.833333333267,
+        "y": 883.3333333333334,
+        "camera": 16341.03024105169,
+        "cameraY": -335.956709956707,
+        "height": 623.3766233766233,
+        "status": "playing"
+      }
+    ],
+    "raster_regression": {
+      "oldMaskedRoofPixels": 0,
+      "correctedRoofPixels": 158117
+    },
+    "opaque_atlas": {
+      "solid": 828196,
+      "empty": 745342,
+      "partial": 0
+    },
+    "states": [
+      {
+        "x": 180,
+        "foot": 585.3212220186372,
+        "scale": 0.8008
+      },
+      {
+        "x": 6400,
+        "foot": 733.3865546218489,
+        "scale": 0.8008
+      },
+      {
+        "x": 8700,
+        "foot": 549.1640496102505,
+        "scale": 0.8008
+      },
+      {
+        "x": 16080,
+        "foot": 535.7395148017962,
+        "scale": 0.8008
+      },
+      {
+        "x": 16260,
+        "foot": 883.3333333333334,
+        "scale": 0.8008
+      },
+      {
+        "x": 16440,
+        "foot": 883.3333333333334,
+        "scale": 0.8008
+      }
+    ],
+    "actors": [
+      {
+        "type": "saltik",
+        "dir": 1,
+        "ko": false,
+        "level": 2,
+        "enemyScale": 0.9,
+        "count": 1
+      },
+      {
+        "type": "saltik",
+        "dir": -1,
+        "ko": false,
+        "level": 2,
+        "enemyScale": 0.9,
+        "count": 1
+      },
+      {
+        "type": "carrier",
+        "dir": 1,
+        "ko": false,
+        "level": 2,
+        "enemyScale": 0.9,
+        "count": 1
+      },
+      {
+        "type": "carrier",
+        "dir": -1,
+        "ko": true,
+        "level": 2,
+        "enemyScale": 0.9,
+        "count": 1
+      },
+      {
+        "type": "carrier",
+        "dir": 1,
+        "ko": false,
+        "level": 1,
+        "enemyScale": null,
+        "count": 1
+      },
+      {
+        "type": "carrier",
+        "dir": 1,
+        "ko": false,
+        "level": 3,
+        "enemyScale": null,
+        "count": 1
+      }
+    ],
+    "phone": {
+      "firing": true,
+      "pause": true,
+      "restart": true,
+      "skin": "lunar"
+    },
+    "errors": []
+  },
+  "preservation": {
+    "base": "02bccd706ef5856062a9d9c53d4cc19e3d8dcab3",
+    "unchanged": {
+      "engine.js": "8871bb2d4aa4c73251c8b061fd3caacb0ef4a33c95ffe082e13fed60799158c7",
+      "ink-scene.js": "ec66a3079efed66f31eb59b12bd2c612029fa9d8f84370a1f339b4ef13df6a51",
+      "lunar-level.js": "de672b81f052e45c87b6c8b2cf1fcb0bcf609d6b306b737dc9d56302c5e1322f",
+      "lunar-architecture.js": "c1eb7b42baec02ca72082ab52c34acb76a174105bf8bbf9f97f10d0ef919f4bf",
+      "lunar-landmarks.js": "86a139c1f8428a4a6fae44485bdf017678b489203584712259ff9e0a90555a5b",
+      "lunar-terrain.js": "0f0944489e7dd6496308fc5365ef472cf214a4ff271af83f0299f3c57af2b77e",
+      "royal-world.js": "27c10e2c4342abbc4ad9eb5721c047003fbf36ca0516085e0a9bd21820991e15",
+      "royal-level.js": "4837ecbf243cc65f171759a417441ddba09255cd135d6f2a02c9f0f17634dcae",
+      "main.js": "f44f9bc1bc0effb44d6deb908bd2baf4fc43ff14f68ad6ac7cda831c1ce2682a",
+      "mission-camera.js": "379a897695ad2473f03d59dd8ba04301bc377b051a1d0f40b07c39d80f3b0301",
+      "ink-enemy-saltik.js": "8e51901a15ccadbf6da5623e65d3da2a4a548816268e93e4a96df6ed1ff06131"
+    },
+    "carrier_geometry_and_behavior_unchanged": true,
+    "fixed_world_layer_geometry_unchanged": true,
+    "old_material_retained": true
+  },
+  "review": "No actionable findings; deep valley movement, normal and KO dressed DR01, levels1/3 checked.",
+  "changes": [
+    "Only level2: removed screen-relative55percent clip that erased onscreen roofs, low layers share terrain camera/shake transform.",
+    "Fixed world geometry/rate1/opacity preserved.",
+    "DR01 hanging carrier pennants removed; fitted crimson/gold mantle and embroidered blue fender panels use native actor alpha.",
+    "Green/orange Saltik flags kept. Colors, sizes, mechanics and levels1/3 preserved."
+  ],
+  "limitations": [
+    "Small screen in Chromium; no physical handset."
+  ],
+  "publication": {
+    "version": 29,
+    "version_id": "appgprj_6ae77e1b6da081918600675fc2e2b738~appgver_40333e4e3b9c81918068ee8106e2c05e",
+    "deployment": "appgdep_6af336810c9481918a15967887d0830a",
+    "status": "succeeded",
+    "source_commit": "75f051926ca13331f3eb4466792fc09f58dedaba",
+    "url": "https://saltik-v2-matin-dore.ser-adrien.chatgpt.site"
+  },
+  "published_resources": [
+    {
+      "path": "src/ink-renderer.js",
+      "status": 200,
+      "sha256": "1483933ff4376ac8d154b54074d3ee4bd34c4c9550a5faaac637abde0b6ddd14"
+    },
+    {
+      "path": "src/lunar-midground.js",
+      "status": 200,
+      "sha256": "186bfecdf2d335325515c32c4c0a0876a92c1f4559ffe6e1c7949da5c57e1844"
+    },
+    {
+      "path": "src/enemy-styles.js",
+      "status": 200,
+      "sha256": "05e5150f60c18282df3e04bafe45bc4d83bbad3e875d6567dd42137d8d9701e0"
+    },
+    {
+      "path": "src/ink-carrier.js",
+      "status": 200,
+      "sha256": "6e99319e53245687709c53bcbb8309f8155ce98b9fa8ae670390ddbf2463e3b9"
+    },
+    {
+      "path": "src/lunar-pennants.js",
+      "status": 200,
+      "sha256": "c50bae6a8c2b590fe44ed6538672c3f253dab68ebc38f9d5d595aec3a3f8423a"
+    },
+    {
+      "path": "assets/lunar-carrier-dressed-material.png",
+      "status": 200,
+      "sha256": "90629ca12e69fc75a6e6534172048c3460dabfd7486b97dc574e8dca3c2f573a"
+    }
+  ]
+}

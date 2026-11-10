@@ -91,3 +91,7 @@ Source `f6268033d616c2525b16be25e3f8527d8b704bfa`, version 27 publiée le 10 nov
 ## Niveau 2 — couches fixes et fanions, v28
 
 Source `02bccd706ef5856062a9d9c53d4cc19e3d8dcab3`, version 28 publiée le 10 novembre 2026. Plans bas fixés au terrain, fanions rouges/or raccordés aux pods des Saltiks et plateformes du porte-drone. Couleurs, tailles, mécanique et autres missions préservées. 529 fichiers du principal comparés ; cinq éditions totalisant 1578 fichiers et toutes les archives vérifiées. 664 tests réussis, captures normales/miroir/KO et absence de nouveaux fanions aux niveaux 1/3 validées, commandes sur petit écran,0erreurJS, revue sans point restant. Voir lunar-pennants-release.json.
+
+## Niveau 2 — continuité et DR01 habillé, v29
+
+Source `75f051926ca13331f3eb4466792fc09f58dedaba`, version 29 publiée le 10 novembre 2026. Correction du découpage écran qui faisait disparaître les éléments du second plan ; les plans bas utilisent la même caméra que le terrain. DR01 bleu habillé d’un mantelet brodé ajusté et de panneaux sur les garde-boue, sans fanions pendants. Fanions du Saltik vert/orange et niveaux1/3 préservés. 531 fichiers du principal comparés ; cinq éditions1580 fichiers et toutes les archives vérifiés. 664 tests réussis, caméra en déplacement dans la vallée la plus profonde et régression de pixels validées, commandes sur petit écran,0erreurJS et revue sans point restant. Voir lunar-continuity-release.json.

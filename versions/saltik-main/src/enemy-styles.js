@@ -4,7 +4,7 @@ export const ENEMY_MATERIALS=Object.freeze([
  {name:'royal-enemy-saltik',base:'ink-enemy-saltik',asset:'royal-enemy-saltik-material'},
  {name:'lunar-enemies',base:'ink-enemies',asset:'lunar-enemies-material'},
  {name:'royal-enemies',base:'ink-enemies',asset:'royal-enemies-material'},
- {name:'lunar-carrier',base:'ink-carrier',asset:'lunar-carrier-material'},
+ {name:'lunar-carrier',base:'ink-carrier',asset:'lunar-carrier-dressed-material'},
  {name:'royal-carrier',base:'ink-carrier',asset:'royal-carrier-material'},
 ]);
 const sets={2:{'ink-enemies':'lunar-enemies','ink-enemy-saltik':'lunar-enemy-saltik','ink-carrier':'lunar-carrier'},3:{'ink-enemies':'royal-enemies','ink-enemy-saltik':'royal-enemy-saltik','ink-carrier':'royal-carrier'}};

@@ -131,3 +131,7 @@ Le panorama `lunar-natural-world.png` remplace le fond dessiné avec des diagram
 ### Niveau 2 — couches fixes et fanions
 
 Les deux nouveaux plans bas sont fixés en coordonnées du monde, comme la route : déplacement horizontal identique au terrain, altitude et taille indépendantes du cadrage et de la largeur de l’écran. Le ciel garde sa zone dégagée. Les Saltiks ennemis reçoivent deux fanions rouges brodés de lune/laurier, bordures et franges dorées, inspirés du Striker lunaire. Les fanions suivent les vrais supports des pods en marche, dans les deux sens, en élévation et dans les interactions ; ceux du porte-drone suivent ses plateformes. Les couleurs et les tailles des robots sont conservées. Les matériaux des niveaux 1 et 3 n’ont aucun fanion ajouté.
+
+### Niveau2 — continuité du second plan et DR01 habillé
+
+Le découpage horizontal lié à l’écran est supprimé : les architectures du second plan utilisent maintenant exactement la même transformation de caméra que le terrain, y compris dans les vallées et lors des secousses. Leur ancrage fixe et leur opacité sont conservés ; elles sortent uniquement par les bords naturels de la vue. Le DR01 bleu remplace ses fanions pendants par un mantelet brodé ajusté à la coque et des panneaux de tissu sur les garde-boue. Son bleu, ses plateformes H, ses capteurs, ses armes et ses articulations restent natifs. Les fanions du Saltik ennemi vert/orange sont conservés. Niveaux1/3, géométrie, tailles et mécanique inchangés.

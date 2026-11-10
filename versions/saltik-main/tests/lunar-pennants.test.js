@@ -10,5 +10,5 @@ test('pennants stay attached to the native raising pods and follow the exact cam
  const a=draw(e,100),b=draw(e,140),raised=draw({...e,podRaise:1},100);
  assert.equal(a.length,2);for(let i=0;i<2;i++){assert.ok(Math.abs(a[i][4]-b[i][4]-40)<1e-9);assert.equal(a[i][5],b[i][5]);assert.ok(a[i].every(Number.isFinite));}assert.notDeepEqual(a,raised);
  matrices.length=0;assert.equal(drawLunarPennants(c,image,inkEnemySaltikGeometry(e,0,{view:'front'})),2);assert.ok(matrices.flat().every(Number.isFinite));
- matrices.length=0;assert.equal(drawLunarPennants(c,image,inkCarrierGeometry({...e,knockedOut:true,koElapsed:1},0),true),2);assert.ok(matrices.flat().every(Number.isFinite));
+ matrices.length=0;assert.equal(drawLunarPennants(c,image,inkCarrierGeometry({...e,knockedOut:true,koElapsed:1},0),true),0);assert.equal(matrices.length,0);
 });
