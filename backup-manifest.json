@@ -7,15 +7,15 @@
       "slug": "saltik-main",
       "repo": "saltik-v2-matin-dore",
       "title": "SALTIK V2 — Matin Doré",
-      "commit": "7ce68b1cdf4cb6d5d34ec1fa6adb9e8ea4a536b1",
-      "published_version": 23,
+      "commit": "e7625a06befc829bd4a6a111ee495d3bcf7d8516",
+      "published_version": 24,
       "url": "https://saltik-v2-matin-dore.ser-adrien.chatgpt.site",
-      "base_commit": "7ce68b1cdf4cb6d5d34ec1fa6adb9e8ea4a536b1",
+      "base_commit": "e7625a06befc829bd4a6a111ee495d3bcf7d8516",
       "source_path": "/workspace/sites/saltik-v2-matin-dore",
       "export_path": "versions/saltik-main",
       "web_entry": "versions/saltik-main/dist/index.html",
-      "file_count": 498,
-      "bytes": 161541043,
+      "file_count": 509,
+      "bytes": 172244440,
       "uncommitted_changes": "",
       "files": {
         ".gitignore": {
@@ -27,8 +27,8 @@
           "size": 106
         },
         "README.md": {
-          "sha256": "5e59ffc58f052c99bfa54bc85adad9471c28632b51d8bd002fd951d39c1cb4d9",
-          "size": 18196
+          "sha256": "78e9d54ae31283a1ca17277b7b014f782e4e85f85e14c1d0f80d28f9a295e61c",
+          "size": 19256
         },
         "dist/android.html": {
           "sha256": "e9ac1d2184db443c2daaf0bd28e707aaac01eec5e711d674965cebb576345a16",
@@ -186,6 +186,10 @@
           "sha256": "8b16cf99e7366ae7c959043cce7091f27ae806f43e042fadaa940a5e8a83284a",
           "size": 3080738
         },
+        "dist/assets/lunar-hero-map.png": {
+          "sha256": "e033182393960a8eafa58ec071ad7957fe46e5f22d24484ef2bccdf7a8885ac0",
+          "size": 1987215
+        },
         "dist/assets/lunar-island-layers.png": {
           "sha256": "a123dd7e7f9287169dbe29dfa921bd3cb6bc03c0fdb04054c0d01a17461b96d4",
           "size": 2178217
@@ -202,6 +206,10 @@
           "sha256": "253ada3c626bad7ee2ca003c3451a05599c13df0e4b8cd2066e5098fa7d99d1b",
           "size": 2609612
         },
+        "dist/assets/lunar-turn-map.png": {
+          "sha256": "9cbbfe7cd576261a96c117821b87ba6e83e9dd466551f5ca0ba98463e06504ec",
+          "size": 2327464
+        },
         "dist/assets/pastel-boss-parts.png": {
           "sha256": "c27b39df8d41e791d879d9b497b3d363cd3171fadf1e6004df64643a934f5663",
           "size": 1956144
@@ -214,13 +222,25 @@
           "sha256": "ee4dab3568274249c4e0fffbfe6b801e6ee3bfba95ba64f1ccb88b60bceb0fce",
           "size": 1416779
         },
+        "dist/assets/royal-foreground-props.png": {
+          "sha256": "6e1a9fcfd0a41f4257234d46dd89e6802860c84041d1c440c1a74ad3ad22ae53",
+          "size": 3117197
+        },
         "dist/assets/royal-hero-map.png": {
           "sha256": "fe39649d905661f0624217f99db3f4fb24c1d94560c7228373d1befabab30bce",
           "size": 2124276
         },
+        "dist/assets/royal-organic-landmarks.png": {
+          "sha256": "b429f3f79adb453c8da30bd26db31abe89edb761433e14e1af86ac123ef287da",
+          "size": 3038452
+        },
         "dist/assets/royal-quarter-bridge.png": {
           "sha256": "969fb57afec141d93f12e1ab6f420664d095569a82bb33dc97f2621888e40be0",
           "size": 2474358
+        },
+        "dist/assets/royal-rail-mask.png": {
+          "sha256": "9c3456ce6ea00343359dcead1590e92526e3085a387467e1155c58ae53150396",
+          "size": 223595
         },
         "dist/assets/royal-structures.png": {
           "sha256": "d9981cc8e8233fdbdaeb5359db2991b3f26dba12f29a84e8c14839620d89893d",
@@ -427,8 +447,8 @@
           "size": 5269
         },
         "dist/src/ink-renderer.js": {
-          "sha256": "4c46a4ac2c13edd047d642a5cd530d61c0626951b04006825f1041e8bee7a8b5",
-          "size": 13219
+          "sha256": "2ec998a4420c884eddaf8399c09a7620a097edc9ca614e97ec295029ca7ab657",
+          "size": 13710
         },
         "dist/src/ink-saltik.js": {
           "sha256": "284f838c7fd4b7cf1a930981aa3b564c89f7014408b2474c5985bdff8a55b97f",
@@ -463,8 +483,8 @@
           "size": 4376
         },
         "dist/src/lunar-level.js": {
-          "sha256": "319833191f6be89096a654b82b64af3b2696b1de636bf22990b902d449abcc6a",
-          "size": 5874
+          "sha256": "01f55ff83731aa11aad43b9ff930078b5176ffac7918e41e605b8630231236bb",
+          "size": 5896
         },
         "dist/src/lunar-midground.js": {
           "sha256": "1fe53f5eee4a27418eddf5bf97be1ffcc4b0529959f1e9d7939742180951254e",
@@ -522,21 +542,29 @@
           "sha256": "f1e5891145283d8c07d159855d91a58318573f7d10baa74b797a6109d187c7a2",
           "size": 18138
         },
+        "dist/src/royal-bridge-front.js": {
+          "sha256": "b3cba2c60fc627867226c4ebeb3d477531fa938897acc5fea19a4c9d2763e31f",
+          "size": 846
+        },
         "dist/src/royal-layout.js": {
-          "sha256": "f7cfb9b7f042c1060078e74a8ec7dc3184a46e5d00ff743edecf3f6139ebacc2",
-          "size": 4075
+          "sha256": "25f4916e2ee712d0d0fa1968f85115c9d5641674b188045ce224446f57a00152",
+          "size": 4692
         },
         "dist/src/royal-level.js": {
-          "sha256": "6b51694d68786694000ea4f426f9e687eecc5a9a577bac40e6e641cd6f364f5b",
-          "size": 3803
+          "sha256": "4837ecbf243cc65f171759a417441ddba09255cd135d6f2a02c9f0f17634dcae",
+          "size": 3830
+        },
+        "dist/src/royal-props.js": {
+          "sha256": "e8bd1480e2d557bbe32cb5e3b5dca6c493be910f4718253819c77eeebed87aa9",
+          "size": 740
         },
         "dist/src/royal-skin.js": {
-          "sha256": "3015c0efaba397958bbfce349b468d40799d5c95132051aa7386d931b8b6086d",
-          "size": 1408
+          "sha256": "b20ed859f9c7178cbb740a854d2e40d4acce6fd3c421bb953efef555006214d5",
+          "size": 1540
         },
         "dist/src/royal-world.js": {
-          "sha256": "83375377fc2256adccce452a6067ecd0699efbdeffe9c044f4d40475ea2d36b9",
-          "size": 5094
+          "sha256": "27c10e2c4342abbc4ad9eb5721c047003fbf36ca0516085e0a9bd21820991e15",
+          "size": 4745
         },
         "dist/src/saltik-duel.js": {
           "sha256": "09dacceb66c145a127761517e52c06a2f1d4d424e19c0ecde4ea5968b9cb3e51",
@@ -877,6 +905,10 @@
         "docs/superpowers/plans/2026-11-10-boss-assault.md": {
           "sha256": "603fec8486ee3bb2894d32b4a38b23c1c664dbe6f42d97274b90c531256ca138",
           "size": 1608
+        },
+        "docs/superpowers/plans/2026-11-10-royal-density.md": {
+          "sha256": "c6949fcc3ce0256982461f861c9828e205bbd88c45d55d048e38db64c1cba3a6",
+          "size": 1061
         },
         "docs/superpowers/plans/2026-11-10-royal-gardens.md": {
           "sha256": "7aab2d9f1389c2a00e303ed88409f06db0d08d832ae53a53b7540925db5aa55b",
@@ -1343,8 +1375,8 @@
           "size": 5269
         },
         "src/ink-renderer.js": {
-          "sha256": "4c46a4ac2c13edd047d642a5cd530d61c0626951b04006825f1041e8bee7a8b5",
-          "size": 13219
+          "sha256": "2ec998a4420c884eddaf8399c09a7620a097edc9ca614e97ec295029ca7ab657",
+          "size": 13710
         },
         "src/ink-saltik.js": {
           "sha256": "284f838c7fd4b7cf1a930981aa3b564c89f7014408b2474c5985bdff8a55b97f",
@@ -1379,8 +1411,8 @@
           "size": 4376
         },
         "src/lunar-level.js": {
-          "sha256": "319833191f6be89096a654b82b64af3b2696b1de636bf22990b902d449abcc6a",
-          "size": 5874
+          "sha256": "01f55ff83731aa11aad43b9ff930078b5176ffac7918e41e605b8630231236bb",
+          "size": 5896
         },
         "src/lunar-midground.js": {
           "sha256": "1fe53f5eee4a27418eddf5bf97be1ffcc4b0529959f1e9d7939742180951254e",
@@ -1438,21 +1470,29 @@
           "sha256": "f1e5891145283d8c07d159855d91a58318573f7d10baa74b797a6109d187c7a2",
           "size": 18138
         },
+        "src/royal-bridge-front.js": {
+          "sha256": "b3cba2c60fc627867226c4ebeb3d477531fa938897acc5fea19a4c9d2763e31f",
+          "size": 846
+        },
         "src/royal-layout.js": {
-          "sha256": "f7cfb9b7f042c1060078e74a8ec7dc3184a46e5d00ff743edecf3f6139ebacc2",
-          "size": 4075
+          "sha256": "25f4916e2ee712d0d0fa1968f85115c9d5641674b188045ce224446f57a00152",
+          "size": 4692
         },
         "src/royal-level.js": {
-          "sha256": "6b51694d68786694000ea4f426f9e687eecc5a9a577bac40e6e641cd6f364f5b",
-          "size": 3803
+          "sha256": "4837ecbf243cc65f171759a417441ddba09255cd135d6f2a02c9f0f17634dcae",
+          "size": 3830
+        },
+        "src/royal-props.js": {
+          "sha256": "e8bd1480e2d557bbe32cb5e3b5dca6c493be910f4718253819c77eeebed87aa9",
+          "size": 740
         },
         "src/royal-skin.js": {
-          "sha256": "3015c0efaba397958bbfce349b468d40799d5c95132051aa7386d931b8b6086d",
-          "size": 1408
+          "sha256": "b20ed859f9c7178cbb740a854d2e40d4acce6fd3c421bb953efef555006214d5",
+          "size": 1540
         },
         "src/royal-world.js": {
-          "sha256": "83375377fc2256adccce452a6067ecd0699efbdeffe9c044f4d40475ea2d36b9",
-          "size": 5094
+          "sha256": "27c10e2c4342abbc4ad9eb5721c047003fbf36ca0516085e0a9bd21820991e15",
+          "size": 4745
         },
         "src/saltik-duel.js": {
           "sha256": "09dacceb66c145a127761517e52c06a2f1d4d424e19c0ecde4ea5968b9cb3e51",
@@ -1943,12 +1983,16 @@
           "size": 5500
         },
         "tests/royal-art.test.js": {
-          "sha256": "e32da7d3b6dab8c0aa47a74954f1e8bd749825b1bbb884add581b157c59de74a",
-          "size": 1621
+          "sha256": "ee526863b1c34eaf5642e23b9e94787150dd44b2a6b4b7f75f730c49b814d261",
+          "size": 1639
+        },
+        "tests/royal-density.test.js": {
+          "sha256": "c5474284f546dbe80a6f4c4481ce81d9ef8f85ae854d02e69e5bd0b5944f99aa",
+          "size": 2279
         },
         "tests/royal-level.test.js": {
-          "sha256": "e5876f6105b2e683c091bd2225489bb8aebf2dedae1574ecb184e27552b060a1",
-          "size": 3858
+          "sha256": "241d948fe1883475dc0cbab68d79956795835b7cc74879f6dea4b64c5ef6a137",
+          "size": 3862
         },
         "tests/saltik-duel-engine.test.js": {
           "sha256": "eae7bb3711c0282aa6d068da0eb74fa5a263321b127d0a9aace83836aea21c61",
@@ -2023,7 +2067,7 @@
         }
       ],
       "update_note": "Level2 Archives lunaires, menu/after-level1 access, primary cannon gain +20 percent; Sites v17 deployment succeeded.",
-      "published_source_commit": "7ce68b1cdf4cb6d5d34ec1fa6adb9e8ea4a536b1",
+      "published_source_commit": "e7625a06befc829bd4a6a111ee495d3bcf7d8516",
       "publication_status": "succeeded",
       "github_import_base": "4c9b8e64bf3232c222f9b6f534ca37d660da3f7b"
     },

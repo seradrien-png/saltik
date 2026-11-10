@@ -10,7 +10,7 @@ export function applyRoyalLevel(g){
  for(const route of g.platforms.filter(p=>['tree','terrace'].includes(p.royalKind)))g.schedule.push({id:`${route.id}-guard`,type:'soldier',x:route.x1+(route.x2-route.x1)*.58,platformId:route.id,tier:1});
  g.schedule.sort((a,b)=>a.x-b.x);g.pickups=[2100,4200,6400,8500,11200,13700,15700].map(x=>({x,y:royalGroundAt(x)-30,type:'repair'}));
  for(const p of g.platforms.filter(p=>p.royalKind!=='bridge'))g.pickups.push({x:p.x2-80,y:p.points.at(-1)[1]-30,type:'repair'});
- Object.assign(g.player,{skin:'royal',artScale:.8,y:royalGroundAt(g.player.x),supportY:royalGroundAt(g.player.x),supportPose:null});g.royal={phase:'traverse',seals:0,elapsed:0,checkpoint:180,falls:0};return g;
+ Object.assign(g.player,{skin:'royal',artScale:royalDepthScaleAt(g.player.x),y:royalGroundAt(g.player.x),supportY:royalGroundAt(g.player.x),supportPose:null});g.royal={phase:'traverse',seals:0,elapsed:0,checkpoint:180,falls:0};return g;
 }
 export function advanceRoyalObjective(g,dt){
  if(!(dt>0)||!Number.isFinite(dt)||g.level!==3||g.status!=='playing'||g.introElapsed<g.introDuration||g.duel||g.carrierShutdown)return;

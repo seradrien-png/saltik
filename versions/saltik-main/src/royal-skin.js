@@ -19,4 +19,4 @@ export function bakeRoyalArt(original,paint){
  c.drawImage(original,0,0,w,h);const base=c.getImageData(0,0,w,h);c.clearRect(0,0,w,h);c.drawImage(paint,0,0,w,h);const wash=c.getImageData(0,0,w,h);
  applyRoyalPixels(base.data,wash.data);c.putImageData(base,0,0);return canvas;
 }
-export function royalPlayerImages(images,level){return level===3?{...images,'ink-saltik':images['royal-saltik']??images['ink-saltik'],'ink-turn':images['royal-turn']??images['ink-turn']}:images;}
+export function royalPlayerImages(images,level){return level===2?{...images,'ink-saltik':images['lunar-saltik']??images['ink-saltik'],'ink-turn':images['lunar-turn']??images['ink-turn']}:level===3?{...images,'ink-saltik':images['royal-saltik']??images['ink-saltik'],'ink-turn':images['royal-turn']??images['ink-turn']}:images;}

@@ -109,3 +109,9 @@ Accès indépendant par le menu ou `?level=3`, et bouton de continuation après 
 Le joueur porte une apparence de velours doré, vert émeraude et bordeaux uniquement au niveau 3. Les cartes de matière conservent l’alpha, les coordonnées des armes et l’articulation des atlas natifs. Trois sceaux sont défendus dans trois lieux différents au long du parcours ; il faut réellement éliminer leurs gardiens. Une partie avec les commandes normales termine en environ 79 secondes, avec 100 points de blindage et aucune chute dans le scénario de vérification. Musique du niveau 3 laissée silencieuse, effets et voix conservés.
 
 Le niveau 2 reçoit quelques îlots astronomiques opaques au plan intermédiaire, à un défilement distinct. Son fond avec tête de pierre, ses structures et ses collisions sont conservés. Le boss du niveau 1 et son épave restent inchangés.
+
+### Finitions des niveaux 2 et 3
+
+Le Saltik lunaire du niveau 2 reprend la nouvelle référence ivoire/or, drapés rouges, motifs de lune et lumières cyan, avec atlas normal et trois vues de retournement aux coordonnées natives. Les autres apparences restent propres à leur mission.
+
+Au niveau 3, Saltik est agrandi de 20 % à toute profondeur (.96 près / .792 loin). Le pont possède désormais une passe de premier plan extraite de ses pixels d’origine : poteaux, cordes et bord proche masquent réellement Saltik, sans duplication décalée de texture. Trois anciens ensembles à escaliers sont remplacés par une racine arquée praticable, une roue à eau avec dos arrondi et un passage de racines autour d’une bobine. Des buissons plus fréquents et neuf grands objets de premier plan (lys, vase, bobine-lanterne, troncs) densifient le monde et masquent brièvement le joueur. Les troncs se prolongent hors de l’écran pour éviter un bord de découpe flottant. Les gros objets sont des éléments du premier plan, pas des obstacles physiques.

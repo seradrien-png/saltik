@@ -1,7 +1,8 @@
+import {drawRoyalProps} from './royal-props.js';
 import {ROYAL_CELLS,ROYAL_SITES,royalGroundAt} from './royal-layout.js';
 const GOLD='#d99b29',TAU=Math.PI*2;
 export function royalPaintedBounds(s){const cell=ROYAL_CELLS[s.kind];return{x:s.left,y:s.top,w:cell.crop[2]*s.scale,h:cell.crop[3]*s.scale};}
-function paintSite(c,art,s,camera=0){const cell=ROYAL_CELLS[s.kind],image=cell.source==='bridge'?art?.bridge:art?.atlas;if(!image)return;const b=royalPaintedBounds(s);c.drawImage(image,...cell.crop,b.x-camera,b.y,b.w,b.h);}
+function paintSite(c,art,s,camera=0){const cell=ROYAL_CELLS[s.kind],image=cell.source==='bridge'?art?.bridge:cell.source==='organic'?art?.organic:art?.atlas;if(!image)return;const b=royalPaintedBounds(s);c.drawImage(image,...cell.crop,b.x-camera,b.y,b.w,b.h);}
 export function drawRoyalBackdrop(c,{camera,width,height,image,art}){
  c.save();c.globalAlpha=1;c.fillStyle='#041454';c.fillRect(0,0,width,height);
  // Keep the reference composition readable: tree at left, mountains and full
@@ -41,21 +42,17 @@ export function drawRoyalWorld(c,g,{camera,width,time,art}){
   c.save();c.strokeStyle=opened?'#fff1ac':GOLD;c.fillStyle=opened?'#087a5a':'#59123b';c.lineWidth=4;c.beginPath();c.arc(screen,y,23,0,TAU);c.fill();c.stroke();c.fillStyle='#ffe3a0';c.font='bold 20px Georgia';c.textAlign='center';c.textBaseline='middle';c.fillText(opened?'✦':String(i+1),screen,y);c.restore();
  }
 }
-const NEAR_ROPES=[[[650,420],[800,400],[950,356],[1090,305],[1220,246],[1360,188],[1490,114]],[[650,516],[800,475],[950,420],[1090,358],[1220,292],[1360,221],[1490,149]]];
-function ropeBand(c,points,s,camera){
- c.beginPath();points.forEach(([x,y],i)=>c[i?'lineTo':'moveTo'](s.left+x*s.scale-camera,s.top+(y-6)*s.scale));
- for(const [x,y] of [...points].reverse())c.lineTo(s.left+x*s.scale-camera,s.top+(y+6)*s.scale);c.closePath();
-}
 export function drawRoyalForeground(c,g,{camera,width,art}){
  // The native near-side bridge rail occludes feet/legs in perspective, while
  // its far rail and deck stay behind the hero. No translucent overlay.
- if(art?.bridge)for(const s of ROYAL_SITES.filter(s=>s.kind==='bridge')){
+ if(art?.railFront)for(const s of ROYAL_SITES.filter(s=>s.kind==='bridge')){
   const b=royalPaintedBounds(s);if(b.x+b.w<camera||b.x>camera+width)continue;
-  for(const band of NEAR_ROPES){c.save();ropeBand(c,band,s,camera);c.clip();paintSite(c,art,s,camera);c.restore();}
+  c.drawImage(art.railFront,0,0,1774,887,b.x-camera,b.y,b.w,b.h);
  }
+ drawRoyalProps(c,art?.props,{camera,width});
  // Small native velvet flowers frame the lower edge; no unusable foreground stairs.
- if(art?.flora)for(let i=Math.floor(camera*1.025/750)-1;i<Math.floor((camera*1.025+width)/750)+2;i++){
-  const x=i*750-camera*1.025,world=x+camera,y=royalGroundAt(world)+60,sw=art.flora.width/3,sh=art.flora.height,w=180,h=w*sh/sw;
+ if(art?.flora)for(let i=Math.floor(camera*1.025/350)-1;i<Math.floor((camera*1.025+width)/350)+2;i++){
+  const x=i*350-camera*1.025,world=x+camera,y=royalGroundAt(world)+60,sw=art.flora.width/3,sh=art.flora.height,w=180,h=w*sh/sw;
   c.drawImage(art.flora,Math.abs(i%3)*sw,0,sw,sh,x,y-h,w,h);
  }
 }

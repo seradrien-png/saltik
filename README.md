@@ -8,7 +8,7 @@ Les cinq états ci-dessous sont conservés dans des dossiers indépendants, sans
 
 | Jeu / sources | État réel | GitHub Pages après activation | Commit source |
 | --- | --- | --- | --- |
-| [SALTIK V2 — Matin Doré](versions/saltik-main) | Publiée v23 — 3 niveaux | [Jouer](https://seradrien-png.github.io/saltik/versions/saltik-main/dist/) | `7ce68b1cdf4c` |
+| [SALTIK V2 — Matin Doré](versions/saltik-main) | Publiée v24 — 3 niveaux | [Jouer](https://seradrien-png.github.io/saltik/versions/saltik-main/dist/) | `e7625a06befc` |
 | [SALTIK — Ink Edition publiée](versions/saltik-ink) | Publiée v4 | [Jouer](https://seradrien-png.github.io/saltik/versions/saltik-ink/dist/) | `44110aa2dd80` |
 | [SALTIK INK — brouillon local avec épilogue](versions/autres-versions/saltik-ink-brouillon) | Brouillon local non publié | [Jouer](https://seradrien-png.github.io/saltik/versions/autres-versions/saltik-ink-brouillon/dist/) | `21dcc4ca32c5` |
 | [Feral Steel — Opération Canopée, référence Saltik](versions/autres-versions/saltik-feral-steel) | Publiée v24 | [Jouer](https://seradrien-png.github.io/saltik/versions/autres-versions/saltik-feral-steel/dist/) | `dbc331d0b7a2` |
@@ -76,3 +76,10 @@ Nouveau blindé ivoire/orange avec quatre états et épave conservée au sol apr
 [Jouer directement au niveau 3](https://saltik-v2-matin-dore.ser-adrien.chatgpt.site?level=3). Grand arbre brodé, arc-en-ciel monumental, montagnes bleues et cascades reprennent la composition de référence. Huit structures natives, six escaliers et deux ponts en trois quarts avec profondeur progressive ; trois sceaux défendus au long du parcours. Saltik doré réservé à ce niveau, avec ses commandes et ses armes habituelles. Menu à trois choix et continuation du niveau 2 vers le niveau 3. Le niveau 2 reçoit quelques îlots opaques au plan intermédiaire, à défilement distinct ; son architecture et le fond existant sont préservés. Le boss du niveau 1 et son épave restent intacts.
 
 645 tests réussis. Campagne avec commandes normales : 78,73 secondes, 100 points de blindage, aucune chute. Chromium : pont dans les deux sens, escalier du sanctuaire, transition 2→3 et contrôles sur téléphone émulé vérifiés, aucune erreur JavaScript. Source `7ce68b1cdf4cb6d5d34ec1fa6adb9e8ea4a536b1`. [Bilan exact](royal-release.json). Autres éditions et archives préservées.
+
+
+## Apparences et profondeur — version 24 publiée
+
+[Niveau 3](https://saltik-v2-matin-dore.ser-adrien.chatgpt.site?level=3) : Saltik agrandi de 20 % à toute profondeur, poteaux et rambardes proches réellement devant lui, trois formes praticables nouvelles (racine arquée, roue à eau, racines autour d’une bobine), végétation plus dense et neuf grands objets opaques de premier plan pouvant le masquer brièvement. Les pixels de la rambarde proviennent du pont d’origine via un masque complet, sans décalage de texture. [Niveau 2](https://saltik-v2-matin-dore.ser-adrien.chatgpt.site?level=2) : nouveau Saltik ivoire/or, drapés lunaires rouges et lumières cyan d’après la photographie fournie. Ses animations et commandes sont conservées.
+
+651 tests réussis, deux campagnes terminées sans chute avec blindage natif, sept accès réellement parcourus dans Chromium, téléphone émulé et transition 2→3 validés, aucune erreur JS. Source `e7625a06befc829bd4a6a111ee495d3bcf7d8516`. [Bilan exact](density-release.json). Autres éditions, niveau 1 et architecture lunaire préservés.
