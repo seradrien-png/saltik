@@ -1,9 +1,9 @@
 {
   "site_url": "https://saltik-v2-matin-dore.ser-adrien.chatgpt.site",
-  "site_version": 20,
-  "site_deployment": "appgdep_6af222cef004819182b74b0aa8a467a3",
+  "site_version": 21,
+  "site_deployment": "appgdep_6af22e2ee224819198bd2aa7d09f33c3",
   "site_deployment_status": "succeeded",
-  "source_commit": "dea7b563da107570378a626983f506e350aedafd",
+  "source_commit": "39a4475bfcfddb23dda2ca51c2fc497736ceefa5",
   "levels": {
     "1": "Matin Doré / Le Canyon",
     "2": "Les Archives lunaires"
@@ -11,24 +11,24 @@
   "entry": "level selection in menu, ?level=2 link, next-level button after level1 film",
   "primary_cannon_gain_increase": 0.2,
   "complete_test_suite": {
-    "passed": 623,
+    "passed": 627,
     "failed": 0
   },
   "campaign_run": {
     "status": "won",
-    "seconds": 93.08333333332934,
+    "seconds": 94.81666666666257,
     "hp": 100,
     "falls": 0,
     "wave": 3,
     "stats": {
-      "kills": 34,
-      "shots": 608,
+      "kills": 33,
+      "shots": 627,
       "mirvs": 12,
       "homingSalvos": 9,
-      "meleeSwings": 5,
-      "meleeHits": 5,
-      "interceptions": 1,
-      "score": 10225,
+      "meleeSwings": 7,
+      "meleeHits": 6,
+      "interceptions": 0,
+      "score": 10125,
       "obstacles": 0,
       "neutralized": 3
     }
@@ -52,8 +52,8 @@
         "hp": 100
       },
       "played_level2": {
-        "x": 455.9999999999992,
-        "shots": 14
+        "x": 264.3333333333335,
+        "shots": 4
       }
     },
     {
@@ -74,14 +74,16 @@
         "hp": 100
       },
       "played_level2": {
-        "x": 613.1666666666666,
+        "x": 601.6666666666665,
         "shots": 20
       }
     }
   ],
   "other_game_snapshots_unchanged": true,
-  "revision_report": "lunar-integration-release.json",
+  "revision_report": "lunar-cohesion-release.json",
   "level2_music_enabled": false,
   "striker_art_scale_level2": 0.8,
-  "foreground_illustration_dimensions_changed": false
+  "foreground_illustration_dimensions_changed": false,
+  "playable_structures": 10,
+  "usable_stair_flights": 14
 }

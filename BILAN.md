@@ -51,3 +51,7 @@ Source `b629bb43cb35f1edcecfa0f2a4fdf9643e92355c`, publiée avec succès. Archit
 ## Intégration publiée : version 20
 
 Source `dea7b563da107570378a626983f506e350aedafd`, publiée avec succès. Taille du seul Striker lunaire à 80 %, illustrations inchangées ; raccords au sol recalés ; nouvelle texture chaude et arrière-plan séparé en couches indépendantes. 623 tests réussis, huit zones inspectées, essais Chromium ordinateur et téléphone émulé réussis. Le niveau 1 et les autres jeux sauvegardés restent préservés. Voir `lunar-integration-release.json`.
+
+## Monde cohérent publié : version 21
+
+Source `39a4475bfcfddb23dda2ca51c2fc497736ceefa5`, publiée avec succès. Dix structures physiques, quatorze escaliers, sol raccordé, tracés mesurés et fond opaque avec tête de pierre lisible. 627 tests réussis, essais des deux escaliers des remparts, annexe et portail par les touches dans Chromium, campagne de 94,82 s sans chute. Le niveau 1, Striker réduit au niveau 2, la musique coupée au niveau 2 et les autres éditions sont préservés. Voir `lunar-cohesion-release.json`.

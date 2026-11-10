@@ -1,0 +1,150 @@
+{
+  "publication": {
+    "version": 21,
+    "version_id": "appgprj_6ae77e1b6da081918600675fc2e2b738~appgver_cfc8c994b59c8191812179f0a835a1e1",
+    "deployment": "appgdep_6af22e2ee224819198bd2aa7d09f33c3",
+    "status": "succeeded",
+    "source_commit": "39a4475bfcfddb23dda2ca51c2fc497736ceefa5",
+    "url": "https://saltik-v2-matin-dore.ser-adrien.chatgpt.site"
+  },
+  "complete_test_suite": {
+    "passed": 627,
+    "failed": 0
+  },
+  "build": "passed",
+  "campaign": {
+    "status": "won",
+    "seconds": 94.81666666666257,
+    "hp": 100,
+    "falls": 0,
+    "wave": 3,
+    "stats": {
+      "kills": 33,
+      "shots": 627,
+      "mirvs": 12,
+      "homingSalvos": 9,
+      "meleeSwings": 7,
+      "meleeHits": 6,
+      "interceptions": 0,
+      "score": 10125,
+      "obstacles": 0,
+      "neutralized": 3
+    }
+  },
+  "browser": [
+    {
+      "device": "desktop",
+      "level2_music_silent_effects_available": true,
+      "level1_music_preserved": true,
+      "menu_choice": true,
+      "level2_movement_and_fire": true,
+      "paused_simulation_frozen": true,
+      "restart_same_level": true,
+      "level2_result_without_film": true,
+      "level1_film_preserved": true,
+      "next_level_after_film": true,
+      "errors": [],
+      "bad_responses": [],
+      "first_level2": {
+        "x": 180,
+        "hp": 100
+      },
+      "played_level2": {
+        "x": 264.3333333333335,
+        "shots": 4
+      }
+    },
+    {
+      "device": "phone",
+      "level2_music_silent_effects_available": true,
+      "level1_music_preserved": true,
+      "menu_choice": true,
+      "level2_movement_and_fire": true,
+      "paused_simulation_frozen": true,
+      "restart_same_level": true,
+      "level2_result_without_film": true,
+      "level1_film_preserved": true,
+      "next_level_after_film": true,
+      "errors": [],
+      "bad_responses": [],
+      "first_level2": {
+        "x": 180,
+        "hp": 100
+      },
+      "played_level2": {
+        "x": 601.6666666666665,
+        "shots": 20
+      }
+    }
+  ],
+  "stair_browser": {
+    "staircases": [
+      {
+        "route": "lunar-terrace-3",
+        "flight": 0,
+        "direction": -1,
+        "onGround": true,
+        "platform": "lunar-terrace-3",
+        "falls": 0
+      },
+      {
+        "route": "lunar-terrace-3",
+        "flight": 1,
+        "direction": 1,
+        "onGround": true,
+        "platform": "lunar-terrace-3",
+        "falls": 0
+      },
+      {
+        "route": "lunar-annex-west",
+        "flight": 1,
+        "direction": 1,
+        "onGround": true,
+        "platform": "lunar-annex-west",
+        "falls": 0
+      },
+      {
+        "route": "lunar-portal",
+        "flight": 0,
+        "direction": -1,
+        "onGround": true,
+        "platform": "lunar-portal",
+        "falls": 0
+      }
+    ],
+    "errors": []
+  },
+  "original_art": {
+    "original_illustrations_checked": [
+      "lunar-terrace-0",
+      "lunar-terrace-1",
+      "lunar-terrace-2",
+      "lunar-terrace-3",
+      "lunar-terrace-4",
+      "lunar-terrace-5"
+    ],
+    "dimensions_and_placement_unchanged": true
+  },
+  "main_files_verified": 473,
+  "other_game_snapshots_changed": false,
+  "playable_structures": 10,
+  "usable_stair_flights": 14,
+  "background_architecture_opacity": 1,
+  "ghost_district_overlays_removed": true,
+  "background": "coherent opaque panorama with clear stone face and one opaque near-island cutout",
+  "striker_art_scale_level2": 0.8,
+  "level2_music_enabled": false,
+  "review": "completed; no important issue found",
+  "visual_views": [
+    "arrival",
+    "aqueduct",
+    "annex-west",
+    "observatory-west",
+    "bastion-right",
+    "annex-middle",
+    "observatory",
+    "annex-east",
+    "portal"
+  ],
+  "phone_physical_tested": false
+}
