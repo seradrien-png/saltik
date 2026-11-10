@@ -14,12 +14,13 @@ function arena(hp=200){
 }
 function launchRealPodVolley(g){
   const b=g.boss;
-  b.weaponElapsed=2;
-  for(let frame=0;frame<50&&b.podVolleysFired!==1;frame++)tick(g);
-  assert.equal(b.podVolleysFired,1,'the native raised pod must launch real rockets');
-  assert.equal(g.events.filter(e=>e.type==='boss-pod-volley').length,1);
+  for(let salvo=1;salvo<=3;salvo++){
+    b.weaponPhase='pod-wait';b.weaponElapsed=2;
+    for(let frame=0;frame<55&&b.podVolleysFired<salvo;frame++)tick(g);
+    assert.equal(b.podVolleysFired,salvo,'the pod must really launch each salvo');
+  }
+  assert.equal(g.events.filter(e=>e.type==='boss-pod-volley').length,3);
   assert.equal(g.events.find(e=>e.type==='boss-pod-volley').count,8);
-  assert.equal(g.projectiles.filter(s=>s.kind==='enemy-missile').length,8);
 }
 function finishAssault(g){
   tick(g,{bossAction:true});tick(g,{},110);
@@ -30,7 +31,7 @@ function finishAssault(g){
   assert.equal(g.player.onGround,true);
 }
 
-test('pod assault unlocks only after the native pod physically launches a volley',()=>{
+test('pod assault unlocks only after three native rocket salvos',()=>{
   const g=arena(),b=g.boss;
   assert.equal(b.podVolleysFired,0);assert.equal(availableBossAssault(g),null);
   b.weaponElapsed=2;
@@ -43,7 +44,13 @@ test('pod assault unlocks only after the native pod physically launches a volley
   g.status='playing';
   for(let frame=0;frame<30&&b.podVolleysFired===0;frame++)tick(g,{bossAction:true});
   assert.equal(b.podVolleysFired,1);assert.equal(g.events.filter(e=>e.type==='boss-pod-volley').length,1);
-  assert.equal(availableBossAssault(g),'pod');assert.equal(g.bossBreach,null,'a held prelaunch press must not start the QTE');
+  assert.equal(availableBossAssault(g),null);
+  b.weaponPhase='pod-wait';b.weaponElapsed=2;
+  for(let frame=0;frame<55&&b.podVolleysFired<2;frame++)tick(g,{bossAction:true});
+  assert.equal(availableBossAssault(g),null);
+  b.weaponPhase='pod-wait';b.weaponElapsed=2;
+  for(let frame=0;frame<55&&b.podVolleysFired<3;frame++)tick(g,{bossAction:true});
+  assert.equal(availableBossAssault(g),'pod');assert.equal(g.bossBreach,null,'held press cannot start QTE');
   tick(g,{});tick(g,{bossAction:true});assert.equal(g.bossBreach?.kind,'pod');
 });
 
@@ -121,9 +128,9 @@ test('pod rockets launch from their mouth together, with no cannon during the po
   tick(g,{},24);
   const rockets=g.projectiles.filter(s=>s.kind==='enemy-missile');
   assert.equal(rockets.length,8);
-  assert.deepEqual(bossGeometry(b).podMuzzle,{x:b.x+56,y:b.y-192});
+  assert.deepEqual(bossGeometry(b).podMuzzle,{x:b.x+83,y:b.y-190});
   assert.ok(rockets.every(s=>s.team==='enemy'&&s.hp===1&&s.launchX===bossGeometry(b).podMuzzle.x));
-  assert.ok(rockets.every(s=>s.launchY===b.y-192));
+  assert.ok(rockets.every(s=>s.launchY===b.y-190));
   assert.equal(new Set(rockets.map(s=>s.vy)).size,8,'the rockets fan apart before homing');
   assert.equal(g.events.filter(e=>e.type==='boss-pod-volley').length,1);
   assert.equal(g.events.find(e=>e.type==='boss-pod-volley').count,8);
@@ -131,8 +138,8 @@ test('pod rockets launch from their mouth together, with no cannon during the po
   assert.equal(b.attack,0);
   g.projectiles=[];tick(g,{},269);assert.equal(b.attack,0);
   tick(g);assert.equal(b.attack,1);assert.equal(b.cannonRecoil,1);
-  const cannon=g.projectiles.filter(s=>s.kind==='plasma');
-  assert.equal(cannon.length,3);assert.ok(cannon.every(s=>s.launchX===bossGeometry(b).muzzle.x));
+  const cannon=g.projectiles.filter(s=>s.kind==='plasma'&&s.radius===9);
+  assert.equal(cannon.length,1);assert.ok(cannon.every(s=>s.launchX===bossGeometry(b).muzzle.x));
   b.podDestroyed=true;g.projectiles=[];
   tick(g,{},300);assert.equal(g.projectiles.some(s=>s.kind==='enemy-missile'),false);
   assert.equal(p.hp>0,true);

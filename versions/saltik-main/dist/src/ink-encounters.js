@@ -1,3 +1,4 @@
+import {drawBossAssault,bossAssaultPodPose} from './boss-assault-art.js';
 import {bossGeometry,bossCannonWarningProgress} from './boss-tank.js';
 import {drawInkSaltik,inkSaltikGeometry,INK_SALTIK_CROP,INK_SALTIK_ANCHOR,INK_SALTIK_PARTS} from './ink-saltik.js';
 import {drawInkEnemySaltik,inkEnemySaltikGeometry,INK_ENEMY_SALTIK_HEIGHT} from './ink-enemy-saltik.js';
@@ -60,7 +61,8 @@ export function inkBossPodGeometry(b,{camera=0,breach=null}={}){
  const v=pulling?inkBreachVisual(breach,b,{camera}):null,tear=pulling&&breach.phase==='tear'?smooth(clamp(finite(breach.elapsed)/.42)):0;
  const pull=v?.effort??0;
  const displayMuzzle=pulling?{x:mount.x-39-pull*5-tear*16,y:mount.y-6+pull*7-tear*30}:muzzle;
- const box={x:displayMuzzle.x+(part.box[0]-part.mouth[0])*k,y:displayMuzzle.y+(part.box[1]-part.mouth[1])*k,w:part.box[2]*k,h:part.box[3]*k};
+ let box={x:displayMuzzle.x+(part.box[0]-part.mouth[0])*k,y:displayMuzzle.y+(part.box[1]-part.mouth[1])*k,w:part.box[2]*k,h:part.box[3]*k};
+ if(b.assaultArt&&pulling)box=bossAssaultPodPose(b,{camera,breach}).box;
  // A wide native armored sleeve joins the cassette to the actual shoulder.
  // There is no extra pedestal in the closed state: that state is the tank.
  const shoulder={x:mount.x+26,y:b.y-(pulling?90:111)},strutBottom=shoulder.y+(part.foot[1]-part.anchor[1])*k+3;
@@ -82,7 +84,7 @@ export function inkBreachVisual(q,b,{camera=0}={}){
   recoil:q.kind==='pod'&&q.phase==='qte'?clamp(1-finite(q.elapsed)/.15):q.phase==='fire'?clamp(1-since/.15):0,shot:shots,
   shotFlash:q.kind==='pod'?q.phase==='qte'&&finite(q.elapsed)<.12:q.phase==='fire'&&since>=0&&since<.085,
   x:finite(q.deckX,q.x)-camera,y:finite(q.deckY,q.y),
-  hatch:{x:b.x-camera+(INK_BOSS_PARTS.hatchSource[0]-INK_BOSS_FRAME.anchor[0])*INK_BOSS_FRAME.scale,y:b.y+(INK_BOSS_PARTS.hatchSource[1]-INK_BOSS_FRAME.anchor[1])*INK_BOSS_FRAME.scale},
+  hatch:b.assaultArt?{x:b.x-camera-60,y:b.y-122}:{x:b.x-camera+(INK_BOSS_PARTS.hatchSource[0]-INK_BOSS_FRAME.anchor[0])*INK_BOSS_FRAME.scale,y:b.y+(INK_BOSS_PARTS.hatchSource[1]-INK_BOSS_FRAME.anchor[1])*INK_BOSS_FRAME.scale},
  };
 }
 
@@ -113,7 +115,25 @@ function drawLauncher(c,image,b,{camera=0,breach=null,time=0}={}){
  if(b.podFlash>0)inkFlash(c,g.displayMuzzle,Math.PI,1.4);
 }
 
+function drawAssaultHatch(c,parts,b,{camera,breach}){
+ if(!parts)return;
+ const staged=inkBreachVisual(breach,b,{camera}),frame=b.breached?2:staged?.kind==='hull'?staged.hatchFrame:0;
+ if(!frame)return;
+ const hatch=b.assaultArt?{x:b.x-camera-60,y:b.y-122}:inkBossGeometry(b,{camera}).sourcePoint(INK_BOSS_PARTS.hatchSource);
+ const lid=inkBreachLidGeometry(breach,b,{camera});
+ if(frame===1&&lid){
+  c.save();c.beginPath();c.rect(-100000,-100000,200000,200000);polygon(c,HATCH_LID_POLYGON.map(lid.restPoint));c.clip('evenodd');
+  nativePart(c,parts,INK_BOSS_PARTS.hatches[1],hatch.x,hatch.y,.16);c.restore();drawBreachLid(c,parts,lid);
+ }else nativePart(c,parts,INK_BOSS_PARTS.hatches[frame],hatch.x,hatch.y,.16);
+}
+
 export function drawInkBossTank(c,images,b,{camera=0,time=0,breach=null}={}){
+ if(b&&images['boss-assault-atlas']){
+  if(b.hp>0)chargeMarks(c,b,bossGeometry(b),camera,time);
+  const painted=drawBossAssault(c,images['boss-assault-atlas'],b,{camera,time,breach});
+  if(b.hp>0)drawAssaultHatch(c,images['ink-boss-parts'],b,{camera,breach});
+  return painted;
+ }
  if(!b||b.hp<=0&&!breach||!images['ink-boss'])return false;
  const g=inkBossGeometry(b,{camera}),image=images['ink-boss'],parts=images['ink-boss-parts'];
  oval(c,g.x,b.y-2,168,8,INK+'66');chargeMarks(c,b,g,camera,time);
@@ -202,7 +222,7 @@ export function inkBreachPoseGeometry(q,b,{camera=0,time=0,player={}}={}){
  if(q.phase==='eject')return breachEjectPose(q,b,{camera,time,player});
  const tearing=q.phase==='tear',tear=tearing?smooth(clamp(finite(q.elapsed)/.42)):0,pod=q.kind==='pod';
  const effort=tearing?Math.sin(Math.PI*clamp(finite(q.elapsed)/.42)):v.effort,lean=pod?0:q.phase==='fire'?1:tear;
- const p={...player,x:finite(q.deckX,q.x)+(pod?20:95)-(!pod?v.recoil*.45:0),y:finite(q.deckY,q.y),supportY:finite(q.deckY,q.y),supportClearance:undefined,tilt:0,motionLean:0,motionHeave:0,vx:0,vy:0,
+ const p={...player,x:finite(q.deckX,q.x)+(pod?20:b.assaultArt?0:95)-(!pod?v.recoil*.45:0),y:finite(q.deckY,q.y),supportY:finite(q.deckY,q.y),supportClearance:undefined,tilt:0,motionLean:0,motionHeave:0,vx:0,vy:0,
   dir:pod?1:-1,turn:null,onGround:true,crouching:!pod,landingCompression:effort*.45+v.recoil*.25,jumpCompression:0,preJump:0,
   invulnerable:0,muzzle:0,mirvFlash:0,homingFlash:0,cannonRecoil:0,cannonElevation:0,melee:null,evasion:null,deflect:null};
  p.supportPose=bossSupportPose(b,p);

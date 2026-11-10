@@ -1,21 +1,21 @@
 {
   "format_version": 1,
-  "prepared_at": "2026-11-09",
-  "github_transfer": "Verified successful push; all remote blob IDs match backup commit 55e0af78812ba737a6758403be9c2993ef2fa903",
+  "prepared_at": "2026-11-10",
+  "github_transfer": "Snapshots verified by tools/verify-backup.py; incremental backups retained in repository commit history.",
   "projects": [
     {
       "slug": "saltik-main",
       "repo": "saltik-v2-matin-dore",
       "title": "SALTIK V2 — Matin Doré",
-      "commit": "39a4475bfcfddb23dda2ca51c2fc497736ceefa5",
-      "published_version": 21,
+      "commit": "4759b68c37c2fb177e747b528a05955e9b8dc1a2",
+      "published_version": 22,
       "url": "https://saltik-v2-matin-dore.ser-adrien.chatgpt.site",
-      "base_commit": "39a4475bfcfddb23dda2ca51c2fc497736ceefa5",
+      "base_commit": "4759b68c37c2fb177e747b528a05955e9b8dc1a2",
       "source_path": "/workspace/sites/saltik-v2-matin-dore",
       "export_path": "versions/saltik-main",
       "web_entry": "versions/saltik-main/dist/index.html",
-      "file_count": 473,
-      "bytes": 140118515,
+      "file_count": 478,
+      "bytes": 143442156,
       "uncommitted_changes": "",
       "files": {
         ".gitignore": {
@@ -27,12 +27,16 @@
           "size": 106
         },
         "README.md": {
-          "sha256": "373603e413ff2b8714c9541049ebf2df40506a8b7112ad99b230f68fa89f7dc0",
-          "size": 15976
+          "sha256": "4d3cde4503f002b806871f25057a961d6c983264e5192d872d3821806db16c55",
+          "size": 16830
         },
         "dist/android.html": {
           "sha256": "00ef9edacb5f9060a32003cd413968308f1137f6db24f4872690304cfb630b7d",
           "size": 15792
+        },
+        "dist/assets/boss-assault-atlas.png": {
+          "sha256": "f9859847a2d5a0f2b630bafaaef3f9f2eba725ace3629396825f5d2fd6986b63",
+          "size": 3304293
         },
         "dist/assets/ink-approach-atlas-paint.png": {
           "sha256": "363c2fe35f3b7a78fd5e6c76baea8b73534c402b2f2cd72e8fb2745c47da571d",
@@ -282,13 +286,17 @@
           "sha256": "3678cee146d7d6f5c57ce4f0218b809c0befc002fd2809e9f7a05c895c7711f5",
           "size": 4629
         },
+        "dist/src/boss-assault-art.js": {
+          "sha256": "390ca89d03feede6e922406566f0a1888a5a1eaf85c9a0720da9373300cc9eb6",
+          "size": 3131
+        },
         "dist/src/boss-breach-art.js": {
           "sha256": "1a7eca998b2b7e149f9535453abccb774d2e4d6c2c0a5dacb522fc600b116939",
           "size": 4541
         },
         "dist/src/boss-breach.js": {
-          "sha256": "8f2afacfb8f063c3303b60ac1a8280667a474e4cca90f51a52de2e6538f4fd11",
-          "size": 3386
+          "sha256": "876c4d31606c409750a8e51629780bcc13581231ba6a69400d70b49ec2164b60",
+          "size": 3465
         },
         "dist/src/boss-pod-art.js": {
           "sha256": "0ce41636c0d55c7ec9016841d004ebd1e9bd8ae4620436fcc7ed4e68634dda5b",
@@ -299,8 +307,8 @@
           "size": 4543
         },
         "dist/src/boss-tank.js": {
-          "sha256": "578a6a66417bb2b8dd934a0102e2261251ef17372ad946f8bd8b6771557a30f2",
-          "size": 5966
+          "sha256": "3a0b680cb56252b4aec2b2bc6ce3ff289c7b0c47ba9568b56d794732a64054f0",
+          "size": 6191
         },
         "dist/src/carrier-shutdown-art.js": {
           "sha256": "8e2f418a79693e36fc722a4a665ea44ac9ade45f857db427b4597f2fb3edc1d6",
@@ -339,8 +347,8 @@
           "size": 7983
         },
         "dist/src/engine.js": {
-          "sha256": "cd5276dbb96a79640f7d7038ad865222da57c59489c3cbb8fefbea84edec5a4d",
-          "size": 70174
+          "sha256": "4893be51efa87b96a95107a687310bf93f08a6a48c7f4066cdb60f220f702e95",
+          "size": 71530
         },
         "dist/src/evasion.js": {
           "sha256": "3b9e6a5daafd5098d12f20a67279e98eca7b85ef500b79b67ea5862199992aeb",
@@ -367,8 +375,8 @@
           "size": 7487
         },
         "dist/src/ink-encounters.js": {
-          "sha256": "46e0f049159e2051fd8f517cfe218bcfe7e212e9aa00e022a33f408a8db5ab2e",
-          "size": 33295
+          "sha256": "3c43d9e1576098d37b4c44e2e0bda7a470f6abcdc23a93cccf98067eaccbdaa4",
+          "size": 34495
         },
         "dist/src/ink-enemy-saltik.js": {
           "sha256": "e2781064a6bf64cbf9a7f38ebc1e7b805d61e890a8a57e06090ba161db35d44a",
@@ -391,8 +399,8 @@
           "size": 5269
         },
         "dist/src/ink-renderer.js": {
-          "sha256": "323d764278a9052d34ce7000b5e7664e9b5193e29aee574c5e961fac94882bf6",
-          "size": 12122
+          "sha256": "62644c38fefc2e1829d463b2b1463c1343fa02ed8f398086df77903f91d9969f",
+          "size": 12143
         },
         "dist/src/ink-saltik.js": {
           "sha256": "284f838c7fd4b7cf1a930981aa3b564c89f7014408b2474c5985bdff8a55b97f",
@@ -818,6 +826,10 @@
           "sha256": "74340caae50fbefd88ab60ad0326ec63e2310674fa69e8e8190fe5c9e63a46bf",
           "size": 4051
         },
+        "docs/superpowers/plans/2026-11-10-boss-assault.md": {
+          "sha256": "603fec8486ee3bb2894d32b4a38b23c1c664dbe6f42d97274b90c531256ca138",
+          "size": 1608
+        },
         "docs/superpowers/platform-combat-validation-2026-11-02.md": {
           "sha256": "d9c70c0fb0cfee3a448ee230fe67717dc9c6b77de7174183e325a1951356601d",
           "size": 5307
@@ -1166,13 +1178,17 @@
           "sha256": "3678cee146d7d6f5c57ce4f0218b809c0befc002fd2809e9f7a05c895c7711f5",
           "size": 4629
         },
+        "src/boss-assault-art.js": {
+          "sha256": "390ca89d03feede6e922406566f0a1888a5a1eaf85c9a0720da9373300cc9eb6",
+          "size": 3131
+        },
         "src/boss-breach-art.js": {
           "sha256": "1a7eca998b2b7e149f9535453abccb774d2e4d6c2c0a5dacb522fc600b116939",
           "size": 4541
         },
         "src/boss-breach.js": {
-          "sha256": "8f2afacfb8f063c3303b60ac1a8280667a474e4cca90f51a52de2e6538f4fd11",
-          "size": 3386
+          "sha256": "876c4d31606c409750a8e51629780bcc13581231ba6a69400d70b49ec2164b60",
+          "size": 3465
         },
         "src/boss-pod-art.js": {
           "sha256": "0ce41636c0d55c7ec9016841d004ebd1e9bd8ae4620436fcc7ed4e68634dda5b",
@@ -1183,8 +1199,8 @@
           "size": 4543
         },
         "src/boss-tank.js": {
-          "sha256": "578a6a66417bb2b8dd934a0102e2261251ef17372ad946f8bd8b6771557a30f2",
-          "size": 5966
+          "sha256": "3a0b680cb56252b4aec2b2bc6ce3ff289c7b0c47ba9568b56d794732a64054f0",
+          "size": 6191
         },
         "src/carrier-shutdown-art.js": {
           "sha256": "8e2f418a79693e36fc722a4a665ea44ac9ade45f857db427b4597f2fb3edc1d6",
@@ -1223,8 +1239,8 @@
           "size": 7983
         },
         "src/engine.js": {
-          "sha256": "cd5276dbb96a79640f7d7038ad865222da57c59489c3cbb8fefbea84edec5a4d",
-          "size": 70174
+          "sha256": "4893be51efa87b96a95107a687310bf93f08a6a48c7f4066cdb60f220f702e95",
+          "size": 71530
         },
         "src/evasion.js": {
           "sha256": "3b9e6a5daafd5098d12f20a67279e98eca7b85ef500b79b67ea5862199992aeb",
@@ -1251,8 +1267,8 @@
           "size": 7487
         },
         "src/ink-encounters.js": {
-          "sha256": "46e0f049159e2051fd8f517cfe218bcfe7e212e9aa00e022a33f408a8db5ab2e",
-          "size": 33295
+          "sha256": "3c43d9e1576098d37b4c44e2e0bda7a470f6abcdc23a93cccf98067eaccbdaa4",
+          "size": 34495
         },
         "src/ink-enemy-saltik.js": {
           "sha256": "e2781064a6bf64cbf9a7f38ebc1e7b805d61e890a8a57e06090ba161db35d44a",
@@ -1275,8 +1291,8 @@
           "size": 5269
         },
         "src/ink-renderer.js": {
-          "sha256": "323d764278a9052d34ce7000b5e7664e9b5193e29aee574c5e961fac94882bf6",
-          "size": 12122
+          "sha256": "62644c38fefc2e1829d463b2b1463c1343fa02ed8f398086df77903f91d9969f",
+          "size": 12143
         },
         "src/ink-saltik.js": {
           "sha256": "284f838c7fd4b7cf1a930981aa3b564c89f7014408b2474c5985bdff8a55b97f",
@@ -1447,12 +1463,12 @@
           "size": 6945
         },
         "tests/boss-breach.test.js": {
-          "sha256": "ffff245bb2f1a91f078fb6446f11d5a20923a733106df2d45af33a06bc272179",
-          "size": 5948
+          "sha256": "be79a9c95853576c2b63e9ead91fcb4c4e052df8bfeb74d010e6466b3fc1ef09",
+          "size": 5960
         },
         "tests/boss-dual-assault.test.js": {
-          "sha256": "bcfe40d5f7d07244f92f7bf13174d21114856c925fe7f893be17dba9767bee16",
-          "size": 8154
+          "sha256": "d87fe3f26945486f8c1a2671a0f52d773fd8bc3921f6a81761ba00749444a706",
+          "size": 8476
         },
         "tests/boss-pod-art.test.js": {
           "sha256": "ed46372db7e264c57f819960582cde48951933c8d94f9e73e6334425f6947c3c",
@@ -1463,8 +1479,12 @@
           "size": 3822
         },
         "tests/boss-tank.test.js": {
-          "sha256": "0963477f0aa670b4a6733db0dddee1c31d7caa8bc525a8e41e46aab68d8fb468",
-          "size": 12049
+          "sha256": "c853a0599b89021a431bfaa6b5176583c81dbb0015daed8a69a9937b0a3b994c",
+          "size": 11900
+        },
+        "tests/boss-v22.test.js": {
+          "sha256": "791576881f85434d69167e5792d41430b9ac61a65537ce8d67dcf3fb40a2f27f",
+          "size": 4381
         },
         "tests/browser_action_dock.py": {
           "sha256": "a82b7ba7f97688315ce9a6fa86f1112a2ebddd30ca09cb476e53ad1f8b984f3e",
@@ -1815,12 +1835,12 @@
           "size": 1507
         },
         "tests/pastel-preservation.test.js": {
-          "sha256": "e92b37477564019bf6be9407e5c5f284665220aa6b9e444d6b52246e1e52e8d8",
-          "size": 2454
+          "sha256": "8e8be57a8fa9ca63c7af5e41bfb9a19148e0b4603b4b68a7b0ab4306d67e9940",
+          "size": 2724
         },
         "tests/pastel-rider.test.js": {
-          "sha256": "bdcb9235ba7eee78560cbdb06f4b9334dda35a425581fa3b5b4ed441ccf5bb53",
-          "size": 1336
+          "sha256": "969e183bb7a0573ab07b43dbac3990e1cf1a2fd28c0bc32f2f6a51cb665d11c5",
+          "size": 1362
         },
         "tests/player-arsenal-pose.test.js": {
           "sha256": "69236396a08843eb2e89c0d0fb04122d02d617e8e61eb01db062730bc4f7b2a8",
@@ -1923,7 +1943,7 @@
         }
       ],
       "update_note": "Level2 Archives lunaires, menu/after-level1 access, primary cannon gain +20 percent; Sites v17 deployment succeeded.",
-      "published_source_commit": "39a4475bfcfddb23dda2ca51c2fc497736ceefa5",
+      "published_source_commit": "4759b68c37c2fb177e747b528a05955e9b8dc1a2",
       "publication_status": "succeeded",
       "github_import_base": "4c9b8e64bf3232c222f9b6f534ca37d660da3f7b"
     },

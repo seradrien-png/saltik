@@ -8,6 +8,10 @@ test('V2 preserves V1 native pixels, walkable geometry, native motions and encou
  for(const [path,sha] of Object.entries(preserved)){
   if(approvedChanges.has(path))continue;
   let content=readFileSync(new URL('../'+path,import.meta.url));
+  if(path==='src/boss-breach.js')content=Buffer.from(content.toString()
+   // Authorized boss replacement moves hull assault feet onto the new turret.
+   .replace('boss.assaultArt?geometry.turretRoof.x1+2:','')
+   .replace('boss.assaultArt?geometry.turretRoof.y:',''));
   if(path==='src/ink-turn.js')content=Buffer.from(content.toString()
    // Only the reduced lunar player uses true-size terrain in turn views.
    .replace('Number.isFinite(p.artScale)&&p.artScale!==1?floor(at+camera):',''));

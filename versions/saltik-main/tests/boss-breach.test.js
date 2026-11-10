@@ -26,7 +26,7 @@ test('hull assault starts manually below 45 percent and leaps from the current p
   assert.ok(p.y<startY);
   tick(g,{},30);assert.equal(g.bossBreach?.phase,'qte');
   assert.equal(p.bossSupport,'deck');assert.equal(p.onGround,true);
-  assert.equal(p.y,bossGeometry(g.boss).roof.y);
+  assert.equal(p.y,bossGeometry(g.boss).turretRoof.y);
 });
 
 test('a distant hull assault leaps from Saltik’s current position to the deck',()=>{
@@ -38,7 +38,7 @@ test('a distant hull assault leaps from Saltik’s current position to the deck'
   assert.ok(g.bossBreach.leapDuration>1.5);
   tick(g,{},20);assert.ok(p.y<terrainHeight(p.x)-40);
   tick(g,{},90);assert.equal(g.bossBreach.phase,'qte');
-  assert.equal(p.bossSupport,'deck');assert.equal(p.y,bossGeometry(b).roof.y);
+  assert.equal(p.bossSupport,'deck');assert.equal(p.y,bossGeometry(b).turretRoof.y);
 });
 
 test('three distinct presses queue three full efforts, ignoring held and preheld input',()=>{

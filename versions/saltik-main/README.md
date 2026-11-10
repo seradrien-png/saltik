@@ -95,3 +95,9 @@ Le menu permet de choisir directement le canyon du niveau1 ou les Archives lunai
 Les Archives proposent un nouveau parcours de ruines suspendues avec marches, cinq franchissements et points de reprise. Une chute retire10points de blindage. La porte finale s’ouvre après trois vagues effectivement vaincues, sans second Colosse. Une partie automatisée avec les commandes normales termine en environ82secondes, proche de la campagne initiale. Les dessins natifs des Saltiks restent inchangés. Le tir principal est20%plus fort que dans la version16 ; la musique et les autres effets restent identiques.
 
 Validation détaillée : docs/level-design/lunar-implementation-validation.md.
+
+### Boss final — nouveau blindé ivoire et orange
+
+Quatre états illustrés : intact, pod arraché, frénésie à 20 % de vie, épave persistante après la victoire. Le canon principal tire trois gros projectiles successifs ; les deux petits canons alternent douze tirs espacés puis laissent 2,2 secondes de récupération. La frénésie accélère les armes et les rushs. Trois salves réellement lancées par le pod sont nécessaires avant de proposer son arrachage interactif. Les interactions de coque, le retour au sol et le film de victoire restent disponibles.
+
+L’atlas transparent `dist/assets/boss-assault-atlas.png` adapte les quatre références graphiques fournies dans la conversation. Les pieds, les points de saisie et les départs de tir suivent les nouveaux visuels. L’épave reste dans le monde jusqu’au changement de partie.

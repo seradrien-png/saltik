@@ -55,3 +55,8 @@ Source `dea7b563da107570378a626983f506e350aedafd`, publiée avec succès. Taille
 ## Monde cohérent publié : version 21
 
 Source `39a4475bfcfddb23dda2ca51c2fc497736ceefa5`, publiée avec succès. Dix structures physiques, quatorze escaliers, sol raccordé, tracés mesurés et fond opaque avec tête de pierre lisible. 627 tests réussis, essais des deux escaliers des remparts, annexe et portail par les touches dans Chromium, campagne de 94,82 s sans chute. Le niveau 1, Striker réduit au niveau 2, la musique coupée au niveau 2 et les autres éditions sont préservés. Voir `lunar-cohesion-release.json`.
+
+
+## Boss final — version 22 publiée
+
+Nouveau blindé ivoire/orange avec quatre états et épave conservée au sol après la victoire. Pod arrachable après trois salves lancées, canon principal en rafales successives de trois, deux petits canons alternés avec pauses, frénésie à 20 % de vie. Interactions de coque/pod recalées sur le nouveau blindage. 635 tests réussis ; Chromium : états, interactions, trois tirs successifs et épave encore visible après destruction réelle. Source `4759b68c37c2fb177e747b528a05955e9b8dc1a2`. [Jouer](https://saltik-v2-matin-dore.ser-adrien.chatgpt.site). [Bilan vérifié](boss-release.json). Autres éditions et niveau lunaire préservés.

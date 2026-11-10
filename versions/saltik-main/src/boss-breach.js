@@ -7,8 +7,8 @@ const clamp=(v,a,b)=>Math.max(a,Math.min(b,v));
 
 export function createBossBreach(player,boss,held=false,kind='hull'){
   const geometry=bossGeometry(boss),deck=geometry.roof;
-  const deckX=kind==='pod'?geometry.access.x:deck.x1+40;
-  const deckY=kind==='pod'?geometry.access.y:deck.y;
+  const deckX=kind==='pod'?geometry.access.x:boss.assaultArt?geometry.turretRoof.x1+2:deck.x1+40;
+  const deckY=kind==='pod'?geometry.access.y:boss.assaultArt?geometry.turretRoof.y:deck.y;
   const distance=Math.abs(deckX-player.x);
   return {kind,phase:'leap',elapsed:0,taps:0,effortsCompleted:0,effortElapsed:0,shotsFired:0,
     fromX:player.x,fromY:player.y,x:player.x,y:player.y,

@@ -7,7 +7,7 @@ test('the lowered integrated pod clears its own rider without cancelling its vis
  const g=arena(),b=g.boss,p=g.player,r=bossGeometry(b);
  Object.assign(p,{x:b.x-90,y:r.roof.y,vy:0,onGround:true,bossSupport:'deck'});
  let missiles=[];
- for(let i=0;i<300;i++){update(g,{},1/60);if(!missiles.length)missiles=g.projectiles.filter(s=>s.sourceBossId===b.id);}
+ for(let i=0;i<300;i++){update(g,{},1/60);if(!missiles.length)missiles=g.projectiles.filter(s=>s.sourceBossId===b.id&&s.kind==='enemy-missile');}
  assert.equal(b.podVolleysFired,1);assert.equal(missiles.length,8);
  assert.ok(missiles.every(s=>s.riderClearance));assert.equal(p.hp,100);assert.equal(p.bossSupport,null);
 });

@@ -1,0 +1,141 @@
+{
+  "publication": {
+    "version": 22,
+    "version_id": "appgprj_6ae77e1b6da081918600675fc2e2b738~appgver_97e5e4ee2a7c8191a64026bd06fe8dc1",
+    "deployment": "appgdep_6af2b14eafec8191a26583ca9bd13962",
+    "status": "succeeded",
+    "source_commit": "4759b68c37c2fb177e747b528a05955e9b8dc1a2",
+    "url": "https://saltik-v2-matin-dore.ser-adrien.chatgpt.site"
+  },
+  "complete_test_suite": {
+    "passed": 635,
+    "failed": 0
+  },
+  "build": "passed",
+  "browser": {
+    "states": [
+      {
+        "state": "intact",
+        "hp": 200,
+        "breach": null
+      },
+      {
+        "state": "pod",
+        "hp": 200,
+        "breach": null
+      },
+      {
+        "state": "frenzy",
+        "hp": 40,
+        "breach": null
+      },
+      {
+        "state": "frenzy-live",
+        "hp": 40,
+        "breach": null
+      },
+      {
+        "state": "qte",
+        "hp": 200,
+        "breach": "qte"
+      },
+      {
+        "state": "hull",
+        "hp": 90,
+        "breach": "qte"
+      },
+      {
+        "state": "wreck",
+        "hp": 0,
+        "breach": null
+      }
+    ],
+    "mainBurstTimes": [
+      1.0166666666666666,
+      1.1999999999999993,
+      1.383333333333332
+    ],
+    "errors": []
+  },
+  "real_projectile_victory": {
+    "status": "won",
+    "wreck_retained": true,
+    "screenshot": "/workspace/boss-v22/wreck-after-real-victory.png"
+  },
+  "review": {
+    "important_findings_remaining": 0,
+    "corrections": [
+      "shared pod pull and hand anchors",
+      "raised native deck and turret hull assault",
+      "shared hull hatch opening and shot target"
+    ]
+  },
+  "behavior": {
+    "rocket_salvos_before_pod_assault": 3,
+    "frenzy_at_remaining_hp_fraction": 0.2,
+    "frenzy_weapons_pace": 1.55,
+    "frenzy_rush_pace": 1.4,
+    "main_burst_rounds": 3,
+    "main_interval_seconds": 0.19,
+    "fender_sequence_rounds": 12,
+    "fender_interval_seconds": 0.24,
+    "fender_recovery_seconds": 2.2,
+    "wreck_persists_until_new_game": true
+  },
+  "unchanged": [
+    "lunar world design and layout",
+    "other four Saltik editions",
+    "archived history parts"
+  ],
+  "source_files": 478,
+  "limits": [
+    "Chromium desktop tested; no physical smartphone test for this boss revision"
+  ],
+  "published_resources": [
+    {
+      "path": "src/boss-tank.js",
+      "status": 200,
+      "sha256": "3a0b680cb56252b4aec2b2bc6ce3ff289c7b0c47ba9568b56d794732a64054f0"
+    },
+    {
+      "path": "src/boss-breach.js",
+      "status": 200,
+      "sha256": "876c4d31606c409750a8e51629780bcc13581231ba6a69400d70b49ec2164b60"
+    },
+    {
+      "path": "src/boss-assault-art.js",
+      "status": 200,
+      "sha256": "390ca89d03feede6e922406566f0a1888a5a1eaf85c9a0720da9373300cc9eb6"
+    },
+    {
+      "path": "src/engine.js",
+      "status": 200,
+      "sha256": "4893be51efa87b96a95107a687310bf93f08a6a48c7f4066cdb60f220f702e95"
+    },
+    {
+      "path": "src/ink-encounters.js",
+      "status": 200,
+      "sha256": "3c43d9e1576098d37b4c44e2e0bda7a470f6abcdc23a93cccf98067eaccbdaa4"
+    },
+    {
+      "path": "src/ink-renderer.js",
+      "status": 200,
+      "sha256": "62644c38fefc2e1829d463b2b1463c1343fa02ed8f398086df77903f91d9969f"
+    },
+    {
+      "path": "assets/boss-assault-atlas.png",
+      "status": 200,
+      "sha256": "f9859847a2d5a0f2b630bafaaef3f9f2eba725ace3629396825f5d2fd6986b63"
+    },
+    {
+      "path": "src/lunar-world.js",
+      "status": 200,
+      "sha256": "a343c0e83a143c246539b4402f849def0ccdc5ba4a8b21e91cd85e5a447de17a"
+    },
+    {
+      "path": "src/lunar-landmarks.js",
+      "status": 200,
+      "sha256": "86a139c1f8428a4a6fae44485bdf017678b489203584712259ff9e0a90555a5b"
+    }
+  ]
+}

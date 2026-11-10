@@ -49,27 +49,23 @@ test('boss shots launch from the visible barrel in each armor state',()=>{
   b.podDestroyed=true;b.weaponPhase='fallback';b.weaponElapsed=5;tick(g);
   let shots=g.projectiles.filter(s=>s.team==='enemy');
   assert.ok(shots.length>0);
-  assert.ok(shots.every(s=>s.launchX===b.x-160&&s.launchY===b.y-100));
-  assert.deepEqual(bossGeometry(b).muzzle,{x:b.x-160,y:b.y-100});
+  assert.ok(shots.every(s=>s.launchX===b.x-140&&s.launchY===b.y-180));
+  assert.deepEqual(bossGeometry(b).muzzle,{x:b.x-140,y:b.y-180});
   g.projectiles=[];b.breached=true;b.weaponElapsed=5;tick(g);
   shots=g.projectiles.filter(s=>s.team==='enemy');
   assert.ok(shots.length>0);
-  assert.ok(shots.every(s=>s.launchX===b.x-154&&s.launchY===b.y-143));
-  assert.deepEqual(bossGeometry(b).muzzle,{x:b.x-154,y:b.y-143});
+  assert.ok(shots.every(s=>s.launchX===b.x-140&&s.launchY===b.y-180));
+  assert.deepEqual(bossGeometry(b).muzzle,{x:b.x-140,y:b.y-180});
 });
 
-test('the fallback cannon keeps its normal and enraged fan damage and speed',()=>{
-  for(const [hp,angles,speed] of [[200,[-.16,0,.16],285],[80,[-.25,-.12,0,.12,.25],330]]){
-    const g=arena(),b=g.boss;b.hp=hp;b.podDestroyed=true;b.weaponPhase='fallback';b.weaponElapsed=5;b.chargeClock=99;
-    tick(g);
-    const shots=g.projectiles.filter(s=>s.kind==='plasma');
-    assert.equal(shots.length,angles.length);
-    assert.ok(shots.every(s=>s.damage===12&&Math.abs(Math.hypot(s.vx,s.vy)-speed)<1e-8));
-    const headings=shots.map(s=>Math.atan2(s.vy,s.vx));
-    for(let i=1;i<headings.length;i++){
-      const difference=headings[i]-headings[i-1];
-      assert.ok(Math.abs(Math.atan2(Math.sin(difference),Math.cos(difference))-(angles[i]-angles[i-1]))<1e-8);
-    }
+test('fallback main burst has three timed large rounds at normal and frenzy HP',()=>{
+  for(const hp of [200,41,40]){
+    const g=arena(),b=g.boss;Object.assign(b,{hp,podDestroyed:true,weaponPhase:'fallback',weaponElapsed:5,chargeClock:99});g.player.invulnerable=99;
+    tick(g,{},40);
+    const shots=g.events.filter(e=>e.type==='boss-main-shot');
+    assert.equal(shots.length,3);assert.ok(shots[1].time>shots[0].time&&shots[2].time>shots[1].time);
+    const rounds=g.projectiles.filter(s=>s.kind==='plasma'&&s.radius===9);
+    assert.ok(rounds.every(s=>s.damage===12&&Math.abs(Math.hypot(s.vx,s.vy)-330)<1e-8));
   }
 });
 

@@ -391,6 +391,37 @@ function hostileShot(g,e,spread=0,speed=285){
  const a=(axis?Math.atan2(axis.y,axis.x):Math.atan2(p.y-32-y,p.x-x))+spread;
  g.projectiles.push({id:g.nextProjectileId++,x,y,launchX:x,launchY:y,vx:Math.cos(a)*speed,vy:Math.sin(a)*speed,team:'enemy',damage:e.type==='boss'?12:8,life:5,radius:e.type==='boss'?8:5,kind:'plasma'});emit(g,'enemyshot',x,y);
 }
+// Independent timed bursts leave deliberate gaps between small-gun sequences.
+function bossRound(g,b,mouth,{front=false,gun=null}={}){
+  const p=g.player,targetX=front?Math.min(p.x,mouth.x-80):p.x,targetY=front?Math.max(p.y-32,mouth.y-20):p.y-32;
+  const angle=Math.atan2(targetY-mouth.y,targetX-mouth.x),speed=front?300:330;
+  g.projectiles.push({id:g.nextProjectileId++,kind:'plasma',team:'enemy',x:mouth.x,y:mouth.y,
+    launchX:mouth.x,launchY:mouth.y,vx:Math.cos(angle)*speed,vy:Math.sin(angle)*speed,
+    damage:front?5:12,radius:front?3.5:9,life:5,sourceBossId:b.id,
+    riderClearance:!!p.bossSupport||p.bossEject?.time>0});
+  emit(g,'enemyshot',mouth.x,mouth.y);
+  emit(g,front?'boss-front-shot':'boss-main-shot',mouth.x,mouth.y,{time:g.time,gun});
+}
+function advanceBossBursts(g,b,dt){
+  const pace=b.hp<=b.maxHp*.20?1.55:1;
+  const burst=b.mainBurst;
+  if(burst){
+    burst.elapsed+=dt*pace;
+    while(burst.shots<3&&burst.elapsed+1e-9>=burst.next){
+      b.cannonRecoil=1;bossRound(g,b,bossGeometry(b).muzzle);g.shake=5;
+      burst.shots++;burst.next+=.19;
+    }
+    if(burst.shots===3)b.mainBurst=null;
+  }
+  b.frontFlash=Math.max(0,(b.frontFlash??0)-dt);
+  b.frontClock=(b.frontClock??1.3)-dt*pace;
+  if(b.frontClock<=0){
+    const shot=b.frontShot??0,gun=shot%2;
+    bossRound(g,b,bossGeometry(b).frontMuzzles[gun],{front:true,gun});
+    b.frontFlash=.09;b.frontGun=gun;b.frontShot=(shot+1)%12;
+    b.frontClock=b.frontShot===0?2.2:.24;
+  }
+}
 function bossRocketVolley(g,b){
   const mouth=bossGeometry(b).podMuzzle;
   for(const vy of [-165,-125,-85,-45,-5,35,75,115]){
@@ -809,7 +840,7 @@ export function availableBossAssault(g){
     !(b?.hp>0))return null;
   if(!g.bossBreachUsed&&b.hp<=b.maxHp*.45)return 'hull';
   if(!(Math.abs(p.x-b.x)<=430||p.bossSupport))return null;
-  if(!b.podDestroyed&&!g.bossPodUsed&&b.podVolleysFired>=1)return 'pod';
+  if(!b.podDestroyed&&!g.bossPodUsed&&b.podVolleysFired>=3)return 'pod';
   return null;
 }
 export function canStartBossBreach(g){return availableBossAssault(g)!==null;}
@@ -1075,11 +1106,9 @@ export function update(g,input={},dt=1/60){
     if(signal==='pod-warning')emit(g,'boss-pod-warning',b.x+95,b.y-151);
     else if(signal==='pod-volley')bossRocketVolley(g,b);
     else if(signal==='cannon-volley'){
-      b.attack++;b.cannonRecoil=1;
-      const enraged=b.hp<b.maxHp*.45;
-      for(const a of (enraged?[-.25,-.12,0,.12,.25]:[-.16,0,.16]))hostileShot(g,b,a,enraged?330:285);
-      g.shake=5;
+      b.attack++;b.mainBurst={elapsed:0,next:0,shots:0};
     }
+    advanceBossBursts(g,b,dt);
   }
   updateProjectiles(g,dt,{x:p.x-playerStart.x,y:p.y-playerStart.y});
   emitSaltikVoiceCues(g);

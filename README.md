@@ -8,7 +8,7 @@ Les cinq états ci-dessous sont conservés dans des dossiers indépendants, sans
 
 | Jeu / sources | État réel | GitHub Pages après activation | Commit source |
 | --- | --- | --- | --- |
-| [SALTIK V2 — Matin Doré](versions/saltik-main) | Publiée v21 — 2 niveaux | [Jouer](https://seradrien-png.github.io/saltik/versions/saltik-main/dist/) | `39a4475bfcfd` |
+| [SALTIK V2 — Matin Doré](versions/saltik-main) | Publiée v22 — 2 niveaux | [Jouer](https://seradrien-png.github.io/saltik/versions/saltik-main/dist/) | `4759b68c37c2` |
 | [SALTIK — Ink Edition publiée](versions/saltik-ink) | Publiée v4 | [Jouer](https://seradrien-png.github.io/saltik/versions/saltik-ink/dist/) | `44110aa2dd80` |
 | [SALTIK INK — brouillon local avec épilogue](versions/autres-versions/saltik-ink-brouillon) | Brouillon local non publié | [Jouer](https://seradrien-png.github.io/saltik/versions/autres-versions/saltik-ink-brouillon/dist/) | `21dcc4ca32c5` |
 | [Feral Steel — Opération Canopée, référence Saltik](versions/autres-versions/saltik-feral-steel) | Publiée v24 | [Jouer](https://seradrien-png.github.io/saltik/versions/autres-versions/saltik-feral-steel/dist/) | `dbc331d0b7a2` |
@@ -64,3 +64,8 @@ Les treize commits jusqu’à `4c9b8e6` ont été intégrés puis affinés : arc
 ## Monde assemblé et réellement jouable — version 21
 
 [Jouer au niveau 2](https://saltik-v2-matin-dore.ser-adrien.chatgpt.site?level=2). Dix structures au premier plan utilisent le même registre pour leur dessin et leurs collisions, avec quatorze escaliers reliés à de vraies terrasses, dont les deux côtés des remparts. Trois annexes décoratives sont devenues jouables ; les placements qui se chevauchaient ont été retirés. Marches recalées sur les pixels de l’atlas, tailles des illustrations préservées, sol raccordé aux pieds peints. Les façades fantômes ont été supprimées au profit d’une composition opaque avec une tête de pierre nette. 627 tests réussis ; montées réellement vérifiées dans Chromium et campagne de 94,82 s sans chute. [Bilan exact](lunar-cohesion-release.json).
+
+
+## Boss final — version 22 publiée
+
+Nouveau blindé ivoire/orange avec quatre états et épave conservée au sol après la victoire. Pod arrachable après trois salves lancées, canon principal en rafales successives de trois, deux petits canons alternés avec pauses, frénésie à 20 % de vie. Interactions de coque/pod recalées sur le nouveau blindage. 635 tests réussis ; Chromium : états, interactions, trois tirs successifs et épave encore visible après destruction réelle. Source `4759b68c37c2fb177e747b528a05955e9b8dc1a2`. [Jouer](https://saltik-v2-matin-dore.ser-adrien.chatgpt.site). [Bilan vérifié](boss-release.json). Autres éditions et niveau lunaire préservés.
