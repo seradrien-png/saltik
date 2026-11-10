@@ -1,3 +1,4 @@
+import {applyRoyalLevel,advanceRoyalObjective} from './royal-level.js';
 import {createGame,update,LEVEL_END} from './engine.js';
 import {applyLunarLevel,advanceLunarObjective} from './lunar-level.js';
 import {inkSaltikGeometry} from './ink-saltik.js';
@@ -18,6 +19,7 @@ export function createInkScene(options={}){
  g.enemyWeaponGeometry=inkEnemyGeometry;g.enemySaltikGeometry=inkEnemySaltikGeometry;
  g.level=1;g.levelTitle='Le Canyon';
  if(options.level===2)return applyLunarLevel(g);
+ if(options.level===3)return applyRoyalLevel(g);
  applyInkLandmarkLayout(g);
  // This rock previously occupied the carrier's exact spawn and trapped it.
  // Move the authored cover to the far shoulder; preserve physical collisions.
@@ -32,4 +34,5 @@ export function createInkScene(options={}){
 export function updateInkScene(g,input,dt){
  const before=g.time;update(g,input,dt);
  if(g.level===2)advanceLunarObjective(g,g.time-before);
+ if(g.level===3)advanceRoyalObjective(g,g.time-before);
 }

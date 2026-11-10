@@ -1,0 +1,260 @@
+{
+  "publication": {
+    "version": 23,
+    "version_id": "appgprj_6ae77e1b6da081918600675fc2e2b738~appgver_849b48d3c240819190ff34cc47173783",
+    "deployment": "appgdep_6af2bcc3f3108191a60d35c7d94598cb",
+    "status": "succeeded",
+    "source_commit": "7ce68b1cdf4cb6d5d34ec1fa6adb9e8ea4a536b1",
+    "url": "https://saltik-v2-matin-dore.ser-adrien.chatgpt.site"
+  },
+  "complete_test_suite": {
+    "passed": 645,
+    "failed": 0
+  },
+  "build": "passed",
+  "campaign": {
+    "status": "won",
+    "seconds": 78.73333333333015,
+    "hp": 100,
+    "x": 17453.0000000007,
+    "royal": {
+      "phase": "open",
+      "seals": 3,
+      "elapsed": 75.09999999999702,
+      "checkpoint": 15444.333333334222,
+      "falls": 0
+    },
+    "stats": {
+      "kills": 21,
+      "shots": 560,
+      "mirvs": 11,
+      "homingSalvos": 7,
+      "meleeSwings": 3,
+      "meleeHits": 2,
+      "interceptions": 2,
+      "score": 6475,
+      "obstacles": 0,
+      "neutralized": 1
+    }
+  },
+  "browser": {
+    "states": [
+      {
+        "x": 1700,
+        "foot": 329.6421182613041,
+        "scale": 0.8
+      },
+      {
+        "x": 2780,
+        "foot": 596.3261984093303,
+        "scale": 0.7949035328536578
+      },
+      {
+        "x": 3350,
+        "foot": 466.44281466252494,
+        "scale": 0.7223758326632379
+      },
+      {
+        "x": 3910,
+        "foot": 225.07478916468546,
+        "scale": 0.660986571013624
+      },
+      {
+        "x": 5500,
+        "foot": 258.98758795209295,
+        "scale": 0.8
+      },
+      {
+        "x": 10400,
+        "foot": 313.3174877288196,
+        "scale": 0.8
+      },
+      {
+        "x": 12700,
+        "foot": 475.79934478534335,
+        "scale": 0.723816913021441
+      },
+      {
+        "x": 17100,
+        "foot": 167.62252085044992,
+        "scale": 0.8
+      }
+    ],
+    "native_entries_walked": [
+      {
+        "id": "royal-tree-entrance",
+        "index": 0,
+        "onGround": true
+      },
+      {
+        "id": "royal-bridge-cascade",
+        "index": 0,
+        "onGround": true
+      },
+      {
+        "id": "royal-bridge-cascade",
+        "index": 1,
+        "onGround": true
+      },
+      {
+        "id": "royal-sanctuary",
+        "index": 0,
+        "onGround": true
+      }
+    ],
+    "level_two_to_three": true,
+    "phone": {
+      "menu": true,
+      "gold_skin": true,
+      "firing": true,
+      "pause": true,
+      "restart": true
+    },
+    "errors": []
+  },
+  "preservation": [
+    {
+      "path": "src/lunar-landmarks.js",
+      "unchanged": true,
+      "sha256": "86a139c1f8428a4a6fae44485bdf017678b489203584712259ff9e0a90555a5b"
+    },
+    {
+      "path": "src/lunar-level.js",
+      "unchanged": true,
+      "sha256": "319833191f6be89096a654b82b64af3b2696b1de636bf22990b902d449abcc6a"
+    },
+    {
+      "path": "src/lunar-world.js",
+      "unchanged": true,
+      "sha256": "a343c0e83a143c246539b4402f849def0ccdc5ba4a8b21e91cd85e5a447de17a"
+    },
+    {
+      "path": "dist/assets/lunar-coherent-world.png",
+      "unchanged": true,
+      "sha256": "8b16cf99e7366ae7c959043cce7091f27ae806f43e042fadaa940a5e8a83284a"
+    },
+    {
+      "path": "src/boss-tank.js",
+      "unchanged": true,
+      "sha256": "3a0b680cb56252b4aec2b2bc6ce3ff289c7b0c47ba9568b56d794732a64054f0"
+    },
+    {
+      "path": "src/boss-breach.js",
+      "unchanged": true,
+      "sha256": "876c4d31606c409750a8e51629780bcc13581231ba6a69400d70b49ec2164b60"
+    },
+    {
+      "path": "src/boss-assault-art.js",
+      "unchanged": true,
+      "sha256": "390ca89d03feede6e922406566f0a1888a5a1eaf85c9a0720da9373300cc9eb6"
+    },
+    {
+      "path": "dist/assets/boss-assault-atlas.png",
+      "unchanged": true,
+      "sha256": "f9859847a2d5a0f2b630bafaaef3f9f2eba725ace3629396825f5d2fd6986b63"
+    }
+  ],
+  "review": {
+    "important_findings_remaining": 0,
+    "corrections": [
+      "dedicated continuous velvet ground material",
+      "dedicated flora-only sheet without decorative stairs",
+      "narrow near-bridge rope occlusion preserves player visibility"
+    ]
+  },
+  "level_three": {
+    "world_length": 17800,
+    "native_sites": 8,
+    "stair_flights": 6,
+    "three_quarter_bridges": 2,
+    "gold_player_only_in_level_three": true,
+    "native_controls_and_weapon_positions_retained": true,
+    "direct_link": "https://saltik-v2-matin-dore.ser-adrien.chatgpt.site?level=3",
+    "separate_shrine_battles": 3,
+    "opaque_scenic_layers": true
+  },
+  "level_two": {
+    "sparse_middle_distance_islands": 5,
+    "opacity": 1,
+    "parallax_rate": 0.24,
+    "architecture_and_terrain_preserved": true,
+    "direct_link": "https://saltik-v2-matin-dore.ser-adrien.chatgpt.site?level=2"
+  },
+  "source_files": 498,
+  "limits": [
+    "Chromium desktop and emulated landscape phone tested; no physical smartphone test",
+    "Three-quarter crossings use illustrated perspective and gradual depth scaling with the existing movement controls"
+  ],
+  "published_resources": [
+    {
+      "path": "index.html",
+      "status": 200,
+      "sha256": "1210f7ce7ff7e01e0ebefd73ae9493e81b8aa5cd645e8975be4fb5d35ffe21a1"
+    },
+    {
+      "path": "src/main.js",
+      "status": 200,
+      "sha256": "f44f9bc1bc0effb44d6deb908bd2baf4fc43ff14f68ad6ac7cda831c1ce2682a"
+    },
+    {
+      "path": "src/royal-level.js",
+      "status": 200,
+      "sha256": "6b51694d68786694000ea4f426f9e687eecc5a9a577bac40e6e641cd6f364f5b"
+    },
+    {
+      "path": "src/royal-layout.js",
+      "status": 200,
+      "sha256": "f7cfb9b7f042c1060078e74a8ec7dc3184a46e5d00ff743edecf3f6139ebacc2"
+    },
+    {
+      "path": "src/royal-world.js",
+      "status": 200,
+      "sha256": "83375377fc2256adccce452a6067ecd0699efbdeffe9c044f4d40475ea2d36b9"
+    },
+    {
+      "path": "src/royal-skin.js",
+      "status": 200,
+      "sha256": "3015c0efaba397958bbfce349b468d40799d5c95132051aa7386d931b8b6086d"
+    },
+    {
+      "path": "src/lunar-midground.js",
+      "status": 200,
+      "sha256": "1fe53f5eee4a27418eddf5bf97be1ffcc4b0529959f1e9d7939742180951254e"
+    },
+    {
+      "path": "src/ink-renderer.js",
+      "status": 200,
+      "sha256": "4c46a4ac2c13edd047d642a5cd530d61c0626951b04006825f1041e8bee7a8b5"
+    },
+    {
+      "path": "assets/royal-world.png",
+      "status": 200,
+      "sha256": "2e5f4a06f1810c86131cf996ad6fd16763759cc504864ea86315617447f36479"
+    },
+    {
+      "path": "assets/royal-quarter-bridge.png",
+      "status": 200,
+      "sha256": "969fb57afec141d93f12e1ab6f420664d095569a82bb33dc97f2621888e40be0"
+    },
+    {
+      "path": "assets/royal-hero-map.png",
+      "status": 200,
+      "sha256": "fe39649d905661f0624217f99db3f4fb24c1d94560c7228373d1befabab30bce"
+    },
+    {
+      "path": "assets/royal-flora.png",
+      "status": 200,
+      "sha256": "ee4dab3568274249c4e0fffbfe6b801e6ee3bfba95ba64f1ccb88b60bceb0fce"
+    },
+    {
+      "path": "assets/royal-velvet-ground.png",
+      "status": 200,
+      "sha256": "6ee038a2d3c02c8c162b0be2be91a1caf025d64f521aa2600a153dc0de713699"
+    },
+    {
+      "path": "assets/boss-assault-atlas.png",
+      "status": 200,
+      "sha256": "f9859847a2d5a0f2b630bafaaef3f9f2eba725ace3629396825f5d2fd6986b63"
+    }
+  ]
+}

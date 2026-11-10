@@ -8,7 +8,7 @@ Les cinq états ci-dessous sont conservés dans des dossiers indépendants, sans
 
 | Jeu / sources | État réel | GitHub Pages après activation | Commit source |
 | --- | --- | --- | --- |
-| [SALTIK V2 — Matin Doré](versions/saltik-main) | Publiée v22 — 2 niveaux | [Jouer](https://seradrien-png.github.io/saltik/versions/saltik-main/dist/) | `4759b68c37c2` |
+| [SALTIK V2 — Matin Doré](versions/saltik-main) | Publiée v23 — 3 niveaux | [Jouer](https://seradrien-png.github.io/saltik/versions/saltik-main/dist/) | `7ce68b1cdf4c` |
 | [SALTIK — Ink Edition publiée](versions/saltik-ink) | Publiée v4 | [Jouer](https://seradrien-png.github.io/saltik/versions/saltik-ink/dist/) | `44110aa2dd80` |
 | [SALTIK INK — brouillon local avec épilogue](versions/autres-versions/saltik-ink-brouillon) | Brouillon local non publié | [Jouer](https://seradrien-png.github.io/saltik/versions/autres-versions/saltik-ink-brouillon/dist/) | `21dcc4ca32c5` |
 | [Feral Steel — Opération Canopée, référence Saltik](versions/autres-versions/saltik-feral-steel) | Publiée v24 | [Jouer](https://seradrien-png.github.io/saltik/versions/autres-versions/saltik-feral-steel/dist/) | `dbc331d0b7a2` |
@@ -69,3 +69,10 @@ Les treize commits jusqu’à `4c9b8e6` ont été intégrés puis affinés : arc
 ## Boss final — version 22 publiée
 
 Nouveau blindé ivoire/orange avec quatre états et épave conservée au sol après la victoire. Pod arrachable après trois salves lancées, canon principal en rafales successives de trois, deux petits canons alternés avec pauses, frénésie à 20 % de vie. Interactions de coque/pod recalées sur le nouveau blindage. 635 tests réussis ; Chromium : états, interactions, trois tirs successifs et épave encore visible après destruction réelle. Source `4759b68c37c2fb177e747b528a05955e9b8dc1a2`. [Jouer](https://saltik-v2-matin-dore.ser-adrien.chatgpt.site). [Bilan vérifié](boss-release.json). Autres éditions et niveau lunaire préservés.
+
+
+## Les Jardins de velours — version 23 publiée
+
+[Jouer directement au niveau 3](https://saltik-v2-matin-dore.ser-adrien.chatgpt.site?level=3). Grand arbre brodé, arc-en-ciel monumental, montagnes bleues et cascades reprennent la composition de référence. Huit structures natives, six escaliers et deux ponts en trois quarts avec profondeur progressive ; trois sceaux défendus au long du parcours. Saltik doré réservé à ce niveau, avec ses commandes et ses armes habituelles. Menu à trois choix et continuation du niveau 2 vers le niveau 3. Le niveau 2 reçoit quelques îlots opaques au plan intermédiaire, à défilement distinct ; son architecture et le fond existant sont préservés. Le boss du niveau 1 et son épave restent intacts.
+
+645 tests réussis. Campagne avec commandes normales : 78,73 secondes, 100 points de blindage, aucune chute. Chromium : pont dans les deux sens, escalier du sanctuaire, transition 2→3 et contrôles sur téléphone émulé vérifiés, aucune erreur JavaScript. Source `7ce68b1cdf4cb6d5d34ec1fa6adb9e8ea4a536b1`. [Bilan exact](royal-release.json). Autres éditions et archives préservées.

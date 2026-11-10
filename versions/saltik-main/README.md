@@ -101,3 +101,11 @@ Validation détaillée : docs/level-design/lunar-implementation-validation.md.
 Quatre états illustrés : intact, pod arraché, frénésie à 20 % de vie, épave persistante après la victoire. Le canon principal tire trois gros projectiles successifs ; les deux petits canons alternent douze tirs espacés puis laissent 2,2 secondes de récupération. La frénésie accélère les armes et les rushs. Trois salves réellement lancées par le pod sont nécessaires avant de proposer son arrachage interactif. Les interactions de coque, le retour au sol et le film de victoire restent disponibles.
 
 L’atlas transparent `dist/assets/boss-assault-atlas.png` adapte les quatre références graphiques fournies dans la conversation. Les pieds, les points de saisie et les départs de tir suivent les nouveaux visuels. L’épave reste dans le monde jusqu’au changement de partie.
+
+### Niveau 3 — Les Jardins de velours
+
+Accès indépendant par le menu ou `?level=3`, et bouton de continuation après les Archives lunaires. Le fond reprend la composition de référence : grand arbre brodé à gauche, arc-en-ciel monumental, montagnes bleues, lune et cascades. Huit structures natives massives portent leurs vrais trajets ; six escaliers et les deux accès de chaque pont sont reliés aux collisions. Deux ponts illustrés en trois quarts traversent la profondeur avec un changement progressif de taille de Saltik, sans changer les commandes.
+
+Le joueur porte une apparence de velours doré, vert émeraude et bordeaux uniquement au niveau 3. Les cartes de matière conservent l’alpha, les coordonnées des armes et l’articulation des atlas natifs. Trois sceaux sont défendus dans trois lieux différents au long du parcours ; il faut réellement éliminer leurs gardiens. Une partie avec les commandes normales termine en environ 79 secondes, avec 100 points de blindage et aucune chute dans le scénario de vérification. Musique du niveau 3 laissée silencieuse, effets et voix conservés.
+
+Le niveau 2 reçoit quelques îlots astronomiques opaques au plan intermédiaire, à un défilement distinct. Son fond avec tête de pierre, ses structures et ses collisions sont conservés. Le boss du niveau 1 et son épave restent inchangés.

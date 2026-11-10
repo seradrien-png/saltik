@@ -32,7 +32,7 @@ export function projectMissionCamera({cssWidth,cssHeight,zoom,game,playerTop,vie
   let targetY=Math.max(height-720,topMargin-playerTop);
   // Lunar vaults also have a lower route beneath their illustrated arches.
   // Follow those deeper banks while preserving the canyon's original camera.
-  if(game.level===2)targetY=Math.min(targetY,height-(cinematic?28:76)-p.y);
+  if(game.level===2||game.level===3)targetY=Math.min(targetY,height-(cinematic?28:76)-p.y);
   const nextY=cinematic||targetY>cameraY?targetY:cameraY+(targetY-cameraY)*Math.min(1,dt*8);
   return {zoom,width,height,camera:nextX,cameraY:nextY};
 }
