@@ -83,3 +83,7 @@ Saltik joueur augmenté littéralement de 0,10 % (×1,001, échelle .8008) ; tou
 ## Habillage des ennemis — v26
 
 Source `808ac762df53ed0a001488865673fc92c9fb4848`, publication réussie le 10 novembre 2026. Six cartes de matière propres aux niveaux 2/3, sélection en combat et dans les interactions existantes ; silhouettes, couleurs respectives, échelles et gameplay préservés. 520 fichiers du jeu principal copiés et comparés ; cinq éditions totalisant 1569 fichiers et toutes les archives historiques vérifiées. Les autres éditions sont inchangées. Validation : 658 tests, douze scènes visibles, alpha natif identique pour les six textures, tir tactile/pause/redémarrage et revue indépendante sans point restant. Voir enemy-style-release.json.
+
+## Niveau 2 — profondeur basse et ciel naturel, v27
+
+Source `f6268033d616c2525b16be25e3f8527d8b704bfa`, version 27 publiée le 10 novembre 2026. Deux plans opaques bas, ciel sans diagrammes ni rubans écrits, lune/visage/structures conservés. Aucun changement de la route physique, des personnages, des armes ou des autres missions. 524 fichiers du principal copiés et comparés ; cinq éditions totalisant 1573 fichiers et toutes les archives vérifiées. 661 tests réussis, six positions inspectées, petit écran et commandes validés, revue indépendante sans point restant après correction de la base dans la vallée. Voir lunar-low-depth-release.json.

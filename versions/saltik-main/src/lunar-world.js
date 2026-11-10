@@ -12,8 +12,8 @@ export function drawLunarBackdrop(c,{camera,width,height,time,image,art,layers})
  // A single fully opaque painting establishes the coherent distant world.
  // One small nearer island group adds parallax below/right of the clear face.
  if(layers){
-  const w=height*.75,h=w*819/1001,x=width*.83-camera*.012;
-  c.drawImage(layers,920,0,1001,819,x,height*.35,w,h);
+  const h=height*.27,w=h*1001/819,x=width*.83-camera*.012;
+  c.drawImage(layers,920,0,1001,819,x,height*.65,w,h);
  }
 }
 

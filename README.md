@@ -8,7 +8,7 @@ Les cinq états ci-dessous sont conservés dans des dossiers indépendants, sans
 
 | Jeu / sources | État réel | GitHub Pages après activation | Commit source |
 | --- | --- | --- | --- |
-| [SALTIK V2 — Matin Doré](versions/saltik-main) | Publiée v26 — 3 niveaux | [Jouer](https://seradrien-png.github.io/saltik/versions/saltik-main/dist/) | `808ac762df53` |
+| [SALTIK V2 — Matin Doré](versions/saltik-main) | Publiée v27 — 3 niveaux | [Jouer](https://seradrien-png.github.io/saltik/versions/saltik-main/dist/) | `f6268033d616` |
 | [SALTIK — Ink Edition publiée](versions/saltik-ink) | Publiée v4 | [Jouer](https://seradrien-png.github.io/saltik/versions/saltik-ink/dist/) | `44110aa2dd80` |
 | [SALTIK INK — brouillon local avec épilogue](versions/autres-versions/saltik-ink-brouillon) | Brouillon local non publié | [Jouer](https://seradrien-png.github.io/saltik/versions/autres-versions/saltik-ink-brouillon/dist/) | `21dcc4ca32c5` |
 | [Feral Steel — Opération Canopée, référence Saltik](versions/autres-versions/saltik-feral-steel) | Publiée v24 | [Jouer](https://seradrien-png.github.io/saltik/versions/autres-versions/saltik-feral-steel/dist/) | `dbc331d0b7a2` |
@@ -94,3 +94,9 @@ Saltik joueur augmenté littéralement de 0,10 % (×1,001, échelle .8008) ; tou
 Les ennemis des Archives lunaires et des Jardins de velours reprennent les matières de leur Striker : émail et gravures célestes au niveau 2, velours matelassé et broderies dorées au niveau 3. Les Saltiks ennemis gardent leur vert/orange et le porte-drone son bleu. Contours natifs conservés pixel par pixel, aucune modification des comportements, rencontres ou tailles. Niveau 1 préservé.
 
 658 tests réussis ; six cartes de matière sans différence d’alpha ; douze scènes d’ennemis contrôlées dans Chromium, tir tactile/pause/redémarrage validés sur téléphone émulé. Source `808ac762df53ed0a001488865673fc92c9fb4848`, version 26 publiée. [Bilan détaillé](enemy-style-release.json). [Niveau 2](https://saltik-v2-matin-dore.ser-adrien.chatgpt.site?level=2) · [Niveau 3](https://saltik-v2-matin-dore.ser-adrien.chatgpt.site?level=3).
+
+### Niveau 2 — profondeur basse et ciel naturel, version 27
+
+Deux nouveaux plans opaques de maçonnerie et de roche occupent le bas de la vue, derrière la route et les personnages, avec deux vitesses de défilement. Le ciel conserve la grande lune, la tête de pierre et les architectures ; les écritures, diagrammes astronomiques et rubans flottants sont retirés. La base des nouveaux plans reprend la vraie texture de pierre sans étirement dans les creux du terrain. L’ancien panorama est conservé. Aucune modification du gameplay ou des autres niveaux.
+
+661 tests réussis ; six positions inspectées dans Chromium, tir tactile/pause/redémarrage validés sur petit écran, aucune erreur JS. Atlas converti en silhouettes aux surfaces entièrement opaques. Source `f6268033d616c2525b16be25e3f8527d8b704bfa`. [Bilan détaillé](lunar-low-depth-release.json) · [Jouer au niveau 2](https://saltik-v2-matin-dore.ser-adrien.chatgpt.site?level=2).

@@ -1,0 +1,118 @@
+{
+  "source_commit": "f6268033d616c2525b16be25e3f8527d8b704bfa",
+  "complete_test_suite": {
+    "passed": 661,
+    "failed": 0
+  },
+  "browser": {
+    "opaque_atlas": {
+      "solid": 828196,
+      "empty": 745342,
+      "partial": 0
+    },
+    "states": [
+      {
+        "x": 180,
+        "foot": 585.3212220186372,
+        "scale": 0.8008
+      },
+      {
+        "x": 3200,
+        "foot": 586.2116149095283,
+        "scale": 0.8008
+      },
+      {
+        "x": 6400,
+        "foot": 733.3865546218489,
+        "scale": 0.8008
+      },
+      {
+        "x": 8700,
+        "foot": 549.1640496102505,
+        "scale": 0.8008
+      },
+      {
+        "x": 11600,
+        "foot": 633.8104066426683,
+        "scale": 0.8008
+      },
+      {
+        "x": 15500,
+        "foot": 693.3819241982508,
+        "scale": 0.8008
+      }
+    ],
+    "phone": {
+      "firing": true,
+      "pause": true,
+      "restart": true,
+      "skin": "lunar"
+    },
+    "errors": []
+  },
+  "preservation": {
+    "base": "808ac762df53ed0a001488865673fc92c9fb4848",
+    "unchanged": {
+      "engine.js": "8871bb2d4aa4c73251c8b061fd3caacb0ef4a33c95ffe082e13fed60799158c7",
+      "ink-scene.js": "ec66a3079efed66f31eb59b12bd2c612029fa9d8f84370a1f339b4ef13df6a51",
+      "lunar-level.js": "de672b81f052e45c87b6c8b2cf1fcb0bcf609d6b306b737dc9d56302c5e1322f",
+      "lunar-architecture.js": "c1eb7b42baec02ca72082ab52c34acb76a174105bf8bbf9f97f10d0ef919f4bf",
+      "lunar-landmarks.js": "86a139c1f8428a4a6fae44485bdf017678b489203584712259ff9e0a90555a5b",
+      "lunar-terrain.js": "0f0944489e7dd6496308fc5365ef472cf214a4ff271af83f0299f3c57af2b77e",
+      "royal-world.js": "27c10e2c4342abbc4ad9eb5721c047003fbf36ca0516085e0a9bd21820991e15",
+      "royal-level.js": "4837ecbf243cc65f171759a417441ddba09255cd135d6f2a02c9f0f17634dcae",
+      "enemy-styles.js": "c6fbfd4e2ba732d54408c7af95ce531e915100d5c9e3594e2f51cffb3d90c922",
+      "main.js": "f44f9bc1bc0effb44d6deb908bd2baf4fc43ff14f68ad6ac7cda831c1ce2682a"
+    },
+    "original_panorama_retained": true
+  },
+  "review": "No remaining findings after fixing exposed valley base with naturally tiled sandstone. Refreshed x180/x8700 captures approved.",
+  "changes": [
+    "Natural panorama removes airborne chart overlays, small moon-phase diagrams and parchment ribbons.",
+    "Large moon, clear stone face and architecture retained.",
+    "Two fully opaque low planes behind road, parallax .42/.70, lower45% of viewport.",
+    "Original panorama preserved; physical level, characters, mechanics and other missions unchanged."
+  ],
+  "limitations": [
+    "No physical phone test; small screen in Chromium."
+  ],
+  "generated_originals": {
+    "sky": "/workspace/generated_images/exec-83042b67-7576-4530-8b34-a029bd0a9bf0.png",
+    "low_atlas": "/workspace/generated_images/exec-2b76eb49-a677-4491-b1b1-65fb4f4a3d50.png"
+  },
+  "publication": {
+    "version": 27,
+    "version_id": "appgprj_6ae77e1b6da081918600675fc2e2b738~appgver_b4b590f6302881919e5aef403ea45619",
+    "deployment": "appgdep_6af30dd3b7fc81918f3e4019e0eecd2f",
+    "status": "succeeded",
+    "source_commit": "f6268033d616c2525b16be25e3f8527d8b704bfa",
+    "url": "https://saltik-v2-matin-dore.ser-adrien.chatgpt.site"
+  },
+  "published_resources": [
+    {
+      "path": "src/ink-renderer.js",
+      "status": 200,
+      "sha256": "8434a01572cb923033c7b9c8cc6fab83728ad1dee31ea3c1bf54a695a251aecd"
+    },
+    {
+      "path": "src/lunar-midground.js",
+      "status": 200,
+      "sha256": "112d8af131ce168eda9ec6ac94c353ad7ad74bc37800dc6c46b07ec9ddaf1d6a"
+    },
+    {
+      "path": "src/lunar-world.js",
+      "status": 200,
+      "sha256": "fd5ad64265256cb84f8186ab9032ecf0e3dba7c1fb0bbd8e79be8c101ea0920f"
+    },
+    {
+      "path": "assets/lunar-natural-world.png",
+      "status": 200,
+      "sha256": "67e2db99f01acc43fbf2c6846cd0d7b9c42f359b358e140869cd98c29025e240"
+    },
+    {
+      "path": "assets/lunar-low-depth.png",
+      "status": 200,
+      "sha256": "4b5bd30ef8139d7865a0070ababac48121650cc25b15dc37f3fd6d38f5873859"
+    }
+  ]
+}
