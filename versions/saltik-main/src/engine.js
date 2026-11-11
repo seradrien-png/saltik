@@ -1107,6 +1107,7 @@ export function update(g,input={},dt=1/60){
       }
       const movement={minX:route?route.x1+55:70,maxX:route?route.x2-55:LEVEL_END-150,groundAt:floor,
         canOccupy:x=>!blockers.some(o=>o.hp>0&&Math.abs(x-o.x)<o.w/2+46)};
+      if(e.desertRoom!==undefined){movement.minX=Math.max(movement.minX,e.arenaMin);movement.maxX=Math.min(movement.maxX,e.arenaMax);}
       const ward=g.enemies.find(a=>a.id===e.protectsCarrierId&&!a.neutralized);
       if(ward&&!e.guard){
         // Escort screens the carrier's front, leaving its approach/reverse lane free.
@@ -1137,8 +1138,8 @@ export function update(g,input={},dt=1/60){
       for(const descriptor of result.shots)if(!g.inkCampaign||descriptor.kind!=='enemy-missile')projectile(g,descriptor,descriptor);
       for(const event of result.events)if(!g.inkCampaign||event.type!=='enemy-missile')g.events.push(event);continue;
     }
-    if(e.type==='drone'){e.y=terrainAt(g,e.origin??e.x)-140+Math.sin(e.phase*2.1)*38;if(e.lunarWave)e.x=clamp((e.origin??e.x)+Math.sin(e.phase*.55)*110,16350,17650);else if(e.royalSeal)e.x=clamp((e.origin??e.x)+Math.sin(e.phase*.55)*100,e.arenaMin,e.arenaMax);else e.x-=dt*12;}
-    if(e.type==='walker'||e.type==='soldier'){e.vx=e.lunarWave?(Math.sign(p.x-e.x)||-1)*23:-23;e.x+=dt*e.vx;if(e.lunarWave)e.x=clamp(e.x,16350,17650);if(e.royalSeal)e.x=clamp(e.x,e.arenaMin,e.arenaMax);const ledge=g.platforms.find(a=>a.id===e.platformId);if(ledge)e.x=clamp(e.x,ledge.x1+50,ledge.x2-50);e.y=ledge?surfaceHeight(ledge,e.x):terrainAt(g,e.x);}
+    if(e.type==='drone'){e.y=terrainAt(g,e.origin??e.x)-140+Math.sin(e.phase*2.1)*38;if(e.lunarWave)e.x=clamp((e.origin??e.x)+Math.sin(e.phase*.55)*110,16350,17650);else if(e.royalSeal||e.desertRoom!==undefined)e.x=clamp((e.origin??e.x)+Math.sin(e.phase*.55)*100,e.arenaMin,e.arenaMax);else e.x-=dt*12;}
+    if(e.type==='walker'||e.type==='soldier'){e.vx=e.lunarWave||e.desertRoom!==undefined?(Math.sign(p.x-e.x)||-1)*23:-23;e.x+=dt*e.vx;if(e.lunarWave)e.x=clamp(e.x,16350,17650);if(e.royalSeal||e.desertRoom!==undefined)e.x=clamp(e.x,e.arenaMin,e.arenaMax);const ledge=g.platforms.find(a=>a.id===e.platformId);if(ledge)e.x=clamp(e.x,ledge.x1+50,ledge.x2-50);e.y=ledge?surfaceHeight(ledge,e.x):terrainAt(g,e.x);}
     e.cooldown-=dt;if(e.cooldown<=0&&Math.abs(e.x-p.x)<1050){e.firePose=.16;hostileShot(g,e);e.cooldown=e.type==='turret'?1.8:2.7+random(g)*.7;}
   }
   updateBossRider(g,dt);
@@ -1162,7 +1163,7 @@ export function update(g,input={},dt=1/60){
   updateProjectiles(g,dt,{x:p.x-playerStart.x,y:p.y-playerStart.y});
   emitSaltikVoiceCues(g);
   advanceEvasion(p.evasion,dt);
-  g.enemies=g.enemies.filter(e=>(e.hp>0||e.type==='carrier'&&e.knockedOut)&&(e.lunarWave||e.royalSeal||e.x>p.x-1800));
+  g.enemies=g.enemies.filter(e=>(e.hp>0||e.type==='carrier'&&e.knockedOut)&&(e.lunarWave||e.royalSeal||e.desertRoom!==undefined||e.x>p.x-1800));
   g.pickups=g.pickups.filter(item=>{if(Math.abs(item.x-p.x)<75&&Math.abs(item.y-(p.y-30))<80){p.hp=Math.min(p.maxHp,p.hp+30);g.stats.score+=75;emit(g,'repair',item.x,item.y);return false;}return item.x>p.x-1500;});
   if(g.events.length>200)g.events.splice(0,g.events.length-200);
 }

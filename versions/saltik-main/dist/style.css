@@ -386,3 +386,10 @@ kbd{display:inline-flex;align-items:center;justify-content:center;min-width:19px
 .bt-status{display:flex;flex-direction:column;gap:2px;margin-top:7px;color:#f1d398;font:10px InkLettering,'Arial Black',sans-serif;text-shadow:1px 1px #171917}
 .bt-status[hidden]{display:none}#app[data-character="bt"] #homing-button{color:#f6ac72}#app[data-character="bt"] #mirv-cooldown{font-size:8px}
 @media(max-height:520px) and (orientation:landscape){.character-choice img{width:31px;height:31px}.character-choice small{font-size:6px}.bt-thumbnail{width:27px;height:31px;background-size:auto 31px}.bt-status{font-size:9px;margin-top:4px}}
+
+#app[data-level="4"] .title-content h1 em{color:#ed9d60;letter-spacing:.04em}
+#app[data-level="4"] .level-choice[aria-pressed="true"]{background:#efd4ae;color:#3c251d;border-color:#e3a76e}
+#app[data-level="4"] .mission-status{background:#281d16;color:#f5d6a6;border-color:#b87542}
+#app[data-desert-stage="travel"] :is(.heat-meter,.bt-status){display:none}
+.level-picker{grid-template-columns:repeat(4,minmax(0,1fr))}
+@media(max-height:520px){#app[data-level="4"] .title-content h1 em{font-size:.33em}.level-choice{font-size:8px}}

@@ -1,3 +1,4 @@
+import {applyDesertLevel,advanceDesertObjective,desertInput} from './desert-level.js';
 import {applyRoyalLevel,advanceRoyalObjective} from './royal-level.js';
 import {createGame,update,LEVEL_END} from './engine.js';
 import {applyLunarLevel,advanceLunarObjective} from './lunar-level.js';
@@ -20,6 +21,7 @@ export function createInkScene(options={}){
  const g=createGame(options);g.inkPreview=true;g.inkCampaign=true;g.weaponGeometry=inkWeaponGeometry;
  g.enemyWeaponGeometry=inkEnemyGeometry;g.enemySaltikGeometry=inkEnemySaltikGeometry;
  g.level=1;g.levelTitle='Le Canyon';
+ if(options.level===4)return applyDesertLevel(g);
  if(options.level===2)return applyLunarLevel(g);
  if(options.level===3)return applyRoyalLevel(g);
  applyInkLandmarkLayout(g);
@@ -34,7 +36,8 @@ export function createInkScene(options={}){
  return g;
 }
 export function updateInkScene(g,input,dt){
- const before=g.time;update(g,input,dt);
+ const before=g.time;update(g,desertInput(g,input),dt);
  if(g.level===2)advanceLunarObjective(g,g.time-before);
+ if(g.level===4)advanceDesertObjective(g,g.time-before);
  if(g.level===3)advanceRoyalObjective(g,g.time-before);
 }

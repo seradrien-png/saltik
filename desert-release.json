@@ -1,0 +1,238 @@
+{
+  "saved": {
+    "id": "appgprj_6ae77e1b6da081918600675fc2e2b738~appgver_aba65eced4c08191b079b804cfde867d",
+    "project_id": "appgprj_6ae77e1b6da081918600675fc2e2b738",
+    "version_number": 32,
+    "source": {
+      "commit_sha": "5d46c6c0e5bd657f5e28ce8cb01e41d91efc8699"
+    },
+    "archive_storage": {
+      "archive_format": "tar",
+      "sediment_file_id": "file_00000000391c820a956cb3156d7cdd22",
+      "content_hash": "sha256:e66f7b8b4088a5259a82c246677fc91d7eecfb60a7ddb8842d115d948f14ba14",
+      "size_bytes": 200478720,
+      "file_count": 180
+    },
+    "screenshot_url": null,
+    "deployment_id": null
+  },
+  "deployment": {
+    "id": "appgdep_6af40a67b6f08191bd72be2367fd166c",
+    "project_id": "appgprj_6ae77e1b6da081918600675fc2e2b738",
+    "title": "SALTIK V2 — Matin Doré",
+    "version_id": "appgprj_6ae77e1b6da081918600675fc2e2b738~appgver_aba65eced4c08191b079b804cfde867d",
+    "type": "publish",
+    "status": "succeeded",
+    "url": "https://saltik-v2-matin-dore.ser-adrien.chatgpt.site",
+    "has_mcp": false,
+    "screenshot_asset_pointer": null,
+    "provider_deployment_id": "site---6ae77e1b6da081918600675fc2e2b738",
+    "failure_message": null,
+    "env_set_revision": 0,
+    "updated_at": "2026-11-11T06:26:05.158214+00:00"
+  },
+  "tests": {
+    "passed": 719,
+    "failed": 0
+  },
+  "browser": {
+    "direct_selection": true,
+    "outbound": {
+      "x": 601.6666666666665,
+      "scale": 0.9495681063122924,
+      "enemies": 0
+    },
+    "entry": true,
+    "pause": true,
+    "poses": [
+      {
+        "phase": "outbound",
+        "x": 180,
+        "scale": 1,
+        "room": 0
+      },
+      {
+        "phase": "outbound",
+        "x": 1800,
+        "scale": 0.8062458471760797,
+        "room": 0
+      },
+      {
+        "phase": "outbound",
+        "x": 3500,
+        "scale": 0.6029235880398671,
+        "room": 0
+      },
+      {
+        "phase": "outbound",
+        "x": 5300,
+        "scale": 0.38764119601328906,
+        "room": 0
+      },
+      {
+        "phase": "interior",
+        "x": 900,
+        "scale": 1,
+        "room": 0
+      },
+      {
+        "phase": "interior",
+        "x": 1750,
+        "scale": 1,
+        "room": 0
+      },
+      {
+        "phase": "interior",
+        "x": 3900,
+        "scale": 1,
+        "room": 1
+      },
+      {
+        "phase": "interior",
+        "x": 6500,
+        "scale": 1,
+        "room": 2
+      },
+      {
+        "phase": "interior",
+        "x": 7450,
+        "scale": 1,
+        "room": 3
+      },
+      {
+        "phase": "return",
+        "x": 3500,
+        "scale": 0.6029235880398671,
+        "room": 0
+      }
+    ],
+    "exit_then_return_required": true,
+    "returned_to_foreground": true,
+    "phone_menu_boxes": {
+      "#start": {
+        "x": 46.40625,
+        "y": 284.703125,
+        "width": 245,
+        "height": 44
+      },
+      ".character-picker": {
+        "x": 46.40625,
+        "y": 187.703125,
+        "width": 362.90625,
+        "height": 45
+      },
+      ".level-picker": {
+        "x": 46.40625,
+        "y": 238.703125,
+        "width": 362.90625,
+        "height": 38
+      }
+    },
+    "phone_movement": true,
+    "level3_to4": true,
+    "native_combat": true,
+    "ultrawide_view": true,
+    "errors": []
+  },
+  "preservation": {
+    "existing_assets_unchanged": 69,
+    "unchanged_modules": [
+      "src/lunar-level.js",
+      "src/lunar-world.js",
+      "src/royal-level.js",
+      "src/royal-world.js",
+      "src/royal-layout.js",
+      "src/ink-demo-layout.js",
+      "src/boss-tank.js",
+      "src/boss-breach.js",
+      "src/gatling-combat.js",
+      "src/gatling-art.js",
+      "src/bt-combat.js",
+      "src/bt-art.js",
+      "src/ink-saltik.js",
+      "src/ink-enemy-saltik.js",
+      "src/audio.js"
+    ],
+    "engine_only_new_desert_guard_conditions": true
+  },
+  "review": {
+    "important_fixed": [
+      "living guards retained and bounded until actually defeated",
+      "panorama contain-fit on extreme aspect ratios"
+    ],
+    "critical": 0,
+    "remaining": 0
+  },
+  "exports": {
+    "main_files": 573,
+    "all_five_files": 1622,
+    "other_editions_unchanged": true
+  },
+  "published_resources": [
+    {
+      "path": "index.html",
+      "status": 200,
+      "sha256": "67bb4c018c49c3d0c462ebdb4816e7fd4c9628aa93900b9868ea454101f712ac"
+    },
+    {
+      "path": "style.css",
+      "status": 200,
+      "sha256": "bf48d53da8accc7cf75955dc06e44b7f74836f79af5aec77e4b03f1ef82f3e4c"
+    },
+    {
+      "path": "src/main.js",
+      "status": 200,
+      "sha256": "0fcb72200a53c802db8503c4b2495cf5765a07042101f9615b688e45ec0cb57e"
+    },
+    {
+      "path": "src/engine.js",
+      "status": 200,
+      "sha256": "d211ab421392cd8986f8a701ce7b405f6c1fe16b2eddb225483f9a8d950dd583"
+    },
+    {
+      "path": "src/bt-gamepad.js",
+      "status": 200,
+      "sha256": "87fb7c5b170df4b4468c75ce7db504404b679371e3139f0fe5b22d8ab0215bd1"
+    },
+    {
+      "path": "src/ink-renderer.js",
+      "status": 200,
+      "sha256": "d17c0dfeb7e43382abba38ca37f1e10a0b89ad842ec8ce354529ded5f35088e1"
+    },
+    {
+      "path": "src/ink-scene.js",
+      "status": 200,
+      "sha256": "d4755e0563fbfabb09deceea9230cf8b5b0f8ed3b62da97715652d4c17d9bd00"
+    },
+    {
+      "path": "src/desert-layout.js",
+      "status": 200,
+      "sha256": "45f91e4d93dea6cf40989aca0a453f422071826be6a6e285a35f6bf7633d8ce0"
+    },
+    {
+      "path": "src/desert-level.js",
+      "status": 200,
+      "sha256": "290bceeeb62326f7288aa7f0683edf8102ee8eecbaac018df3218b8f000e52bb"
+    },
+    {
+      "path": "src/desert-world.js",
+      "status": 200,
+      "sha256": "88c5e2d0d28fc23bbb41bfa637999266592b9118a112347ba62fa2dbdc2d81f8"
+    },
+    {
+      "path": "assets/desert-red-vista.png",
+      "status": 200,
+      "sha256": "8971352464cdc881450806e9d3d00c42fbe15624f38d07ae9c8c47f89a87e8de"
+    },
+    {
+      "path": "assets/desert-c07-interior.png",
+      "status": 200,
+      "sha256": "bd2bd6aa2d150e1f5515b5c22857db45d6f5bd3ea990ab3b35efb6987ed9743d"
+    },
+    {
+      "path": "assets/desert-structures.png",
+      "status": 200,
+      "sha256": "9fe07022a7afaec1f32fcd8135c4a373e080b5bdc8f1c723917990836a75cb48"
+    }
+  ]
+}

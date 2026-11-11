@@ -1,5 +1,15 @@
 # SALTIK V2 — Matin Doré
 
+## Niveau 4 — Le Désert rouge / C-07
+
+[Jouer directement au niveau 4](https://saltik-v2-matin-dore.ser-adrien.chatgpt.site/?level=4). Accessible depuis le menu et après les Jardins de velours, avec Striker, Gatling ou BT.
+
+La mission alterne trois temps : une marche calme sur une piste vers le bâtiment lointain C-07, le nettoyage de trois zones industrielles, puis le retour au premier plan du désert rouge. **Droite pour avancer vers le bunker, gauche pour revenir après la sortie.** Les commandes tactiles habituelles fonctionnent ; les armes et sauts sont réservés au bâtiment. Le personnage et son ombre rétrécissent continûment en suivant le sentier illustré ; le panorama est conservé entier, à ses proportions natives.
+
+Dans C-07, 18 gardes occupent trois zones ; les portes ne s’ouvrent qu’après leur neutralisation réelle. Les gardes restent dans leurs zones. La rampe de la machine d’excavation utilise le même contour que son illustration ; l’arche de service est une architecture derrière le chemin. Des réparations jalonnent le parcours. Après la dernière zone, la porte de sortie s’ouvre sur le désert. La mission se termine seulement après le retour au premier plan. Aucune limite de temps ni musique ajoutée.
+
+Les trois personnages ont terminé les essais de combat sans invulnérabilité ajoutée. Durée indicative : environ 2 minutes, davantage selon les combats et le Saltik. Les niveaux 1–3 et les armes des personnages restent conservés. Voir `docs/desert-art.md` pour les ressources et ancrages.
+
 ## BT vert et orange jouable
 
 Le menu propose désormais BT, Striker et Gatling sur les trois missions. Le BT conserve exactement les textures et pièces du modèle vert et orange existant, avec les matières déjà présentes dans chaque monde.

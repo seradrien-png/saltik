@@ -8,7 +8,7 @@ Les cinq états ci-dessous sont conservés dans des dossiers indépendants, sans
 
 | Jeu / sources | État réel | GitHub Pages après activation | Commit source |
 | --- | --- | --- | --- |
-| [SALTIK V2 — Matin Doré](versions/saltik-main) | Publiée v31 — 3 niveaux, Striker + Gatling + BT | [Jouer](https://seradrien-png.github.io/saltik/versions/saltik-main/dist/) | `22939ba5849d` |
+| [SALTIK V2 — Matin Doré](versions/saltik-main) | Publiée v32 — 4 niveaux, Striker + Gatling + BT | [Jouer](https://seradrien-png.github.io/saltik/versions/saltik-main/dist/) | `5d46c6c0e5bd` |
 | [SALTIK — Ink Edition publiée](versions/saltik-ink) | Publiée v4 | [Jouer](https://seradrien-png.github.io/saltik/versions/saltik-ink/dist/) | `44110aa2dd80` |
 | [SALTIK INK — brouillon local avec épilogue](versions/autres-versions/saltik-ink-brouillon) | Brouillon local non publié | [Jouer](https://seradrien-png.github.io/saltik/versions/autres-versions/saltik-ink-brouillon/dist/) | `21dcc4ca32c5` |
 | [Feral Steel — Opération Canopée, référence Saltik](versions/autres-versions/saltik-feral-steel) | Publiée v24 | [Jouer](https://seradrien-png.github.io/saltik/versions/autres-versions/saltik-feral-steel/dist/) | `dbc331d0b7a2` |
@@ -120,3 +120,9 @@ Nouveau Saltik jouable dans les trois niveaux, deux mitrailleuses et huit roquet
 ### BT vert et orange — version 31
 
 Le BT existant devient sélectionnable avec Striker et Gatling sur les trois missions, sans nouveau graphisme. Canon : trois tirs par pression. K maintenu : 1 verrou / 0,25 s, relâcher lance les missiles guidés correspondant aux verrous valides. L/R : salve panique non guidée avec le stock restant, sans deuxième salve au relâchement. Stock8, recharge1/2s après5s sans lancement, suspendue pendant le lock. Déplacement/esquive et canon restent possibles pendant le lock. [Jouer avec BT](https://saltik-v2-matin-dore.ser-adrien.chatgpt.site/?character=bt). 706 tests, essais Chromium ordinateur/téléphone, trois niveaux/transitions, interactions et conservation des verrous pendant l’esquive vérifiés. Les69assets antérieurs et quatre autres éditions sont inchangés.
+
+### Niveau4 — Le Désert rouge / C-07, version32
+
+[Jouer au niveau4](https://saltik-v2-matin-dore.ser-adrien.chatgpt.site/?level=4). Les trois Saltiks traversent une piste dans le désert rouge vers C-07, rétrécissent progressivement avec la profondeur, nettoient trois zones du bunker, puis ressortent et reviennent au premier plan. Droite à l’aller, gauche au retour. Panorama et proportions de la référence préservés ; masses/ossements/machines opaques, rampe réelle, porte ouverte sur le désert. Les18gardes doivent être réellement neutralisés ; ils ne disparaissent pas pour débloquer une zone.
+
+719tests passés, trois campagnes de combat terminées avec les armes et armures normales, essaisChromium ordinateur/téléphone/ultralarge sans erreurJavaScript. Menu4et transition3→4 vérifiés. Niveaux1–3,69assets précédents et quatre autres éditions conservés. [Bilan technique](desert-release.json).

@@ -1,0 +1,6 @@
+import test from 'node:test';import assert from 'node:assert/strict';
+import {projectDesertPlayer,DESERT_STRUCTURES,desertStructurePlacement,createDesertRoutes,desertInteriorGroundAt} from '../src/desert-layout.js';
+import {desertTransitionCurtain} from '../src/desert-world.js';
+test('perspective feet stay in the image and shrink continuously on desktop and phone',()=>{for(const [w,h]of [[1108,623],[1348,623],[831,623],[2217,623],[4984,623]]){let previous=99;for(let x=180;x<=6200;x+=20){const p=projectDesertPlayer(x,w,h);assert(p.x>0&&p.x<w);assert(p.y>0&&p.y<h);assert(p.scale<=previous);previous=p.scale;}assert(Math.abs(projectDesertPlayer(6199,w,h).scale-projectDesertPlayer(6200,w,h).scale)<.001);}});
+test('native climbable cap and ramp roots register to the same painted foundation and real floor',()=>{for(const s of DESERT_STRUCTURES.filter(s=>s.walkable)){const a=desertStructurePlacement(s);const route=createDesertRoutes().find(r=>r.id===s.id);assert.deepEqual(route.points,s.cap.map(a.point));for(const r of s.ramps){const foot=a.point(r[0]);assert(Math.abs(foot[1]-desertInteriorGroundAt(foot[0]))<1e-6);}}});
+test('door transition uses opaque curtains with a fully closed middle, without alpha-washing scenery',()=>{assert.equal(desertTransitionCurtain(0),0);assert.equal(desertTransitionCurtain(.4),1);assert.equal(desertTransitionCurtain(.8),0);});

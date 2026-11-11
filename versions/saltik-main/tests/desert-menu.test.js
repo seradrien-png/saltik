@@ -1,0 +1,2 @@
+import test from 'node:test';import assert from 'node:assert/strict';import {readFileSync} from 'node:fs';
+test('fourth mission can be selected directly and after gardens, preserving every Saltik',()=>{const html=readFileSync(new URL('../index.html',import.meta.url),'utf8'),main=readFileSync(new URL('../src/main.js',import.meta.url),'utf8');assert(html.includes('data-level="4"'));for(const c of ['striker','gatling','bt'])assert(html.includes(`data-character="${c}"`));assert(main.includes('[1,2,3,4]'));assert(main.includes('desertMissionLabel'));});
