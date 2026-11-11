@@ -107,6 +107,17 @@ export function inkEnemySaltikGeometry(e,time=0,{camera=0,scale=1,view='side'}={
  const cannonPart={...INK_ENEMY_SALTIK_PARTS.cannon,offsetX:-22*recoil,rotation:view==='side'?-clamp(finite(e.cannonElevation),-.12,.18):0};
  const arms=view==='front'?[]:INK_ENEMY_SALTIK_PARTS.arms.map((part,index)=>({...part,
   rotation:walking?Math.sin(phase*.5+(index?Math.PI:0))*.035:0}));
+ if(e.btAimTarget&&view==='side'){
+  const pivot=sourcePoint(cannonPart.pivot),dx=e.btAimTarget.x-camera-pivot.x,dy=e.btAimTarget.y-pivot.y;
+  cannonPart.rotation=Math.atan2((-dx*si+dy*co)/k,(dx*co+dy*si)/(k*flip))-Math.atan2(frame.muzzle[1]-cannonPart.pivot[1],frame.muzzle[0]-cannonPart.pivot[0]);
+ }
+ for(const [i,arm] of arms.entries())if(e.btGripTargets?.[i]){
+  const target=e.btGripTargets[i],pivot=sourcePoint(arm.pivot),dx=target.x-camera-pivot.x,dy=target.y-pivot.y;
+  const xx=(dx*co+dy*si)/(k*flip),yy=(-dx*si+dy*co)/k;
+  const hand=i?[617,719]:[721,684],hx=hand[0]-arm.pivot[0],hy=hand[1]-arm.pivot[1];
+  arm.btExtension=Math.max(-10,Math.min(400,Math.sqrt(Math.max(0,xx*xx+yy*yy-hx*hx))-hy));arm.btStretchY=arm.pivot[1]+12;arm.btWristY=i?690:654;
+  arm.rotation=Math.atan2(yy,xx)-Math.atan2(hy+arm.btExtension,hx);
+ }
  const cannonPoint=point=>sourcePoint(rotatePoint(point,cannonPart.pivot,cannonPart.rotation,cannonPart.offsetX));
  const muzzle=view==='side'?cannonPoint(frame.muzzle):sourcePoint(frame.muzzle);
  const gunBase=view==='side'?cannonPoint(frame.gunBase):sourcePoint(frame.gunBase);
@@ -115,8 +126,13 @@ export function inkEnemySaltikGeometry(e,time=0,{camera=0,scale=1,view='side'}={
   {id:'left-pod',pivot:[262,323],polygon:[[183,15],[407,10],[463,42],[473,135],[429,167],[338,156],[305,223],[282,285],[290,338],[248,350],[217,321],[236,279],[264,204],[280,151],[197,134],[176,86]]},
   {id:'right-pod',pivot:[775,346],polygon:[[775,42],[970,60],[994,89],[991,196],[940,221],[846,198],[828,267],[806,314],[802,357],[759,368],[738,336],[758,291],[785,223],[805,190],[769,158],[758,96]]},
  ].map((part,index)=>({...part,rotation:(index?-.045:.045)*deployment,offsetX:0}));
+ if(e.bt)for(const [i,part] of podParts.entries()){
+  const target=e.bt.aimPoints?.[i%e.bt.aimPoints.length];
+  if(e.bt.panicFlash>0)part.rotation=(i?1:-1)*.25*Math.min(1,e.bt.panicFlash/.2);
+  else if(e.bt.locking&&target){const pivot=sourcePoint(part.pivot),dx=target.x-camera-pivot.x,dy=target.y-pivot.y;part.rotation=Math.max(-.7,Math.min(.7,Math.atan2((-dx*si+dy*co)/k,(dx*co+dy*si)/(k*flip))-Math.atan2(-50,28)));}
+ }
  const podSourcePoint=(point,index)=>{const part=podParts[index];return sourcePoint(part?rotatePoint(point,part.pivot,part.rotation):point);};
- const podSlots=view==='side'?inkEnemyPodGeometry(e,{sourcePoint,podSourcePoint}):[];
+ const podSlots=view==='side'||e.bt?inkEnemyPodGeometry(e,{view,sourcePoint,podSourcePoint,k,rotation}):[];
  const activePods=podSlots.filter(slot=>slot.activeIndex>=0);
  const podMuzzles=view==='side'?activePods.map(slot=>slot.muzzle):frame.pods.map(sourcePoint),target=sourcePoint(frame.target);
  const podDirections=view==='side'?activePods.map(slot=>slot.axis):podMuzzles.map((mouth,i)=>unit(mouth,sourcePoint(frame.podBases[i])));
@@ -166,7 +182,12 @@ export function drawInkEnemySaltik(c,image,e,{camera=0,time=0,scale=1,view='side
   }
   for(const part of [geo.cannonPart,...geo.podParts,...geo.arms]){
    c.save();c.translate(...part.pivot);c.rotate(part.rotation);c.translate(-part.pivot[0]+finite(part.offsetX),-part.pivot[1]);
-   c.beginPath();polygon(c,part.polygon);c.clip();draw();c.restore();
+   if(part.btExtension!==undefined){
+    const root=splitAtY(part.polygon,part.btStretchY,false),shaft=splitAtY(splitAtY(part.polygon,part.btStretchY,true),part.btWristY,false),hand=splitAtY(part.polygon,part.btWristY,true);
+    c.save();c.beginPath();polygon(c,root);c.clip();draw();c.restore();
+    c.save();c.translate(0,part.btStretchY);c.scale(1,1+part.btExtension/(part.btWristY-part.btStretchY));c.translate(0,-part.btStretchY);c.beginPath();polygon(c,shaft);c.clip();draw();c.restore();
+    c.translate(0,part.btExtension);c.beginPath();polygon(c,hand);c.clip();draw();
+   }else{c.beginPath();polygon(c,part.polygon);c.clip();draw();}c.restore();
   }
   // Faint light moves within the two existing eyes; no facial aperture moves.
   c.globalAlpha*=.08+.035*Math.sin(time*1.7);c.fillStyle=hit?'#ffffff':'#fff4db';

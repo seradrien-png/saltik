@@ -43,7 +43,7 @@ export function drawInkProjectile(c,s,camera,time){
  const color=s.team==='enemy'?'#DF9A8B':s.kind==='homing'?'#9FCED1':s.kind==='mirv'?'#E9B19A':s.kind==='grenade'?'#B7A4CC':'#F3CB88';
  c.save();c.lineCap='round';
  if(s.trail?.length>1){c.strokeStyle=`${color}AA`;c.lineWidth=3;c.beginPath();s.trail.forEach((p,i)=>i?c.lineTo(p.x-camera,p.y):c.moveTo(p.x-camera,p.y));c.stroke();}
- c.translate(s.x-camera,s.y);c.rotate(Math.atan2(s.vy,s.vx));c.strokeStyle=INK;c.fillStyle=color;c.lineWidth=1.5;
+ c.translate(s.x-camera,s.y);c.rotate(Math.atan2(s.vy,s.vx));if(s.btHeavy)c.scale(1.5,1.5);c.strokeStyle=INK;c.fillStyle=color;c.lineWidth=1.5;
  if(['homing','mirv','enemy-missile','grenade','gatling-rocket'].includes(s.kind)){
   c.beginPath();c.moveTo(-9,-3);c.lineTo(7,-3);c.lineTo(12,0);c.lineTo(7,3);c.lineTo(-9,3);c.closePath();c.fill();c.stroke();
   c.fillStyle=s.kind==='mirv'?'#B7A4CC':INK;c.fillRect(-5,-5,3,10);c.fillStyle=PAPER;c.beginPath();c.moveTo(-10,-2);c.lineTo(-21-Math.sin(time*61)*4,0);c.lineTo(-10,2);c.fill();

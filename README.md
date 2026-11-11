@@ -8,7 +8,7 @@ Les cinq états ci-dessous sont conservés dans des dossiers indépendants, sans
 
 | Jeu / sources | État réel | GitHub Pages après activation | Commit source |
 | --- | --- | --- | --- |
-| [SALTIK V2 — Matin Doré](versions/saltik-main) | Publiée v30 — 3 niveaux, Striker + Gatling | [Jouer](https://seradrien-png.github.io/saltik/versions/saltik-main/dist/) | `b8f4d160d7e2` |
+| [SALTIK V2 — Matin Doré](versions/saltik-main) | Publiée v31 — 3 niveaux, Striker + Gatling + BT | [Jouer](https://seradrien-png.github.io/saltik/versions/saltik-main/dist/) | `22939ba5849d` |
 | [SALTIK — Ink Edition publiée](versions/saltik-ink) | Publiée v4 | [Jouer](https://seradrien-png.github.io/saltik/versions/saltik-ink/dist/) | `44110aa2dd80` |
 | [SALTIK INK — brouillon local avec épilogue](versions/autres-versions/saltik-ink-brouillon) | Brouillon local non publié | [Jouer](https://seradrien-png.github.io/saltik/versions/autres-versions/saltik-ink-brouillon/dist/) | `21dcc4ca32c5` |
 | [Feral Steel — Opération Canopée, référence Saltik](versions/autres-versions/saltik-feral-steel) | Publiée v24 | [Jouer](https://seradrien-png.github.io/saltik/versions/autres-versions/saltik-feral-steel/dist/) | `dbc331d0b7a2` |
@@ -116,3 +116,7 @@ Le découpage lié à l’écran qui effaçait les toits dans les vallées est s
 ### Gatling — version 30
 
 Nouveau Saltik jouable dans les trois niveaux, deux mitrailleuses et huit roquettes non guidées, camouflage neige et matériaux adaptés aux missions. Tir immobilisant, recul après 2 s, surchauffe après 5 s, refroidissement 5 s. Striker conservé. [Jouer sur le site publié](https://saltik-v2-matin-dore.ser-adrien.chatgpt.site/?level=1&character=gatling). 689 tests passés ; essais Chromium ordinateur/téléphone, commandes, transitions et interactions vérifiés. Les quatre autres éditions restent inchangées.
+
+### BT vert et orange — version 31
+
+Le BT existant devient sélectionnable avec Striker et Gatling sur les trois missions, sans nouveau graphisme. Canon : trois tirs par pression. K maintenu : 1 verrou / 0,25 s, relâcher lance les missiles guidés correspondant aux verrous valides. L/R : salve panique non guidée avec le stock restant, sans deuxième salve au relâchement. Stock8, recharge1/2s après5s sans lancement, suspendue pendant le lock. Déplacement/esquive et canon restent possibles pendant le lock. [Jouer avec BT](https://saltik-v2-matin-dore.ser-adrien.chatgpt.site/?character=bt). 706 tests, essais Chromium ordinateur/téléphone, trois niveaux/transitions, interactions et conservation des verrous pendant l’esquive vérifiés. Les69assets antérieurs et quatre autres éditions sont inchangés.

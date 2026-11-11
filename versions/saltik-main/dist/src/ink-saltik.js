@@ -1,3 +1,4 @@
+import {btGeometry,drawBT} from './bt-art.js';
 import {sampleSupportSurface} from './support-pose.js';
 import {inkTurnFrame,inkTurnGeometry,drawInkTurn} from './ink-turn.js';
 import {plantInkWheel} from './ink-leg-support.js';
@@ -246,6 +247,7 @@ export function inkSaltikGeometry(p,{camera=0,time=0,scale=1,victoryAge=null,sam
     turretLift:0,turretArticulated,turretPart,turretPoint,turretSupports:[],turnTurret,cannonPoint,coaxPoint,
     cannonAngle:Math.atan2(cannon.y-cannonBase.y,cannon.x-cannonBase.x),arm,face,sourcePoint,bounds,
     visibleHeight:INK_SALTIK_HEIGHT*scale,weaponsLocked};
+  if(p.character==='bt')return btGeometry(p,{camera,time,scale:scale/(p.artScale??1)},result);
   return p.character==='gatling'?augmentGatlingGeometry(p,result,{camera,time,sampleGround}):result;
 }
 
@@ -274,6 +276,7 @@ function transformPart(c,part){
 export function drawInkSaltik(c,image,p,{camera=0,time=0,scale=1,victoryAge=null,turnImage=null,sampleGround}={}){
   if(!image)return null;
   let geo=inkSaltikGeometry(p,{camera,time,scale,victoryAge,sampleGround});
+  if(p.character==='bt')return drawBT(c,image,p,{camera,time,scale});
   if(p.character==='gatling')return drawGatling(c,image,p,geo,{time});
   if(geo.turnTurret&&!turnImage){
     // Match the established side-view fallback when the optional atlas is

@@ -21,6 +21,8 @@ test('V2 preserves V1 native pixels, walkable geometry, native motions and encou
    .replaceAll('*(e.artScale??1)','')
    // Gatling rockets share the existing projectile illustration only.
    .replace(",'gatling-rocket'",'')
+   // Only BT heavy rounds enlarge their existing projectile illustration.
+   .replace('if(s.btHeavy)c.scale(1.5,1.5);','')
    // Numeric V1 ids retain the exact native animation; lunar text ids use a finite seed.
    .replace(' const bobSeed=Number.isFinite(e.id)?e.id:Number.isFinite(e.phase)?e.phase:0;\n const bob=walking?Math.sin(time*10+bobSeed)*.9:0;',
     ' const bob=walking?Math.sin(time*10+(e.id??0))*.9:0;'));

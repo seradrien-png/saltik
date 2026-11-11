@@ -1,3 +1,4 @@
+import {drawBTLocks} from './bt-art.js';
 import {ENEMY_MATERIALS,sceneArtImages,bakeEnemyArt} from './enemy-styles.js';
 import {bakeBridgeForeground} from './royal-bridge-front.js';
 import {drawRoyalBackdrop,drawRoyalWorld,drawRoyalForeground} from './royal-world.js';
@@ -68,6 +69,7 @@ export async function loadArt(onProgress=()=>{}){
 function oval(c,x,y,rx,ry,color){c.fillStyle=color;c.beginPath();c.ellipse(x,y,Math.max(.1,rx),Math.max(.1,ry),0,0,TAU);c.fill();}
 export function inkTitlePlayer(player,x,y){
  const pose={x,y,dir:1,onGround:true,supportY:y,vx:0};
+ if(player.character==='bt')return {...pose,character:'bt',bt:player.bt,hp:100,artScale:player.artScale};
  return player.character==='gatling'?{...pose,character:player.character,gatling:player.gatling,artScale:player.artScale}:pose;
 }
 export function createRenderer(canvas){
@@ -140,10 +142,10 @@ export function createRenderer(canvas){
     const p=playerKO?{...g.player,vx:0,vy:0,turn:null,evasion:null,melee:null,crouching:g.player.onGround!==false,invulnerable:0,damagePose:false,muzzle:0,mirvFlash:0,homingFlash:0,cannonElevation:0,cannonRecoil:0,motionLean:0,motionHeave:0,jumpCompression:0,landingCompression:0}:g.player,rear=p.evasion?.active;const shade=rear?.7:1;
     c.save();if(rear){c.globalAlpha=.86;c.translate(p.x-camera,p.y);c.scale(.92,.92);c.translate(-(p.x-camera),-p.y);}
     oval(c,p.x-camera,p.supportY??p.y,43*shade*(p.artScale??1),4,'#18181566');const pose=drawInkSaltik(c,playerImages['ink-saltik'],p,{camera,time,turnImage:playerImages['ink-turn'],sampleGround:x=>supportHeight(g,p,x),victoryAge:view==='won'?presentationAge:null});
-    if(pose&&p.character!=='gatling'&&!pose.weaponsLocked&&!playerKO){if(p.muzzle>0)inkFlash(c,pose.arm,p.aim,1,'#F3CB88');if(p.mirvFlash>0)inkFlash(c,pose.cannon,pose.cannonAngle,1.5,'#EBC29D');}
+    if(pose&&p.character!=='gatling'&&p.character!=='bt'&&!pose.weaponsLocked&&!playerKO){if(p.muzzle>0)inkFlash(c,pose.arm,p.aim,1,'#F3CB88');if(p.mirvFlash>0)inkFlash(c,pose.cannon,pose.cannonAngle,1.5,'#EBC29D');}
     c.restore();
    }
-   for(const s of g.projectiles)drawInkProjectile(c,s,camera,time);drawInkLocks(c,g,camera);drawsEffects();
+   for(const s of g.projectiles)drawInkProjectile(c,s,camera,time);drawInkLocks(c,g,camera);drawBTLocks(c,g,camera);drawsEffects();
   }
   if(g.level===3)drawRoyalForeground(c,g,{...opts,art:royalArt});else if(g.level===2)drawLunarForeground(c,{...opts,art:{atlas:images['lunar-monuments'],bridge:images['lunar-aqueduct']}});else drawInkForeground(c,g,opts);if(view!=='title')mirvPreview.draw(c,g,{camera,cameraY,width,height});c.restore();
   if(view==='title'){

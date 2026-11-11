@@ -1,3 +1,4 @@
+import {createBTGamepad} from './bt-gamepad.js';
 import {royalMissionLabel} from './royal-level.js';
 import {inkSaltikGeometry} from './ink-saltik.js';
 import {lunarMissionLabel} from './lunar-level.js';
@@ -13,13 +14,14 @@ import {createAudio} from './audio.js';
 import {createSpeechCaptions} from './speech-captions.js';
 import {createVictoryFilm} from './victory-film.js';
 const $=id=>document.getElementById(id),app=$('app'),renderer=createRenderer($('game')),input=createInput(),weaponInput=createInput(),captions=createSpeechCaptions($('speech-caption')),audio=createAudio({onSpeech:line=>line?captions.show(line.id,line.duration):captions.clear()});
+const btGamepad=createBTGamepad(input,weaponInput);
 // A dock replacement can discard every weapon source and buffered tap while
 // leaving the independently held movement sources untouched.
 setupHomeShortcut();
 // A shareable link can open the revised Archives directly: ?level=2.
 const requestedLevel=Number(new URLSearchParams(location.search).get('level'));
 let selectedLevel=[1,2,3].includes(requestedLevel)?requestedLevel:1;
-const validCharacter=value=>['striker','gatling'].includes(value);
+const validCharacter=value=>['striker','gatling','bt'].includes(value);
 const characterParam=new URLSearchParams(location.search).get('character');
 let selectedCharacter='striker';
 try{const saved=localStorage.getItem('saltik-player-character');if(validCharacter(saved))selectedCharacter=saved;}catch{}
@@ -62,14 +64,14 @@ function syncActionDock(){
   app.classList.toggle('action-scene',next.active);
 }
 function consumeInput(){
-  syncActionDock();
+  syncActionDock();btGamepad.poll(selectedCharacter==='bt'&&canFire());
   const movement=input.consume(),weapons=weaponInput.consume();
   return {...movement,fire:weapons.fire,fireHeld:weapons.fireHeld,missile:weapons.missile,missileHeld:weapons.missileHeld,missileReleased:weapons.missileReleased,missileCancelled:weapons.missileCancelled,homing:weapons.homing};
 }
 input.subscribe(actions=>{if(!actions.shift){endEvasion(game.player.evasion);game.player.shiftHeld=false;}});
 const introKeys=new Set();
 const number=n=>Math.floor(n).toString().padStart(6,'0');
-function clearInput(){bindings.forEach(binding=>binding.clear());input.clear();clearWeaponInput();game.player.shiftHeld=false;endEvasion(game.player.evasion);if(game.duel)game.duel.qteHeld=false;document.querySelectorAll('[data-action],[data-pad-actions]').forEach(button=>{button.classList.remove('pressed');button.setAttribute('aria-pressed','false');});}
+function clearInput(){btGamepad.clear();bindings.forEach(binding=>binding.clear());input.clear();clearWeaponInput();game.player.shiftHeld=false;endEvasion(game.player.evasion);if(game.duel)game.duel.qteHeld=false;document.querySelectorAll('[data-action],[data-pad-actions]').forEach(button=>{button.classList.remove('pressed');button.setAttribute('aria-pressed','false');});}
 function syncDuelPhase(){
   const next=game.duel?.phase??null;if(next===duelPhase)return;
   clearInput();duelPhase=next;app.classList.toggle('in-duel',!!game.duel);syncActionDock();
@@ -106,19 +108,25 @@ function syncLevelMenu(){
  $('next-level').innerHTML=selectedLevel===1?'LES ARCHIVES LUNAIRES <span>→</span>':'LES JARDINS DE VELOURS <span>→</span>';
 }
 function syncCharacterMenu(){
- const gatling=selectedCharacter==='gatling';app.dataset.character=selectedCharacter;
+ const gatling=selectedCharacter==='gatling',bt=selectedCharacter==='bt';app.dataset.character=selectedCharacter;
  for(const button of document.querySelectorAll('button[data-character]'))button.setAttribute('aria-pressed',String(button.dataset.character===selectedCharacter));
  $('homing-button').hidden=gatling;
  document.querySelector('.action-controls').setAttribute('aria-label',gatling?'Deux armes indépendantes':'Trois armes indépendantes');
  document.querySelector('#missile-button > span').innerHTML=gatling?'ROQUETTES <kbd>K</kbd>':'MIRV <kbd>K</kbd>';
- $('heat-meter').hidden=!gatling;
- $('hud').setAttribute('aria-label',`État du Saltik ${gatling?'Gatling':'Striker'}`);
+ $('heat-meter').hidden=!gatling;$('bt-status').hidden=!bt;
+ $('hud').setAttribute('aria-label',`État du Saltik ${bt?'BT':gatling?'Gatling':'Striker'}`);
  document.querySelector('.touch-note').textContent=`CROIX TACTILE · ${gatling?2:3} ARMES · ESQUIVE`;
  const guide=document.querySelectorAll('.keyboard-guide > span');guide[5].innerHTML=gatling?'<kbd>K</kbd> ROQUETTES':'<kbd>K</kbd> MIRV';guide[6].hidden=gatling;
  const help=document.querySelectorAll('.pause-help > span');
  help[4].textContent=gatling?'J / X · TIR : chauffe 5 s, refroidissement 5 s':'J / X · TIR : 3 s, recharge 1,32 s';
  help[5].textContent=gatling?'K · Salve de huit roquettes sans guidage':'K · MIRV à sous-munitions';help[6].hidden=gatling;
- help[8].innerHTML='Croix : haut SAUT, bas BAS, coins combinés. Centre ESQUIVE : maintenir pour rester en arrière-plan, deux secondes maximum. Relâcher avant une nouvelle esquive.<br>'+ (gatling?'ROQUETTES : recharge 5,2 s · Tir immobilisant.':'MIRV : recharge 5,2 s · GUIDÉS : recharge 9,5 s.');
+ if(bt){
+  document.querySelector('#missile-button > span').innerHTML='VERROUS <kbd>K</kbd>';
+  document.querySelector('#homing-button > span').innerHTML='PANIQUE <kbd>L</kbd>';
+  guide[5].innerHTML='<kbd>K</kbd> MAINTENIR / RELÂCHER';guide[6].innerHTML='<kbd>L</kbd> PANIQUE';
+  help[4].textContent='J / X ou RT · Canon lourd : trois tirs par pression';help[5].textContent='K ou LT · Maintenir pour verrouiller, relâcher pour tirer';help[6].textContent='L / R ou Y · Panique : stock restant, sans guidage';
+ }else{document.querySelector('#homing-button > span').innerHTML='GUIDÉS <kbd>L</kbd>';guide[6].innerHTML='<kbd>L</kbd> GUIDÉS';help[6].textContent='L / R · Missiles guidés';}
+ help[8].innerHTML='Croix : haut SAUT, bas BAS, coins combinés. Centre ESQUIVE : maintenir pour rester en arrière-plan, deux secondes maximum. Relâcher avant une nouvelle esquive.<br>'+ (bt?'BT : 1 verrou / 0,25 s, huit missiles maximum. Panique annule les verrous. Recharge : 1 missile / 2 s après 5 s sans lancement.':gatling?'ROQUETTES : recharge 5,2 s · Tir immobilisant.':'MIRV : recharge 5,2 s · GUIDÉS : recharge 9,5 s.');
 }
 function chooseCharacter(character){
  if(view!=='title'||!validCharacter(character))return;
@@ -162,6 +170,19 @@ function updateUI(){
   $('fire-progress').style.width=`${clamp(reloading?1-p.reloadIn/PRIMARY_RELOAD:p.fireSpent/PRIMARY_FIRE_TIME,0,1)*100}%`;
   $('fire-button').classList.toggle('recharging',reloading);
   $('fire-button').setAttribute('aria-label',reloading?`Tir, recharge ${p.reloadIn.toFixed(1)} secondes`:`Tirer, J ou X, ${Math.max(0,PRIMARY_FIRE_TIME-p.fireSpent).toFixed(1)} secondes avant recharge`);
+  if(p.character==='bt'){
+   const s=p.bt,ammo=s.loaded.filter(Boolean).length,locks=s.locks.length;
+   $('bt-ammo').textContent=`MISSILES ${ammo} / 8`;$('bt-locks').textContent=`VERROUS ${locks} / ${ammo}`;
+   const refill=Math.max(0,5-s.quiet)+Math.max(0,2-s.refillClock);
+   $('bt-refill').textContent=ammo===8?'':s.locking?'RECHARGE SUSPENDUE':`+1 DANS ${refill.toFixed(1)}s`;
+   $('fire-cooldown').textContent=s.burstCooldown>0?`${s.burstCooldown.toFixed(1)}s`:'RAFALE ×3';$('fire-progress').style.width=`${(1-s.burstCooldown/1.2)*100}%`;
+   $('fire-button').classList.toggle('recharging',s.burstCooldown>0);$('fire-button').setAttribute('aria-label','Canon lourd, trois tirs par pression, J ou X');
+   $('mirv-cooldown').textContent=s.locking?`${locks} VERROUS`:`${ammo} / 8`;$('mirv-reload').style.width=`${locks/8*100}%`;
+   $('homing-cooldown').textContent=ammo?`${ammo} MISSILES`:'VIDE';$('homing-reload').style.width=`${ammo/8*100}%`;
+   $('missile-button').classList.toggle('recharging',ammo===0);$('homing-button').classList.toggle('recharging',ammo===0);
+   $('missile-button').setAttribute('aria-label',`Maintenir K pour verrouiller, relâcher pour tirer, ${locks} verrous, ${ammo} missiles`);
+   $('homing-button').setAttribute('aria-label',`Panique L ou R, ${ammo} missiles sans guidage`);
+  }
   if(gatling&&thermal){
    const cooling=thermal.cooldown>0,heat=clamp(thermal.heat,0,1),remaining=clamp(5-thermal.sustained,0,5);
    $('fire-cooldown').textContent=cooling?`SURCHAUFFE ${thermal.cooldown.toFixed(1)}s`:`${remaining.toFixed(1)} / 5 s`;
@@ -220,7 +241,7 @@ for(const button of document.querySelectorAll('button[data-character]'))button.a
 $('sound').addEventListener('click',toggleSound);
 $('fullscreen').addEventListener('click',async()=>{try{if(document.fullscreenElement)await document.exitFullscreen();else if(app.requestFullscreen){await app.requestFullscreen();try{await screen.orientation.lock('landscape');}catch{}}else toast('Le jeu occupe déjà toute la fenêtre.');}catch{toast('Plein écran indisponible. Le jeu reste accessible dans cette fenêtre.');}});
 function frame(now){const elapsed=clamp((now-lastFrame)/1000,0,.12);lastFrame=now;if(view==='playing'){game.viewport={x:renderer.camera,y:-renderer.cameraY,w:renderer.width,h:renderer.height??720};accumulator+=elapsed;while(accumulator>=1/60&&game.status==='playing'){update(game,consumeInput(),1/60);syncDuelPhase();syncBreachPhase();syncCarrierState();syncIntroState();syncActionDock();accumulator-=1/60;}if(['won','dead'].includes(game.status))finish();}else accumulator=0;
-  for(const event of game.events){renderer.addEvent(event);audio.play(event);}game.events.length=0;
+  for(const event of game.events){renderer.addEvent(event);const btSound={'bt-shot':'shot','bt-rocket':'homing','bt-panic':'missile','bt-lock':'reload-end','bt-empty':'no-target','bt-refill':'reload-end'}[event.type];audio.play(btSound?{...event,type:btSound}:event);}game.events.length=0;
   captions.update(view);renderer.render(game,now,view);game.viewport={x:renderer.camera,y:-renderer.cameraY,w:renderer.width,h:renderer.height};if(now-uiAt>80){updateUI();uiAt=now;}if(resultAt&&now>=resultAt&&$('result-screen').hidden&&!victoryFilm.update(now))showResult();requestAnimationFrame(frame);
 }
 syncCharacterMenu();syncLevelMenu();soundUI();$('start').disabled=true;$('start').querySelector('span').textContent='PRÉPARATION DU SALTIK…';requestAnimationFrame(frame);

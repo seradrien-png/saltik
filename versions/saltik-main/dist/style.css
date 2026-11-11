@@ -379,3 +379,10 @@ kbd{display:inline-flex;align-items:center;justify-content:center;min-width:19px
  .heat-meter{width:160px;font-size:9px;margin-top:5px}
  #app[data-character="gatling"] #fire-cooldown{font-size:8px;letter-spacing:0}
 }
+
+/* Third pilot keeps the same compact menu footprint. */
+.character-choice{padding:5px;gap:4px}.character-choice img{width:43px}.character-choice small{font-size:7px}
+.bt-thumbnail{display:block;width:40px;height:43px;flex-shrink:0;background:url('./assets/ink-enemy-saltik.png') no-repeat 1% center;background-size:auto 43px}
+.bt-status{display:flex;flex-direction:column;gap:2px;margin-top:7px;color:#f1d398;font:10px InkLettering,'Arial Black',sans-serif;text-shadow:1px 1px #171917}
+.bt-status[hidden]{display:none}#app[data-character="bt"] #homing-button{color:#f6ac72}#app[data-character="bt"] #mirv-cooldown{font-size:8px}
+@media(max-height:520px) and (orientation:landscape){.character-choice img{width:31px;height:31px}.character-choice small{font-size:6px}.bt-thumbnail{width:27px;height:31px;background-size:auto 31px}.bt-status{font-size:9px;margin-top:4px}}

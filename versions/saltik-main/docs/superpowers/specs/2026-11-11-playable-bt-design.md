@@ -1,0 +1,9 @@
+# BT jouable — Matin Doré, trois niveaux
+
+Demande approuvée : suivre le cahier BT fourni, mais conserver exactement l’esthétique actuelle verte et orange, sans nouveau dessin. Ajouter BT au menu, garder Striker/Gatling et les trois missions. Réutiliser atlas et articulation ink-enemy-saltik, matières existantes par mission, jamais sprite Striker ou Gatling pour BT.
+
+Canon : une pression = trois gros projectiles sur 0,4 s, intervalle rafales 1,2 s ; maintenir ne répète pas. Recul de pièce mobile. Compatible déplacement, saut, esquive et verrouillage.
+Missiles : K maintenu acquiert un verrou toutes les 0,25 s, maximum min(8,stock), cibles visibles stables, priorité aux cibles distinctes puis répétition sur cible solide. Au relâchement, un missile guidé par verrou encore valide, aucun sinon. Pas de consommation sur cible perdue.
+Panique : L/R, tous les missiles disponibles, trajectoires fixes avant/arrière/haut/diagonales sans guidage ni invulnérabilité. Annule verrous et bloque le relâchement suivant jusqu’à nouvelle pression. Zéro stock = aucun projectile, retour discret. Explosions peuvent intercepter missiles hostiles.
+Réglages isolés dans BT_TUNING. Choix d’équilibrage initial : canon 3 dégâts/projectile, 8 missiles de 8 dégâts, rayon 45, recharge individuelle 1 missile/2 s après 5 s sans tir missile ; ne pas recharger pendant un verrou actif. HUD stock/verrous/recharge ; clavier/tactile/manette existante si disponible. Réutiliser commande missile K et troisième touche L pour panique.
+Préserver textures existantes, mondes, ennemis et mécaniques des deux autres personnages. Tester priorité panique, annulations pause/blur/QTE/rotation, stock nul/partiel, cible perdue/hors écran, relâchement, simultanéité mouvement/canon/lock. Publier et sauvegarder GitHub selon autorisation continue.

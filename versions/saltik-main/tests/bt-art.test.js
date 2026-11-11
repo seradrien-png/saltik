@@ -1,0 +1,10 @@
+import test from 'node:test';import assert from 'node:assert/strict';
+import {btActor,btGeometry} from '../src/bt-art.js';
+import {inkSaltikGeometry} from '../src/ink-saltik.js';
+import {inkWeaponGeometry} from '../src/ink-scene.js';
+import {sceneArtImages} from '../src/enemy-styles.js';
+import {initializeBT} from '../src/bt-combat.js';
+const p=()=>{const p={character:'bt',x:500,y:600,hp:100,dir:1,onGround:true,artScale:1};initializeBT(p);return p;};
+test('BT keeps existing native side atlas, four-leg rig and eight distinct launch sockets',()=>{const a=p(),g=btGeometry(a);assert.deepEqual(g.btNative.crop,[55,10,940,770]);assert.equal(g.btTubes.length,8);assert.equal(new Set(g.btTubes.map(t=>`${t.muzzle.x},${t.muzzle.y}`)).size,8);assert.equal(btActor(a).guard,false);assert.equal(inkWeaponGeometry(a,0).btTubes.length,8);assert.deepEqual(inkSaltikGeometry(a).arm,g.arm);});
+test('BT existing mission materials are used directly, never Striker or Gatling art',()=>{const images={'ink-saltik':{},'ink-enemy-saltik':{},'lunar-enemy-saltik':{},'royal-enemy-saltik':{}};for(const [level,key]of [[1,'ink-enemy-saltik'],[2,'lunar-enemy-saltik'],[3,'royal-enemy-saltik']])assert.equal(sceneArtImages(images,level,'bt')['ink-saltik'],images[key]);});
+test('native cannon muzzle and direction mirror with facing and remain finite on slopes',()=>{for(const dir of [1,-1]){const a={...p(),dir,supportPose:{tilt:.12,heave:0}};const g=btGeometry(a);assert(g.armDirection.x*dir>0);assert(Number.isFinite(g.arm.x));assert(Number.isFinite(g.bounds.y));}});

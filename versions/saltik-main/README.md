@@ -1,5 +1,18 @@
 # SALTIK V2 — Matin Doré
 
+## BT vert et orange jouable
+
+Le menu propose désormais BT, Striker et Gatling sur les trois missions. Le BT conserve exactement les textures et pièces du modèle vert et orange existant, avec les matières déjà présentes dans chaque monde.
+
+- **J / X :** canon lourd, trois projectiles par pression sur 0,4 s ; intervalle de 1,2 s entre rafales.
+- **K maintenu :** un verrou toutes les 0,25 s, jusqu’à huit selon le stock et les cibles visibles. Relâcher lance un missile guidé par verrou valide. Déplacement et canon restent possibles.
+- **L / R :** panique, le stock restant dispersé sans guidage ; annule les verrous et empêche une seconde salve au relâchement.
+- **Manette standard :** stick/croix pour bouger, A pour sauter, B pour esquiver, RT pour le canon, LT pour les verrous, Y pour la panique. Les boutons tactiles restent indépendants.
+
+Le stock et les verrous sont affichés. Recharge initiale réglable : un missile toutes les deux secondes après cinq secondes sans lancement, suspendue pendant l’acquisition. Réglages dans `src/bt-combat.js` (`BT_TUNING`). Annuler une commande, mettre en pause ou entrer en interaction annule les tirs différés.
+
+[Jouer avec le BT](https://saltik-v2-matin-dore.ser-adrien.chatgpt.site/?level=1&character=bt).
+
 ## Saltik Gatling jouable
 
 Choisissez Striker ou Gatling dans le menu, pour chacun des trois niveaux. Le Gatling conserve son camouflage neige et ses deux canons rotatifs ; ses matériaux et ornements s’adaptent aux citadelles lunaires et au monde de velours. Son pod comporte huit roquettes, sans mortier.

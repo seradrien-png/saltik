@@ -1,3 +1,4 @@
+import {initializeBT,stopBT,advanceBT,BT_TUNING} from './bt-combat.js';
 // All positions use world units. The renderer alone knows pixels and camera offsets.
 export const PARALLAX_LAYERS = Object.freeze([
   {name:'sky',speed:0.025},{name:'ridges',speed:0.075},
@@ -40,7 +41,7 @@ const CANNON_ELEVATION=Math.atan2(600,325);
 export function clearPlayerWeaponQueue(p){
   p.weaponQueue={fire:false,missile:false,homing:false};
   p.weaponHeld={fire:false,missile:false,homing:false};
-  stopGatling(p);
+  stopGatling(p);stopBT(p);
   cancelMirvAim(p);
 }
 function random(g){g.seed=(Math.imul(g.seed,1664525)+1013904223)>>>0;return g.seed/4294967296;}
@@ -51,6 +52,7 @@ export function createGame({seed=92741,intro=false,character}={}) {
     fireIn:0,fireSpent:0,reloadIn:0,mirvIn:0,mirvPending:false,mirvAiming:false,mirvAimElapsed:0,mirvPrepareFrom:0,mirvPrepare:0,mirvDuration:0,cannonElevation:0,cannonHold:0,cannonReturnFrom:0,cannonReturnElapsed:0,turretLift:0,turretReturnFrom:0,turretReturnElapsed:0,homingIn:0,muzzle:0,mirvFlash:0,homingFlash:0,aim:0,crouching:false,
     evasion:createEvasionState(),shiftHeld:false,tilt:0,landingCompression:0,supportY:terrainHeight(180),supportPose:null,supportClearance:Infinity,turn:null,melee:createMeleeState(),
     weaponQueue:{fire:false,missile:false,homing:false},weaponHeld:{fire:false,missile:false,homing:false}};
+  if(character==='bt'){player.character=character;initializeBT(player);}
   if(character==='gatling'){player.character=character;initializeGatling(player);}
   const schedule=[];let id=10;
   for(let x=1350,i=0;x<16000;x+=680,i++){
@@ -599,7 +601,22 @@ function updateGatlingWeapons(g,input,dt){
   });
   p.mirvIn=p.gatling.rocketRecharge;
 }
+function updateBTWeapons(g,input,dt){
+ const p=g.player,context=navigationContext(g);
+ const v=context.viewport,targets=selectGuidedTargets(context.targets,{x:p.x,y:p.y},v).filter(t=>{const b=t.bounds;return b.x+b.w>=v.x&&b.x<=v.x+v.w&&b.y+b.h>=v.y&&b.y<=v.y+v.h;});
+ advanceBT(p,input,dt,{targets,event:type=>emit(g,type,p.x,p.y-70),
+  shot:()=>{const pose=g.weaponGeometry?.(p,g.time)??tachikomaGeometry(p,g.time),mount=pose.arm,axis=pose.armDirection??{x:p.dir,y:0};
+   projectile(g,mount,{kind:'bullet',btHeavy:true,vx:axis.x*900,vy:axis.y*900,damage:BT_TUNING.cannonDamage,life:1.8,radius:6});p.muzzle=.12;g.stats.shots++;emit(g,'bt-shot',mount.x,mount.y);},
+  rocket:({tube,targetId,guided,index,count})=>{const pose=g.weaponGeometry?.(p,g.time)??tachikomaGeometry(p,g.time),slot=pose.btTubes?.[tube],mount=slot?.muzzle??pose.cannon;
+   const panicAngles=[-.18,Math.PI+.18,-Math.PI/2,-Math.PI/4,-Math.PI*3/4,Math.PI/4,Math.PI*3/4,-Math.PI/2+.25],angle=panicAngles[index%8];
+   const axis=guided?(slot?.axis??{x:p.dir,y:-.5}):{x:Math.cos(angle)*p.dir,y:Math.sin(angle)},speed=guided?390:430;
+   const rocket=projectile(g,mount,{kind:guided?'homing':'gatling-rocket',btRocket:true,btPanic:!guided,vx:axis.x*speed,vy:axis.y*speed,damage:BT_TUNING.missileDamage,splash:BT_TUNING.blastRadius,radius:5,life:guided?6.5:2.8,targetId:guided?targetId:undefined,salvoIndex:index,salvoCount:count,trail:[{...mount}]});
+   if(guided)initializeGuidedShot(rocket,{index,count,target:targets.find(t=>t.id===targetId),context});
+   if(index===0){g.stats.homingSalvos++;emit(g,'bt-rocket',mount.x,mount.y);}
+  }});
+}
 function updatePlayerWeapons(g,input,dt){
+  if(g.player.character==='bt'){updateBTWeapons(g,input,dt);return;}
   if(g.player.character==='gatling'){updateGatlingWeapons(g,input,dt);return;}
   const p=g.player,defending=p.evasion.active,locked=defending||p.turn.active;
   const wasReloading=p.reloadIn>0,oldReload=p.reloadIn;
@@ -992,6 +1009,7 @@ export function update(g,input={},dt=1/60){
     return;
   }
   dt=clamp(Number.isFinite(dt)?dt:0,0,1/30);if(dt===0)return;g.time+=dt;const p=g.player;
+  if(p.character==='bt'&&(g.bossBreach||g.carrierShutdown||g.duel||g.pendingVictory||g.introElapsed<g.introDuration))stopBT(p);
   if(p.character==='gatling'&&(g.bossBreach||g.carrierShutdown||g.duel||g.pendingVictory||g.introElapsed<g.introDuration))stopGatling(p);
   const bossHeld=!!input.bossAction;
   const bossPressed=!g.bossActionSuspended&&bossHeld&&!g.bossActionHeld;
@@ -1055,7 +1073,7 @@ export function update(g,input={},dt=1/60){
   if(!g.viewport||g.viewport===g._defaultViewport){g._defaultViewport={x:p.x-360,y:0,w:1280,h:720};g.viewport=g._defaultViewport;}
   if(input.shift&&!p.shiftHeld&&p.onGround&&!p.turn.active&&!p.evasion.active){
     const threats=g.projectiles.filter(s=>s.team==='enemy'&&s.life>0&&Math.hypot(s.x-p.x,s.y-(p.y-35))<650&&(s.vx*(p.x-s.x)+s.vy*(p.y-35-s.y))>0);
-    if(beginEvasion(p.evasion,{grounded:p.onGround,threats,random:random(g)})){clearPlayerWeaponQueue(p);cancelMelee(p.melee);emit(g,'shift',p.x,p.y,{kind:p.evasion.kind});}
+    if(beginEvasion(p.evasion,{grounded:p.onGround,threats,random:random(g)})){if(p.character!=='bt')clearPlayerWeaponQueue(p);cancelMelee(p.melee);emit(g,'shift',p.x,p.y,{kind:p.evasion.kind});}
   }
   p.shiftHeld=!!input.shift;
   for(const o of g.obstacles)o.hit=Math.max(0,o.hit-dt);

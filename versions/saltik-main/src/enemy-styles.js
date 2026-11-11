@@ -11,6 +11,7 @@ const sets={2:{'ink-enemies':'lunar-enemies','ink-enemy-saltik':'lunar-enemy-sal
 export function sceneArtImages(images,level,character){
  let player=royalPlayerImages(images,level);const set=sets[level];
  if(character==='gatling')player={...player,'ink-saltik':images[level===2?'gatling-lunar':level===3?'gatling-velvet':'gatling-snow']??images['ink-saltik'],'ink-turn':null};
+ if(character==='bt')player={...player,'ink-saltik':images[level===2?'lunar-enemy-saltik':level===3?'royal-enemy-saltik':'ink-enemy-saltik']??images['ink-enemy-saltik'],'ink-turn':null};
  if(!set)return player;
  const result={...player};for(const [native,name] of Object.entries(set))result[native]=images[name]??images[native];return result;
 }

@@ -38,6 +38,7 @@ const TURN_CENTERS=[
 ];
 const clamp=n=>Math.max(0,Math.min(1,n));
 export function podSlotPresentation(actor,index){
+ if(actor?.bt)return {round:actor.bt.loaded[index]?1:0,flash:actor.bt.lastTube===index?Math.min(1,(actor.bt.launchFlash??0)/.18):0,feeding:false};
  if(index<0)return {round:0,flash:0,feeding:false};
  const cycle=actor?.podCycle;
  if(!cycle||!cycle.fired?.[index])return {round:1,flash:0,feeding:false};
@@ -63,7 +64,7 @@ export function inkPlayerPodGeometry(p,geo){
  }
  return geometry(p,geo,INK_PLAYER_POD_SLOTS.map((s,i)=>({...s,ammoIndex:i<4?0:i<6?1:2})));
 }
-export function inkEnemyPodGeometry(e,geo){return geometry(e,geo,(geo.view==='front'?ENEMY_FRONT_PODS:INK_ENEMY_POD_SLOTS).map((s,i)=>({...s,ammoIndex:i<4?0:1,podIndex:i<4?0:1})));}
+export function inkEnemyPodGeometry(e,geo){return geometry(e,geo,(geo.view==='front'?ENEMY_FRONT_PODS:INK_ENEMY_POD_SLOTS).map((s,i)=>({...s,activeIndex:e.bt?i:s.activeIndex,ammoIndex:e.bt?i:i<4?0:1,podIndex:i<4?0:1})));}
 function drawSlots(c,geo,slots,enemy){
  if(typeof c.ellipse!=='function'||typeof c.stroke!=='function')return;
  for(const slot of slots){
