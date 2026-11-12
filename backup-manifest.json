@@ -8,7 +8,7 @@
       "repo": "saltik-v2-matin-dore",
       "title": "SALTIK V2 — Matin Doré",
       "commit": "af2ec95c91962ad5cd5aee0dff2adc778455e47d",
-      "published_version": null,
+      "published_version": 33,
       "url": "https://saltik-v2-matin-dore.ser-adrien.chatgpt.site",
       "base_commit": "5d46c6c0e5bd657f5e28ce8cb01e41d91efc8699",
       "source_path": "/workspace/sites/saltik-v2-matin-dore",
@@ -2458,9 +2458,9 @@
           "duration_native_run_seconds": 82.0166666666633
         }
       ],
-      "update_note": "Level2 Archives lunaires, menu/after-level1 access, primary cannon gain +20 percent; Sites v17 deployment succeeded.",
-      "published_source_commit": "ed97563496192fa2481f5d6b6a6bc963ed7a9697",
-      "publication_status": "Verified new source snapshot; Sites publication pending; current live version remains32",
+      "update_note": "Published Sites v33: angular orange/anthracite Striker with native costumes and turns, uniform foreground scale; BT16 friendly/crouching, optional Dragon and Limule skins. Other four editions preserved.",
+      "published_source_commit": "af2ec95c91962ad5cd5aee0dff2adc778455e47d",
+      "publication_status": "published and live",
       "github_import_base": "4c9b8e64bf3232c222f9b6f534ca37d660da3f7b"
     },
     {

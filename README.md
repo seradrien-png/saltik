@@ -8,7 +8,7 @@ Les cinq états ci-dessous sont conservés dans des dossiers indépendants, sans
 
 | Jeu / sources | État réel | GitHub Pages après activation | Commit source |
 | --- | --- | --- | --- |
-| [SALTIK V2 — Matin Doré](versions/saltik-main) | Publiée v32 — 4 niveaux, Striker + Gatling + BT | [Jouer](https://seradrien-png.github.io/saltik/versions/saltik-main/dist/) | `5d46c6c0e5bd` |
+| [SALTIK V2 — Matin Doré](versions/saltik-main) | Publiée v33 — Striker refondu, BT16, tenues et retournements | [Jouer](https://seradrien-png.github.io/saltik/versions/saltik-main/dist/) | `af2ec95c9196` |
 | [SALTIK — Ink Edition publiée](versions/saltik-ink) | Publiée v4 | [Jouer](https://seradrien-png.github.io/saltik/versions/saltik-ink/dist/) | `44110aa2dd80` |
 | [SALTIK INK — brouillon local avec épilogue](versions/autres-versions/saltik-ink-brouillon) | Brouillon local non publié | [Jouer](https://seradrien-png.github.io/saltik/versions/autres-versions/saltik-ink-brouillon/dist/) | `21dcc4ca32c5` |
 | [Feral Steel — Opération Canopée, référence Saltik](versions/autres-versions/saltik-feral-steel) | Publiée v24 | [Jouer](https://seradrien-png.github.io/saltik/versions/autres-versions/saltik-feral-steel/dist/) | `dbc331d0b7a2` |
@@ -126,3 +126,7 @@ Le BT existant devient sélectionnable avec Striker et Gatling sur les trois mis
 [Jouer au niveau4](https://saltik-v2-matin-dore.ser-adrien.chatgpt.site/?level=4). Les trois Saltiks traversent une piste dans le désert rouge vers C-07, rétrécissent progressivement avec la profondeur, nettoient trois zones du bunker, puis ressortent et reviennent au premier plan. Droite à l’aller, gauche au retour. Panorama et proportions de la référence préservés ; masses/ossements/machines opaques, rampe réelle, porte ouverte sur le désert. Les18gardes doivent être réellement neutralisés ; ils ne disparaissent pas pour débloquer une zone.
 
 719tests passés, trois campagnes de combat terminées avec les armes et armures normales, essaisChromium ordinateur/téléphone/ultralarge sans erreurJavaScript. Menu4et transition3→4 vérifiés. Niveaux1–3,69assets précédents et quatre autres éditions conservés. [Bilan technique](desert-release.json).
+
+### Mise à jour du 12 novembre 2026
+
+Matin Doré v33 : nouveau Striker noir/orange et tenues par niveau, vues de retournement dédiées, échelle de premier plan harmonisée. BT jouable amical/accroupi avec réserve16 et recharge après épuisement. Tenues optionnelles Dragon et Limule & Régalec. Autres quatre éditions et archives historiques conservées. Source `af2ec95c91962ad5cd5aee0dff2adc778455e47d`. Rapport : [character-reforge-release.json](character-reforge-release.json). Les liens Sites sont publiés ; aucune activation de GitHub Pages supplémentaire n’est annoncée.

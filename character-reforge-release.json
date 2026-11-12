@@ -1,13 +1,250 @@
 {
-  "source_commit": "af2ec95c91962ad5cd5aee0dff2adc778455e47d",
-  "status": "verified_snapshot_publication_pending",
+  "saved": {
+    "id": "appgprj_6ae77e1b6da081918600675fc2e2b738~appgver_8b7fbb2b19348191aefe12b43be44534",
+    "project_id": "appgprj_6ae77e1b6da081918600675fc2e2b738",
+    "version_number": 33,
+    "source": {
+      "commit_sha": "af2ec95c91962ad5cd5aee0dff2adc778455e47d"
+    },
+    "archive_storage": {
+      "archive_format": "tar",
+      "sediment_file_id": "file_000000009bb4821090ee09e79d88648c",
+      "content_hash": "sha256:23789ae0000f4717f0bf33f6f9482c9369727b34d62213f2cee1ab419e096108",
+      "size_bytes": 235038720,
+      "file_count": 200
+    },
+    "screenshot_url": null,
+    "deployment_id": null
+  },
+  "deployment": {
+    "id": "appgdep_6af63b663fd881919ff4e4b92e501b0e",
+    "project_id": "appgprj_6ae77e1b6da081918600675fc2e2b738",
+    "title": "SALTIK V2 — Matin Doré",
+    "version_id": "appgprj_6ae77e1b6da081918600675fc2e2b738~appgver_8b7fbb2b19348191aefe12b43be44534",
+    "type": "publish",
+    "status": "succeeded",
+    "url": "https://saltik-v2-matin-dore.ser-adrien.chatgpt.site",
+    "has_mcp": false,
+    "screenshot_asset_pointer": null,
+    "provider_deployment_id": "site---6ae77e1b6da081918600675fc2e2b738",
+    "failure_message": null,
+    "env_set_revision": 0,
+    "updated_at": "2026-11-12T22:19:45.664506+00:00"
+  },
   "tests": {
     "passed": 736,
     "failed": 0,
-    "final_draw_focused_passed": 24
+    "final_focused_passed": 24
   },
+  "browser": {
+    "four_levels": true,
+    "eight_costume_bodies": true,
+    "native_turn_views": 9,
+    "phone_menu": true,
+    "bt16_and_refill": true,
+    "errors": [],
+    "physical_phone_gamepad_tested": false
+  },
+  "preservation": {
+    "original_asset_audio_files": 80,
+    "changed_originals": 0,
+    "other_four_editions_unchanged": true
+  },
+  "source_push_verified": "af2ec95c91962ad5cd5aee0dff2adc778455e47d",
+  "proof_directory": "/workspace/modern-striker-art",
+  "published_resources_verified": [
+    {
+      "path": "android.html",
+      "status": 200,
+      "sha256": "ff3899ab2a5de51b311872d28b79c868ee958e46a06d43219334ecd1bd3a8c2b"
+    },
+    {
+      "path": "assets/bt-turn-lunar-material.png",
+      "status": 200,
+      "sha256": "25360cb43a19450b90756ea1b585000fb2d2ea6d210d63c29306e1f13f6c9290"
+    },
+    {
+      "path": "assets/bt-turn-velvet-material.png",
+      "status": 200,
+      "sha256": "54473b054f7fa2db8ae7bf438ed04f0f9f7fd7caeba829e4428613218fbe952a"
+    },
+    {
+      "path": "assets/bt-turn.png",
+      "status": 200,
+      "sha256": "8b5ec5bea0087650808a520e199a4a37e16f8faaaa558429894983bf17bcbebe"
+    },
+    {
+      "path": "assets/dragon-striker-material.png",
+      "status": 200,
+      "sha256": "dadce55ed0085b97d3db23369f192ea5d6a41736503d98bd9350283cfe47c24c"
+    },
+    {
+      "path": "assets/dragon-turn-material.png",
+      "status": 200,
+      "sha256": "f0f8d2b0178a0c9cb7481d0b6effa7ff04bbedd7bea2603f95afa86001861280"
+    },
+    {
+      "path": "assets/gatling-turn-lunar-material.png",
+      "status": 200,
+      "sha256": "2845d642e643048a4e3ccaa59fdea80471e0ff86ddbc0a9f822bac92a3b8b20a"
+    },
+    {
+      "path": "assets/gatling-turn-velvet-material.png",
+      "status": 200,
+      "sha256": "761dd78a8879c2396de00e8e6d04fcf61248aed74cc51a4c947840e82cc764cb"
+    },
+    {
+      "path": "assets/gatling-turn.png",
+      "status": 200,
+      "sha256": "c82ceec330ea71822308a224aa3dc77302a078702c0c3ead0d8452fe2cc2bf0c"
+    },
+    {
+      "path": "assets/limule-gatling-material.png",
+      "status": 200,
+      "sha256": "280945db96eb3f3b32b94c79b1b0d96758b134a6f27cd4d4e7eb26fb7aff440c"
+    },
+    {
+      "path": "assets/limule-gatling-turn-material.png",
+      "status": 200,
+      "sha256": "7a42d7f4d381637eb509b2a8c677cc0b192f7389588bbd2d03ae66e49b8c2b0d"
+    },
+    {
+      "path": "assets/modern-striker-atlas.png",
+      "status": 200,
+      "sha256": "5fc9a3169f33ef3687fb3acbb7a61d7000c81edd8422d17c1a5231e5272d5881"
+    },
+    {
+      "path": "assets/modern-striker-dragon-atlas.png",
+      "status": 200,
+      "sha256": "30c5429998530cec8ef41a165576da7e27fef0681a36878a6e2895b3dbf0ac8a"
+    },
+    {
+      "path": "assets/modern-striker-dragon-turn-material.png",
+      "status": 200,
+      "sha256": "3ebf30e1ff511dd12e4f95dccda6e71ad4718692b5004f16152879d791df0c93"
+    },
+    {
+      "path": "assets/modern-striker-turn-lunar.png",
+      "status": 200,
+      "sha256": "ef9fe83dbfc647b330ae34a4a0047d77e192e6e7bb690538f85bbc28d9dc4572"
+    },
+    {
+      "path": "assets/modern-striker-turn-normal.png",
+      "status": 200,
+      "sha256": "ed51b46be7ce1a5a9d13a2c323e919bdf838cbb8a043307838cc5c376c2240e5"
+    },
+    {
+      "path": "assets/modern-striker-turn-velvet.png",
+      "status": 200,
+      "sha256": "1c4000f533d9a8df1c0f95ac495eb8c74eaf6c7d1801ef46dfa820dc49c9e1bf"
+    },
+    {
+      "path": "index.html",
+      "status": 200,
+      "sha256": "792393bea358e722cd1a73e378b90dc3058149f3e78d3627487544a48730e721"
+    },
+    {
+      "path": "src/bt-art.js",
+      "status": 200,
+      "sha256": "1c731803e30d01a848ed3e92de609e2be693fffbb61eed0e6dadaaecc2506e89"
+    },
+    {
+      "path": "src/bt-combat.js",
+      "status": 200,
+      "sha256": "a8c55b8cc3c7076bc3e8e87f335f281427d5263d3d00441da4af2b3b85bd17bc"
+    },
+    {
+      "path": "src/carrier-shutdown-art.js",
+      "status": 200,
+      "sha256": "e6546d713d9a730517ab7aa61474ba832a1a0e1511a2878a9511b71702fc71ae"
+    },
+    {
+      "path": "src/character-turn-sockets.js",
+      "status": 200,
+      "sha256": "9316053bb4548ef4407be2ee2851ab84a25a402e2316e5675f585ac08f73be42"
+    },
+    {
+      "path": "src/character-turns.js",
+      "status": 200,
+      "sha256": "d2d90af80958a33fcc251895eb06dd6b44e30a08541ee272ae4f1b09db02d169"
+    },
+    {
+      "path": "src/desert-world.js",
+      "status": 200,
+      "sha256": "36646a5decb7b727ba46af9de12e7eab158053bd7c6cf68bb1fa722518f34d41"
+    },
+    {
+      "path": "src/enemy-styles.js",
+      "status": 200,
+      "sha256": "52f3f2525cb826a12aa2750d7d7df20c7c084bc773d00f3827e2eb77d070acd0"
+    },
+    {
+      "path": "src/engine.js",
+      "status": 200,
+      "sha256": "e70dbb0f9498b3407d1a97073b39d8a8159cbc58fe8ddd16f9e81c60c109eb21"
+    },
+    {
+      "path": "src/ink-encounters.js",
+      "status": 200,
+      "sha256": "cca9245f5fc91ee4caad22e3c48347b38d384b85fd066795d7e55184285fed72"
+    },
+    {
+      "path": "src/ink-enemy-saltik.js",
+      "status": 200,
+      "sha256": "1560a5df1dc65d396c077d8bd13df6ef77350e55fb9ef228cfb9d4ea5463582e"
+    },
+    {
+      "path": "src/ink-pods.js",
+      "status": 200,
+      "sha256": "b85ce28d8f8af969dd9484c6ffd964f237936f5664706f7d93572d0347595177"
+    },
+    {
+      "path": "src/ink-renderer.js",
+      "status": 200,
+      "sha256": "4e8b0f0f82ffc62005db832126678be684536e0ca70e50b25d1c3b1b2d53766c"
+    },
+    {
+      "path": "src/ink-saltik.js",
+      "status": 200,
+      "sha256": "d5959ebd5583c090e2333c64342a72971f02f00476383afa40e8a88eae34e99b"
+    },
+    {
+      "path": "src/ink-scene.js",
+      "status": 200,
+      "sha256": "93b6868071f6d5f558b4d21e2135294059e810abb16710f5eb04d14e2e336af2"
+    },
+    {
+      "path": "src/lunar-level.js",
+      "status": 200,
+      "sha256": "ac0bfe5cbcac59c09663108123cdbb381628a7f7c6b58c4d4427a0d0aef261ff"
+    },
+    {
+      "path": "src/main.js",
+      "status": 200,
+      "sha256": "a1a49f2338a7eb7d55f34479f4c2e64f7437a1e7a606fd259c229efd47034971"
+    },
+    {
+      "path": "src/modern-striker-art.js",
+      "status": 200,
+      "sha256": "247caf6b431d9e87cc6c93c1a0dd50fa56c1a65e9d6d033c58ed4e0e11c5c4d1"
+    },
+    {
+      "path": "src/player-skins.js",
+      "status": 200,
+      "sha256": "2efbf738b10b826738a011f2ff8b32e8bcced80e4d7281273a59dad83112f5a0"
+    },
+    {
+      "path": "src/royal-layout.js",
+      "status": 200,
+      "sha256": "dc31b24b15580750db7de4b1cc8216d217354b7aca09302edbd5dad51e4fea6c"
+    },
+    {
+      "path": "style.css",
+      "status": 200,
+      "sha256": "c2796301a2c26819858f71ab66baed06d4e40b3bfecd13ff74501912022bed68"
+    }
+  ],
   "main_files": 607,
-  "original_asset_audio_files_preserved": 80,
-  "other_four_editions_unchanged": true,
-  "live_version_unchanged": 32
+  "all_five_editions_files_verified": 1656,
+  "source_snapshot_backup_commit": "64e44a1321984c4be0ede83165289261b7f56059"
 }
