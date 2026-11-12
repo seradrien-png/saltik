@@ -14,7 +14,7 @@ export function drawDesertVista(c,image,{width,height}){
 function prop(c,atlas,index,x,foot,width,flip=false){if(!atlas)return;const sx=index%2*768,sy=Math.floor(index/2)*512,h=width*512/768;c.save();c.translate(x,foot);if(flip)c.scale(-1,1);c.drawImage(atlas,sx,sy,768,512,-width/2,-h,width,h);c.restore();}
 export function drawDesertExterior(c,images,g,{width,height,time=0,victoryAge=null}){
  drawDesertVista(c,images['desert-red-vista'],{width,height});
- const exit=g.desert.phase==='exiting',x=exit?6200:g.player.x,p=projectDesertPlayer(x,width,height),actor={...g.player,x:p.x,y:p.y,supportY:p.y,supportPose:null,artScale:p.scale,dir:exit?-1:g.player.dir,turn:null,platformId:null,rampId:null,onGround:true,vx:g.player.vx*.12,motionDistance:(g.player.motionDistance??0)*p.scale};
+ const exit=g.desert.phase==='exiting',x=exit?6200:g.player.x,p=projectDesertPlayer(x,width,height),actor={...g.player,x:p.x,y:p.y,supportY:p.y,supportPose:null,artScale:p.scale,dir:exit?-1:g.player.dir,turn:exit?null:g.player.turn,platformId:null,rampId:null,onGround:true,vx:g.player.vx*.12,motionDistance:(g.player.motionDistance??0)*p.scale};
  c.save();c.fillStyle='#5f261c';c.beginPath();c.ellipse(p.x,p.y+1,41*p.scale,3.5*p.scale,0,0,Math.PI*2);c.fill();c.restore();
  drawInkSaltik(c,images['ink-saltik'],actor,{time,victoryAge,turnImage:images['ink-turn']});
  const b=desertVistaBox(width,height);

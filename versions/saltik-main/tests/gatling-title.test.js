@@ -22,8 +22,8 @@ test('title Gatling retains native state and crop for each mission skin',()=>{
  }
 });
 
-test('title Striker preserves the original stationary synthetic pose exactly',()=>{
- const original={x:930,y:590,dir:1,onGround:true,supportY:590,vx:0};
+test('title Striker keeps the stationary title pose with its new reference model',()=>{
+ const original={x:930,y:590,dir:1,onGround:true,supportY:590,vx:0,visualModel:'modern-striker'};
  assert.deepEqual(inkTitlePlayer(createInkScene().player,930,590),original);
  assert.deepEqual(inkTitlePlayer(createInkScene({character:'striker'}).player,930,590),original);
 });

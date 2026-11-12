@@ -83,7 +83,7 @@ export function inkEnemySaltikGeometry(e,time=0,{camera=0,scale=1,view='side'}={
  const rotation=view==='side'?clamp(slope+finite(e.motionLean)-.13*effort*dir,-.34,.34):0;
  const offsetX=-dir*7*effort*scale;
  const heave=view==='side'?finite(e.supportPose?.heave)*scale:0;
- const bodyDrop=walking?Math.sin(phase*2)*.65*scale:0;
+ const bodyDrop=(walking?Math.sin(phase*2)*.65*scale:0)+(e.bt&&e.crouching?12*scale:0);
  const co=Math.cos(rotation),si=Math.sin(rotation);
  const sourcePoint=([px,py])=>{const xx=(px-frame.anchor[0])*k*flip,yy=(py-frame.anchor[1])*k;return{x:x+offsetX+xx*co-yy*si,y:y+heave+bodyDrop+xx*si+yy*co};};
  const legs=view==='front'?[]:INK_ENEMY_SALTIK_PARTS.legs.map((part,index)=>{

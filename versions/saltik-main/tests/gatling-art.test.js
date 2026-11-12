@@ -10,7 +10,7 @@ test('Gatling has two measured rotary mouths and eight pod mouths, all mirrored 
 });
 test('all missions retain Gatling identity, their own native scale and distinct material selection',()=>{
  const snow={},moon={},velvet={},striker={},images={'ink-saltik':striker,'gatling-snow':snow,'gatling-lunar':moon,'gatling-velvet':velvet};
- for(const [level,image,scale]of[[1,snow,1],[2,moon,.8008],[3,velvet,.96]]){const g=createInkScene({level,character:'gatling'});assert.equal(g.player.character,'gatling');assert.equal(g.player.artScale??1,scale);assert.equal(sceneArtImages(images,level,'gatling')['ink-saltik'],image);assert.equal(sceneArtImages(images,level,'gatling')['ink-turn'],null);assert.ok(inkWeaponGeometry(g.player,0).bounds.h>0);}
+ for(const [level,image,scale]of[[1,snow,1],[2,moon,1],[3,velvet,1]]){const g=createInkScene({level,character:'gatling'});assert.equal(g.player.character,'gatling');assert.equal(g.player.artScale??1,scale);assert.equal(sceneArtImages(images,level,'gatling')['ink-saltik'],image);assert.equal(sceneArtImages(images,level,'gatling')['ink-turn'],null);assert.ok(inkWeaponGeometry(g.player,0).bounds.h>0);}
  assert.equal(sceneArtImages(images,1)['ink-saltik'],striker);
 });
 test('native Gatling wheel contacts plant on a real slope and arm grips reach world targets',()=>{

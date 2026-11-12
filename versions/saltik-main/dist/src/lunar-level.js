@@ -47,7 +47,7 @@ export function applyLunarLevel(g){
  g.schedule.sort((a,b)=>a.x-b.x);g.nextSpawn=0;
  g.pickups=[2100,4900,7350,9750,11500,14250,16200].map(x=>({x,y:lunarGroundAt(x)-30,type:'repair'}));
  for(const p of g.platforms.filter(p=>p.encounters))g.pickups.push({x:p.x2-140,y:p.points.at(-1)[1]-40,type:'repair'});
- g.enemyArtScale=.9;g.player.skin='lunar';g.player.artScale=.8*1.001;g.player.y=lunarGroundAt(g.player.x);g.player.supportY=g.player.y;g.player.supportPose=null;
+ g.enemyArtScale=1;g.player.skin='lunar';g.player.artScale=1;g.player.y=lunarGroundAt(g.player.x);g.player.supportY=g.player.y;g.player.supportPose=null;
  g.lunar={phase:'approach',wave:0,elapsed:0,checkpoint:180,falls:0,portalX:17050};return g;
 }
 function startWave(g){

@@ -38,7 +38,7 @@ const TURN_CENTERS=[
 ];
 const clamp=n=>Math.max(0,Math.min(1,n));
 export function podSlotPresentation(actor,index){
- if(actor?.bt)return {round:actor.bt.loaded[index]?1:0,flash:actor.bt.lastTube===index?Math.min(1,(actor.bt.launchFlash??0)/.18):0,feeding:false};
+ if(actor?.bt)return {round:actor.bt.loaded[index]||actor.bt.loaded[index+8]?1:0,flash:actor.bt.lastTube%8===index?Math.min(1,(actor.bt.launchFlash??0)/.18):0,feeding:false};
  if(index<0)return {round:0,flash:0,feeding:false};
  const cycle=actor?.podCycle;
  if(!cycle||!cycle.fired?.[index])return {round:1,flash:0,feeding:false};

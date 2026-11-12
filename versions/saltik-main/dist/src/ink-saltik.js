@@ -1,3 +1,5 @@
+import {augmentModernGeometry,drawModernStriker} from './modern-striker-art.js';
+import {drawNativeTurn} from './character-turns.js';
 import {btGeometry,drawBT} from './bt-art.js';
 import {sampleSupportSurface} from './support-pose.js';
 import {inkTurnFrame,inkTurnGeometry,drawInkTurn} from './ink-turn.js';
@@ -161,6 +163,7 @@ export function inkSaltikGeometry(p,{camera=0,time=0,scale=1,victoryAge=null,sam
     const available=p.supportClearance*scale+heave+bodyDrop;
     if(rise(tilt)>available){const sign=Math.sign(tilt);let lo=0,hi=Math.abs(tilt);for(let i=0;i<24;i++){const mid=(lo+hi)/2;if(rise(sign*mid)<=available)lo=mid;else hi=mid;}tilt=sign*lo;}
   }
+  if(p.visualModel==='modern-striker'&&p.modernStage){tilt=finite(p.modernStage.tilt,tilt);heave=finite(p.modernStage.heave,heave);bodyDrop=finite(p.modernStage.bodyDrop,bodyDrop);}
   if(p.character==='gatling'&&p.gatlingStage){tilt=finite(p.gatlingStage.tilt,tilt);heave=finite(p.gatlingStage.heave,heave);bodyDrop=finite(p.gatlingStage.bodyDrop,bodyDrop);}
   const cos=Math.cos(tilt),sin=Math.sin(tilt);
   const sourcePoint=([px,py])=>{
@@ -247,6 +250,7 @@ export function inkSaltikGeometry(p,{camera=0,time=0,scale=1,victoryAge=null,sam
     turretLift:0,turretArticulated,turretPart,turretPoint,turretSupports:[],turnTurret,cannonPoint,coaxPoint,
     cannonAngle:Math.atan2(cannon.y-cannonBase.y,cannon.x-cannonBase.x),arm,face,sourcePoint,bounds,
     visibleHeight:INK_SALTIK_HEIGHT*scale,weaponsLocked};
+  if(p.visualModel==='modern-striker')return augmentModernGeometry(p,result,{camera,time,sampleGround});
   if(p.character==='bt')return btGeometry(p,{camera,time,scale:scale/(p.artScale??1)},result);
   return p.character==='gatling'?augmentGatlingGeometry(p,result,{camera,time,sampleGround}):result;
 }
@@ -276,6 +280,8 @@ function transformPart(c,part){
 export function drawInkSaltik(c,image,p,{camera=0,time=0,scale=1,victoryAge=null,turnImage=null,sampleGround}={}){
   if(!image)return null;
   let geo=inkSaltikGeometry(p,{camera,time,scale,victoryAge,sampleGround});
+  if(drawNativeTurn(c,turnImage,p,{camera,scale,time}))return geo;
+  if(p.visualModel==='modern-striker')return drawModernStriker(c,image,p,geo,{time});
   if(p.character==='bt')return drawBT(c,image,p,{camera,time,scale});
   if(p.character==='gatling')return drawGatling(c,image,p,geo,{time});
   if(geo.turnTurret&&!turnImage){

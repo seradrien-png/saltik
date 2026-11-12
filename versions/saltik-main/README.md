@@ -1,5 +1,18 @@
 # SALTIK V2 — Matin Doré
 
+## Retournements, BT seize missiles et apparences alternatives
+
+BT et Gatling utilisent désormais trois vues intermédiaires dessinées séparément pour leurs demi-tours ; le retournement du Striker est conservé. Les pieds gardent leur ancrage et les pods vides restent vides pendant la rotation. Le BT jouable conserve son corps vert/orange, reçoit des pupilles et reflets plus doux, et abaisse sa cabine/canon quand on maintient BAS/S. Les adversaires gardent leur visage.
+
+Le BT démarre avec **16 missiles prêts** et peut acquérir jusqu’à16verrous au même rythme de0,25s. Ses huit apertures natives servent deux fois ; les missiles ne partent jamais du canon. La recharge commence seulement après épuisement : même délai de5s, puis1missile/2s, suspendue pendant un verrouillage effectif. La touchepanique utilise seulement le stock restant.
+
+Dans le menu, **APPARENCE** propose Classique ou le skin adapté au personnage :
+
+- [Striker Dragon — or/turquoise/émeraude](https://saltik-v2-matin-dore.ser-adrien.chatgpt.site/?character=striker&skin=dragon).
+- [Gatling Limule & Régalec — beige](https://saltik-v2-matin-dore.ser-adrien.chatgpt.site/?character=gatling&skin=limule).
+
+Chaque skin a ses finitions par mission : classique, gravures lunaires, piquage velours et patine de désert. Les apparences par défaut restent disponibles, les préférences sont mémorisées par personnage et les armes/collisions restent identiques. Les nouvelles matières suivent aussi les vues de retournement.
+
 ## Niveau 4 — Le Désert rouge / C-07
 
 [Jouer directement au niveau 4](https://saltik-v2-matin-dore.ser-adrien.chatgpt.site/?level=4). Accessible depuis le menu et après les Jardins de velours, avec Striker, Gatling ou BT.
@@ -15,11 +28,11 @@ Les trois personnages ont terminé les essais de combat sans invulnérabilité a
 Le menu propose désormais BT, Striker et Gatling sur les trois missions. Le BT conserve exactement les textures et pièces du modèle vert et orange existant, avec les matières déjà présentes dans chaque monde.
 
 - **J / X :** canon lourd, trois projectiles par pression sur 0,4 s ; intervalle de 1,2 s entre rafales.
-- **K maintenu :** un verrou toutes les 0,25 s, jusqu’à huit selon le stock et les cibles visibles. Relâcher lance un missile guidé par verrou valide. Déplacement et canon restent possibles.
+- **K maintenu :** un verrou toutes les 0,25 s, jusqu’à seize selon le stock et les cibles visibles. Relâcher lance un missile guidé par verrou valide. Déplacement et canon restent possibles.
 - **L / R :** panique, le stock restant dispersé sans guidage ; annule les verrous et empêche une seconde salve au relâchement.
 - **Manette standard :** stick/croix pour bouger, A pour sauter, B pour esquiver, RT pour le canon, LT pour les verrous, Y pour la panique. Les boutons tactiles restent indépendants.
 
-Le stock et les verrous sont affichés. Recharge initiale réglable : un missile toutes les deux secondes après cinq secondes sans lancement, suspendue pendant l’acquisition. Réglages dans `src/bt-combat.js` (`BT_TUNING`). Annuler une commande, mettre en pause ou entrer en interaction annule les tirs différés.
+Le stock et les verrous sont affichés. Recharge initiale réglable : un missile toutes les deux secondes après le délai de cinq secondes suivant l’épuisement, suspendue pendant l’acquisition. Réglages dans `src/bt-combat.js` (`BT_TUNING`). Annuler une commande, mettre en pause ou entrer en interaction annule les tirs différés.
 
 [Jouer avec le BT](https://saltik-v2-matin-dore.ser-adrien.chatgpt.site/?level=1&character=bt).
 

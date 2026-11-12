@@ -30,5 +30,5 @@ export function royalDepthScaleAt(x){
   if(x>=start&&x<=end)scale=Math.min(scale,.8-.14*smooth((x-start)/(end-start)));
   else if(x>end&&x<exit)scale=Math.min(scale,.66+.14*smooth((x-end)/(exit-end)));
  }
- return scale*1.20;
+ return scale/.8;
 }

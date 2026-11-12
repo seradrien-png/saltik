@@ -262,6 +262,11 @@ function breachEjectPose(q,b,{camera,time,player}){
  return{...start,v:inkBreachVisual(q,b,{camera}),p,geo,arms,handPoints,targets:handPoints,effort:0,shooting:false,fire:{...start.fire,rotation,pivot,muzzle,recoil:0,aim:Math.atan2(muzzle.y-pivot.y,muzzle.x-pivot.x)}};
 }
 function drawBreachActor(c,image,g,{camera=0,time=0,phase}={}){
+ if(g.p.visualModel==='modern-striker'){
+  const p={...g.p,x:g.geo.x+camera,y:g.geo.y,modernStage:g.geo,modernAimTarget:g.shooting?{x:g.fire.target.x+camera,y:g.fire.target.y}:null,modernGripTargets:['qte','tear'].includes(phase)?g.targets.map(t=>({x:t.x+camera,y:t.y})):null,muzzle:g.shooting?.07:0};
+  const native=drawInkSaltik(c,image,p,{camera,time});
+  if(g.shooting&&g.v.shotFlash){const m=native.modernGuns[0].muzzle;c.save();c.strokeStyle='#fff0c9';c.lineWidth=2;c.beginPath();c.moveTo(m.x,m.y);c.lineTo(g.fire.target.x,g.fire.target.y);c.stroke();inkFlash(c,m,Math.atan2(g.fire.target.y-m.y,g.fire.target.x-m.x),.7);c.restore();}return;
+ }
  if(g.p.character==='bt'){drawInkSaltik(c,image,{...g.p,x:g.geo.x+camera,y:g.geo.y,btStage:g.geo,btAimTarget:g.shooting?{x:g.fire.target.x+camera,y:g.fire.target.y}:null,btGripTargets:['qte','tear'].includes(phase)?g.targets.map(t=>({x:t.x+camera,y:t.y})):null,muzzle:g.shooting?.1:0},{camera,time});return;}
  if(g.p.character==='gatling'){
   const p=gatlingBreachPlayer(g,{camera,time,phase});
@@ -372,7 +377,8 @@ export function drawInkDuelWorld(c,images,q,{camera=0,time=0,player={},...viewpo
  withoutNativeParts(c,eg,[...enemyArms,DUEL_ENEMY_FRONT_LEG],()=>drawInkEnemySaltik(c,images['ink-enemy-saltik'],e,{camera,time:0}));
  c.save();c.translate(e.x-camera,e.y);c.scale(eg.k*eg.flip,eg.k);c.translate(-eg.anchor[0],-eg.anchor[1]);
  drawTuckedLeg(c,images['ink-enemy-saltik'],eg.crop,DUEL_ENEMY_FRONT_LEG,.23);c.restore();
- if(p.character==='bt'){const targets=playerArms.map((arm,index)=>{const h=arm.handPoint(NATIVE_HAND_POINTS[index]);return{x:h.x+camera,y:h.y};});drawInkSaltik(c,images['ink-saltik'],{...p,btGripTargets:targets},{camera,time});}
+ if(p.visualModel==='modern-striker'){const targets=playerArms.map((arm,index)=>{const h=arm.handPoint(NATIVE_HAND_POINTS[index]);return{x:h.x+camera,y:h.y};});drawInkSaltik(c,images['ink-saltik'],{...p,modernGripTargets:targets},{camera,time});}
+ else if(p.character==='bt'){const targets=playerArms.map((arm,index)=>{const h=arm.handPoint(NATIVE_HAND_POINTS[index]);return{x:h.x+camera,y:h.y};});drawInkSaltik(c,images['ink-saltik'],{...p,btGripTargets:targets},{camera,time});}
  else if(p.character==='gatling'){
   const targets=playerArms.map((arm,index)=>{const h=arm.handPoint(NATIVE_HAND_POINTS[index]);return{x:h.x+camera,y:h.y};});
   drawInkSaltik(c,images['ink-saltik'],{...p,gatlingInteraction:true,gatlingGripTargets:targets},{camera,time});

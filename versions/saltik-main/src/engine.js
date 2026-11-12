@@ -607,8 +607,8 @@ function updateBTWeapons(g,input,dt){
  advanceBT(p,input,dt,{targets,event:type=>emit(g,type,p.x,p.y-70),
   shot:()=>{const pose=g.weaponGeometry?.(p,g.time)??tachikomaGeometry(p,g.time),mount=pose.arm,axis=pose.armDirection??{x:p.dir,y:0};
    projectile(g,mount,{kind:'bullet',btHeavy:true,vx:axis.x*900,vy:axis.y*900,damage:BT_TUNING.cannonDamage,life:1.8,radius:6});p.muzzle=.12;g.stats.shots++;emit(g,'bt-shot',mount.x,mount.y);},
-  rocket:({tube,targetId,guided,index,count})=>{const pose=g.weaponGeometry?.(p,g.time)??tachikomaGeometry(p,g.time),slot=pose.btTubes?.[tube],mount=slot?.muzzle??pose.cannon;
-   const panicAngles=[-.18,Math.PI+.18,-Math.PI/2,-Math.PI/4,-Math.PI*3/4,Math.PI/4,Math.PI*3/4,-Math.PI/2+.25],angle=panicAngles[index%8];
+  rocket:({tube,targetId,guided,index,count})=>{const pose=g.weaponGeometry?.(p,g.time)??tachikomaGeometry(p,g.time),slot=pose.btTubes?.[tube%8],mount=slot?.muzzle??pose.cannon;
+   const panicAngles=[-.18,Math.PI+.18,-Math.PI/2,-Math.PI/4,-Math.PI*3/4,Math.PI/4,Math.PI*3/4,-Math.PI/2+.25],angle=panicAngles[index%8]+(index>=8?.055:0);
    const axis=guided?(slot?.axis??{x:p.dir,y:-.5}):{x:Math.cos(angle)*p.dir,y:Math.sin(angle)},speed=guided?390:430;
    const rocket=projectile(g,mount,{kind:guided?'homing':'gatling-rocket',btRocket:true,btPanic:!guided,vx:axis.x*speed,vy:axis.y*speed,damage:BT_TUNING.missileDamage,splash:BT_TUNING.blastRadius,radius:5,life:guided?6.5:2.8,targetId:guided?targetId:undefined,salvoIndex:index,salvoCount:count,trail:[{...mount}]});
    if(guided)initializeGuidedShot(rocket,{index,count,target:targets.find(t=>t.id===targetId),context});

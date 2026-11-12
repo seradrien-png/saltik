@@ -37,6 +37,7 @@ function drawServiceCover(c,g){
 export function drawCarrierShutdown(c,images,q,e,options={}){
  const g=carrierShutdownGeometry(q,e,options),image=images['ink-saltik'];if(!g||!image)return false;
  if(q.phase!=='approach')drawServiceCover(c,g);
+ if(g.player.visualModel==='modern-striker'){const targets=[null,{x:g.connector.x+(options.camera??0),y:g.connector.y}];drawInkSaltik(c,image,{...g.player,modernGripTargets:q.phase==='approach'?null:targets},{...options,time:0});return true;}
  if(g.player.character==='bt'){const targets=[null,{x:g.connector.x+(options.camera??0),y:g.connector.y}];drawInkSaltik(c,image,{...g.player,btGripTargets:q.phase==='approach'?null:targets},{...options,time:0});return true;}
  if(g.player.character==='gatling'){
   const targets=[null,{x:g.connector.x+(options.camera??0),y:g.connector.y}];

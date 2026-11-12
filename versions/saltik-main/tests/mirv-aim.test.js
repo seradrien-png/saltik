@@ -58,8 +58,8 @@ test('release uses the moving player position and keeps primary fire independent
  assert.ok(g.player.x>x);assert.ok(Math.hypot(shot.launchX-pose.cannon.x,shot.launchY-pose.cannon.y)<1e-6);assert.equal(g.stats.shots,1);assert.equal(g.stats.mirvs,1);
 });
 test('an ink carrier detonates against intervening solid cover before deploying underground',()=>{
- const g=fixture();hold(g,100);g.obstacles=[{id:'near-wall',type:'rock',x:6250,y:600,w:70,h:380,hp:99,maxHp:99,hit:0}];
- const preview=engine.predictMirvImpact(g);assert.equal(preview.impacts.length,1);assert.equal(preview.blocked,true);assert.ok(preview.zone.x<6250);g.events=[];tick(g,1,{missileReleased:true,missileHeld:false});tick(g,120);
+ const g=fixture();hold(g,100);const wallX=inkWeaponGeometry(g.player,g.time).cannon.x+80;g.obstacles=[{id:'near-wall',type:'rock',x:wallX,y:600,w:70,h:600,hp:99,maxHp:99,hit:0}];
+ const preview=engine.predictMirvImpact(g);assert.equal(preview.impacts.length,1);assert.equal(preview.blocked,true);assert.ok(preview.zone.x<wallX);g.events=[];tick(g,1,{missileReleased:true,missileHeld:false});tick(g,120);
  assert.equal(g.events.some(e=>e.type==='cluster'),false);const hits=g.events.filter(e=>e.type==='explosion'&&e.radius===147.5);assert.equal(hits.length,1);assert.ok(Math.hypot(hits[0].x-preview.zone.x,hits[0].y-preview.zone.y)<1);
 });
 test('MIRV prediction does not build guided navigation slabs for a stationary ballistic snapshot',()=>{

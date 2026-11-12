@@ -23,7 +23,7 @@ test('every scene creation preserves selection including title, level, home and 
 });
 test('both character choices support native button keyboard activation and restore weapon labels',()=>{
  for(const name of ['striker','gatling'])assert.match(html,new RegExp(`<button type="button" class="character-choice" data-character="${name}" aria-pressed="(?:true|false)"`));
- assert.match(html,/assets\/gatling-snow.png/);assert.match(html,/assets\/ink-saltik.png/);
+ assert.match(html,/assets\/gatling-snow.png/);assert.match(html,/striker-thumbnail/);assert.match(css,/assets\/modern-striker-atlas.png/);
  assert.match(main,/\$\('homing-button'\)\.hidden=gatling/);
  assert.match(main,/ROQUETTES <kbd>K<\/kbd>':'MIRV <kbd>K<\/kbd>/);
  assert.match(main,/Deux armes indépendantes':'Trois armes indépendantes/);

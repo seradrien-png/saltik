@@ -7,15 +7,15 @@
       "slug": "saltik-main",
       "repo": "saltik-v2-matin-dore",
       "title": "SALTIK V2 — Matin Doré",
-      "commit": "5d46c6c0e5bd657f5e28ce8cb01e41d91efc8699",
-      "published_version": 32,
+      "commit": "af2ec95c91962ad5cd5aee0dff2adc778455e47d",
+      "published_version": null,
       "url": "https://saltik-v2-matin-dore.ser-adrien.chatgpt.site",
-      "base_commit": "22939ba5849d95524495328b6ea390f3bc65e1dc",
+      "base_commit": "5d46c6c0e5bd657f5e28ce8cb01e41d91efc8699",
       "source_path": "/workspace/sites/saltik-v2-matin-dore",
       "export_path": "versions/saltik-main",
       "web_entry": "versions/saltik-main/dist/index.html",
-      "file_count": 573,
-      "bytes": 213790290,
+      "file_count": 607,
+      "bytes": 248380967,
       "uncommitted_changes": "",
       "files": {
         ".gitignore": {
@@ -27,16 +27,28 @@
           "size": 106
         },
         "README.md": {
-          "sha256": "a8153b809879f292632423a1f5125a1211895fec7179bda86c9114140a0879be",
-          "size": 26304
+          "sha256": "9b1e0d7ceb551c0a2a306f12aa54c6f1172fc71b4c9dd8b3c5a345dbd5ce0de4",
+          "size": 27846
         },
         "dist/android.html": {
-          "sha256": "a7c32fd81686574496a3bba00a28ea57df0c1fd683d3ac8cafdae61428fd158b",
-          "size": 17190
+          "sha256": "ff3899ab2a5de51b311872d28b79c868ee958e46a06d43219334ecd1bd3a8c2b",
+          "size": 17419
         },
         "dist/assets/boss-assault-atlas.png": {
           "sha256": "f9859847a2d5a0f2b630bafaaef3f9f2eba725ace3629396825f5d2fd6986b63",
           "size": 3304293
+        },
+        "dist/assets/bt-turn-lunar-material.png": {
+          "sha256": "25360cb43a19450b90756ea1b585000fb2d2ea6d210d63c29306e1f13f6c9290",
+          "size": 2088922
+        },
+        "dist/assets/bt-turn-velvet-material.png": {
+          "sha256": "54473b054f7fa2db8ae7bf438ed04f0f9f7fd7caeba829e4428613218fbe952a",
+          "size": 2143031
+        },
+        "dist/assets/bt-turn.png": {
+          "sha256": "8b5ec5bea0087650808a520e199a4a37e16f8faaaa558429894983bf17bcbebe",
+          "size": 1582601
         },
         "dist/assets/desert-c07-interior.png": {
           "sha256": "bd2bd6aa2d150e1f5515b5c22857db45d6f5bd3ea990ab3b35efb6987ed9743d",
@@ -50,6 +62,14 @@
           "sha256": "9fe07022a7afaec1f32fcd8135c4a373e080b5bdc8f1c723917990836a75cb48",
           "size": 2903781
         },
+        "dist/assets/dragon-striker-material.png": {
+          "sha256": "dadce55ed0085b97d3db23369f192ea5d6a41736503d98bd9350283cfe47c24c",
+          "size": 1759776
+        },
+        "dist/assets/dragon-turn-material.png": {
+          "sha256": "f0f8d2b0178a0c9cb7481d0b6effa7ff04bbedd7bea2603f95afa86001861280",
+          "size": 2281528
+        },
         "dist/assets/gatling-lunar-material.png": {
           "sha256": "c6d6b2bc5f9d66ff5cddb790f19862d5d3b9bfcebaa026ffd74b6eaf6d61c9ce",
           "size": 2186061
@@ -57,6 +77,18 @@
         "dist/assets/gatling-snow.png": {
           "sha256": "6fec090c39dfdf0bdcee825620b6a470c06155d1778db1439e76156321cdcb52",
           "size": 2041885
+        },
+        "dist/assets/gatling-turn-lunar-material.png": {
+          "sha256": "2845d642e643048a4e3ccaa59fdea80471e0ff86ddbc0a9f822bac92a3b8b20a",
+          "size": 2145782
+        },
+        "dist/assets/gatling-turn-velvet-material.png": {
+          "sha256": "761dd78a8879c2396de00e8e6d04fcf61248aed74cc51a4c947840e82cc764cb",
+          "size": 2388711
+        },
+        "dist/assets/gatling-turn.png": {
+          "sha256": "c82ceec330ea71822308a224aa3dc77302a078702c0c3ead0d8452fe2cc2bf0c",
+          "size": 2042260
         },
         "dist/assets/gatling-velvet-material.png": {
           "sha256": "12e19f6d383b77576b54ddfc9899a25f3f74b6d3dc4c024d74f4869f6daa2f17",
@@ -194,6 +226,14 @@
           "sha256": "98d2559aa9e38b6ec173f5ff863a7be9d20cef002655f29bf1d260b6fc8179bd",
           "size": 1712348
         },
+        "dist/assets/limule-gatling-material.png": {
+          "sha256": "280945db96eb3f3b32b94c79b1b0d96758b134a6f27cd4d4e7eb26fb7aff440c",
+          "size": 1971500
+        },
+        "dist/assets/limule-gatling-turn-material.png": {
+          "sha256": "7a42d7f4d381637eb509b2a8c677cc0b192f7389588bbd2d03ae66e49b8c2b0d",
+          "size": 1960153
+        },
         "dist/assets/lunar-aqueduct.png": {
           "sha256": "431df709ab92509c6eb7cc746cac2ea9b12ff9bbd14c971ad910745fbf21fd02",
           "size": 2510218
@@ -261,6 +301,30 @@
         "dist/assets/lunar-turn-map.png": {
           "sha256": "9cbbfe7cd576261a96c117821b87ba6e83e9dd466551f5ca0ba98463e06504ec",
           "size": 2327464
+        },
+        "dist/assets/modern-striker-atlas.png": {
+          "sha256": "5fc9a3169f33ef3687fb3acbb7a61d7000c81edd8422d17c1a5231e5272d5881",
+          "size": 2326197
+        },
+        "dist/assets/modern-striker-dragon-atlas.png": {
+          "sha256": "30c5429998530cec8ef41a165576da7e27fef0681a36878a6e2895b3dbf0ac8a",
+          "size": 2613609
+        },
+        "dist/assets/modern-striker-dragon-turn-material.png": {
+          "sha256": "3ebf30e1ff511dd12e4f95dccda6e71ad4718692b5004f16152879d791df0c93",
+          "size": 2400204
+        },
+        "dist/assets/modern-striker-turn-lunar.png": {
+          "sha256": "ef9fe83dbfc647b330ae34a4a0047d77e192e6e7bb690538f85bbc28d9dc4572",
+          "size": 2457893
+        },
+        "dist/assets/modern-striker-turn-normal.png": {
+          "sha256": "ed51b46be7ce1a5a9d13a2c323e919bdf838cbb8a043307838cc5c376c2240e5",
+          "size": 2028113
+        },
+        "dist/assets/modern-striker-turn-velvet.png": {
+          "sha256": "1c4000f533d9a8df1c0f95ac495eb8c74eaf6c7d1801ef46dfa820dc49c9e1bf",
+          "size": 2325261
         },
         "dist/assets/pastel-boss-parts.png": {
           "sha256": "c27b39df8d41e791d879d9b497b3d363cd3171fadf1e6004df64643a934f5663",
@@ -379,8 +443,8 @@
           "size": 253204
         },
         "dist/index.html": {
-          "sha256": "67bb4c018c49c3d0c462ebdb4816e7fd4c9628aa93900b9868ea454101f712ac",
-          "size": 17461
+          "sha256": "792393bea358e722cd1a73e378b90dc3058149f3e78d3627487544a48730e721",
+          "size": 17690
         },
         "dist/manifest.webmanifest": {
           "sha256": "1046044adaf490fa877cf9b0cac214237c2a4d52636476abaf1bd80dbede48e8",
@@ -423,24 +487,32 @@
           "size": 6191
         },
         "dist/src/bt-art.js": {
-          "sha256": "c028e781f67aa2be443bb9cb5994924d73a152b6d2ed9c794987d51b05d915a8",
-          "size": 2211
+          "sha256": "1c731803e30d01a848ed3e92de609e2be693fffbb61eed0e6dadaaecc2506e89",
+          "size": 2852
         },
         "dist/src/bt-combat.js": {
-          "sha256": "99e3f479e924ea97167f84bf47b97b0e66f79b5311952e38b38e215e019a309b",
-          "size": 3955
+          "sha256": "a8c55b8cc3c7076bc3e8e87f335f281427d5263d3d00441da4af2b3b85bd17bc",
+          "size": 4278
         },
         "dist/src/bt-gamepad.js": {
           "sha256": "87fb7c5b170df4b4468c75ce7db504404b679371e3139f0fe5b22d8ab0215bd1",
           "size": 1364
         },
         "dist/src/carrier-shutdown-art.js": {
-          "sha256": "735ac844032759a2d9712ad2d222bca7408c8dd566f7fdf63192266e29554666",
-          "size": 4972
+          "sha256": "e6546d713d9a730517ab7aa61474ba832a1a0e1511a2878a9511b71702fc71ae",
+          "size": 5215
         },
         "dist/src/carrier-shutdown.js": {
           "sha256": "4238495ca9d1a59f90dd6b178ece5e1f662451f23d826952f2c3f925f42843e4",
           "size": 2473
+        },
+        "dist/src/character-turn-sockets.js": {
+          "sha256": "9316053bb4548ef4407be2ee2851ab84a25a402e2316e5675f585ac08f73be42",
+          "size": 1693
+        },
+        "dist/src/character-turns.js": {
+          "sha256": "d2d90af80958a33fcc251895eb06dd6b44e30a08541ee272ae4f1b09db02d169",
+          "size": 4923
         },
         "dist/src/combat-effects.js": {
           "sha256": "5d475228d929abf59da0f35109d5713517062dfa876bc4763dffe0f6a24b8f4e",
@@ -459,8 +531,8 @@
           "size": 4691
         },
         "dist/src/desert-world.js": {
-          "sha256": "88c5e2d0d28fc23bbb41bfa637999266592b9118a112347ba62fa2dbdc2d81f8",
-          "size": 6521
+          "sha256": "36646a5decb7b727ba46af9de12e7eab158053bd7c6cf68bb1fa722518f34d41",
+          "size": 6540
         },
         "dist/src/drone-carrier.js": {
           "sha256": "d8d973eea1cb1208581a133cecac62a82294708e8e587da909243067955da62b",
@@ -483,12 +555,12 @@
           "size": 7983
         },
         "dist/src/enemy-styles.js": {
-          "sha256": "be34e9725986c16ba3da10c2f7b7a660001111c85d18ba84f7315d482e4e2c7d",
-          "size": 2487
+          "sha256": "52f3f2525cb826a12aa2750d7d7df20c7c084bc773d00f3827e2eb77d070acd0",
+          "size": 3161
         },
         "dist/src/engine.js": {
-          "sha256": "d211ab421392cd8986f8a701ce7b405f6c1fe16b2eddb225483f9a8d950dd583",
-          "size": 76297
+          "sha256": "e70dbb0f9498b3407d1a97073b39d8a8159cbc58fe8ddd16f9e81c60c109eb21",
+          "size": 76317
         },
         "dist/src/evasion.js": {
           "sha256": "3b9e6a5daafd5098d12f20a67279e98eca7b85ef500b79b67ea5862199992aeb",
@@ -523,12 +595,12 @@
           "size": 7487
         },
         "dist/src/ink-encounters.js": {
-          "sha256": "72d2ce0ea348355b797be5cc5abc9603369d0ffdd2a6828b93d434572cc273ad",
-          "size": 35533
+          "sha256": "cca9245f5fc91ee4caad22e3c48347b38d384b85fd066795d7e55184285fed72",
+          "size": 36435
         },
         "dist/src/ink-enemy-saltik.js": {
-          "sha256": "2d019393fd17e2117ebebc9aec4514b14975c63358467f5bb09a4c6e4b4da2e4",
-          "size": 15826
+          "sha256": "1560a5df1dc65d396c077d8bd13df6ef77350e55fb9ef228cfb9d4ea5463582e",
+          "size": 15859
         },
         "dist/src/ink-hit-cache.js": {
           "sha256": "7e9903deb9b50802faa19d302bb0c118da012ebf4213be0882c5bc493b113a80",
@@ -543,20 +615,20 @@
           "size": 1003
         },
         "dist/src/ink-pods.js": {
-          "sha256": "fa47ffd95fd216339f2e4898edecfd222500e53284df6061713268593aff6ebb",
-          "size": 5456
+          "sha256": "b85ce28d8f8af969dd9484c6ffd964f237936f5664706f7d93572d0347595177",
+          "size": 5484
         },
         "dist/src/ink-renderer.js": {
-          "sha256": "d17c0dfeb7e43382abba38ca37f1e10a0b89ad842ec8ce354529ded5f35088e1",
-          "size": 17255
+          "sha256": "4e8b0f0f82ffc62005db832126678be684536e0ca70e50b25d1c3b1b2d53766c",
+          "size": 18027
         },
         "dist/src/ink-saltik.js": {
-          "sha256": "040c680c689aa7078c7df954b893d87e6285df80d922cb8cdba885ade830bba9",
-          "size": 20590
+          "sha256": "d5959ebd5583c090e2333c64342a72971f02f00476383afa40e8a88eae34e99b",
+          "size": 21164
         },
         "dist/src/ink-scene.js": {
-          "sha256": "d4755e0563fbfabb09deceea9230cf8b5b0f8ed3b62da97715652d4c17d9bd00",
-          "size": 3029
+          "sha256": "93b6868071f6d5f558b4d21e2135294059e810abb16710f5eb04d14e2e336af2",
+          "size": 3687
         },
         "dist/src/ink-turn.js": {
           "sha256": "e2e281634ce901d5e484fe5c5a6770ddc9365574f832550ee3ee2ff1162f8050",
@@ -583,8 +655,8 @@
           "size": 4376
         },
         "dist/src/lunar-level.js": {
-          "sha256": "de672b81f052e45c87b6c8b2cf1fcb0bcf609d6b306b737dc9d56302c5e1322f",
-          "size": 5921
+          "sha256": "ac0bfe5cbcac59c09663108123cdbb381628a7f7c6b58c4d4427a0d0aef261ff",
+          "size": 5913
         },
         "dist/src/lunar-midground.js": {
           "sha256": "186bfecdf2d335325515c32c4c0a0876a92c1f4559ffe6e1c7949da5c57e1844",
@@ -603,8 +675,8 @@
           "size": 4153
         },
         "dist/src/main.js": {
-          "sha256": "0fcb72200a53c802db8503c4b2495cf5765a07042101f9615b688e45ec0cb57e",
-          "size": 31608
+          "sha256": "a1a49f2338a7eb7d55f34479f4c2e64f7437a1e7a606fd259c229efd47034971",
+          "size": 33317
         },
         "dist/src/melee-state.js": {
           "sha256": "f24e08a07354668edbe7d54291517edc973dd34f9dfa9653c4f5776fe2b1eb87",
@@ -621,6 +693,10 @@
         "dist/src/mission-camera.js": {
           "sha256": "379a897695ad2473f03d59dd8ba04301bc377b051a1d0f40b07c39d80f3b0301",
           "size": 2075
+        },
+        "dist/src/modern-striker-art.js": {
+          "sha256": "247caf6b431d9e87cc6c93c1a0dd50fa56c1a65e9d6d033c58ed4e0e11c5c4d1",
+          "size": 8057
         },
         "dist/src/motor-motion.js": {
           "sha256": "b1a902cf9b34b073d2cf96f32801c607365f79a0ccf413176c58be348746527e",
@@ -642,6 +718,10 @@
           "sha256": "4b57b494872fc2768bb24bc197465ea5a693f05c5bc6c3f45e58175a69c55c63",
           "size": 2720
         },
+        "dist/src/player-skins.js": {
+          "sha256": "2efbf738b10b826738a011f2ff8b32e8bcced80e4d7281273a59dad83112f5a0",
+          "size": 4313
+        },
         "dist/src/renderer.js": {
           "sha256": "f1e5891145283d8c07d159855d91a58318573f7d10baa74b797a6109d187c7a2",
           "size": 18138
@@ -651,8 +731,8 @@
           "size": 846
         },
         "dist/src/royal-layout.js": {
-          "sha256": "25f4916e2ee712d0d0fa1968f85115c9d5641674b188045ce224446f57a00152",
-          "size": 4692
+          "sha256": "dc31b24b15580750db7de4b1cc8216d217354b7aca09302edbd5dad51e4fea6c",
+          "size": 4690
         },
         "dist/src/royal-level.js": {
           "sha256": "4837ecbf243cc65f171759a417441ddba09255cd135d6f2a02c9f0f17634dcae",
@@ -727,8 +807,8 @@
           "size": 9418
         },
         "dist/style.css": {
-          "sha256": "bf48d53da8accc7cf75955dc06e44b7f74836f79af5aec77e4b03f1ef82f3e4c",
-          "size": 44172
+          "sha256": "c2796301a2c26819858f71ab66baed06d4e40b3bfecd13ff74501912022bed68",
+          "size": 45135
         },
         "dist/video/saltik-free-together-poster.jpg": {
           "sha256": "de77c185c42f5b31e582f895bda0a8e5ea1c54cc0f9670bef8946a7c2cf3c767",
@@ -749,6 +829,10 @@
         "docs/carrier-voice-provenance.md": {
           "sha256": "84e80ef5f02aefc7a5b84c2c05eed0cd49c72120c294effdbce2553f9df02655",
           "size": 1966
+        },
+        "docs/character-customization-art.md": {
+          "sha256": "7496aa26d610b40ac73460624c286237554ae56de595b8b673f6c43516e32e6e",
+          "size": 1975
         },
         "docs/desert-art.md": {
           "sha256": "258f8617d751b1a91eefe4be6bec0b72652ccf3078178c2f56d6fa80659fcfa7",
@@ -829,6 +913,10 @@
         "docs/live-saltiks-verification.md": {
           "sha256": "7b376932d066342db9dfcef1c1d2456ec431e830a0c9cdde99b15a60861e38ed",
           "size": 3340
+        },
+        "docs/modern-striker-art.md": {
+          "sha256": "9ca0fef66cbdfec3fd4ebb2d41fac06b446a441a154883aba79f50143048e588",
+          "size": 2696
         },
         "docs/natural-world-refinement.md": {
           "sha256": "ebaf630a9c768b050aeb0fbb4f521297261e6c1324c0409a1894cd5ea6021bbc",
@@ -1050,6 +1138,14 @@
           "sha256": "bd5791d26127a78b859e617c31aa34a534f3c64416c2e2cbd9b8c664a98c411e",
           "size": 2147
         },
+        "docs/superpowers/plans/2026-11-11-turns-bt-skins.md": {
+          "sha256": "cf4bff5a7e54ec48d69800407dd7500d4c1e13eea1913ee85ad92c3e60554fd8",
+          "size": 989
+        },
+        "docs/superpowers/plans/2026-11-12-modern-striker.md": {
+          "sha256": "18849619f9d9cfccac39598f107d6508fbe0fb4945fb06dc3b5f00ceaeea8ec2",
+          "size": 853
+        },
         "docs/superpowers/platform-combat-validation-2026-11-02.md": {
           "sha256": "d9c70c0fb0cfee3a448ee230fe67717dc9c6b77de7174183e325a1951356601d",
           "size": 5307
@@ -1186,6 +1282,14 @@
           "sha256": "722790e4e00c702fd56a71c4401f6b37ddccc43f409b883f3a3ec1973d14b39f",
           "size": 2603
         },
+        "docs/superpowers/specs/2026-11-11-turns-bt-skins-design.md": {
+          "sha256": "84258a10a0aac58e711fb31143e69b4079ed648a568424674123e3d18c68e2e0",
+          "size": 1949
+        },
+        "docs/superpowers/specs/2026-11-12-modern-striker.md": {
+          "sha256": "4a1c09de43bad90be8fcedba0adfcfc7b3930aa89fa97f7071a07e367f683d80",
+          "size": 1189
+        },
         "docs/superpowers/support-carrier-ko-validation-2026-11-03.md": {
           "sha256": "98b985fdd5e457c3e5828c9b218340b7923c13d73190f116f2bc1ed796ecf994",
           "size": 1747
@@ -1219,8 +1323,8 @@
           "size": 253204
         },
         "index.html": {
-          "sha256": "67bb4c018c49c3d0c462ebdb4816e7fd4c9628aa93900b9868ea454101f712ac",
-          "size": 17461
+          "sha256": "792393bea358e722cd1a73e378b90dc3058149f3e78d3627487544a48730e721",
+          "size": 17690
         },
         "manifest.webmanifest": {
           "sha256": "1046044adaf490fa877cf9b0cac214237c2a4d52636476abaf1bd80dbede48e8",
@@ -1306,6 +1410,42 @@
           "sha256": "d964f1f68cd7c4b83bcb75cdb02de9c2ccb343c311ba655d1d15776fbe7d2d20",
           "size": 4193
         },
+        "scripts/promo/BRIEF.md": {
+          "sha256": "2ddd24f9de14e195267a19fbd3e5527f770f3bb6ec72a545495bb15fddbda4cc",
+          "size": 1508
+        },
+        "scripts/promo/README.md": {
+          "sha256": "0afe0115170c112b09b1775a4d5f8a804d9d39e61672849162a059317fb7301c",
+          "size": 2388
+        },
+        "scripts/promo/audio.py": {
+          "sha256": "d371ab4e14f9b5782f505193c0cddbb66a926bb35f22c32f14682ac1c3e71025",
+          "size": 4127
+        },
+        "scripts/promo/export.py": {
+          "sha256": "e080630dd7aeb6158c7b46c723a189fe40db558b692ecf1ff39cbe4681eb4e8e",
+          "size": 2802
+        },
+        "scripts/promo/pickup.py": {
+          "sha256": "233229e9b3ab89f3de35a3204b79fa8341b91841d05b7faeeb493a3fb18cbfad",
+          "size": 2923
+        },
+        "scripts/promo/render.html": {
+          "sha256": "24d473a0abd02df1566ac6eaceea7617a74b43a9d9bd236d28f8def387ed907c",
+          "size": 413
+        },
+        "scripts/promo/render.js": {
+          "sha256": "da5763ce87e12f2e97284035437331abdc973836619e786185b127c9e9de7ccd",
+          "size": 5289
+        },
+        "scripts/promo/validation.json": {
+          "sha256": "2bd513f65ccc55ca60e62a1d2f933b40b8cfa3a382e1c96cae3b5efc35a0a859",
+          "size": 3854
+        },
+        "scripts/promo/verify.py": {
+          "sha256": "dea88221f52728ff2ac1f0fccc3c6e42e0ddcfbb22c0fb4ee6d711b11d223839",
+          "size": 2317
+        },
         "scripts/promo-v2/README.md": {
           "sha256": "ef893c27871e5bcdff25e446fa34a4fe64fec9242bb433fd7e45b784773bd4d6",
           "size": 2955
@@ -1366,42 +1506,6 @@
           "sha256": "d30d4d270eec7fce2e0b06a56247e7cf08b9f7a11c3a99308afcac2b948eec86",
           "size": 2320
         },
-        "scripts/promo/BRIEF.md": {
-          "sha256": "2ddd24f9de14e195267a19fbd3e5527f770f3bb6ec72a545495bb15fddbda4cc",
-          "size": 1508
-        },
-        "scripts/promo/README.md": {
-          "sha256": "0afe0115170c112b09b1775a4d5f8a804d9d39e61672849162a059317fb7301c",
-          "size": 2388
-        },
-        "scripts/promo/audio.py": {
-          "sha256": "d371ab4e14f9b5782f505193c0cddbb66a926bb35f22c32f14682ac1c3e71025",
-          "size": 4127
-        },
-        "scripts/promo/export.py": {
-          "sha256": "e080630dd7aeb6158c7b46c723a189fe40db558b692ecf1ff39cbe4681eb4e8e",
-          "size": 2802
-        },
-        "scripts/promo/pickup.py": {
-          "sha256": "233229e9b3ab89f3de35a3204b79fa8341b91841d05b7faeeb493a3fb18cbfad",
-          "size": 2923
-        },
-        "scripts/promo/render.html": {
-          "sha256": "24d473a0abd02df1566ac6eaceea7617a74b43a9d9bd236d28f8def387ed907c",
-          "size": 413
-        },
-        "scripts/promo/render.js": {
-          "sha256": "da5763ce87e12f2e97284035437331abdc973836619e786185b127c9e9de7ccd",
-          "size": 5289
-        },
-        "scripts/promo/validation.json": {
-          "sha256": "2bd513f65ccc55ca60e62a1d2f933b40b8cfa3a382e1c96cae3b5efc35a0a859",
-          "size": 3854
-        },
-        "scripts/promo/verify.py": {
-          "sha256": "dea88221f52728ff2ac1f0fccc3c6e42e0ddcfbb22c0fb4ee6d711b11d223839",
-          "size": 2317
-        },
         "src/audio.js": {
           "sha256": "14906e425392670152a6d2c50f2aba4e4f87a4ad2a38e882adb7119c47b6d88c",
           "size": 13478
@@ -1435,24 +1539,32 @@
           "size": 6191
         },
         "src/bt-art.js": {
-          "sha256": "c028e781f67aa2be443bb9cb5994924d73a152b6d2ed9c794987d51b05d915a8",
-          "size": 2211
+          "sha256": "1c731803e30d01a848ed3e92de609e2be693fffbb61eed0e6dadaaecc2506e89",
+          "size": 2852
         },
         "src/bt-combat.js": {
-          "sha256": "99e3f479e924ea97167f84bf47b97b0e66f79b5311952e38b38e215e019a309b",
-          "size": 3955
+          "sha256": "a8c55b8cc3c7076bc3e8e87f335f281427d5263d3d00441da4af2b3b85bd17bc",
+          "size": 4278
         },
         "src/bt-gamepad.js": {
           "sha256": "87fb7c5b170df4b4468c75ce7db504404b679371e3139f0fe5b22d8ab0215bd1",
           "size": 1364
         },
         "src/carrier-shutdown-art.js": {
-          "sha256": "735ac844032759a2d9712ad2d222bca7408c8dd566f7fdf63192266e29554666",
-          "size": 4972
+          "sha256": "e6546d713d9a730517ab7aa61474ba832a1a0e1511a2878a9511b71702fc71ae",
+          "size": 5215
         },
         "src/carrier-shutdown.js": {
           "sha256": "4238495ca9d1a59f90dd6b178ece5e1f662451f23d826952f2c3f925f42843e4",
           "size": 2473
+        },
+        "src/character-turn-sockets.js": {
+          "sha256": "9316053bb4548ef4407be2ee2851ab84a25a402e2316e5675f585ac08f73be42",
+          "size": 1693
+        },
+        "src/character-turns.js": {
+          "sha256": "d2d90af80958a33fcc251895eb06dd6b44e30a08541ee272ae4f1b09db02d169",
+          "size": 4923
         },
         "src/combat-effects.js": {
           "sha256": "5d475228d929abf59da0f35109d5713517062dfa876bc4763dffe0f6a24b8f4e",
@@ -1471,8 +1583,8 @@
           "size": 4691
         },
         "src/desert-world.js": {
-          "sha256": "88c5e2d0d28fc23bbb41bfa637999266592b9118a112347ba62fa2dbdc2d81f8",
-          "size": 6521
+          "sha256": "36646a5decb7b727ba46af9de12e7eab158053bd7c6cf68bb1fa722518f34d41",
+          "size": 6540
         },
         "src/drone-carrier.js": {
           "sha256": "d8d973eea1cb1208581a133cecac62a82294708e8e587da909243067955da62b",
@@ -1495,12 +1607,12 @@
           "size": 7983
         },
         "src/enemy-styles.js": {
-          "sha256": "be34e9725986c16ba3da10c2f7b7a660001111c85d18ba84f7315d482e4e2c7d",
-          "size": 2487
+          "sha256": "52f3f2525cb826a12aa2750d7d7df20c7c084bc773d00f3827e2eb77d070acd0",
+          "size": 3161
         },
         "src/engine.js": {
-          "sha256": "d211ab421392cd8986f8a701ce7b405f6c1fe16b2eddb225483f9a8d950dd583",
-          "size": 76297
+          "sha256": "e70dbb0f9498b3407d1a97073b39d8a8159cbc58fe8ddd16f9e81c60c109eb21",
+          "size": 76317
         },
         "src/evasion.js": {
           "sha256": "3b9e6a5daafd5098d12f20a67279e98eca7b85ef500b79b67ea5862199992aeb",
@@ -1535,12 +1647,12 @@
           "size": 7487
         },
         "src/ink-encounters.js": {
-          "sha256": "72d2ce0ea348355b797be5cc5abc9603369d0ffdd2a6828b93d434572cc273ad",
-          "size": 35533
+          "sha256": "cca9245f5fc91ee4caad22e3c48347b38d384b85fd066795d7e55184285fed72",
+          "size": 36435
         },
         "src/ink-enemy-saltik.js": {
-          "sha256": "2d019393fd17e2117ebebc9aec4514b14975c63358467f5bb09a4c6e4b4da2e4",
-          "size": 15826
+          "sha256": "1560a5df1dc65d396c077d8bd13df6ef77350e55fb9ef228cfb9d4ea5463582e",
+          "size": 15859
         },
         "src/ink-hit-cache.js": {
           "sha256": "7e9903deb9b50802faa19d302bb0c118da012ebf4213be0882c5bc493b113a80",
@@ -1555,20 +1667,20 @@
           "size": 1003
         },
         "src/ink-pods.js": {
-          "sha256": "fa47ffd95fd216339f2e4898edecfd222500e53284df6061713268593aff6ebb",
-          "size": 5456
+          "sha256": "b85ce28d8f8af969dd9484c6ffd964f237936f5664706f7d93572d0347595177",
+          "size": 5484
         },
         "src/ink-renderer.js": {
-          "sha256": "d17c0dfeb7e43382abba38ca37f1e10a0b89ad842ec8ce354529ded5f35088e1",
-          "size": 17255
+          "sha256": "4e8b0f0f82ffc62005db832126678be684536e0ca70e50b25d1c3b1b2d53766c",
+          "size": 18027
         },
         "src/ink-saltik.js": {
-          "sha256": "040c680c689aa7078c7df954b893d87e6285df80d922cb8cdba885ade830bba9",
-          "size": 20590
+          "sha256": "d5959ebd5583c090e2333c64342a72971f02f00476383afa40e8a88eae34e99b",
+          "size": 21164
         },
         "src/ink-scene.js": {
-          "sha256": "d4755e0563fbfabb09deceea9230cf8b5b0f8ed3b62da97715652d4c17d9bd00",
-          "size": 3029
+          "sha256": "93b6868071f6d5f558b4d21e2135294059e810abb16710f5eb04d14e2e336af2",
+          "size": 3687
         },
         "src/ink-turn.js": {
           "sha256": "e2e281634ce901d5e484fe5c5a6770ddc9365574f832550ee3ee2ff1162f8050",
@@ -1595,8 +1707,8 @@
           "size": 4376
         },
         "src/lunar-level.js": {
-          "sha256": "de672b81f052e45c87b6c8b2cf1fcb0bcf609d6b306b737dc9d56302c5e1322f",
-          "size": 5921
+          "sha256": "ac0bfe5cbcac59c09663108123cdbb381628a7f7c6b58c4d4427a0d0aef261ff",
+          "size": 5913
         },
         "src/lunar-midground.js": {
           "sha256": "186bfecdf2d335325515c32c4c0a0876a92c1f4559ffe6e1c7949da5c57e1844",
@@ -1615,8 +1727,8 @@
           "size": 4153
         },
         "src/main.js": {
-          "sha256": "0fcb72200a53c802db8503c4b2495cf5765a07042101f9615b688e45ec0cb57e",
-          "size": 31608
+          "sha256": "a1a49f2338a7eb7d55f34479f4c2e64f7437a1e7a606fd259c229efd47034971",
+          "size": 33317
         },
         "src/melee-state.js": {
           "sha256": "f24e08a07354668edbe7d54291517edc973dd34f9dfa9653c4f5776fe2b1eb87",
@@ -1633,6 +1745,10 @@
         "src/mission-camera.js": {
           "sha256": "379a897695ad2473f03d59dd8ba04301bc377b051a1d0f40b07c39d80f3b0301",
           "size": 2075
+        },
+        "src/modern-striker-art.js": {
+          "sha256": "247caf6b431d9e87cc6c93c1a0dd50fa56c1a65e9d6d033c58ed4e0e11c5c4d1",
+          "size": 8057
         },
         "src/motor-motion.js": {
           "sha256": "b1a902cf9b34b073d2cf96f32801c607365f79a0ccf413176c58be348746527e",
@@ -1654,6 +1770,10 @@
           "sha256": "4b57b494872fc2768bb24bc197465ea5a693f05c5bc6c3f45e58175a69c55c63",
           "size": 2720
         },
+        "src/player-skins.js": {
+          "sha256": "2efbf738b10b826738a011f2ff8b32e8bcced80e4d7281273a59dad83112f5a0",
+          "size": 4313
+        },
         "src/renderer.js": {
           "sha256": "f1e5891145283d8c07d159855d91a58318573f7d10baa74b797a6109d187c7a2",
           "size": 18138
@@ -1663,8 +1783,8 @@
           "size": 846
         },
         "src/royal-layout.js": {
-          "sha256": "25f4916e2ee712d0d0fa1968f85115c9d5641674b188045ce224446f57a00152",
-          "size": 4692
+          "sha256": "dc31b24b15580750db7de4b1cc8216d217354b7aca09302edbd5dad51e4fea6c",
+          "size": 4690
         },
         "src/royal-level.js": {
           "sha256": "4837ecbf243cc65f171759a417441ddba09255cd135d6f2a02c9f0f17634dcae",
@@ -1739,8 +1859,8 @@
           "size": 9418
         },
         "style.css": {
-          "sha256": "bf48d53da8accc7cf75955dc06e44b7f74836f79af5aec77e4b03f1ef82f3e4c",
-          "size": 44172
+          "sha256": "c2796301a2c26819858f71ab66baed06d4e40b3bfecd13ff74501912022bed68",
+          "size": 45135
         },
         "tests/arsenal-integration.test.js": {
           "sha256": "73a6ad38b4bc4243d05dc5b48af82396520cdc4248d0b6116776ac01f48937b5",
@@ -1915,20 +2035,28 @@
           "size": 1550
         },
         "tests/bt-combat.test.js": {
-          "sha256": "116e49a71e93c93a81d48c89a96bad11927bc7f77925d81de52d3a518c21decd",
-          "size": 3138
+          "sha256": "1331da513647c00a5a85cc961e4583c053b210dc7d1835b136b71b57fa62d338",
+          "size": 3146
         },
         "tests/bt-engine.test.js": {
-          "sha256": "93cb10725bcde803e9e3a6d9ec6ef5d73b99b5b1f3cf30e2aa6f35b6a244c405",
-          "size": 2408
+          "sha256": "f77934bbde6c5e6dce758839703ca17047edf315d9627d6a4a1c1035edb609a4",
+          "size": 2409
         },
         "tests/bt-gamepad.test.js": {
           "sha256": "675ef9486a0d9a69e33ad3152a035823a9b860cf14c4988ed9a2a3192d9edff5",
           "size": 1949
         },
         "tests/bt-input.test.js": {
-          "sha256": "b33d275d0123af8b54da4091c4af5ed8be6fc56828a6c1570b160535c40e5bba",
-          "size": 1261
+          "sha256": "9200eeea98d6243e65b6c4da80425af8fedccf5f38f810ae97fb316a7175ba1c",
+          "size": 1264
+        },
+        "tests/bt-posture.test.js": {
+          "sha256": "3c9dc99f7d82ef38abebead44460bf4eed17f566e23375f87031584bcdb8412d",
+          "size": 717
+        },
+        "tests/bt-sixteen.test.js": {
+          "sha256": "93948523d27e0eb7c23817d195b85164babe71ceafebf7ee7262439657e748ca",
+          "size": 2315
         },
         "tests/campaign.test.js": {
           "sha256": "4f7f0a262cf693128351d721c02b31472a41f37e58daf55a37a70b6e562efccf",
@@ -1961,6 +2089,10 @@
         "tests/carrier-shutdown.test.js": {
           "sha256": "b31942e4303338d1767df3d2992e640146bb4c86df0c7298844061e632d1bca2",
           "size": 3485
+        },
+        "tests/character-customization.test.js": {
+          "sha256": "510c15a4aef16495bbcbea5bc2a6488564489b5c82d8be38d62deaf16ec7598c",
+          "size": 5151
         },
         "tests/combat-effects.test.js": {
           "sha256": "19618f04b0fe7339fa08a6cea89adc5cb1c69bf65007864a98454fb41df82bd5",
@@ -2011,8 +2143,8 @@
           "size": 10238
         },
         "tests/enemy-styles.test.js": {
-          "sha256": "de14d422b9ee58b69cd3f306909a36931272d66cd11eccc649a71304ba6d0d5b",
-          "size": 1967
+          "sha256": "54929a3982f615c03e8c87879e52607a64449b222d000bfbe4b6d4e478fbbb60",
+          "size": 1960
         },
         "tests/engine.test.js": {
           "sha256": "a6efb28d73eb35f5ce4a4ae4feb51041c905c34b31f7282ce6e78f555e184cc0",
@@ -2035,20 +2167,20 @@
           "size": 2216
         },
         "tests/gatling-art.test.js": {
-          "sha256": "3a5b4dab93394107118283ee38deb7da27c04806803edbdc7ec3f02b674a72de",
-          "size": 6510
+          "sha256": "795bcdad7715b5e336d98454773406eed2d60b4c817b4cce870065884cd221d5",
+          "size": 6504
         },
         "tests/gatling-combat.test.js": {
           "sha256": "ba6ebcaebbcb9309c014feae7c6e67650b9de06ca62238c86c510cd3846bc046",
           "size": 5571
         },
         "tests/gatling-title.test.js": {
-          "sha256": "8337f46825f60ebe20b1f5b3faf39bbfe0cf62ba92c24428bf77a308a2b9dda3",
-          "size": 1779
+          "sha256": "f64a0abec0312087f7aca304e569c6ae6bc7a05d25addeac98529edfb1dad46c",
+          "size": 1812
         },
         "tests/gatling-ui.test.js": {
-          "sha256": "18f9ac107213cf4a4355330d457116881f60ee903bca4fc482e64a1a54ad5d8e",
-          "size": 4836
+          "sha256": "5a98f5e165f9a4eace11163abe255666afd63dc77a1ea47013488ec249017f5b",
+          "size": 4884
         },
         "tests/guided-navigation.test.js": {
           "sha256": "bea7e471a2fcc7043ba2954a1daadb7ae57c75e743f7215f526ae8190fc98ec2",
@@ -2067,8 +2199,8 @@
           "size": 8992
         },
         "tests/ink-player-ko.test.js": {
-          "sha256": "a82fa41b84c03421c034216503c0fca1839c1b7c8ca070e9bdd8301c0cbeef92",
-          "size": 2332
+          "sha256": "da48829a34f835e703aaaaad97eb59c1056f28c6d5cec7829a7e8f770050f12b",
+          "size": 2352
         },
         "tests/ink-renderer.test.js": {
           "sha256": "79039a09aec52fd5683ded22028e1dc4482baa6ab37968dede42768474877c2a",
@@ -2123,8 +2255,8 @@
           "size": 1507
         },
         "tests/lunar-enemy-scale.test.js": {
-          "sha256": "70c0d0f1927c6a329ee1ba957e02ffb8ae9726b967e095c04bef7fc3146a02ff",
-          "size": 2208
+          "sha256": "c6386c4c11082e312d0bebb830dfb28eae22a66a5cae8387881480c07ad741d0",
+          "size": 2165
         },
         "tests/lunar-enemy-visibility.test.js": {
           "sha256": "031322ab0f2724f55a0028253dd555338b2ed9525d41db46d15f46dabaf78c2c",
@@ -2143,8 +2275,8 @@
           "size": 1441
         },
         "tests/lunar-scale.test.js": {
-          "sha256": "e5ae6d43a93775c1fe33e92fe126fc5e2a735d3b4b6ff42c04b9c7afabb649f2",
-          "size": 1993
+          "sha256": "ec68dd2d080f4bf90bc14413d5cfd6c7e7adf48413d8d452db57ca08e8830252",
+          "size": 1944
         },
         "tests/manual-controls.test.js": {
           "sha256": "aa25357e0c836e0528d860c831e23d52d41bebc84732ea558ef240068c461a89",
@@ -2167,8 +2299,8 @@
           "size": 6739
         },
         "tests/mirv-aim.test.js": {
-          "sha256": "7336e4ee45de5d9f566fa6ce25002467e8d3b300f3442c85360a53717232f051",
-          "size": 8148
+          "sha256": "fe8ecbb157d925b4865df8be385d2350677f19026ecc956c2db53dd3047867a1",
+          "size": 8209
         },
         "tests/mirv-preview.test.js": {
           "sha256": "2de6adec23e65f878c4c7eb3169854f8f3db50b7ce64981f20cfadf631f7c8a7",
@@ -2177,6 +2309,10 @@
         "tests/mission-camera.test.js": {
           "sha256": "07c719466588573ae7a349a5c39f1414c3d936d59dedbf055922e9ef25aa11de",
           "size": 4205
+        },
+        "tests/modern-striker.test.js": {
+          "sha256": "637d6b4b6b827ea4aa7d0d3afcc393201b01ca877613c876196d3f9a4a531b3c",
+          "size": 1944
         },
         "tests/natural-world.test.js": {
           "sha256": "0a6ee2825c1714ef12ab851700e341f712890236c0af08d948e853b9c2da8efc",
@@ -2243,12 +2379,12 @@
           "size": 1639
         },
         "tests/royal-density.test.js": {
-          "sha256": "9853df3b26719bcdb4d907f113de6b9ad537b9a8001c57aafd7888937d5883fd",
-          "size": 2285
+          "sha256": "a617b6f3fe3e2a7eade3600fcbd44237b4eba376029bcefe92d99875302f4748",
+          "size": 2283
         },
         "tests/royal-level.test.js": {
-          "sha256": "241d948fe1883475dc0cbab68d79956795835b7cc74879f6dea4b64c5ef6a137",
-          "size": 3862
+          "sha256": "0248cf57b0a71f7210104e7e4099bde19d2c750d2e526f84d33943f98b045080",
+          "size": 3854
         },
         "tests/saltik-duel-engine.test.js": {
           "sha256": "eae7bb3711c0282aa6d068da0eb74fa5a263321b127d0a9aace83836aea21c61",
@@ -2324,7 +2460,7 @@
       ],
       "update_note": "Level2 Archives lunaires, menu/after-level1 access, primary cannon gain +20 percent; Sites v17 deployment succeeded.",
       "published_source_commit": "ed97563496192fa2481f5d6b6a6bc963ed7a9697",
-      "publication_status": "succeeded",
+      "publication_status": "Verified new source snapshot; Sites publication pending; current live version remains32",
       "github_import_base": "4c9b8e64bf3232c222f9b6f534ca37d660da3f7b"
     },
     {

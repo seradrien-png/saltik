@@ -8,10 +8,12 @@ export const ENEMY_MATERIALS=Object.freeze([
  {name:'royal-carrier',base:'ink-carrier',asset:'royal-carrier-material'},
 ]);
 const sets={2:{'ink-enemies':'lunar-enemies','ink-enemy-saltik':'lunar-enemy-saltik','ink-carrier':'lunar-carrier'},3:{'ink-enemies':'royal-enemies','ink-enemy-saltik':'royal-enemy-saltik','ink-carrier':'royal-carrier'}};
-export function sceneArtImages(images,level,character){
+export function sceneArtImages(images,level,character='striker',skin='default',visualModel=null){
  let player=royalPlayerImages(images,level);const set=sets[level];
- if(character==='gatling')player={...player,'ink-saltik':images[level===2?'gatling-lunar':level===3?'gatling-velvet':'gatling-snow']??images['ink-saltik'],'ink-turn':null};
- if(character==='bt')player={...player,'ink-saltik':images[level===2?'lunar-enemy-saltik':level===3?'royal-enemy-saltik':'ink-enemy-saltik']??images['ink-enemy-saltik'],'ink-turn':null};
+ if(character==='gatling')player={...player,'ink-saltik':images[level===2?'gatling-lunar':level===3?'gatling-velvet':'gatling-snow']??images['ink-saltik'],'ink-turn':images[`gatling-turn-${level}`]??images['gatling-turn']??null};
+ if(character==='bt')player={...player,'ink-saltik':images[level===2?'lunar-enemy-saltik':level===3?'royal-enemy-saltik':'ink-enemy-saltik']??images['ink-enemy-saltik'],'ink-turn':images[`bt-turn-${level}`]??images['bt-turn']??null};
+ if(character==='striker'&&skin==='dragon'||character==='gatling'&&skin==='limule')player={...player,'ink-saltik':images[`cosmetic-${character}-${skin}-${level}`]??player['ink-saltik'],'ink-turn':images[`cosmetic-${character}-${skin}-turn-${level}`]??player['ink-turn']};
+ if(visualModel==='modern-striker')player={...player,'ink-saltik':images[`modern-striker-${skin==='dragon'?'dragon-':''}${level}`]??player['ink-saltik'],'ink-turn':images[`modern-striker-${skin==='dragon'?'dragon-':''}turn-${level}`]??player['ink-turn']};
  if(!set)return player;
  const result={...player};for(const [native,name] of Object.entries(set))result[native]=images[name]??images[native];return result;
 }

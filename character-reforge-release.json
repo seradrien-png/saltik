@@ -1,0 +1,13 @@
+{
+  "source_commit": "af2ec95c91962ad5cd5aee0dff2adc778455e47d",
+  "status": "verified_snapshot_publication_pending",
+  "tests": {
+    "passed": 736,
+    "failed": 0,
+    "final_draw_focused_passed": 24
+  },
+  "main_files": 607,
+  "original_asset_audio_files_preserved": 80,
+  "other_four_editions_unchanged": true,
+  "live_version_unchanged": 32
+}
