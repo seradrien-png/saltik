@@ -10,10 +10,12 @@ test('V2 preserves V1 native pixels, walkable geometry, native motions and encou
   let content=readFileSync(new URL('../'+path,import.meta.url));
   // Authorized three-way throw presentation adds only a sampled cosmetic choice.
   if(path==='src/saltik-duel.js')content=Buffer.from(content.toString()
+   .replace("import {btFinishHold} from './bt-finish-timing.js';\n",'')
    .replace('createSaltikDuel(player,enemy,random=Math.random){','createSaltikDuel(player,enemy){')
-   .replace('throwVariant:Math.min(2,Math.max(0,Math.floor(random()*3))),','')
+   .replace('throwVariant:Math.min(3,Math.max(0,Math.floor(random()*4))),','')
    .replace('throwVariant:duel.throwVariant??0,','')
-   .replace("\n  if(next==='slide'&&duel.throwVariant===2)event('duel-slide');",''));
+   .replace('  const previousElapsed=duel.elapsed;\n','')
+   .replace(/  if\(duel.phase==='slide'&&previousElapsed<btFinishHold\(duel\)[\s\S]*?\n  }\n/,''));
   if(path==='src/boss-breach.js')content=Buffer.from(content.toString()
    // Authorized boss replacement moves hull assault feet onto the new turret.
    .replace('boss.assaultArt?geometry.turretRoof.x1+2:','')

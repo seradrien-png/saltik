@@ -1,4 +1,4 @@
-import {jumpLegOffset,jumpLegExtension} from './jump-leg-pose.js';
+import {jumpLegOffset,jumpLegExtension,jumpLegPose,jumpLegPoint,applyJumpLegPose} from './jump-leg-pose.js';
 import {MODERN_GATLING_TURN_FRAMES,MODERN_GATLING_TURN_GUNS,MODERN_GATLING_SIDE_TURN_LEGS,MODERN_GATLING_FRONT_TURN_LEGS} from './modern-gatling-profile.js';
 import {MODERN_STRIKER} from './modern-striker-art.js';
 import {TURN_SOCKETS} from './character-turn-sockets.js';
@@ -27,8 +27,8 @@ export function drawNativeTurn(c,image,p,{camera=0,scale=1,time=0}={}){
  const t=image.gatlingTurnTransforms?.[v.index]??{ratio:1,x:0,y:0},registered=([x,y,rx,ry])=>[x*t.ratio+t.x,y*t.ratio+t.y,rx*t.ratio,ry*t.ratio];
  const draw=()=>c.drawImage(image,sx,sy,w,h,0,0,w,h);
  if(drop||jumpLegOffset(p,ax+1,ax,k,scale*(p.artScale??1))){const source=p.visualModel==='modern-gatling'?MODERN_GATLING_SIDE_TURN_LEGS:p.visualModel==='modern-striker'?MODERN_TURN_LEGS:BT_SIDE_LEGS;const legs=v.index===1?(p.visualModel==='modern-gatling'?MODERN_GATLING_FRONT_TURN_LEGS:p.visualModel==='modern-striker'?MODERN_FRONT_LEGS:BT_FRONT_LEGS):source.map(l=>v.index===2?{...l,poly:l.poly.map(([x,y])=>[724-x,y])}:l);
-  for(const leg of legs){const lower=split(leg.poly,leg.wheelTop,true),footX=lower.reduce((sum,q)=>sum+q[0],0)/lower.length,lateral=jumpLegOffset(p,footX,ax,k,scale*(p.artScale??1)),extension=p.onGround===false?jumpLegExtension(p,k,scale*(p.artScale??1)):0;c.save();c.translate(0,leg.hinge);c.translate(0,drop);if(lateral)c.transform(1,0,lateral/(leg.wheelTop-leg.hinge),Math.max(.25,1+(extension-drop)/(leg.wheelTop-leg.hinge)),0,0);else c.scale(1,Math.max(.25,1+(extension-drop)/(leg.wheelTop-leg.hinge)));c.translate(0,-leg.hinge);c.beginPath();polygon(c,split(leg.poly,leg.wheelTop,false));c.clip();draw();c.restore();c.save();c.translate(lateral,extension);c.beginPath();polygon(c,split(leg.poly,leg.wheelTop,true));c.clip();draw();c.restore();}
-  c.save();c.translate(0,drop);for(const leg of legs){c.beginPath();c.rect(0,0,w,h);polygon(c,leg.poly);c.clip('evenodd');}draw();c.restore();
+  for(const leg of legs){const lower=split(leg.poly,leg.wheelTop,true),footX=lower.reduce((sum,q)=>sum+q[0],0)/lower.length,lateral=p.onGround===false?0:jumpLegOffset(p,footX,ax,k,scale*(p.artScale??1)),extension=0,jumpPose=jumpLegPose(p,{...leg,foot:[footX,ay]},ax);c.save();applyJumpLegPose(c,jumpPose);c.save();c.translate(0,leg.hinge);c.translate(0,drop);if(lateral)c.transform(1,0,lateral/(leg.wheelTop-leg.hinge),Math.max(.25,1+(extension-drop)/(leg.wheelTop-leg.hinge)),0,0);else c.scale(1,Math.max(.25,1+(extension-drop)/(leg.wheelTop-leg.hinge)));c.translate(0,-leg.hinge);c.beginPath();polygon(c,split(leg.poly,leg.wheelTop,false));c.clip();draw();c.restore();c.save();c.translate(lateral,extension);c.beginPath();polygon(c,split(leg.poly,leg.wheelTop,true));c.clip();draw();c.restore();c.restore();}
+  c.save();c.beginPath();c.rect(24,0,w-48,ay+1);c.clip();c.translate(0,drop);for(const leg of legs){c.beginPath();c.rect(0,0,w,h);polygon(c,leg.poly);c.clip('evenodd');}draw();c.restore();
  }else draw();
  if(v.model==='modern-gatling')for(const [i,face]of MODERN_GATLING_TURN_GUNS[v.index].entries()){
   const [x,y,rx,ry]=registered(face);

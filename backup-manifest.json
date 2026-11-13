@@ -7,15 +7,15 @@
       "slug": "saltik-main",
       "repo": "saltik-v2-matin-dore",
       "title": "SALTIK V2 — Matin Doré",
-      "commit": "41e4f25dacec613d85ac87eb1830b6af6eaaed17",
-      "published_version": 36,
+      "commit": "4c6ea08bacd1fe2c0ecc951e88eb9f30ca28de9b",
+      "published_version": 37,
       "url": "https://saltik-v2-matin-dore.ser-adrien.chatgpt.site",
-      "base_commit": "79668a31bfef6140ce6aee3e9e26fb5ca08b0eed",
+      "base_commit": "41e4f25dacec613d85ac87eb1830b6af6eaaed17",
       "source_path": "/workspace/sites/saltik-v2-matin-dore",
       "export_path": "versions/saltik-main",
       "web_entry": "versions/saltik-main/dist/index.html",
-      "file_count": 635,
-      "bytes": 268211660,
+      "file_count": 645,
+      "bytes": 270966823,
       "uncommitted_changes": "",
       "files": {
         ".gitignore": {
@@ -37,6 +37,10 @@
         "dist/assets/boss-assault-atlas.png": {
           "sha256": "f9859847a2d5a0f2b630bafaaef3f9f2eba725ace3629396825f5d2fd6986b63",
           "size": 3304293
+        },
+        "dist/assets/bt-finish-frames.png": {
+          "sha256": "393d72cc71538e0989e6dc9f398e57a67476afb626d92fddf1732693e7e4ba8d",
+          "size": 2736720
         },
         "dist/assets/bt-impact-underside.png": {
           "sha256": "f93c7949a398e007610ba19dcf8326ca7cd94e0b916c9aef9287692446aa2493",
@@ -487,8 +491,8 @@
           "size": 3073
         },
         "dist/src/audio.js": {
-          "sha256": "8fbcedfedda6a808e261db26446ddb922835878619aeda64ee3d495f1ba3ad1b",
-          "size": 13951
+          "sha256": "cd2d04dc462b2a9c2b08394c30c26162131f271afb52ad560c2d9e47f6981c11",
+          "size": 14128
         },
         "dist/src/background-motion.js": {
           "sha256": "3678cee146d7d6f5c57ce4f0218b809c0befc002fd2809e9f7a05c895c7711f5",
@@ -526,6 +530,18 @@
           "sha256": "a8c55b8cc3c7076bc3e8e87f335f281427d5263d3d00441da4af2b3b85bd17bc",
           "size": 4278
         },
+        "dist/src/bt-finish-frames.js": {
+          "sha256": "5b304b6cf00369d4e5e1054a35e2a4dfca27b0f51f4ead04041167111e725398",
+          "size": 724
+        },
+        "dist/src/bt-finish-timing.js": {
+          "sha256": "3d46beb609507379864e2ef421c8ebfd450a378c3a89255868bf88dbcabcf505",
+          "size": 284
+        },
+        "dist/src/bt-finish-visual.js": {
+          "sha256": "46d28182d035ce7a7f9c6cdc584a3134d70ac66f85ea72c84e2bc786bfbbb9ee",
+          "size": 2264
+        },
         "dist/src/bt-gamepad.js": {
           "sha256": "87fb7c5b170df4b4468c75ce7db504404b679371e3139f0fe5b22d8ab0215bd1",
           "size": 1364
@@ -543,8 +559,8 @@
           "size": 2186
         },
         "dist/src/character-turns.js": {
-          "sha256": "a9cd49385effaf53b58e00ba92c8799fb3b851500a0e365fc0ebd4734ed70f32",
-          "size": 6889
+          "sha256": "8efa8ef9e7f795c9add209d8f3041128754d98550fc45d6a2b181f40d391a0c0",
+          "size": 7037
         },
         "dist/src/combat-effects.js": {
           "sha256": "5d475228d929abf59da0f35109d5713517062dfa876bc4763dffe0f6a24b8f4e",
@@ -599,8 +615,8 @@
           "size": 3615
         },
         "dist/src/gatling-art.js": {
-          "sha256": "91852531bff4ac131fcabc60a3b1835d79add00f453f57f61278abf61b8eb303",
-          "size": 10713
+          "sha256": "e18b454632e173725c796b17ed35298d0e89231ac15418334251445724cc08d7",
+          "size": 11056
         },
         "dist/src/gatling-combat.js": {
           "sha256": "3fc7204583007c8ece714fe41cc5727ceaec2486c305977b67e1832661182d87",
@@ -631,12 +647,12 @@
           "size": 7487
         },
         "dist/src/ink-encounters.js": {
-          "sha256": "cec741b6fdb8f72fab266803409f841d5bb904c268afe4ce720c8644dc07c041",
-          "size": 36818
+          "sha256": "55afe4a335b9f8ea130138d9f78935dd82b35d34e4a706812b988246aecacf6c",
+          "size": 37263
         },
         "dist/src/ink-enemy-saltik.js": {
-          "sha256": "6f2cf39b569d1abb64ffb6d147af824f00fa47cc13deb10bb0ea9a76e5946186",
-          "size": 15850
+          "sha256": "55009f011a2732edf822f99e559f4c1ad48ce2c075d4cb6cede1059c60b68fd4",
+          "size": 16195
         },
         "dist/src/ink-hit-cache.js": {
           "sha256": "7e9903deb9b50802faa19d302bb0c118da012ebf4213be0882c5bc493b113a80",
@@ -655,8 +671,8 @@
           "size": 5484
         },
         "dist/src/ink-renderer.js": {
-          "sha256": "92fa63f1c26539e4855e36c7f6b70ef0b015ebcc9e1024cd0ef9ccad35493036",
-          "size": 18339
+          "sha256": "b23c9b14734f2304602415e22c64cb666525b040beb91c774b410af156be7557",
+          "size": 18451
         },
         "dist/src/ink-saltik.js": {
           "sha256": "92be94bfe3076924825fcf862d688e6882809985fc599e2dd6dee13c89225b6c",
@@ -683,8 +699,8 @@
           "size": 4938
         },
         "dist/src/jump-leg-pose.js": {
-          "sha256": "a10dec72c11a291d078a6a566f4b1bdcfa4b1043ffdb8eb4d95688e082a3f399",
-          "size": 1189
+          "sha256": "9ccf38a5af031e954952e6555203e0eb143edd195e93f8753aa16a3d31b0e78e",
+          "size": 2295
         },
         "dist/src/lunar-architecture.js": {
           "sha256": "c1eb7b42baec02ca72082ab52c34acb76a174105bf8bbf9f97f10d0ef919f4bf",
@@ -743,8 +759,8 @@
           "size": 1708
         },
         "dist/src/modern-striker-art.js": {
-          "sha256": "362d70371aa90c1eeb10def2158df48d36b31288148df985f36d7157d544ba1a",
-          "size": 8082
+          "sha256": "ce69c3c802bfe0fc3de61ae663c7a95a38a133cd817058f6284b321de3b44cce",
+          "size": 8422
         },
         "dist/src/motor-motion.js": {
           "sha256": "4cd5f7608a358e829486fb3044179c75876304c3623a922a6fb701055a468691",
@@ -803,8 +819,8 @@
           "size": 5009
         },
         "dist/src/saltik-duel.js": {
-          "sha256": "96430421e0cbc7eccbe1bd06afb8906f3f330e94b05df6d32a7b3a51fb0ffa46",
-          "size": 2414
+          "sha256": "5d9a2f13221c0d34ca6ab726fa34f22ef0d8a9e25a22bd22b6f907437b9d2cf0",
+          "size": 2645
         },
         "dist/src/scenery.js": {
           "sha256": "3865efcf1442661b4a9eedc113f42cf2491ae73c3ceb2ecff4197de8e25c6958",
@@ -1206,6 +1222,10 @@
           "sha256": "620d2092bb4380c10dfa5cd2245b1a538f079c2b467c37daee843ae370fed897",
           "size": 1865
         },
+        "docs/superpowers/plans/2026-11-13-expressive-finishes.md": {
+          "sha256": "0cc4ceeff52531627a60022a4d46842a3a1dce0ee915d0131526d5d2a8d2775b",
+          "size": 1474
+        },
         "docs/superpowers/plans/2026-11-13-jump-splay.md": {
           "sha256": "cbd1db39d5e7f0f3ac0b8e6fe7ad505c8aa787793fd23e5eb52d3ffb905b14ba",
           "size": 1470
@@ -1361,6 +1381,10 @@
         "docs/superpowers/specs/2026-11-13-character-polish-design.md": {
           "sha256": "dd93a533246964aef9f535035557582ebcd28c369ce1829408f98c7936454a6a",
           "size": 1221
+        },
+        "docs/superpowers/specs/2026-11-13-expressive-finishes-design.md": {
+          "sha256": "616f4166b72a080b9560b3b43deade5d9f49d7db40f39b32192efe5073b36c74",
+          "size": 1054
         },
         "docs/superpowers/specs/2026-11-13-jump-splay-design.md": {
           "sha256": "62ff3124a2c4b968566e01da55a083af2e05f0ebc63eed9895d483497fc2cdb2",
@@ -1587,8 +1611,8 @@
           "size": 2320
         },
         "src/audio.js": {
-          "sha256": "8fbcedfedda6a808e261db26446ddb922835878619aeda64ee3d495f1ba3ad1b",
-          "size": 13951
+          "sha256": "cd2d04dc462b2a9c2b08394c30c26162131f271afb52ad560c2d9e47f6981c11",
+          "size": 14128
         },
         "src/background-motion.js": {
           "sha256": "3678cee146d7d6f5c57ce4f0218b809c0befc002fd2809e9f7a05c895c7711f5",
@@ -1626,6 +1650,18 @@
           "sha256": "a8c55b8cc3c7076bc3e8e87f335f281427d5263d3d00441da4af2b3b85bd17bc",
           "size": 4278
         },
+        "src/bt-finish-frames.js": {
+          "sha256": "5b304b6cf00369d4e5e1054a35e2a4dfca27b0f51f4ead04041167111e725398",
+          "size": 724
+        },
+        "src/bt-finish-timing.js": {
+          "sha256": "3d46beb609507379864e2ef421c8ebfd450a378c3a89255868bf88dbcabcf505",
+          "size": 284
+        },
+        "src/bt-finish-visual.js": {
+          "sha256": "46d28182d035ce7a7f9c6cdc584a3134d70ac66f85ea72c84e2bc786bfbbb9ee",
+          "size": 2264
+        },
         "src/bt-gamepad.js": {
           "sha256": "87fb7c5b170df4b4468c75ce7db504404b679371e3139f0fe5b22d8ab0215bd1",
           "size": 1364
@@ -1643,8 +1679,8 @@
           "size": 2186
         },
         "src/character-turns.js": {
-          "sha256": "a9cd49385effaf53b58e00ba92c8799fb3b851500a0e365fc0ebd4734ed70f32",
-          "size": 6889
+          "sha256": "8efa8ef9e7f795c9add209d8f3041128754d98550fc45d6a2b181f40d391a0c0",
+          "size": 7037
         },
         "src/combat-effects.js": {
           "sha256": "5d475228d929abf59da0f35109d5713517062dfa876bc4763dffe0f6a24b8f4e",
@@ -1699,8 +1735,8 @@
           "size": 3615
         },
         "src/gatling-art.js": {
-          "sha256": "91852531bff4ac131fcabc60a3b1835d79add00f453f57f61278abf61b8eb303",
-          "size": 10713
+          "sha256": "e18b454632e173725c796b17ed35298d0e89231ac15418334251445724cc08d7",
+          "size": 11056
         },
         "src/gatling-combat.js": {
           "sha256": "3fc7204583007c8ece714fe41cc5727ceaec2486c305977b67e1832661182d87",
@@ -1731,12 +1767,12 @@
           "size": 7487
         },
         "src/ink-encounters.js": {
-          "sha256": "cec741b6fdb8f72fab266803409f841d5bb904c268afe4ce720c8644dc07c041",
-          "size": 36818
+          "sha256": "55afe4a335b9f8ea130138d9f78935dd82b35d34e4a706812b988246aecacf6c",
+          "size": 37263
         },
         "src/ink-enemy-saltik.js": {
-          "sha256": "6f2cf39b569d1abb64ffb6d147af824f00fa47cc13deb10bb0ea9a76e5946186",
-          "size": 15850
+          "sha256": "55009f011a2732edf822f99e559f4c1ad48ce2c075d4cb6cede1059c60b68fd4",
+          "size": 16195
         },
         "src/ink-hit-cache.js": {
           "sha256": "7e9903deb9b50802faa19d302bb0c118da012ebf4213be0882c5bc493b113a80",
@@ -1755,8 +1791,8 @@
           "size": 5484
         },
         "src/ink-renderer.js": {
-          "sha256": "92fa63f1c26539e4855e36c7f6b70ef0b015ebcc9e1024cd0ef9ccad35493036",
-          "size": 18339
+          "sha256": "b23c9b14734f2304602415e22c64cb666525b040beb91c774b410af156be7557",
+          "size": 18451
         },
         "src/ink-saltik.js": {
           "sha256": "92be94bfe3076924825fcf862d688e6882809985fc599e2dd6dee13c89225b6c",
@@ -1783,8 +1819,8 @@
           "size": 4938
         },
         "src/jump-leg-pose.js": {
-          "sha256": "a10dec72c11a291d078a6a566f4b1bdcfa4b1043ffdb8eb4d95688e082a3f399",
-          "size": 1189
+          "sha256": "9ccf38a5af031e954952e6555203e0eb143edd195e93f8753aa16a3d31b0e78e",
+          "size": 2295
         },
         "src/lunar-architecture.js": {
           "sha256": "c1eb7b42baec02ca72082ab52c34acb76a174105bf8bbf9f97f10d0ef919f4bf",
@@ -1843,8 +1879,8 @@
           "size": 1708
         },
         "src/modern-striker-art.js": {
-          "sha256": "362d70371aa90c1eeb10def2158df48d36b31288148df985f36d7157d544ba1a",
-          "size": 8082
+          "sha256": "ce69c3c802bfe0fc3de61ae663c7a95a38a133cd817058f6284b321de3b44cce",
+          "size": 8422
         },
         "src/motor-motion.js": {
           "sha256": "4cd5f7608a358e829486fb3044179c75876304c3623a922a6fb701055a468691",
@@ -1903,8 +1939,8 @@
           "size": 5009
         },
         "src/saltik-duel.js": {
-          "sha256": "96430421e0cbc7eccbe1bd06afb8906f3f330e94b05df6d32a7b3a51fb0ffa46",
-          "size": 2414
+          "sha256": "5d9a2f13221c0d34ca6ab726fa34f22ef0d8a9e25a22bd22b6f907437b9d2cf0",
+          "size": 2645
         },
         "src/scenery.js": {
           "sha256": "3865efcf1442661b4a9eedc113f42cf2491ae73c3ceb2ecff4197de8e25c6958",
@@ -2195,8 +2231,8 @@
           "size": 5151
         },
         "tests/character-polish.test.js": {
-          "sha256": "499ebe5e92922cdf6c376776dcc5c5433208ebac1a3969d733561b5531404175",
-          "size": 3673
+          "sha256": "973844d9ec31967f970d6e8f7864dcdd4d746379fbcddebebe29ec720e1cacc1",
+          "size": 3813
         },
         "tests/combat-effects.test.js": {
           "sha256": "19618f04b0fe7339fa08a6cea89adc5cb1c69bf65007864a98454fb41df82bd5",
@@ -2265,6 +2301,10 @@
         "tests/expedition-world.test.js": {
           "sha256": "8a62cb72457bc757de082e0969ae02fb9ad736b9566b6e86f4f9fd07d48b016b",
           "size": 4759
+        },
+        "tests/expressive-finishes.test.js": {
+          "sha256": "e3adbc70fa089c3cb9f3af9eafd7b798001f91dff7889a2ea5747e1c5865789b",
+          "size": 2593
         },
         "tests/finishing-defense.test.js": {
           "sha256": "f31b12cc6dc652b704a38064a1c00f05b6677176b7a63af446da854ad7686011",
@@ -2451,8 +2491,8 @@
           "size": 1507
         },
         "tests/pastel-preservation.test.js": {
-          "sha256": "50102dfb7d1f76617d194b795b8e4143015609026af10f4977ab0927c4cfb642",
-          "size": 4568
+          "sha256": "8e2709187f5e5f26d42eaed69de876cf0fa51d8f68e4bc8f4c212e75a0d2a9cc",
+          "size": 4712
         },
         "tests/pastel-rider.test.js": {
           "sha256": "969e183bb7a0573ab07b43dbac3990e1cf1a2fd28c0bc32f2f6a51cb665d11c5",
@@ -2570,11 +2610,11 @@
           "duration_native_run_seconds": 82.0166666666633
         }
       ],
-      "update_note": "Cute unfolded jumps, fixed wheel artwork, three randomized BT screen impacts, distinct BT/Gatling voice delivery and moving painted velvet waterfalls. Physics and weapons unchanged.",
-      "published_source_commit": "41e4f25dacec613d85ac87eb1830b6af6eaaed17",
+      "update_note": "True hip-pivot jump spread, four distinct BT finishes, six native pose frames, puzzled-face hold and synchronized slide/ricochet cues. Mechanics preserved.",
+      "published_source_commit": "4c6ea08bacd1fe2c0ecc951e88eb9f30ca28de9b",
       "publication_status": "Published and verified",
       "github_import_base": "4c9b8e64bf3232c222f9b6f534ca37d660da3f7b",
-      "live_published_version": 36
+      "live_published_version": 37
     },
     {
       "slug": "saltik-ink",

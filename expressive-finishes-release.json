@@ -1,0 +1,665 @@
+{
+  "version_number": 37,
+  "version_id": "appgprj_6ae77e1b6da081918600675fc2e2b738~appgver_e53e1b63a3048191abdb9c5908a4f4cc",
+  "deployment": {
+    "id": "appgdep_6af6d51e1dd88191a3847f78ce9607f7",
+    "project_id": "appgprj_6ae77e1b6da081918600675fc2e2b738",
+    "title": "SALTIK V2 — Matin Doré",
+    "version_id": "appgprj_6ae77e1b6da081918600675fc2e2b738~appgver_e53e1b63a3048191abdb9c5908a4f4cc",
+    "type": "publish",
+    "status": "succeeded",
+    "url": "https://saltik-v2-matin-dore.ser-adrien.chatgpt.site",
+    "has_mcp": false,
+    "screenshot_asset_pointer": null,
+    "provider_deployment_id": "site---6ae77e1b6da081918600675fc2e2b738",
+    "failure_message": null,
+    "env_set_revision": 0,
+    "updated_at": "2026-11-13T09:15:28.965031+00:00"
+  },
+  "source_commit": "4c6ea08bacd1fe2c0ecc951e88eb9f30ca28de9b",
+  "tests": {
+    "full_suite_passed": 759,
+    "full_suite_failed": 0,
+    "review_and_render_rechecks_passed": 30,
+    "new_timing_exit_tests_passed": 18,
+    "unresolved_failures": 0
+  },
+  "review": "Two independent review findings fixed: shared delayed motion/sound boundary and upper-right fourth impact; final browser verified.",
+  "browser": {
+    "poses": [
+      {
+        "character": "striker",
+        "col": 0,
+        "spread": 0
+      },
+      {
+        "character": "striker",
+        "col": 1,
+        "spread": 1
+      },
+      {
+        "character": "striker",
+        "col": 2,
+        "spread": 1
+      },
+      {
+        "character": "striker",
+        "col": 3,
+        "spread": 0
+      },
+      {
+        "character": "gatling",
+        "col": 0,
+        "spread": 0
+      },
+      {
+        "character": "gatling",
+        "col": 1,
+        "spread": 1
+      },
+      {
+        "character": "gatling",
+        "col": 2,
+        "spread": 1
+      },
+      {
+        "character": "gatling",
+        "col": 3,
+        "spread": 0
+      },
+      {
+        "character": "bt",
+        "col": 0,
+        "spread": 0
+      },
+      {
+        "character": "bt",
+        "col": 1,
+        "spread": 1
+      },
+      {
+        "character": "bt",
+        "col": 2,
+        "spread": 1
+      },
+      {
+        "character": "bt",
+        "col": 3,
+        "spread": 0
+      }
+    ],
+    "throws": [
+      {
+        "world": false,
+        "effort": 0,
+        "dir": 1,
+        "crackX": 614.4,
+        "crackY": 309.6,
+        "cracks": 1,
+        "screen": {
+          "x": 614.4,
+          "y": 547.2,
+          "scale": 3.4648163265306127,
+          "angle": 0,
+          "alpha": 1,
+          "frame": 1,
+          "underside": false
+        }
+      },
+      {
+        "world": false,
+        "effort": 0,
+        "dir": 1,
+        "crackX": 985.6,
+        "crackY": 237.60000000000002,
+        "cracks": 1,
+        "screen": {
+          "x": 985.6,
+          "y": 475.20000000000005,
+          "scale": 3.4648163265306127,
+          "angle": -0.12,
+          "alpha": 1,
+          "frame": 3,
+          "underside": true
+        }
+      },
+      {
+        "world": false,
+        "effort": 0,
+        "dir": 1,
+        "crackX": 307.2,
+        "crackY": 259.2,
+        "cracks": 0,
+        "screen": {
+          "x": 307.2,
+          "y": 496.8,
+          "scale": 3.4648163265306127,
+          "angle": 0,
+          "alpha": 1,
+          "frame": 1,
+          "underside": false
+        }
+      },
+      {
+        "world": false,
+        "effort": 0,
+        "dir": 1,
+        "crackX": 921.5999999999999,
+        "crackY": 410.4,
+        "cracks": 0,
+        "screen": {
+          "x": 921.5999999999999,
+          "y": 601.2,
+          "scale": 2.782352504638219,
+          "angle": 0.28,
+          "alpha": 1,
+          "frame": 1,
+          "underside": false
+        }
+      }
+    ],
+    "sampled_sliding_poses": [
+      {
+        "world": false,
+        "effort": 0,
+        "dir": 1,
+        "crackX": 614.4,
+        "crackY": 309.6,
+        "cracks": 1,
+        "screen": {
+          "x": 614.4,
+          "y": 547.2,
+          "scale": 3.4648163265306127,
+          "angle": 0,
+          "alpha": 1,
+          "frame": 1,
+          "underside": false
+        }
+      },
+      {
+        "world": false,
+        "effort": 0,
+        "dir": 1,
+        "crackX": 614.4,
+        "crackY": 309.6,
+        "cracks": 0.9792288236833192,
+        "screen": {
+          "x": 619.800505842337,
+          "y": 646.5028397347878,
+          "scale": 3.4417864670671627,
+          "angle": 0.019940329264013595,
+          "alpha": 1,
+          "frame": 2,
+          "underside": false
+        }
+      },
+      {
+        "world": false,
+        "effort": 0,
+        "dir": 1,
+        "crackX": 614.4,
+        "crackY": 309.6,
+        "cracks": 0.9236678031555313,
+        "screen": {
+          "x": 634.2463711795618,
+          "y": 912.1289666740361,
+          "scale": 3.3801836731332804,
+          "angle": 0.07327890897068998,
+          "alpha": 1,
+          "frame": 4,
+          "underside": false
+        }
+      },
+      {
+        "world": false,
+        "effort": 0,
+        "dir": 1,
+        "crackX": 614.4,
+        "crackY": 309.6,
+        "cracks": 0.8092625532665773,
+        "screen": {
+          "x": 663.9917361506899,
+          "y": 1459.0775853431473,
+          "scale": 3.2533378562833404,
+          "angle": 0.1831079488640858,
+          "alpha": 1,
+          "frame": 4,
+          "underside": false
+        }
+      },
+      {
+        "world": false,
+        "effort": 0,
+        "dir": 1,
+        "crackX": 614.4,
+        "crackY": 309.6,
+        "cracks": 0.7501191589306322,
+        "screen": {
+          "x": 679.3690186780356,
+          "y": 1741.8303249844334,
+          "scale": 3.1877631368268218,
+          "angle": 0.23988560742659304,
+          "alpha": 1,
+          "frame": 4,
+          "underside": false
+        }
+      },
+      {
+        "world": false,
+        "effort": 0,
+        "dir": 1,
+        "crackX": 985.6,
+        "crackY": 237.60000000000002,
+        "cracks": 1,
+        "screen": {
+          "x": 985.6,
+          "y": 475.20000000000005,
+          "scale": 3.4648163265306127,
+          "angle": -0.12,
+          "alpha": 1,
+          "frame": 3,
+          "underside": true
+        }
+      },
+      {
+        "world": false,
+        "effort": 0,
+        "dir": 1,
+        "crackX": 985.6,
+        "crackY": 237.60000000000002,
+        "cracks": 0.9698261765307711,
+        "screen": {
+          "x": 972.3235176735393,
+          "y": 619.4550152416897,
+          "scale": 3.431361364549801,
+          "angle": -0.21052147040768676,
+          "alpha": 1,
+          "frame": 3,
+          "underside": true
+        }
+      },
+      {
+        "world": false,
+        "effort": 0,
+        "dir": 1,
+        "crackX": 985.6,
+        "crackY": 237.60000000000002,
+        "cracks": 0.9128665919302118,
+        "screen": {
+          "x": 947.2613004492932,
+          "y": 891.7673973000437,
+          "scale": 3.3682079249733463,
+          "angle": -0.3814002242093647,
+          "alpha": 1,
+          "frame": 3,
+          "underside": true
+        }
+      },
+      {
+        "world": false,
+        "effort": 0,
+        "dir": 1,
+        "crackX": 985.6,
+        "crackY": 237.60000000000002,
+        "cracks": 0.8043799526746848,
+        "screen": {
+          "x": 899.5271791768613,
+          "y": 1410.4203222528672,
+          "scale": 3.2479243157243904,
+          "angle": -0.7068601419759456,
+          "alpha": 1,
+          "frame": 3,
+          "underside": true
+        }
+      },
+      {
+        "world": false,
+        "effort": 0,
+        "dir": 1,
+        "crackX": 985.6,
+        "crackY": 237.60000000000002,
+        "cracks": 0.7501079947602867,
+        "screen": {
+          "x": 875.6475176945262,
+          "y": 1669.8836986500219,
+          "scale": 3.1877507586509224,
+          "angle": -0.8696760157191402,
+          "alpha": 1,
+          "frame": 3,
+          "underside": true
+        }
+      },
+      {
+        "world": false,
+        "effort": 0,
+        "dir": 1,
+        "crackX": 307.2,
+        "crackY": 259.2,
+        "cracks": 0,
+        "screen": {
+          "x": 307.2,
+          "y": 496.8,
+          "scale": 3.4648163265306127,
+          "angle": 0,
+          "alpha": 1,
+          "frame": 1,
+          "underside": false
+        }
+      },
+      {
+        "world": false,
+        "effort": 0,
+        "dir": 1,
+        "crackX": 307.2,
+        "crackY": 259.2,
+        "cracks": 0,
+        "screen": {
+          "x": 307.56391169871836,
+          "y": 520.9637367949016,
+          "scale": 3.4592123834411237,
+          "angle": 0.05823198810741403,
+          "alpha": 1,
+          "frame": 4,
+          "underside": false
+        }
+      },
+      {
+        "world": false,
+        "effort": 0,
+        "dir": 1,
+        "crackX": 307.2,
+        "crackY": 259.2,
+        "cracks": 0,
+        "screen": {
+          "x": 310.9925573676137,
+          "y": 748.6258092095522,
+          "scale": 3.406414039034559,
+          "angle": -0.059867892526954264,
+          "alpha": 1,
+          "frame": 4,
+          "underside": false
+        }
+      },
+      {
+        "world": false,
+        "effort": 0,
+        "dir": 1,
+        "crackX": 307.2,
+        "crackY": 259.2,
+        "cracks": 0,
+        "screen": {
+          "x": 320.0765195816837,
+          "y": 1351.8009002237986,
+          "scale": 3.26652843641724,
+          "angle": -0.04099534947304157,
+          "alpha": 1,
+          "frame": 4,
+          "underside": false
+        }
+      },
+      {
+        "world": false,
+        "effort": 0,
+        "dir": 1,
+        "crackX": 307.2,
+        "crackY": 259.2,
+        "cracks": 0,
+        "screen": {
+          "x": 325.189388423379,
+          "y": 1691.2953913123654,
+          "scale": 3.1877944300256154,
+          "angle": 0.013166310806487632,
+          "alpha": 1,
+          "frame": 4,
+          "underside": false
+        }
+      },
+      {
+        "world": false,
+        "effort": 0,
+        "dir": 1,
+        "crackX": 921.5999999999999,
+        "crackY": 410.4,
+        "cracks": 0,
+        "screen": {
+          "x": 921.5999999999999,
+          "y": 601.2,
+          "scale": 2.782352504638219,
+          "angle": 0.28,
+          "alpha": 1,
+          "frame": 1,
+          "underside": false
+        }
+      },
+      {
+        "world": false,
+        "effort": 0,
+        "dir": 1,
+        "crackX": 921.5999999999999,
+        "crackY": 410.4,
+        "cracks": 0,
+        "screen": {
+          "x": 783.7030768860081,
+          "y": 537.2295198479303,
+          "scale": 2.713319558248501,
+          "angle": 0.8953635804084561,
+          "alpha": 1,
+          "frame": 5,
+          "underside": false
+        }
+      },
+      {
+        "world": false,
+        "effort": 0,
+        "dir": 1,
+        "crackX": 921.5999999999999,
+        "crackY": 410.4,
+        "cracks": 0,
+        "screen": {
+          "x": 324.6711996723127,
+          "y": 571.3417091971511,
+          "scale": 2.4835223861631612,
+          "angle": 2.9437885423659527,
+          "alpha": 1,
+          "frame": 5,
+          "underside": false
+        }
+      },
+      {
+        "world": false,
+        "effort": 0,
+        "dir": 1,
+        "crackX": 921.5999999999999,
+        "crackY": 410.4,
+        "cracks": 0,
+        "screen": {
+          "x": -667.0643375177697,
+          "y": 850.4170289493622,
+          "scale": 1.987047014373847,
+          "angle": 7.369398028076593,
+          "alpha": 1,
+          "frame": 5,
+          "underside": false
+        }
+      },
+      {
+        "world": false,
+        "effort": 0,
+        "dir": 1,
+        "crackX": 921.5999999999999,
+        "crackY": 410.4,
+        "cracks": 0,
+        "screen": {
+          "x": -1189.34060670313,
+          "y": 1168.1007399660966,
+          "scale": 1.7255888985789714,
+          "angle": 9.700050429237121,
+          "alpha": 1,
+          "frame": 4,
+          "underside": false
+        }
+      }
+    ],
+    "errors": []
+  },
+  "main_files": 645,
+  "other_four_editions_unchanged": true,
+  "final_browser": {
+    "final_native_jump_poses": 12,
+    "four_impacts": [
+      {
+        "world": false,
+        "effort": 0,
+        "dir": 1,
+        "crackX": 614.4,
+        "crackY": 309.6,
+        "cracks": 1,
+        "screen": {
+          "x": 614.4,
+          "y": 547.2,
+          "scale": 3.4648163265306127,
+          "angle": 0,
+          "alpha": 1,
+          "frame": 1,
+          "underside": false
+        }
+      },
+      {
+        "world": false,
+        "effort": 0,
+        "dir": 1,
+        "crackX": 985.6,
+        "crackY": 237.60000000000002,
+        "cracks": 1,
+        "screen": {
+          "x": 985.6,
+          "y": 475.20000000000005,
+          "scale": 3.4648163265306127,
+          "angle": -0.12,
+          "alpha": 1,
+          "frame": 3,
+          "underside": true
+        }
+      },
+      {
+        "world": false,
+        "effort": 0,
+        "dir": 1,
+        "crackX": 307.2,
+        "crackY": 259.2,
+        "cracks": 0,
+        "screen": {
+          "x": 307.2,
+          "y": 496.8,
+          "scale": 3.4648163265306127,
+          "angle": 0,
+          "alpha": 1,
+          "frame": 1,
+          "underside": false
+        }
+      },
+      {
+        "world": false,
+        "effort": 0,
+        "dir": 1,
+        "crackX": 934.4,
+        "crackY": 194.4,
+        "cracks": 0,
+        "screen": {
+          "x": 934.4,
+          "y": 385.20000000000005,
+          "scale": 2.782352504638219,
+          "angle": 0.28,
+          "alpha": 1,
+          "frame": 1,
+          "underside": false
+        }
+      }
+    ],
+    "slide_samples": 4,
+    "errors": []
+  },
+  "preservation": {
+    "existing_art_and_recordings_unchanged": true,
+    "new_asset": [
+      "dist/assets/bt-finish-frames.png"
+    ],
+    "mechanics_and_prior_features_unchanged": {
+      "src/engine.js": "e70dbb0f9498b3407d1a97073b39d8a8159cbc58fe8ddd16f9e81c60c109eb21",
+      "src/bt-combat.js": "a8c55b8cc3c7076bc3e8e87f335f281427d5263d3d00441da4af2b3b85bd17bc",
+      "src/gatling-combat.js": "3fc7204583007c8ece714fe41cc5727ceaec2486c305977b67e1832661182d87",
+      "src/voice-lines.js": "96d7aaa67445ed1673fdea32b9e3a51d3b1fceead44887564f3b8c12b56a2cb2",
+      "src/royal-world.js": "73d81998a13543c248f6e2ccbfc3396c24fd29e931e47c46075f16968afe2169",
+      "src/royal-waterfalls.js": "c66a927e478b16357e6a966994492ee7503ee768d62eaf5a066377d8a90c9b53",
+      "src/royal-layout.js": "dc31b24b15580750db7de4b1cc8216d217354b7aca09302edbd5dad51e4fea6c",
+      "src/desert-layout.js": "45f91e4d93dea6cf40989aca0a453f422071826be6a6e285a35f6bf7633d8ce0"
+    }
+  },
+  "published_resource_checks": [
+    {
+      "path": "assets/bt-finish-frames.png",
+      "status": 200,
+      "sha256": "393d72cc71538e0989e6dc9f398e57a67476afb626d92fddf1732693e7e4ba8d"
+    },
+    {
+      "path": "src/audio.js",
+      "status": 200,
+      "sha256": "cd2d04dc462b2a9c2b08394c30c26162131f271afb52ad560c2d9e47f6981c11"
+    },
+    {
+      "path": "src/bt-finish-frames.js",
+      "status": 200,
+      "sha256": "5b304b6cf00369d4e5e1054a35e2a4dfca27b0f51f4ead04041167111e725398"
+    },
+    {
+      "path": "src/bt-finish-timing.js",
+      "status": 200,
+      "sha256": "3d46beb609507379864e2ef421c8ebfd450a378c3a89255868bf88dbcabcf505"
+    },
+    {
+      "path": "src/bt-finish-visual.js",
+      "status": 200,
+      "sha256": "46d28182d035ce7a7f9c6cdc584a3134d70ac66f85ea72c84e2bc786bfbbb9ee"
+    },
+    {
+      "path": "src/character-turns.js",
+      "status": 200,
+      "sha256": "8efa8ef9e7f795c9add209d8f3041128754d98550fc45d6a2b181f40d391a0c0"
+    },
+    {
+      "path": "src/gatling-art.js",
+      "status": 200,
+      "sha256": "e18b454632e173725c796b17ed35298d0e89231ac15418334251445724cc08d7"
+    },
+    {
+      "path": "src/ink-encounters.js",
+      "status": 200,
+      "sha256": "55afe4a335b9f8ea130138d9f78935dd82b35d34e4a706812b988246aecacf6c"
+    },
+    {
+      "path": "src/ink-enemy-saltik.js",
+      "status": 200,
+      "sha256": "55009f011a2732edf822f99e559f4c1ad48ce2c075d4cb6cede1059c60b68fd4"
+    },
+    {
+      "path": "src/ink-renderer.js",
+      "status": 200,
+      "sha256": "b23c9b14734f2304602415e22c64cb666525b040beb91c774b410af156be7557"
+    },
+    {
+      "path": "src/jump-leg-pose.js",
+      "status": 200,
+      "sha256": "9ccf38a5af031e954952e6555203e0eb143edd195e93f8753aa16a3d31b0e78e"
+    },
+    {
+      "path": "src/modern-striker-art.js",
+      "status": 200,
+      "sha256": "ce69c3c802bfe0fc3de61ae663c7a95a38a133cd817058f6284b321de3b44cce"
+    },
+    {
+      "path": "src/saltik-duel.js",
+      "status": 200,
+      "sha256": "5d9a2f13221c0d34ca6ab726fa34f22ef0d8a9e25a22bd22b6f907437b9d2cf0"
+    }
+  ]
+}

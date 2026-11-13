@@ -1,4 +1,4 @@
-import {jumpLegOffset,jumpLegExtension} from './jump-leg-pose.js';
+import {jumpLegOffset,jumpLegExtension,jumpLegPose,jumpLegPoint,applyJumpLegPose} from './jump-leg-pose.js';
 import {sampleSupportSurface} from './support-pose.js';
 import {plantInkWheel} from './ink-leg-support.js';
 import {drawInkEnemyPods,inkEnemyPodGeometry} from './ink-pods.js';
@@ -89,10 +89,10 @@ export function inkEnemySaltikGeometry(e,time=0,{camera=0,scale=1,view='side'}={
  const sourcePoint=([px,py])=>{const xx=(px-frame.anchor[0])*k*flip,yy=(py-frame.anchor[1])*k;return{x:x+offsetX+xx*co-yy*si,y:y+heave+bodyDrop+xx*si+yy*co};};
  const legs=view==='front'?[]:INK_ENEMY_SALTIK_PARTS.legs.map((part,index)=>{
   const stride=walking?Math.sin(phase+(index===1?Math.PI:0))*10:0;
-  const splay=jumpLegOffset(e,part.foot[0],frame.anchor[0],k,scale);
-  const native=sourcePoint([part.foot[0]+stride+splay,part.foot[1]]);
+  const jumpPose=jumpLegPose(e,part,frame.anchor[0]),legPoint=q=>sourcePoint(jumpLegPoint(jumpPose,q)),splay=airborne?0:jumpLegOffset(e,part.foot[0],frame.anchor[0],k,scale);
+  const native=legPoint([part.foot[0]+stride+splay,part.foot[1]]);
   const lift=walking?Math.max(0,Math.sin(phase+(index===1?Math.PI:0)))*1.8*scale:0;
-  let offset=airborne?(e.jumpLegs?jumpLegExtension(e,k,scale):-15):0,roll=stride+splay,grounded=false;
+  let offset=airborne?(e.jumpLegs?0:-15):0,roll=stride+splay,grounded=false;
   // With no terrain supplied, leave the resting native leg exactly in place.
   // The duel masks these same pixels before drawing its held leg and hands.
   if(!airborne&&e.supportPose){
@@ -101,9 +101,9 @@ export function inkEnemySaltikGeometry(e,time=0,{camera=0,scale=1,view='side'}={
    offset=planted.offset;roll+=planted.roll;grounded=planted.grounded&&lift<.001;
   }
   offset-=lift/(k*co);
-  return{...part,offset,roll,lift,grounded,stretch:1+offset/(part.wheelTop-part.hinge),
+  return{...part,jumpPose,offset,roll,lift,grounded,stretch:1+offset/(part.wheelTop-part.hinge),
    spin:distance/(part.hub[3]*PIXEL_SCALE)*flip,
-   contact:sourcePoint([part.foot[0]+roll,part.foot[1]+offset])};
+   contact:legPoint([part.foot[0]+roll,part.foot[1]+offset])};
  });
  const recoil=view==='side'?clamp(finite(e.cannonRecoil,finite(e.firePose)/.14)):0;
  const cannonPart={...INK_ENEMY_SALTIK_PARTS.cannon,offsetX:-22*recoil,rotation:view==='side'?-clamp(finite(e.cannonElevation),-.12,.18):0};
@@ -168,15 +168,17 @@ export function drawInkEnemySaltik(c,image,e,{camera=0,time=0,scale=1,view='side
   c.save();c.beginPath();polygon(c,geo.cropPolygon);
   for(const part of [...geo.legs,...geo.arms,geo.cannonPart,...geo.podParts])polygon(c,part.polygon);
   c.clip('evenodd');draw();c.restore();
+  const drawLeg=()=>{c.save();for(const arm of geo.arms){c.beginPath();c.rect(...geo.crop);polygon(c,arm.polygon);c.clip('evenodd');}draw();c.restore();};
   for(const part of geo.legs){
+   c.save();applyJumpLegPose(c,part.jumpPose);
    c.save();c.translate(0,part.hinge);c.transform(1,0,part.roll/(part.wheelTop-part.hinge),part.stretch,0,0);c.translate(0,-part.hinge);
-   c.beginPath();polygon(c,part.strutPolygon);c.clip();draw();c.restore();
+   c.beginPath();polygon(c,part.strutPolygon);c.clip();drawLeg();c.restore();
    c.save();c.translate(part.roll,part.offset);
-   c.beginPath();polygon(c,part.wheelPolygon);c.clip();draw();
+   c.beginPath();polygon(c,part.wheelPolygon);c.clip();drawLeg();
    // Rotate only the existing inset hub texture inside its native projected
    // ellipse. The tire outline and the planted contact stay in the same place.
    /* Original wheel painting stays fixed. */
-   c.restore();
+   c.restore();c.restore();
   }
   for(const part of [geo.cannonPart,...geo.podParts,...geo.arms]){
    c.save();c.translate(...part.pivot);c.rotate(part.rotation);c.translate(-part.pivot[0]+finite(part.offsetX),-part.pivot[1]);

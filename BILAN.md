@@ -129,3 +129,7 @@ La refonte Gatling est désormais publiée en version Sites34, source `bc3b03f53
 ### 13 novembre 2026 — animations et ambiance
 
 Sauts davantage dépliés, roues sans rotation visuelle, trois projections BT dont une vue de dessous et une glissade sans fissure, voix BT/Gatling distinctes et cascades velours animées. Physique et armement inchangés. Version Sites v36 publiée ; source `41e4f25dacec613d85ac87eb1830b6af6eaaed17`. Rapport : [character-polish-release.json](character-polish-release.json). Autres éditions et historique préservés.
+
+### 13 novembre 2026 — animations et ambiance
+
+Pattes presque horizontales via pivots réels ; quatre fins BT distinctes, six poses illustrées, pause interloquée et ricochet animé. Physique, armes, voix et cascades préservées. Version Sites v37 publiée ; source `4c6ea08bacd1fe2c0ecc951e88eb9f30ca28de9b`. Rapport : [expressive-finishes-release.json](expressive-finishes-release.json). Autres éditions et historique préservés.

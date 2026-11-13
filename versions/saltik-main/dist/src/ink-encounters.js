@@ -1,3 +1,5 @@
+import {btFinishVisual} from './bt-finish-visual.js';
+import {BT_FINISH_FRAMES} from './bt-finish-frames.js';
 import {drawBossAssault,bossAssaultPodPose} from './boss-assault-art.js';
 import {bossGeometry,bossCannonWarningProgress} from './boss-tank.js';
 import {drawInkSaltik,inkSaltikGeometry,INK_SALTIK_CROP,INK_SALTIK_ANCHOR,INK_SALTIK_PARTS} from './ink-saltik.js';
@@ -314,6 +316,7 @@ export function drawInkBossBreach(c,images,q,b,{camera=0,time=0,player={}}={}){
 
 export function inkDuelVisual(q,{camera=0,cameraY=0,width=1280,height=720}={}){
  if(!q)return null;
+ const finish=btFinishVisual(q,{camera,cameraY,width,height},INK_ENEMY_SALTIK_HEIGHT);if(finish)return finish;
  const phase=q.phase,elapsed=finite(q.elapsed),world=['engage','qte'].includes(phase);
  const active=phase==='qte'&&finite(q.effortsCompleted)<finite(q.taps),effort=active?Math.sin(Math.PI*clamp(finite(q.effortElapsed)/.24)):0;
  const dir=q.dir===-1?-1:1,crackX=width*(q.throwVariant===1?(dir===1?.30:.73):.56),crackY=height*(q.throwVariant===1?.36:.44),targetHeight=height*.64,targetScale=targetHeight/INK_ENEMY_SALTIK_HEIGHT,targetFoot=crackY+targetHeight*.5;
@@ -422,7 +425,8 @@ function glassCracks(c,x,y,width,height,alpha){
 export function drawInkDuelScreen(c,images,q,viewport={}){
  const v=inkDuelVisual(q,viewport);if(!v||!v.screen&&v.cracks<=0||!images['ink-enemy-saltik'])return false;
  if(v.screen){const p=v.screen;c.save();c.translate(p.x,p.y);c.rotate(p.angle);c.globalAlpha*=p.alpha;
-  if(p.underside&&images['bt-impact-underside']){const image=images['bt-impact-underside'],h=INK_ENEMY_SALTIK_HEIGHT*p.scale,w=h*image.width/image.height;c.drawImage(image,-w/2,-h,w,h);}
+  if(p.frame!==undefined&&images['bt-finish-frames']){const image=images['bt-finish-frames'],crop=BT_FINISH_FRAMES[p.frame],h=INK_ENEMY_SALTIK_HEIGHT*p.scale,w=h*crop[2]/crop[3];c.drawImage(image,...crop,-w/2,-h,w,h);}
+  else if(p.underside&&images['bt-impact-underside']){const image=images['bt-impact-underside'],h=INK_ENEMY_SALTIK_HEIGHT*p.scale,w=h*image.width/image.height;c.drawImage(image,-w/2,-h,w,h);}
   else drawInkEnemySaltik(c,images['ink-enemy-saltik'],{x:0,y:0,hp:1,podCycle:q.enemyPodCycle},{view:'front',scale:p.scale});c.restore();}
  glassCracks(c,v.crackX,v.crackY,viewport.width??1280,viewport.height??720,v.cracks);return true;
 }

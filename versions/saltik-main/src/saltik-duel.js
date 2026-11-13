@@ -1,10 +1,11 @@
+import {btFinishHold} from './bt-finish-timing.js';
 // The anchor and actor coordinates are world-space foot positions. The
 // renderer can pose both locked actors without moving their physical support.
 export const DUEL_PHASE_SECONDS=Object.freeze({engage:.45,throw:.48,impact:.18,slide:.95,recover:.2});
 export const DUEL_EFFORT_SECONDS=.24;
 
 export function createSaltikDuel(player,enemy,random=Math.random){
-  return {throwVariant:Math.min(2,Math.max(0,Math.floor(random()*3))),phase:'engage',elapsed:0,taps:0,effortsCompleted:0,effortElapsed:0,enemyId:enemy.id,
+  return {throwVariant:Math.min(3,Math.max(0,Math.floor(random()*4))),phase:'engage',elapsed:0,taps:0,effortsCompleted:0,effortElapsed:0,enemyId:enemy.id,
     x:(player.x+enemy.x)/2,y:(player.y+enemy.y)/2,
     dir:enemy.x>=player.x?1:-1,
     playerX:player.x,enemyX:enemy.x,playerY:player.y,enemyY:enemy.y,
@@ -37,13 +38,17 @@ export function advanceSaltikDuel(current,qte,dt){
   }
   const duration=DUEL_PHASE_SECONDS[duel.phase];
   if(duration===undefined)return {duel,events};
+  const previousElapsed=duel.elapsed;
   duel.elapsed=Math.min(duration,duel.elapsed+dt);
+  if(duel.phase==='slide'&&previousElapsed<btFinishHold(duel)&&duel.elapsed>=btFinishHold(duel)){
+    if(duel.throwVariant===2)event('duel-slide');
+    if(duel.throwVariant===3)event('duel-ricochet');
+  }
   if(duel.elapsed<duration-1e-9)return {duel,events};
   const next={engage:'qte',throw:'impact',impact:'slide',slide:'recover',recover:null}[duel.phase];
   if(next===null){event('duel-end');return {duel:null,events};}
   duel.phase=next;duel.elapsed=0;
   if(next==='qte'){duel.qteHeld=!!qte;duel.qteArmed=false;}
   if(next==='impact')event('duel-impact');
-  if(next==='slide'&&duel.throwVariant===2)event('duel-slide');
   return {duel,events};
 }

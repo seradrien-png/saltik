@@ -241,9 +241,10 @@ export function createAudio({onSpeech=()=>{}}={}){
     else if(e.type==='duel-tap'){duck(.65,.06);burst(.038,.14,3400,0,'bandpass');tone(135,80,.075,.08,'triangle');}
     else if(e.type==='duel-throw'){duck(.3,.35);burst(.34,.25,1700);tone(130,38,.27,.22,'sawtooth');}
     else if(e.type==='duel-impact'){
-      if(e.throwVariant===2){duck(.5,.2);burst(.16,.20,650);tone(110,65,.16,.11,'triangle');}
+      if(e.throwVariant===2||e.throwVariant===3){duck(.5,.2);burst(.16,.20,650);tone(110,65,.16,.11,'triangle');}
       else{duck(.2,.3);burst(.14,.35,5200,0,'highpass');burst(.24,.31,850);burst(.055,.19,6800,.08,'bandpass');}
     }
+    else if(e.type==='duel-ricochet'){duck(.45,.7);tone(190,720,.13,.10,'triangle');tone(430,110,.33,.10,'sine',.17);burst(.45,.11,1300,.2,'bandpass',.03);}
     else if(e.type==='duel-slide'){duck(.5,.95);burst(.92,.13,1650,0,'bandpass',.045);tone(650,180,.8,.055,'sine',0,false,.04);tone(410,110,.65,.045,'triangle',.2,false,.05);}
     else if(e.type==='duel-end'){tone(185,65,.16,.13,'triangle');}
     else if(e.type==='repair'){tone(550,1000,.25,.18,'sine');tone(850,1500,.2,.12,'sine',.09);}
