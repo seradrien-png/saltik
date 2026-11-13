@@ -8,6 +8,12 @@ test('V2 preserves V1 native pixels, walkable geometry, native motions and encou
  for(const [path,sha] of Object.entries(preserved)){
   if(approvedChanges.has(path))continue;
   let content=readFileSync(new URL('../'+path,import.meta.url));
+  // Authorized three-way throw presentation adds only a sampled cosmetic choice.
+  if(path==='src/saltik-duel.js')content=Buffer.from(content.toString()
+   .replace('createSaltikDuel(player,enemy,random=Math.random){','createSaltikDuel(player,enemy){')
+   .replace('throwVariant:Math.min(2,Math.max(0,Math.floor(random()*3))),','')
+   .replace('throwVariant:duel.throwVariant??0,','')
+   .replace("\n  if(next==='slide'&&duel.throwVariant===2)event('duel-slide');",''));
   if(path==='src/boss-breach.js')content=Buffer.from(content.toString()
    // Authorized boss replacement moves hull assault feet onto the new turret.
    .replace('boss.assaultArt?geometry.turretRoof.x1+2:','')
@@ -27,6 +33,12 @@ test('V2 preserves V1 native pixels, walkable geometry, native motions and encou
    .replace(' const bobSeed=Number.isFinite(e.id)?e.id:Number.isFinite(e.phase)?e.phase:0;\n const bob=walking?Math.sin(time*10+bobSeed)*.9:0;',
     ' const bob=walking?Math.sin(time*10+(e.id??0))*.9:0;'));
   if(path==='src/audio.js')content=Buffer.from(content.toString()
+   // Character voice delivery and intact-glass slide are explicitly authorized.
+   .replace("const VOICE_PROFILES_SAFE=value=>['bt','gatling'].includes(value)?value:'striker';\n",'')
+   .replace("let effectsActive=true,speech=null,character='striker';","let effectsActive=true,speech=null;")
+   .replace('speech?.enqueue(line,e.character??character);','speech?.enqueue(line);')
+   .replace('setCharacter(value){character=VOICE_PROFILES_SAFE(value);},','')
+   .replace(/    else if\(e.type==='duel-impact'\)\{[\s\S]*?    else if\(e.type==='duel-end'\)/,"    else if(e.type==='duel-impact'){duck(.2,.3);burst(.14,.35,5200,0,'highpass');burst(.24,.31,850);burst(.055,.19,6800,.08,'bandpass');}\n    else if(e.type==='duel-end')")
    // New Gatling-only audio branches must leave the original Striker mix intact.
    .replace('  let lastGatlingShot=-Infinity;\n','')
    .replace('lastGatlingShot=-Infinity;','')

@@ -316,16 +316,17 @@ export function inkDuelVisual(q,{camera=0,cameraY=0,width=1280,height=720}={}){
  if(!q)return null;
  const phase=q.phase,elapsed=finite(q.elapsed),world=['engage','qte'].includes(phase);
  const active=phase==='qte'&&finite(q.effortsCompleted)<finite(q.taps),effort=active?Math.sin(Math.PI*clamp(finite(q.effortElapsed)/.24)):0;
- const dir=q.dir===-1?-1:1,crackX=width*.56,crackY=height*.44,targetHeight=height*.64,targetScale=targetHeight/INK_ENEMY_SALTIK_HEIGHT,targetFoot=crackY+targetHeight*.5;
+ const dir=q.dir===-1?-1:1,crackX=width*(q.throwVariant===1?(dir===1?.30:.73):.56),crackY=height*(q.throwVariant===1?.36:.44),targetHeight=height*.64,targetScale=targetHeight/INK_ENEMY_SALTIK_HEIGHT,targetFoot=crackY+targetHeight*.5;
  const result={world,effort,dir,crackX,crackY,cracks:0,screen:null};
  if(world){const gap=115,lean=effort*1.5;result.player={x:q.x-dir*(gap*.5+lean),y:q.playerY};result.enemy={x:q.x+dir*(gap*.5-lean),y:q.enemyY};}
  else if(phase==='throw'){
   const u=smooth(clamp(elapsed/.48));result.screen={x:lerp(q.enemyX-camera,crackX,u),y:lerp(q.enemyY+cameraY,targetFoot,u),scale:lerp(1,targetScale,u),angle:-.12*Math.sin(u*Math.PI)*dir,alpha:1};
  }else if(phase==='impact'){
-  const u=clamp(elapsed/.18);result.screen={x:crackX+Math.sin(u*Math.PI*4)*4*(1-u),y:targetFoot,scale:targetScale*(1+.045*Math.sin(u*Math.PI)),angle:0,alpha:1};result.cracks=1;
+  const u=clamp(elapsed/.18);result.screen={x:crackX+Math.sin(u*Math.PI*4)*4*(1-u),y:targetFoot,scale:targetScale*(1+.045*Math.sin(u*Math.PI)),angle:0,alpha:1};result.cracks=q.throwVariant===2?0:1;
  }else if(phase==='slide'){
-  const u=clamp(elapsed/.95),fall=smooth(u);result.screen={x:crackX+dir*fall*35,y:targetFoot+fall*(height+targetHeight*.65),scale:targetScale*(1-.12*fall),angle:dir*fall*.2,alpha:1-.15*u};result.cracks=1-.25*u;
- }else if(phase==='recover')result.cracks=.75*(1-clamp(elapsed/.2));
+  const u=clamp(elapsed/.95),fall=smooth(u);result.screen={x:crackX+dir*fall*35,y:targetFoot+fall*(height+targetHeight*.65),scale:targetScale*(1-.12*fall),angle:dir*fall*.2,alpha:1-.15*u};result.cracks=q.throwVariant===2?0:1-.25*u;
+ }else if(phase==='recover')result.cracks=(q.throwVariant===2?0:.75)*(1-clamp(elapsed/.2));
+ if(result.screen)result.screen.underside=q.throwVariant===1;
  return result;
 }
 
@@ -421,6 +422,7 @@ function glassCracks(c,x,y,width,height,alpha){
 export function drawInkDuelScreen(c,images,q,viewport={}){
  const v=inkDuelVisual(q,viewport);if(!v||!v.screen&&v.cracks<=0||!images['ink-enemy-saltik'])return false;
  if(v.screen){const p=v.screen;c.save();c.translate(p.x,p.y);c.rotate(p.angle);c.globalAlpha*=p.alpha;
-  drawInkEnemySaltik(c,images['ink-enemy-saltik'],{x:0,y:0,hp:1,podCycle:q.enemyPodCycle},{view:'front',scale:p.scale});c.restore();}
+  if(p.underside&&images['bt-impact-underside']){const image=images['bt-impact-underside'],h=INK_ENEMY_SALTIK_HEIGHT*p.scale,w=h*image.width/image.height;c.drawImage(image,-w/2,-h,w,h);}
+  else drawInkEnemySaltik(c,images['ink-enemy-saltik'],{x:0,y:0,hp:1,podCycle:q.enemyPodCycle},{view:'front',scale:p.scale});c.restore();}
  glassCracks(c,v.crackX,v.crackY,viewport.width??1280,viewport.height??720,v.cracks);return true;
 }

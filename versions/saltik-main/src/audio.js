@@ -1,10 +1,11 @@
+const VOICE_PROFILES_SAFE=value=>['bt','gatling'].includes(value)?value:'striker';
 import {createVoiceLines,VOICE_EVENTS} from './voice-lines.js';
 
 export function createAudio({onSpeech=()=>{}}={}){
   let ctx=null,master=null,output=null,musicBus=null,enabled=true,noise=null,lastShot=-Infinity;
   let lastGatlingShot=-Infinity;
   let lastEnemyShot=-Infinity,lastExplosion=-Infinity,lastVolley=-Infinity;
-  let effectsActive=true,speech=null;
+  let effectsActive=true,speech=null,character='striker';
   const voices=new Set();
   let duckUntil=0,duckLevel=1,duckRelease=.15;
   const music=document.getElementById('game-music');let playing=false,musicEnabled=true;
@@ -105,7 +106,7 @@ export function createAudio({onSpeech=()=>{}}={}){
   }
   function play(e){
     if(!ctx||!enabled||(!effectsActive&&e.type!=='won'))return;
-    const line=VOICE_EVENTS[e.type];if(line)speech?.enqueue(line);
+    const line=VOICE_EVENTS[e.type];if(line)speech?.enqueue(line,e.character??character);
     if(e.type==='gatling-shot'){
       if(ctx.currentTime-lastGatlingShot<1/15-.001)return;lastGatlingShot=ctx.currentTime;
       burst(.045,.055,1900,0,'bandpass');tone(135,62,.055,.065,'triangle');
@@ -239,13 +240,17 @@ export function createAudio({onSpeech=()=>{}}={}){
     else if(e.type==='duel-start'){duck(.45,.28);burst(.075,.22,2300);tone(180,68,.19,.17,'sawtooth');burst(.04,.18,4100,.09,'bandpass');}
     else if(e.type==='duel-tap'){duck(.65,.06);burst(.038,.14,3400,0,'bandpass');tone(135,80,.075,.08,'triangle');}
     else if(e.type==='duel-throw'){duck(.3,.35);burst(.34,.25,1700);tone(130,38,.27,.22,'sawtooth');}
-    else if(e.type==='duel-impact'){duck(.2,.3);burst(.14,.35,5200,0,'highpass');burst(.24,.31,850);burst(.055,.19,6800,.08,'bandpass');}
+    else if(e.type==='duel-impact'){
+      if(e.throwVariant===2){duck(.5,.2);burst(.16,.20,650);tone(110,65,.16,.11,'triangle');}
+      else{duck(.2,.3);burst(.14,.35,5200,0,'highpass');burst(.24,.31,850);burst(.055,.19,6800,.08,'bandpass');}
+    }
+    else if(e.type==='duel-slide'){duck(.5,.95);burst(.92,.13,1650,0,'bandpass',.045);tone(650,180,.8,.055,'sine',0,false,.04);tone(410,110,.65,.045,'triangle',.2,false,.05);}
     else if(e.type==='duel-end'){tone(185,65,.16,.13,'triangle');}
     else if(e.type==='repair'){tone(550,1000,.25,.18,'sine');tone(850,1500,.2,.12,'sine',.09);}
     else if(e.type==='boss'){tone(140,90,.6,.25,'sawtooth');}
     else if(e.type==='start'){tone(220,660,.4,.18,'triangle');}
     else if(e.type==='won'){tone(330,660,.5,.22,'triangle',0,true);tone(440,880,.6,.18,'triangle',.18,true);}
   }
-  return {unlock,play,setPlaying,setMusicEnabled(value){musicEnabled=!!value;syncMusic();},setEnabled(value){enabled=!!value;if(output){hold(output.gain,ctx.currentTime);output.gain.setTargetAtTime(enabled?1:0,ctx.currentTime,.012);}if(!enabled){stopVoices();speech?.cancel();clearDucking();}syncMusic();},get enabled(){return enabled;},
+  return {unlock,play,setPlaying,setCharacter(value){character=VOICE_PROFILES_SAFE(value);},setMusicEnabled(value){musicEnabled=!!value;syncMusic();},setEnabled(value){enabled=!!value;if(output){hold(output.gain,ctx.currentTime);output.gain.setTargetAtTime(enabled?1:0,ctx.currentTime,.012);}if(!enabled){stopVoices();speech?.cancel();clearDucking();}syncMusic();},get enabled(){return enabled;},
     get speechSnapshot(){return speech?.snapshot()??Object.freeze({playing:null,queued:0,loading:0,lastLine:null,played:Object.freeze({}),failed:0});}};
 }

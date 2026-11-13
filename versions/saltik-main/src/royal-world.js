@@ -1,13 +1,14 @@
+import {drawRoyalWaterfalls} from './royal-waterfalls.js';
 import {drawRoyalProps} from './royal-props.js';
 import {ROYAL_CELLS,ROYAL_SITES,royalGroundAt} from './royal-layout.js';
 const GOLD='#d99b29',TAU=Math.PI*2;
 export function royalPaintedBounds(s){const cell=ROYAL_CELLS[s.kind];return{x:s.left,y:s.top,w:cell.crop[2]*s.scale,h:cell.crop[3]*s.scale};}
-function paintSite(c,art,s,camera=0){const cell=ROYAL_CELLS[s.kind],image=cell.source==='bridge'?art?.bridge:cell.source==='organic'?art?.organic:art?.atlas;if(!image)return;const b=royalPaintedBounds(s);c.drawImage(image,...cell.crop,b.x-camera,b.y,b.w,b.h);}
-export function drawRoyalBackdrop(c,{camera,width,height,image,art}){
+function paintSite(c,art,s,camera=0,time=0){const cell=ROYAL_CELLS[s.kind],image=cell.source==='bridge'?art?.bridge:cell.source==='organic'?art?.organic:art?.atlas;if(!image)return;const b=royalPaintedBounds(s);c.drawImage(image,...cell.crop,b.x-camera,b.y,b.w,b.h);if(s.kind==='bridge')drawRoyalWaterfalls(c,image,'bridge',{x:b.x-camera,y:b.y,scale:s.scale,time});}
+export function drawRoyalBackdrop(c,{camera,width,height,image,art,time=0}){
  c.save();c.globalAlpha=1;c.fillStyle='#041454';c.fillRect(0,0,width,height);
  // Keep the reference composition readable: tree at left, mountains and full
  // rainbow in the center/right. Only a restrained panoramic drift is applied.
- if(image){const w=Math.max(width*1.08,height*image.width/image.height),h=w*image.height/image.width,x=(width-w)/2-Math.min(1,Math.max(0,camera/17800))*(w-width)*.35;c.drawImage(image,x,Math.min(0,(height-h)*.22),w,h);}
+ if(image){const w=Math.max(width*1.08,height*image.width/image.height),h=w*image.height/image.width,x=(width-w)/2-Math.min(1,Math.max(0,camera/17800))*(w-width)*.35;const y=Math.min(0,(height-h)*.22);c.drawImage(image,x,y,w,h);drawRoyalWaterfalls(c,image,'backdrop',{x,y,scale:w/1672,scaleY:h/941,time});}
  // Small opaque wooded islands occupy a clearly separate middle distance.
  if(art?.atlas)for(const [i,world] of [1600,5500,9800,14300,18500].entries()){
   const x=width*.7+(world-camera)*.19,w=290+(i%2)*70,h=w*512/768,y=height*.56;
@@ -35,7 +36,7 @@ function ground(c,{camera,width,art}){
 }
 export function drawRoyalWorld(c,g,{camera,width,time,art}){
  ground(c,{camera,width,art});
- for(const s of ROYAL_SITES){const b=royalPaintedBounds(s);if(b.x+b.w<camera-100||b.x>camera+width+100)continue;paintSite(c,art,s,camera);}
+ for(const s of ROYAL_SITES){const b=royalPaintedBounds(s);if(b.x+b.w<camera-100||b.x>camera+width+100)continue;paintSite(c,art,s,camera,time);}
  // Three distinct story seals, gilded medallions rooted in their own gardens.
  for(const [i,x] of [4800,10400,16450].entries()){
   const screen=x-camera;if(screen<-100||screen>width+100)continue;const y=royalGroundAt(x)-95,opened=g.royal.seals>i;

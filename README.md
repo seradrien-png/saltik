@@ -8,7 +8,7 @@ Les cinq états ci-dessous sont conservés dans des dossiers indépendants, sans
 
 | Jeu / sources | État réel | GitHub Pages après activation | Commit source |
 | --- | --- | --- | --- |
-| [SALTIK V2 — Matin Doré](versions/saltik-main) | Publiée v35 — saut animé, Gatling, Striker, BT16 et 4 niveaux | [Jouer](https://saltik-v2-matin-dore.ser-adrien.chatgpt.site) | `79668a31bfef` |
+| [SALTIK V2 — Matin Doré](versions/saltik-main) | Publiée v36 — sauts mignons, projections BT, voix et cascades animées | [Jouer](https://saltik-v2-matin-dore.ser-adrien.chatgpt.site) | `41e4f25dacec` |
 | [SALTIK — Ink Edition publiée](versions/saltik-ink) | Publiée v4 | [Jouer](https://seradrien-png.github.io/saltik/versions/saltik-ink/dist/) | `44110aa2dd80` |
 | [SALTIK INK — brouillon local avec épilogue](versions/autres-versions/saltik-ink-brouillon) | Brouillon local non publié | [Jouer](https://seradrien-png.github.io/saltik/versions/autres-versions/saltik-ink-brouillon/dist/) | `21dcc4ca32c5` |
 | [Feral Steel — Opération Canopée, référence Saltik](versions/autres-versions/saltik-feral-steel) | Publiée v24 | [Jouer](https://seradrien-png.github.io/saltik/versions/autres-versions/saltik-feral-steel/dist/) | `dbc331d0b7a2` |
@@ -142,3 +142,7 @@ Sites v34 est en ligne : [jouer avec le nouveau Gatling](https://saltik-v2-matin
 ### 13 novembre 2026 — animation de saut
 
 Écartement progressif des pattes au décollage et retour amorti à l’atterrissage pour Striker, Gatling et BT, retournements compris. Physique inchangée. Version Sites v35 publiée ; source `79668a31bfef6140ce6aee3e9e26fb5ca08b0eed`. Rapport : [jump-animation-release.json](jump-animation-release.json). Autres éditions et historique préservés.
+
+### 13 novembre 2026 — animations et ambiance
+
+Sauts davantage dépliés, roues sans rotation visuelle, trois projections BT dont une vue de dessous et une glissade sans fissure, voix BT/Gatling distinctes et cascades velours animées. Physique et armement inchangés. Version Sites v36 publiée ; source `41e4f25dacec613d85ac87eb1830b6af6eaaed17`. Rapport : [character-polish-release.json](character-polish-release.json). Autres éditions et historique préservés.

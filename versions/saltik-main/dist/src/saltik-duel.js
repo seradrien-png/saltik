@@ -3,8 +3,8 @@
 export const DUEL_PHASE_SECONDS=Object.freeze({engage:.45,throw:.48,impact:.18,slide:.95,recover:.2});
 export const DUEL_EFFORT_SECONDS=.24;
 
-export function createSaltikDuel(player,enemy){
-  return {phase:'engage',elapsed:0,taps:0,effortsCompleted:0,effortElapsed:0,enemyId:enemy.id,
+export function createSaltikDuel(player,enemy,random=Math.random){
+  return {throwVariant:Math.min(2,Math.max(0,Math.floor(random()*3))),phase:'engage',elapsed:0,taps:0,effortsCompleted:0,effortElapsed:0,enemyId:enemy.id,
     x:(player.x+enemy.x)/2,y:(player.y+enemy.y)/2,
     dir:enemy.x>=player.x?1:-1,
     playerX:player.x,enemyX:enemy.x,playerY:player.y,enemyY:enemy.y,
@@ -14,7 +14,7 @@ export function createSaltikDuel(player,enemy){
 export function advanceSaltikDuel(current,qte,dt){
   if(!current||!(dt>0))return {duel:current,events:[]};
   const duel={...current},events=[];
-  const event=(type,extra={})=>events.push({type,x:duel.x,y:duel.y,enemyId:duel.enemyId,...extra});
+  const event=(type,extra={})=>events.push({type,x:duel.x,y:duel.y,enemyId:duel.enemyId,throwVariant:duel.throwVariant??0,...extra});
   if(duel.phase==='qte'){
     const held=!!qte;
     if(!held)duel.qteArmed=true;
@@ -44,5 +44,6 @@ export function advanceSaltikDuel(current,qte,dt){
   duel.phase=next;duel.elapsed=0;
   if(next==='qte'){duel.qteHeld=!!qte;duel.qteArmed=false;}
   if(next==='impact')event('duel-impact');
+  if(next==='slide'&&duel.throwVariant===2)event('duel-slide');
   return {duel,events};
 }

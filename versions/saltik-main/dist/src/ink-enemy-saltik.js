@@ -1,4 +1,4 @@
-import {jumpLegOffset} from './jump-leg-pose.js';
+import {jumpLegOffset,jumpLegExtension} from './jump-leg-pose.js';
 import {sampleSupportSurface} from './support-pose.js';
 import {plantInkWheel} from './ink-leg-support.js';
 import {drawInkEnemyPods,inkEnemyPodGeometry} from './ink-pods.js';
@@ -92,7 +92,7 @@ export function inkEnemySaltikGeometry(e,time=0,{camera=0,scale=1,view='side'}={
   const splay=jumpLegOffset(e,part.foot[0],frame.anchor[0],k,scale);
   const native=sourcePoint([part.foot[0]+stride+splay,part.foot[1]]);
   const lift=walking?Math.max(0,Math.sin(phase+(index===1?Math.PI:0)))*1.8*scale:0;
-  let offset=airborne?-15:0,roll=stride+splay,grounded=false;
+  let offset=airborne?(e.jumpLegs?jumpLegExtension(e,k,scale):-15):0,roll=stride+splay,grounded=false;
   // With no terrain supplied, leave the resting native leg exactly in place.
   // The duel masks these same pixels before drawing its held leg and hands.
   if(!airborne&&e.supportPose){
@@ -175,11 +175,7 @@ export function drawInkEnemySaltik(c,image,e,{camera=0,time=0,scale=1,view='side
    c.beginPath();polygon(c,part.wheelPolygon);c.clip();draw();
    // Rotate only the existing inset hub texture inside its native projected
    // ellipse. The tire outline and the planted contact stay in the same place.
-   if(Math.abs(part.spin)>.001){
-    const [hx,hy,rx,ry,angle]=part.hub;
-    c.save();c.beginPath();c.ellipse(hx,hy,rx,ry,angle,0,Math.PI*2);c.clip();
-    c.translate(hx,hy);c.rotate(angle);c.scale(rx,ry);c.rotate(part.spin);c.scale(1/rx,1/ry);c.rotate(-angle);c.translate(-hx,-hy);draw();c.restore();
-   }
+   /* Original wheel painting stays fixed. */
    c.restore();
   }
   for(const part of [geo.cannonPart,...geo.podParts,...geo.arms]){

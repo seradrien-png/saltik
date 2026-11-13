@@ -1,4 +1,4 @@
-import {jumpLegOffset} from './jump-leg-pose.js';
+import {jumpLegOffset,jumpLegExtension} from './jump-leg-pose.js';
 import {augmentModernGeometry,drawModernStriker} from './modern-striker-art.js';
 import {drawNativeTurn} from './character-turns.js';
 import {btGeometry,drawBT} from './bt-art.js';
@@ -173,7 +173,7 @@ export function inkSaltikGeometry(p,{camera=0,time=0,scale=1,victoryAge=null,sam
   };
   const legs=INK_SALTIK_PARTS.legs.map((part,index)=>{
     const splay=jumpLegOffset(p,part.foot[0],INK_SALTIK_ANCHOR[0],k,scale),native=sourcePoint([part.foot[0]+splay,part.foot[1]]);
-    let offset=airborne?-(22+compression*30)+Math.sin(time*7+index*1.9)*3:0,roll=splay,grounded=false;
+    let offset=airborne?(p.jumpLegs?jumpLegExtension(p,k,scale):-(22+compression*30)+Math.sin(time*7+index*1.9)*3):0,roll=splay,grounded=false;
     if(!airborne){
       const floor=at=>{
         if(finite(p.artScale,1)!==1){
@@ -301,7 +301,7 @@ export function drawInkSaltik(c,image,p,{camera=0,time=0,scale=1,victoryAge=null
     c.save();c.translate(0,part.hinge);c.transform(1,0,part.roll/(part.wheelTop-part.hinge),part.stretch,0,0);c.translate(0,-part.hinge);
     c.beginPath();polygon(c,part.strutPolygon);c.clip();draw();c.restore();
     c.save();c.translate(part.roll,part.offset);
-    c.beginPath();polygon(c,part.wheelPolygon);c.clip();draw();drawWheelInk(c,part);c.restore();
+    c.beginPath();polygon(c,part.wheelPolygon);c.clip();draw();/* Painted tires stay rigid; no spinning highlight overlay. */c.restore();
   }
   c.save();c.beginPath();polygon(c,CROP_POLYGON);
   for(const part of [...geo.legs,...geo.arms,...(geo.turretArticulated?[geo.turretPart]:[geo.cannonPart,geo.coaxPart])])polygon(c,part.polygon);

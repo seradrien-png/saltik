@@ -77,6 +77,6 @@ test('animated native draw preserves simulation state and uses no new image laye
   assert.deepEqual(p,before);
   assert.equal(images.length,11);
   assert.ok(images.every(item=>item===image));
-  assert.equal(fills.filter(fill=>fill.images<=6&&fill.color==='#fff4da').length,6,'two ink marks appear inside each native tire draw');
+  assert.equal(fills.filter(fill=>fill.images<=6&&fill.color==='#fff4da').length,0,'painted tires have no added rotating highlights');
   assert.equal(INK_SALTIK_PARTS.arms.length,2);
 });

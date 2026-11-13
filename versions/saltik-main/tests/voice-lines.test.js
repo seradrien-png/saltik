@@ -215,3 +215,12 @@ test('subtitle callbacks follow actual queued clips and clear immediately on pau
  f.voiceSources[0].finish();await settle();assert.deepEqual(shown.filter(Boolean),[{id:'ready',duration:.6},{id:'target-lock',duration:.6}]);
  audio.setPlaying(false);assert.equal(shown.at(-1),null);audio.setPlaying(true);audio.play({type:'homing'});await settle();audio.setEnabled(false);assert.equal(shown.at(-1),null);assert.equal(audio.speechSnapshot.playing,null);
 }));
+
+test('BT and Gatling have distinct queued voice tones and captions follow actual playback duration',async()=>{
+ const {createVoiceLines,VOICE_PROFILES}=await import('../src/voice-lines.js');
+ assert(VOICE_PROFILES.bt.rate<1);assert(VOICE_PROFILES.gatling.rate>1);
+ const oldWindow=globalThis.window,sources=[],starts=[];
+ globalThis.window={fetch:async()=>({ok:true,arrayBuffer:async()=>new ArrayBuffer(2)})};
+ const ctx={decodeAudioData:async()=>({duration:1}),createBufferSource(){const s={playbackRate:{value:1},connect(){},start(){},stop(){}};sources.push(s);return s;},createBiquadFilter(){return{frequency:{value:0},connect(){}};}};
+ try{const voice=createVoiceLines(ctx,{},duration=>starts.push(duration));voice.enqueue('ready','bt');voice.enqueue('goodbye','gatling');await settle();assert.equal(sources[0].playbackRate.value,.84);assert(Math.abs(starts[0]-1/.84)<1e-9);assert.equal(voice.snapshot().character,'bt');sources[0].onended();await settle();assert.equal(sources[1].playbackRate.value,1.13);assert.equal(voice.snapshot().character,'gatling');voice.cancel();}finally{if(oldWindow===undefined)delete globalThis.window;else globalThis.window=oldWindow;}
+});

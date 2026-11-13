@@ -18,5 +18,10 @@ export function advanceJumpLegPose(actor,dt){
 }
 export function jumpLegOffset(actor,footX,anchorX,k,scale=1){
  if(actor.knockedOut||actor.gatlingInteraction||actor.btStage||actor.modernStage)return 0;
- return Math.sign(footX-anchorX)*4.5*scale/k*clamp(actor.jumpLegs?.spread??0);
+ return Math.sign(footX-anchorX)*10*scale/k*clamp(actor.jumpLegs?.spread??0);
+}
+
+// A stretched suspension and rigid wheel patch reveal the underside in flight.
+export function jumpLegExtension(actor,k,scale=1){
+ return Math.abs(jumpLegOffset(actor,1,0,k,scale))*.6;
 }

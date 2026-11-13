@@ -1,0 +1,141 @@
+{
+  "version_number": 36,
+  "version_id": "appgprj_6ae77e1b6da081918600675fc2e2b738~appgver_b67842a011d88191aaabb2f63d2d4fe9",
+  "deployment": {
+    "id": "appgdep_6af6ca8d7e5c8191bfd8734c6b9c6b2d",
+    "project_id": "appgprj_6ae77e1b6da081918600675fc2e2b738",
+    "title": "SALTIK V2 — Matin Doré",
+    "version_id": "appgprj_6ae77e1b6da081918600675fc2e2b738~appgver_b67842a011d88191aaabb2f63d2d4fe9",
+    "type": "publish",
+    "status": "succeeded",
+    "url": "https://saltik-v2-matin-dore.ser-adrien.chatgpt.site",
+    "has_mcp": false,
+    "screenshot_asset_pointer": null,
+    "provider_deployment_id": "site---6ae77e1b6da081918600675fc2e2b738",
+    "failure_message": null,
+    "env_set_revision": 0,
+    "updated_at": "2026-11-13T08:30:23.424176+00:00"
+  },
+  "source_commit": "41e4f25dacec613d85ac87eb1830b6af6eaaed17",
+  "tests": {
+    "full_suite_exercised": 755,
+    "initial_passed": 753,
+    "initial_failures": 2,
+    "reason": "Old tests required removed rotating tire marks and byte-identical duel source; authorized expectations updated preserving legacy audio and duel timing normalization.",
+    "affected_recheck_passed": 45,
+    "additional_wheel_render_test": true,
+    "unresolved_failures": 0
+  },
+  "review": "Independent static review found no important actionable issues",
+  "browser": {
+    "native_jump_turn_landing_poses_inspected": 12,
+    "throw_variants_inspected": 3,
+    "throw_impact_slide_captures": 6,
+    "water": {
+      "changed": 18475,
+      "pausedDiff": 0
+    },
+    "voice_playback_rates": [
+      0.8399999737739563,
+      1.1299999952316284
+    ],
+    "errors": []
+  },
+  "main_files": 635,
+  "other_four_editions_unchanged": true,
+  "preservation": {
+    "original_scenery_and_audio_unchanged": true,
+    "new_asset": [
+      "dist/assets/bt-impact-underside.png"
+    ],
+    "mechanics_unchanged": {
+      "src/engine.js": "e70dbb0f9498b3407d1a97073b39d8a8159cbc58fe8ddd16f9e81c60c109eb21",
+      "src/bt-combat.js": "a8c55b8cc3c7076bc3e8e87f335f281427d5263d3d00441da4af2b3b85bd17bc",
+      "src/gatling-combat.js": "3fc7204583007c8ece714fe41cc5727ceaec2486c305977b67e1832661182d87",
+      "src/royal-layout.js": "dc31b24b15580750db7de4b1cc8216d217354b7aca09302edbd5dad51e4fea6c",
+      "src/desert-layout.js": "45f91e4d93dea6cf40989aca0a453f422071826be6a6e285a35f6bf7633d8ce0"
+    }
+  },
+  "published_resource_checks": [
+    {
+      "path": "assets/bt-impact-underside.png",
+      "status": 200,
+      "sha256": "f93c7949a398e007610ba19dcf8326ca7cd94e0b916c9aef9287692446aa2493"
+    },
+    {
+      "path": "src/audio.js",
+      "status": 200,
+      "sha256": "8fbcedfedda6a808e261db26446ddb922835878619aeda64ee3d495f1ba3ad1b"
+    },
+    {
+      "path": "src/character-turns.js",
+      "status": 200,
+      "sha256": "a9cd49385effaf53b58e00ba92c8799fb3b851500a0e365fc0ebd4734ed70f32"
+    },
+    {
+      "path": "src/gatling-art.js",
+      "status": 200,
+      "sha256": "91852531bff4ac131fcabc60a3b1835d79add00f453f57f61278abf61b8eb303"
+    },
+    {
+      "path": "src/ink-carrier.js",
+      "status": 200,
+      "sha256": "4871d947a1c50d0d5c779921d7787decdbc88d2042ea419b5f73e0fd7024389d"
+    },
+    {
+      "path": "src/ink-encounters.js",
+      "status": 200,
+      "sha256": "cec741b6fdb8f72fab266803409f841d5bb904c268afe4ce720c8644dc07c041"
+    },
+    {
+      "path": "src/ink-enemy-saltik.js",
+      "status": 200,
+      "sha256": "6f2cf39b569d1abb64ffb6d147af824f00fa47cc13deb10bb0ea9a76e5946186"
+    },
+    {
+      "path": "src/ink-renderer.js",
+      "status": 200,
+      "sha256": "92fa63f1c26539e4855e36c7f6b70ef0b015ebcc9e1024cd0ef9ccad35493036"
+    },
+    {
+      "path": "src/ink-saltik.js",
+      "status": 200,
+      "sha256": "92be94bfe3076924825fcf862d688e6882809985fc599e2dd6dee13c89225b6c"
+    },
+    {
+      "path": "src/jump-leg-pose.js",
+      "status": 200,
+      "sha256": "a10dec72c11a291d078a6a566f4b1bdcfa4b1043ffdb8eb4d95688e082a3f399"
+    },
+    {
+      "path": "src/main.js",
+      "status": 200,
+      "sha256": "b444dcb948b682be30a9f2e4bdc4149aed6e172d7afb57711f55ac0d5defcba1"
+    },
+    {
+      "path": "src/modern-striker-art.js",
+      "status": 200,
+      "sha256": "362d70371aa90c1eeb10def2158df48d36b31288148df985f36d7157d544ba1a"
+    },
+    {
+      "path": "src/royal-waterfalls.js",
+      "status": 200,
+      "sha256": "c66a927e478b16357e6a966994492ee7503ee768d62eaf5a066377d8a90c9b53"
+    },
+    {
+      "path": "src/royal-world.js",
+      "status": 200,
+      "sha256": "73d81998a13543c248f6e2ccbfc3396c24fd29e931e47c46075f16968afe2169"
+    },
+    {
+      "path": "src/saltik-duel.js",
+      "status": 200,
+      "sha256": "96430421e0cbc7eccbe1bd06afb8906f3f330e94b05df6d32a7b3a51fb0ffa46"
+    },
+    {
+      "path": "src/voice-lines.js",
+      "status": 200,
+      "sha256": "96d7aaa67445ed1673fdea32b9e3a51d3b1fceead44887564f3b8c12b56a2cb2"
+    }
+  ]
+}

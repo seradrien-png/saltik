@@ -1,4 +1,4 @@
-import {jumpLegOffset} from './jump-leg-pose.js';
+import {jumpLegOffset,jumpLegExtension} from './jump-leg-pose.js';
 import {MODERN_GATLING_NATIVE} from './modern-gatling-profile.js';
 import {sampleSupportSurface} from './support-pose.js';
 import {plantInkWheel} from './ink-leg-support.js';
@@ -18,7 +18,7 @@ export function augmentGatlingGeometry(p,base,{camera=0,time=0,sampleGround}={})
  const nativeArms=profile.arms.map((arm,i)=>{let rotation=(base.arms[i]?.rotation??0)-finite(p.gatlingArmLift)-(profile.key&&p.crouching&&!p.gatlingInteraction?.65:0),extension=0;const target=p.gatlingGripTargets?.[i];
   if(target){const pivot=nativePoint(arm.pivot),wx=target.x-camera-pivot.x,wy=target.y-pivot.y,dx=(wx*co+wy*si)/(k*orientation*flat),dy=(-wx*si+wy*co)/k,hx=arm.hand[0]-arm.pivot[0],hy=arm.hand[1]-arm.pivot[1];extension=clamp(Math.sqrt(Math.max(0,dx*dx+dy*dy-hx*hx))-hy,profile.armMinExtension??-38,profile.armMaxExtension??180);rotation=Math.atan2(dy,dx)-Math.atan2(hy+extension,hx);}
   const handPoint=q=>nativePoint(rot([q[0],q[1]+extension],arm.pivot,rotation));return{...arm,rotation,extension,handPoint};});
- const nativeLegs=profile.legs.map((part,index)=>{let offset=base.airborne?-20-base.compression*28:0,roll=jumpLegOffset(p,part.foot[0],ax,k,base.scale),grounded=false;const splay=roll,native=nativePoint([part.foot[0]+splay,part.foot[1]]);
+ const nativeLegs=profile.legs.map((part,index)=>{let offset=base.airborne?(p.jumpLegs?jumpLegExtension(p,k,base.scale):-20-base.compression*28):0,roll=jumpLegOffset(p,part.foot[0],ax,k,base.scale),grounded=false;const splay=roll,native=nativePoint([part.foot[0]+splay,part.foot[1]]);
   if(!base.airborne){const floor=at=>{const world=at+camera,support=sampleGround?.(world)??sampleSupportSurface(p.supportPose,world);if(p.supportPose?.surface&&!Number.isFinite(support))return NaN;return support??p.supportY??p.y;};({offset,roll,grounded}=plantInkWheel(native,{k,cos:co,sin:si,floor,orientation,maxOffset:320}));roll+=splay;}
   return{...part,offset,roll,grounded,stretch:1+offset/(part.wheelTop-part.hinge),contact:nativePoint([part.foot[0]+roll,part.foot[1]+offset]),spin:finite(p.motionDistance)/(part.hub[3]*pixelScale)*orientation,strut:split(part.polygon,part.wheelTop,false),wheel:split(part.polygon,part.wheelTop,true)};});
  let delta=(p.gatling?.firing||p.gatlingInteraction)?finite(p.aim)-(p.dir===-1?Math.PI:0)-base.tilt:0;delta=Math.atan2(Math.sin(delta),Math.cos(delta));if(Math.abs(delta)>Math.PI/2)delta=0;const rotation=base.weaponsLocked?0:clamp(delta*orientation,p.gatlingInteraction?-1.25:-.48,p.gatlingInteraction?1.25:.48);
@@ -32,7 +32,7 @@ export function drawGatling(c,image,p,geo,{time=0}={}){
  c.save();c.imageSmoothingEnabled=true;if(p.invulnerable>0&&Math.floor(time*18)%2)c.globalAlpha*=.65;
  c.translate(geo.x,geo.y+geo.heave+geo.bodyDrop);c.rotate(geo.tilt);c.scale(geo.nativeK*geo.orientation*geo.nativeFlat,geo.nativeK);c.translate(-anchor[0],-anchor[1]);
  for(const leg of geo.nativeLegs){c.save();c.translate(0,leg.hinge);c.transform(1,0,leg.roll/(leg.wheelTop-leg.hinge),leg.stretch,0,0);c.translate(0,-leg.hinge);c.beginPath();polygon(c,leg.strut);c.clip();draw();c.restore();c.save();c.translate(leg.roll,leg.offset);c.beginPath();polygon(c,leg.wheel);c.clip();draw();
-  if(Math.abs(leg.spin)>.001){const [x,y,rx,ry]=leg.hub;c.save();c.beginPath();c.ellipse(x,y,rx,ry,0,0,TAU);c.clip();c.translate(x,y);c.scale(rx,ry);c.rotate(leg.spin);c.scale(1/rx,1/ry);c.translate(-x,-y);draw();c.restore();}c.restore();}
+  /* Original wheel painting stays fixed. */c.restore();}
  c.save();for(const part of [...geo.nativeLegs,...geo.nativeArms,...geo.gatlingGuns]){c.beginPath();c.rect(0,0,width,height);polygon(c,part.polygon);c.clip('evenodd');}draw();c.restore();
  for(const gun of [...geo.gatlingGuns].reverse()){c.save();partTransform(c,gun);c.beginPath();polygon(c,gun.polygon);c.clip();draw();const [x,y,rx,ry]=gun.face;
   if(p.gatling?.spin){c.save();c.beginPath();c.ellipse(x,y,rx,ry,0,0,TAU);c.clip();c.translate(x,y);c.scale(rx,ry);c.rotate(p.gatling.spin);c.scale(1/rx,1/ry);c.translate(-x,-y);draw();c.restore();}

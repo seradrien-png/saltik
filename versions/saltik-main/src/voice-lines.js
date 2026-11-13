@@ -15,6 +15,13 @@ export const VOICE_EVENTS=Object.freeze({
   'carrier-disconnected':'saltik-dont-kill-saltik',won:'victory'
 });
 
+// Retain the original recordings; each playable chassis owns its delivery.
+export const VOICE_PROFILES=Object.freeze({
+ striker:Object.freeze({rate:1,filter:null}),
+ bt:Object.freeze({rate:.84,filter:'lowpass',frequency:2600}),
+ gatling:Object.freeze({rate:1.13,filter:'highpass',frequency:210})
+});
+
 export function createVoiceLines(context,destination,onStart,onCancel=()=>{}){
   const buffers=new Map(),loading=new Map(),queue=[];
   const played=Object.create(null);
@@ -41,7 +48,7 @@ export function createVoiceLines(context,destination,onStart,onCancel=()=>{}){
     const turn=epoch;
     try{
       while(queue.length&&turn===epoch&&!active){
-        const id=queue[0];
+        const {id,character}=queue[0],profile=VOICE_PROFILES[character]??VOICE_PROFILES.striker;
         let buffer;
         try{buffer=await load(id);}catch{
           if(turn!==epoch)return;
@@ -50,22 +57,24 @@ export function createVoiceLines(context,destination,onStart,onCancel=()=>{}){
         if(turn!==epoch)return;
         queue.shift();
         const source=context.createBufferSource();source.buffer=buffer;
-        source.connect(destination);
-        active={id,source};lastLine=id;played[id]=(played[id]||0)+1;
+        if(source.playbackRate)source.playbackRate.value=profile.rate;
+        if(profile.filter){const filter=context.createBiquadFilter();filter.type=profile.filter;filter.frequency.value=profile.frequency;source.connect(filter);filter.connect(destination);}
+        else source.connect(destination);
+        active={id,source,character};lastLine=id;played[id]=(played[id]||0)+1;
         source.onended=()=>{
           if(active?.source!==source)return;
           active=null;
           pump();
         };
-        onStart(buffer.duration,id);
+        onStart(buffer.duration/profile.rate,id);
         source.start();
       }
     }finally{if(turn===epoch)pumping=false;}
   }
 
-  function enqueue(id){
+  function enqueue(id,character='striker'){
     if(!VOICE_PATHS[id])return;
-    queue.push(id);pump();
+    queue.push({id,character});pump();
   }
   function cancel(){
     onCancel();epoch++;queue.length=0;loading.clear();pumping=false;
@@ -73,7 +82,7 @@ export function createVoiceLines(context,destination,onStart,onCancel=()=>{}){
     if(source)try{source.stop(context.currentTime);}catch{}
   }
   function snapshot(){
-    return Object.freeze({playing:active?.id??null,queued:queue.length,loading:loading.size,
+    return Object.freeze({playing:active?.id??null,character:active?.character??null,queued:queue.length,loading:loading.size,
       lastLine,played:Object.freeze({...played}),failed});
   }
   return {enqueue,cancel,snapshot};
