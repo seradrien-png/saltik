@@ -1,12 +1,7 @@
 {
   "source_commit": "bc3b03f5314140e3d3d47e7ff2d2ee91ff77f2e7",
-  "status": "verified_gatling_refit_sites_publication_blocked",
-  "current_live_sites_version": 33,
-  "sites_git_blocker": {
-    "auth_mode": "codex_auth",
-    "result": "HTTP400 missing_account_user_id",
-    "cause": "Host Sites Git credential helper unavailable in managed Cloud; local Codex auth has no account binding"
-  },
+  "status": "published",
+  "current_live_sites_version": 34,
   "tests": {
     "passed": 745,
     "failed": 0
@@ -216,7 +211,142 @@
     "activation_http_status": 403,
     "error": "Resource not accessible by integration"
   },
-  "sites_saved_version": null,
-  "sites_deployment": null,
-  "source_snapshot_backup_commit": "bb1a82d55bf9cbe25b4dc00db9b445d828e8a36b"
+  "sites_saved_version": "appgprj_6ae77e1b6da081918600675fc2e2b738~appgver_632d118ebb4c8191ab324d669cc78d4e",
+  "sites_deployment": "appgdep_6af6b04a72b88191a2b5fb3d9d021391",
+  "source_snapshot_backup_commit": "bb1a82d55bf9cbe25b4dc00db9b445d828e8a36b",
+  "resolved_sites_git_blocker": {
+    "auth_mode": "codex_auth",
+    "result": "HTTP400 missing_account_user_id",
+    "cause": "Host Sites Git credential helper unavailable in managed Cloud; local Codex auth has no account binding"
+  },
+  "saved": {
+    "id": "appgprj_6ae77e1b6da081918600675fc2e2b738~appgver_632d118ebb4c8191ab324d669cc78d4e",
+    "project_id": "appgprj_6ae77e1b6da081918600675fc2e2b738",
+    "version_number": 34,
+    "source": {
+      "commit_sha": "bc3b03f5314140e3d3d47e7ff2d2ee91ff77f2e7"
+    },
+    "archive_storage": {
+      "archive_format": "tar",
+      "sediment_file_id": "file_00000000dcf4820aabe035c4631e9baf",
+      "content_hash": "sha256:022d6f42fc3f9f4a02bbbcb9bd05ce508e8c3bcefd82b193b2da8bbbd88a03c0",
+      "size_bytes": 252968960,
+      "file_count": 210
+    },
+    "screenshot_url": null,
+    "deployment_id": null
+  },
+  "deployment": {
+    "id": "appgdep_6af6b04a72b88191a2b5fb3d9d021391",
+    "project_id": "appgprj_6ae77e1b6da081918600675fc2e2b738",
+    "title": "SALTIK V2 — Matin Doré",
+    "version_id": "appgprj_6ae77e1b6da081918600675fc2e2b738~appgver_632d118ebb4c8191ab324d669cc78d4e",
+    "type": "publish",
+    "status": "succeeded",
+    "url": "https://saltik-v2-matin-dore.ser-adrien.chatgpt.site",
+    "has_mcp": false,
+    "screenshot_asset_pointer": null,
+    "provider_deployment_id": "site---6ae77e1b6da081918600675fc2e2b738",
+    "failure_message": null,
+    "env_set_revision": 0,
+    "updated_at": "2026-11-13T06:38:23.926367+00:00"
+  },
+  "sites_publication_succeeded": true,
+  "published_resources_verified": [
+    {
+      "path": "android.html",
+      "status": 200,
+      "sha256": "e07941fefba5ec8c7a75a8fccb541f0eb7e479dc4a184090088b591755ca71c8"
+    },
+    {
+      "path": "assets/modern-gatling-atlas.png",
+      "status": 200,
+      "sha256": "2e4b98e31301215d1475719767729c0a67da16674117530853b6ec25dbc974f5"
+    },
+    {
+      "path": "assets/modern-gatling-limule-atlas.png",
+      "status": 200,
+      "sha256": "8e2d71bbe080827086cc64df3fcb4e2f82be4c60157174a6cf97b23d9ae28a7d"
+    },
+    {
+      "path": "assets/modern-gatling-limule-turn.png",
+      "status": 200,
+      "sha256": "d6eb0e67e75a33de63b4176bc2d6c5ab0f7d04d1fb412169ae9257bf91bd42e5"
+    },
+    {
+      "path": "assets/modern-gatling-turn-desert.png",
+      "status": 200,
+      "sha256": "5463c6f5af5470cf3818a7164cf6ba7159955e4214511c66ac8442e802480dd8"
+    },
+    {
+      "path": "assets/modern-gatling-turn-lunar.png",
+      "status": 200,
+      "sha256": "324a171f45850866e53a806e1c2c7401bc6435bd5a3451e0849b91283aaea39c"
+    },
+    {
+      "path": "assets/modern-gatling-turn-normal.png",
+      "status": 200,
+      "sha256": "c511fde1892cdfbfade4680ca787b94c915d17712942b63f386c69aef6f2d553"
+    },
+    {
+      "path": "assets/modern-gatling-turn-velvet.png",
+      "status": 200,
+      "sha256": "e486c37ec215e3994610d274a2118a1296c0db18e9f177797fb1389e576287c7"
+    },
+    {
+      "path": "index.html",
+      "status": 200,
+      "sha256": "4ad08a58fde993e0b9ff9a1811ab6372e2696ff589a1575cc13383765d615bec"
+    },
+    {
+      "path": "src/character-turn-sockets.js",
+      "status": 200,
+      "sha256": "2f9fccfb3cd03c408ef478e6713b8c14aca2061e54b29ba304409c4328a7af0e"
+    },
+    {
+      "path": "src/character-turns.js",
+      "status": 200,
+      "sha256": "b95c459a33000560fd4621b9553deb96df88aac6fdccdc583dc5a6bd6584169d"
+    },
+    {
+      "path": "src/enemy-styles.js",
+      "status": 200,
+      "sha256": "23c2f0c7060bef921affb7eba812ed247302f0c35fa4c277b22c36c7a69e9b44"
+    },
+    {
+      "path": "src/gatling-art.js",
+      "status": 200,
+      "sha256": "63b5da6f8798ebbb0c8e6b35bdbd4071abeef06716a8b97e3659e2e14a9b6531"
+    },
+    {
+      "path": "src/gatling-registration.js",
+      "status": 200,
+      "sha256": "1ded16a83bbba0ab2e1c4cc5c956b20003010c2b2672c37664a4a2a6e161c956"
+    },
+    {
+      "path": "src/ink-renderer.js",
+      "status": 200,
+      "sha256": "5fbb1079659e2f63892a7184d01cfd947be4bb675f5141a153b8e90827d11cda"
+    },
+    {
+      "path": "src/ink-scene.js",
+      "status": 200,
+      "sha256": "4028ad0ed13acc3efd277b0272cd08b3af26a535ace4597ae6fd5a9e95766bc8"
+    },
+    {
+      "path": "src/modern-gatling-profile.js",
+      "status": 200,
+      "sha256": "22382cc9236f3872278e3efa6ba21f2e108fdf3614971b0a2f4cf5422c2bf4d7"
+    },
+    {
+      "path": "src/modern-gatling-skins.js",
+      "status": 200,
+      "sha256": "96baa630f7810cda64c9f21b4ae7fef985164a99f95620c42ad682beeeb23d3b"
+    },
+    {
+      "path": "style.css",
+      "status": 200,
+      "sha256": "77fbf82e39a608eb6b958a93a41c23e86487508ca8015c36202f929b88d3da1c"
+    }
+  ]
 }

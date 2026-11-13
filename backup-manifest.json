@@ -8,7 +8,7 @@
       "repo": "saltik-v2-matin-dore",
       "title": "SALTIK V2 — Matin Doré",
       "commit": "bc3b03f5314140e3d3d47e7ff2d2ee91ff77f2e7",
-      "published_version": null,
+      "published_version": 34,
       "url": "https://saltik-v2-matin-dore.ser-adrien.chatgpt.site",
       "base_commit": "af2ec95c91962ad5cd5aee0dff2adc778455e47d",
       "source_path": "/workspace/sites/saltik-v2-matin-dore",
@@ -2526,11 +2526,11 @@
           "duration_native_run_seconds": 82.0166666666633
         }
       ],
-      "update_note": "Four Gatling reference costumes and true registered turns, new native rig and Limule option; gameplay unchanged. 745 tests pass.",
-      "published_source_commit": "af2ec95c91962ad5cd5aee0dff2adc778455e47d",
-      "publication_status": "Verified new Gatling snapshot; Sites Git codex_auth blocked in managed environment; current Sites live remains v33",
+      "update_note": "Published Gatling reference reforge: four mission costumes, registered native turns, rotary effects and optional Limule; gameplay unchanged.745tests pass.",
+      "published_source_commit": "bc3b03f5314140e3d3d47e7ff2d2ee91ff77f2e7",
+      "publication_status": "published and live",
       "github_import_base": "4c9b8e64bf3232c222f9b6f534ca37d660da3f7b",
-      "live_published_version": 33
+      "live_published_version": 34
     },
     {
       "slug": "saltik-ink",

@@ -8,7 +8,7 @@ Les cinq états ci-dessous sont conservés dans des dossiers indépendants, sans
 
 | Jeu / sources | État réel | GitHub Pages après activation | Commit source |
 | --- | --- | --- | --- |
-| [SALTIK V2 — Matin Doré](versions/saltik-main) | Nouveau Gatling prêt — publication Sites en attente (live v33) | [Jouer](https://seradrien-png.github.io/saltik/versions/saltik-main/dist/) | `bc3b03f53141` |
+| [SALTIK V2 — Matin Doré](versions/saltik-main) | Publiée v34 — Gatling refondu, Striker, BT16 et4niveaux | [Jouer](https://seradrien-png.github.io/saltik/versions/saltik-main/dist/) | `bc3b03f53141` |
 | [SALTIK — Ink Edition publiée](versions/saltik-ink) | Publiée v4 | [Jouer](https://seradrien-png.github.io/saltik/versions/saltik-ink/dist/) | `44110aa2dd80` |
 | [SALTIK INK — brouillon local avec épilogue](versions/autres-versions/saltik-ink-brouillon) | Brouillon local non publié | [Jouer](https://seradrien-png.github.io/saltik/versions/autres-versions/saltik-ink-brouillon/dist/) | `21dcc4ca32c5` |
 | [Feral Steel — Opération Canopée, référence Saltik](versions/autres-versions/saltik-feral-steel) | Publiée v24 | [Jouer](https://seradrien-png.github.io/saltik/versions/autres-versions/saltik-feral-steel/dist/) | `dbc331d0b7a2` |
@@ -134,3 +134,7 @@ Matin Doré v33 : nouveau Striker noir/orange et tenues par niveau, vues de reto
 ### 13 novembre 2026 — refonte du Gatling
 
 Nouvelle silhouette G-01, quatre tenues de référence, vrais retournements et apparence Limule adaptée, gameplay conservé. 624 fichiers principaux vérifiés,745tests réussis. La version Sites en ligne restev33 : le nouveau mode Git `codex_auth` réclame un auxiliaire hôte absent de cet environnement Cloud. Source sauvegardée `bc3b03f5314140e3d3d47e7ff2d2ee91ff77f2e7`. Rapport : [gatling-reforge-release.json](gatling-reforge-release.json). Les quatre autres éditions restent intactes.
+
+### Publication du Gatling rétablie — 13 novembre 2026
+
+Sites v34 est en ligne : [jouer avec le nouveau Gatling](https://saltik-v2-matin-dore.ser-adrien.chatgpt.site/?character=gatling). Accès source rétabli et SHA `bc3b03f5314140e3d3d47e7ff2d2ee91ff77f2e7` poussé/vérifié ; déploiement réussi. Les19fichiers modifiés en ligne sont identiques au build testé.745tests passent, quatre autres éditions intactes. [Bilan](gatling-reforge-release.json).

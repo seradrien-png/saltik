@@ -117,3 +117,7 @@ Nouvelle sauvegarde incrémentale : source `af2ec95c91962ad5cd5aee0dff2adc778455
 ## 13 novembre 2026 — Gatling refondu, source vérifiée
 
 Source `bc3b03f5314140e3d3d47e7ff2d2ee91ff77f2e7`,624fichiers,745tests réussis. Sauvegarde incrémentale des nouvelles tenues/animations ; aucun changement des autres éditions. Publication Sites bloquée par son nouveau mode Git codex_auth sans auxiliaire hôte ; le live restev33. Voir [gatling-reforge-release.json](gatling-reforge-release.json).
+
+## Publication rétablie le13novembre2026
+
+La refonte Gatling est désormais publiée en version Sites34, source `bc3b03f5314140e3d3d47e7ff2d2ee91ff77f2e7`. Accès source fonctionnel, déploiement réussi,19ressources en ligne comparées au build. Le précédent blocage est résolu ; GithubPages reste facultatif/nonactivé.
