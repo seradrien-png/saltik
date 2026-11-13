@@ -83,7 +83,12 @@ export function inkTitlePlayer(player,x,y){
 }
 export function createRenderer(canvas){
  const c=canvas.getContext('2d',{alpha:false}),mirvPreview=createMirvPreview();let width=1280,height=720/BASE_ZOOM,camera=0,cameraY=height-720,zoom=BASE_ZOOM,last=0,lastGameTime=null,presentationAge=0,effects=[],serial=0;
- function resize(){const r=canvas.getBoundingClientRect(),dpr=Math.min(globalThis.devicePixelRatio||1,2);canvas.width=Math.max(1,Math.round(r.width*dpr));canvas.height=Math.max(1,Math.round(r.height*dpr));}
+ function resize(){
+  const r=canvas.getBoundingClientRect(),dpr=Math.min(globalThis.devicePixelRatio||1,2),w=Math.max(1,Math.round(r.width*dpr)),h=Math.max(1,Math.round(r.height*dpr));
+  // Rotation, embedded-window changes and browser bars do not all dispatch
+  // window.resize. Stable frames must not clear the backing store/context.
+  if(canvas.width!==w)canvas.width=w;if(canvas.height!==h)canvas.height=h;
+ }
  resize();
  function addEvent(e){
   if(!['explosion','debris','intercept','deflect','spark','cluster','jump','land','shot','missile','homing','enemyshot'].includes(e.type))return;
@@ -123,6 +128,7 @@ export function createRenderer(canvas){
   c.globalAlpha=.12;for(let i=0;i<55;i++){const x=hash(i*2+tick)*width,y=hash(i*7+tick)*height;oval(c,x,y,.6+hash(i)*.8,.5,INK);}c.restore();
  }
  function render(g,now,view='playing'){
+  resize();
   const wall=clamp((now-last)/1000,0,.05),sim=lastGameTime===null?0:Math.max(0,g.time-lastGameTime),terminal=['won','dead'].includes(view),dt=terminal||view==='title'?wall:sim;
   last=now;lastGameTime=g.time;for(const e of effects)e.age+=dt;effects=effects.filter(e=>e.age<e.life);
   if(view==='won')presentationAge+=wall;else if(view!=='paused')presentationAge=0;

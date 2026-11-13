@@ -1,3 +1,4 @@
+import {setupFullscreen} from './fullscreen.js';
 import {normalizeSkin} from './player-skins.js';
 import {desertMissionLabel} from './desert-level.js';
 import {projectDesertPlayer} from './desert-layout.js';
@@ -255,7 +256,7 @@ $('next-level').addEventListener('click',nextLevel);for(const button of document
 for(const button of document.querySelectorAll('button[data-character]'))button.addEventListener('click',()=>chooseCharacter(button.dataset.character));
 $('cosmetic-skin').addEventListener('change',e=>chooseSkin(e.target.value));
 $('sound').addEventListener('click',toggleSound);
-$('fullscreen').addEventListener('click',async()=>{try{if(document.fullscreenElement)await document.exitFullscreen();else if(app.requestFullscreen){await app.requestFullscreen();try{await screen.orientation.lock('landscape');}catch{}}else toast('Le jeu occupe déjà toute la fenêtre.');}catch{toast('Plein écran indisponible. Le jeu reste accessible dans cette fenêtre.');}});
+setupFullscreen($('fullscreen'),app,{onError:()=>toast('Le plein écran est indisponible. Le jeu reste jouable dans cette fenêtre.')});
 function frame(now){const elapsed=clamp((now-lastFrame)/1000,0,.12);lastFrame=now;if(view==='playing'){game.viewport={x:renderer.camera,y:-renderer.cameraY,w:renderer.width,h:renderer.height??720};accumulator+=elapsed;while(accumulator>=1/60&&game.status==='playing'){update(game,consumeInput(),1/60);syncDuelPhase();syncBreachPhase();syncCarrierState();syncIntroState();syncActionDock();accumulator-=1/60;}if(['won','dead'].includes(game.status))finish();}else accumulator=0;
   for(const event of game.events){renderer.addEvent(event);const btSound={'bt-shot':'shot','bt-rocket':'homing','bt-panic':'missile','bt-lock':'reload-end','bt-empty':'no-target','bt-refill':'reload-end','desert-entry':'boss','desert-clear':'repair'}[event.type];audio.play(btSound?{...event,type:btSound}:event);}game.events.length=0;
   captions.update(view);renderer.render(game,now,view);game.viewport={x:renderer.camera,y:-renderer.cameraY,w:renderer.width,h:renderer.height};if(now-uiAt>80){updateUI();uiAt=now;}if(resultAt&&now>=resultAt&&$('result-screen').hidden&&!victoryFilm.update(now))showResult();requestAnimationFrame(frame);

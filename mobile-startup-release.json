@@ -1,0 +1,694 @@
+{
+  "version_number": 38,
+  "version_id": "appgprj_6ae77e1b6da081918600675fc2e2b738~appgver_4e63ad1f10d881919d4b7db1cb0c0fad",
+  "deployment": {
+    "id": "appgdep_6af6e81123988191bb0913148ea03e88",
+    "project_id": "appgprj_6ae77e1b6da081918600675fc2e2b738",
+    "title": "SALTIK V2 — Matin Doré",
+    "version_id": "appgprj_6ae77e1b6da081918600675fc2e2b738~appgver_4e63ad1f10d881919d4b7db1cb0c0fad",
+    "type": "publish",
+    "status": "succeeded",
+    "url": "https://saltik-v2-matin-dore.ser-adrien.chatgpt.site",
+    "has_mcp": false,
+    "screenshot_asset_pointer": null,
+    "provider_deployment_id": "site---6ae77e1b6da081918600675fc2e2b738",
+    "failure_message": null,
+    "env_set_revision": 0,
+    "updated_at": "2026-11-13T10:36:28.804321+00:00"
+  },
+  "source_commit": "20a8e748b85d0631787f71d4f5d77c7b5d89da92",
+  "tests": {
+    "targeted_passed": 18,
+    "failed": 0
+  },
+  "review": "Independent static review found no actionable issues.",
+  "limitation": "Native browser/OS fullscreen exit instructions cannot be suppressed by the game. Native fullscreen is optional and explicitly user-triggered; navigationUI hide is requested.",
+  "qa_scope": "5 viewport sizes and 15 character layouts, cold rotation without reload, native explicit entry/exit and windowed start. Artwork loading stubbed for layout-only browser QA; source art unchanged.",
+  "browser": {
+    "image_loading_stubbed_for_layout_only": true,
+    "results": [
+      {
+        "initial": [
+          390,
+          844
+        ],
+        "characters": [
+          {
+            "w": 844,
+            "h": 390,
+            "buffer": [
+              844,
+              390
+            ],
+            "canvas": [
+              844,
+              390
+            ],
+            "items": [
+              {
+                "s": "#start",
+                "x": 46.40625,
+                "y": 295.828125,
+                "w": 245,
+                "h": 44
+              },
+              {
+                "s": ".character-picker",
+                "x": 46.40625,
+                "y": 170.828125,
+                "w": 362.90625,
+                "h": 40
+              },
+              {
+                "s": ".level-picker",
+                "x": 46.40625,
+                "y": 253.828125,
+                "w": 362.90625,
+                "h": 34
+              }
+            ],
+            "selectFont": "16px"
+          },
+          {
+            "w": 844,
+            "h": 390,
+            "buffer": [
+              844,
+              390
+            ],
+            "canvas": [
+              844,
+              390
+            ],
+            "items": [
+              {
+                "s": "#start",
+                "x": 46.40625,
+                "y": 295.828125,
+                "w": 245,
+                "h": 44
+              },
+              {
+                "s": ".character-picker",
+                "x": 46.40625,
+                "y": 170.828125,
+                "w": 362.90625,
+                "h": 40
+              },
+              {
+                "s": ".level-picker",
+                "x": 46.40625,
+                "y": 253.828125,
+                "w": 362.90625,
+                "h": 34
+              }
+            ],
+            "selectFont": "16px"
+          },
+          {
+            "w": 844,
+            "h": 390,
+            "buffer": [
+              844,
+              390
+            ],
+            "canvas": [
+              844,
+              390
+            ],
+            "items": [
+              {
+                "s": "#start",
+                "x": 46.40625,
+                "y": 266.53125,
+                "w": 245,
+                "h": 44
+              },
+              {
+                "s": ".character-picker",
+                "x": 46.40625,
+                "y": 182.53125,
+                "w": 362.90625,
+                "h": 38
+              },
+              {
+                "s": ".level-picker",
+                "x": 46.40625,
+                "y": 226.53125,
+                "w": 362.90625,
+                "h": 32
+              }
+            ],
+            "selectFont": "16px"
+          }
+        ],
+        "errors": []
+      },
+      {
+        "initial": [
+          844,
+          390
+        ],
+        "characters": [
+          {
+            "w": 844,
+            "h": 390,
+            "buffer": [
+              844,
+              390
+            ],
+            "canvas": [
+              844,
+              390
+            ],
+            "items": [
+              {
+                "s": "#start",
+                "x": 46.40625,
+                "y": 295.828125,
+                "w": 245,
+                "h": 44
+              },
+              {
+                "s": ".character-picker",
+                "x": 46.40625,
+                "y": 170.828125,
+                "w": 362.90625,
+                "h": 40
+              },
+              {
+                "s": ".level-picker",
+                "x": 46.40625,
+                "y": 253.828125,
+                "w": 362.90625,
+                "h": 34
+              }
+            ],
+            "selectFont": "16px"
+          },
+          {
+            "w": 844,
+            "h": 390,
+            "buffer": [
+              844,
+              390
+            ],
+            "canvas": [
+              844,
+              390
+            ],
+            "items": [
+              {
+                "s": "#start",
+                "x": 46.40625,
+                "y": 295.828125,
+                "w": 245,
+                "h": 44
+              },
+              {
+                "s": ".character-picker",
+                "x": 46.40625,
+                "y": 170.828125,
+                "w": 362.90625,
+                "h": 40
+              },
+              {
+                "s": ".level-picker",
+                "x": 46.40625,
+                "y": 253.828125,
+                "w": 362.90625,
+                "h": 34
+              }
+            ],
+            "selectFont": "16px"
+          },
+          {
+            "w": 844,
+            "h": 390,
+            "buffer": [
+              844,
+              390
+            ],
+            "canvas": [
+              844,
+              390
+            ],
+            "items": [
+              {
+                "s": "#start",
+                "x": 46.40625,
+                "y": 266.53125,
+                "w": 245,
+                "h": 44
+              },
+              {
+                "s": ".character-picker",
+                "x": 46.40625,
+                "y": 182.53125,
+                "w": 362.90625,
+                "h": 38
+              },
+              {
+                "s": ".level-picker",
+                "x": 46.40625,
+                "y": 226.53125,
+                "w": 362.90625,
+                "h": 32
+              }
+            ],
+            "selectFont": "16px"
+          }
+        ],
+        "errors": []
+      },
+      {
+        "initial": [
+          667,
+          375
+        ],
+        "characters": [
+          {
+            "w": 667,
+            "h": 375,
+            "buffer": [
+              667,
+              375
+            ],
+            "canvas": [
+              667,
+              375
+            ],
+            "items": [
+              {
+                "s": "#start",
+                "x": 33.34375,
+                "y": 277.875,
+                "w": 220,
+                "h": 44
+              },
+              {
+                "s": ".character-picker",
+                "x": 33.34375,
+                "y": 152.6875,
+                "w": 300.140625,
+                "h": 40
+              },
+              {
+                "s": ".level-picker",
+                "x": 33.34375,
+                "y": 235.6875,
+                "w": 300.140625,
+                "h": 34.1875
+              }
+            ],
+            "selectFont": "16px"
+          },
+          {
+            "w": 667,
+            "h": 375,
+            "buffer": [
+              667,
+              375
+            ],
+            "canvas": [
+              667,
+              375
+            ],
+            "items": [
+              {
+                "s": "#start",
+                "x": 33.34375,
+                "y": 277.875,
+                "w": 220,
+                "h": 44
+              },
+              {
+                "s": ".character-picker",
+                "x": 33.34375,
+                "y": 152.6875,
+                "w": 300.140625,
+                "h": 40
+              },
+              {
+                "s": ".level-picker",
+                "x": 33.34375,
+                "y": 235.6875,
+                "w": 300.140625,
+                "h": 34.1875
+              }
+            ],
+            "selectFont": "16px"
+          },
+          {
+            "w": 667,
+            "h": 375,
+            "buffer": [
+              667,
+              375
+            ],
+            "canvas": [
+              667,
+              375
+            ],
+            "items": [
+              {
+                "s": "#start",
+                "x": 33.34375,
+                "y": 250.125,
+                "w": 220,
+                "h": 44
+              },
+              {
+                "s": ".character-picker",
+                "x": 33.34375,
+                "y": 163.9375,
+                "w": 300.140625,
+                "h": 38
+              },
+              {
+                "s": ".level-picker",
+                "x": 33.34375,
+                "y": 207.9375,
+                "w": 300.140625,
+                "h": 34.1875
+              }
+            ],
+            "selectFont": "16px"
+          }
+        ],
+        "errors": []
+      },
+      {
+        "initial": [
+          740,
+          320
+        ],
+        "characters": [
+          {
+            "w": 740,
+            "h": 320,
+            "buffer": [
+              740,
+              320
+            ],
+            "canvas": [
+              740,
+              320
+            ],
+            "items": [
+              {
+                "s": "#start",
+                "x": 40.6875,
+                "y": 219.65625,
+                "w": 245,
+                "h": 44
+              },
+              {
+                "s": ".character-picker",
+                "x": 40.6875,
+                "y": 103.46875,
+                "w": 318.1875,
+                "h": 40
+              },
+              {
+                "s": ".level-picker",
+                "x": 40.6875,
+                "y": 181.46875,
+                "w": 318.1875,
+                "h": 34.1875
+              }
+            ],
+            "selectFont": "16px"
+          },
+          {
+            "w": 740,
+            "h": 320,
+            "buffer": [
+              740,
+              320
+            ],
+            "canvas": [
+              740,
+              320
+            ],
+            "items": [
+              {
+                "s": "#start",
+                "x": 40.6875,
+                "y": 219.65625,
+                "w": 245,
+                "h": 44
+              },
+              {
+                "s": ".character-picker",
+                "x": 40.6875,
+                "y": 103.46875,
+                "w": 318.1875,
+                "h": 40
+              },
+              {
+                "s": ".level-picker",
+                "x": 40.6875,
+                "y": 181.46875,
+                "w": 318.1875,
+                "h": 34.1875
+              }
+            ],
+            "selectFont": "16px"
+          },
+          {
+            "w": 740,
+            "h": 320,
+            "buffer": [
+              740,
+              320
+            ],
+            "canvas": [
+              740,
+              320
+            ],
+            "items": [
+              {
+                "s": "#start",
+                "x": 40.6875,
+                "y": 185.859375,
+                "w": 245,
+                "h": 44
+              },
+              {
+                "s": ".character-picker",
+                "x": 40.6875,
+                "y": 106.671875,
+                "w": 318.1875,
+                "h": 38
+              },
+              {
+                "s": ".level-picker",
+                "x": 40.6875,
+                "y": 147.671875,
+                "w": 318.1875,
+                "h": 34.1875
+              }
+            ],
+            "selectFont": "16px"
+          }
+        ],
+        "errors": []
+      },
+      {
+        "initial": [
+          1440,
+          900
+        ],
+        "characters": [
+          {
+            "w": 1440,
+            "h": 900,
+            "buffer": [
+              1440,
+              900
+            ],
+            "canvas": [
+              1440,
+              900
+            ],
+            "items": [
+              {
+                "s": "#start",
+                "x": 86.390625,
+                "y": 670.234375,
+                "w": 285,
+                "h": 56
+              },
+              {
+                "s": ".character-picker",
+                "x": 86.390625,
+                "y": 492.234375,
+                "w": 450,
+                "h": 58
+              },
+              {
+                "s": ".level-picker",
+                "x": 86.390625,
+                "y": 601.234375,
+                "w": 440,
+                "h": 55
+              }
+            ],
+            "selectFont": "11px"
+          },
+          {
+            "w": 1440,
+            "h": 900,
+            "buffer": [
+              1440,
+              900
+            ],
+            "canvas": [
+              1440,
+              900
+            ],
+            "items": [
+              {
+                "s": "#start",
+                "x": 86.390625,
+                "y": 670.234375,
+                "w": 285,
+                "h": 56
+              },
+              {
+                "s": ".character-picker",
+                "x": 86.390625,
+                "y": 492.234375,
+                "w": 450,
+                "h": 58
+              },
+              {
+                "s": ".level-picker",
+                "x": 86.390625,
+                "y": 601.234375,
+                "w": 440,
+                "h": 55
+              }
+            ],
+            "selectFont": "11px"
+          },
+          {
+            "w": 1440,
+            "h": 900,
+            "buffer": [
+              1440,
+              900
+            ],
+            "canvas": [
+              1440,
+              900
+            ],
+            "items": [
+              {
+                "s": "#start",
+                "x": 86.390625,
+                "y": 665.234375,
+                "w": 285,
+                "h": 56
+              },
+              {
+                "s": ".character-picker",
+                "x": 86.390625,
+                "y": 528.234375,
+                "w": 450,
+                "h": 58
+              },
+              {
+                "s": ".level-picker",
+                "x": 86.390625,
+                "y": 596.234375,
+                "w": 440,
+                "h": 55
+              }
+            ],
+            "selectFont": "11px"
+          }
+        ],
+        "errors": []
+      }
+    ]
+  },
+  "main_files": 651,
+  "other_four_editions_unchanged": true,
+  "preservation": {
+    "all_art_and_recordings_unchanged": true,
+    "mechanics_and_previous_features_unchanged": {
+      "src/engine.js": "e70dbb0f9498b3407d1a97073b39d8a8159cbc58fe8ddd16f9e81c60c109eb21",
+      "src/jump-leg-pose.js": "9ccf38a5af031e954952e6555203e0eb143edd195e93f8753aa16a3d31b0e78e",
+      "src/bt-finish-visual.js": "46d28182d035ce7a7f9c6cdc584a3134d70ac66f85ea72c84e2bc786bfbbb9ee",
+      "src/saltik-duel.js": "5d9a2f13221c0d34ca6ab726fa34f22ef0d8a9e25a22bd22b6f907437b9d2cf0",
+      "src/bt-combat.js": "a8c55b8cc3c7076bc3e8e87f335f281427d5263d3d00441da4af2b3b85bd17bc",
+      "src/gatling-combat.js": "3fc7204583007c8ece714fe41cc5727ceaec2486c305977b67e1832661182d87",
+      "src/voice-lines.js": "96d7aaa67445ed1673fdea32b9e3a51d3b1fceead44887564f3b8c12b56a2cb2",
+      "src/royal-world.js": "73d81998a13543c248f6e2ccbfc3396c24fd29e931e47c46075f16968afe2169",
+      "src/royal-waterfalls.js": "c66a927e478b16357e6a966994492ee7503ee768d62eaf5a066377d8a90c9b53"
+    }
+  },
+  "reproduction": {
+    "before": {
+      "buffer": [
+        390,
+        844
+      ],
+      "layout": [
+        844,
+        390
+      ],
+      "ratio": 0.46208530805687204,
+      "cssRatio": 2.164102564102564
+    },
+    "after_reload": {
+      "buffer": [
+        844,
+        390
+      ],
+      "layout": [
+        844,
+        390
+      ]
+    }
+  },
+  "published_resource_checks": [
+    {
+      "path": "android.html",
+      "status": 200,
+      "sha256": "a9bd28ec16740008b6b6d2fde22920696d3f231053b4636a6f61c626a9b648a8"
+    },
+    {
+      "path": "index.html",
+      "status": 200,
+      "sha256": "23a6b43cec2fcb62644d670301d3977dbec3dfeab8d61bf6383dc354ed646d13"
+    },
+    {
+      "path": "manifest.webmanifest",
+      "status": 200,
+      "sha256": "3bb9a40c683b079ae3d60392946f0e04677dda91737ba9904ddf539f957ea539"
+    },
+    {
+      "path": "src/fullscreen.js",
+      "status": 200,
+      "sha256": "593efd1ac7ab209a68107552a241459286aa7299c982c3e071e00530fb99348e"
+    },
+    {
+      "path": "src/ink-renderer.js",
+      "status": 200,
+      "sha256": "46c20e610e608fa93ca5fd2efe336b7d6a5851195cbe56f92d7daf311f88b490"
+    },
+    {
+      "path": "src/main.js",
+      "status": 200,
+      "sha256": "fa170c67642fe7de9a848daeb6d0f10dc0d20a8b71d2e61aa9b975c758a104e2"
+    },
+    {
+      "path": "style.css",
+      "status": 200,
+      "sha256": "52f2f3f0b010bcdc1ea2e8cb8fc25e829b86ff2418cb1580f40f431ff518db85"
+    }
+  ]
+}

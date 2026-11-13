@@ -7,15 +7,15 @@
       "slug": "saltik-main",
       "repo": "saltik-v2-matin-dore",
       "title": "SALTIK V2 — Matin Doré",
-      "commit": "4c6ea08bacd1fe2c0ecc951e88eb9f30ca28de9b",
-      "published_version": 37,
+      "commit": "20a8e748b85d0631787f71d4f5d77c7b5d89da92",
+      "published_version": 38,
       "url": "https://saltik-v2-matin-dore.ser-adrien.chatgpt.site",
-      "base_commit": "41e4f25dacec613d85ac87eb1830b6af6eaaed17",
+      "base_commit": "4c6ea08bacd1fe2c0ecc951e88eb9f30ca28de9b",
       "source_path": "/workspace/sites/saltik-v2-matin-dore",
       "export_path": "versions/saltik-main",
       "web_entry": "versions/saltik-main/dist/index.html",
-      "file_count": 645,
-      "bytes": 270966823,
+      "file_count": 651,
+      "bytes": 270978504,
       "uncommitted_changes": "",
       "files": {
         ".gitignore": {
@@ -31,7 +31,7 @@
           "size": 27846
         },
         "dist/android.html": {
-          "sha256": "e07941fefba5ec8c7a75a8fccb541f0eb7e479dc4a184090088b591755ca71c8",
+          "sha256": "a9bd28ec16740008b6b6d2fde22920696d3f231053b4636a6f61c626a9b648a8",
           "size": 17427
         },
         "dist/assets/boss-assault-atlas.png": {
@@ -479,11 +479,11 @@
           "size": 253204
         },
         "dist/index.html": {
-          "sha256": "4ad08a58fde993e0b9ff9a1811ab6372e2696ff589a1575cc13383765d615bec",
+          "sha256": "23a6b43cec2fcb62644d670301d3977dbec3dfeab8d61bf6383dc354ed646d13",
           "size": 17698
         },
         "dist/manifest.webmanifest": {
-          "sha256": "1046044adaf490fa877cf9b0cac214237c2a4d52636476abaf1bd80dbede48e8",
+          "sha256": "3bb9a40c683b079ae3d60392946f0e04677dda91737ba9904ddf539f957ea539",
           "size": 569
         },
         "dist/promo.html": {
@@ -614,6 +614,10 @@
           "sha256": "3b9e6a5daafd5098d12f20a67279e98eca7b85ef500b79b67ea5862199992aeb",
           "size": 3615
         },
+        "dist/src/fullscreen.js": {
+          "sha256": "593efd1ac7ab209a68107552a241459286aa7299c982c3e071e00530fb99348e",
+          "size": 1135
+        },
         "dist/src/gatling-art.js": {
           "sha256": "e18b454632e173725c796b17ed35298d0e89231ac15418334251445724cc08d7",
           "size": 11056
@@ -671,8 +675,8 @@
           "size": 5484
         },
         "dist/src/ink-renderer.js": {
-          "sha256": "b23c9b14734f2304602415e22c64cb666525b040beb91c774b410af156be7557",
-          "size": 18451
+          "sha256": "46c20e610e608fa93ca5fd2efe336b7d6a5851195cbe56f92d7daf311f88b490",
+          "size": 18672
         },
         "dist/src/ink-saltik.js": {
           "sha256": "92be94bfe3076924825fcf862d688e6882809985fc599e2dd6dee13c89225b6c",
@@ -731,8 +735,8 @@
           "size": 4153
         },
         "dist/src/main.js": {
-          "sha256": "b444dcb948b682be30a9f2e4bdc4149aed6e172d7afb57711f55ac0d5defcba1",
-          "size": 33355
+          "sha256": "fa170c67642fe7de9a848daeb6d0f10dc0d20a8b71d2e61aa9b975c758a104e2",
+          "size": 33160
         },
         "dist/src/melee-state.js": {
           "sha256": "f24e08a07354668edbe7d54291517edc973dd34f9dfa9653c4f5776fe2b1eb87",
@@ -875,8 +879,8 @@
           "size": 9418
         },
         "dist/style.css": {
-          "sha256": "77fbf82e39a608eb6b958a93a41c23e86487508ca8015c36202f929b88d3da1c",
-          "size": 45289
+          "sha256": "52f2f3f0b010bcdc1ea2e8cb8fc25e829b86ff2418cb1580f40f431ff518db85",
+          "size": 46853
         },
         "dist/video/saltik-free-together-poster.jpg": {
           "sha256": "de77c185c42f5b31e582f895bda0a8e5ea1c54cc0f9670bef8946a7c2cf3c767",
@@ -1230,6 +1234,10 @@
           "sha256": "cbd1db39d5e7f0f3ac0b8e6fe7ad505c8aa787793fd23e5eb52d3ffb905b14ba",
           "size": 1470
         },
+        "docs/superpowers/plans/2026-11-13-mobile-startup.md": {
+          "sha256": "9d1e37ad33a6ac4f9e5769fadfc7b8b371a3ac5c829b0ced8b6fa741f4e03caa",
+          "size": 1395
+        },
         "docs/superpowers/plans/2026-11-13-modern-gatling.md": {
           "sha256": "edf063f5ce4df01a880495a25cd013053508c815fe3ce6ad121a4a0611903d0c",
           "size": 3613
@@ -1390,6 +1398,10 @@
           "sha256": "62ff3124a2c4b968566e01da55a083af2e05f0ebc63eed9895d483497fc2cdb2",
           "size": 1030
         },
+        "docs/superpowers/specs/2026-11-13-mobile-startup-design.md": {
+          "sha256": "3dc7f65c55d8d81a97e298465cd5d6192f7e12ad1acf53fe38affe2d48be9d0d",
+          "size": 1447
+        },
         "docs/superpowers/specs/2026-11-13-modern-gatling-design.md": {
           "sha256": "34c76cfb94b837c68b44d18b9ffbbd5d0cf9d79ef69203dee6e30ae63a660553",
           "size": 1729
@@ -1427,11 +1439,11 @@
           "size": 253204
         },
         "index.html": {
-          "sha256": "4ad08a58fde993e0b9ff9a1811ab6372e2696ff589a1575cc13383765d615bec",
+          "sha256": "23a6b43cec2fcb62644d670301d3977dbec3dfeab8d61bf6383dc354ed646d13",
           "size": 17698
         },
         "manifest.webmanifest": {
-          "sha256": "1046044adaf490fa877cf9b0cac214237c2a4d52636476abaf1bd80dbede48e8",
+          "sha256": "3bb9a40c683b079ae3d60392946f0e04677dda91737ba9904ddf539f957ea539",
           "size": 569
         },
         "package.json": {
@@ -1734,6 +1746,10 @@
           "sha256": "3b9e6a5daafd5098d12f20a67279e98eca7b85ef500b79b67ea5862199992aeb",
           "size": 3615
         },
+        "src/fullscreen.js": {
+          "sha256": "593efd1ac7ab209a68107552a241459286aa7299c982c3e071e00530fb99348e",
+          "size": 1135
+        },
         "src/gatling-art.js": {
           "sha256": "e18b454632e173725c796b17ed35298d0e89231ac15418334251445724cc08d7",
           "size": 11056
@@ -1791,8 +1807,8 @@
           "size": 5484
         },
         "src/ink-renderer.js": {
-          "sha256": "b23c9b14734f2304602415e22c64cb666525b040beb91c774b410af156be7557",
-          "size": 18451
+          "sha256": "46c20e610e608fa93ca5fd2efe336b7d6a5851195cbe56f92d7daf311f88b490",
+          "size": 18672
         },
         "src/ink-saltik.js": {
           "sha256": "92be94bfe3076924825fcf862d688e6882809985fc599e2dd6dee13c89225b6c",
@@ -1851,8 +1867,8 @@
           "size": 4153
         },
         "src/main.js": {
-          "sha256": "b444dcb948b682be30a9f2e4bdc4149aed6e172d7afb57711f55ac0d5defcba1",
-          "size": 33355
+          "sha256": "fa170c67642fe7de9a848daeb6d0f10dc0d20a8b71d2e61aa9b975c758a104e2",
+          "size": 33160
         },
         "src/melee-state.js": {
           "sha256": "f24e08a07354668edbe7d54291517edc973dd34f9dfa9653c4f5776fe2b1eb87",
@@ -1995,8 +2011,8 @@
           "size": 9418
         },
         "style.css": {
-          "sha256": "77fbf82e39a608eb6b958a93a41c23e86487508ca8015c36202f929b88d3da1c",
-          "size": 45289
+          "sha256": "52f2f3f0b010bcdc1ea2e8cb8fc25e829b86ff2418cb1580f40f431ff518db85",
+          "size": 46853
         },
         "tests/arsenal-integration.test.js": {
           "sha256": "73a6ad38b4bc4243d05dc5b48af82396520cdc4248d0b6116776ac01f48937b5",
@@ -2558,6 +2574,14 @@
           "sha256": "4a4ec36d54f38af138ca5c771b3f19a546c597bd540a5e4ee86154ef649f3496",
           "size": 1682
         },
+        "tests/startup-fullscreen.test.js": {
+          "sha256": "39710a6e0a815839d043aabbcbd64f4eb09be3f7daf5bf7b55def823c2fd9727",
+          "size": 1857
+        },
+        "tests/startup-viewport.test.js": {
+          "sha256": "f385c6584815785be05c82d425d0225183fdb7aecb6a9e8406409da606d66182",
+          "size": 1532
+        },
         "tests/support-pose.test.js": {
           "sha256": "eb331c41655f09ef0995f0aa1e0bcbc1091361fc1afed7e6da30018e9da660ce",
           "size": 5773
@@ -2610,11 +2634,11 @@
           "duration_native_run_seconds": 82.0166666666633
         }
       ],
-      "update_note": "True hip-pivot jump spread, four distinct BT finishes, six native pose frames, puzzled-face hold and synchronized slide/ricochet cues. Mechanics preserved.",
-      "published_source_commit": "4c6ea08bacd1fe2c0ecc951e88eb9f30ca28de9b",
+      "update_note": "Cold mobile viewport and orientation sizing fixed, short menu fits windowed launch, native fullscreen remains optional with navigationUI hide request. Browser security hint remains browser-owned. Gameplay and assets unchanged.",
+      "published_source_commit": "20a8e748b85d0631787f71d4f5d77c7b5d89da92",
       "publication_status": "Published and verified",
       "github_import_base": "4c9b8e64bf3232c222f9b6f534ca37d660da3f7b",
-      "live_published_version": 37
+      "live_published_version": 38
     },
     {
       "slug": "saltik-ink",

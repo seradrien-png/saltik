@@ -133,3 +133,7 @@ Sauts davantage dépliés, roues sans rotation visuelle, trois projections BT do
 ### 13 novembre 2026 — animations et ambiance
 
 Pattes presque horizontales via pivots réels ; quatre fins BT distinctes, six poses illustrées, pause interloquée et ricochet animé. Physique, armes, voix et cascades préservées. Version Sites v37 publiée ; source `4c6ea08bacd1fe2c0ecc951e88eb9f30ca28de9b`. Rapport : [expressive-finishes-release.json](expressive-finishes-release.json). Autres éditions et historique préservés.
+
+### 13 novembre 2026 — lancement mobile
+
+Recalage automatique après rotation ou changement de fenêtre, menu compact sur écran bas, plein écran facultatif et thème navigateur sombre. Le message système de sortie du plein écran reste géré par le navigateur. Tous les jeux et ressources sont préservés. Version Sites v38 publiée ; source `20a8e748b85d0631787f71d4f5d77c7b5d89da92`. Rapport : [mobile-startup-release.json](mobile-startup-release.json). Autres éditions et historique préservés.

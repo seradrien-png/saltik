@@ -6,7 +6,7 @@
 .edition-link{display:flex;align-items:center;min-height:44px;flex:none;font:italic 9px Georgia,serif;letter-spacing:.4px;color:var(--muted);text-underline-offset:4px;touch-action:manipulation}
 .edition-link:hover{color:var(--cream)}
 *{box-sizing:border-box}
-html,body{width:100%;height:100%;margin:0;overflow:hidden;background:var(--ink);color:var(--cream)}
+html,body{-webkit-text-size-adjust:100%;text-size-adjust:100%;width:100%;height:100%;margin:0;overflow:hidden;background:var(--ink);color:var(--cream)}
 body{-webkit-user-select:none;user-select:none;overscroll-behavior:none}
 button,a{-webkit-tap-highlight-color:transparent}
 button{font:inherit;color:inherit;cursor:pointer;touch-action:none}
@@ -402,3 +402,23 @@ kbd{display:inline-flex;align-items:center;justify-content:center;min-width:19px
 .striker-thumbnail{display:block;flex:0 0 40px;width:40px;height:40px;background:url('./assets/modern-striker-atlas.png') left center/120px 40px no-repeat;}
 
 .gatling-thumbnail{display:block;flex:0 0 40px;width:40px;height:40px;background:url('./assets/modern-gatling-atlas.png') left top/80px 80px no-repeat;}
+
+/* Prevent native form-focus magnification on mobile without scaling the menu. */
+@media(pointer:coarse){.skin-picker select{font-size:16px;line-height:1.2;min-height:32px}}
+/* Browser bars can leave only 320px in landscape before fullscreen. Keep
+   launch choices visible at that first size, with readable native selects. */
+@media(pointer:coarse) and (orientation:landscape) and (max-height:420px){
+ .character-choice{min-height:38px;padding:3px;gap:3px}
+ .character-choice :is(.striker-thumbnail,.gatling-thumbnail){flex-basis:28px;width:28px;height:28px}
+ .striker-thumbnail{background-size:84px 28px}.gatling-thumbnail{background-size:56px 56px}
+ .character-choice img{width:28px;height:28px}.bt-thumbnail{width:27px;height:28px;background-size:auto 28px}
+ .level-choice{min-height:32px;padding:3px 4px;line-height:1.1;gap:2px}.level-choice small{font-size:6px;line-height:1.1;letter-spacing:.5px}
+}
+@media(pointer:coarse) and (orientation:landscape) and (max-height:340px){
+ #app .title-content{top:15%;padding-bottom:0;max-height:calc(100dvh - 94px);overflow-y:auto;touch-action:pan-y;overscroll-behavior:contain;scrollbar-width:thin}
+ .title-content>.eyebrow,.title-content>.intro{display:none}
+ .title-content h1{font-size:36px}.title-content h1 em{font-size:.25em;margin-top:3px}
+ .title-content .title-credit{font-size:10px;line-height:1.1;margin:2px 0}
+ .character-picker{margin-bottom:3px}.skin-picker{margin-bottom:3px}.level-picker{margin-bottom:4px}
+ .title-content .start-meta{display:none}
+}
