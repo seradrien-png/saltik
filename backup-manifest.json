@@ -7,15 +7,15 @@
       "slug": "saltik-main",
       "repo": "saltik-v2-matin-dore",
       "title": "SALTIK V2 — Matin Doré",
-      "commit": "b1e8b048016de48eaadcfa0d13a1c10ebbc6bfbd",
-      "published_version": 41,
+      "commit": "ce280f9394d382d728673a48c1994a18092e8c58",
+      "published_version": 42,
       "url": "https://saltik-v2-matin-dore.ser-adrien.chatgpt.site",
-      "base_commit": "d6933a715cd50f272be0f1cfd39495121eede59f",
+      "base_commit": "b1e8b048016de48eaadcfa0d13a1c10ebbc6bfbd",
       "source_path": "/workspace/sites/saltik-v2-matin-dore",
       "export_path": "versions/saltik-main",
       "web_entry": "versions/saltik-main/dist/index.html",
-      "file_count": 665,
-      "bytes": 273260815,
+      "file_count": 669,
+      "bytes": 273276457,
       "uncommitted_changes": "",
       "files": {
         ".gitignore": {
@@ -806,6 +806,10 @@
           "sha256": "b3cba2c60fc627867226c4ebeb3d477531fa938897acc5fea19a4c9d2763e31f",
           "size": 846
         },
+        "dist/src/royal-bridge-water.js": {
+          "sha256": "30e67c61f4b1837718be53241fc12f0826ca97dfdbb4c73c9996c728b29498d1",
+          "size": 5439
+        },
         "dist/src/royal-layout.js": {
           "sha256": "dc31b24b15580750db7de4b1cc8216d217354b7aca09302edbd5dad51e4fea6c",
           "size": 4690
@@ -827,8 +831,8 @@
           "size": 1540
         },
         "dist/src/royal-waterfalls.js": {
-          "sha256": "5341fce2f713078bbd719c68b4bedb2b4fd1579fcc4ca601946edfb22668d71d",
-          "size": 5084
+          "sha256": "e189a8929db28400502a2fac02b9b5f1a5f56b99211fb020d873c0f9e5a5bbaa",
+          "size": 5244
         },
         "dist/src/royal-world.js": {
           "sha256": "32ae690563f0655be6cf57d362e0f74b71becebcee2e826cf4f6f0dec9c0f7ab",
@@ -1410,6 +1414,10 @@
           "sha256": "4a1c09de43bad90be8fcedba0adfcfc7b3930aa89fa97f7071a07e367f683d80",
           "size": 1189
         },
+        "docs/superpowers/specs/2026-11-13-bridge-cascade-design.md": {
+          "sha256": "7b9e71a410b97e5e4994d976f280a16c8f89b5c8d1b85a2b3d912c2537dc2609",
+          "size": 2571
+        },
         "docs/superpowers/specs/2026-11-13-character-polish-design.md": {
           "sha256": "dd93a533246964aef9f535035557582ebcd28c369ce1829408f98c7936454a6a",
           "size": 1221
@@ -1970,6 +1978,10 @@
           "sha256": "b3cba2c60fc627867226c4ebeb3d477531fa938897acc5fea19a4c9d2763e31f",
           "size": 846
         },
+        "src/royal-bridge-water.js": {
+          "sha256": "30e67c61f4b1837718be53241fc12f0826ca97dfdbb4c73c9996c728b29498d1",
+          "size": 5439
+        },
         "src/royal-layout.js": {
           "sha256": "dc31b24b15580750db7de4b1cc8216d217354b7aca09302edbd5dad51e4fea6c",
           "size": 4690
@@ -1991,8 +2003,8 @@
           "size": 1540
         },
         "src/royal-waterfalls.js": {
-          "sha256": "5341fce2f713078bbd719c68b4bedb2b4fd1579fcc4ca601946edfb22668d71d",
-          "size": 5084
+          "sha256": "e189a8929db28400502a2fac02b9b5f1a5f56b99211fb020d873c0f9e5a5bbaa",
+          "size": 5244
         },
         "src/royal-world.js": {
           "sha256": "32ae690563f0655be6cf57d362e0f74b71becebcee2e826cf4f6f0dec9c0f7ab",
@@ -2101,6 +2113,10 @@
         "tests/boss-v22.test.js": {
           "sha256": "791576881f85434d69167e5792d41430b9ac61a65537ce8d67dcf3fb40a2f27f",
           "size": 4381
+        },
+        "tests/bridge-cascade.test.js": {
+          "sha256": "e4658b44babb64c2aaaf65fa38d86a5221815fbb27662ff0f62273c9a0d2f217",
+          "size": 1868
         },
         "tests/browser_action_dock.py": {
           "sha256": "a82b7ba7f97688315ce9a6fa86f1112a2ebddd30ca09cb476e53ad1f8b984f3e",
@@ -2659,8 +2675,8 @@
           "size": 2333
         },
         "tests/velvet-water-flow.test.js": {
-          "sha256": "86b347170f39cfc965d64e7b5c3c061fd79fe294100c00a00ae483a4bcd56a09",
-          "size": 2465
+          "sha256": "548b02c1f03da6e9162c5c66d2450dd335cdc043efb3407eb09c292c6ed3fca9",
+          "size": 2470
         },
         "tests/victory-art.test.js": {
           "sha256": "34811e8c0535ba959558fbbf94d656774043adee2396b31593843dbfd037eb03",
@@ -2690,11 +2706,11 @@
           "duration_native_run_seconds": 82.0166666666633
         }
       ],
-      "update_note": "Restored restrained native jump feet splay, only20percent above earlier version; continuous slow royal eel swim, far route clears actual rainbow; fixed rainbow geometry with interior color flow and tiny garden fireflies. Assets, approved water and gameplay unchanged. Main waterfall adjustment awaits user screenshot.",
-      "published_source_commit": "b1e8b048016de48eaadcfa0d13a1c10ebbc6bfbd",
+      "update_note": "Reference screenshot received: harmonized the large tiered waterfall under the bridge with full-width blended downward veils, fine streams, attached foam and base mist. Reusable masked layer preserves gold/velvet/transparent pixels. All assets, approved distant water, other v41 animations and gameplay unchanged.",
+      "published_source_commit": "ce280f9394d382d728673a48c1994a18092e8c58",
       "publication_status": "Published and verified",
       "github_import_base": "4c9b8e64bf3232c222f9b6f534ca37d660da3f7b",
-      "live_published_version": 41
+      "live_published_version": 42
     },
     {
       "slug": "saltik-ink",

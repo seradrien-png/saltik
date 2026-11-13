@@ -1,0 +1,80 @@
+{
+  "version_number": 42,
+  "version_id": "appgprj_6ae77e1b6da081918600675fc2e2b738~appgver_9a5a2668bcb481918c93cf7f3c3a8697",
+  "deployment": {
+    "id": "appgdep_6af71f2bda7881919738f04c4a36275f",
+    "project_id": "appgprj_6ae77e1b6da081918600675fc2e2b738",
+    "title": "SALTIK V2 — Matin Doré",
+    "version_id": "appgprj_6ae77e1b6da081918600675fc2e2b738~appgver_9a5a2668bcb481918c93cf7f3c3a8697",
+    "type": "publish",
+    "status": "succeeded",
+    "url": "https://saltik-v2-matin-dore.ser-adrien.chatgpt.site",
+    "has_mcp": false,
+    "screenshot_asset_pointer": null,
+    "provider_deployment_id": "site---6ae77e1b6da081918600675fc2e2b738",
+    "failure_message": null,
+    "env_set_revision": 0,
+    "updated_at": "2026-11-13T14:31:27.348609+00:00"
+  },
+  "source_commit": "ce280f9394d382d728673a48c1994a18092e8c58",
+  "tests": {
+    "campaign_and_water_passed": 32,
+    "final_water_passed": 17,
+    "failed": 0
+  },
+  "review": "Independent review found no critical/important defect, including reusable liquid layer and destination-in mask.",
+  "features": {
+    "target": "Tiered waterfall under royal-quarter-bridge, matched to user screenshot.",
+    "flow": "Whole-width gently refracted water plus fading downward veils and fine falling threads; no separately wrapped columns.",
+    "landings": "Attached white foam and soft localized rising mist.",
+    "scope": "Bridge atlas only. Approved distant/organic water, v41 animations, artwork and gameplay preserved."
+  },
+  "pending": null,
+  "browser": {
+    "atlas": {
+      "tiersChangedPixels": [
+        3780,
+        32669,
+        83091
+      ],
+      "outsideMask": 0,
+      "pausedChanged": 0,
+      "transparentChanged": 0,
+      "goldChanged": 0,
+      "initialReads": 1,
+      "finalReads": 1,
+      "meanFrameMs": 18.300000000279397,
+      "p95FrameMs": 29.399999998509884
+    },
+    "errors": []
+  },
+  "main_files": 669,
+  "other_four_editions_unchanged": true,
+  "published_resource_checks": [
+    {
+      "path": "src/royal-bridge-water.js",
+      "status": 200,
+      "sha256": "30e67c61f4b1837718be53241fc12f0826ca97dfdbb4c73c9996c728b29498d1"
+    },
+    {
+      "path": "src/royal-waterfalls.js",
+      "status": 200,
+      "sha256": "e189a8929db28400502a2fac02b9b5f1a5f56b99211fb020d873c0f9e5a5bbaa"
+    }
+  ],
+  "preservation": {
+    "original_art_and_audio_unchanged": true,
+    "unchanged_source_hashes": {
+      "src/engine.js": "e70dbb0f9498b3407d1a97073b39d8a8159cbc58fe8ddd16f9e81c60c109eb21",
+      "src/royal-layout.js": "dc31b24b15580750db7de4b1cc8216d217354b7aca09302edbd5dad51e4fea6c",
+      "src/royal-world.js": "32ae690563f0655be6cf57d362e0f74b71becebcee2e826cf4f6f0dec9c0f7ab",
+      "src/jump-leg-pose.js": "56736acd36f7a1ad8bda08037cad09cf4ea5c1545c9f42506cdfa71f4d0c081b",
+      "src/royal-atmosphere.js": "e12bba3fe129f033b354b871c10f6744dc81fc22d1af5ffd65a24a1c05f933bf",
+      "src/royal-rainbow.js": "4ba2ef85aed19c5e94f0feeb546d1a178f9b824783000bc077443cd2c0de9a8b",
+      "src/main.js": "7be8b7770aa2944cfd976d4312cbffd269aee76ff9a54b8f4c4f212163deca30",
+      "src/audio.js": "cd2d04dc462b2a9c2b08394c30c26162131f271afb52ad560c2d9e47f6981c11"
+    },
+    "scope": "Only bridge atlas waterfall animation; backdrop and organic water retain their original path."
+  },
+  "all_backup_files_and_history_verified": 1718
+}

@@ -8,7 +8,7 @@ Les cinq états ci-dessous sont conservés dans des dossiers indépendants, sans
 
 | Jeu / sources | État réel | GitHub Pages après activation | Commit source |
 | --- | --- | --- | --- |
-| [SALTIK V2 — Matin Doré](versions/saltik-main) | Publiée v41 — sauts et animations velours affinés | [Jouer](https://saltik-v2-matin-dore.ser-adrien.chatgpt.site) | `b1e8b048016d` |
+| [SALTIK V2 — Matin Doré](versions/saltik-main) | Publiée v42 — grande cascade du pont harmonisée | [Jouer](https://saltik-v2-matin-dore.ser-adrien.chatgpt.site) | `ce280f9394d3` |
 | [SALTIK — Ink Edition publiée](versions/saltik-ink) | Publiée v4 | [Jouer](https://seradrien-png.github.io/saltik/versions/saltik-ink/dist/) | `44110aa2dd80` |
 | [SALTIK INK — brouillon local avec épilogue](versions/autres-versions/saltik-ink-brouillon) | Brouillon local non publié | [Jouer](https://seradrien-png.github.io/saltik/versions/autres-versions/saltik-ink-brouillon/dist/) | `21dcc4ca32c5` |
 | [Feral Steel — Opération Canopée, référence Saltik](versions/autres-versions/saltik-feral-steel) | Publiée v24 | [Jouer](https://seradrien-png.github.io/saltik/versions/autres-versions/saltik-feral-steel/dist/) | `dbc331d0b7a2` |
@@ -166,3 +166,7 @@ Eau animée avec brume, arc-en-ciel en mouvement, passages de l’anguille royal
 ### 13 novembre 2026 — sauts et animations velours affinés
 
 Saut revenu à un écartement modéré des pieds, nage lente continue de l’anguille, trajectoire lointaine sans croiser l’arc, couleurs circulant dans un arc fixe et quatre petites lucioles. Eau de fond, illustrations et gameplay préservés. Cascade principale en attente de la photo annoncée. Version Sites v41 publiée ; source `b1e8b048016de48eaadcfa0d13a1c10ebbc6bfbd`. Rapport : [velvet-refinements-release.json](velvet-refinements-release.json). Autres éditions et historique préservés.
+
+### 13 novembre 2026 — grande cascade sous le pont
+
+Référence reçue : grande cascade en gradins sous le pont retravaillée, écoulement continu fondu, filets descendants, écume et brume douce. Or, velours, zones transparentes, illustrations, eau de fond approuvée et gameplay préservés. L’attente de photo de la version précédente est résolue. Version Sites v42 publiée ; source `ce280f9394d382d728673a48c1994a18092e8c58`. Rapport : [bridge-cascade-release.json](bridge-cascade-release.json). Autres éditions et historique préservés.

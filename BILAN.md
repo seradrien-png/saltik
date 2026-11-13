@@ -149,3 +149,7 @@ Eau animée avec brume, arc-en-ciel en mouvement, passages de l’anguille royal
 ### 13 novembre 2026 — sauts et animations velours affinés
 
 Saut revenu à un écartement modéré des pieds, nage lente continue de l’anguille, trajectoire lointaine sans croiser l’arc, couleurs circulant dans un arc fixe et quatre petites lucioles. Eau de fond, illustrations et gameplay préservés. Cascade principale en attente de la photo annoncée. Version Sites v41 publiée ; source `b1e8b048016de48eaadcfa0d13a1c10ebbc6bfbd`. Rapport : [velvet-refinements-release.json](velvet-refinements-release.json). Autres éditions et historique préservés.
+
+### 13 novembre 2026 — grande cascade sous le pont
+
+Référence reçue : grande cascade en gradins sous le pont retravaillée, écoulement continu fondu, filets descendants, écume et brume douce. Or, velours, zones transparentes, illustrations, eau de fond approuvée et gameplay préservés. L’attente de photo de la version précédente est résolue. Version Sites v42 publiée ; source `ce280f9394d382d728673a48c1994a18092e8c58`. Rapport : [bridge-cascade-release.json](bridge-cascade-release.json). Autres éditions et historique préservés.

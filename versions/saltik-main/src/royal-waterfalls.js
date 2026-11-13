@@ -1,3 +1,4 @@
+import {drawRoyalBridgeWater} from './royal-bridge-water.js';
 // Water-only registrations in the original paintings, including every tier
 // under the bridges and the waterwheel's steps and lower pool.
 export const ROYAL_WATERFALLS=Object.freeze({
@@ -47,6 +48,7 @@ function nativeWaterMaterial(image,zone){
 }
 export function drawRoyalWaterfalls(c,image,kind,{x=0,y=0,scale=1,scaleY=scale,time=0,sourceCrop=null,mist=true}={}){
  if(!image)return;
+ if(kind==='bridge')return drawRoyalBridgeWater(c,image,{x,y,scale,scaleY,time,sourceCrop,mist});
  const zones=(ROYAL_WATERFALLS[kind]??[]).filter(([zx,zy,w,h])=>!sourceCrop||(zx<sourceCrop[0]+sourceCrop[2]&&zx+w>sourceCrop[0]&&zy<sourceCrop[1]+sourceCrop[3]&&zy+h>sourceCrop[1]));
  if(!zones.length)return;
  c.save();c.globalAlpha=1;c.translate(x,y);c.scale(scale,scaleY);
