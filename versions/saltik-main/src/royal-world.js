@@ -3,7 +3,7 @@ import {drawRoyalProps} from './royal-props.js';
 import {ROYAL_CELLS,ROYAL_SITES,royalGroundAt} from './royal-layout.js';
 const GOLD='#d99b29',TAU=Math.PI*2;
 export function royalPaintedBounds(s){const cell=ROYAL_CELLS[s.kind];return{x:s.left,y:s.top,w:cell.crop[2]*s.scale,h:cell.crop[3]*s.scale};}
-function paintSite(c,art,s,camera=0,time=0){const cell=ROYAL_CELLS[s.kind],image=cell.source==='bridge'?art?.bridge:cell.source==='organic'?art?.organic:art?.atlas;if(!image)return;const b=royalPaintedBounds(s);c.drawImage(image,...cell.crop,b.x-camera,b.y,b.w,b.h);if(s.kind==='bridge')drawRoyalWaterfalls(c,image,'bridge',{x:b.x-camera,y:b.y,scale:s.scale,time});}
+function paintSite(c,art,s,camera=0,time=0){const cell=ROYAL_CELLS[s.kind],image=cell.source==='bridge'?art?.bridge:cell.source==='organic'?art?.organic:art?.atlas;if(!image)return;const b=royalPaintedBounds(s);c.drawImage(image,...cell.crop,b.x-camera,b.y,b.w,b.h);if(cell.source==='bridge'||cell.source==='organic')drawRoyalWaterfalls(c,image,cell.source,{x:b.x-camera-cell.crop[0]*s.scale,y:b.y-cell.crop[1]*s.scale,scale:s.scale,time,sourceCrop:cell.crop});}
 export function drawRoyalBackdrop(c,{camera,width,height,image,art,time=0}){
  c.save();c.globalAlpha=1;c.fillStyle='#041454';c.fillRect(0,0,width,height);
  // Keep the reference composition readable: tree at left, mountains and full

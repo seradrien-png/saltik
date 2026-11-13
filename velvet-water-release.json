@@ -1,0 +1,114 @@
+{
+  "version_number": 39,
+  "version_id": "appgprj_6ae77e1b6da081918600675fc2e2b738~appgver_8f3e21a6d3d08191852e323c00b4683f",
+  "deployment": {
+    "id": "appgdep_6af6f001dce48191a33cef5555ed51c9",
+    "project_id": "appgprj_6ae77e1b6da081918600675fc2e2b738",
+    "title": "SALTIK V2 — Matin Doré",
+    "version_id": "appgprj_6ae77e1b6da081918600675fc2e2b738~appgver_8f3e21a6d3d08191852e323c00b4683f",
+    "type": "publish",
+    "status": "succeeded",
+    "url": "https://saltik-v2-matin-dore.ser-adrien.chatgpt.site",
+    "has_mcp": false,
+    "screenshot_asset_pointer": null,
+    "provider_deployment_id": "site---6ae77e1b6da081918600675fc2e2b738",
+    "failure_message": null,
+    "env_set_revision": 0,
+    "updated_at": "2026-11-13T11:10:13.079571+00:00"
+  },
+  "source_commit": "e078e9a9538af5ef7cd921742ad26e9db82c26d2",
+  "tests": {
+    "affected_passed": 23,
+    "final_mask_and_render_checks_passed": 17,
+    "failed": 0
+  },
+  "review": "Odd-width mask row closure identified and fixed; regression test verifies full run coverage and caching.",
+  "coverage": {
+    "backdrop_regions": 7,
+    "bridge_regions": 7,
+    "waterwheel_regions": 5
+  },
+  "qa": "Every mapped water region visibly changes; zero pixels change outside regions or between paused samples; source pixels read only once per cached region. Original paintings/gameplay unchanged.",
+  "browser": {
+    "families": [
+      {
+        "kind": "backdrop",
+        "zoneChangedPixels": [
+          550,
+          980,
+          4405,
+          948,
+          1746,
+          8608,
+          7253
+        ],
+        "outsideChanged": 0,
+        "pausedChanged": 0,
+        "maskReadsAfterCompile": 7,
+        "maskReadsAfterRepeatedDraw": 7
+      },
+      {
+        "kind": "bridge",
+        "zoneChangedPixels": [
+          902,
+          2499,
+          2209,
+          2380,
+          4063,
+          13764,
+          1765
+        ],
+        "outsideChanged": 0,
+        "pausedChanged": 0,
+        "maskReadsAfterCompile": 14,
+        "maskReadsAfterRepeatedDraw": 14
+      },
+      {
+        "kind": "organic",
+        "zoneChangedPixels": [
+          525,
+          1109,
+          1180,
+          290,
+          565
+        ],
+        "outsideChanged": 0,
+        "pausedChanged": 0,
+        "maskReadsAfterCompile": 19,
+        "maskReadsAfterRepeatedDraw": 19
+      }
+    ],
+    "errors": [],
+    "native_world_wheel_capture": true
+  },
+  "main_files": 654,
+  "other_four_editions_unchanged": true,
+  "preservation": {
+    "all_original_art_and_audio_unchanged": true,
+    "mechanics_startup_and_previous_features_unchanged": {
+      "src/engine.js": "e70dbb0f9498b3407d1a97073b39d8a8159cbc58fe8ddd16f9e81c60c109eb21",
+      "src/royal-layout.js": "dc31b24b15580750db7de4b1cc8216d217354b7aca09302edbd5dad51e4fea6c",
+      "src/royal-level.js": "4837ecbf243cc65f171759a417441ddba09255cd135d6f2a02c9f0f17634dcae",
+      "src/audio.js": "cd2d04dc462b2a9c2b08394c30c26162131f271afb52ad560c2d9e47f6981c11",
+      "src/voice-lines.js": "96d7aaa67445ed1673fdea32b9e3a51d3b1fceead44887564f3b8c12b56a2cb2",
+      "src/jump-leg-pose.js": "9ccf38a5af031e954952e6555203e0eb143edd195e93f8753aa16a3d31b0e78e",
+      "src/bt-finish-visual.js": "46d28182d035ce7a7f9c6cdc584a3134d70ac66f85ea72c84e2bc786bfbbb9ee",
+      "src/main.js": "fa170c67642fe7de9a848daeb6d0f10dc0d20a8b71d2e61aa9b975c758a104e2",
+      "src/fullscreen.js": "593efd1ac7ab209a68107552a241459286aa7299c982c3e071e00530fb99348e",
+      "style.css": "52f2f3f0b010bcdc1ea2e8cb8fc25e829b86ff2418cb1580f40f431ff518db85",
+      "manifest.webmanifest": "3bb9a40c683b079ae3d60392946f0e04677dda91737ba9904ddf539f957ea539"
+    }
+  },
+  "published_resource_checks": [
+    {
+      "path": "src/royal-waterfalls.js",
+      "status": 200,
+      "sha256": "f8283ee2868bcbf1a0972229794ab60bec5732017803810dfc85055c3773b3f6"
+    },
+    {
+      "path": "src/royal-world.js",
+      "status": 200,
+      "sha256": "ec2728999f9bdd45599f24e4dc78ba31331493494546bee45375fb9250630320"
+    }
+  ]
+}

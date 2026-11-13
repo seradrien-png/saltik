@@ -137,3 +137,7 @@ Pattes presque horizontales via pivots réels ; quatre fins BT distinctes, six p
 ### 13 novembre 2026 — lancement mobile
 
 Recalage automatique après rotation ou changement de fenêtre, menu compact sur écran bas, plein écran facultatif et thème navigateur sombre. Le message système de sortie du plein écran reste géré par le navigateur. Tous les jeux et ressources sont préservés. Version Sites v38 publiée ; source `20a8e748b85d0631787f71d4f5d77c7b5d89da92`. Rapport : [mobile-startup-release.json](mobile-startup-release.json). Autres éditions et historique préservés.
+
+### 13 novembre 2026 — cascades du monde velours
+
+Écoulement descendant plus lisible, reflets mobiles et remous sur les 19 zones d’eau du fond, des ponts et de la roue. L’animation reste attachée aux peintures et se fige en pause ; ciel, dorures et gameplay préservés. Version Sites v39 publiée ; source `e078e9a9538af5ef7cd921742ad26e9db82c26d2`. Rapport : [velvet-water-release.json](velvet-water-release.json). Autres éditions et historique préservés.

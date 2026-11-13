@@ -7,15 +7,15 @@
       "slug": "saltik-main",
       "repo": "saltik-v2-matin-dore",
       "title": "SALTIK V2 — Matin Doré",
-      "commit": "20a8e748b85d0631787f71d4f5d77c7b5d89da92",
-      "published_version": 38,
+      "commit": "e078e9a9538af5ef7cd921742ad26e9db82c26d2",
+      "published_version": 39,
       "url": "https://saltik-v2-matin-dore.ser-adrien.chatgpt.site",
-      "base_commit": "4c6ea08bacd1fe2c0ecc951e88eb9f30ca28de9b",
+      "base_commit": "20a8e748b85d0631787f71d4f5d77c7b5d89da92",
       "source_path": "/workspace/sites/saltik-v2-matin-dore",
       "export_path": "versions/saltik-main",
       "web_entry": "versions/saltik-main/dist/index.html",
-      "file_count": 651,
-      "bytes": 270978504,
+      "file_count": 654,
+      "bytes": 270988591,
       "uncommitted_changes": "",
       "files": {
         ".gitignore": {
@@ -815,12 +815,12 @@
           "size": 1540
         },
         "dist/src/royal-waterfalls.js": {
-          "sha256": "c66a927e478b16357e6a966994492ee7503ee768d62eaf5a066377d8a90c9b53",
-          "size": 1062
+          "sha256": "f8283ee2868bcbf1a0972229794ab60bec5732017803810dfc85055c3773b3f6",
+          "size": 3675
         },
         "dist/src/royal-world.js": {
-          "sha256": "73d81998a13543c248f6e2ccbfc3396c24fd29e931e47c46075f16968afe2169",
-          "size": 5009
+          "sha256": "ec2728999f9bdd45599f24e4dc78ba31331493494546bee45375fb9250630320",
+          "size": 5105
         },
         "dist/src/saltik-duel.js": {
           "sha256": "5d9a2f13221c0d34ca6ab726fa34f22ef0d8a9e25a22bd22b6f907437b9d2cf0",
@@ -1242,6 +1242,10 @@
           "sha256": "edf063f5ce4df01a880495a25cd013053508c815fe3ce6ad121a4a0611903d0c",
           "size": 3613
         },
+        "docs/superpowers/plans/2026-11-13-velvet-water-flow.md": {
+          "sha256": "6fb69471bc028db16b4e5c2dcc4fdc3613468835e0cd46fa893bcf9901efa956",
+          "size": 1290
+        },
         "docs/superpowers/platform-combat-validation-2026-11-02.md": {
           "sha256": "d9c70c0fb0cfee3a448ee230fe67717dc9c6b77de7174183e325a1951356601d",
           "size": 5307
@@ -1405,6 +1409,10 @@
         "docs/superpowers/specs/2026-11-13-modern-gatling-design.md": {
           "sha256": "34c76cfb94b837c68b44d18b9ffbbd5d0cf9d79ef69203dee6e30ae63a660553",
           "size": 1729
+        },
+        "docs/superpowers/specs/2026-11-13-velvet-water-flow-design.md": {
+          "sha256": "65f82764839faacb54d4c589f2326468b9dfdabf79ec6fa7f951afebda3af23b",
+          "size": 804
         },
         "docs/superpowers/support-carrier-ko-validation-2026-11-03.md": {
           "sha256": "98b985fdd5e457c3e5828c9b218340b7923c13d73190f116f2bc1ed796ecf994",
@@ -1947,12 +1955,12 @@
           "size": 1540
         },
         "src/royal-waterfalls.js": {
-          "sha256": "c66a927e478b16357e6a966994492ee7503ee768d62eaf5a066377d8a90c9b53",
-          "size": 1062
+          "sha256": "f8283ee2868bcbf1a0972229794ab60bec5732017803810dfc85055c3773b3f6",
+          "size": 3675
         },
         "src/royal-world.js": {
-          "sha256": "73d81998a13543c248f6e2ccbfc3396c24fd29e931e47c46075f16968afe2169",
-          "size": 5009
+          "sha256": "ec2728999f9bdd45599f24e4dc78ba31331493494546bee45375fb9250630320",
+          "size": 5105
         },
         "src/saltik-duel.js": {
           "sha256": "5d9a2f13221c0d34ca6ab726fa34f22ef0d8a9e25a22bd22b6f907437b9d2cf0",
@@ -2247,8 +2255,8 @@
           "size": 5151
         },
         "tests/character-polish.test.js": {
-          "sha256": "973844d9ec31967f970d6e8f7864dcdd4d746379fbcddebebe29ec720e1cacc1",
-          "size": 3813
+          "sha256": "5acaa954cec01d0444cbda85f979053981d6b81788120caf38c6eb13e7efeae9",
+          "size": 3923
         },
         "tests/combat-effects.test.js": {
           "sha256": "19618f04b0fe7339fa08a6cea89adc5cb1c69bf65007864a98454fb41df82bd5",
@@ -2606,6 +2614,10 @@
           "sha256": "bda4cb689751becb55517dba1fb498db8bc3548f4eae82beb86bba87c4e08f99",
           "size": 9395
         },
+        "tests/velvet-water-flow.test.js": {
+          "sha256": "86b347170f39cfc965d64e7b5c3c061fd79fe294100c00a00ae483a4bcd56a09",
+          "size": 2465
+        },
         "tests/victory-art.test.js": {
           "sha256": "34811e8c0535ba959558fbbf94d656774043adee2396b31593843dbfd037eb03",
           "size": 1989
@@ -2634,11 +2646,11 @@
           "duration_native_run_seconds": 82.0166666666633
         }
       ],
-      "update_note": "Cold mobile viewport and orientation sizing fixed, short menu fits windowed launch, native fullscreen remains optional with navigationUI hide request. Browser security hint remains browser-owned. Gameplay and assets unchanged.",
-      "published_source_commit": "20a8e748b85d0631787f71d4f5d77c7b5d89da92",
+      "update_note": "Readable falling water and base foam on all 19 registered velvet water zones, including bridges and waterwheel. Cached native water masks keep ornaments/sky unchanged; pause stable. All original artwork/gameplay preserved.",
+      "published_source_commit": "e078e9a9538af5ef7cd921742ad26e9db82c26d2",
       "publication_status": "Published and verified",
       "github_import_base": "4c9b8e64bf3232c222f9b6f534ca37d660da3f7b",
-      "live_published_version": 38
+      "live_published_version": 39
     },
     {
       "slug": "saltik-ink",
