@@ -1,4 +1,4 @@
-import {drawRoyalEel} from './royal-atmosphere.js';
+import {drawRoyalEel,drawRoyalGardenLife} from './royal-atmosphere.js';
 import {drawRoyalRainbow} from './royal-rainbow.js';
 import {drawRoyalWaterfalls} from './royal-waterfalls.js';
 import {drawRoyalProps} from './royal-props.js';
@@ -10,7 +10,7 @@ export function drawRoyalBackdrop(c,{camera,width,height,image,art,time=0,atmosp
  c.save();c.globalAlpha=1;c.fillStyle='#041454';c.fillRect(0,0,width,height);
  // Keep the reference composition readable: tree at left, mountains and full
  // rainbow in the center/right. Only a restrained panoramic drift is applied.
- if(image){const w=Math.max(width*1.08,height*image.width/image.height),h=w*image.height/image.width,x=(width-w)/2-Math.min(1,Math.max(0,camera/17800))*(w-width)*.35;const y=Math.min(0,(height-h)*.22);c.drawImage(image,x,y,w,h);drawRoyalWaterfalls(c,image,'backdrop',{x,y,scale:w/1672,scaleY:h/941,time});drawRoyalEel(c,eel,atmosphere,{width,height,far:true});drawRoyalRainbow(c,image,{x,y,scale:w/1672,scaleY:h/941,time});drawRoyalEel(c,eel,atmosphere,{width,height,far:false});}
+ if(image){const w=Math.max(width*1.08,height*image.width/image.height),h=w*image.height/image.width,x=(width-w)/2-Math.min(1,Math.max(0,camera/17800))*(w-width)*.35;const y=Math.min(0,(height-h)*.22);c.drawImage(image,x,y,w,h);drawRoyalWaterfalls(c,image,'backdrop',{x,y,scale:w/1672,scaleY:h/941,time});drawRoyalEel(c,eel,atmosphere,{width,height,far:true,farCeiling:y+166*h/941});drawRoyalRainbow(c,image,{x,y,scale:w/1672,scaleY:h/941,time});drawRoyalEel(c,eel,atmosphere,{width,height,far:false});drawRoyalGardenLife(c,{x,y,scale:w/1672,scaleY:h/941,time});}
  // Small opaque wooded islands occupy a clearly separate middle distance.
  if(art?.atlas)for(const [i,world] of [1600,5500,9800,14300,18500].entries()){
   const x=width*.7+(world-camera)*.19,w=290+(i%2)*70,h=w*512/768,y=height*.56;

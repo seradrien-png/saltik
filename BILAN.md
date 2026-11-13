@@ -145,3 +145,7 @@ Recalage automatique après rotation ou changement de fenêtre, menu compact sur
 ### 13 novembre 2026 — monde velours vivant
 
 Eau animée avec brume, arc-en-ciel en mouvement, passages de l’anguille royale (immense à 60 %, plus lointaine à 85 %), premier plan allégé et HUD du velours épuré. Peintures et gameplay préservés. Version Sites v40 publiée ; source `d6933a715cd50f272be0f1cfd39495121eede59f`. Rapport : [royal-living-world-release.json](royal-living-world-release.json). Autres éditions et historique préservés.
+
+### 13 novembre 2026 — sauts et animations velours affinés
+
+Saut revenu à un écartement modéré des pieds, nage lente continue de l’anguille, trajectoire lointaine sans croiser l’arc, couleurs circulant dans un arc fixe et quatre petites lucioles. Eau de fond, illustrations et gameplay préservés. Cascade principale en attente de la photo annoncée. Version Sites v41 publiée ; source `b1e8b048016de48eaadcfa0d13a1c10ebbc6bfbd`. Rapport : [velvet-refinements-release.json](velvet-refinements-release.json). Autres éditions et historique préservés.

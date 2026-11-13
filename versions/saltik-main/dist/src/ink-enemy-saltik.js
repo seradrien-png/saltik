@@ -89,10 +89,10 @@ export function inkEnemySaltikGeometry(e,time=0,{camera=0,scale=1,view='side'}={
  const sourcePoint=([px,py])=>{const xx=(px-frame.anchor[0])*k*flip,yy=(py-frame.anchor[1])*k;return{x:x+offsetX+xx*co-yy*si,y:y+heave+bodyDrop+xx*si+yy*co};};
  const legs=view==='front'?[]:INK_ENEMY_SALTIK_PARTS.legs.map((part,index)=>{
   const stride=walking?Math.sin(phase+(index===1?Math.PI:0))*10:0;
-  const jumpPose=jumpLegPose(e,part,frame.anchor[0]),legPoint=q=>sourcePoint(jumpLegPoint(jumpPose,q)),splay=airborne?0:jumpLegOffset(e,part.foot[0],frame.anchor[0],k,scale);
+  const jumpPose=jumpLegPose(e,part,frame.anchor[0]),legPoint=q=>sourcePoint(jumpLegPoint(jumpPose,q)),splay=jumpLegOffset(e,part.foot[0],frame.anchor[0],k,scale);
   const native=legPoint([part.foot[0]+stride+splay,part.foot[1]]);
   const lift=walking?Math.max(0,Math.sin(phase+(index===1?Math.PI:0)))*1.8*scale:0;
-  let offset=airborne?(e.jumpLegs?0:-15):0,roll=stride+splay,grounded=false;
+  let offset=airborne?(e.jumpLegs?jumpLegExtension(e,k,scale):-15):0,roll=stride+splay,grounded=false;
   // With no terrain supplied, leave the resting native leg exactly in place.
   // The duel masks these same pixels before drawing its held leg and hands.
   if(!airborne&&e.supportPose){

@@ -1,0 +1,125 @@
+{
+  "version_number": 41,
+  "version_id": "appgprj_6ae77e1b6da081918600675fc2e2b738~appgver_bdaca260ed9c81919ae02f3a3eb02ffe",
+  "deployment": {
+    "id": "appgdep_6af7193436b48191945c2c2f2b1f22eb",
+    "project_id": "appgprj_6ae77e1b6da081918600675fc2e2b738",
+    "title": "SALTIK V2 — Matin Doré",
+    "version_id": "appgprj_6ae77e1b6da081918600675fc2e2b738~appgver_bdaca260ed9c81919ae02f3a3eb02ffe",
+    "type": "publish",
+    "status": "succeeded",
+    "url": "https://saltik-v2-matin-dore.ser-adrien.chatgpt.site",
+    "has_mcp": false,
+    "screenshot_asset_pointer": null,
+    "provider_deployment_id": "site---6ae77e1b6da081918600675fc2e2b738",
+    "failure_message": null,
+    "env_set_revision": 0,
+    "updated_at": "2026-11-13T14:05:59.902430+00:00"
+  },
+  "source_commit": "b1e8b048016de48eaadcfa0d13a1c10ebbc6bfbd",
+  "tests": {
+    "full_passed": 776,
+    "failed": 0,
+    "affected_passed": 39,
+    "final_mask_passed": 9
+  },
+  "review": "Independent review found no critical/important issues. Four-pixel mask correction verified against actual artwork: zero gold/pale rejected pixels included.",
+  "features": {
+    "jumps": "Earlier native suspension splay restored, feet10→12 units; no near-horizontal leg fan.",
+    "eel": "Continuous128-segment joined slow swim, far envelope above native rainbow ceiling.",
+    "rainbow": "Exact stationary native geometry, interior color circulation, subtle sparkles.",
+    "garden": "Four restrained nocturnal fireflies near painted foliage.",
+    "water": "Approved background water unchanged."
+  },
+  "pending": "Specific main-waterfall retouch requires the photograph announced by the user; it has not been received.",
+  "browser": {
+    "rainbow": {
+      "changed": 20312,
+      "outside": 0,
+      "paused": 0,
+      "initialReads": 1,
+      "finalReads": 1
+    },
+    "real_asset_renderer": true,
+    "jump_characters": [
+      "striker",
+      "gatling",
+      "bt"
+    ],
+    "jump_frames": [
+      "rest",
+      "takeoff",
+      "return"
+    ],
+    "eel_frames": [
+      "near-a",
+      "near-b",
+      "near-tail",
+      "far"
+    ],
+    "errors": [],
+    "rainbow_final_mask": {
+      "changed": 17126,
+      "outside": 0,
+      "paused": 0,
+      "initialReads": 1,
+      "finalReads": 1
+    }
+  },
+  "main_files": 665,
+  "other_four_editions_unchanged": true,
+  "published_resource_checks": [
+    {
+      "path": "src/gatling-art.js",
+      "status": 200,
+      "sha256": "84999e32e18b8c9135cc13e16b1945cea5231dad2887e99ebc5387cd480e2de0"
+    },
+    {
+      "path": "src/ink-enemy-saltik.js",
+      "status": 200,
+      "sha256": "07b427251fcdd32ea8e886a15afd95377a9f81936b36a4895886a36c76ca4a62"
+    },
+    {
+      "path": "src/jump-leg-pose.js",
+      "status": 200,
+      "sha256": "56736acd36f7a1ad8bda08037cad09cf4ea5c1545c9f42506cdfa71f4d0c081b"
+    },
+    {
+      "path": "src/modern-striker-art.js",
+      "status": 200,
+      "sha256": "5903cfeb6647200320214f21a320e0867067033d1067eb1eb7d872fe48dd887e"
+    },
+    {
+      "path": "src/royal-atmosphere.js",
+      "status": 200,
+      "sha256": "e12bba3fe129f033b354b871c10f6744dc81fc22d1af5ffd65a24a1c05f933bf"
+    },
+    {
+      "path": "src/royal-rainbow.js",
+      "status": 200,
+      "sha256": "4ba2ef85aed19c5e94f0feeb546d1a178f9b824783000bc077443cd2c0de9a8b"
+    },
+    {
+      "path": "src/royal-world.js",
+      "status": 200,
+      "sha256": "32ae690563f0655be6cf57d362e0f74b71becebcee2e826cf4f6f0dec9c0f7ab"
+    }
+  ],
+  "preservation": {
+    "all_assets_unchanged": true,
+    "unchanged_source_hashes": {
+      "src/royal-waterfalls.js": "5341fce2f713078bbd719c68b4bedb2b4fd1579fcc4ca601946edfb22668d71d",
+      "src/engine.js": "e70dbb0f9498b3407d1a97073b39d8a8159cbc58fe8ddd16f9e81c60c109eb21",
+      "src/royal-layout.js": "dc31b24b15580750db7de4b1cc8216d217354b7aca09302edbd5dad51e4fea6c",
+      "src/royal-level.js": "84e6ed0ae3c2318cd14d28f863b27df2d8843505cf4cac9f23782bc6844d8009",
+      "src/main.js": "7be8b7770aa2944cfd976d4312cbffd269aee76ff9a54b8f4c4f212163deca30",
+      "src/audio.js": "cd2d04dc462b2a9c2b08394c30c26162131f271afb52ad560c2d9e47f6981c11",
+      "src/voice-lines.js": "96d7aaa67445ed1673fdea32b9e3a51d3b1fceead44887564f3b8c12b56a2cb2",
+      "src/bt-finish-visual.js": "46d28182d035ce7a7f9c6cdc584a3134d70ac66f85ea72c84e2bc786bfbbb9ee",
+      "src/character-turns.js": "8efa8ef9e7f795c9add209d8f3041128754d98550fc45d6a2b181f40d391a0c0",
+      "style.css": "52f2f3f0b010bcdc1ea2e8cb8fc25e829b86ff2418cb1580f40f431ff518db85"
+    },
+    "pending": "Main waterfall retouch awaits announced screenshot; approved background water unchanged."
+  },
+  "all_backup_files_and_history_verified": 1714
+}

@@ -18,7 +18,7 @@ export function advanceJumpLegPose(actor,dt){
 }
 export function jumpLegOffset(actor,footX,anchorX,k,scale=1){
  if(actor.knockedOut||actor.gatlingInteraction||actor.btStage||actor.modernStage)return 0;
- return Math.sign(footX-anchorX)*10*scale/k*clamp(actor.jumpLegs?.spread??0);
+ return Math.sign(footX-anchorX)*12*scale/k*clamp(actor.jumpLegs?.spread??0);
 }
 
 // A stretched suspension and rigid wheel patch reveal the underside in flight.
@@ -26,16 +26,10 @@ export function jumpLegExtension(actor,k,scale=1){
  return Math.abs(jumpLegOffset(actor,1,0,k,scale))*.6;
 }
 
-// Pivot the original limb as a rigid painted piece: tires and armor retain
-// their shape. The hips stay attached, then tuck naturally during descent.
+// Restore the earlier suspension splay: only the feet shift outward, with a
+// short eased extension. Keep the rig API, but never fan the whole leg sideways.
 export function jumpLegPose(actor,part,anchorX){
- const polygon=part.polygon??part.poly,foot=part.foot;
- const upper=polygon.filter(q=>q[1]>=part.hinge-45&&q[1]<=part.hinge+25);
- const pivot=[upper.length?upper.reduce((n,q)=>n+q[0],0)/upper.length:foot[0],part.hinge];
- const spread=actor.onGround===false?Math.abs(jumpLegOffset(actor,1,0,1))/10:0;
- const descent=actor.vy>0?1-.85*smooth(actor.vy/700):1;
- const rest=Math.atan2(Math.abs(foot[0]-pivot[0]),Math.max(1,foot[1]-pivot[1]));
- return{pivot,angle:-Math.sign(foot[0]-anchorX)*Math.max(0,1.43-rest)*spread*descent};
+ return{pivot:[part.foot[0],part.hinge],angle:0};
 }
 export function jumpLegPoint(pose,[x,y]){
  if(!pose.angle)return[x,y];const dx=x-pose.pivot[0],dy=y-pose.pivot[1],co=Math.cos(pose.angle),si=Math.sin(pose.angle);

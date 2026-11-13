@@ -7,15 +7,15 @@
       "slug": "saltik-main",
       "repo": "saltik-v2-matin-dore",
       "title": "SALTIK V2 — Matin Doré",
-      "commit": "d6933a715cd50f272be0f1cfd39495121eede59f",
-      "published_version": 40,
+      "commit": "b1e8b048016de48eaadcfa0d13a1c10ebbc6bfbd",
+      "published_version": 41,
       "url": "https://saltik-v2-matin-dore.ser-adrien.chatgpt.site",
-      "base_commit": "e078e9a9538af5ef7cd921742ad26e9db82c26d2",
+      "base_commit": "d6933a715cd50f272be0f1cfd39495121eede59f",
       "source_path": "/workspace/sites/saltik-v2-matin-dore",
       "export_path": "versions/saltik-main",
       "web_entry": "versions/saltik-main/dist/index.html",
-      "file_count": 662,
-      "bytes": 273249905,
+      "file_count": 665,
+      "bytes": 273260815,
       "uncommitted_changes": "",
       "files": {
         ".gitignore": {
@@ -623,8 +623,8 @@
           "size": 1135
         },
         "dist/src/gatling-art.js": {
-          "sha256": "e18b454632e173725c796b17ed35298d0e89231ac15418334251445724cc08d7",
-          "size": 11056
+          "sha256": "84999e32e18b8c9135cc13e16b1945cea5231dad2887e99ebc5387cd480e2de0",
+          "size": 11071
         },
         "dist/src/gatling-combat.js": {
           "sha256": "3fc7204583007c8ece714fe41cc5727ceaec2486c305977b67e1832661182d87",
@@ -659,8 +659,8 @@
           "size": 37263
         },
         "dist/src/ink-enemy-saltik.js": {
-          "sha256": "55009f011a2732edf822f99e559f4c1ad48ce2c075d4cb6cede1059c60b68fd4",
-          "size": 16195
+          "sha256": "07b427251fcdd32ea8e886a15afd95377a9f81936b36a4895886a36c76ca4a62",
+          "size": 16210
         },
         "dist/src/ink-hit-cache.js": {
           "sha256": "7e9903deb9b50802faa19d302bb0c118da012ebf4213be0882c5bc493b113a80",
@@ -707,8 +707,8 @@
           "size": 4938
         },
         "dist/src/jump-leg-pose.js": {
-          "sha256": "9ccf38a5af031e954952e6555203e0eb143edd195e93f8753aa16a3d31b0e78e",
-          "size": 2295
+          "sha256": "56736acd36f7a1ad8bda08037cad09cf4ea5c1545c9f42506cdfa71f4d0c081b",
+          "size": 1828
         },
         "dist/src/lunar-architecture.js": {
           "sha256": "c1eb7b42baec02ca72082ab52c34acb76a174105bf8bbf9f97f10d0ef919f4bf",
@@ -767,8 +767,8 @@
           "size": 1708
         },
         "dist/src/modern-striker-art.js": {
-          "sha256": "ce69c3c802bfe0fc3de61ae663c7a95a38a133cd817058f6284b321de3b44cce",
-          "size": 8422
+          "sha256": "5903cfeb6647200320214f21a320e0867067033d1067eb1eb7d872fe48dd887e",
+          "size": 8437
         },
         "dist/src/motor-motion.js": {
           "sha256": "4cd5f7608a358e829486fb3044179c75876304c3623a922a6fb701055a468691",
@@ -799,8 +799,8 @@
           "size": 18138
         },
         "dist/src/royal-atmosphere.js": {
-          "sha256": "e80e54f7dc0b25898f57b1f2f7df7f2aae6fa81bb90da8976540cd855005db31",
-          "size": 2389
+          "sha256": "e12bba3fe129f033b354b871c10f6744dc81fc22d1af5ffd65a24a1c05f933bf",
+          "size": 3627
         },
         "dist/src/royal-bridge-front.js": {
           "sha256": "b3cba2c60fc627867226c4ebeb3d477531fa938897acc5fea19a4c9d2763e31f",
@@ -819,8 +819,8 @@
           "size": 659
         },
         "dist/src/royal-rainbow.js": {
-          "sha256": "b5c8186262d8b8149ca8920a11369317afaaff0196d0693c0b19909886c8fd43",
-          "size": 1334
+          "sha256": "4ba2ef85aed19c5e94f0feeb546d1a178f9b824783000bc077443cd2c0de9a8b",
+          "size": 2604
         },
         "dist/src/royal-skin.js": {
           "sha256": "b20ed859f9c7178cbb740a854d2e40d4acce6fd3c421bb953efef555006214d5",
@@ -831,8 +831,8 @@
           "size": 5084
         },
         "dist/src/royal-world.js": {
-          "sha256": "768087dbae093a0e26baef803146aa1c4e9a29cada2ac931680ea7394457d98e",
-          "size": 4847
+          "sha256": "32ae690563f0655be6cf57d362e0f74b71becebcee2e826cf4f6f0dec9c0f7ab",
+          "size": 4950
         },
         "dist/src/saltik-duel.js": {
           "sha256": "5d9a2f13221c0d34ca6ab726fa34f22ef0d8a9e25a22bd22b6f907437b9d2cf0",
@@ -1258,6 +1258,10 @@
           "sha256": "23c77b052663d81ebc8475e1e66ee4beb33352d6e2ba83ee4c177db9fbb2c745",
           "size": 917
         },
+        "docs/superpowers/plans/2026-11-13-velvet-refinements.md": {
+          "sha256": "838124fe5fa66db9ef84dec8071eabae8087af99b1c5cc787d30ebf2e4ec95f8",
+          "size": 1607
+        },
         "docs/superpowers/plans/2026-11-13-velvet-water-flow.md": {
           "sha256": "6fb69471bc028db16b4e5c2dcc4fdc3613468835e0cd46fa893bcf9901efa956",
           "size": 1290
@@ -1429,6 +1433,10 @@
         "docs/superpowers/specs/2026-11-13-royal-living-world-design.md": {
           "sha256": "fb2050bbe23a2c5a3a74723a10a9babeba60a2342feda200e388d9be549a0fa8",
           "size": 2521
+        },
+        "docs/superpowers/specs/2026-11-13-velvet-refinements-design.md": {
+          "sha256": "6e2aeafabba01fe290517906a44dc66c11f6045751122f7bcef0d1afe3c11bff",
+          "size": 2759
         },
         "docs/superpowers/specs/2026-11-13-velvet-water-flow-design.md": {
           "sha256": "65f82764839faacb54d4c589f2326468b9dfdabf79ec6fa7f951afebda3af23b",
@@ -1779,8 +1787,8 @@
           "size": 1135
         },
         "src/gatling-art.js": {
-          "sha256": "e18b454632e173725c796b17ed35298d0e89231ac15418334251445724cc08d7",
-          "size": 11056
+          "sha256": "84999e32e18b8c9135cc13e16b1945cea5231dad2887e99ebc5387cd480e2de0",
+          "size": 11071
         },
         "src/gatling-combat.js": {
           "sha256": "3fc7204583007c8ece714fe41cc5727ceaec2486c305977b67e1832661182d87",
@@ -1815,8 +1823,8 @@
           "size": 37263
         },
         "src/ink-enemy-saltik.js": {
-          "sha256": "55009f011a2732edf822f99e559f4c1ad48ce2c075d4cb6cede1059c60b68fd4",
-          "size": 16195
+          "sha256": "07b427251fcdd32ea8e886a15afd95377a9f81936b36a4895886a36c76ca4a62",
+          "size": 16210
         },
         "src/ink-hit-cache.js": {
           "sha256": "7e9903deb9b50802faa19d302bb0c118da012ebf4213be0882c5bc493b113a80",
@@ -1863,8 +1871,8 @@
           "size": 4938
         },
         "src/jump-leg-pose.js": {
-          "sha256": "9ccf38a5af031e954952e6555203e0eb143edd195e93f8753aa16a3d31b0e78e",
-          "size": 2295
+          "sha256": "56736acd36f7a1ad8bda08037cad09cf4ea5c1545c9f42506cdfa71f4d0c081b",
+          "size": 1828
         },
         "src/lunar-architecture.js": {
           "sha256": "c1eb7b42baec02ca72082ab52c34acb76a174105bf8bbf9f97f10d0ef919f4bf",
@@ -1923,8 +1931,8 @@
           "size": 1708
         },
         "src/modern-striker-art.js": {
-          "sha256": "ce69c3c802bfe0fc3de61ae663c7a95a38a133cd817058f6284b321de3b44cce",
-          "size": 8422
+          "sha256": "5903cfeb6647200320214f21a320e0867067033d1067eb1eb7d872fe48dd887e",
+          "size": 8437
         },
         "src/motor-motion.js": {
           "sha256": "4cd5f7608a358e829486fb3044179c75876304c3623a922a6fb701055a468691",
@@ -1955,8 +1963,8 @@
           "size": 18138
         },
         "src/royal-atmosphere.js": {
-          "sha256": "e80e54f7dc0b25898f57b1f2f7df7f2aae6fa81bb90da8976540cd855005db31",
-          "size": 2389
+          "sha256": "e12bba3fe129f033b354b871c10f6744dc81fc22d1af5ffd65a24a1c05f933bf",
+          "size": 3627
         },
         "src/royal-bridge-front.js": {
           "sha256": "b3cba2c60fc627867226c4ebeb3d477531fa938897acc5fea19a4c9d2763e31f",
@@ -1975,8 +1983,8 @@
           "size": 659
         },
         "src/royal-rainbow.js": {
-          "sha256": "b5c8186262d8b8149ca8920a11369317afaaff0196d0693c0b19909886c8fd43",
-          "size": 1334
+          "sha256": "4ba2ef85aed19c5e94f0feeb546d1a178f9b824783000bc077443cd2c0de9a8b",
+          "size": 2604
         },
         "src/royal-skin.js": {
           "sha256": "b20ed859f9c7178cbb740a854d2e40d4acce6fd3c421bb953efef555006214d5",
@@ -1987,8 +1995,8 @@
           "size": 5084
         },
         "src/royal-world.js": {
-          "sha256": "768087dbae093a0e26baef803146aa1c4e9a29cada2ac931680ea7394457d98e",
-          "size": 4847
+          "sha256": "32ae690563f0655be6cf57d362e0f74b71becebcee2e826cf4f6f0dec9c0f7ab",
+          "size": 4950
         },
         "src/saltik-duel.js": {
           "sha256": "5d9a2f13221c0d34ca6ab726fa34f22ef0d8a9e25a22bd22b6f907437b9d2cf0",
@@ -2283,8 +2291,8 @@
           "size": 5151
         },
         "tests/character-polish.test.js": {
-          "sha256": "5acaa954cec01d0444cbda85f979053981d6b81788120caf38c6eb13e7efeae9",
-          "size": 3923
+          "sha256": "6291a9bb77261887aaa9e4f6265bf09a99e2743607e9612a34509d0df795e521",
+          "size": 3971
         },
         "tests/combat-effects.test.js": {
           "sha256": "19618f04b0fe7339fa08a6cea89adc5cb1c69bf65007864a98454fb41df82bd5",
@@ -2355,8 +2363,8 @@
           "size": 4759
         },
         "tests/expressive-finishes.test.js": {
-          "sha256": "e3adbc70fa089c3cb9f3af9eafd7b798001f91dff7889a2ea5747e1c5865789b",
-          "size": 2593
+          "sha256": "93e201f737b6765790f7a7bdc7daefbaea380232f752eba2a8fae13b1ac42f35",
+          "size": 2380
         },
         "tests/finishing-defense.test.js": {
           "sha256": "f31b12cc6dc652b704a38064a1c00f05b6677176b7a63af446da854ad7686011",
@@ -2591,8 +2599,8 @@
           "size": 3854
         },
         "tests/royal-living-world.test.js": {
-          "sha256": "ea87ba6f5df22a6088306ffaac0cb8550c1b42392520cf36802708f5920f5c35",
-          "size": 3249
+          "sha256": "cd36c460f39403bb6a4b8526293813505f85b7539a1ff2797a500649d9a100b8",
+          "size": 3247
         },
         "tests/saltik-duel-engine.test.js": {
           "sha256": "eae7bb3711c0282aa6d068da0eb74fa5a263321b127d0a9aace83836aea21c61",
@@ -2646,6 +2654,10 @@
           "sha256": "bda4cb689751becb55517dba1fb498db8bc3548f4eae82beb86bba87c4e08f99",
           "size": 9395
         },
+        "tests/velvet-refinements.test.js": {
+          "sha256": "c412662e3445e5d1a4e530b4d666fb77b85d7f0cd69c36314b53036c858e99a7",
+          "size": 2333
+        },
         "tests/velvet-water-flow.test.js": {
           "sha256": "86b347170f39cfc965d64e7b5c3c061fd79fe294100c00a00ae483a4bcd56a09",
           "size": 2465
@@ -2678,11 +2690,11 @@
           "duration_native_run_seconds": 82.0166666666633
         }
       ],
-      "update_note": "Credible flowing water and base mist in all 19 registered velvet zones; opaque near/far royal eel passages at 60/85%; moving native rainbow; removed velvet objective/zone numbers and reduced foreground. Original paintings/gameplay preserved.",
-      "published_source_commit": "d6933a715cd50f272be0f1cfd39495121eede59f",
+      "update_note": "Restored restrained native jump feet splay, only20percent above earlier version; continuous slow royal eel swim, far route clears actual rainbow; fixed rainbow geometry with interior color flow and tiny garden fireflies. Assets, approved water and gameplay unchanged. Main waterfall adjustment awaits user screenshot.",
+      "published_source_commit": "b1e8b048016de48eaadcfa0d13a1c10ebbc6bfbd",
       "publication_status": "Published and verified",
       "github_import_base": "4c9b8e64bf3232c222f9b6f534ca37d660da3f7b",
-      "live_published_version": 40
+      "live_published_version": 41
     },
     {
       "slug": "saltik-ink",
