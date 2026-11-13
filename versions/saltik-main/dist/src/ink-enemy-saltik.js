@@ -1,4 +1,4 @@
-import {jumpLegOffset,jumpLegExtension,jumpLegPose,jumpLegPoint,applyJumpLegPose} from './jump-leg-pose.js';
+import {drawJumpLegStrut,jumpLegOffset,jumpLegExtension,jumpLegPose,jumpLegPoint,applyJumpLegPose} from './jump-leg-pose.js';
 import {sampleSupportSurface} from './support-pose.js';
 import {plantInkWheel} from './ink-leg-support.js';
 import {drawInkEnemyPods,inkEnemyPodGeometry} from './ink-pods.js';
@@ -171,8 +171,7 @@ export function drawInkEnemySaltik(c,image,e,{camera=0,time=0,scale=1,view='side
   const drawLeg=()=>{c.save();for(const arm of geo.arms){c.beginPath();c.rect(...geo.crop);polygon(c,arm.polygon);c.clip('evenodd');}draw();c.restore();};
   for(const part of geo.legs){
    c.save();applyJumpLegPose(c,part.jumpPose);
-   c.save();c.translate(0,part.hinge);c.transform(1,0,part.roll/(part.wheelTop-part.hinge),part.stretch,0,0);c.translate(0,-part.hinge);
-   c.beginPath();polygon(c,part.strutPolygon);c.clip();drawLeg();c.restore();
+   drawJumpLegStrut(c,part,part.strutPolygon,drawLeg,!!e.jumpLegs?.spread);
    c.save();c.translate(part.roll,part.offset);
    c.beginPath();polygon(c,part.wheelPolygon);c.clip();drawLeg();
    // Rotate only the existing inset hub texture inside its native projected

@@ -1,4 +1,4 @@
-import {jumpLegOffset,jumpLegExtension,jumpLegPose,jumpLegPoint,applyJumpLegPose} from './jump-leg-pose.js';
+import {drawJumpLegStrut,jumpLegOffset,jumpLegExtension,jumpLegPose,jumpLegPoint,applyJumpLegPose} from './jump-leg-pose.js';
 import {MODERN_GATLING_NATIVE} from './modern-gatling-profile.js';
 import {sampleSupportSurface} from './support-pose.js';
 import {plantInkWheel} from './ink-leg-support.js';
@@ -32,7 +32,7 @@ export function drawGatling(c,image,p,geo,{time=0}={}){
  c.save();c.imageSmoothingEnabled=true;if(p.invulnerable>0&&Math.floor(time*18)%2)c.globalAlpha*=.65;
  c.translate(geo.x,geo.y+geo.heave+geo.bodyDrop);c.rotate(geo.tilt);c.scale(geo.nativeK*geo.orientation*geo.nativeFlat,geo.nativeK);c.translate(-anchor[0],-anchor[1]);
  const drawLeg=()=>{c.save();for(const arm of geo.nativeArms){c.beginPath();c.rect(0,0,width,height);polygon(c,arm.polygon);c.clip('evenodd');}draw();c.restore();};
- for(const leg of geo.nativeLegs){c.save();applyJumpLegPose(c,leg.jumpPose);c.save();c.translate(0,leg.hinge);c.transform(1,0,leg.roll/(leg.wheelTop-leg.hinge),leg.stretch,0,0);c.translate(0,-leg.hinge);c.beginPath();polygon(c,leg.strut);c.clip();drawLeg();c.restore();c.save();c.translate(leg.roll,leg.offset);c.beginPath();polygon(c,leg.wheel);c.clip();drawLeg();
+ for(const leg of geo.nativeLegs){c.save();applyJumpLegPose(c,leg.jumpPose);drawJumpLegStrut(c,leg,leg.strut,drawLeg,!!p.jumpLegs?.spread);c.save();c.translate(leg.roll,leg.offset);c.beginPath();polygon(c,leg.wheel);c.clip();drawLeg();
   /* Original wheel painting stays fixed. */c.restore();c.restore();}
  c.save();for(const part of [...geo.nativeLegs,...geo.nativeArms,...geo.gatlingGuns]){c.beginPath();c.rect(0,0,width,height);polygon(c,part.polygon);c.clip('evenodd');}draw();c.restore();
  for(const gun of [...geo.gatlingGuns].reverse()){c.save();partTransform(c,gun);c.beginPath();polygon(c,gun.polygon);c.clip();draw();const [x,y,rx,ry]=gun.face;

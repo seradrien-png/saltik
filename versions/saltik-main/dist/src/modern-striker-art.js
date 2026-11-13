@@ -1,4 +1,4 @@
-import {jumpLegOffset,jumpLegExtension,jumpLegPose,jumpLegPoint,applyJumpLegPose} from './jump-leg-pose.js';
+import {drawJumpLegStrut,jumpLegOffset,jumpLegExtension,jumpLegPose,jumpLegPoint,applyJumpLegPose} from './jump-leg-pose.js';
 import {sampleSupportSurface} from './support-pose.js';
 import {plantInkWheel} from './ink-leg-support.js';
 import {podSlotPresentation} from './ink-pods.js';
@@ -33,7 +33,7 @@ export function drawModernStriker(c,image,p,geo,{time=0}={}){
  const draw=()=>c.drawImage(image,0,0,724,724,0,0,724,724);c.save();c.imageSmoothingEnabled=true;if(p.invulnerable>0&&Math.floor(time*18)%2)c.globalAlpha*=.65;c.translate(geo.x,geo.y+geo.heave+geo.bodyDrop);c.rotate(geo.tilt);c.scale(geo.nativeK*geo.orientation,geo.nativeK);c.translate(-A[0],-A[1]);
  // Rigid tire patches remain planted; only the connecting suspension compresses.
  const drawLeg=()=>{c.save();for(const arm of geo.modernArms){c.beginPath();c.rect(0,0,724,724);polygon(c,arm.polygon);c.clip('evenodd');}draw();c.restore();};
- for(const leg of geo.modernLegs){c.save();applyJumpLegPose(c,leg.jumpPose);c.save();c.translate(0,leg.hinge);c.transform(1,0,leg.roll/(leg.wheelTop-leg.hinge),leg.stretch,0,0);c.translate(0,-leg.hinge);c.beginPath();polygon(c,leg.strut);c.clip();drawLeg();c.restore();c.save();c.translate(leg.roll,leg.offset);c.beginPath();polygon(c,leg.wheel);c.clip();drawLeg();
+ for(const leg of geo.modernLegs){c.save();applyJumpLegPose(c,leg.jumpPose);drawJumpLegStrut(c,leg,leg.strut,drawLeg,!!p.jumpLegs?.spread);c.save();c.translate(leg.roll,leg.offset);c.beginPath();polygon(c,leg.wheel);c.clip();drawLeg();
  /* Original wheel painting stays fixed. */c.restore();c.restore();}
  c.save();c.beginPath();c.rect(0,0,724,540);c.clip();for(const part of [...geo.modernLegs,...geo.modernArms,...geo.modernGuns]){c.beginPath();c.rect(0,0,724,724);polygon(c,part.polygon);c.clip('evenodd');}draw();c.restore();
  for(const [index,gun]of geo.modernGuns.entries()){c.save();transform(c,gun);c.beginPath();polygon(c,gun.polygon);c.clip();if(index===0){c.beginPath();c.rect(0,0,724,724);polygon(c,geo.modernGuns[1].polygon);c.clip('evenodd');}draw();c.restore();}

@@ -1,4 +1,4 @@
-import {jumpLegOffset,jumpLegExtension} from './jump-leg-pose.js';
+import {drawJumpLegStrut,jumpLegOffset,jumpLegExtension} from './jump-leg-pose.js';
 import {augmentModernGeometry,drawModernStriker} from './modern-striker-art.js';
 import {drawNativeTurn} from './character-turns.js';
 import {btGeometry,drawBT} from './bt-art.js';
@@ -298,8 +298,7 @@ export function drawInkSaltik(c,image,p,{camera=0,time=0,scale=1,victoryAge=null
   c.translate(geo.x,geo.y+geo.heave+geo.bodyDrop);c.rotate(geo.tilt);
   c.scale(geo.k*geo.orientation,geo.k);c.translate(-INK_SALTIK_ANCHOR[0],-INK_SALTIK_ANCHOR[1]);
   for(const part of geo.legs){
-    c.save();c.translate(0,part.hinge);c.transform(1,0,part.roll/(part.wheelTop-part.hinge),part.stretch,0,0);c.translate(0,-part.hinge);
-    c.beginPath();polygon(c,part.strutPolygon);c.clip();draw();c.restore();
+    drawJumpLegStrut(c,part,part.strutPolygon,draw,!!p.jumpLegs?.spread);
     c.save();c.translate(part.roll,part.offset);
     c.beginPath();polygon(c,part.wheelPolygon);c.clip();draw();/* Painted tires stay rigid; no spinning highlight overlay. */c.restore();
   }

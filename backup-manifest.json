@@ -7,15 +7,15 @@
       "slug": "saltik-main",
       "repo": "saltik-v2-matin-dore",
       "title": "SALTIK V2 — Matin Doré",
-      "commit": "55ba38422ecdb6c438ea14f79a2ea1e76bf63e09",
-      "published_version": 44,
+      "commit": "2677b3bdc111d5b26e6ef6df3da2a156a298f4d3",
+      "published_version": 45,
       "url": "https://saltik-v2-matin-dore.ser-adrien.chatgpt.site",
       "base_commit": "ce280f9394d382d728673a48c1994a18092e8c58",
       "source_path": "/workspace/sites/saltik-v2-matin-dore",
       "export_path": "versions/saltik-main",
       "web_entry": "versions/saltik-main/dist/index.html",
-      "file_count": 696,
-      "bytes": 276521678,
+      "file_count": 734,
+      "bytes": 294806480,
       "uncommitted_changes": "",
       "files": {
         ".gitignore": {
@@ -378,6 +378,34 @@
           "sha256": "21d98f3dc8b9cc3ec4de241365b178225a716f02736b6bfe2c37ede8ed78927c",
           "size": 2549293
         },
+        "dist/assets/royal-eel-pose-1.png": {
+          "sha256": "69aeb3c6723d898d2cd21ca3c09cfa625d234259b3de9b60feb300323857cfb2",
+          "size": 2058299
+        },
+        "dist/assets/royal-eel-pose-2.png": {
+          "sha256": "65ba1bf5374b178bd2017ea79094f1f4892744affdc01706d6f52566868d8c9d",
+          "size": 2150151
+        },
+        "dist/assets/royal-eel-pose-3.png": {
+          "sha256": "b3625d4338c45404ef0f073b7037bdd22eaa22bb52d24434255b15443fd40494",
+          "size": 2036856
+        },
+        "dist/assets/royal-eel-pose-4.png": {
+          "sha256": "c090ae16eb5acbc8b18d15b298c3b899d73cbb9a9810e10b1c9dd379cbcbfdc3",
+          "size": 2001967
+        },
+        "dist/assets/royal-eel-pose-5.png": {
+          "sha256": "788dec4a7e6a8bbbb0e06da6351066504c8547027f543e0204c188edbfff59c6",
+          "size": 1936332
+        },
+        "dist/assets/royal-eel-pose-6.png": {
+          "sha256": "5520b39035b138ecc699945559a28a271c8fc05706c5c7c0f15453c0441748b5",
+          "size": 1932430
+        },
+        "dist/assets/royal-eel-pose-7.png": {
+          "sha256": "9ebcfcfdfe8c3acec89df3bcaad7a06efc9055ab0615520ee4ac25cfbb3a0744",
+          "size": 2112543
+        },
         "dist/assets/royal-eel-swim.png": {
           "sha256": "f0079f9e61d185e95551fd4eba4a2405621cc0bfd3119302e688d40293b048a3",
           "size": 2387031
@@ -443,32 +471,32 @@
           "size": 47581
         },
         "dist/audio/voices/gatling-carrier.ogg": {
-          "sha256": "0ac7805f73893e9258f9b289f79462c531411942631e820863490b777153721c",
-          "size": 18963
+          "sha256": "bd2211d6fc0b55e59892eb51f300eaa48000a150048aa4362fb688718b1744a6",
+          "size": 19013
         },
         "dist/audio/voices/gatling-enemy-brother.ogg": {
-          "sha256": "69acb840a22a4704340aa952a9a68a31db0872f2b1ec1df1236a622c8513bd5b",
-          "size": 12647
+          "sha256": "36a49be5bab50e8d566e48e96112cd68d82da1181d71fde3be70da0dc19cdeb9",
+          "size": 12803
         },
         "dist/audio/voices/gatling-grab-him.ogg": {
-          "sha256": "811b5a898be31e7df0ec6b30fc6fd1ede7f99c08cdd2aab8a983fa7b3d837d0f",
-          "size": 11007
+          "sha256": "446165cf9479059a7d50373b722af2dc6d3c3ad2e1b6e84b9807ae9ecd8035c5",
+          "size": 10373
         },
         "dist/audio/voices/gatling-ready.ogg": {
-          "sha256": "9bd38b943bdc216b454bbd7676b7ea6d3b74f0b8099502e54126bd1003e49064",
-          "size": 15044
+          "sha256": "077bf6b2d193578df76567ae801b117ddf6eeeac260cae3a9c3ba3ff1b975221",
+          "size": 13988
         },
         "dist/audio/voices/gatling-see-you-later.ogg": {
-          "sha256": "acfb535d2266f4625a4ea02099ef1b68c7d5e7f47a4c6d47ea2efe5c210f83de",
-          "size": 11174
+          "sha256": "708e446de95b7f62a9d0196da1b352dd2902d1571a180c28e5fda6a07f596124",
+          "size": 10777
         },
         "dist/audio/voices/gatling-target-lock.ogg": {
-          "sha256": "81e079e47f273c4c0e3244ade248afd32522dab6aa9f6fb7017d9a7e3fc11868",
-          "size": 12638
+          "sha256": "62a40bfffcc057aa44eceb1c76b66ec0245b4f629010ee92d699a7171f940aff",
+          "size": 12416
         },
         "dist/audio/voices/gatling-victory.ogg": {
-          "sha256": "0ebac1625aacbf282b765129760d09e9101f9d061c14121613110553cf5a72a1",
-          "size": 10400
+          "sha256": "ea5d61680d0459d41faf94230f81d227eb6ea2d4ccc36fcbfb59156e5ff5b1d6",
+          "size": 10270
         },
         "dist/audio/voices/goodbye.ogg": {
           "sha256": "1317bddb5e3f67fa5d00f73b2183f321f3d270eded83f443fc852aaa4f35c444",
@@ -529,6 +557,86 @@
         "dist/manifest.webmanifest": {
           "sha256": "3bb9a40c683b079ae3d60392946f0e04677dda91737ba9904ddf539f957ea539",
           "size": 569
+        },
+        "dist/menu/level1-bt-default.webp": {
+          "sha256": "d7677c56f97f007c55c667d00bfe17e579eecdfad42220d8e356d66a6a75d85c",
+          "size": 147930
+        },
+        "dist/menu/level1-gatling-default.webp": {
+          "sha256": "3c57c50ca59dc8bbcf3d4ef9f50030f339fc962106122099d70bce4bbfd826e4",
+          "size": 195164
+        },
+        "dist/menu/level1-gatling-limule.webp": {
+          "sha256": "c920a242a1289a6d295566f5990af02604df6be641b32d5752399e58f09a72e3",
+          "size": 181358
+        },
+        "dist/menu/level1-striker-default.webp": {
+          "sha256": "1d3a3854f07b060b25e92165afeac639e9c3dca7cd1c9f448c28797189fd2824",
+          "size": 154150
+        },
+        "dist/menu/level1-striker-dragon.webp": {
+          "sha256": "4593dced60f306cfb9189ea2fec4c81601a990581bca6588b64b416588f204f5",
+          "size": 203230
+        },
+        "dist/menu/level2-bt-default.webp": {
+          "sha256": "722dc0a5e083151bcb596f3d6b37e6b08b90ba6f3ddada761e342f7359ebf804",
+          "size": 212986
+        },
+        "dist/menu/level2-gatling-default.webp": {
+          "sha256": "047262ebc9f8dcda6a086cf62b47e6236ff1103b25b647a3dccfe3f27b45f161",
+          "size": 230866
+        },
+        "dist/menu/level2-gatling-limule.webp": {
+          "sha256": "1d3f02d6a4a1f347efc612863340407bc130293cbfb71a2245cc72c8d902f873",
+          "size": 196574
+        },
+        "dist/menu/level2-striker-default.webp": {
+          "sha256": "d9ad5ed18cbcc68bd929feb45ce065aa010b01b51f0e7a37a26a936681dff277",
+          "size": 209350
+        },
+        "dist/menu/level2-striker-dragon.webp": {
+          "sha256": "9486a112bffbe15c54bf5976a4f1eb19ef24b9e28a08c3f8663166312efbd52b",
+          "size": 228182
+        },
+        "dist/menu/level3-bt-default.webp": {
+          "sha256": "8b21eeabc6a5c7652288908c380d58e7fdfcb20dd9fbf4c85619148088b5131c",
+          "size": 202300
+        },
+        "dist/menu/level3-gatling-default.webp": {
+          "sha256": "69f11dff49478808c9d9ddd5171eef9cc6500617c8265d7b064377e223e17874",
+          "size": 230678
+        },
+        "dist/menu/level3-gatling-limule.webp": {
+          "sha256": "83112584661e528bab80565fdcad56f4228499a60efae3f0d4e6d8bf159d7eb6",
+          "size": 203226
+        },
+        "dist/menu/level3-striker-default.webp": {
+          "sha256": "163c6d14590d1d3575ce801e97324e6a421855614c466b01842c9d06a5848e79",
+          "size": 206594
+        },
+        "dist/menu/level3-striker-dragon.webp": {
+          "sha256": "da428e262f0ce41d8720bf854db5af345210d0b121b2f28ed0d323c63ded2b72",
+          "size": 227842
+        },
+        "dist/menu/level4-bt-default.webp": {
+          "sha256": "d7677c56f97f007c55c667d00bfe17e579eecdfad42220d8e356d66a6a75d85c",
+          "size": 147930
+        },
+        "dist/menu/level4-gatling-default.webp": {
+          "sha256": "cdcaddd5e9d704b19fbddada4ba6481e5f4336b1bbf0ca2f3f243c2842f2a263",
+          "size": 229518
+        },
+        "dist/menu/level4-gatling-limule.webp": {
+          "sha256": "89ddf7365681cbd0d0be1c2b9257ed03535cc4ac18bab709ac3ed62087c5a681",
+          "size": 201526
+        },
+        "dist/menu/level4-striker-default.webp": {
+          "sha256": "cac92b7dc8e8e8a753a74d19c48d62b4e7573f4b4e061251aa96966cdba6902e",
+          "size": 156628
+        },
+        "dist/menu/level4-striker-dragon.webp": {
+          "sha256": "ca0b59f805b434b89587c9f6af8514bf92e14bfda126ff9d094944c020ebc4ee",
+          "size": 202862
         },
         "dist/promo.html": {
           "sha256": "dbae7843a85b331529d247113aa774583ae440e664e8e23d4191da380f8e036d",
@@ -667,8 +775,8 @@
           "size": 1135
         },
         "dist/src/gatling-art.js": {
-          "sha256": "84999e32e18b8c9135cc13e16b1945cea5231dad2887e99ebc5387cd480e2de0",
-          "size": 11071
+          "sha256": "462b298dcb33377d83001ca5ca494727f2e7031e686bb6a826e9c87051f7d692",
+          "size": 10958
         },
         "dist/src/gatling-combat.js": {
           "sha256": "7b2ff13906b05051fda2ca79c2dee72ad3573f890d45802b0f766a138357809a",
@@ -703,8 +811,8 @@
           "size": 37263
         },
         "dist/src/ink-enemy-saltik.js": {
-          "sha256": "07b427251fcdd32ea8e886a15afd95377a9f81936b36a4895886a36c76ca4a62",
-          "size": 16210
+          "sha256": "2ed3cf3c04439940b6553df0f398534493d685ca7f3c97c4eb584e5e458ae7c0",
+          "size": 16088
         },
         "dist/src/ink-hit-cache.js": {
           "sha256": "7e9903deb9b50802faa19d302bb0c118da012ebf4213be0882c5bc493b113a80",
@@ -723,12 +831,12 @@
           "size": 5484
         },
         "dist/src/ink-renderer.js": {
-          "sha256": "7f9e520fd0a6f02a98b2568ad9e21c8dffdbe8370b40b8cdcbc0d8f945f31691",
-          "size": 21164
+          "sha256": "ab3e5fa6145a95955ecd545206584c88b1b7b91e7455882c0c4793039013b772",
+          "size": 22071
         },
         "dist/src/ink-saltik.js": {
-          "sha256": "92be94bfe3076924825fcf862d688e6882809985fc599e2dd6dee13c89225b6c",
-          "size": 21465
+          "sha256": "ba15550e74f822e3897a3929289ebb1559b4c5b15e5f7be155d8ce1e42f03cb2",
+          "size": 21342
         },
         "dist/src/ink-scene.js": {
           "sha256": "91d85005679c39c1060f60d79282b7eb5c90546da8c488d61b0b0c962d269dcb",
@@ -751,8 +859,8 @@
           "size": 4938
         },
         "dist/src/jump-leg-pose.js": {
-          "sha256": "56736acd36f7a1ad8bda08037cad09cf4ea5c1545c9f42506cdfa71f4d0c081b",
-          "size": 1828
+          "sha256": "5dd4f58b0adaa5712fed1b15b0e0060f7b47adf646613df6c7862cd0c5a5c55d",
+          "size": 2805
         },
         "dist/src/lunar-architecture.js": {
           "sha256": "c1eb7b42baec02ca72082ab52c34acb76a174105bf8bbf9f97f10d0ef919f4bf",
@@ -790,6 +898,10 @@
           "sha256": "f24e08a07354668edbe7d54291517edc973dd34f9dfa9653c4f5776fe2b1eb87",
           "size": 941
         },
+        "dist/src/menu-portraits.js": {
+          "sha256": "871ab07ea26fc8f04b63051e65a182a04c986c224ed9f14a671f00eafbc2b39f",
+          "size": 1035
+        },
         "dist/src/mirv-preview.js": {
           "sha256": "2f5c1f276ac66d1276b6d21ddb757ccf951d3024d3b300cc64027a973624e650",
           "size": 3884
@@ -811,8 +923,8 @@
           "size": 1708
         },
         "dist/src/modern-striker-art.js": {
-          "sha256": "5903cfeb6647200320214f21a320e0867067033d1067eb1eb7d872fe48dd887e",
-          "size": 8437
+          "sha256": "8a93837144c3ebdf40905e081b3d9267e2fd40732bf03b84b9ac94a15ca78d37",
+          "size": 8324
         },
         "dist/src/motor-motion.js": {
           "sha256": "4cd5f7608a358e829486fb3044179c75876304c3623a922a6fb701055a468691",
@@ -851,12 +963,12 @@
           "size": 846
         },
         "dist/src/royal-bridge-water.js": {
-          "sha256": "30e67c61f4b1837718be53241fc12f0826ca97dfdbb4c73c9996c728b29498d1",
-          "size": 5439
+          "sha256": "528441daaa3b261abe749191f37d2498bd609cd3fd2ef54b3ab4620b85a9d986",
+          "size": 5834
         },
         "dist/src/royal-eel-frames.js": {
-          "sha256": "8d9f2745578eecf2e5a8f7fd5d623f49cf4da1fbcbe295e35b2b81ce41a91602",
-          "size": 2260
+          "sha256": "b991b798929fec08db3276a7df3dbdc1859792fb48233d9bf7deb79cd9455d3a",
+          "size": 2806
         },
         "dist/src/royal-finale.js": {
           "sha256": "6abff63d45c7be2d8ecab76bb5d29b61dcc541be56f13f2d113eb4d3713aa50f",
@@ -867,8 +979,8 @@
           "size": 4903
         },
         "dist/src/royal-level.js": {
-          "sha256": "5713676b1e659a2dc7b03385d269528730abb0b5812726c7fc4d77862289cbf9",
-          "size": 4568
+          "sha256": "f66d3da6dea113a978e288253beaaa4196b4348ae92d45418c8ad8d32ee0d82f",
+          "size": 4618
         },
         "dist/src/royal-props.js": {
           "sha256": "9826fe184441137207f0eb7eb2179929d1a3459088c907727ae17fbc088673ea",
@@ -995,12 +1107,16 @@
           "size": 1515
         },
         "docs/gatling-audio-provenance.json": {
-          "sha256": "9e5eafb0c8ddb71980daaf4d40e7efca12798c62ac0ce693dea90f1d76014254",
-          "size": 2094
+          "sha256": "17ff1de7b45e69efb0682bf146f09b129d3c9a31ce15d070a8152970dbd106b3",
+          "size": 4838
         },
         "docs/gatling-audio-v43.md": {
-          "sha256": "1418b4ec10b1ca7ec3a98000b407e62ad4078b49120801439d6bdde0f46daa49",
-          "size": 2931
+          "sha256": "6c0a967b053bb2686cefc1ed2a4dec44e1b3a56fbc26ca26e33132939f6731a0",
+          "size": 3159
+        },
+        "docs/gatling-audio-v45.md": {
+          "sha256": "64015dbec771d396e971ae55a9b5f081a248c84dc8652b4f247a095904f9f09b",
+          "size": 3066
         },
         "docs/implementation-ledger.md": {
           "sha256": "b41cbd00b8a41d5bf0962e717c8a97642bd0adafd732328af697470ca4b98bf9",
@@ -1093,6 +1209,10 @@
         "docs/runtime-deployment.md": {
           "sha256": "9862170ac4238b862e2b4abd720d0d8b8c29b23701b78fd4d431d15aa55269eb",
           "size": 2778
+        },
+        "docs/saltik-v45-corrections.md": {
+          "sha256": "e1eb7b928926a25f78b92e802f91e1a12f6583ea7d63aadfc7713ad3686dc025",
+          "size": 3189
         },
         "docs/superpowers/approved-carrier-validation-2026-11-04.md": {
           "sha256": "2dd6793c235f57f097556e195e42f70468a0844655777c9c152ac028cb02193e",
@@ -1530,6 +1650,10 @@
           "sha256": "74fc5df98af6cdc6a4139ad81c0765082ee83714cbb8da3b123ed41ed1d8f66f",
           "size": 3444
         },
+        "docs/v45-validation.json": {
+          "sha256": "88008aa3b8ae06fd0ea26e814a1527b76340330d54515868552c94f15bf2693e",
+          "size": 52000
+        },
         "favicon.svg": {
           "sha256": "f33ef2761551fc1fe4a9573a30ad50894df7a882b6efd9e5ccb33f1580d7d12b",
           "size": 922
@@ -1615,8 +1739,12 @@
           "size": 4234
         },
         "scripts/create-gatling-audio.py": {
-          "sha256": "2497decef0930861a0a4b1648261e6ad22a8c5a1f6db3928bdc95a2d6e7faa5f",
-          "size": 2350
+          "sha256": "58fd126a524be8e27806faca9b4b36f63a2c2def5ac6e52e0144b56fd0c8fc63",
+          "size": 7051
+        },
+        "scripts/create-menu-portraits.py": {
+          "sha256": "64d4681d8b0db7845a178a69ca7e556a9d0cf7234640d35f033c2bc7000f2d12",
+          "size": 6646
         },
         "scripts/faithful-film/assets/commercial.wav": {
           "sha256": "345f6485fb55d651fc6605a9c1fe223d6a464ba6813c8d0532e24464341822a1",
@@ -1879,8 +2007,8 @@
           "size": 1135
         },
         "src/gatling-art.js": {
-          "sha256": "84999e32e18b8c9135cc13e16b1945cea5231dad2887e99ebc5387cd480e2de0",
-          "size": 11071
+          "sha256": "462b298dcb33377d83001ca5ca494727f2e7031e686bb6a826e9c87051f7d692",
+          "size": 10958
         },
         "src/gatling-combat.js": {
           "sha256": "7b2ff13906b05051fda2ca79c2dee72ad3573f890d45802b0f766a138357809a",
@@ -1915,8 +2043,8 @@
           "size": 37263
         },
         "src/ink-enemy-saltik.js": {
-          "sha256": "07b427251fcdd32ea8e886a15afd95377a9f81936b36a4895886a36c76ca4a62",
-          "size": 16210
+          "sha256": "2ed3cf3c04439940b6553df0f398534493d685ca7f3c97c4eb584e5e458ae7c0",
+          "size": 16088
         },
         "src/ink-hit-cache.js": {
           "sha256": "7e9903deb9b50802faa19d302bb0c118da012ebf4213be0882c5bc493b113a80",
@@ -1935,12 +2063,12 @@
           "size": 5484
         },
         "src/ink-renderer.js": {
-          "sha256": "7f9e520fd0a6f02a98b2568ad9e21c8dffdbe8370b40b8cdcbc0d8f945f31691",
-          "size": 21164
+          "sha256": "ab3e5fa6145a95955ecd545206584c88b1b7b91e7455882c0c4793039013b772",
+          "size": 22071
         },
         "src/ink-saltik.js": {
-          "sha256": "92be94bfe3076924825fcf862d688e6882809985fc599e2dd6dee13c89225b6c",
-          "size": 21465
+          "sha256": "ba15550e74f822e3897a3929289ebb1559b4c5b15e5f7be155d8ce1e42f03cb2",
+          "size": 21342
         },
         "src/ink-scene.js": {
           "sha256": "91d85005679c39c1060f60d79282b7eb5c90546da8c488d61b0b0c962d269dcb",
@@ -1963,8 +2091,8 @@
           "size": 4938
         },
         "src/jump-leg-pose.js": {
-          "sha256": "56736acd36f7a1ad8bda08037cad09cf4ea5c1545c9f42506cdfa71f4d0c081b",
-          "size": 1828
+          "sha256": "5dd4f58b0adaa5712fed1b15b0e0060f7b47adf646613df6c7862cd0c5a5c55d",
+          "size": 2805
         },
         "src/lunar-architecture.js": {
           "sha256": "c1eb7b42baec02ca72082ab52c34acb76a174105bf8bbf9f97f10d0ef919f4bf",
@@ -2002,6 +2130,10 @@
           "sha256": "f24e08a07354668edbe7d54291517edc973dd34f9dfa9653c4f5776fe2b1eb87",
           "size": 941
         },
+        "src/menu-portraits.js": {
+          "sha256": "871ab07ea26fc8f04b63051e65a182a04c986c224ed9f14a671f00eafbc2b39f",
+          "size": 1035
+        },
         "src/mirv-preview.js": {
           "sha256": "2f5c1f276ac66d1276b6d21ddb757ccf951d3024d3b300cc64027a973624e650",
           "size": 3884
@@ -2023,8 +2155,8 @@
           "size": 1708
         },
         "src/modern-striker-art.js": {
-          "sha256": "5903cfeb6647200320214f21a320e0867067033d1067eb1eb7d872fe48dd887e",
-          "size": 8437
+          "sha256": "8a93837144c3ebdf40905e081b3d9267e2fd40732bf03b84b9ac94a15ca78d37",
+          "size": 8324
         },
         "src/motor-motion.js": {
           "sha256": "4cd5f7608a358e829486fb3044179c75876304c3623a922a6fb701055a468691",
@@ -2063,12 +2195,12 @@
           "size": 846
         },
         "src/royal-bridge-water.js": {
-          "sha256": "30e67c61f4b1837718be53241fc12f0826ca97dfdbb4c73c9996c728b29498d1",
-          "size": 5439
+          "sha256": "528441daaa3b261abe749191f37d2498bd609cd3fd2ef54b3ab4620b85a9d986",
+          "size": 5834
         },
         "src/royal-eel-frames.js": {
-          "sha256": "8d9f2745578eecf2e5a8f7fd5d623f49cf4da1fbcbe295e35b2b81ce41a91602",
-          "size": 2260
+          "sha256": "b991b798929fec08db3276a7df3dbdc1859792fb48233d9bf7deb79cd9455d3a",
+          "size": 2806
         },
         "src/royal-finale.js": {
           "sha256": "6abff63d45c7be2d8ecab76bb5d29b61dcc541be56f13f2d113eb4d3713aa50f",
@@ -2079,8 +2211,8 @@
           "size": 4903
         },
         "src/royal-level.js": {
-          "sha256": "5713676b1e659a2dc7b03385d269528730abb0b5812726c7fc4d77862289cbf9",
-          "size": 4568
+          "sha256": "f66d3da6dea113a978e288253beaaa4196b4348ae92d45418c8ad8d32ee0d82f",
+          "size": 4618
         },
         "src/royal-props.js": {
           "sha256": "9826fe184441137207f0eb7eb2179929d1a3459088c907727ae17fbc088673ea",
@@ -2210,6 +2342,10 @@
           "sha256": "e4658b44babb64c2aaaf65fa38d86a5221815fbb27662ff0f62273c9a0d2f217",
           "size": 1868
         },
+        "tests/bridge-water-transport.test.js": {
+          "sha256": "c3271847c8b58edaa2f64d1879db9527943a8e23a8b8ebbebbc856d29d3a1b5a",
+          "size": 626
+        },
         "tests/browser_action_dock.py": {
           "sha256": "a82b7ba7f97688315ce9a6fa86f1112a2ebddd30ca09cb476e53ad1f8b984f3e",
           "size": 14025
@@ -2237,6 +2373,10 @@
         "tests/browser_boss_ride.py": {
           "sha256": "13e05af98b1531b7fd52f2b28b317428de6464032412a01586414a85c464fac6",
           "size": 5902
+        },
+        "tests/browser_bridge_water_flow.py": {
+          "sha256": "1ddb9f9a29a54b815132e8ecf08686b1bd56c1519a912969beb9cff4e21c2506",
+          "size": 3642
         },
         "tests/browser_campaign.py": {
           "sha256": "426090c43919cfa8fc19521be4e521ab667c7eee53e17db5fb383aba7a6a72ab",
@@ -2407,8 +2547,8 @@
           "size": 5151
         },
         "tests/character-polish.test.js": {
-          "sha256": "6291a9bb77261887aaa9e4f6265bf09a99e2743607e9612a34509d0df795e521",
-          "size": 3971
+          "sha256": "d1d8ef402850704724dd1879664907473d46dbefa0e82dbd80b95cc4b5cd3ad6",
+          "size": 3970
         },
         "tests/combat-effects.test.js": {
           "sha256": "19618f04b0fe7339fa08a6cea89adc5cb1c69bf65007864a98454fb41df82bd5",
@@ -2542,6 +2682,10 @@
           "sha256": "6583f57b899b46d6a4397029a838a39e73cc9554dbc6400d11f135663c2efb6d",
           "size": 11751
         },
+        "tests/jump-leg-attachment.test.js": {
+          "sha256": "279f4192fd59de5a411e635fd7393d2bb5c4565caa12924e4ebb7713b1e8218f",
+          "size": 3695
+        },
         "tests/jump-leg-pose.test.js": {
           "sha256": "1a4f3dcb6385596289f22ebca93f0ec4b37c394e7d8c2dc8254f5c04df994ddd",
           "size": 3019
@@ -2621,6 +2765,10 @@
         "tests/melee-combat.test.js": {
           "sha256": "cd2b90d8d9b0ae96e8c995faca963b035f540d6a7edab9ea444aca79a1806582",
           "size": 6739
+        },
+        "tests/menu-portraits.test.js": {
+          "sha256": "86ad75ac3e015750791452a59c2e1ee2584ab849b4d7a464408874b64beaa378",
+          "size": 1091
         },
         "tests/mirv-aim.test.js": {
           "sha256": "fe8ecbb157d925b4865df8be385d2350677f19026ecc956c2db53dd3047867a1",
@@ -2714,6 +2862,10 @@
           "sha256": "6718decaf8ceac5eaeb3841b710d0680d4651514fc98cf036a26932cfb176e68",
           "size": 763
         },
+        "tests/royal-finale-state.test.js": {
+          "sha256": "f267d95b682de34495a3c514cbf10863d28bdb0365debcf6466a2b4f3fc496ef",
+          "size": 1087
+        },
         "tests/royal-finale.test.js": {
           "sha256": "b1bd46dcd2c01771da69ee87fd6756d741a1e208d3ba41908773f5b5a8f23b06",
           "size": 5232
@@ -2779,8 +2931,8 @@
           "size": 9395
         },
         "tests/velvet-refinements.test.js": {
-          "sha256": "cac296b2b130bb112d7eb2e920a7d0cd07e84472e5afe29866faa7e9deba756a",
-          "size": 1796
+          "sha256": "1b7f1127cd7445743006794dac5803b72cbaa9b5d81895ab6d65e54653e37e8f",
+          "size": 1767
         },
         "tests/velvet-water-flow.test.js": {
           "sha256": "548b02c1f03da6e9162c5c66d2450dd335cdc043efb3407eb09c292c6ed3fca9",
@@ -2814,12 +2966,12 @@
           "duration_native_run_seconds": 82.0166666666633
         }
       ],
-      "update_note": "Lossless asset audit: 262205327 to 175976522 bytes; 13 historical files excluded only from publication; every original retained.",
-      "published_source_commit": "55ba38422ecdb6c438ea14f79a2ea1e76bf63e09",
+      "update_note": "Royal boarding state fixed; eight native HD eel drawings; innocent Gatling recordings; flowing bridge waterfall; complete loading portraits; anchored jump suspension. 803 tests pass; original assets and other editions preserved.",
+      "published_source_commit": "2677b3bdc111d5b26e6ef6df3da2a156a298f4d3",
       "publication_status": "Published and verified",
       "github_import_base": "4c9b8e64bf3232c222f9b6f534ca37d660da3f7b",
-      "live_published_version": 44,
-      "last_confirmed_saved_version": 44
+      "live_published_version": 45,
+      "last_confirmed_saved_version": 45
     },
     {
       "slug": "saltik-ink",

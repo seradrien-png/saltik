@@ -1,0 +1,1454 @@
+{
+  "tests": {
+    "passed": 803,
+    "failed": 0
+  },
+  "startup": {
+    "portrait_ms": 2013.8999999985099,
+    "portrait_url": "http://127.0.0.1:4291/menu/level1-gatling-limule.webp",
+    "partial_old_model_draws": 0,
+    "ready_ms": 22081,
+    "errors": [],
+    "missing": []
+  },
+  "continuous_finale": {
+    "actual_main_requestAnimationFrame": true,
+    "real_engine_and_UI": true,
+    "art_renderer_stubbed_for_UI_only": true,
+    "runs": [
+      {
+        "character": "striker",
+        "jump_at": 1.016666666666668,
+        "ride_at": 2.5166666666666626,
+        "finished": true
+      },
+      {
+        "character": "gatling",
+        "jump_at": 1.0000000000000013,
+        "ride_at": 2.5166666666666626,
+        "finished": true
+      },
+      {
+        "character": "bt",
+        "jump_at": 1.016666666666668,
+        "ride_at": 2.533333333333329,
+        "finished": true
+      }
+    ],
+    "errors": []
+  },
+  "runtime_browser": {
+    "runtime": {
+      "artLoaded": true,
+      "runs": [
+        {
+          "level": 1,
+          "character": "striker",
+          "drawn": true
+        },
+        {
+          "level": 1,
+          "character": "gatling",
+          "drawn": true
+        },
+        {
+          "level": 1,
+          "character": "bt",
+          "drawn": true
+        },
+        {
+          "level": 2,
+          "character": "striker",
+          "drawn": true
+        },
+        {
+          "level": 2,
+          "character": "gatling",
+          "drawn": true
+        },
+        {
+          "level": 2,
+          "character": "bt",
+          "drawn": true
+        },
+        {
+          "level": 3,
+          "character": "striker",
+          "drawn": true
+        },
+        {
+          "level": 3,
+          "character": "gatling",
+          "drawn": true
+        },
+        {
+          "level": 3,
+          "character": "bt",
+          "drawn": true
+        },
+        {
+          "level": 4,
+          "character": "striker",
+          "drawn": true
+        },
+        {
+          "level": 4,
+          "character": "gatling",
+          "drawn": true
+        },
+        {
+          "level": 4,
+          "character": "bt",
+          "drawn": true
+        }
+      ],
+      "finaleAllCharacters": true
+    },
+    "audio": {
+      "started": {
+        "wanted": true,
+        "playing": true,
+        "loaded": true,
+        "loading": false,
+        "failed": false
+      },
+      "released": {
+        "wanted": false,
+        "playing": false,
+        "loaded": true,
+        "loading": false,
+        "failed": false
+      }
+    },
+    "errors": [],
+    "missing": [],
+    "entrypoints": [
+      "index.html",
+      "android.html",
+      "promo.html"
+    ]
+  },
+  "voice": {
+    "changed_audio": [
+      "dist/audio/voices/gatling-grab-him.ogg",
+      "dist/audio/voices/gatling-target-lock.ogg",
+      "dist/audio/voices/gatling-victory.ogg",
+      "dist/audio/voices/gatling-see-you-later.ogg",
+      "dist/audio/voices/gatling-enemy-brother.ogg",
+      "dist/audio/voices/gatling-ready.ogg",
+      "dist/audio/voices/gatling-carrier.ogg"
+    ],
+    "unchanged_audio_files": 9,
+    "old_backups_match_original": true,
+    "loop_sha256": "e40f137f274197666f59fe0a685609677f01bdcb7252e5408d718e0e62f63794",
+    "all_seven_finite": true,
+    "clipped_samples": 0
+  },
+  "asset_package": {
+    "before_bytes": 280404005,
+    "after_bytes": 191069633,
+    "saved_bytes": 89334372,
+    "reduction_percent": 31.859,
+    "excluded_files": [
+      {
+        "path": "assets/ink-boss-parts.png",
+        "bytes": 1780593,
+        "sha256": "614a99d8eff86a05223fde821e2521c5ce045aec39564324d179787d546d44de",
+        "reason": "Absent from resolved art registry and direct runtime URLs; historical original retained in dist and Git"
+      },
+      {
+        "path": "assets/ink-boss.png",
+        "bytes": 1765311,
+        "sha256": "cc886d20bef7c8ffb464875d7e6f9a34655a51a3440f45ce4d9662164b94288f",
+        "reason": "Absent from resolved art registry and direct runtime URLs; historical original retained in dist and Git"
+      },
+      {
+        "path": "assets/ink-carrier-dr01.png",
+        "bytes": 2616710,
+        "sha256": "d0d8427a38450e354ee2d9bcc7e7e52243cb5b871f02ae49e12ea714d4b6258b",
+        "reason": "Absent from resolved art registry and direct runtime URLs; historical original retained in dist and Git"
+      },
+      {
+        "path": "assets/ink-carrier-platform.png",
+        "bytes": 2385427,
+        "sha256": "463750fc53740805f92cf4fb3f0e2301806a60c00e177dafc25699b8d86f166d",
+        "reason": "Absent from resolved art registry and direct runtime URLs; historical original retained in dist and Git"
+      },
+      {
+        "path": "assets/ink-carrier-profile-dr01.png",
+        "bytes": 2568474,
+        "sha256": "928df4fc27ddecd69ec33023acf763ce35397365b36ad5756ba5014e66f510e7",
+        "reason": "Absent from resolved art registry and direct runtime URLs; historical original retained in dist and Git"
+      },
+      {
+        "path": "assets/ink-carrier-support-dr01.png",
+        "bytes": 2035265,
+        "sha256": "0b2b701b29d308c114aca6294d9066fbd983097b7a47bdce72394a5409d1575d",
+        "reason": "Absent from resolved art registry and direct runtime URLs; historical original retained in dist and Git"
+      },
+      {
+        "path": "assets/ink-carrier-two-eyes-dr01.png",
+        "bytes": 2620938,
+        "sha256": "1c348eb4996d0f6b13c65b18281b87fcd74273886c52107ba28ef795dbeb0c3a",
+        "reason": "Absent from resolved art registry and direct runtime URLs; historical original retained in dist and Git"
+      },
+      {
+        "path": "assets/ink-carrier.png",
+        "bytes": 1752029,
+        "sha256": "7d57c3ea368ea981a7e6ba88a07280b79257b22c4b3e7e342064a138372a7cbc",
+        "reason": "Absent from resolved art registry and direct runtime URLs; historical original retained in dist and Git"
+      },
+      {
+        "path": "assets/lunar-archives-sky.png",
+        "bytes": 3276750,
+        "sha256": "3fe694c1dc93178d2ce8efd499e7acdceb06e688b9924a4b3731d14379729d40",
+        "reason": "Absent from resolved art registry and direct runtime URLs; historical original retained in dist and Git"
+      },
+      {
+        "path": "assets/lunar-archives-stone.png",
+        "bytes": 4288004,
+        "sha256": "8b42934e777fff24cb9cafbba2908ed1fb46ea24be8451ae9e4f200f3972b547",
+        "reason": "Absent from resolved art registry and direct runtime URLs; historical original retained in dist and Git"
+      },
+      {
+        "path": "assets/lunar-carrier-material.png",
+        "bytes": 2133273,
+        "sha256": "782fedebf99e2772780cf63a8301df78f4c10bb5a0a39f565fd11abb14bb2042",
+        "reason": "Absent from resolved art registry and direct runtime URLs; historical original retained in dist and Git"
+      },
+      {
+        "path": "assets/lunar-coherent-world.png",
+        "bytes": 3080738,
+        "sha256": "8b16cf99e7366ae7c959043cce7091f27ae806f43e042fadaa940a5e8a83284a",
+        "reason": "Absent from resolved art registry and direct runtime URLs; historical original retained in dist and Git"
+      },
+      {
+        "path": "assets/lunar-sky-layer.png",
+        "bytes": 2609612,
+        "sha256": "253ada3c626bad7ee2ca003c3451a05599c13df0e4b8cd2066e5098fa7d99d1b",
+        "reason": "Absent from resolved art registry and direct runtime URLs; historical original retained in dist and Git"
+      }
+    ],
+    "images": [
+      {
+        "original": "assets/boss-assault-atlas.png",
+        "published": "assets/boss-assault-atlas.webp",
+        "before": 3304293,
+        "after": 2445462,
+        "dimensions": [
+          1536,
+          1024
+        ],
+        "visible_pixels_identical": true,
+        "original_sha256": "f9859847a2d5a0f2b630bafaaef3f9f2eba725ace3629396825f5d2fd6986b63",
+        "published_sha256": "e1641cec602be8694636697cc561d9cf75e8066461767a1a511dc42592dc6a0c"
+      },
+      {
+        "original": "assets/bt-finish-frames.png",
+        "published": "assets/bt-finish-frames.webp",
+        "before": 2736720,
+        "after": 1961578,
+        "dimensions": [
+          1536,
+          1024
+        ],
+        "visible_pixels_identical": true,
+        "original_sha256": "393d72cc71538e0989e6dc9f398e57a67476afb626d92fddf1732693e7e4ba8d",
+        "published_sha256": "7b01b6f974a2ccb0992334688296faa886fa36867ea6cc453d34a875bc1bf41a"
+      },
+      {
+        "original": "assets/bt-impact-underside.png",
+        "published": "assets/bt-impact-underside.webp",
+        "before": 1858013,
+        "after": 1346580,
+        "dimensions": [
+          1448,
+          1086
+        ],
+        "visible_pixels_identical": true,
+        "original_sha256": "f93c7949a398e007610ba19dcf8326ca7cd94e0b916c9aef9287692446aa2493",
+        "published_sha256": "807a0c16ee127ccb28514050e7baa333fedc3115536eb09e75db0d23e6618684"
+      },
+      {
+        "original": "assets/bt-turn-lunar-material.png",
+        "published": "assets/bt-turn-lunar-material.webp",
+        "before": 2088922,
+        "after": 1676336,
+        "dimensions": [
+          2172,
+          724
+        ],
+        "visible_pixels_identical": true,
+        "original_sha256": "25360cb43a19450b90756ea1b585000fb2d2ea6d210d63c29306e1f13f6c9290",
+        "published_sha256": "55e6402b4186dd448c2392f63396a66a5b94ff15cdba634bc83b573d7d334d30"
+      },
+      {
+        "original": "assets/bt-turn-velvet-material.png",
+        "published": "assets/bt-turn-velvet-material.webp",
+        "before": 2143031,
+        "after": 1660786,
+        "dimensions": [
+          2172,
+          724
+        ],
+        "visible_pixels_identical": true,
+        "original_sha256": "54473b054f7fa2db8ae7bf438ed04f0f9f7fd7caeba829e4428613218fbe952a",
+        "published_sha256": "98ee601e1a8cf1a7ab2fcf1afdaea3ad6cb74c68c16428bb6dd1fc5568c23428"
+      },
+      {
+        "original": "assets/bt-turn.png",
+        "published": "assets/bt-turn.webp",
+        "before": 1582601,
+        "after": 1132746,
+        "dimensions": [
+          2172,
+          724
+        ],
+        "visible_pixels_identical": true,
+        "original_sha256": "8b5ec5bea0087650808a520e199a4a37e16f8faaaa558429894983bf17bcbebe",
+        "published_sha256": "3ad96aedf8992d0bb68d049bb916d8caafd0df0c2051944f51926d09c5695c7d"
+      },
+      {
+        "original": "assets/desert-c07-interior.png",
+        "published": "assets/desert-c07-interior.webp",
+        "before": 3889306,
+        "after": 2913444,
+        "dimensions": [
+          2172,
+          724
+        ],
+        "visible_pixels_identical": true,
+        "original_sha256": "bd2bd6aa2d150e1f5515b5c22857db45d6f5bd3ea990ab3b35efb6987ed9743d",
+        "published_sha256": "ed64490694261bb45fc2fac47a35f24e5f0bf9e2c09e4e44952f63101f390721"
+      },
+      {
+        "original": "assets/desert-red-vista.png",
+        "published": "assets/desert-red-vista.webp",
+        "before": 3766520,
+        "after": 2915590,
+        "dimensions": [
+          2172,
+          724
+        ],
+        "visible_pixels_identical": true,
+        "original_sha256": "8971352464cdc881450806e9d3d00c42fbe15624f38d07ae9c8c47f89a87e8de",
+        "published_sha256": "7ae1964ec086875eb385dfa3b819d801430c5258bc9d11816ba7e3cf54bfccf7"
+      },
+      {
+        "original": "assets/desert-structures.png",
+        "published": "assets/desert-structures.webp",
+        "before": 2903781,
+        "after": 2134710,
+        "dimensions": [
+          1536,
+          1024
+        ],
+        "visible_pixels_identical": true,
+        "original_sha256": "9fe07022a7afaec1f32fcd8135c4a373e080b5bdc8f1c723917990836a75cb48",
+        "published_sha256": "85c593c53f573286c9aba47c1326a212988a7f940c75a598f6deda603e4c18ba"
+      },
+      {
+        "original": "assets/dragon-striker-material.png",
+        "published": "assets/dragon-striker-material.webp",
+        "before": 1759776,
+        "after": 1351568,
+        "dimensions": [
+          1422,
+          1106
+        ],
+        "visible_pixels_identical": true,
+        "original_sha256": "dadce55ed0085b97d3db23369f192ea5d6a41736503d98bd9350283cfe47c24c",
+        "published_sha256": "09497b9f3ab0dd225cb6bd2c6b8ede22424716dd8451e2d275d1dfaa9408ecb9"
+      },
+      {
+        "original": "assets/dragon-turn-material.png",
+        "published": "assets/dragon-turn-material.webp",
+        "before": 2281528,
+        "after": 1790446,
+        "dimensions": [
+          2172,
+          724
+        ],
+        "visible_pixels_identical": true,
+        "original_sha256": "f0f8d2b0178a0c9cb7481d0b6effa7ff04bbedd7bea2603f95afa86001861280",
+        "published_sha256": "5ab55e910d183d18e0da7aea92d601cbbebe921ecae8807b01d0e2b4fdcc2c17"
+      },
+      {
+        "original": "assets/gatling-lunar-material.png",
+        "published": "assets/gatling-lunar-material.webp",
+        "before": 2186061,
+        "after": 1455772,
+        "dimensions": [
+          1536,
+          1024
+        ],
+        "visible_pixels_identical": true,
+        "original_sha256": "c6d6b2bc5f9d66ff5cddb790f19862d5d3b9bfcebaa026ffd74b6eaf6d61c9ce",
+        "published_sha256": "dca0b5b001e96c6e18a8a30d03927c34ccd42a70e90ce0ae6dfc3fb6e0d1a879"
+      },
+      {
+        "original": "assets/gatling-snow.png",
+        "published": "assets/gatling-snow.webp",
+        "before": 2041885,
+        "after": 1263756,
+        "dimensions": [
+          1536,
+          1024
+        ],
+        "visible_pixels_identical": true,
+        "original_sha256": "6fec090c39dfdf0bdcee825620b6a470c06155d1778db1439e76156321cdcb52",
+        "published_sha256": "a9cb9ed4210a612258b3358ba6463d5f0d436e1e5c98d31aedec856a3e39f9b2"
+      },
+      {
+        "original": "assets/gatling-turn-lunar-material.png",
+        "published": "assets/gatling-turn-lunar-material.webp",
+        "before": 2145782,
+        "after": 1538908,
+        "dimensions": [
+          2172,
+          724
+        ],
+        "visible_pixels_identical": true,
+        "original_sha256": "2845d642e643048a4e3ccaa59fdea80471e0ff86ddbc0a9f822bac92a3b8b20a",
+        "published_sha256": "042f061f56b39eed2a6f8184b6ebdbdcc0242260b2b461fbe2d6ce2fbefb6f01"
+      },
+      {
+        "original": "assets/gatling-turn-velvet-material.png",
+        "published": "assets/gatling-turn-velvet-material.webp",
+        "before": 2388711,
+        "after": 1841680,
+        "dimensions": [
+          2172,
+          724
+        ],
+        "visible_pixels_identical": true,
+        "original_sha256": "761dd78a8879c2396de00e8e6d04fcf61248aed74cc51a4c947840e82cc764cb",
+        "published_sha256": "6c95a0a652525e01723ebf85e2f65a0964006cc1f2b616fe5c032c33bd9b73a2"
+      },
+      {
+        "original": "assets/gatling-turn.png",
+        "published": "assets/gatling-turn.webp",
+        "before": 2042260,
+        "after": 1276124,
+        "dimensions": [
+          2172,
+          724
+        ],
+        "visible_pixels_identical": true,
+        "original_sha256": "c82ceec330ea71822308a224aa3dc77302a078702c0c3ead0d8452fe2cc2bf0c",
+        "published_sha256": "83d0c43792301c610376eb0547c4561c39b9e5f61c7e2a70a3e27c3e302f2a09"
+      },
+      {
+        "original": "assets/gatling-velvet-material.png",
+        "published": "assets/gatling-velvet-material.webp",
+        "before": 2589405,
+        "after": 1897262,
+        "dimensions": [
+          1536,
+          1024
+        ],
+        "visible_pixels_identical": true,
+        "original_sha256": "12e19f6d383b77576b54ddfc9899a25f3f74b6d3dc4c024d74f4869f6daa2f17",
+        "published_sha256": "1102010e120b80167fd895e315e963f6dc0bf920341e99f671cd2cb69535f410"
+      },
+      {
+        "original": "assets/ink-approach-atlas-paint.png",
+        "published": "assets/ink-approach-atlas-paint.webp",
+        "before": 1910640,
+        "after": 1449614,
+        "dimensions": [
+          1774,
+          887
+        ],
+        "visible_pixels_identical": true,
+        "original_sha256": "363c2fe35f3b7a78fd5e6c76baea8b73534c402b2f2cd72e8fb2745c47da571d",
+        "published_sha256": "dd4c931c145477efb8ea8adefbedaf142f7266ddc07fdc4495502c971cc1a53b"
+      },
+      {
+        "original": "assets/ink-approach-atlas.png",
+        "published": "assets/ink-approach-atlas.webp",
+        "before": 3403963,
+        "after": 2239308,
+        "dimensions": [
+          1774,
+          887
+        ],
+        "visible_pixels_identical": true,
+        "original_sha256": "3ce759e653e073011ae1e5ae8e35563aa727738ee6351f4b0c8a80200219f1c7",
+        "published_sha256": "50c7fa9dacb49581f56559646a30e3a425c25372917958674bb2941af1c9d43e"
+      },
+      {
+        "original": "assets/ink-bridge-paint.png",
+        "published": "assets/ink-bridge-paint.webp",
+        "before": 1476327,
+        "after": 1056244,
+        "dimensions": [
+          1991,
+          790
+        ],
+        "visible_pixels_identical": true,
+        "original_sha256": "8c95c62238708968ea1f5e94155031ddf36f0ed832e57edcb72813ec99edbc5d",
+        "published_sha256": "f27d5112968c515602c16e759f90138daa38d4c24c15755f30a546d30f2b7608"
+      },
+      {
+        "original": "assets/ink-bridge.png",
+        "published": "assets/ink-bridge.webp",
+        "before": 2664277,
+        "after": 1695914,
+        "dimensions": [
+          1991,
+          790
+        ],
+        "visible_pixels_identical": true,
+        "original_sha256": "ccb80d090efdaea120c515d07b8fe48bb514bd52214bd138b74cb04e6bc30863",
+        "published_sha256": "2b3fa21a80380071532abc202d5ad04ba7e1c5b72b545a1de18c6312f3f8c4c8"
+      },
+      {
+        "original": "assets/ink-campaign-atlas-paint.png",
+        "published": "assets/ink-campaign-atlas-paint.webp",
+        "before": 2152244,
+        "after": 1611272,
+        "dimensions": [
+          2020,
+          778
+        ],
+        "visible_pixels_identical": true,
+        "original_sha256": "5070c91974771fdbc3c8429f75de26487410e9dfc94acd73ddad33196f7d55d3",
+        "published_sha256": "c0909f3f58db8ff1a1c22e3dd370ac5353dfac48d1bbaa22ad18b2c7be0a4c84"
+      },
+      {
+        "original": "assets/ink-campaign-atlas.png",
+        "published": "assets/ink-campaign-atlas.webp",
+        "before": 3246360,
+        "after": 2089300,
+        "dimensions": [
+          2021,
+          778
+        ],
+        "visible_pixels_identical": true,
+        "original_sha256": "bb23487dfbf5a521b917826f402d919a19574a26c70a98f38be6708d75478076",
+        "published_sha256": "5782f54f0be3bf19971e74c58c97a9d98961f81aca63f2f85022e766615b797d"
+      },
+      {
+        "original": "assets/ink-canyon-paint.png",
+        "published": "assets/ink-canyon-paint.webp",
+        "before": 2173135,
+        "after": 1646716,
+        "dimensions": [
+          2048,
+          768
+        ],
+        "visible_pixels_identical": true,
+        "original_sha256": "da54b6f47ec1b1ba448bf802f11d69e64c836b109d8e212314344f39285c0d2b",
+        "published_sha256": "55ded197361f30f8a30df358f5c632c8bd49881ffa63e7afa06e508459e39148"
+      },
+      {
+        "original": "assets/ink-canyon.png",
+        "published": "assets/ink-canyon.webp",
+        "before": 3616562,
+        "after": 2367942,
+        "dimensions": [
+          2048,
+          768
+        ],
+        "visible_pixels_identical": true,
+        "original_sha256": "874dea9a70aa6110b036486f6c635b9bd48c533c8c2e98371dcaa4ed8c82fef9",
+        "published_sha256": "99d943767d92ff6cc22d240691aa57ff3242cf1787e108fd5a7ce37dc8270ed2"
+      },
+      {
+        "original": "assets/ink-carrier-raised-dr01.png",
+        "published": "assets/ink-carrier-raised-dr01.webp",
+        "before": 1895330,
+        "after": 1365716,
+        "dimensions": [
+          1319,
+          1192
+        ],
+        "visible_pixels_identical": true,
+        "original_sha256": "ee45864e7aa3947a187d8e137d86e8b660f95387d5671d4b547291db9117e31d",
+        "published_sha256": "0ae39ffb12ca92b233e4c5104e97b373cfa67c0e2beecd8e9709a9f96f1c7686"
+      },
+      {
+        "original": "assets/ink-checkpoint-paint.png",
+        "published": "assets/ink-checkpoint-paint.webp",
+        "before": 1498044,
+        "after": 1104028,
+        "dimensions": [
+          1983,
+          793
+        ],
+        "visible_pixels_identical": true,
+        "original_sha256": "e6a8756842f844c9691486f6953184602ad2f73a7d1bf09114b85d0ca9862d15",
+        "published_sha256": "5c286ea8ec5a254d582d158964422151b323ef7afc9256c05195720315e0c178"
+      },
+      {
+        "original": "assets/ink-checkpoint.png",
+        "published": "assets/ink-checkpoint.webp",
+        "before": 2511682,
+        "after": 1645960,
+        "dimensions": [
+          1983,
+          793
+        ],
+        "visible_pixels_identical": true,
+        "original_sha256": "4d5e71f7f1a000b79b8dce5d07f163422a5e00b25c4631ee1335177cc8c5c175",
+        "published_sha256": "c2e0b6860d033451d7c878bc224d8196dc33021061f53699675e0ffa85a4d3b3"
+      },
+      {
+        "original": "assets/ink-enemies-paint.png",
+        "published": "assets/ink-enemies-paint.webp",
+        "before": 1329758,
+        "after": 815950,
+        "dimensions": [
+          2172,
+          724
+        ],
+        "visible_pixels_identical": true,
+        "original_sha256": "85b2e7562b9779bcc36bf6805dd82ee3453fa5e012894ebb4d6940e03890a61c",
+        "published_sha256": "7e2e04b8826a3a59348557486497c16ecc9e5f988c32a3771f61bbdf258e66fc"
+      },
+      {
+        "original": "assets/ink-enemies.png",
+        "published": "assets/ink-enemies.webp",
+        "before": 1239718,
+        "after": 825024,
+        "dimensions": [
+          2172,
+          724
+        ],
+        "visible_pixels_identical": true,
+        "original_sha256": "850c366d9494043f8d7e845e400754285ca3f7bbe9942651af05547777d4da66",
+        "published_sha256": "9c1e80e3e172aeca9592f26e5fa115509f2c6ea8c6912f8191ce04cb3b2d1220"
+      },
+      {
+        "original": "assets/ink-enemy-saltik-paint.png",
+        "published": "assets/ink-enemy-saltik-paint.webp",
+        "before": 1374084,
+        "after": 878212,
+        "dimensions": [
+          1983,
+          793
+        ],
+        "visible_pixels_identical": true,
+        "original_sha256": "9ea6e75240bf1364efbf9b04515d47d1fdc058bf4ed6a75d33dc4a16412dd5d2",
+        "published_sha256": "dfb01dd6b9f01f9ace9b855701e85697eaf11e44f7d75963195880d775380a10"
+      },
+      {
+        "original": "assets/ink-enemy-saltik.png",
+        "published": "assets/ink-enemy-saltik.webp",
+        "before": 1593356,
+        "after": 1062284,
+        "dimensions": [
+          1983,
+          793
+        ],
+        "visible_pixels_identical": true,
+        "original_sha256": "c29beac0c2cf105bb412123ea4a1403a65e45613e644c16b873739885d046d49",
+        "published_sha256": "b8d7d7dd2ec97e48f34c6e8971a5ec50a07735815ecfa2c9f7f5cf8c8a7bca55"
+      },
+      {
+        "original": "assets/ink-observatory-paint.png",
+        "published": "assets/ink-observatory-paint.webp",
+        "before": 1678910,
+        "after": 1216404,
+        "dimensions": [
+          1774,
+          887
+        ],
+        "visible_pixels_identical": true,
+        "original_sha256": "880b62913c645d054ed285ac9ab70f2e0332d9c7eccb771b950834a9c25e5b24",
+        "published_sha256": "82bf63a3ae9271f8fc482afd95cc7e62c4d8cd004de04541bee53e8238f0d7ce"
+      },
+      {
+        "original": "assets/ink-observatory.png",
+        "published": "assets/ink-observatory.webp",
+        "before": 2832517,
+        "after": 1847596,
+        "dimensions": [
+          1774,
+          887
+        ],
+        "visible_pixels_identical": true,
+        "original_sha256": "8738b486b377c2d3c4ecbb34b6303cabdb9ab36685b17cda685bbda450eaeb97",
+        "published_sha256": "7438bafce8e2d8101f0049c471a18ef7ec05bc5450a97cbb077670d245672a2b"
+      },
+      {
+        "original": "assets/ink-rock-paint.png",
+        "published": "assets/ink-rock-paint.webp",
+        "before": 2009262,
+        "after": 1552706,
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "visible_pixels_identical": true,
+        "original_sha256": "d9735d1a5f0a60229c3e9892342f4123aab85f260b8883bc39529ec21a7e7e1f",
+        "published_sha256": "787674e725938a7be57239832ab5267c23efe01742ea92e3c6183cacff5e77a1"
+      },
+      {
+        "original": "assets/ink-rock.png",
+        "published": "assets/ink-rock.webp",
+        "before": 4358727,
+        "after": 2814026,
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "visible_pixels_identical": true,
+        "original_sha256": "1200dbe635ecb86666e707e2604d833dfc64e80c486a5fff5895a1cc2cbab530",
+        "published_sha256": "f041adfe7299a632c49296d4ed4a80273ddb3aa4465cb60ef6b639ea9e0a3760"
+      },
+      {
+        "original": "assets/ink-saltik-paint.png",
+        "published": "assets/ink-saltik-paint.webp",
+        "before": 1365796,
+        "after": 882506,
+        "dimensions": [
+          1421,
+          1107
+        ],
+        "visible_pixels_identical": true,
+        "original_sha256": "6d1fe8206ee5aca91dbd7d9754533c2418f26f06debdcb4f73b535931c800ae7",
+        "published_sha256": "82953df75b9c534668d4417d9f3d92fdb2c56746335a0919697ecf90ea640bcb"
+      },
+      {
+        "original": "assets/ink-saltik.png",
+        "published": "assets/ink-saltik.webp",
+        "before": 1350689,
+        "after": 840738,
+        "dimensions": [
+          1422,
+          1106
+        ],
+        "visible_pixels_identical": true,
+        "original_sha256": "99817255241de6d7fe7df602420e340d0dea7d4bcb502db14581cb9f87471ec7",
+        "published_sha256": "dc753dca337183e19f85414acf30da98ec59fb7b0d61e92fc3779274e50cdbf3"
+      },
+      {
+        "original": "assets/ink-turn-paint.png",
+        "published": "assets/ink-turn-paint.webp",
+        "before": 1681618,
+        "after": 1160562,
+        "dimensions": [
+          2170,
+          725
+        ],
+        "visible_pixels_identical": true,
+        "original_sha256": "c2e161dfd97d33ed708d306385b988bc31daeb93c7677528451c90d9b83abff9",
+        "published_sha256": "68d75f944a775bb2641659682a202eb99f66907cd18be951b7d48956d8e83f66"
+      },
+      {
+        "original": "assets/ink-turn.png",
+        "published": "assets/ink-turn.webp",
+        "before": 1712348,
+        "after": 1105582,
+        "dimensions": [
+          2172,
+          724
+        ],
+        "visible_pixels_identical": true,
+        "original_sha256": "98d2559aa9e38b6ec173f5ff863a7be9d20cef002655f29bf1d260b6fc8179bd",
+        "published_sha256": "16efba80cdea5805358ab54b164b3d2775aa71241abf46f451868d5c8df38ee3"
+      },
+      {
+        "original": "assets/limule-gatling-material.png",
+        "published": "assets/limule-gatling-material.webp",
+        "before": 1971500,
+        "after": 1280354,
+        "dimensions": [
+          1536,
+          1024
+        ],
+        "visible_pixels_identical": true,
+        "original_sha256": "280945db96eb3f3b32b94c79b1b0d96758b134a6f27cd4d4e7eb26fb7aff440c",
+        "published_sha256": "bf1bd97bfa4e937d4a24f61633c501e0c7aa68e5987b38f230fe50870c226bcf"
+      },
+      {
+        "original": "assets/limule-gatling-turn-material.png",
+        "published": "assets/limule-gatling-turn-material.webp",
+        "before": 1960153,
+        "after": 1314202,
+        "dimensions": [
+          2172,
+          724
+        ],
+        "visible_pixels_identical": true,
+        "original_sha256": "7a42d7f4d381637eb509b2a8c677cc0b192f7389588bbd2d03ae66e49b8c2b0d",
+        "published_sha256": "de8a2f0984f225b154d8f6c4006dc41d8be39af70ec019569a04f818bdbec67b"
+      },
+      {
+        "original": "assets/lunar-aqueduct.png",
+        "published": "assets/lunar-aqueduct.webp",
+        "before": 2510218,
+        "after": 1828506,
+        "dimensions": [
+          1774,
+          887
+        ],
+        "visible_pixels_identical": true,
+        "original_sha256": "431df709ab92509c6eb7cc746cac2ea9b12ff9bbd14c971ad910745fbf21fd02",
+        "published_sha256": "cbbdd1f2b7240cf2d776e23f1d6362de44bcddf2590a60c70fe46f347cc87250"
+      },
+      {
+        "original": "assets/lunar-carrier-dressed-material.png",
+        "published": "assets/lunar-carrier-dressed-material.webp",
+        "before": 2195272,
+        "after": 1647748,
+        "dimensions": [
+          1319,
+          1192
+        ],
+        "visible_pixels_identical": true,
+        "original_sha256": "90629ca12e69fc75a6e6534172048c3460dabfd7486b97dc574e8dca3c2f573a",
+        "published_sha256": "0d49a8baad05ffe596cddc54e306180856e93ed5dd21af58d13310095c363834"
+      },
+      {
+        "original": "assets/lunar-enemies-material.png",
+        "published": "assets/lunar-enemies-material.webp",
+        "before": 1548871,
+        "after": 1185954,
+        "dimensions": [
+          2172,
+          724
+        ],
+        "visible_pixels_identical": true,
+        "original_sha256": "453bd69bb1d3ad19d3154e26b553424faea97d91ed1eaa1ecd5f9fa64aedf40f",
+        "published_sha256": "7364a6c2d1ebaa31d28fb90ec7f4bc25b05c053bbb04a720fdd5fdb6039158b6"
+      },
+      {
+        "original": "assets/lunar-enemy-saltik-material.png",
+        "published": "assets/lunar-enemy-saltik-material.webp",
+        "before": 2018586,
+        "after": 1594280,
+        "dimensions": [
+          1983,
+          793
+        ],
+        "visible_pixels_identical": true,
+        "original_sha256": "079f0e1054cfcf42b6d70af15791ecb25f462684200b8a0fccc7620b31639db0",
+        "published_sha256": "60de03e80a8712c37949be518e0148764c5d3939ed568556306c971e032fb23a"
+      },
+      {
+        "original": "assets/lunar-hero-map.png",
+        "published": "assets/lunar-hero-map.webp",
+        "before": 1987215,
+        "after": 1570620,
+        "dimensions": [
+          1422,
+          1106
+        ],
+        "visible_pixels_identical": true,
+        "original_sha256": "e033182393960a8eafa58ec071ad7957fe46e5f22d24484ef2bccdf7a8885ac0",
+        "published_sha256": "989165e1e4662f69696d96f81e97814cb9d4067833b755a840d5f95732bca7bd"
+      },
+      {
+        "original": "assets/lunar-island-layers.png",
+        "published": "assets/lunar-island-layers.webp",
+        "before": 2178217,
+        "after": 1469006,
+        "dimensions": [
+          1921,
+          819
+        ],
+        "visible_pixels_identical": true,
+        "original_sha256": "a123dd7e7f9287169dbe29dfa921bd3cb6bc03c0fdb04054c0d01a17461b96d4",
+        "published_sha256": "cb0310259dcc4935e461a0922364c0ccf6ad096d114fdbb3016d7318b9dbc372"
+      },
+      {
+        "original": "assets/lunar-low-depth.png",
+        "published": "assets/lunar-low-depth.webp",
+        "before": 2716206,
+        "after": 1936956,
+        "dimensions": [
+          1774,
+          887
+        ],
+        "visible_pixels_identical": true,
+        "original_sha256": "4b5bd30ef8139d7865a0070ababac48121650cc25b15dc37f3fd6d38f5873859",
+        "published_sha256": "ca16ecaeb8467b77e801f8a763171c57e0b1f9f310f97c5803d32d4f67f77635"
+      },
+      {
+        "original": "assets/lunar-monuments.png",
+        "published": "assets/lunar-monuments.webp",
+        "before": 3239098,
+        "after": 2391564,
+        "dimensions": [
+          1536,
+          1024
+        ],
+        "visible_pixels_identical": true,
+        "original_sha256": "911ff06bdd6d056b9aa7b2646487b69db9bcb8cd58d75de1668d513fca2436b0",
+        "published_sha256": "e415d290200ae1c5ad7a73f31715b1c68eb923f8eeeee4d09b324b2f5b4cddf4"
+      },
+      {
+        "original": "assets/lunar-natural-world.png",
+        "published": "assets/lunar-natural-world.webp",
+        "before": 2760885,
+        "after": 2112776,
+        "dimensions": [
+          1671,
+          941
+        ],
+        "visible_pixels_identical": true,
+        "original_sha256": "67e2db99f01acc43fbf2c6846cd0d7b9c42f359b358e140869cd98c29025e240",
+        "published_sha256": "37e55bc627182dcad8a839e90ba2298e27f9213d5c90eb624960f6ae8d44f241"
+      },
+      {
+        "original": "assets/lunar-pennant.png",
+        "published": "assets/lunar-pennant.webp",
+        "before": 3216821,
+        "after": 2514636,
+        "dimensions": [
+          1024,
+          1536
+        ],
+        "visible_pixels_identical": true,
+        "original_sha256": "1fc490f4d37d3dec6dd85f0500f34022ee2290b1fc8a4270809b08258c710087",
+        "published_sha256": "2b7687d4c93036257ad5481da8bef3b071a63423ff5b7698d4476365be7457b3"
+      },
+      {
+        "original": "assets/lunar-sandstone.png",
+        "published": "assets/lunar-sandstone.webp",
+        "before": 3937649,
+        "after": 2801742,
+        "dimensions": [
+          1672,
+          941
+        ],
+        "visible_pixels_identical": true,
+        "original_sha256": "97dd6a8ed871219209337c2b596e445a2d33abdc7f7ea22794052ca2ac980479",
+        "published_sha256": "a8ae708340d7633bc6226bac91e8172c6ff1db877dba678f8652fc445c3e89b3"
+      },
+      {
+        "original": "assets/lunar-turn-map.png",
+        "published": "assets/lunar-turn-map.webp",
+        "before": 2327464,
+        "after": 1809814,
+        "dimensions": [
+          2172,
+          724
+        ],
+        "visible_pixels_identical": true,
+        "original_sha256": "9cbbfe7cd576261a96c117821b87ba6e83e9dd466551f5ca0ba98463e06504ec",
+        "published_sha256": "b80e7915b2e473f2919dbac8430940f69afd8664912c23580e2c372254292f01"
+      },
+      {
+        "original": "assets/modern-gatling-atlas.png",
+        "published": "assets/modern-gatling-atlas.webp",
+        "before": 2777567,
+        "after": 2037550,
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "visible_pixels_identical": true,
+        "original_sha256": "2e4b98e31301215d1475719767729c0a67da16674117530853b6ec25dbc974f5",
+        "published_sha256": "bb6fb95a0ec4b62d1296c34b3ed789501515caf27692c2d47289da4cdf69c6ca"
+      },
+      {
+        "original": "assets/modern-gatling-limule-atlas.png",
+        "published": "assets/modern-gatling-limule-atlas.webp",
+        "before": 2765568,
+        "after": 1931822,
+        "dimensions": [
+          1254,
+          1254
+        ],
+        "visible_pixels_identical": true,
+        "original_sha256": "8e2d71bbe080827086cc64df3fcb4e2f82be4c60157174a6cf97b23d9ae28a7d",
+        "published_sha256": "22f92e9389d8abea5f9fd1417285d8bb79e2faffee5c90cd2683d338d78e3e4a"
+      },
+      {
+        "original": "assets/modern-gatling-limule-turn.png",
+        "published": "assets/modern-gatling-limule-turn.webp",
+        "before": 2348144,
+        "after": 1625650,
+        "dimensions": [
+          2172,
+          724
+        ],
+        "visible_pixels_identical": true,
+        "original_sha256": "d6eb0e67e75a33de63b4176bc2d6c5ab0f7d04d1fb412169ae9257bf91bd42e5",
+        "published_sha256": "1b447dce8f170f0887e2c9d5137ff25da0250cbcd368b3941aca5ff4e4b81854"
+      },
+      {
+        "original": "assets/modern-gatling-turn-desert.png",
+        "published": "assets/modern-gatling-turn-desert.webp",
+        "before": 2609316,
+        "after": 1909166,
+        "dimensions": [
+          2172,
+          724
+        ],
+        "visible_pixels_identical": true,
+        "original_sha256": "5463c6f5af5470cf3818a7164cf6ba7159955e4214511c66ac8442e802480dd8",
+        "published_sha256": "5630856e2bc97ce76c4de08f79bbf46f1e4ad742da972cc7ccdd69958dd9ecae"
+      },
+      {
+        "original": "assets/modern-gatling-turn-lunar.png",
+        "published": "assets/modern-gatling-turn-lunar.webp",
+        "before": 2471465,
+        "after": 1930738,
+        "dimensions": [
+          2172,
+          724
+        ],
+        "visible_pixels_identical": true,
+        "original_sha256": "324a171f45850866e53a806e1c2c7401bc6435bd5a3451e0849b91283aaea39c",
+        "published_sha256": "23b80245791d7b80a34ac188c100ef6d463d22343a00467f71adac0ea0e05f01"
+      },
+      {
+        "original": "assets/modern-gatling-turn-normal.png",
+        "published": "assets/modern-gatling-turn-normal.webp",
+        "before": 2415225,
+        "after": 1706748,
+        "dimensions": [
+          2172,
+          724
+        ],
+        "visible_pixels_identical": true,
+        "original_sha256": "c511fde1892cdfbfade4680ca787b94c915d17712942b63f386c69aef6f2d553",
+        "published_sha256": "06b37159a397ff2126fa60f25b916a36406623f2bb2a3c43abe6d74ea70e6b73"
+      },
+      {
+        "original": "assets/modern-gatling-turn-velvet.png",
+        "published": "assets/modern-gatling-turn-velvet.webp",
+        "before": 2526864,
+        "after": 1991936,
+        "dimensions": [
+          2172,
+          724
+        ],
+        "visible_pixels_identical": true,
+        "original_sha256": "e486c37ec215e3994610d274a2118a1296c0db18e9f177797fb1389e576287c7",
+        "published_sha256": "1948b3d094f01943cce9f5c3792eeefe897e738e94f558d31662e65f5621588d"
+      },
+      {
+        "original": "assets/modern-striker-atlas.png",
+        "published": "assets/modern-striker-atlas.webp",
+        "before": 2326197,
+        "after": 1773136,
+        "dimensions": [
+          2172,
+          724
+        ],
+        "visible_pixels_identical": true,
+        "original_sha256": "5fc9a3169f33ef3687fb3acbb7a61d7000c81edd8422d17c1a5231e5272d5881",
+        "published_sha256": "1e11cde237c9e18e614170fb0bbfd435f3fc0e7a1e796919fa49c517cd9940a4"
+      },
+      {
+        "original": "assets/modern-striker-dragon-atlas.png",
+        "published": "assets/modern-striker-dragon-atlas.webp",
+        "before": 2613609,
+        "after": 2082966,
+        "dimensions": [
+          2172,
+          724
+        ],
+        "visible_pixels_identical": true,
+        "original_sha256": "30c5429998530cec8ef41a165576da7e27fef0681a36878a6e2895b3dbf0ac8a",
+        "published_sha256": "fc025efa7bc5fd60814739d1fa56dd68b7133b7cd26339efcdfb0dd0fc7ee955"
+      },
+      {
+        "original": "assets/modern-striker-dragon-turn-material.png",
+        "published": "assets/modern-striker-dragon-turn-material.webp",
+        "before": 2400204,
+        "after": 1892864,
+        "dimensions": [
+          2172,
+          724
+        ],
+        "visible_pixels_identical": true,
+        "original_sha256": "3ebf30e1ff511dd12e4f95dccda6e71ad4718692b5004f16152879d791df0c93",
+        "published_sha256": "2c15c1c9ac2cbff38938011f04e225ddea2d6e0345ddbf94558ab11afe758c7a"
+      },
+      {
+        "original": "assets/modern-striker-turn-lunar.png",
+        "published": "assets/modern-striker-turn-lunar.webp",
+        "before": 2457893,
+        "after": 1930224,
+        "dimensions": [
+          2172,
+          724
+        ],
+        "visible_pixels_identical": true,
+        "original_sha256": "ef9fe83dbfc647b330ae34a4a0047d77e192e6e7bb690538f85bbc28d9dc4572",
+        "published_sha256": "fe0c601447c6bbf0b8146bbc764355d7a9692cf0cdae62290c6403ce5d6a5e70"
+      },
+      {
+        "original": "assets/modern-striker-turn-normal.png",
+        "published": "assets/modern-striker-turn-normal.webp",
+        "before": 2028113,
+        "after": 1418072,
+        "dimensions": [
+          2172,
+          724
+        ],
+        "visible_pixels_identical": true,
+        "original_sha256": "ed51b46be7ce1a5a9d13a2c323e919bdf838cbb8a043307838cc5c376c2240e5",
+        "published_sha256": "a8c442ca89ed0e09fabd63e56e3bba9c3a56c1fe8cfb8271fde3c9986991e122"
+      },
+      {
+        "original": "assets/modern-striker-turn-velvet.png",
+        "published": "assets/modern-striker-turn-velvet.webp",
+        "before": 2325261,
+        "after": 1824138,
+        "dimensions": [
+          2172,
+          724
+        ],
+        "visible_pixels_identical": true,
+        "original_sha256": "1c4000f533d9a8df1c0f95ac495eb8c74eaf6c7d1801ef46dfa820dc49c9e1bf",
+        "published_sha256": "c9c5afc4d6d3a4cedf91e4e87554a87707163e497b1859040604e8236d154c3b"
+      },
+      {
+        "original": "assets/pastel-boss-parts.png",
+        "published": "assets/pastel-boss-parts.webp",
+        "before": 1956144,
+        "after": 1309832,
+        "dimensions": [
+          1536,
+          1024
+        ],
+        "visible_pixels_identical": true,
+        "original_sha256": "c27b39df8d41e791d879d9b497b3d363cd3171fadf1e6004df64643a934f5663",
+        "published_sha256": "38613333e85dbf7a7d85cdae3693d4f81d539197775e4a870761035a7c41d0c7"
+      },
+      {
+        "original": "assets/pastel-boss.png",
+        "published": "assets/pastel-boss.webp",
+        "before": 1908510,
+        "after": 1285826,
+        "dimensions": [
+          1774,
+          887
+        ],
+        "visible_pixels_identical": true,
+        "original_sha256": "6302bc4d7c4ce8cb432cd1bbd919d7aab463ccfe232793b96e27bae053587ed2",
+        "published_sha256": "7e4a89b417763b588ecd7f0016010db8b422938822109884a351b6e0d69b9fc3"
+      },
+      {
+        "original": "assets/royal-carrier-material.png",
+        "published": "assets/royal-carrier-material.webp",
+        "before": 2549293,
+        "after": 1913422,
+        "dimensions": [
+          1319,
+          1192
+        ],
+        "visible_pixels_identical": true,
+        "original_sha256": "21d98f3dc8b9cc3ec4de241365b178225a716f02736b6bfe2c37ede8ed78927c",
+        "published_sha256": "eb3e1582685b73df1124d69644afe22d6e006a626434eddfc23a8e31c3fc074e"
+      },
+      {
+        "original": "assets/royal-eel-pose-1.png",
+        "published": "assets/royal-eel-pose-1.webp",
+        "before": 2058299,
+        "after": 1603274,
+        "dimensions": [
+          2172,
+          724
+        ],
+        "visible_pixels_identical": true,
+        "original_sha256": "69aeb3c6723d898d2cd21ca3c09cfa625d234259b3de9b60feb300323857cfb2",
+        "published_sha256": "02915d93f2a6abb9c355f1bcf2d16af107fd2b3fd69113b47b786617544e27e0"
+      },
+      {
+        "original": "assets/royal-eel-pose-2.png",
+        "published": "assets/royal-eel-pose-2.webp",
+        "before": 2150151,
+        "after": 1701798,
+        "dimensions": [
+          2172,
+          724
+        ],
+        "visible_pixels_identical": true,
+        "original_sha256": "65ba1bf5374b178bd2017ea79094f1f4892744affdc01706d6f52566868d8c9d",
+        "published_sha256": "d3e0eb038edd166bc9e089eb54de0236a406a12861938d1dad8c36a1d9debaa6"
+      },
+      {
+        "original": "assets/royal-eel-pose-3.png",
+        "published": "assets/royal-eel-pose-3.webp",
+        "before": 2036856,
+        "after": 1591476,
+        "dimensions": [
+          2172,
+          724
+        ],
+        "visible_pixels_identical": true,
+        "original_sha256": "b3625d4338c45404ef0f073b7037bdd22eaa22bb52d24434255b15443fd40494",
+        "published_sha256": "2d0305d918961517b70a779085a3aa84e2455b27e5608cfb001dc8116994ab62"
+      },
+      {
+        "original": "assets/royal-eel-pose-4.png",
+        "published": "assets/royal-eel-pose-4.webp",
+        "before": 2001967,
+        "after": 1564504,
+        "dimensions": [
+          2172,
+          724
+        ],
+        "visible_pixels_identical": true,
+        "original_sha256": "c090ae16eb5acbc8b18d15b298c3b899d73cbb9a9810e10b1c9dd379cbcbfdc3",
+        "published_sha256": "1d63898f64a6ac9c922f26e580cb434cbda91bb04cd49c195e53ee1a7bd4c301"
+      },
+      {
+        "original": "assets/royal-eel-pose-5.png",
+        "published": "assets/royal-eel-pose-5.webp",
+        "before": 1936332,
+        "after": 1511628,
+        "dimensions": [
+          2172,
+          724
+        ],
+        "visible_pixels_identical": true,
+        "original_sha256": "788dec4a7e6a8bbbb0e06da6351066504c8547027f543e0204c188edbfff59c6",
+        "published_sha256": "115235e18ff396ff99010102d81c810c057b0efda3f07d550cea9b2585aff3f7"
+      },
+      {
+        "original": "assets/royal-eel-pose-6.png",
+        "published": "assets/royal-eel-pose-6.webp",
+        "before": 1932430,
+        "after": 1499894,
+        "dimensions": [
+          2172,
+          724
+        ],
+        "visible_pixels_identical": true,
+        "original_sha256": "5520b39035b138ecc699945559a28a271c8fc05706c5c7c0f15453c0441748b5",
+        "published_sha256": "64b0c4d0029fdcdc33827bab8fd9d00e707dffd7fdcd05bef89c32f84667181e"
+      },
+      {
+        "original": "assets/royal-eel-pose-7.png",
+        "published": "assets/royal-eel-pose-7.webp",
+        "before": 2112543,
+        "after": 1650066,
+        "dimensions": [
+          2172,
+          724
+        ],
+        "visible_pixels_identical": true,
+        "original_sha256": "9ebcfcfdfe8c3acec89df3bcaad7a06efc9055ab0615520ee4ac25cfbb3a0744",
+        "published_sha256": "aadaf58cce3210e4ceedc2e84377d9f9c222a2e40f4e5cc9d312bba64e87d7b5"
+      },
+      {
+        "original": "assets/royal-eel-swim.png",
+        "published": "assets/royal-eel-swim.webp",
+        "before": 2387031,
+        "after": 1852478,
+        "dimensions": [
+          1774,
+          887
+        ],
+        "visible_pixels_identical": true,
+        "original_sha256": "f0079f9e61d185e95551fd4eba4a2405621cc0bfd3119302e688d40293b048a3",
+        "published_sha256": "57835dcbb3d96e6feb6f467938a5b53efe3b1725b30eebce62d23b468223c831"
+      },
+      {
+        "original": "assets/royal-eel.png",
+        "published": "assets/royal-eel.webp",
+        "before": 2244405,
+        "after": 1749412,
+        "dimensions": [
+          2172,
+          724
+        ],
+        "visible_pixels_identical": true,
+        "original_sha256": "0a8cff40272e637de3fa3ed49b9005aa31c5918e6f1e3e7266f94683b0cef96b",
+        "published_sha256": "03b8fb1a90e76628ab4663e43883afe7aedfdeba093b01eadc10f05f95513548"
+      },
+      {
+        "original": "assets/royal-enemies-material.png",
+        "published": "assets/royal-enemies-material.webp",
+        "before": 1573782,
+        "after": 1284406,
+        "dimensions": [
+          2172,
+          724
+        ],
+        "visible_pixels_identical": true,
+        "original_sha256": "2b0f4686130eca0d3696b6605788079e29e94651aebd60bc8ebdbce38a0e168a",
+        "published_sha256": "590be5f87e5e5d589c958606c444dc7decd7f5479139b71b0a4d232aa250df9d"
+      },
+      {
+        "original": "assets/royal-enemy-saltik-material.png",
+        "published": "assets/royal-enemy-saltik-material.webp",
+        "before": 3249131,
+        "after": 2518432,
+        "dimensions": [
+          1983,
+          793
+        ],
+        "visible_pixels_identical": true,
+        "original_sha256": "efa7b6189c4b09dce29f88d34a71a5453a67e38f42c8dcb8fa4583214d8d300b",
+        "published_sha256": "795d541a44f2021bd0f9ef8ddc9d68fefcecfe412636df7a707b0fc4cf155f1e"
+      },
+      {
+        "original": "assets/royal-flora.png",
+        "published": "assets/royal-flora.webp",
+        "before": 1416779,
+        "after": 1084724,
+        "dimensions": [
+          2172,
+          724
+        ],
+        "visible_pixels_identical": true,
+        "original_sha256": "ee4dab3568274249c4e0fffbfe6b801e6ee3bfba95ba64f1ccb88b60bceb0fce",
+        "published_sha256": "5326e7fceb1ac1e8ee56aac5a401e3372f937b10c91038a4e87e67b02d52dc10"
+      },
+      {
+        "original": "assets/royal-foreground-props.png",
+        "published": "assets/royal-foreground-props.webp",
+        "before": 3117197,
+        "after": 2439878,
+        "dimensions": [
+          1536,
+          1024
+        ],
+        "visible_pixels_identical": true,
+        "original_sha256": "6e1a9fcfd0a41f4257234d46dd89e6802860c84041d1c440c1a74ad3ad22ae53",
+        "published_sha256": "230d0660334f3112d085c7ae6d6a12839c429cc093bff99ff9e412ffd5a2c97d"
+      },
+      {
+        "original": "assets/royal-hero-map.png",
+        "published": "assets/royal-hero-map.webp",
+        "before": 2124276,
+        "after": 1706800,
+        "dimensions": [
+          1422,
+          1106
+        ],
+        "visible_pixels_identical": true,
+        "original_sha256": "fe39649d905661f0624217f99db3f4fb24c1d94560c7228373d1befabab30bce",
+        "published_sha256": "d8847cc46a1ed809d4dce02482eb80992db0111d8f32e2adc25880ea52059233"
+      },
+      {
+        "original": "assets/royal-organic-landmarks.png",
+        "published": "assets/royal-organic-landmarks.webp",
+        "before": 3038452,
+        "after": 2344046,
+        "dimensions": [
+          1536,
+          1024
+        ],
+        "visible_pixels_identical": true,
+        "original_sha256": "b429f3f79adb453c8da30bd26db31abe89edb761433e14e1af86ac123ef287da",
+        "published_sha256": "833202863f0238e15ee5db0785585736e4425ae01aa95f8b6f1949077e142074"
+      },
+      {
+        "original": "assets/royal-quarter-bridge.png",
+        "published": "assets/royal-quarter-bridge.webp",
+        "before": 2474358,
+        "after": 1983322,
+        "dimensions": [
+          1774,
+          887
+        ],
+        "visible_pixels_identical": true,
+        "original_sha256": "969fb57afec141d93f12e1ab6f420664d095569a82bb33dc97f2621888e40be0",
+        "published_sha256": "fbb2cb3f652e533c796eb7db277564e8d84aae75a0cc3513b0203c82202bc63b"
+      },
+      {
+        "original": "assets/royal-rail-mask.png",
+        "published": "assets/royal-rail-mask.webp",
+        "before": 223595,
+        "after": 100522,
+        "dimensions": [
+          1774,
+          887
+        ],
+        "visible_pixels_identical": true,
+        "original_sha256": "9c3456ce6ea00343359dcead1590e92526e3085a387467e1155c58ae53150396",
+        "published_sha256": "86cfd9940841e6bbed33fad1fea7f2dce519186188d2944cc3633b2534ac53d0"
+      },
+      {
+        "original": "assets/royal-structures.png",
+        "published": "assets/royal-structures.webp",
+        "before": 3203155,
+        "after": 2515840,
+        "dimensions": [
+          1536,
+          1024
+        ],
+        "visible_pixels_identical": true,
+        "original_sha256": "d9981cc8e8233fdbdaeb5359db2991b3f26dba12f29a84e8c14839620d89893d",
+        "published_sha256": "e02eed5af5097e14308a6112d3fcf7f31527babc2fa76df3d3cf7b1ba8dc8ef6"
+      },
+      {
+        "original": "assets/royal-turn-map.png",
+        "published": "assets/royal-turn-map.webp",
+        "before": 2280801,
+        "after": 1766492,
+        "dimensions": [
+          2172,
+          724
+        ],
+        "visible_pixels_identical": true,
+        "original_sha256": "4c6eda0abeb13d99da9096ddeb8e297df802d6bad62ac5b182b2e67966bfb6ce",
+        "published_sha256": "3301abff6313dbe31dd0b3cfcb33797d3d9c1e2b7197b733a48fd79bc4a4ffbb"
+      },
+      {
+        "original": "assets/royal-velvet-ground.png",
+        "published": "assets/royal-velvet-ground.webp",
+        "before": 3110923,
+        "after": 2277344,
+        "dimensions": [
+          1536,
+          1024
+        ],
+        "visible_pixels_identical": true,
+        "original_sha256": "6ee038a2d3c02c8c162b0be2be91a1caf025d64f521aa2600a153dc0de713699",
+        "published_sha256": "e3cc15e893e4605c507e7031571f149bb28dfb8afce514d36d88d8bf32022497"
+      },
+      {
+        "original": "assets/royal-world.png",
+        "published": "assets/royal-world.webp",
+        "before": 3442597,
+        "after": 2875064,
+        "dimensions": [
+          1672,
+          941
+        ],
+        "visible_pixels_identical": true,
+        "original_sha256": "2e5f4a06f1810c86131cf996ad6fd16763759cc504864ea86315617447f36479",
+        "published_sha256": "313e4596edcbc20b4c299397319a9e21d8bfc4e78a233102a113a8686504f7ec"
+      }
+    ],
+    "protected_assets": [
+      "assets/royal-eel-swim.png",
+      "assets/royal-eel.png",
+      "audio/gatling-brrrt-loop.ogg",
+      "audio/voices/target-lock.ogg",
+      "audio/voices/gatling-grab-him.ogg",
+      "audio/voices/gatling-target-lock.ogg",
+      "audio/voices/ready.ogg",
+      "audio/voices/gatling-victory.ogg",
+      "audio/voices/saltik-detected.ogg",
+      "audio/voices/gatling-see-you-later.ogg",
+      "audio/voices/goodbye.ogg",
+      "audio/voices/gatling-enemy-brother.ogg",
+      "audio/voices/gatling-ready.ogg",
+      "audio/voices/grab-him.ogg",
+      "audio/voices/saltik-dont-kill-saltik.ogg",
+      "audio/voices/gatling-carrier.ogg",
+      "audio/voices/victory.ogg"
+    ],
+    "all_audio_video_icons_unchanged": true,
+    "originals_retained": true,
+    "output": "/tmp/saltik-v45/release/out"
+  },
+  "review": "Independent review found no important or critical defects.",
+  "water_pixels": {
+    "count": 131819,
+    "changedFraction": 0.8398409940903815,
+    "meanPeak": 43.90162267958337,
+    "outside": 0,
+    "nativeOutside": 0,
+    "pause": 0,
+    "screen": {
+      "scale": 0.42,
+      "changedFraction": 0.8112672424906536,
+      "meanPeak": 39.071935026427745
+    }
+  }
+}

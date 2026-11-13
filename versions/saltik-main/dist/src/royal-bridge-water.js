@@ -1,5 +1,5 @@
 // The reference waterfall is one continuous painting, not independent columns.
-export const BRIDGE_WATER_BOUNDS=[930,300,550,566];
+export const BRIDGE_WATER_BOUNDS=[810,300,670,580];
 const TIERS=[[1320,330,130,85],[1150,412,280,145],[980,558,400,245]];
 const mod=(n,d)=>((n%d)+d)%d;
 export function bridgeWaterMask(pixels,width,height){
@@ -19,6 +19,12 @@ export function bridgeWaterBands(time=0){
 export function bridgeWaterVeils(time=0){
  return [0,.5].map(offset=>{const phase=mod(time*.7+offset,1);return{dy:phase*14,alpha:(1-Math.abs(phase*2-1))*.22};});
 }
+// Advect the original blue texture as a single sheet. Crossfading two
+// full-width passes removes the wrap seam without independently sliding strips.
+// At the bridge's screen scale the old 1px refraction was effectively still.
+export function bridgeWaterFlow(time=0){
+ return [0,.5].map(offset=>{const phase=mod(time*52/80+offset,1);return{dy:phase*80,alpha:(1-Math.abs(phase*2-1))*.78};});
+}
 export function bridgeWaterThreads(time=0){
  return TIERS.flatMap(([x,y,w,h],tier)=>Array.from({length:Math.ceil(w/18)},(_,i)=>{const length=9+(i%5)*3,travel=mod(time*(65+tier*55)+i*(h+length)*.618,h+length),phase=travel/(h+length);return{tier,x:x+w*(i+.5)/Math.ceil(w/18)+Math.sin(travel*.025+i)*.65,y:y+travel-length,length,alpha:Math.sin(phase*Math.PI)*(.14+(i%3)*.055)};}));
 }
@@ -37,7 +43,7 @@ function bridgeMaterial(image){
 function paintBridgeWater(c,image,material,time,mist){
  const [bx,by]=BRIDGE_WATER_BOUNDS;
  c.globalAlpha=.48;for(const b of bridgeWaterBands(time))c.drawImage(material?.texture??image,b.sx-(material?bx:0),b.sy-(material?by:0),b.sw,b.sh,b.dx,b.dy,b.dw,b.dh);
- if(material)for(const v of bridgeWaterVeils(time)){c.globalAlpha=v.alpha;c.drawImage(material.texture,bx,by+v.dy);}
+ if(material)for(const v of bridgeWaterFlow(time)){c.globalAlpha=v.alpha;c.drawImage(material.texture,bx,by+v.dy);}
  c.strokeStyle='#d9fcff';c.lineCap='round';
  for(const p of bridgeWaterThreads(time)){const [tx,ty,tw,th]=TIERS[p.tier];c.save();c.beginPath();c.rect(tx,ty,tw,th);c.clip();c.globalAlpha=p.alpha;c.lineWidth=.65+(p.tier*.12);c.beginPath();c.moveTo(p.x,p.y-p.length);c.quadraticCurveTo(p.x+.4,p.y-p.length*.5,p.x,p.y);c.stroke();c.restore();}
  if(mist)for(const p of bridgeWaterMist(time)){c.save();c.translate(p.x,p.y);c.scale(p.rx,p.ry);const g=c.createRadialGradient(0,0,0,0,0,1);if(g?.addColorStop){g.addColorStop(0,'#e6faff');g.addColorStop(1,'#d1f6ff00');c.globalAlpha=p.alpha;c.fillStyle=g;c.beginPath();c.arc(0,0,1,0,Math.PI*2);c.fill();}c.restore();}

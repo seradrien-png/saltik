@@ -1,0 +1,15 @@
+# Gatling childlike dialogue, V45
+
+All seven Gatling phrases are newly synthesized offline with FFmpeg/libflite's `awb` voice. The available local speakers were `awb`, `kal`, `kal16`, `rms` and `slt`. AWB supplies a separate source voice from Striker's retained SLT recordings. A modest 1.28 vocal-tract/formant lift, independently controlled smooth pitch contour (combined pitch 2.07–2.33 times the native AWB register) and slightly relaxed 0.97 tempo target a bright, soft, childlike delivery. The old metallic echo, tremolo and band-limited radio treatment are removed. No old recording, external voice service or browser speech synthesis is used.
+
+Speech is softened with a 100 Hz high-pass, gentle cuts around 300 and 2800 Hz, and a 6500 Hz low-pass. Active-speech RMS is normalized toward −21 dBFS with a −4.5 dBFS peak cap before Ogg encoding; short fades avoid edge clicks. Active RMS normalization avoids integrated-loudness gating artifacts on very short clips. Final assets are mono 44.1 kHz Ogg Vorbis, quality 4. This is a synthesized character voice, with no performer recording or cloned voice.
+
+The phrases and their event routing remain unchanged: `Gatling online.`, `Target lock!`, `Enemy brother`, `Grab him!`, `See you later`, `Saltik don't kill Saltik`, and `Victory!`. No playback-rate, source-code or caption changes are needed for these finished recordings.
+
+Run `python scripts/create-gatling-audio.py` to generate only these seven dialogue assets and update `docs/gatling-audio-provenance.json`. An optional `--proof-dir /tmp/example` retains raw AWB synthesis, pitch commands, normalized WAV masters, a copy of every preexisting Gatling clip and decode QA. Existing backup files are preserved. The script only reads the A10 loop and checks its recorded hash; it does not encode or overwrite it. It also verifies every non-Gatling audio file remains byte-for-byte unchanged.
+
+The V45 proof directory is `/tmp/saltik-v45/`. The previous seven deep/metallic dialogue clips are preserved in `old-gatling-voices/`, and remain available through Git history. Raw candidates and masters are local proof artifacts outside the site. `audio-before.json` records all pre-change audio hashes; `protected-audio.json` records unchanged non-Gatling assets. `provenance.json` contains final hashes, ffprobe format data, finite-sample checks, decoded peaks and zero-clipping counts for all seven clips. `previews/` contains short WAV examples of the two requested phrases.
+
+Original Striker SLT dialogue, BT recordings, and `dist/audio/gatling-brrrt-loop.ogg` remain byte-for-byte unchanged. The supplied loop SHA-256 remains `e40f137f274197666f59fe0a685609677f01bdcb7252e5408d718e0e62f63794`. V43's historical voice treatment is documented in `gatling-audio-v43.md`; V45 replaces only its seven Gatling dialogue clips.
+
+FFmpeg successfully decoded every final clip as finite samples below full scale. Objective checks verify format, preservation and clipping; final subjective voice preference requires listening to the previews or in-game dialogue.

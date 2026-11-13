@@ -1,5 +1,6 @@
 import {createRoyalAtmosphere,advanceRoyalAtmosphere} from './royal-atmosphere.js';
 import {cancelMelee} from './melee-state.js';
+import {endEvasion} from './evasion.js';
 import {createRoyalFinale,advanceRoyalFinale} from './royal-finale.js';
 import {clearPlayerWeaponQueue} from './engine.js';
 import {ROYAL_END,royalGroundAt,createRoyalRoutes,royalDepthScaleAt} from './royal-layout.js';
@@ -30,5 +31,5 @@ export function advanceRoyalObjective(g,dt){
   const pending=g.schedule.slice(g.nextSpawn).some(e=>e.royalSeal===r.seals+1),alive=g.enemies.some(e=>e.royalSeal===r.seals+1&&e.hp>0&&!e.neutralized);
   if(!pending&&!alive){r.seals++;r.phase='traverse';g.projectiles=g.projectiles.filter(s=>s.team!=='enemy');g.pickups.push({x:p.x+90,y:royalGroundAt(p.x+90)-30,type:'repair'});g.events.push({type:'royal-seal-open',x:shrine.x,y:royalGroundAt(shrine.x)});}
  }
- if(r.seals===3&&p.x>=17450){r.phase='finale';r.finale=createRoyalFinale(p);g.projectiles=[];g.enemies=[];g.schedule=[];g.nextSpawn=0;g.duel=null;g.carrierShutdown=null;g.pendingVictory=false;clearPlayerWeaponQueue(p);cancelMelee(p.melee);Object.assign(p,{vx:0,vy:0,dir:1,turn:null,evasion:null,crouching:false,podCycle:null,muzzle:0,mirvFlash:0,homingFlash:0,damagePose:false});g.events.push({type:'royal-finale-start',x:p.x,y:p.y});}
+ if(r.seals===3&&p.x>=17450){r.phase='finale';r.finale=createRoyalFinale(p);g.projectiles=[];g.enemies=[];g.schedule=[];g.nextSpawn=0;g.duel=null;g.carrierShutdown=null;g.pendingVictory=false;clearPlayerWeaponQueue(p);cancelMelee(p.melee);endEvasion(p.evasion);Object.assign(p,{vx:0,vy:0,dir:1,turn:null,crouching:false,podCycle:null,muzzle:0,mirvFlash:0,homingFlash:0,damagePose:false});g.events.push({type:'royal-finale-start',x:p.x,y:p.y});}
 }

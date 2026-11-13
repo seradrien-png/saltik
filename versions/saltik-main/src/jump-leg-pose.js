@@ -18,7 +18,7 @@ export function advanceJumpLegPose(actor,dt){
 }
 export function jumpLegOffset(actor,footX,anchorX,k,scale=1){
  if(actor.knockedOut||actor.gatlingInteraction||actor.btStage||actor.modernStage)return 0;
- return Math.sign(footX-anchorX)*12*scale/k*clamp(actor.jumpLegs?.spread??0);
+ return Math.sign(footX-anchorX)*8*scale/k*clamp(actor.jumpLegs?.spread??0);
 }
 
 // A stretched suspension and rigid wheel patch reveal the underside in flight.
@@ -36,3 +36,21 @@ export function jumpLegPoint(pose,[x,y]){
  return[pose.pivot[0]+dx*co-dy*si,pose.pivot[1]+dx*si+dy*co];
 }
 export function applyJumpLegPose(c,pose){if(pose?.angle){c.translate(...pose.pivot);c.rotate(pose.angle);c.translate(-pose.pivot[0],-pose.pivot[1]);}}
+
+function splitStrut(points,y,lower){
+ const out=[],inside=p=>lower?p[1]>=y:p[1]<=y;
+ for(let i=0;i<points.length;i++){
+  const a=points[i],b=points[(i+1)%points.length],aa=inside(a),bb=inside(b);
+  if(aa)out.push(a);
+  if(aa!==bb){const t=(y-a[1])/(b[1]-a[1]);out.push([a[0]+(b[0]-a[0])*t,y]);}
+ }
+ return out;
+}
+// Keep the original cabin attachment pixels fixed. Shearing a mask above its
+// hinge moves its edge away from the unchanged body cutout and opens a seam.
+export function drawJumpLegStrut(c,part,points,draw,anchored){
+ const paint=poly=>{if(poly.length<3)return;c.beginPath();c.moveTo(...poly[0]);for(const p of poly.slice(1))c.lineTo(...p);c.closePath();c.clip();draw();};
+ if(anchored){c.save();paint(splitStrut(points,part.hinge,false));c.restore();}
+ c.save();c.translate(0,part.hinge);c.transform(1,0,part.roll/(part.wheelTop-part.hinge),part.stretch,0,0);c.translate(0,-part.hinge);
+ paint(anchored?splitStrut(points,part.hinge,true):points);c.restore();
+}

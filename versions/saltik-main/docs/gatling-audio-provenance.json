@@ -7,44 +7,129 @@
     "conversion": "Full original 3.2 s stereo 48000 Hz; Ogg Vorbis quality 5; no trim/fades/pitch changes"
   },
   "voice": {
-    "provider": "Local FFmpeg libflite",
-    "speaker": "rms (male); original uses slt (female)",
-    "method": "All seven phrases synthesized anew from text. Highpass/lowpass, short metallic echo and 45 Hz tremolo; no old clip input or browser TTS. Local Ogg Vorbis mono 44100 Hz.",
+    "provider": "Local FFmpeg libflite + rubberband; no external service",
+    "speaker": "awb, raised to a soft childlike register; Striker retains slt",
+    "available_flite_voices": [
+      "awb",
+      "kal",
+      "kal16",
+      "rms",
+      "slt"
+    ],
+    "method": "Fresh text synthesis for all seven clips. Vocal-tract/formant scale 1.28; formant-preserving pitch contour 1.68/1.82/1.78/1.70/1.62 (combined pitch 2.07\u20132.33); total tempo 0.97. Soft EQ, smooth transients, active-speech RMS -21 dBFS normalization with -4.5 dBFS peak cap and short fades. No echo, tremolo, chorus, old recording input, or browser TTS. Local Ogg Vorbis mono 44100 Hz, quality 4.",
+    "preservation": "A10 loop, original Striker voices and BT audio unchanged byte for byte.",
     "clips": [
       {
         "path": "dist/audio/voices/gatling-ready.ogg",
         "text": "Gatling online.",
-        "sha256": "9bd38b943bdc216b454bbd7676b7ea6d3b74f0b8099502e54126bd1003e49064"
+        "sha256": "077bf6b2d193578df76567ae801b117ddf6eeeac260cae3a9c3ba3ff1b975221",
+        "qa": {
+          "codec": "vorbis",
+          "sample_rate": 44100,
+          "channels": 1,
+          "duration_seconds": 1.417551,
+          "decoded_samples": 62514,
+          "peak_linear": 0.4122217893600464,
+          "peak_dbfs": -7.697,
+          "clipped_samples": 0,
+          "finite": true
+        }
       },
       {
         "path": "dist/audio/voices/gatling-target-lock.ogg",
         "text": "Target lock!",
-        "sha256": "81e079e47f273c4c0e3244ade248afd32522dab6aa9f6fb7017d9a7e3fc11868"
+        "sha256": "62a40bfffcc057aa44eceb1c76b66ec0245b4f629010ee92d699a7171f940aff",
+        "qa": {
+          "codec": "vorbis",
+          "sample_rate": 44100,
+          "channels": 1,
+          "duration_seconds": 1.092766,
+          "decoded_samples": 48191,
+          "peak_linear": 0.3850058615207672,
+          "peak_dbfs": -8.291,
+          "clipped_samples": 0,
+          "finite": true
+        }
       },
       {
         "path": "dist/audio/voices/gatling-enemy-brother.ogg",
         "text": "Enemy brother",
-        "sha256": "69acb840a22a4704340aa952a9a68a31db0872f2b1ec1df1236a622c8513bd5b"
+        "sha256": "36a49be5bab50e8d566e48e96112cd68d82da1181d71fde3be70da0dc19cdeb9",
+        "qa": {
+          "codec": "vorbis",
+          "sample_rate": 44100,
+          "channels": 1,
+          "duration_seconds": 1.195896,
+          "decoded_samples": 52739,
+          "peak_linear": 0.3664014935493469,
+          "peak_dbfs": -8.721,
+          "clipped_samples": 0,
+          "finite": true
+        }
       },
       {
         "path": "dist/audio/voices/gatling-grab-him.ogg",
         "text": "Grab him!",
-        "sha256": "811b5a898be31e7df0ec6b30fc6fd1ede7f99c08cdd2aab8a983fa7b3d837d0f"
+        "sha256": "446165cf9479059a7d50373b722af2dc6d3c3ad2e1b6e84b9807ae9ecd8035c5",
+        "qa": {
+          "codec": "vorbis",
+          "sample_rate": 44100,
+          "channels": 1,
+          "duration_seconds": 0.886599,
+          "decoded_samples": 38971,
+          "peak_linear": 0.42236071825027466,
+          "peak_dbfs": -7.486,
+          "clipped_samples": 0,
+          "finite": true
+        }
       },
       {
         "path": "dist/audio/voices/gatling-see-you-later.ogg",
         "text": "See you later",
-        "sha256": "acfb535d2266f4625a4ea02099ef1b68c7d5e7f47a4c6d47ea2efe5c210f83de"
+        "sha256": "708e446de95b7f62a9d0196da1b352dd2902d1571a180c28e5fda6a07f596124",
+        "qa": {
+          "codec": "vorbis",
+          "sample_rate": 44100,
+          "channels": 1,
+          "duration_seconds": 0.953628,
+          "decoded_samples": 41927,
+          "peak_linear": 0.37304118275642395,
+          "peak_dbfs": -8.565,
+          "clipped_samples": 0,
+          "finite": true
+        }
       },
       {
         "path": "dist/audio/voices/gatling-carrier.ogg",
         "text": "Saltik don't kill Saltik",
-        "sha256": "0ac7805f73893e9258f9b289f79462c531411942631e820863490b777153721c"
+        "sha256": "bd2211d6fc0b55e59892eb51f300eaa48000a150048aa4362fb688718b1744a6",
+        "qa": {
+          "codec": "vorbis",
+          "sample_rate": 44100,
+          "channels": 1,
+          "duration_seconds": 2.036077,
+          "decoded_samples": 89791,
+          "peak_linear": 0.6135152578353882,
+          "peak_dbfs": -4.243,
+          "clipped_samples": 0,
+          "finite": true
+        }
       },
       {
         "path": "dist/audio/voices/gatling-victory.ogg",
         "text": "Victory!",
-        "sha256": "0ebac1625aacbf282b765129760d09e9101f9d061c14121613110553cf5a72a1"
+        "sha256": "ea5d61680d0459d41faf94230f81d227eb6ea2d4ccc36fcbfb59156e5ff5b1d6",
+        "qa": {
+          "codec": "vorbis",
+          "sample_rate": 44100,
+          "channels": 1,
+          "duration_seconds": 0.829932,
+          "decoded_samples": 36608,
+          "peak_linear": 0.35955512523651123,
+          "peak_dbfs": -8.885,
+          "clipped_samples": 0,
+          "finite": true
+        }
       }
     ]
   }

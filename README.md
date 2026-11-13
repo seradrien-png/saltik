@@ -8,7 +8,7 @@ Les cinq états ci-dessous sont conservés dans des dossiers indépendants, sans
 
 | Jeu / sources | État réel | GitHub Pages après activation | Commit source |
 | --- | --- | --- | --- |
-| [SALTIK V2 — Matin Doré](versions/saltik-main) | Publiée v44 — paquet allégé sans perte | [Jouer](https://saltik-v2-matin-dore.ser-adrien.chatgpt.site) | `55ba38422ecd` |
+| [SALTIK V2 — Matin Doré](versions/saltik-main) | Publiée v45 — cinématique et animations corrigées | [Jouer](https://saltik-v2-matin-dore.ser-adrien.chatgpt.site) | `2677b3bdc111` |
 | [SALTIK — Ink Edition publiée](versions/saltik-ink) | Publiée v4 | [Jouer](https://seradrien-png.github.io/saltik/versions/saltik-ink/dist/) | `44110aa2dd80` |
 | [SALTIK INK — brouillon local avec épilogue](versions/autres-versions/saltik-ink-brouillon) | Brouillon local non publié | [Jouer](https://seradrien-png.github.io/saltik/versions/autres-versions/saltik-ink-brouillon/dist/) | `21dcc4ca32c5` |
 | [Feral Steel — Opération Canopée, référence Saltik](versions/autres-versions/saltik-feral-steel) | Publiée v24 | [Jouer](https://seradrien-png.github.io/saltik/versions/autres-versions/saltik-feral-steel/dist/) | `dbc331d0b7a2` |
@@ -178,3 +178,7 @@ Huit poses dessinées de l’anguille royale, passages gigantesques devant les m
 ### 13 novembre 2026 — audit des assets, publication v44
 
 Le paquet publié de Matin Doré passe de 262 205 327 à 175 976 522 octets (−32,886 %, économie de 86 228 805 octets). Treize illustrations historiques inutilisées sont exclues du seul paquet de publication ; 84 images actives sont compressées en WebP sans perte, dimensions et pixels identiques. Tous les originaux restent dans `versions/saltik-main/dist/`, les huit poses de l’anguille, A10, voix, films et cinq éditions sont préservés. 793 tests passent ; les 12 combinaisons personnage/niveau et l’audio ont été vérifiés dans Chromium. Publication v44 réussie, source `55ba38422ecdb6c438ea14f79a2ea1e76bf63e09`. [Rapport détaillé et liste des exclusions](asset-audit-release.json). Le blocage de publication de v43 est résolu.
+
+### 13 novembre 2026 — corrections v45
+
+Cinématique d’embarquement débloquée (état esquive conservé), huit dessins natifs 2172×724 pour l’anguille, nouvelle voix enfantine du Gatling, cascade du pont animée avec masque protégeant le décor, vingt aperçus complets pour le menu en préparation et pattes solidement ancrées pendant le saut. 803 tests passent. Boucle réelle de finale vérifiée pour les trois Saltik ; contrôle supplémentaire Gatling avec graphismes réels. Publication Sites v45 réussie, source `2677b3bdc111d5b26e6ef6df3da2a156a298f4d3`. A10, Striker/BT, originaux et cinq éditions préservés. Paquet léger sans perte conservé : 191 069 633 octets au lieu de 280 404 005 pour les fichiers complets actuels. [Rapport et preuves](v45-corrections-release.json).
