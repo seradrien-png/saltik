@@ -210,5 +210,13 @@
     ]
   },
   "main_files": 624,
-  "other_four_editions_unchanged": true
+  "other_four_editions_unchanged": true,
+  "github_pages": {
+    "enabled": false,
+    "activation_http_status": 403,
+    "error": "Resource not accessible by integration"
+  },
+  "sites_saved_version": null,
+  "sites_deployment": null,
+  "source_snapshot_backup_commit": "bb1a82d55bf9cbe25b4dc00db9b445d828e8a36b"
 }
