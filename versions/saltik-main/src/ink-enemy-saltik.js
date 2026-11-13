@@ -1,3 +1,4 @@
+import {jumpLegOffset} from './jump-leg-pose.js';
 import {sampleSupportSurface} from './support-pose.js';
 import {plantInkWheel} from './ink-leg-support.js';
 import {drawInkEnemyPods,inkEnemyPodGeometry} from './ink-pods.js';
@@ -75,7 +76,7 @@ export function inkEnemySaltikGeometry(e,time=0,{camera=0,scale=1,view='side'}={
  const k=PIXEL_SCALE*scale,flip=view==='front'?1:e.dir===-1?-1:1;
  const dodging=view==='side'&&e.guardFlash>0&&e.guardResponse==='dodge';
  const effort=dodging?Math.sin(Math.PI*clamp(e.guardFlash/.25)):0;
- const walking=view==='side'&&Math.abs(finite(e.vx))>5;
+ const airborne=e.onGround===false,walking=!airborne&&view==='side'&&Math.abs(finite(e.vx))>5;
  const distance=finite(e.motionDistance,walking?time*finite(e.vx):0),phase=distance/11;
  const x=finite(e.x)-camera,y=finite(e.y),dir=e.dir===1?1:-1;
  const back=sampleSupportSurface(e.supportPose,finite(e.x)-50),front=sampleSupportSurface(e.supportPose,finite(e.x)+50);
@@ -88,12 +89,13 @@ export function inkEnemySaltikGeometry(e,time=0,{camera=0,scale=1,view='side'}={
  const sourcePoint=([px,py])=>{const xx=(px-frame.anchor[0])*k*flip,yy=(py-frame.anchor[1])*k;return{x:x+offsetX+xx*co-yy*si,y:y+heave+bodyDrop+xx*si+yy*co};};
  const legs=view==='front'?[]:INK_ENEMY_SALTIK_PARTS.legs.map((part,index)=>{
   const stride=walking?Math.sin(phase+(index===1?Math.PI:0))*10:0;
-  const native=sourcePoint([part.foot[0]+stride,part.foot[1]]);
+  const splay=jumpLegOffset(e,part.foot[0],frame.anchor[0],k,scale);
+  const native=sourcePoint([part.foot[0]+stride+splay,part.foot[1]]);
   const lift=walking?Math.max(0,Math.sin(phase+(index===1?Math.PI:0)))*1.8*scale:0;
-  let offset=0,roll=stride,grounded=false;
+  let offset=airborne?-15:0,roll=stride+splay,grounded=false;
   // With no terrain supplied, leave the resting native leg exactly in place.
   // The duel masks these same pixels before drawing its held leg and hands.
-  if(e.supportPose){
+  if(!airborne&&e.supportPose){
    const floor=at=>{const support=sampleSupportSurface(e.supportPose,finite(e.x)+(at-x)/scale);return Number.isFinite(support)?y+(support-y)*scale:NaN;};
    const planted=plantInkWheel(native,{k,cos:co,sin:si,floor,orientation:flip,maxOffset:140});
    offset=planted.offset;roll+=planted.roll;grounded=planted.grounded&&lift<.001;

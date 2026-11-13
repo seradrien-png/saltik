@@ -1,3 +1,4 @@
+import {jumpLegOffset} from './jump-leg-pose.js';
 import {augmentModernGeometry,drawModernStriker} from './modern-striker-art.js';
 import {drawNativeTurn} from './character-turns.js';
 import {btGeometry,drawBT} from './bt-art.js';
@@ -171,8 +172,8 @@ export function inkSaltikGeometry(p,{camera=0,time=0,scale=1,victoryAge=null,sam
     return {x:x+xx*cos-yy*sin,y:y+heave+bodyDrop+xx*sin+yy*cos};
   };
   const legs=INK_SALTIK_PARTS.legs.map((part,index)=>{
-    const native=sourcePoint(part.foot);
-    let offset=airborne?-(22+compression*30)+Math.sin(time*7+index*1.9)*3:0,roll=0,grounded=false;
+    const splay=jumpLegOffset(p,part.foot[0],INK_SALTIK_ANCHOR[0],k,scale),native=sourcePoint([part.foot[0]+splay,part.foot[1]]);
+    let offset=airborne?-(22+compression*30)+Math.sin(time*7+index*1.9)*3:0,roll=splay,grounded=false;
     if(!airborne){
       const floor=at=>{
         if(finite(p.artScale,1)!==1){
@@ -182,7 +183,7 @@ export function inkSaltikGeometry(p,{camera=0,time=0,scale=1,victoryAge=null,sam
         }
         const support=sampleSupportSurface(p.supportPose,finite(p.x)+(at-x)/scale);if(p.supportPose?.surface&&!Number.isFinite(support))return NaN;return y+((support??finite(p.supportY,y))-y)*scale;
       };
-      ({offset,roll,grounded}=plantInkWheel(native,{k,cos,sin,floor,orientation}));
+      ({offset,roll,grounded}=plantInkWheel(native,{k,cos,sin,floor,orientation}));roll+=splay;
     }
     const stretch=1+offset/(part.wheelTop-part.hinge);
     // Travel rather than the animation clock turns the ink on the tire. A
@@ -279,6 +280,7 @@ function transformPart(c,part){
 
 export function drawInkSaltik(c,image,p,{camera=0,time=0,scale=1,victoryAge=null,turnImage=null,sampleGround}={}){
   if(!image)return null;
+  if(victoryAge!==null)p={...p,jumpLegs:null};
   let geo=inkSaltikGeometry(p,{camera,time,scale,victoryAge,sampleGround});
   if(drawNativeTurn(c,turnImage,p,{camera,scale,time}))return geo;
   if(p.visualModel==='modern-striker')return drawModernStriker(c,image,p,geo,{time});

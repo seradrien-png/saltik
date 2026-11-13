@@ -1,3 +1,4 @@
+import {jumpLegOffset} from './jump-leg-pose.js';
 import {sampleSupportSurface} from './support-pose.js';
 import {plantInkWheel} from './ink-leg-support.js';
 import {podSlotPresentation} from './ink-pods.js';
@@ -18,8 +19,8 @@ export function augmentModernGeometry(p,base,{camera=0,time=0,sampleGround}={}){
  const modernArms=MODERN_STRIKER.arms.map((arm,i)=>{let rotation=base.arms[i].rotation,extension=0;const target=p.modernGripTargets?.[i];
   if(target){const pivot=nativePoint(arm.pivot),wx=target.x-camera-pivot.x,wy=target.y-pivot.y,dx=(wx*co+wy*si)/(k*orientation),dy=(-wx*si+wy*co)/k,hx=arm.hand[0]-arm.pivot[0],hy=arm.hand[1]-arm.pivot[1];extension=clamp(Math.sqrt(Math.max(0,dx*dx+dy*dy-hx*hx))-hy,-25,240);rotation=Math.atan2(dy,dx)-Math.atan2(hy+extension,hx);}
   return{...arm,rotation,extension,handPoint:q=>nativePoint(rot([q[0],q[1]+extension],arm.pivot,rotation))};});
- const modernLegs=MODERN_STRIKER.legs.map(part=>{let offset=base.airborne?-15-base.compression*22:0,roll=0,grounded=false;const native=nativePoint(part.foot);
-  if(!base.airborne){const floor=at=>{const world=at+camera,support=sampleGround?.(world)??sampleSupportSurface(p.supportPose,world);if(p.supportPose?.surface&&!Number.isFinite(support))return NaN;return support??p.supportY??p.y;};({offset,roll,grounded}=plantInkWheel(native,{k,cos:co,sin:si,floor,orientation,maxOffset:220}));}
+ const modernLegs=MODERN_STRIKER.legs.map(part=>{let offset=base.airborne?-15-base.compression*22:0,roll=jumpLegOffset(p,part.foot[0],A[0],k,base.scale),grounded=false;const splay=roll,native=nativePoint([part.foot[0]+splay,part.foot[1]]);
+  if(!base.airborne){const floor=at=>{const world=at+camera,support=sampleGround?.(world)??sampleSupportSurface(p.supportPose,world);if(p.supportPose?.surface&&!Number.isFinite(support))return NaN;return support??p.supportY??p.y;};({offset,roll,grounded}=plantInkWheel(native,{k,cos:co,sin:si,floor,orientation,maxOffset:220}));roll+=splay;}
   return{...part,offset,roll,grounded,stretch:1+offset/(part.wheelTop-part.hinge),contact:nativePoint([part.foot[0]+roll,part.foot[1]+offset]),spin:finite(p.motionDistance)/(part.hub[3]*K)*orientation,strut:split(part.polygon,part.wheelTop,false),wheel:split(part.polygon,part.wheelTop,true)};});
  const modernGuns=MODERN_STRIKER.guns.map((part,i)=>{let rotation=-(base.weaponsLocked?0:clamp(finite(p.cannonElevation),0,1.1)),recoil=-(i?finite(p.muzzle)/.07*4:finite(p.cannonRecoil)*7);if(p.modernAimTarget){const a=nativePoint(part.pivot),wx=p.modernAimTarget.x-camera-a.x,wy=p.modernAimTarget.y-a.y;rotation=Math.atan2((-wx*si+wy*co)/k,(wx*co+wy*si)/(k*orientation))-Math.atan2(part.muzzle[1]-part.pivot[1],part.muzzle[0]-part.pivot[0]);}
   const point=q=>nativePoint(rot(q,part.pivot,rotation,recoil)),muzzle=point(part.muzzle),pivot=point(part.pivot),length=Math.hypot(muzzle.x-pivot.x,muzzle.y-pivot.y)||1;return{...part,rotation,recoil,point,muzzle,direction:{x:(muzzle.x-pivot.x)/length,y:(muzzle.y-pivot.y)/length}};});

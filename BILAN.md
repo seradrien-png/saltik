@@ -121,3 +121,7 @@ Source `bc3b03f5314140e3d3d47e7ff2d2ee91ff77f2e7`,624fichiers,745tests réussis.
 ## Publication rétablie le13novembre2026
 
 La refonte Gatling est désormais publiée en version Sites34, source `bc3b03f5314140e3d3d47e7ff2d2ee91ff77f2e7`. Accès source fonctionnel, déploiement réussi,19ressources en ligne comparées au build. Le précédent blocage est résolu ; GithubPages reste facultatif/nonactivé.
+
+### 13 novembre 2026 — animation de saut
+
+Écartement progressif des pattes au décollage et retour amorti à l’atterrissage pour Striker, Gatling et BT, retournements compris. Physique inchangée. Version Sites v35 publiée ; source `79668a31bfef6140ce6aee3e9e26fb5ca08b0eed`. Rapport : [jump-animation-release.json](jump-animation-release.json). Autres éditions et historique préservés.

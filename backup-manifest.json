@@ -7,15 +7,15 @@
       "slug": "saltik-main",
       "repo": "saltik-v2-matin-dore",
       "title": "SALTIK V2 — Matin Doré",
-      "commit": "bc3b03f5314140e3d3d47e7ff2d2ee91ff77f2e7",
-      "published_version": 34,
+      "commit": "79668a31bfef6140ce6aee3e9e26fb5ca08b0eed",
+      "published_version": 35,
       "url": "https://saltik-v2-matin-dore.ser-adrien.chatgpt.site",
-      "base_commit": "af2ec95c91962ad5cd5aee0dff2adc778455e47d",
+      "base_commit": "bc3b03f5314140e3d3d47e7ff2d2ee91ff77f2e7",
       "source_path": "/workspace/sites/saltik-v2-matin-dore",
       "export_path": "versions/saltik-main",
       "web_entry": "versions/saltik-main/dist/index.html",
-      "file_count": 624,
-      "bytes": 266328303,
+      "file_count": 629,
+      "bytes": 266338176,
       "uncommitted_changes": "",
       "files": {
         ".gitignore": {
@@ -539,8 +539,8 @@
           "size": 2186
         },
         "dist/src/character-turns.js": {
-          "sha256": "b95c459a33000560fd4621b9553deb96df88aac6fdccdc583dc5a6bd6584169d",
-          "size": 6355
+          "sha256": "3e548202ba9fa82b78752d140aeb0cc61206c3f21cd53e9e10636019913f2c2c",
+          "size": 6765
         },
         "dist/src/combat-effects.js": {
           "sha256": "5d475228d929abf59da0f35109d5713517062dfa876bc4763dffe0f6a24b8f4e",
@@ -595,8 +595,8 @@
           "size": 3615
         },
         "dist/src/gatling-art.js": {
-          "sha256": "63b5da6f8798ebbb0c8e6b35bdbd4071abeef06716a8b97e3659e2e14a9b6531",
-          "size": 10691
+          "sha256": "9f15ef5099cc9d926ac23ced94242f27bee738b83c2c598d58f47af10b169cd3",
+          "size": 10832
         },
         "dist/src/gatling-combat.js": {
           "sha256": "3fc7204583007c8ece714fe41cc5727ceaec2486c305977b67e1832661182d87",
@@ -631,8 +631,8 @@
           "size": 36435
         },
         "dist/src/ink-enemy-saltik.js": {
-          "sha256": "1560a5df1dc65d396c077d8bd13df6ef77350e55fb9ef228cfb9d4ea5463582e",
-          "size": 15859
+          "sha256": "260e48f1777aa2eb97746a4cd95f3b2a6a80b1a890025e41e91223cda9baaecd",
+          "size": 16053
         },
         "dist/src/ink-hit-cache.js": {
           "sha256": "7e9903deb9b50802faa19d302bb0c118da012ebf4213be0882c5bc493b113a80",
@@ -655,8 +655,8 @@
           "size": 18317
         },
         "dist/src/ink-saltik.js": {
-          "sha256": "d5959ebd5583c090e2333c64342a72971f02f00476383afa40e8a88eae34e99b",
-          "size": 21164
+          "sha256": "313d26ec2876197fa27b800b1555368906d0d86468c0d036349c938aac348d9e",
+          "size": 21366
         },
         "dist/src/ink-scene.js": {
           "sha256": "4028ad0ed13acc3efd277b0272cd08b3af26a535ace4597ae6fd5a9e95766bc8",
@@ -677,6 +677,10 @@
         "dist/src/install.js": {
           "sha256": "b908e80e6a6e039b99021c48ecf1ff21d88a9ac26c216ee7d91422c7216dec65",
           "size": 4938
+        },
+        "dist/src/jump-leg-pose.js": {
+          "sha256": "eb281f31a2438598174ee634e57c118241131e7c10f5b4b3df758f868a3e4aad",
+          "size": 1001
         },
         "dist/src/lunar-architecture.js": {
           "sha256": "c1eb7b42baec02ca72082ab52c34acb76a174105bf8bbf9f97f10d0ef919f4bf",
@@ -735,12 +739,12 @@
           "size": 1708
         },
         "dist/src/modern-striker-art.js": {
-          "sha256": "247caf6b431d9e87cc6c93c1a0dd50fa56c1a65e9d6d033c58ed4e0e11c5c4d1",
-          "size": 8057
+          "sha256": "1965937a4ca731cc3439bc6cca69f9085d98d98029e8c7bc03d67f683917ad09",
+          "size": 8200
         },
         "dist/src/motor-motion.js": {
-          "sha256": "b1a902cf9b34b073d2cf96f32801c607365f79a0ccf413176c58be348746527e",
-          "size": 753
+          "sha256": "4cd5f7608a358e829486fb3044179c75876304c3623a922a6fb701055a468691",
+          "size": 839
         },
         "dist/src/obstacle-art.js": {
           "sha256": "6dd185502e05622eadcb9d88fb82efb5a06cee306850feee7ab61f142813cc3a",
@@ -1190,6 +1194,10 @@
           "sha256": "18849619f9d9cfccac39598f107d6508fbe0fb4945fb06dc3b5f00ceaeea8ec2",
           "size": 853
         },
+        "docs/superpowers/plans/2026-11-13-jump-splay.md": {
+          "sha256": "cbd1db39d5e7f0f3ac0b8e6fe7ad505c8aa787793fd23e5eb52d3ffb905b14ba",
+          "size": 1470
+        },
         "docs/superpowers/plans/2026-11-13-modern-gatling.md": {
           "sha256": "edf063f5ce4df01a880495a25cd013053508c815fe3ce6ad121a4a0611903d0c",
           "size": 3613
@@ -1337,6 +1345,10 @@
         "docs/superpowers/specs/2026-11-12-modern-striker.md": {
           "sha256": "4a1c09de43bad90be8fcedba0adfcfc7b3930aa89fa97f7071a07e367f683d80",
           "size": 1189
+        },
+        "docs/superpowers/specs/2026-11-13-jump-splay-design.md": {
+          "sha256": "62ff3124a2c4b968566e01da55a083af2e05f0ebc63eed9895d483497fc2cdb2",
+          "size": 1030
         },
         "docs/superpowers/specs/2026-11-13-modern-gatling-design.md": {
           "sha256": "34c76cfb94b837c68b44d18b9ffbbd5d0cf9d79ef69203dee6e30ae63a660553",
@@ -1615,8 +1627,8 @@
           "size": 2186
         },
         "src/character-turns.js": {
-          "sha256": "b95c459a33000560fd4621b9553deb96df88aac6fdccdc583dc5a6bd6584169d",
-          "size": 6355
+          "sha256": "3e548202ba9fa82b78752d140aeb0cc61206c3f21cd53e9e10636019913f2c2c",
+          "size": 6765
         },
         "src/combat-effects.js": {
           "sha256": "5d475228d929abf59da0f35109d5713517062dfa876bc4763dffe0f6a24b8f4e",
@@ -1671,8 +1683,8 @@
           "size": 3615
         },
         "src/gatling-art.js": {
-          "sha256": "63b5da6f8798ebbb0c8e6b35bdbd4071abeef06716a8b97e3659e2e14a9b6531",
-          "size": 10691
+          "sha256": "9f15ef5099cc9d926ac23ced94242f27bee738b83c2c598d58f47af10b169cd3",
+          "size": 10832
         },
         "src/gatling-combat.js": {
           "sha256": "3fc7204583007c8ece714fe41cc5727ceaec2486c305977b67e1832661182d87",
@@ -1707,8 +1719,8 @@
           "size": 36435
         },
         "src/ink-enemy-saltik.js": {
-          "sha256": "1560a5df1dc65d396c077d8bd13df6ef77350e55fb9ef228cfb9d4ea5463582e",
-          "size": 15859
+          "sha256": "260e48f1777aa2eb97746a4cd95f3b2a6a80b1a890025e41e91223cda9baaecd",
+          "size": 16053
         },
         "src/ink-hit-cache.js": {
           "sha256": "7e9903deb9b50802faa19d302bb0c118da012ebf4213be0882c5bc493b113a80",
@@ -1731,8 +1743,8 @@
           "size": 18317
         },
         "src/ink-saltik.js": {
-          "sha256": "d5959ebd5583c090e2333c64342a72971f02f00476383afa40e8a88eae34e99b",
-          "size": 21164
+          "sha256": "313d26ec2876197fa27b800b1555368906d0d86468c0d036349c938aac348d9e",
+          "size": 21366
         },
         "src/ink-scene.js": {
           "sha256": "4028ad0ed13acc3efd277b0272cd08b3af26a535ace4597ae6fd5a9e95766bc8",
@@ -1753,6 +1765,10 @@
         "src/install.js": {
           "sha256": "b908e80e6a6e039b99021c48ecf1ff21d88a9ac26c216ee7d91422c7216dec65",
           "size": 4938
+        },
+        "src/jump-leg-pose.js": {
+          "sha256": "eb281f31a2438598174ee634e57c118241131e7c10f5b4b3df758f868a3e4aad",
+          "size": 1001
         },
         "src/lunar-architecture.js": {
           "sha256": "c1eb7b42baec02ca72082ab52c34acb76a174105bf8bbf9f97f10d0ef919f4bf",
@@ -1811,12 +1827,12 @@
           "size": 1708
         },
         "src/modern-striker-art.js": {
-          "sha256": "247caf6b431d9e87cc6c93c1a0dd50fa56c1a65e9d6d033c58ed4e0e11c5c4d1",
-          "size": 8057
+          "sha256": "1965937a4ca731cc3439bc6cca69f9085d98d98029e8c7bc03d67f683917ad09",
+          "size": 8200
         },
         "src/motor-motion.js": {
-          "sha256": "b1a902cf9b34b073d2cf96f32801c607365f79a0ccf413176c58be348746527e",
-          "size": 753
+          "sha256": "4cd5f7608a358e829486fb3044179c75876304c3623a922a6fb701055a468691",
+          "size": 839
         },
         "src/obstacle-art.js": {
           "sha256": "6dd185502e05622eadcb9d88fb82efb5a06cee306850feee7ab61f142813cc3a",
@@ -2286,6 +2302,10 @@
           "sha256": "6583f57b899b46d6a4397029a838a39e73cc9554dbc6400d11f135663c2efb6d",
           "size": 11751
         },
+        "tests/jump-leg-pose.test.js": {
+          "sha256": "1a4f3dcb6385596289f22ebca93f0ec4b37c394e7d8c2dc8254f5c04df994ddd",
+          "size": 3019
+        },
         "tests/live-enemy.test.js": {
           "sha256": "79e7f8c8622b13ef4d4b38b8dfab254712f1fe1ae3d7840f5b5c0323f558860c",
           "size": 7251
@@ -2526,11 +2546,11 @@
           "duration_native_run_seconds": 82.0166666666633
         }
       ],
-      "update_note": "Published Gatling reference reforge: four mission costumes, registered native turns, rotary effects and optional Limule; gameplay unchanged.745tests pass.",
-      "published_source_commit": "bc3b03f5314140e3d3d47e7ff2d2ee91ff77f2e7",
-      "publication_status": "published and live",
+      "update_note": "Gentle leg splay at jump takeoff and eased landing return on all playable Saltiks and native turn views. Physics unchanged.",
+      "published_source_commit": "79668a31bfef6140ce6aee3e9e26fb5ca08b0eed",
+      "publication_status": "Published and verified",
       "github_import_base": "4c9b8e64bf3232c222f9b6f534ca37d660da3f7b",
-      "live_published_version": 34
+      "live_published_version": 35
     },
     {
       "slug": "saltik-ink",

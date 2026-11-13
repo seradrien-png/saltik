@@ -1,0 +1,132 @@
+{
+  "version_number": 35,
+  "version_id": "appgprj_6ae77e1b6da081918600675fc2e2b738~appgver_3715b44afd288191877aa9e7c871e248",
+  "deployment": {
+    "id": "appgdep_6af6bc9509ac8191935a8e2b68d64d07",
+    "project_id": "appgprj_6ae77e1b6da081918600675fc2e2b738",
+    "title": "SALTIK V2 — Matin Doré",
+    "version_id": "appgprj_6ae77e1b6da081918600675fc2e2b738~appgver_3715b44afd288191877aa9e7c871e248",
+    "type": "publish",
+    "status": "succeeded",
+    "url": "https://saltik-v2-matin-dore.ser-adrien.chatgpt.site",
+    "has_mcp": false,
+    "screenshot_asset_pointer": null,
+    "provider_deployment_id": "site---6ae77e1b6da081918600675fc2e2b738",
+    "failure_message": null,
+    "env_set_revision": 0,
+    "updated_at": "2026-11-13T07:30:46.127042+00:00"
+  },
+  "source_commit": "79668a31bfef6140ce6aee3e9e26fb5ca08b0eed",
+  "tests": {
+    "total": 750,
+    "initial_passed": 749,
+    "initial_failed": 1,
+    "affected_recheck_passed": 13,
+    "unresolved_failures": 0
+  },
+  "review": "No actionable bugs found",
+  "browser": {
+    "poses": [
+      {
+        "character": "striker",
+        "col": 0,
+        "spread": 0
+      },
+      {
+        "character": "striker",
+        "col": 1,
+        "spread": 1
+      },
+      {
+        "character": "striker",
+        "col": 2,
+        "spread": 1
+      },
+      {
+        "character": "striker",
+        "col": 3,
+        "spread": 0
+      },
+      {
+        "character": "gatling",
+        "col": 0,
+        "spread": 0
+      },
+      {
+        "character": "gatling",
+        "col": 1,
+        "spread": 1
+      },
+      {
+        "character": "gatling",
+        "col": 2,
+        "spread": 1
+      },
+      {
+        "character": "gatling",
+        "col": 3,
+        "spread": 0
+      },
+      {
+        "character": "bt",
+        "col": 0,
+        "spread": 0
+      },
+      {
+        "character": "bt",
+        "col": 1,
+        "spread": 1
+      },
+      {
+        "character": "bt",
+        "col": 2,
+        "spread": 1
+      },
+      {
+        "character": "bt",
+        "col": 3,
+        "spread": 0
+      }
+    ],
+    "errors": []
+  },
+  "main_files": 629,
+  "other_four_editions_unchanged": true,
+  "published_resource_checks": [
+    {
+      "path": "src/character-turns.js",
+      "status": 200,
+      "sha256": "3e548202ba9fa82b78752d140aeb0cc61206c3f21cd53e9e10636019913f2c2c"
+    },
+    {
+      "path": "src/gatling-art.js",
+      "status": 200,
+      "sha256": "9f15ef5099cc9d926ac23ced94242f27bee738b83c2c598d58f47af10b169cd3"
+    },
+    {
+      "path": "src/ink-enemy-saltik.js",
+      "status": 200,
+      "sha256": "260e48f1777aa2eb97746a4cd95f3b2a6a80b1a890025e41e91223cda9baaecd"
+    },
+    {
+      "path": "src/ink-saltik.js",
+      "status": 200,
+      "sha256": "313d26ec2876197fa27b800b1555368906d0d86468c0d036349c938aac348d9e"
+    },
+    {
+      "path": "src/jump-leg-pose.js",
+      "status": 200,
+      "sha256": "eb281f31a2438598174ee634e57c118241131e7c10f5b4b3df758f868a3e4aad"
+    },
+    {
+      "path": "src/modern-striker-art.js",
+      "status": 200,
+      "sha256": "1965937a4ca731cc3439bc6cca69f9085d98d98029e8c7bc03d67f683917ad09"
+    },
+    {
+      "path": "src/motor-motion.js",
+      "status": 200,
+      "sha256": "4cd5f7608a358e829486fb3044179c75876304c3623a922a6fb701055a468691"
+    }
+  ]
+}
