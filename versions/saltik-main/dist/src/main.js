@@ -3,7 +3,6 @@ import {normalizeSkin} from './player-skins.js';
 import {desertMissionLabel} from './desert-level.js';
 import {projectDesertPlayer} from './desert-layout.js';
 import {createBTGamepad} from './bt-gamepad.js';
-import {royalMissionLabel} from './royal-level.js';
 import {inkSaltikGeometry} from './ink-saltik.js';
 import {lunarMissionLabel} from './lunar-level.js';
 import {padCoversPlayer} from './control-layout.js';
@@ -161,7 +160,7 @@ function recharge(buttonId,textId,barId,remaining,total,ready,label){
   button.setAttribute('aria-label',waiting?`${label}, recharge ${remaining.toFixed(1)} secondes`:label);
 }
 function updateUI(){
-  const mission=$('mission-status');mission.hidden=selectedLevel===1||view==='title';if(!mission.hidden)mission.textContent=selectedLevel===4?desertMissionLabel(game):selectedLevel===3?royalMissionLabel(game):lunarMissionLabel(game);
+  const mission=$('mission-status');mission.hidden=selectedLevel===1||selectedLevel===3||view==='title';if(!mission.hidden)mission.textContent=selectedLevel===4?desertMissionLabel(game):lunarMissionLabel(game);
   const p=game.player,hpRatio=clamp(p.hp/(p.maxHp||100),0,1),shifting=p.evasion.active;
   syncActionDock();app.dataset.desertStage=selectedLevel===4&&game.desert?.phase!=='interior'?'travel':'combat';
   const bounds=$('game').getBoundingClientRect();

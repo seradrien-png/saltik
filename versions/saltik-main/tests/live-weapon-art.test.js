@@ -19,7 +19,7 @@ function canvas(){
   rotate(a){const [aa,b,c,d]=m,co=Math.cos(a),si=Math.sin(a);m[0]=aa*co+c*si;m[1]=b*co+d*si;m[2]=c*co-aa*si;m[3]=d*co-b*si;},
   transform(a,b,c,d,e,f){const [aa,bb,cc,dd,ee,ff]=m;m=[aa*a+cc*b,bb*a+dd*b,aa*c+cc*d,bb*c+dd*d,aa*e+cc*f+ee,bb*e+dd*f+ff];},
   drawImage(...args){const [image,sx,sy,sw,sh,dx,dy,dw,dh]=args,t=[...m];calls.push({image,clipPath,clipRule,sourcePoint(x,y){const xx=dx+(x-sx)/sw*dw,yy=dy+(y-sy)/sh*dh;return{x:t[0]*xx+t[2]*yy+t[4],y:t[1]*xx+t[3]*yy+t[5]};}});},
-  beginPath(){path=[];ellipse=null;},moveTo(x,y){path.push([x,y]);},lineTo(x,y){path.push([x,y]);},closePath(){},clip(rule){clipPath=[...path];clipRule=rule;},
+  beginPath(){path=[];ellipse=null;},moveTo(x,y){path.push([x,y]);},lineTo(x,y){path.push([x,y]);},rect(x,y,w,h){path.push([x,y],[x+w,y],[x+w,y+h],[x,y+h]);},closePath(){},clip(rule){clipPath=[...path];clipRule=rule;},
   ellipse(x,y,rx,ry){ellipse={center:point(x,y),rx:rx*Math.hypot(m[0],m[1]),ry:ry*Math.hypot(m[2],m[3])};},
   fill(){if(ellipse)fills.push({...ellipse,color:this.fillStyle});},stroke(){},arc(){},setLineDash(){}};
 }

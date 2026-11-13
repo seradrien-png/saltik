@@ -1,0 +1,4 @@
+1. Generate/inspect royal velvet eel asset against nativeworldreference; preserve all oldart.
+2. RED ambientstate trigger/once/pause/reset tests, draw medallions absent, reducedforeground height, water transport/mist determinism. Implement royal-atmosphere state/render module, integrate royal-level/ink-renderer/background layer order.
+3. Upgrade royal-waterfalls cachedblue texture +staggeredfallingstreams and softwisps, preserve sourcecrop/camera mask. Native rainbow maskedrefractivewave/shimmer before/aftereel perdepth. Remove level3 HUDbanner and numberedseals, reduceforeground.
+4. Affected tests/fullcampaign checks, browser recordings/screens acrosswater/rainbow/near+far passage and level3 HUD; independentreview; fix importantfindings. Build/commit/push exactsource toexistingSites, save/deploy public, verify livechangedresources, incremental existingGitHub mainbackup preserving4othereditions/history.

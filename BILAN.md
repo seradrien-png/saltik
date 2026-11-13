@@ -141,3 +141,7 @@ Recalage automatique après rotation ou changement de fenêtre, menu compact sur
 ### 13 novembre 2026 — cascades du monde velours
 
 Écoulement descendant plus lisible, reflets mobiles et remous sur les 19 zones d’eau du fond, des ponts et de la roue. L’animation reste attachée aux peintures et se fige en pause ; ciel, dorures et gameplay préservés. Version Sites v39 publiée ; source `e078e9a9538af5ef7cd921742ad26e9db82c26d2`. Rapport : [velvet-water-release.json](velvet-water-release.json). Autres éditions et historique préservés.
+
+### 13 novembre 2026 — monde velours vivant
+
+Eau animée avec brume, arc-en-ciel en mouvement, passages de l’anguille royale (immense à 60 %, plus lointaine à 85 %), premier plan allégé et HUD du velours épuré. Peintures et gameplay préservés. Version Sites v40 publiée ; source `d6933a715cd50f272be0f1cfd39495121eede59f`. Rapport : [royal-living-world-release.json](royal-living-world-release.json). Autres éditions et historique préservés.

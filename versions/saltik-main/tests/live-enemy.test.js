@@ -26,7 +26,7 @@ function canvas(){
   transform(a,b,c,d,e,f){const [aa,bb,cc,dd,ee,ff]=m;m=[aa*a+cc*b,bb*a+dd*b,aa*c+cc*d,bb*c+dd*d,aa*e+cc*f+ee,bb*e+dd*f+ff];},
   rotate(angle){this.transform(Math.cos(angle),Math.sin(angle),-Math.sin(angle),Math.cos(angle),0,0);},
   scale(x,y){this.transform(x,0,0,y,0,0);},
-  beginPath(){path=[];},moveTo(x,y){path.push([x,y]);},lineTo(x,y){path.push([x,y]);},closePath(){},
+  beginPath(){path=[];},moveTo(x,y){path.push([x,y]);},lineTo(x,y){path.push([x,y]);},rect(x,y,w,h){path.push([x,y],[x+w,y],[x+w,y+h],[x,y+h]);},closePath(){},
   clip(rule){clips.push({rule,path:[...path]});},ellipse(){},arc(){},setLineDash(){},fill(){},stroke(){},
   drawImage(image,sx,sy,sw,sh,dx,dy,dw,dh){
    const matrix=[...m];calls.push({image,crop:[sx,sy,sw,sh],clip:clips.at(-1),point(x,y){

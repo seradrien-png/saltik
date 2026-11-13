@@ -1,0 +1,180 @@
+{
+  "version_number": 40,
+  "version_id": "appgprj_6ae77e1b6da081918600675fc2e2b738~appgver_bfe5154f6d0481918ccf9de038686c9d",
+  "deployment": {
+    "id": "appgdep_6af7004d901c81919eb488cc79a9b37f",
+    "project_id": "appgprj_6ae77e1b6da081918600675fc2e2b738",
+    "title": "SALTIK V2 — Matin Doré",
+    "version_id": "appgprj_6ae77e1b6da081918600675fc2e2b738~appgver_bfe5154f6d0481918ccf9de038686c9d",
+    "type": "publish",
+    "status": "succeeded",
+    "url": "https://saltik-v2-matin-dore.ser-adrien.chatgpt.site",
+    "has_mcp": false,
+    "screenshot_asset_pointer": null,
+    "provider_deployment_id": "site---6ae77e1b6da081918600675fc2e2b738",
+    "failure_message": null,
+    "env_set_revision": 0,
+    "updated_at": "2026-11-13T12:19:44.461432+00:00"
+  },
+  "source_commit": "d6933a715cd50f272be0f1cfd39495121eede59f",
+  "tests": {
+    "full_passed": 772,
+    "failed": 0,
+    "affected_passed": 31
+  },
+  "review": "Independent review found no critical/important findings. Two old Canvas test mocks updated with rect(); full suite rerun: 772/772.",
+  "coverage": {
+    "backdrop_regions": 7,
+    "bridge_regions": 7,
+    "waterwheel_regions": 5
+  },
+  "features": {
+    "flowing_water": true,
+    "base_mist": true,
+    "velvet_hud_removed": true,
+    "reduced_foreground": true,
+    "moving_native_rainbow": true,
+    "eel_passes": [
+      {
+        "at": 0.6,
+        "duration": 8,
+        "depth": "near, opaque, enormous"
+      },
+      {
+        "at": 0.85,
+        "duration": 7,
+        "depth": "far, opaque, smaller"
+      }
+    ]
+  },
+  "qa": "Real asset renderer and actual HUD browser checks pass; original paintings and gameplay preserved.",
+  "browser": {
+    "water": [
+      {
+        "kind": "backdrop",
+        "zones": [
+          646,
+          1202,
+          5196,
+          1156,
+          2036,
+          9517,
+          8609
+        ],
+        "outside": 0,
+        "paused": 0,
+        "mist": 4436,
+        "compiled": 7,
+        "after": 7
+      },
+      {
+        "kind": "bridge",
+        "zones": [
+          1071,
+          2986,
+          2723,
+          2849,
+          4690,
+          15861,
+          2146
+        ],
+        "outside": 0,
+        "paused": 0,
+        "mist": 3804,
+        "compiled": 14,
+        "after": 14
+      },
+      {
+        "kind": "organic",
+        "zones": [
+          511,
+          1210,
+          1292,
+          280,
+          601
+        ],
+        "outside": 0,
+        "paused": 0,
+        "mist": 1780,
+        "compiled": 19,
+        "after": 19
+      }
+    ],
+    "real_renderer_with_all_assets": true,
+    "screenshots": [
+      "normal.png",
+      "near-head.png",
+      "near-body.png",
+      "far.png"
+    ],
+    "level3_objective_hidden": true,
+    "level2_objective_retained": true,
+    "errors": []
+  },
+  "main_files": 662,
+  "other_four_editions_unchanged": true,
+  "published_resource_checks": [
+    {
+      "path": "assets/royal-eel.png",
+      "status": 200,
+      "sha256": "0a8cff40272e637de3fa3ed49b9005aa31c5918e6f1e3e7266f94683b0cef96b"
+    },
+    {
+      "path": "src/ink-renderer.js",
+      "status": 200,
+      "sha256": "f4f7cc0cb3ae440b3b2e6a4a17ad63842aade9a9beb5d102918bae45a3e26742"
+    },
+    {
+      "path": "src/main.js",
+      "status": 200,
+      "sha256": "7be8b7770aa2944cfd976d4312cbffd269aee76ff9a54b8f4c4f212163deca30"
+    },
+    {
+      "path": "src/royal-atmosphere.js",
+      "status": 200,
+      "sha256": "e80e54f7dc0b25898f57b1f2f7df7f2aae6fa81bb90da8976540cd855005db31"
+    },
+    {
+      "path": "src/royal-level.js",
+      "status": 200,
+      "sha256": "84e6ed0ae3c2318cd14d28f863b27df2d8843505cf4cac9f23782bc6844d8009"
+    },
+    {
+      "path": "src/royal-props.js",
+      "status": 200,
+      "sha256": "9826fe184441137207f0eb7eb2179929d1a3459088c907727ae17fbc088673ea"
+    },
+    {
+      "path": "src/royal-rainbow.js",
+      "status": 200,
+      "sha256": "b5c8186262d8b8149ca8920a11369317afaaff0196d0693c0b19909886c8fd43"
+    },
+    {
+      "path": "src/royal-waterfalls.js",
+      "status": 200,
+      "sha256": "5341fce2f713078bbd719c68b4bedb2b4fd1579fcc4ca601946edfb22668d71d"
+    },
+    {
+      "path": "src/royal-world.js",
+      "status": 200,
+      "sha256": "768087dbae093a0e26baef803146aa1c4e9a29cada2ac931680ea7394457d98e"
+    }
+  ],
+  "preservation": {
+    "all_original_art_and_audio_unchanged": true,
+    "only_new_art": "dist/assets/royal-eel.png",
+    "unchanged_mechanics_and_prior_features": {
+      "src/engine.js": "e70dbb0f9498b3407d1a97073b39d8a8159cbc58fe8ddd16f9e81c60c109eb21",
+      "src/royal-layout.js": "dc31b24b15580750db7de4b1cc8216d217354b7aca09302edbd5dad51e4fea6c",
+      "src/audio.js": "cd2d04dc462b2a9c2b08394c30c26162131f271afb52ad560c2d9e47f6981c11",
+      "src/voice-lines.js": "96d7aaa67445ed1673fdea32b9e3a51d3b1fceead44887564f3b8c12b56a2cb2",
+      "src/jump-leg-pose.js": "9ccf38a5af031e954952e6555203e0eb143edd195e93f8753aa16a3d31b0e78e",
+      "src/bt-finish-visual.js": "46d28182d035ce7a7f9c6cdc584a3134d70ac66f85ea72c84e2bc786bfbbb9ee",
+      "src/fullscreen.js": "593efd1ac7ab209a68107552a241459286aa7299c982c3e071e00530fb99348e",
+      "style.css": "52f2f3f0b010bcdc1ea2e8cb8fc25e829b86ff2418cb1580f40f431ff518db85",
+      "manifest.webmanifest": "3bb9a40c683b079ae3d60392946f0e04677dda91737ba9904ddf539f957ea539"
+    },
+    "scope": "world3 ambience, HUD, foreground readability"
+  },
+  "all_backup_files_and_history_verified": 1711
+}
