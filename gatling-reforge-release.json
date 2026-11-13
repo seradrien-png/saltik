@@ -1,0 +1,214 @@
+{
+  "source_commit": "bc3b03f5314140e3d3d47e7ff2d2ee91ff77f2e7",
+  "status": "verified_gatling_refit_sites_publication_blocked",
+  "current_live_sites_version": 33,
+  "sites_git_blocker": {
+    "auth_mode": "codex_auth",
+    "result": "HTTP400 missing_account_user_id",
+    "cause": "Host Sites Git credential helper unavailable in managed Cloud; local Codex auth has no account binding"
+  },
+  "tests": {
+    "passed": 745,
+    "failed": 0
+  },
+  "browser": {
+    "body_four_levels_eight_skins": [
+      {
+        "model": "modern-gatling",
+        "scale": 1,
+        "modern": true,
+        "feet": [
+          519.9999999999999,
+          520,
+          520.0000000000001
+        ],
+        "muzzle": {
+          "x": 328.16574585635357,
+          "y": 301.41436464088395
+        },
+        "cannon": {
+          "x": 431.88950276243094,
+          "y": 196.29834254143645
+        }
+      },
+      {
+        "model": "modern-gatling",
+        "scale": 1,
+        "modern": true,
+        "feet": [
+          519.9999999999999,
+          520,
+          520.0000000000001
+        ],
+        "muzzle": {
+          "x": 328.16574585635357,
+          "y": 301.41436464088395
+        },
+        "cannon": {
+          "x": 431.88950276243094,
+          "y": 196.29834254143645
+        }
+      },
+      {
+        "model": "modern-gatling",
+        "scale": 1,
+        "modern": true,
+        "feet": [
+          519.9999999999999,
+          520,
+          520.0000000000001
+        ],
+        "muzzle": {
+          "x": 328.16574585635357,
+          "y": 301.41436464088395
+        },
+        "cannon": {
+          "x": 431.88950276243094,
+          "y": 196.29834254143645
+        }
+      },
+      {
+        "model": "modern-gatling",
+        "scale": 1,
+        "modern": true,
+        "feet": [
+          519.9999999999999,
+          520,
+          520.0000000000001
+        ],
+        "muzzle": {
+          "x": 328.16574585635357,
+          "y": 301.41436464088395
+        },
+        "cannon": {
+          "x": 431.88950276243094,
+          "y": 196.29834254143645
+        }
+      },
+      {
+        "model": "modern-gatling",
+        "scale": 1,
+        "modern": true,
+        "feet": [
+          519.9999999999999,
+          520,
+          520.0000000000001
+        ],
+        "muzzle": {
+          "x": 328.16574585635357,
+          "y": 301.41436464088395
+        },
+        "cannon": {
+          "x": 431.88950276243094,
+          "y": 196.29834254143645
+        }
+      },
+      {
+        "model": "modern-gatling",
+        "scale": 1,
+        "modern": true,
+        "feet": [
+          519.9999999999999,
+          520,
+          520.0000000000001
+        ],
+        "muzzle": {
+          "x": 328.16574585635357,
+          "y": 301.41436464088395
+        },
+        "cannon": {
+          "x": 431.88950276243094,
+          "y": 196.29834254143645
+        }
+      },
+      {
+        "model": "modern-gatling",
+        "scale": 1,
+        "modern": true,
+        "feet": [
+          519.9999999999999,
+          520,
+          520.0000000000001
+        ],
+        "muzzle": {
+          "x": 328.16574585635357,
+          "y": 301.41436464088395
+        },
+        "cannon": {
+          "x": 431.88950276243094,
+          "y": 196.29834254143645
+        }
+      },
+      {
+        "model": "modern-gatling",
+        "scale": 1,
+        "modern": true,
+        "feet": [
+          519.9999999999999,
+          520,
+          520.0000000000001
+        ],
+        "muzzle": {
+          "x": 328.16574585635357,
+          "y": 301.41436464088395
+        },
+        "cannon": {
+          "x": 431.88950276243094,
+          "y": 196.29834254143645
+        }
+      }
+    ],
+    "native_turn_views": 24,
+    "crouch_heat_empty_pod": true,
+    "live_controls": true,
+    "phone_menu_boxes": {
+      "#start": {
+        "x": 46.40625,
+        "y": 300.828125,
+        "width": 245,
+        "height": 44
+      },
+      "#skin-picker": {
+        "x": 46.40625,
+        "y": 228.828125,
+        "width": 362.90625,
+        "height": 25
+      },
+      ".character-picker": {
+        "x": 46.40625,
+        "y": 170.828125,
+        "width": 362.90625,
+        "height": 52
+      },
+      ".level-picker": {
+        "x": 46.40625,
+        "y": 258.828125,
+        "width": 362.90625,
+        "height": 34
+      }
+    },
+    "errors": []
+  },
+  "final_browser": {
+    "crouched_bodies": 8,
+    "registered_overlay_views": 24,
+    "partial_real_stock": 1,
+    "errors": []
+  },
+  "preservation": {
+    "base": "af2ec95c91962ad5cd5aee0dff2adc778455e47d",
+    "original_resource_files_unchanged": 96,
+    "changed_originals": [],
+    "unchanged_gameplay_modules": [
+      "src/engine.js",
+      "src/gatling-combat.js",
+      "src/bt-combat.js",
+      "src/modern-striker-art.js",
+      "src/royal-level.js",
+      "src/lunar-level.js",
+      "src/desert-level.js"
+    ]
+  },
+  "main_files": 624,
+  "other_four_editions_unchanged": true
+}

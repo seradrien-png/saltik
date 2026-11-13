@@ -21,7 +21,7 @@ export function inkWeaponGeometry(p,time){
  return {...pose,armDirection,cannonDirection:{x:Math.cos(pose.cannonAngle),y:Math.sin(pose.cannonAngle)},cabinTubes:tubes,tubes:tubes.map(t=>t.muzzle)};
 }
 export function createInkScene(options={}){
- const g=createGame(options);if(!g.player.character||g.player.character==='striker')g.player.visualModel='modern-striker';const cosmetic=normalizeSkin(options.character,options.skin);if(cosmetic!=='default')g.player.cosmeticSkin=cosmetic;g.inkPreview=true;g.inkCampaign=true;g.weaponGeometry=inkWeaponGeometry;
+ const g=createGame(options);if(!g.player.character||g.player.character==='striker')g.player.visualModel='modern-striker';else if(g.player.character==='gatling')g.player.visualModel='modern-gatling';const cosmetic=normalizeSkin(options.character,options.skin);if(cosmetic!=='default')g.player.cosmeticSkin=cosmetic;g.inkPreview=true;g.inkCampaign=true;g.weaponGeometry=inkWeaponGeometry;
  g.enemyWeaponGeometry=inkEnemyGeometry;g.enemySaltikGeometry=inkEnemySaltikGeometry;
  g.level=1;g.levelTitle='Le Canyon';
  if(options.level===4)return applyDesertLevel(g);

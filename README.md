@@ -8,7 +8,7 @@ Les cinq états ci-dessous sont conservés dans des dossiers indépendants, sans
 
 | Jeu / sources | État réel | GitHub Pages après activation | Commit source |
 | --- | --- | --- | --- |
-| [SALTIK V2 — Matin Doré](versions/saltik-main) | Publiée v33 — Striker refondu, BT16, tenues et retournements | [Jouer](https://seradrien-png.github.io/saltik/versions/saltik-main/dist/) | `af2ec95c9196` |
+| [SALTIK V2 — Matin Doré](versions/saltik-main) | Nouveau Gatling prêt — publication Sites en attente (live v33) | [Jouer](https://seradrien-png.github.io/saltik/versions/saltik-main/dist/) | `bc3b03f53141` |
 | [SALTIK — Ink Edition publiée](versions/saltik-ink) | Publiée v4 | [Jouer](https://seradrien-png.github.io/saltik/versions/saltik-ink/dist/) | `44110aa2dd80` |
 | [SALTIK INK — brouillon local avec épilogue](versions/autres-versions/saltik-ink-brouillon) | Brouillon local non publié | [Jouer](https://seradrien-png.github.io/saltik/versions/autres-versions/saltik-ink-brouillon/dist/) | `21dcc4ca32c5` |
 | [Feral Steel — Opération Canopée, référence Saltik](versions/autres-versions/saltik-feral-steel) | Publiée v24 | [Jouer](https://seradrien-png.github.io/saltik/versions/autres-versions/saltik-feral-steel/dist/) | `dbc331d0b7a2` |
@@ -130,3 +130,7 @@ Le BT existant devient sélectionnable avec Striker et Gatling sur les trois mis
 ### Mise à jour du 12 novembre 2026
 
 Matin Doré v33 : nouveau Striker noir/orange et tenues par niveau, vues de retournement dédiées, échelle de premier plan harmonisée. BT jouable amical/accroupi avec réserve16 et recharge après épuisement. Tenues optionnelles Dragon et Limule & Régalec. Autres quatre éditions et archives historiques conservées. Source `af2ec95c91962ad5cd5aee0dff2adc778455e47d`. Rapport : [character-reforge-release.json](character-reforge-release.json). Les liens Sites sont publiés ; aucune activation de GitHub Pages supplémentaire n’est annoncée.
+
+### 13 novembre 2026 — refonte du Gatling
+
+Nouvelle silhouette G-01, quatre tenues de référence, vrais retournements et apparence Limule adaptée, gameplay conservé. 624 fichiers principaux vérifiés,745tests réussis. La version Sites en ligne restev33 : le nouveau mode Git `codex_auth` réclame un auxiliaire hôte absent de cet environnement Cloud. Source sauvegardée `bc3b03f5314140e3d3d47e7ff2d2ee91ff77f2e7`. Rapport : [gatling-reforge-release.json](gatling-reforge-release.json). Les quatre autres éditions restent intactes.

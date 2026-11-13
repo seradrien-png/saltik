@@ -7,15 +7,15 @@
       "slug": "saltik-main",
       "repo": "saltik-v2-matin-dore",
       "title": "SALTIK V2 — Matin Doré",
-      "commit": "af2ec95c91962ad5cd5aee0dff2adc778455e47d",
-      "published_version": 33,
+      "commit": "bc3b03f5314140e3d3d47e7ff2d2ee91ff77f2e7",
+      "published_version": null,
       "url": "https://saltik-v2-matin-dore.ser-adrien.chatgpt.site",
-      "base_commit": "5d46c6c0e5bd657f5e28ce8cb01e41d91efc8699",
+      "base_commit": "af2ec95c91962ad5cd5aee0dff2adc778455e47d",
       "source_path": "/workspace/sites/saltik-v2-matin-dore",
       "export_path": "versions/saltik-main",
       "web_entry": "versions/saltik-main/dist/index.html",
-      "file_count": 607,
-      "bytes": 248380967,
+      "file_count": 624,
+      "bytes": 266328303,
       "uncommitted_changes": "",
       "files": {
         ".gitignore": {
@@ -31,8 +31,8 @@
           "size": 27846
         },
         "dist/android.html": {
-          "sha256": "ff3899ab2a5de51b311872d28b79c868ee958e46a06d43219334ecd1bd3a8c2b",
-          "size": 17419
+          "sha256": "e07941fefba5ec8c7a75a8fccb541f0eb7e479dc4a184090088b591755ca71c8",
+          "size": 17427
         },
         "dist/assets/boss-assault-atlas.png": {
           "sha256": "f9859847a2d5a0f2b630bafaaef3f9f2eba725ace3629396825f5d2fd6986b63",
@@ -302,6 +302,34 @@
           "sha256": "9cbbfe7cd576261a96c117821b87ba6e83e9dd466551f5ca0ba98463e06504ec",
           "size": 2327464
         },
+        "dist/assets/modern-gatling-atlas.png": {
+          "sha256": "2e4b98e31301215d1475719767729c0a67da16674117530853b6ec25dbc974f5",
+          "size": 2777567
+        },
+        "dist/assets/modern-gatling-limule-atlas.png": {
+          "sha256": "8e2d71bbe080827086cc64df3fcb4e2f82be4c60157174a6cf97b23d9ae28a7d",
+          "size": 2765568
+        },
+        "dist/assets/modern-gatling-limule-turn.png": {
+          "sha256": "d6eb0e67e75a33de63b4176bc2d6c5ab0f7d04d1fb412169ae9257bf91bd42e5",
+          "size": 2348144
+        },
+        "dist/assets/modern-gatling-turn-desert.png": {
+          "sha256": "5463c6f5af5470cf3818a7164cf6ba7159955e4214511c66ac8442e802480dd8",
+          "size": 2609316
+        },
+        "dist/assets/modern-gatling-turn-lunar.png": {
+          "sha256": "324a171f45850866e53a806e1c2c7401bc6435bd5a3451e0849b91283aaea39c",
+          "size": 2471465
+        },
+        "dist/assets/modern-gatling-turn-normal.png": {
+          "sha256": "c511fde1892cdfbfade4680ca787b94c915d17712942b63f386c69aef6f2d553",
+          "size": 2415225
+        },
+        "dist/assets/modern-gatling-turn-velvet.png": {
+          "sha256": "e486c37ec215e3994610d274a2118a1296c0db18e9f177797fb1389e576287c7",
+          "size": 2526864
+        },
         "dist/assets/modern-striker-atlas.png": {
           "sha256": "5fc9a3169f33ef3687fb3acbb7a61d7000c81edd8422d17c1a5231e5272d5881",
           "size": 2326197
@@ -443,8 +471,8 @@
           "size": 253204
         },
         "dist/index.html": {
-          "sha256": "792393bea358e722cd1a73e378b90dc3058149f3e78d3627487544a48730e721",
-          "size": 17690
+          "sha256": "4ad08a58fde993e0b9ff9a1811ab6372e2696ff589a1575cc13383765d615bec",
+          "size": 17698
         },
         "dist/manifest.webmanifest": {
           "sha256": "1046044adaf490fa877cf9b0cac214237c2a4d52636476abaf1bd80dbede48e8",
@@ -507,12 +535,12 @@
           "size": 2473
         },
         "dist/src/character-turn-sockets.js": {
-          "sha256": "9316053bb4548ef4407be2ee2851ab84a25a402e2316e5675f585ac08f73be42",
-          "size": 1693
+          "sha256": "2f9fccfb3cd03c408ef478e6713b8c14aca2061e54b29ba304409c4328a7af0e",
+          "size": 2186
         },
         "dist/src/character-turns.js": {
-          "sha256": "d2d90af80958a33fcc251895eb06dd6b44e30a08541ee272ae4f1b09db02d169",
-          "size": 4923
+          "sha256": "b95c459a33000560fd4621b9553deb96df88aac6fdccdc583dc5a6bd6584169d",
+          "size": 6355
         },
         "dist/src/combat-effects.js": {
           "sha256": "5d475228d929abf59da0f35109d5713517062dfa876bc4763dffe0f6a24b8f4e",
@@ -555,8 +583,8 @@
           "size": 7983
         },
         "dist/src/enemy-styles.js": {
-          "sha256": "52f3f2525cb826a12aa2750d7d7df20c7c084bc773d00f3827e2eb77d070acd0",
-          "size": 3161
+          "sha256": "23c2f0c7060bef921affb7eba812ed247302f0c35fa4c277b22c36c7a69e9b44",
+          "size": 3417
         },
         "dist/src/engine.js": {
           "sha256": "e70dbb0f9498b3407d1a97073b39d8a8159cbc58fe8ddd16f9e81c60c109eb21",
@@ -567,12 +595,16 @@
           "size": 3615
         },
         "dist/src/gatling-art.js": {
-          "sha256": "800e1efc3721363fd636944ca50b4b5b88948b6778a8a0c01b84faa4aacf1972",
-          "size": 10114
+          "sha256": "63b5da6f8798ebbb0c8e6b35bdbd4071abeef06716a8b97e3659e2e14a9b6531",
+          "size": 10691
         },
         "dist/src/gatling-combat.js": {
           "sha256": "3fc7204583007c8ece714fe41cc5727ceaec2486c305977b67e1832661182d87",
           "size": 2111
+        },
+        "dist/src/gatling-registration.js": {
+          "sha256": "1ded16a83bbba0ab2e1c4cc5c956b20003010c2b2672c37664a4a2a6e161c956",
+          "size": 2023
         },
         "dist/src/guided-navigation.js": {
           "sha256": "adc9ef558a36437adc80c58724fccafd63b1186a67b7bb1c81e308d5941e6957",
@@ -619,16 +651,16 @@
           "size": 5484
         },
         "dist/src/ink-renderer.js": {
-          "sha256": "4e8b0f0f82ffc62005db832126678be684536e0ca70e50b25d1c3b1b2d53766c",
-          "size": 18027
+          "sha256": "5fbb1079659e2f63892a7184d01cfd947be4bb675f5141a153b8e90827d11cda",
+          "size": 18317
         },
         "dist/src/ink-saltik.js": {
           "sha256": "d5959ebd5583c090e2333c64342a72971f02f00476383afa40e8a88eae34e99b",
           "size": 21164
         },
         "dist/src/ink-scene.js": {
-          "sha256": "93b6868071f6d5f558b4d21e2135294059e810abb16710f5eb04d14e2e336af2",
-          "size": 3687
+          "sha256": "4028ad0ed13acc3efd277b0272cd08b3af26a535ace4597ae6fd5a9e95766bc8",
+          "size": 3764
         },
         "dist/src/ink-turn.js": {
           "sha256": "e2e281634ce901d5e484fe5c5a6770ddc9365574f832550ee3ee2ff1162f8050",
@@ -693,6 +725,14 @@
         "dist/src/mission-camera.js": {
           "sha256": "379a897695ad2473f03d59dd8ba04301bc377b051a1d0f40b07c39d80f3b0301",
           "size": 2075
+        },
+        "dist/src/modern-gatling-profile.js": {
+          "sha256": "22382cc9236f3872278e3efa6ba21f2e108fdf3614971b0a2f4cf5422c2bf4d7",
+          "size": 2885
+        },
+        "dist/src/modern-gatling-skins.js": {
+          "sha256": "96baa630f7810cda64c9f21b4ae7fef985164a99f95620c42ad682beeeb23d3b",
+          "size": 1708
         },
         "dist/src/modern-striker-art.js": {
           "sha256": "247caf6b431d9e87cc6c93c1a0dd50fa56c1a65e9d6d033c58ed4e0e11c5c4d1",
@@ -807,8 +847,8 @@
           "size": 9418
         },
         "dist/style.css": {
-          "sha256": "c2796301a2c26819858f71ab66baed06d4e40b3bfecd13ff74501912022bed68",
-          "size": 45135
+          "sha256": "77fbf82e39a608eb6b958a93a41c23e86487508ca8015c36202f929b88d3da1c",
+          "size": 45289
         },
         "dist/video/saltik-free-together-poster.jpg": {
           "sha256": "de77c185c42f5b31e582f895bda0a8e5ea1c54cc0f9670bef8946a7c2cf3c767",
@@ -913,6 +953,10 @@
         "docs/live-saltiks-verification.md": {
           "sha256": "7b376932d066342db9dfcef1c1d2456ec431e830a0c9cdde99b15a60861e38ed",
           "size": 3340
+        },
+        "docs/modern-gatling-art.md": {
+          "sha256": "d378bb83b0ab60ab45bd5abb224e1c88245fae04c41e6fe302068f5014a3a6df",
+          "size": 2494
         },
         "docs/modern-striker-art.md": {
           "sha256": "9ca0fef66cbdfec3fd4ebb2d41fac06b446a441a154883aba79f50143048e588",
@@ -1146,6 +1190,10 @@
           "sha256": "18849619f9d9cfccac39598f107d6508fbe0fb4945fb06dc3b5f00ceaeea8ec2",
           "size": 853
         },
+        "docs/superpowers/plans/2026-11-13-modern-gatling.md": {
+          "sha256": "edf063f5ce4df01a880495a25cd013053508c815fe3ce6ad121a4a0611903d0c",
+          "size": 3613
+        },
         "docs/superpowers/platform-combat-validation-2026-11-02.md": {
           "sha256": "d9c70c0fb0cfee3a448ee230fe67717dc9c6b77de7174183e325a1951356601d",
           "size": 5307
@@ -1290,6 +1338,10 @@
           "sha256": "4a1c09de43bad90be8fcedba0adfcfc7b3930aa89fa97f7071a07e367f683d80",
           "size": 1189
         },
+        "docs/superpowers/specs/2026-11-13-modern-gatling-design.md": {
+          "sha256": "34c76cfb94b837c68b44d18b9ffbbd5d0cf9d79ef69203dee6e30ae63a660553",
+          "size": 1729
+        },
         "docs/superpowers/support-carrier-ko-validation-2026-11-03.md": {
           "sha256": "98b985fdd5e457c3e5828c9b218340b7923c13d73190f116f2bc1ed796ecf994",
           "size": 1747
@@ -1323,8 +1375,8 @@
           "size": 253204
         },
         "index.html": {
-          "sha256": "792393bea358e722cd1a73e378b90dc3058149f3e78d3627487544a48730e721",
-          "size": 17690
+          "sha256": "4ad08a58fde993e0b9ff9a1811ab6372e2696ff589a1575cc13383765d615bec",
+          "size": 17698
         },
         "manifest.webmanifest": {
           "sha256": "1046044adaf490fa877cf9b0cac214237c2a4d52636476abaf1bd80dbede48e8",
@@ -1559,12 +1611,12 @@
           "size": 2473
         },
         "src/character-turn-sockets.js": {
-          "sha256": "9316053bb4548ef4407be2ee2851ab84a25a402e2316e5675f585ac08f73be42",
-          "size": 1693
+          "sha256": "2f9fccfb3cd03c408ef478e6713b8c14aca2061e54b29ba304409c4328a7af0e",
+          "size": 2186
         },
         "src/character-turns.js": {
-          "sha256": "d2d90af80958a33fcc251895eb06dd6b44e30a08541ee272ae4f1b09db02d169",
-          "size": 4923
+          "sha256": "b95c459a33000560fd4621b9553deb96df88aac6fdccdc583dc5a6bd6584169d",
+          "size": 6355
         },
         "src/combat-effects.js": {
           "sha256": "5d475228d929abf59da0f35109d5713517062dfa876bc4763dffe0f6a24b8f4e",
@@ -1607,8 +1659,8 @@
           "size": 7983
         },
         "src/enemy-styles.js": {
-          "sha256": "52f3f2525cb826a12aa2750d7d7df20c7c084bc773d00f3827e2eb77d070acd0",
-          "size": 3161
+          "sha256": "23c2f0c7060bef921affb7eba812ed247302f0c35fa4c277b22c36c7a69e9b44",
+          "size": 3417
         },
         "src/engine.js": {
           "sha256": "e70dbb0f9498b3407d1a97073b39d8a8159cbc58fe8ddd16f9e81c60c109eb21",
@@ -1619,12 +1671,16 @@
           "size": 3615
         },
         "src/gatling-art.js": {
-          "sha256": "800e1efc3721363fd636944ca50b4b5b88948b6778a8a0c01b84faa4aacf1972",
-          "size": 10114
+          "sha256": "63b5da6f8798ebbb0c8e6b35bdbd4071abeef06716a8b97e3659e2e14a9b6531",
+          "size": 10691
         },
         "src/gatling-combat.js": {
           "sha256": "3fc7204583007c8ece714fe41cc5727ceaec2486c305977b67e1832661182d87",
           "size": 2111
+        },
+        "src/gatling-registration.js": {
+          "sha256": "1ded16a83bbba0ab2e1c4cc5c956b20003010c2b2672c37664a4a2a6e161c956",
+          "size": 2023
         },
         "src/guided-navigation.js": {
           "sha256": "adc9ef558a36437adc80c58724fccafd63b1186a67b7bb1c81e308d5941e6957",
@@ -1671,16 +1727,16 @@
           "size": 5484
         },
         "src/ink-renderer.js": {
-          "sha256": "4e8b0f0f82ffc62005db832126678be684536e0ca70e50b25d1c3b1b2d53766c",
-          "size": 18027
+          "sha256": "5fbb1079659e2f63892a7184d01cfd947be4bb675f5141a153b8e90827d11cda",
+          "size": 18317
         },
         "src/ink-saltik.js": {
           "sha256": "d5959ebd5583c090e2333c64342a72971f02f00476383afa40e8a88eae34e99b",
           "size": 21164
         },
         "src/ink-scene.js": {
-          "sha256": "93b6868071f6d5f558b4d21e2135294059e810abb16710f5eb04d14e2e336af2",
-          "size": 3687
+          "sha256": "4028ad0ed13acc3efd277b0272cd08b3af26a535ace4597ae6fd5a9e95766bc8",
+          "size": 3764
         },
         "src/ink-turn.js": {
           "sha256": "e2e281634ce901d5e484fe5c5a6770ddc9365574f832550ee3ee2ff1162f8050",
@@ -1745,6 +1801,14 @@
         "src/mission-camera.js": {
           "sha256": "379a897695ad2473f03d59dd8ba04301bc377b051a1d0f40b07c39d80f3b0301",
           "size": 2075
+        },
+        "src/modern-gatling-profile.js": {
+          "sha256": "22382cc9236f3872278e3efa6ba21f2e108fdf3614971b0a2f4cf5422c2bf4d7",
+          "size": 2885
+        },
+        "src/modern-gatling-skins.js": {
+          "sha256": "96baa630f7810cda64c9f21b4ae7fef985164a99f95620c42ad682beeeb23d3b",
+          "size": 1708
         },
         "src/modern-striker-art.js": {
           "sha256": "247caf6b431d9e87cc6c93c1a0dd50fa56c1a65e9d6d033c58ed4e0e11c5c4d1",
@@ -1859,8 +1923,8 @@
           "size": 9418
         },
         "style.css": {
-          "sha256": "c2796301a2c26819858f71ab66baed06d4e40b3bfecd13ff74501912022bed68",
-          "size": 45135
+          "sha256": "77fbf82e39a608eb6b958a93a41c23e86487508ca8015c36202f929b88d3da1c",
+          "size": 45289
         },
         "tests/arsenal-integration.test.js": {
           "sha256": "73a6ad38b4bc4243d05dc5b48af82396520cdc4248d0b6116776ac01f48937b5",
@@ -2167,20 +2231,20 @@
           "size": 2216
         },
         "tests/gatling-art.test.js": {
-          "sha256": "795bcdad7715b5e336d98454773406eed2d60b4c817b4cce870065884cd221d5",
-          "size": 6504
+          "sha256": "2ffa8e03ea293a91dc50a38be1f46e20717e98f562146b699e898f1151b433df",
+          "size": 6499
         },
         "tests/gatling-combat.test.js": {
           "sha256": "ba6ebcaebbcb9309c014feae7c6e67650b9de06ca62238c86c510cd3846bc046",
           "size": 5571
         },
         "tests/gatling-title.test.js": {
-          "sha256": "f64a0abec0312087f7aca304e569c6ae6bc7a05d25addeac98529edfb1dad46c",
-          "size": 1812
+          "sha256": "3ff5347a7a7aebb3baa607b9874c7c247518da8b1a211f1d3644dec1db93e9e7",
+          "size": 1810
         },
         "tests/gatling-ui.test.js": {
-          "sha256": "5a98f5e165f9a4eace11163abe255666afd63dc77a1ea47013488ec249017f5b",
-          "size": 4884
+          "sha256": "35d221c16a9eb42f0f19aa39ed688a32ed6149692a59737886665c14ed623c9b",
+          "size": 4930
         },
         "tests/guided-navigation.test.js": {
           "sha256": "bea7e471a2fcc7043ba2954a1daadb7ae57c75e743f7215f526ae8190fc98ec2",
@@ -2309,6 +2373,10 @@
         "tests/mission-camera.test.js": {
           "sha256": "07c719466588573ae7a349a5c39f1414c3d936d59dedbf055922e9ef25aa11de",
           "size": 4205
+        },
+        "tests/modern-gatling.test.js": {
+          "sha256": "76471cc5649db33fe6dd6582cf227d8fa57da19dc45370bd8b07f466c761acdd",
+          "size": 5498
         },
         "tests/modern-striker.test.js": {
           "sha256": "637d6b4b6b827ea4aa7d0d3afcc393201b01ca877613c876196d3f9a4a531b3c",
@@ -2458,10 +2526,11 @@
           "duration_native_run_seconds": 82.0166666666633
         }
       ],
-      "update_note": "Published Sites v33: angular orange/anthracite Striker with native costumes and turns, uniform foreground scale; BT16 friendly/crouching, optional Dragon and Limule skins. Other four editions preserved.",
+      "update_note": "Four Gatling reference costumes and true registered turns, new native rig and Limule option; gameplay unchanged. 745 tests pass.",
       "published_source_commit": "af2ec95c91962ad5cd5aee0dff2adc778455e47d",
-      "publication_status": "published and live",
-      "github_import_base": "4c9b8e64bf3232c222f9b6f534ca37d660da3f7b"
+      "publication_status": "Verified new Gatling snapshot; Sites Git codex_auth blocked in managed environment; current Sites live remains v33",
+      "github_import_base": "4c9b8e64bf3232c222f9b6f534ca37d660da3f7b",
+      "live_published_version": 33
     },
     {
       "slug": "saltik-ink",

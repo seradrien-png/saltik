@@ -18,7 +18,7 @@ test('title Gatling retains native state and crop for each mission skin',()=>{
   const c=new Proxy({globalAlpha:1,drawImage:(...args)=>calls.push(args)},{get:(target,key)=>target[key]??(()=>{})});
   drawInkSaltik(c,sceneArtImages(images,level,pose.character)['ink-saltik'],pose,{time:2,scale:2.5});
   assert.ok(calls.length>0);
-  for(const call of calls){assert.equal(call[0],skins[level-1]);assert.deepEqual(call.slice(1,5),[0,0,1536,1024]);}
+  for(const call of calls){assert.equal(call[0],skins[level-1]);assert.deepEqual(call.slice(1,5),[0,0,627,627]);}
  }
 });
 

@@ -113,3 +113,7 @@ Version32 publiée avec succès, source `5d46c6c0e5bd657f5e28ce8cb01e41d91efc869
 ## 12 novembre 2026 — Matin Doré v33
 
 Nouvelle sauvegarde incrémentale : source `af2ec95c91962ad5cd5aee0dff2adc778455e47d`, 607 fichiers, 736 tests réussis. Visuels Striker et animations refondus, BT16, tenues optionnelles. Quatre autres exports et toutes les archives de source préservés. Rapport [character-reforge-release.json](character-reforge-release.json).
+
+## 13 novembre 2026 — Gatling refondu, source vérifiée
+
+Source `bc3b03f5314140e3d3d47e7ff2d2ee91ff77f2e7`,624fichiers,745tests réussis. Sauvegarde incrémentale des nouvelles tenues/animations ; aucun changement des autres éditions. Publication Sites bloquée par son nouveau mode Git codex_auth sans auxiliaire hôte ; le live restev33. Voir [gatling-reforge-release.json](gatling-reforge-release.json).
