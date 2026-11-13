@@ -8,11 +8,12 @@ test('V2 preserves V1 native pixels, walkable geometry, native motions and encou
  for(const [path,sha] of Object.entries(preserved)){
   if(approvedChanges.has(path))continue;
   let content=readFileSync(new URL('../'+path,import.meta.url));
-  // Authorized three-way throw presentation adds only a sampled cosmetic choice.
+  // Authorized four-way presentation adds only a per-run cosmetic cycle.
   if(path==='src/saltik-duel.js')content=Buffer.from(content.toString()
    .replace("import {btFinishHold} from './bt-finish-timing.js';\n",'')
-   .replace('createSaltikDuel(player,enemy,random=Math.random){','createSaltikDuel(player,enemy){')
-   .replace('throwVariant:Math.min(3,Math.max(0,Math.floor(random()*4))),','')
+   .replace('// Keep encounter order on the game, never in module state: a fresh run starts\n// at the head impact and every four encounters show all four finishes.\nexport function nextSaltikDuelVariant(game){\n  const variant=game.nextSaltikDuelVariant??0;\n  game.nextSaltikDuelVariant=(variant+1)%4;\n  return variant;\n}\n\n// Numeric selection is used by the game cycle; random callbacks remain valid\n// for isolated callers that intentionally sample a particular finish.\n','')
+   .replace('createSaltikDuel(player,enemy,selection=Math.random){\n  const throwVariant=typeof selection===\'function\'?Math.floor(selection()*4):selection;','createSaltikDuel(player,enemy){')
+   .replace('throwVariant:Math.min(3,Math.max(0,throwVariant)),','')
    .replace('throwVariant:duel.throwVariant??0,','')
    .replace('  const previousElapsed=duel.elapsed;\n','')
    .replace(/  if\(duel.phase==='slide'&&previousElapsed<btFinishHold\(duel\)[\s\S]*?\n  }\n/,''));
@@ -35,6 +36,12 @@ test('V2 preserves V1 native pixels, walkable geometry, native motions and encou
    .replace(' const bobSeed=Number.isFinite(e.id)?e.id:Number.isFinite(e.phase)?e.phase:0;\n const bob=walking?Math.sin(time*10+bobSeed)*.9:0;',
     ' const bob=walking?Math.sin(time*10+(e.id??0))*.9:0;'));
   if(path==='src/audio.js')content=Buffer.from(content.toString()
+   // Authorized continuous Gatling sound is isolated from the retained Striker mix.
+   .replace(/  let gatlingLoop=null[^\n]+\n  const gatlingLoopPath=[^\n]+\n/,'')
+   .replace(/  function stopGatlingLoop\(\)\{[\s\S]*?  function stopVoices\(\)\{\n    stopGatlingLoop\(\);/, '  function stopVoices(){')
+   .replace('setPlaying,setGatlingFiring,','setPlaying,')
+   .replace("setCharacter(value){character=VOICE_PROFILES_SAFE(value);if(character!=='gatling')stopGatlingLoop();}",'setCharacter(value){character=VOICE_PROFILES_SAFE(value);}')
+   .replace(/get gatlingSnapshot\(\)\{[^\n]+\n    /,'')
    // Character voice delivery and intact-glass slide are explicitly authorized.
    .replace("const VOICE_PROFILES_SAFE=value=>['bt','gatling'].includes(value)?value:'striker';\n",'')
    .replace("let effectsActive=true,speech=null,character='striker';","let effectsActive=true,speech=null;")

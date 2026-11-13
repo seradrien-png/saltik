@@ -3,7 +3,8 @@ import {createVoiceLines,VOICE_EVENTS} from './voice-lines.js';
 
 export function createAudio({onSpeech=()=>{}}={}){
   let ctx=null,master=null,output=null,musicBus=null,enabled=true,noise=null,lastShot=-Infinity;
-  let lastGatlingShot=-Infinity;
+  let gatlingLoop=null,gatlingBuffer=null,gatlingLoading=null,gatlingWanted=false,gatlingFailed=false;
+  const gatlingLoopPath='./audio/gatling-brrrt-loop.ogg';
   let lastEnemyShot=-Infinity,lastExplosion=-Infinity,lastVolley=-Infinity;
   let effectsActive=true,speech=null,character='striker';
   const voices=new Set();
@@ -42,7 +43,7 @@ export function createAudio({onSpeech=()=>{}}={}){
     playing=!!value;
     effectsActive=playing;
     if(!playing||restart){stopVoices();speech?.cancel();clearDucking();}
-    if(restart){lastGatlingShot=-Infinity;lastShot=-Infinity;lastEnemyShot=-Infinity;lastExplosion=-Infinity;lastVolley=-Infinity;}
+    if(restart){lastShot=-Infinity;lastEnemyShot=-Infinity;lastExplosion=-Infinity;lastVolley=-Infinity;}
     if(restart&&music){music.pause();try{music.currentTime=0;}catch{}}
     syncMusic();
   }
@@ -69,7 +70,36 @@ export function createAudio({onSpeech=()=>{}}={}){
       if(ctx.state==='suspended')ctx.resume()?.catch(()=>{});
     }catch{}
   }
+  function stopGatlingLoop(){
+    gatlingWanted=false;
+    if(gatlingLoop)try{gatlingLoop.stop(ctx.currentTime);}catch{}
+    gatlingLoop=null;
+  }
+  function startGatlingLoop(){
+    if(gatlingLoop||!gatlingBuffer||!gatlingWanted||!ctx||!enabled||!playing)return;
+    const source=ctx.createBufferSource(),gain=ctx.createGain();
+    source.buffer=gatlingBuffer;source.loop=true;gain.gain.value=.35;
+    source.connect(gain);gain.connect(master);gatlingLoop=source;
+    source.onended=()=>{if(gatlingLoop===source)gatlingLoop=null;source.disconnect?.();gain.disconnect?.();};
+    source.start();
+  }
+  function setGatlingFiring(value){
+    if(!value||!enabled||!playing){stopGatlingLoop();return;}
+    gatlingWanted=true;
+    if(!ctx)return;
+    if(gatlingBuffer){startGatlingLoop();return;}
+    if(gatlingLoading||gatlingFailed||typeof window.fetch!=='function')return;
+    gatlingLoading=(async()=>{
+      try{
+        const response=await window.fetch(gatlingLoopPath);
+        if(!response.ok)throw new Error('Gatling loop unavailable');
+        gatlingBuffer=await ctx.decodeAudioData(await response.arrayBuffer());
+        startGatlingLoop();
+      }catch{gatlingFailed=true;}finally{gatlingLoading=null;}
+    })();
+  }
   function stopVoices(){
+    stopGatlingLoop();
     if(!ctx)return;
     for(const source of voices)try{source.stop(ctx.currentTime);}catch{}
     voices.clear();
@@ -108,13 +138,14 @@ export function createAudio({onSpeech=()=>{}}={}){
     if(!ctx||!enabled||(!effectsActive&&e.type!=='won'))return;
     const line=VOICE_EVENTS[e.type];if(line)speech?.enqueue(line,e.character??character);
     if(e.type==='gatling-shot'){
-      if(ctx.currentTime-lastGatlingShot<1/15-.001)return;lastGatlingShot=ctx.currentTime;
-      burst(.045,.055,1900,0,'bandpass');tone(135,62,.055,.065,'triangle');
+      // Continuous firing is synchronized to combat state, never to individual bullets.
+      return;
     }
     else if(e.type==='gatling-rocket'){
       burst(.26,.13,1600,0,'lowpass',.012);tone(165,52,.24,.09,'triangle');
     }
     else if(e.type==='gatling-overheat'){
+      stopGatlingLoop();
       duck(.65,.5,.2);burst(.7,.15,3600,0,'highpass',.015);tone(340,110,.32,.07,'triangle');
     }
     else if(e.type==='gatling-cooled'){tone(420,650,.13,.07,'sine');tone(650,880,.14,.06,'sine',.12);}
@@ -252,6 +283,7 @@ export function createAudio({onSpeech=()=>{}}={}){
     else if(e.type==='start'){tone(220,660,.4,.18,'triangle');}
     else if(e.type==='won'){tone(330,660,.5,.22,'triangle',0,true);tone(440,880,.6,.18,'triangle',.18,true);}
   }
-  return {unlock,play,setPlaying,setCharacter(value){character=VOICE_PROFILES_SAFE(value);},setMusicEnabled(value){musicEnabled=!!value;syncMusic();},setEnabled(value){enabled=!!value;if(output){hold(output.gain,ctx.currentTime);output.gain.setTargetAtTime(enabled?1:0,ctx.currentTime,.012);}if(!enabled){stopVoices();speech?.cancel();clearDucking();}syncMusic();},get enabled(){return enabled;},
+  return {unlock,play,setPlaying,setGatlingFiring,setCharacter(value){character=VOICE_PROFILES_SAFE(value);if(character!=='gatling')stopGatlingLoop();},setMusicEnabled(value){musicEnabled=!!value;syncMusic();},setEnabled(value){enabled=!!value;if(output){hold(output.gain,ctx.currentTime);output.gain.setTargetAtTime(enabled?1:0,ctx.currentTime,.012);}if(!enabled){stopVoices();speech?.cancel();clearDucking();}syncMusic();},get enabled(){return enabled;},
+    get gatlingSnapshot(){return Object.freeze({wanted:gatlingWanted,playing:!!gatlingLoop,loaded:!!gatlingBuffer,loading:!!gatlingLoading,failed:gatlingFailed});},
     get speechSnapshot(){return speech?.snapshot()??Object.freeze({playing:null,queued:0,loading:0,lastLine:null,played:Object.freeze({}),failed:0});}};
 }

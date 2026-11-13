@@ -18,8 +18,8 @@ export function advanceGatling(p,input,dt,{shot,rocket,event}){
   if(s.cooldown>0){s.cooldown=Math.max(0,s.cooldown-dt);if(s.cooldown<EPS){s.cooldown=0;event('gatling-cooled');}s.heat=s.cooldown/5;s.sustained=0;s.shotClock=0;return;}
   if(!gatlingCanFire(p,input)){s.sustained=0;s.shotClock=0;s.heat=Math.max(0,s.heat-dt*.35);return;}
   s.firing=true;
-  const active=Math.min(dt,5-s.sustained);let at=s.shotClock;
+  const active=Math.min(dt,4-s.sustained);let at=s.shotClock;
   while(at<active-EPS){shot(s.gunIndex++%2);at+=1/30;}
-  s.shotClock=Math.max(0,at-active);s.spin+=active*30;s.sustained=Math.min(5,s.sustained+active);s.heat=s.sustained/5;
-  if(s.sustained>=5-EPS){s.sustained=5;s.heat=1;s.cooldown=5;s.firing=false;s.shotClock=0;event('gatling-overheat');}
+  s.shotClock=Math.max(0,at-active);s.spin+=active*30;s.sustained=Math.min(4,s.sustained+active);s.heat=s.sustained/4;
+  if(s.sustained>=4-EPS){s.sustained=4;s.heat=1;s.cooldown=5;s.firing=false;s.shotClock=0;event('gatling-overheat');}
 }

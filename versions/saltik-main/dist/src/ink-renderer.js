@@ -1,3 +1,5 @@
+import {prepareRoyalEelFrames,drawRoyalEelSprite,royalEelBackSocket} from './royal-eel-frames.js';
+import {getRoyalFinalePose} from './royal-finale.js';
 import {prepareBTFinishFrames} from './bt-finish-frames.js';
 import {prepareRoyalEel} from './royal-atmosphere.js';
 import {prepareModernGatling} from './modern-gatling-skins.js';
@@ -28,7 +30,7 @@ import {drawCarrierShutdown} from './carrier-shutdown-art.js';
 import {inkHitImage} from './ink-hit-cache.js';
 import {createMirvPreview} from './mirv-preview.js';
 const PAINT={...PASTEL_ENVIRONMENT_PAINT,...PASTEL_CHARACTER_PAINT};
-const BASE_ART=['royal-eel','bt-finish-frames','bt-impact-underside','modern-gatling-atlas','modern-gatling-turn-normal','modern-gatling-turn-lunar','modern-gatling-turn-velvet','modern-gatling-turn-desert','modern-gatling-limule-atlas','modern-gatling-limule-turn','modern-striker-turn-velvet','modern-striker-dragon-atlas','modern-striker-dragon-turn-material','modern-striker-atlas','modern-striker-turn-normal','modern-striker-turn-lunar','bt-turn-lunar-material','bt-turn-velvet-material','gatling-turn-lunar-material','gatling-turn-velvet-material','bt-turn','gatling-turn','dragon-striker-material','dragon-turn-material','limule-gatling-material','limule-gatling-turn-material','desert-red-vista','desert-c07-interior','desert-structures','gatling-snow','gatling-lunar-material','gatling-velvet-material','lunar-pennant','lunar-low-depth','royal-rail-mask','royal-organic-landmarks','royal-foreground-props','lunar-hero-map','lunar-turn-map','royal-world','royal-velvet-ground','royal-flora','royal-structures','royal-quarter-bridge','royal-hero-map','royal-turn-map','boss-assault-atlas','lunar-natural-world','lunar-island-layers','lunar-sandstone','lunar-aqueduct','lunar-monuments','ink-canyon','ink-saltik','ink-enemies','ink-rock','ink-bridge','ink-turn','ink-observatory',...INK_LANDMARK_ASSETS.map(a=>a.name),'ink-enemy-saltik',INK_CARRIER_ASSET];
+const BASE_ART=['royal-eel-swim','royal-eel','bt-finish-frames','bt-impact-underside','modern-gatling-atlas','modern-gatling-turn-normal','modern-gatling-turn-lunar','modern-gatling-turn-velvet','modern-gatling-turn-desert','modern-gatling-limule-atlas','modern-gatling-limule-turn','modern-striker-turn-velvet','modern-striker-dragon-atlas','modern-striker-dragon-turn-material','modern-striker-atlas','modern-striker-turn-normal','modern-striker-turn-lunar','bt-turn-lunar-material','bt-turn-velvet-material','gatling-turn-lunar-material','gatling-turn-velvet-material','bt-turn','gatling-turn','dragon-striker-material','dragon-turn-material','limule-gatling-material','limule-gatling-turn-material','desert-red-vista','desert-c07-interior','desert-structures','gatling-snow','gatling-lunar-material','gatling-velvet-material','lunar-pennant','lunar-low-depth','royal-rail-mask','royal-organic-landmarks','royal-foreground-props','lunar-hero-map','lunar-turn-map','royal-world','royal-velvet-ground','royal-flora','royal-structures','royal-quarter-bridge','royal-hero-map','royal-turn-map','boss-assault-atlas','lunar-natural-world','lunar-island-layers','lunar-sandstone','lunar-aqueduct','lunar-monuments','ink-canyon','ink-saltik','ink-enemies','ink-rock','ink-bridge','ink-turn','ink-observatory',...INK_LANDMARK_ASSETS.map(a=>a.name),'ink-enemy-saltik',INK_CARRIER_ASSET];
 export const INK_ART_NAMES=[...BASE_ART,...Object.values(PAINT),...ENEMY_MATERIALS.map(v=>v.asset),'pastel-boss','pastel-boss-parts'];
 const images={},TAU=Math.PI*2,INK='#181815',PAPER='#EFE2BC';
 const hash=n=>{const v=Math.sin(n*127.1+311.7)*43758.5453;return v-Math.floor(v);};
@@ -54,7 +56,7 @@ export async function loadArt(onProgress=()=>{}){
   report();
  });
  prepareBTFinishFrames(images);
- prepareRoyalEel(images);
+ prepareRoyalEel(images);prepareRoyalEelFrames(images);
  images['ink-boss']=await load('pastel-boss');report();images['ink-boss-parts']=await load('pastel-boss-parts');report();
  images['royal-bridge-front']=bakeBridgeForeground(images['royal-quarter-bridge'],images['royal-rail-mask']);
  images['lunar-saltik']=images['lunar-hero-map'];images['lunar-turn']=images['lunar-turn-map'];
@@ -84,7 +86,7 @@ export function inkTitlePlayer(player,x,y){
  return player.character==='gatling'?{...pose,character:player.character,gatling:player.gatling,artScale:player.artScale}:pose;
 }
 export function createRenderer(canvas){
- const c=canvas.getContext('2d',{alpha:false}),mirvPreview=createMirvPreview();let width=1280,height=720/BASE_ZOOM,camera=0,cameraY=height-720,zoom=BASE_ZOOM,last=0,lastGameTime=null,presentationAge=0,effects=[],serial=0;
+ const c=canvas.getContext('2d',{alpha:false}),mirvPreview=createMirvPreview();let width=1280,height=720/BASE_ZOOM,camera=0,cameraY=height-720,zoom=BASE_ZOOM,last=0,lastGameTime=null,presentationAge=0,effects=[],serial=0,finaleAnchor=null;
  function resize(){
   const r=canvas.getBoundingClientRect(),dpr=Math.min(globalThis.devicePixelRatio||1,2),w=Math.max(1,Math.round(r.width*dpr)),h=Math.max(1,Math.round(r.height*dpr));
   // Rotation, embedded-window changes and browser bars do not all dispatch
@@ -134,7 +136,8 @@ export function createRenderer(canvas){
   const wall=clamp((now-last)/1000,0,.05),sim=lastGameTime===null?0:Math.max(0,g.time-lastGameTime),terminal=['won','dead'].includes(view),dt=terminal||view==='title'?wall:sim;
   last=now;lastGameTime=g.time;for(const e of effects)e.age+=dt;effects=effects.filter(e=>e.age<e.life);
   if(view==='won')presentationAge+=wall;else if(view!=='paused')presentationAge=0;
-  zoom=missionZoom({view,introDuration:g.introDuration,introElapsed:g.introElapsed,presentationAge});
+  const finale=g.level===3&&(g.royal?.finale?.active||g.royal?.finale?.completed)?g.royal.finale:null;
+  zoom=finale?BASE_ZOOM:missionZoom({view,introDuration:g.introDuration,introElapsed:g.introElapsed,presentationAge});
   const desertDoor=g.level===4&&['entering','exiting'].includes(g.desert.phase)?desertTransitionCurtain(g.desert.phaseElapsed):0;
   if(g.level===4&&(view==='title'||desertVisualStage(g)==='exterior')){
    height=720/BASE_ZOOM;width=canvas.width/canvas.height*height;camera=0;cameraY=0;zoom=BASE_ZOOM;c.setTransform(canvas.width/width,0,0,canvas.height/height,0,0);c.clearRect(0,0,width,height);
@@ -146,12 +149,23 @@ export function createRenderer(canvas){
   if(g.level===4&&g.desert.phase==='entering')g={...g,player:{...g.player,x:180,y:620,supportY:620,artScale:1,dir:1,supportPose:null},platforms:createDesertRoutes(),enemies:[],pickups:[],groundAt:desertInteriorGroundAt};
 
   if(view==='title'){height=720/zoom;width=canvas.width/canvas.height*height;camera=100;cameraY=height-720;}
-  else{
+  else if(finale){
+   if(finaleAnchor?.finale!==finale){if(Math.abs(finale.startWorld.x-camera)>width*1.5)camera=finale.startWorld.x-width*.34;finaleAnchor={finale,camera,cameraY,startX:(finale.startWorld.x-camera)/width,startY:(finale.startWorld.y+cameraY)/height};}
+   height=720/BASE_ZOOM;width=canvas.width/canvas.height*height;camera=finaleAnchor.camera;cameraY=finaleAnchor.cameraY;
+  }else{
    const q=projectMissionCamera({cssWidth:canvas.width,cssHeight:canvas.height,zoom,game:g,playerTop:inkSaltikGeometry(g.player,{time:g.time}).bounds.y,view,intro:g.introElapsed<g.introDuration,dt,camera,cameraY,phone:canvas.clientWidth<900});
    ({width,height,camera,cameraY}=q);
   }
   const playerImages=sceneArtImages(images,g.level,g.player.character,g.player.cosmeticSkin,g.player.visualModel),royalArt={atlas:images['royal-structures'],bridge:images['royal-quarter-bridge'],ground:images['royal-velvet-ground'],flora:images['royal-flora'],organic:images['royal-organic-landmarks'],props:images['royal-foreground-props'],railFront:images['royal-bridge-front']};
-  const time=view==='title'?now/1000:g.time;c.setTransform(canvas.width/width,0,0,canvas.height/height,0,0);c.clearRect(0,0,width,height);g.level===4?drawDesertInteriorBackdrop(c,images['desert-c07-interior'],{camera,width,height,cameraY}):g.level===3?drawRoyalBackdrop(c,{camera,width,height,time,image:images['royal-world'],art:royalArt,atmosphere:view==='title'?null:g.royal.atmosphere,eel:images['royal-eel']}):g.level===2?drawLunarBackdrop(c,{camera,width,height,time,image:images['lunar-natural-world'],layers:images['lunar-island-layers'],art:{atlas:images['lunar-monuments'],bridge:images['lunar-aqueduct']}}):backdrop(time);
+  const time=view==='title'?now/1000:g.time;c.setTransform(canvas.width/width,0,0,canvas.height/height,0,0);c.clearRect(0,0,width,height);g.level===4?drawDesertInteriorBackdrop(c,images['desert-c07-interior'],{camera,width,height,cameraY}):g.level===3?drawRoyalBackdrop(c,{camera,width,height,time,image:images['royal-world'],art:royalArt,atmosphere:view==='title'||finale?null:g.royal.atmosphere,eel:images['royal-eel']}):g.level===2?drawLunarBackdrop(c,{camera,width,height,time,image:images['lunar-natural-world'],layers:images['lunar-island-layers'],art:{atlas:images['lunar-monuments'],bridge:images['lunar-aqueduct']}}):backdrop(time);
+  const finalePose=finale?getRoyalFinalePose(finale,finaleAnchor):null;
+  const drawFinalePlayer=()=>{
+   const q=finalePose,back=royalEelBackSocket(images['royal-eel'],g.time),ew=width*q.eel.scale,eh=ew/(1024/340),socketY=q.eel.y*height+(back.y-.5)*eh;
+   const u=q.stage==='jump'?q.stageProgress*q.stageProgress*(3-2*q.stageProgress):q.boarded?1:0;
+   const p={...g.player,x:q.player.x*width,y:q.player.y*height+(socketY-q.rider.y*height)*u,artScale:1,dir:1,vx:q.stage==='run'?220+q.stageProgress*380:0,vy:q.stage==='jump'?-300*Math.cos(q.stageProgress*Math.PI):0,onGround:q.stage!=='jump',turn:null,evasion:null,melee:null,crouching:false,invulnerable:0,tilt:q.player.angle,supportPose:null,supportY:0,motionDistance:(g.player.motionDistance??0)+finale.elapsed*240,jumpLegs:{spread:q.stage==='jump'?Math.sin(q.stageProgress*Math.PI)*.7:0},muzzle:0,mirvFlash:0,homingFlash:0};p.supportY=p.y;
+   drawInkSaltik(c,playerImages['ink-saltik'],p,{time:g.time,scale:q.player.scale*(finale.startWorld.artScale??1),turnImage:playerImages['ink-turn'],sampleGround:()=>p.y});
+  };
+  if(finalePose){const q=finalePose,ew=width*q.eel.scale,eh=ew/(1024/340);drawRoyalEelSprite(c,images['royal-eel'],{x:q.eel.x*width-ew/2,y:q.eel.y*height-eh/2,w:ew,h:eh,flip:-1,time:g.time});if(q.stage!=='run')drawFinalePlayer();}
   if(g.level===2)drawLunarMidground(c,{camera,width,height,layers:images['lunar-island-layers']});
   c.save();if(g.shake>0&&view==='playing')c.translate(Math.sin(time*103)*Math.min(g.shake,6)*.3,Math.cos(time*119)*Math.min(g.shake,6)*.2);
   c.translate(0,cameraY);const opts={camera,width,height:Math.max(900,height-cameraY),time};
@@ -165,13 +179,14 @@ export function createRenderer(canvas){
    const disconnecting=drawCarrierShutdown(c,playerImages,g.carrierShutdown,g.enemies.find(e=>e.id===g.carrierShutdown?.enemyId),{camera,time,player:g.player});
    const dueling=drawInkDuelWorld(c,playerImages,g.duel,{camera,width,height,cameraY,time,player:g.player});
    const playerKO=g.status==='dead'&&!!g.player.knockedOut;
-   if((g.status!=='dead'||playerKO)&&!paired&&!dueling&&!disconnecting){
+   if(!finale&&(g.status!=='dead'||playerKO)&&!paired&&!dueling&&!disconnecting){
     const p=playerKO?{...g.player,vx:0,vy:0,turn:null,evasion:null,melee:null,crouching:g.player.onGround!==false,invulnerable:0,damagePose:false,muzzle:0,mirvFlash:0,homingFlash:0,cannonElevation:0,cannonRecoil:0,motionLean:0,motionHeave:0,jumpCompression:0,landingCompression:0}:g.player,rear=p.evasion?.active;const shade=rear?.7:1;
     c.save();if(rear){c.globalAlpha=.86;c.translate(p.x-camera,p.y);c.scale(.92,.92);c.translate(-(p.x-camera),-p.y);}
     oval(c,p.x-camera,p.supportY??p.y,43*shade*(p.artScale??1),4,'#18181566');const pose=drawInkSaltik(c,playerImages['ink-saltik'],p,{camera,time,turnImage:playerImages['ink-turn'],sampleGround:x=>supportHeight(g,p,x),victoryAge:view==='won'?presentationAge:null});
     if(pose&&p.character!=='gatling'&&p.character!=='bt'&&!pose.weaponsLocked&&!playerKO){if(p.muzzle>0)inkFlash(c,pose.arm,p.aim,1,'#F3CB88');if(p.mirvFlash>0)inkFlash(c,pose.cannon,pose.cannonAngle,1.5,'#EBC29D');}
     c.restore();
    }
+   if(finalePose?.stage==='run'){c.save();c.translate(0,-cameraY);drawFinalePlayer();c.restore();}
    for(const s of g.projectiles)drawInkProjectile(c,s,camera,time);drawInkLocks(c,g,camera);drawBTLocks(c,g,camera);drawsEffects();
   }
   if(g.level===4)drawDesertForeground(c,g,{...opts,atlas:images['desert-structures']});else if(g.level===3)drawRoyalForeground(c,g,{...opts,art:royalArt});else if(g.level===2)drawLunarForeground(c,{...opts,art:{atlas:images['lunar-monuments'],bridge:images['lunar-aqueduct']}});else drawInkForeground(c,g,opts);if(view!=='title')mirvPreview.draw(c,g,{camera,cameraY,width,height});c.restore();
@@ -180,7 +195,8 @@ export function createRenderer(canvas){
   }
   if(view!=='title')drawInkDuelScreen(c,playerImages,g.duel,{camera,cameraY,width,height,time});
   if(desertDoor)drawDesertCurtain(c,width,height,desertDoor);
+  if(finale?.active){c.fillStyle='#08091dcc';const bar=height*.055*clamp(finale.elapsed/.25,0,1);c.fillRect(0,0,width,bar);c.fillRect(0,height-bar,width,bar);}
   film(time);if(g.flash>0){c.fillStyle=`rgba(240,227,201,${g.flash*.2})`;c.fillRect(0,0,width,height);}
  }
- return {render,addEvent,resize,reset(){mirvPreview.reset();zoom=BASE_ZOOM;height=720/zoom;width=canvas.width/canvas.height*height;camera=180-width*(canvas.clientWidth<900?.35:.29);cameraY=height-720;last=0;lastGameTime=null;effects=[];presentationAge=0;},get width(){return width;},get height(){return height;},get camera(){return camera;},get cameraY(){return cameraY;},get cameraZoom(){return zoom;},get presentationAge(){return presentationAge;},get effectCount(){return effects.length;}};
+ return {render,addEvent,resize,reset(){finaleAnchor=null;mirvPreview.reset();zoom=BASE_ZOOM;height=720/zoom;width=canvas.width/canvas.height*height;camera=180-width*(canvas.clientWidth<900?.35:.29);cameraY=height-720;last=0;lastGameTime=null;effects=[];presentationAge=0;},get width(){return width;},get height(){return height;},get camera(){return camera;},get cameraY(){return cameraY;},get cameraZoom(){return zoom;},get presentationAge(){return presentationAge;},get effectCount(){return effects.length;}};
 }

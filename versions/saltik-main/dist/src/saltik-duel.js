@@ -4,8 +4,19 @@ import {btFinishHold} from './bt-finish-timing.js';
 export const DUEL_PHASE_SECONDS=Object.freeze({engage:.45,throw:.48,impact:.18,slide:.95,recover:.2});
 export const DUEL_EFFORT_SECONDS=.24;
 
-export function createSaltikDuel(player,enemy,random=Math.random){
-  return {throwVariant:Math.min(3,Math.max(0,Math.floor(random()*4))),phase:'engage',elapsed:0,taps:0,effortsCompleted:0,effortElapsed:0,enemyId:enemy.id,
+// Keep encounter order on the game, never in module state: a fresh run starts
+// at the head impact and every four encounters show all four finishes.
+export function nextSaltikDuelVariant(game){
+  const variant=game.nextSaltikDuelVariant??0;
+  game.nextSaltikDuelVariant=(variant+1)%4;
+  return variant;
+}
+
+// Numeric selection is used by the game cycle; random callbacks remain valid
+// for isolated callers that intentionally sample a particular finish.
+export function createSaltikDuel(player,enemy,selection=Math.random){
+  const throwVariant=typeof selection==='function'?Math.floor(selection()*4):selection;
+  return {throwVariant:Math.min(3,Math.max(0,throwVariant)),phase:'engage',elapsed:0,taps:0,effortsCompleted:0,effortElapsed:0,enemyId:enemy.id,
     x:(player.x+enemy.x)/2,y:(player.y+enemy.y)/2,
     dir:enemy.x>=player.x?1:-1,
     playerX:player.x,enemyX:enemy.x,playerY:player.y,enemyY:enemy.y,

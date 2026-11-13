@@ -7,15 +7,15 @@
       "slug": "saltik-main",
       "repo": "saltik-v2-matin-dore",
       "title": "SALTIK V2 — Matin Doré",
-      "commit": "ce280f9394d382d728673a48c1994a18092e8c58",
-      "published_version": 42,
+      "commit": "55ba38422ecdb6c438ea14f79a2ea1e76bf63e09",
+      "published_version": 44,
       "url": "https://saltik-v2-matin-dore.ser-adrien.chatgpt.site",
-      "base_commit": "b1e8b048016de48eaadcfa0d13a1c10ebbc6bfbd",
+      "base_commit": "ce280f9394d382d728673a48c1994a18092e8c58",
       "source_path": "/workspace/sites/saltik-v2-matin-dore",
       "export_path": "versions/saltik-main",
       "web_entry": "versions/saltik-main/dist/index.html",
-      "file_count": 669,
-      "bytes": 273276457,
+      "file_count": 696,
+      "bytes": 276521678,
       "uncommitted_changes": "",
       "files": {
         ".gitignore": {
@@ -23,12 +23,16 @@
           "size": 57
         },
         ".openai/hosting.json": {
-          "sha256": "f159cf6ddd1627148002a555bf09bf19abe112c972fdcdb8d9487ac6122e8537",
-          "size": 106
+          "sha256": "62f55e8d4a56d97fecacd243397396ef64579dcd82ebdb0817d0cbe594f23885",
+          "size": 105
         },
         "README.md": {
           "sha256": "9b1e0d7ceb551c0a2a306f12aa54c6f1172fc71b4c9dd8b3c5a345dbd5ce0de4",
           "size": 27846
+        },
+        "audio-sources/A10_BRRRT_boucle.wav": {
+          "sha256": "f6778dd1ec910a3dbaa24c045ea4559cbf25c8dcdfed19e49a691938f391eba0",
+          "size": 614444
         },
         "dist/android.html": {
           "sha256": "a9bd28ec16740008b6b6d2fde22920696d3f231053b4636a6f61c626a9b648a8",
@@ -374,6 +378,10 @@
           "sha256": "21d98f3dc8b9cc3ec4de241365b178225a716f02736b6bfe2c37ede8ed78927c",
           "size": 2549293
         },
+        "dist/assets/royal-eel-swim.png": {
+          "sha256": "f0079f9e61d185e95551fd4eba4a2405621cc0bfd3119302e688d40293b048a3",
+          "size": 2387031
+        },
         "dist/assets/royal-eel.png": {
           "sha256": "0a8cff40272e637de3fa3ed49b9005aa31c5918e6f1e3e7266f94683b0cef96b",
           "size": 2244405
@@ -429,6 +437,38 @@
         "dist/audio/forest-loop.ogg": {
           "sha256": "12514b358b8a6937442d35df693f2004425937171ac11b34d5d39aa1b0059875",
           "size": 1240433
+        },
+        "dist/audio/gatling-brrrt-loop.ogg": {
+          "sha256": "e40f137f274197666f59fe0a685609677f01bdcb7252e5408d718e0e62f63794",
+          "size": 47581
+        },
+        "dist/audio/voices/gatling-carrier.ogg": {
+          "sha256": "0ac7805f73893e9258f9b289f79462c531411942631e820863490b777153721c",
+          "size": 18963
+        },
+        "dist/audio/voices/gatling-enemy-brother.ogg": {
+          "sha256": "69acb840a22a4704340aa952a9a68a31db0872f2b1ec1df1236a622c8513bd5b",
+          "size": 12647
+        },
+        "dist/audio/voices/gatling-grab-him.ogg": {
+          "sha256": "811b5a898be31e7df0ec6b30fc6fd1ede7f99c08cdd2aab8a983fa7b3d837d0f",
+          "size": 11007
+        },
+        "dist/audio/voices/gatling-ready.ogg": {
+          "sha256": "9bd38b943bdc216b454bbd7676b7ea6d3b74f0b8099502e54126bd1003e49064",
+          "size": 15044
+        },
+        "dist/audio/voices/gatling-see-you-later.ogg": {
+          "sha256": "acfb535d2266f4625a4ea02099ef1b68c7d5e7f47a4c6d47ea2efe5c210f83de",
+          "size": 11174
+        },
+        "dist/audio/voices/gatling-target-lock.ogg": {
+          "sha256": "81e079e47f273c4c0e3244ade248afd32522dab6aa9f6fb7017d9a7e3fc11868",
+          "size": 12638
+        },
+        "dist/audio/voices/gatling-victory.ogg": {
+          "sha256": "0ebac1625aacbf282b765129760d09e9101f9d061c14121613110553cf5a72a1",
+          "size": 10400
         },
         "dist/audio/voices/goodbye.ogg": {
           "sha256": "1317bddb5e3f67fa5d00f73b2183f321f3d270eded83f443fc852aaa4f35c444",
@@ -495,8 +535,8 @@
           "size": 3073
         },
         "dist/src/audio.js": {
-          "sha256": "cd2d04dc462b2a9c2b08394c30c26162131f271afb52ad560c2d9e47f6981c11",
-          "size": 14128
+          "sha256": "ae6e1631345151cc4cda32d4a62aba105a2ed23b935e4e555409dd2335140613",
+          "size": 15663
         },
         "dist/src/background-motion.js": {
           "sha256": "3678cee146d7d6f5c57ce4f0218b809c0befc002fd2809e9f7a05c895c7711f5",
@@ -533,6 +573,10 @@
         "dist/src/bt-combat.js": {
           "sha256": "a8c55b8cc3c7076bc3e8e87f335f281427d5263d3d00441da4af2b3b85bd17bc",
           "size": 4278
+        },
+        "dist/src/bt-finish-cycle-store.js": {
+          "sha256": "934e43abecee2136b51ff05976640349cc0f3578509b02430d041edff4af66a0",
+          "size": 662
         },
         "dist/src/bt-finish-frames.js": {
           "sha256": "5b304b6cf00369d4e5e1054a35e2a4dfca27b0f51f4ead04041167111e725398",
@@ -611,8 +655,8 @@
           "size": 3417
         },
         "dist/src/engine.js": {
-          "sha256": "e70dbb0f9498b3407d1a97073b39d8a8159cbc58fe8ddd16f9e81c60c109eb21",
-          "size": 76317
+          "sha256": "b3f5046834ff544a15fd7dbbe234fe2f235bfc8250f534d4b89f3dd4240f1bfa",
+          "size": 76289
         },
         "dist/src/evasion.js": {
           "sha256": "3b9e6a5daafd5098d12f20a67279e98eca7b85ef500b79b67ea5862199992aeb",
@@ -627,7 +671,7 @@
           "size": 11071
         },
         "dist/src/gatling-combat.js": {
-          "sha256": "3fc7204583007c8ece714fe41cc5727ceaec2486c305977b67e1832661182d87",
+          "sha256": "7b2ff13906b05051fda2ca79c2dee72ad3573f890d45802b0f766a138357809a",
           "size": 2111
         },
         "dist/src/gatling-registration.js": {
@@ -679,16 +723,16 @@
           "size": 5484
         },
         "dist/src/ink-renderer.js": {
-          "sha256": "f4f7cc0cb3ae440b3b2e6a4a17ad63842aade9a9beb5d102918bae45a3e26742",
-          "size": 18839
+          "sha256": "7f9e520fd0a6f02a98b2568ad9e21c8dffdbe8370b40b8cdcbc0d8f945f31691",
+          "size": 21164
         },
         "dist/src/ink-saltik.js": {
           "sha256": "92be94bfe3076924825fcf862d688e6882809985fc599e2dd6dee13c89225b6c",
           "size": 21465
         },
         "dist/src/ink-scene.js": {
-          "sha256": "4028ad0ed13acc3efd277b0272cd08b3af26a535ace4597ae6fd5a9e95766bc8",
-          "size": 3764
+          "sha256": "91d85005679c39c1060f60d79282b7eb5c90546da8c488d61b0b0c962d269dcb",
+          "size": 3968
         },
         "dist/src/ink-turn.js": {
           "sha256": "e2e281634ce901d5e484fe5c5a6770ddc9365574f832550ee3ee2ff1162f8050",
@@ -739,8 +783,8 @@
           "size": 4153
         },
         "dist/src/main.js": {
-          "sha256": "7be8b7770aa2944cfd976d4312cbffd269aee76ff9a54b8f4c4f212163deca30",
-          "size": 33085
+          "sha256": "38e7b39d064fa3392fefdd4b32ba229ff689553030a8963546ff2c77f219cbf8",
+          "size": 33692
         },
         "dist/src/melee-state.js": {
           "sha256": "f24e08a07354668edbe7d54291517edc973dd34f9dfa9653c4f5776fe2b1eb87",
@@ -799,8 +843,8 @@
           "size": 18138
         },
         "dist/src/royal-atmosphere.js": {
-          "sha256": "e12bba3fe129f033b354b871c10f6744dc81fc22d1af5ffd65a24a1c05f933bf",
-          "size": 3627
+          "sha256": "6549bc33b686a549fca2ca66c1bab0ae792ee4321448195cb724c5b939564ffe",
+          "size": 2728
         },
         "dist/src/royal-bridge-front.js": {
           "sha256": "b3cba2c60fc627867226c4ebeb3d477531fa938897acc5fea19a4c9d2763e31f",
@@ -810,13 +854,21 @@
           "sha256": "30e67c61f4b1837718be53241fc12f0826ca97dfdbb4c73c9996c728b29498d1",
           "size": 5439
         },
+        "dist/src/royal-eel-frames.js": {
+          "sha256": "8d9f2745578eecf2e5a8f7fd5d623f49cf4da1fbcbe295e35b2b81ce41a91602",
+          "size": 2260
+        },
+        "dist/src/royal-finale.js": {
+          "sha256": "6abff63d45c7be2d8ecab76bb5d29b61dcc541be56f13f2d113eb4d3713aa50f",
+          "size": 1916
+        },
         "dist/src/royal-layout.js": {
-          "sha256": "dc31b24b15580750db7de4b1cc8216d217354b7aca09302edbd5dad51e4fea6c",
-          "size": 4690
+          "sha256": "1602fa7940c1a69750dd88ded9996f25a6f15c2a5f47de53797d350f0b2d15f1",
+          "size": 4903
         },
         "dist/src/royal-level.js": {
-          "sha256": "84e6ed0ae3c2318cd14d28f863b27df2d8843505cf4cac9f23782bc6844d8009",
-          "size": 3980
+          "sha256": "5713676b1e659a2dc7b03385d269528730abb0b5812726c7fc4d77862289cbf9",
+          "size": 4568
         },
         "dist/src/royal-props.js": {
           "sha256": "9826fe184441137207f0eb7eb2179929d1a3459088c907727ae17fbc088673ea",
@@ -835,20 +887,20 @@
           "size": 5244
         },
         "dist/src/royal-world.js": {
-          "sha256": "32ae690563f0655be6cf57d362e0f74b71becebcee2e826cf4f6f0dec9c0f7ab",
-          "size": 4950
+          "sha256": "d6a43bf8d92175aba99d49f36d3aac1e920cbbccc921109561d3fd4e0b3099dc",
+          "size": 5252
         },
         "dist/src/saltik-duel.js": {
-          "sha256": "5d9a2f13221c0d34ca6ab726fa34f22ef0d8a9e25a22bd22b6f907437b9d2cf0",
-          "size": 2645
+          "sha256": "658f2c417bfc63f595429dfd6b158178d764c4af7af7ed0d9ca2c77593f9c8e6",
+          "size": 3183
         },
         "dist/src/scenery.js": {
           "sha256": "3865efcf1442661b4a9eedc113f42cf2491ae73c3ceb2ecff4197de8e25c6958",
           "size": 20400
         },
         "dist/src/speech-captions.js": {
-          "sha256": "1e3827d24527f31a3e2b74c94f603c9ef7a1f4cac7c9c89f8d2aefab5d119bcb",
-          "size": 1121
+          "sha256": "3cd8eaf29dececaf817c6da56de0c2afbc7d86dabfd7e4d77e4a976f85ceeee3",
+          "size": 1565
         },
         "dist/src/support-pose.js": {
           "sha256": "e2e9c8b6e5f26d11c025cf1b5694dd7f296e9f9239e33e13f8e2538b7f460c2d",
@@ -883,8 +935,8 @@
           "size": 5518
         },
         "dist/src/voice-lines.js": {
-          "sha256": "96d7aaa67445ed1673fdea32b9e3a51d3b1fceead44887564f3b8c12b56a2cb2",
-          "size": 3626
+          "sha256": "7db36c7ce548b8a2929a66f3e86e0176742697540386f82b6a24b66bd8c61c8c",
+          "size": 4389
         },
         "dist/src/walkable-routes.js": {
           "sha256": "0323c6111e345b697cc71dc12412d73cfc2adb2ec70ec0af0fa5f3c4816b9350",
@@ -895,8 +947,8 @@
           "size": 9418
         },
         "dist/style.css": {
-          "sha256": "52f2f3f0b010bcdc1ea2e8cb8fc25e829b86ff2418cb1580f40f431ff518db85",
-          "size": 46853
+          "sha256": "635c312e7f07673c8720a0da30ce374e0a6608484d707172c7f3a66111553421",
+          "size": 47020
         },
         "dist/video/saltik-free-together-poster.jpg": {
           "sha256": "de77c185c42f5b31e582f895bda0a8e5ea1c54cc0f9670bef8946a7c2cf3c767",
@@ -913,6 +965,10 @@
         "dist/video/saltik-gameplay-promo.mp4": {
           "sha256": "7568576b64d5f5a3ed887fb245d69bc6aca7f5d7c3593ecdb9f9a37251703ea2",
           "size": 14269455
+        },
+        "docs/asset-audit-2026-11-13.json": {
+          "sha256": "9dadd2165fa1ac31e6bc69b229b17cf13c48abc9d9288d3791d9a92a03a772d9",
+          "size": 44672
         },
         "docs/carrier-voice-provenance.md": {
           "sha256": "84e80ef5f02aefc7a5b84c2c05eed0cd49c72120c294effdbce2553f9df02655",
@@ -937,6 +993,14 @@
         "docs/epilogue/our-own-way-script.json": {
           "sha256": "70f73df044cb491948490bbe8f5bb9cac6666243ef87db9d7d13626d35b9bb3c",
           "size": 1515
+        },
+        "docs/gatling-audio-provenance.json": {
+          "sha256": "9e5eafb0c8ddb71980daaf4d40e7efca12798c62ac0ce693dea90f1d76014254",
+          "size": 2094
+        },
+        "docs/gatling-audio-v43.md": {
+          "sha256": "1418b4ec10b1ca7ec3a98000b407e62ad4078b49120801439d6bdde0f46daa49",
+          "size": 2931
         },
         "docs/implementation-ledger.md": {
           "sha256": "b41cbd00b8a41d5bf0962e717c8a97642bd0adafd732328af697470ca4b98bf9",
@@ -1025,6 +1089,10 @@
         "docs/releases/SALTIK-reference-2026-10-28.md": {
           "sha256": "a3a0d3cca93e7b86607e4d29e0a36c8d8a04f4ef99f6d53a82e8f148582255d8",
           "size": 1106
+        },
+        "docs/runtime-deployment.md": {
+          "sha256": "9862170ac4238b862e2b4abd720d0d8b8c29b23701b78fd4d431d15aa55269eb",
+          "size": 2778
         },
         "docs/superpowers/approved-carrier-validation-2026-11-04.md": {
           "sha256": "2dd6793c235f57f097556e195e42f70468a0844655777c9c152ac028cb02193e",
@@ -1438,6 +1506,10 @@
           "sha256": "34c76cfb94b837c68b44d18b9ffbbd5d0cf9d79ef69203dee6e30ae63a660553",
           "size": 1729
         },
+        "docs/superpowers/specs/2026-11-13-royal-finale-gatling-design.md": {
+          "sha256": "c00477c44b9f9c1e1eee77e9b17b35eb96c746adf2799a83fa6871112e5cc5d8",
+          "size": 3392
+        },
         "docs/superpowers/specs/2026-11-13-royal-living-world-design.md": {
           "sha256": "fb2050bbe23a2c5a3a74723a10a9babeba60a2342feda200e388d9be549a0fa8",
           "size": 2521
@@ -1542,6 +1614,10 @@
           "sha256": "ed6ed3592d1b57498b0e835d2c670a71d8bb4d7ce54280ade5f80cb53ed90bcf",
           "size": 4234
         },
+        "scripts/create-gatling-audio.py": {
+          "sha256": "2497decef0930861a0a4b1648261e6ad22a8c5a1f6db3928bdc95a2d6e7faa5f",
+          "size": 2350
+        },
         "scripts/faithful-film/assets/commercial.wav": {
           "sha256": "345f6485fb55d651fc6605a9c1fe223d6a464ba6813c8d0532e24464341822a1",
           "size": 217518
@@ -1569,6 +1645,10 @@
         "scripts/lunar/verify_ui.py": {
           "sha256": "d964f1f68cd7c4b83bcb75cdb02de9c2ccb343c311ba655d1d15776fbe7d2d20",
           "size": 4193
+        },
+        "scripts/package-runtime.py": {
+          "sha256": "cfd4e223c3030880cbf289760f8cef47735c159bd627b61a069e174a3a184c3b",
+          "size": 6969
         },
         "scripts/promo/BRIEF.md": {
           "sha256": "2ddd24f9de14e195267a19fbd3e5527f770f3bb6ec72a545495bb15fddbda4cc",
@@ -1667,8 +1747,8 @@
           "size": 2320
         },
         "src/audio.js": {
-          "sha256": "cd2d04dc462b2a9c2b08394c30c26162131f271afb52ad560c2d9e47f6981c11",
-          "size": 14128
+          "sha256": "ae6e1631345151cc4cda32d4a62aba105a2ed23b935e4e555409dd2335140613",
+          "size": 15663
         },
         "src/background-motion.js": {
           "sha256": "3678cee146d7d6f5c57ce4f0218b809c0befc002fd2809e9f7a05c895c7711f5",
@@ -1705,6 +1785,10 @@
         "src/bt-combat.js": {
           "sha256": "a8c55b8cc3c7076bc3e8e87f335f281427d5263d3d00441da4af2b3b85bd17bc",
           "size": 4278
+        },
+        "src/bt-finish-cycle-store.js": {
+          "sha256": "934e43abecee2136b51ff05976640349cc0f3578509b02430d041edff4af66a0",
+          "size": 662
         },
         "src/bt-finish-frames.js": {
           "sha256": "5b304b6cf00369d4e5e1054a35e2a4dfca27b0f51f4ead04041167111e725398",
@@ -1783,8 +1867,8 @@
           "size": 3417
         },
         "src/engine.js": {
-          "sha256": "e70dbb0f9498b3407d1a97073b39d8a8159cbc58fe8ddd16f9e81c60c109eb21",
-          "size": 76317
+          "sha256": "b3f5046834ff544a15fd7dbbe234fe2f235bfc8250f534d4b89f3dd4240f1bfa",
+          "size": 76289
         },
         "src/evasion.js": {
           "sha256": "3b9e6a5daafd5098d12f20a67279e98eca7b85ef500b79b67ea5862199992aeb",
@@ -1799,7 +1883,7 @@
           "size": 11071
         },
         "src/gatling-combat.js": {
-          "sha256": "3fc7204583007c8ece714fe41cc5727ceaec2486c305977b67e1832661182d87",
+          "sha256": "7b2ff13906b05051fda2ca79c2dee72ad3573f890d45802b0f766a138357809a",
           "size": 2111
         },
         "src/gatling-registration.js": {
@@ -1851,16 +1935,16 @@
           "size": 5484
         },
         "src/ink-renderer.js": {
-          "sha256": "f4f7cc0cb3ae440b3b2e6a4a17ad63842aade9a9beb5d102918bae45a3e26742",
-          "size": 18839
+          "sha256": "7f9e520fd0a6f02a98b2568ad9e21c8dffdbe8370b40b8cdcbc0d8f945f31691",
+          "size": 21164
         },
         "src/ink-saltik.js": {
           "sha256": "92be94bfe3076924825fcf862d688e6882809985fc599e2dd6dee13c89225b6c",
           "size": 21465
         },
         "src/ink-scene.js": {
-          "sha256": "4028ad0ed13acc3efd277b0272cd08b3af26a535ace4597ae6fd5a9e95766bc8",
-          "size": 3764
+          "sha256": "91d85005679c39c1060f60d79282b7eb5c90546da8c488d61b0b0c962d269dcb",
+          "size": 3968
         },
         "src/ink-turn.js": {
           "sha256": "e2e281634ce901d5e484fe5c5a6770ddc9365574f832550ee3ee2ff1162f8050",
@@ -1911,8 +1995,8 @@
           "size": 4153
         },
         "src/main.js": {
-          "sha256": "7be8b7770aa2944cfd976d4312cbffd269aee76ff9a54b8f4c4f212163deca30",
-          "size": 33085
+          "sha256": "38e7b39d064fa3392fefdd4b32ba229ff689553030a8963546ff2c77f219cbf8",
+          "size": 33692
         },
         "src/melee-state.js": {
           "sha256": "f24e08a07354668edbe7d54291517edc973dd34f9dfa9653c4f5776fe2b1eb87",
@@ -1971,8 +2055,8 @@
           "size": 18138
         },
         "src/royal-atmosphere.js": {
-          "sha256": "e12bba3fe129f033b354b871c10f6744dc81fc22d1af5ffd65a24a1c05f933bf",
-          "size": 3627
+          "sha256": "6549bc33b686a549fca2ca66c1bab0ae792ee4321448195cb724c5b939564ffe",
+          "size": 2728
         },
         "src/royal-bridge-front.js": {
           "sha256": "b3cba2c60fc627867226c4ebeb3d477531fa938897acc5fea19a4c9d2763e31f",
@@ -1982,13 +2066,21 @@
           "sha256": "30e67c61f4b1837718be53241fc12f0826ca97dfdbb4c73c9996c728b29498d1",
           "size": 5439
         },
+        "src/royal-eel-frames.js": {
+          "sha256": "8d9f2745578eecf2e5a8f7fd5d623f49cf4da1fbcbe295e35b2b81ce41a91602",
+          "size": 2260
+        },
+        "src/royal-finale.js": {
+          "sha256": "6abff63d45c7be2d8ecab76bb5d29b61dcc541be56f13f2d113eb4d3713aa50f",
+          "size": 1916
+        },
         "src/royal-layout.js": {
-          "sha256": "dc31b24b15580750db7de4b1cc8216d217354b7aca09302edbd5dad51e4fea6c",
-          "size": 4690
+          "sha256": "1602fa7940c1a69750dd88ded9996f25a6f15c2a5f47de53797d350f0b2d15f1",
+          "size": 4903
         },
         "src/royal-level.js": {
-          "sha256": "84e6ed0ae3c2318cd14d28f863b27df2d8843505cf4cac9f23782bc6844d8009",
-          "size": 3980
+          "sha256": "5713676b1e659a2dc7b03385d269528730abb0b5812726c7fc4d77862289cbf9",
+          "size": 4568
         },
         "src/royal-props.js": {
           "sha256": "9826fe184441137207f0eb7eb2179929d1a3459088c907727ae17fbc088673ea",
@@ -2007,20 +2099,20 @@
           "size": 5244
         },
         "src/royal-world.js": {
-          "sha256": "32ae690563f0655be6cf57d362e0f74b71becebcee2e826cf4f6f0dec9c0f7ab",
-          "size": 4950
+          "sha256": "d6a43bf8d92175aba99d49f36d3aac1e920cbbccc921109561d3fd4e0b3099dc",
+          "size": 5252
         },
         "src/saltik-duel.js": {
-          "sha256": "5d9a2f13221c0d34ca6ab726fa34f22ef0d8a9e25a22bd22b6f907437b9d2cf0",
-          "size": 2645
+          "sha256": "658f2c417bfc63f595429dfd6b158178d764c4af7af7ed0d9ca2c77593f9c8e6",
+          "size": 3183
         },
         "src/scenery.js": {
           "sha256": "3865efcf1442661b4a9eedc113f42cf2491ae73c3ceb2ecff4197de8e25c6958",
           "size": 20400
         },
         "src/speech-captions.js": {
-          "sha256": "1e3827d24527f31a3e2b74c94f603c9ef7a1f4cac7c9c89f8d2aefab5d119bcb",
-          "size": 1121
+          "sha256": "3cd8eaf29dececaf817c6da56de0c2afbc7d86dabfd7e4d77e4a976f85ceeee3",
+          "size": 1565
         },
         "src/support-pose.js": {
           "sha256": "e2e9c8b6e5f26d11c025cf1b5694dd7f296e9f9239e33e13f8e2538b7f460c2d",
@@ -2055,8 +2147,8 @@
           "size": 5518
         },
         "src/voice-lines.js": {
-          "sha256": "96d7aaa67445ed1673fdea32b9e3a51d3b1fceead44887564f3b8c12b56a2cb2",
-          "size": 3626
+          "sha256": "7db36c7ce548b8a2929a66f3e86e0176742697540386f82b6a24b66bd8c61c8c",
+          "size": 4389
         },
         "src/walkable-routes.js": {
           "sha256": "0323c6111e345b697cc71dc12412d73cfc2adb2ec70ec0af0fa5f3c4816b9350",
@@ -2067,8 +2159,8 @@
           "size": 9418
         },
         "style.css": {
-          "sha256": "52f2f3f0b010bcdc1ea2e8cb8fc25e829b86ff2418cb1580f40f431ff518db85",
-          "size": 46853
+          "sha256": "635c312e7f07673c8720a0da30ce374e0a6608484d707172c7f3a66111553421",
+          "size": 47020
         },
         "tests/arsenal-integration.test.js": {
           "sha256": "73a6ad38b4bc4243d05dc5b48af82396520cdc4248d0b6116776ac01f48937b5",
@@ -2254,6 +2346,14 @@
           "sha256": "f77934bbde6c5e6dce758839703ca17047edf315d9627d6a4a1c1035edb609a4",
           "size": 2409
         },
+        "tests/bt-finish-cycle-store.test.js": {
+          "sha256": "781f7a3d59ab2e44bb1c566cf49e433273824e026b04eea54e2da1563d2817bd",
+          "size": 2358
+        },
+        "tests/bt-finish-cycle.test.js": {
+          "sha256": "81251f10b623d2f49c65fd3202a1ff7a8302ff625c471b9d94d12489fca119c1",
+          "size": 3278
+        },
         "tests/bt-gamepad.test.js": {
           "sha256": "675ef9486a0d9a69e33ad3152a035823a9b860cf14c4988ed9a2a3192d9edff5",
           "size": 1949
@@ -2391,7 +2491,7 @@
           "size": 6499
         },
         "tests/gatling-combat.test.js": {
-          "sha256": "ba6ebcaebbcb9309c014feae7c6e67650b9de06ca62238c86c510cd3846bc046",
+          "sha256": "73f710a31c02d769efb7ca706cf444333c0e04009441052817455415542230fb",
           "size": 5571
         },
         "tests/gatling-title.test.js": {
@@ -2399,8 +2499,8 @@
           "size": 1810
         },
         "tests/gatling-ui.test.js": {
-          "sha256": "35d221c16a9eb42f0f19aa39ed688a32ed6149692a59737886665c14ed623c9b",
-          "size": 4930
+          "sha256": "5dbc47eac69dafaaa3194212dd28953eb09ca5f536466fd73be1c6f2b96f065b",
+          "size": 5241
         },
         "tests/guided-navigation.test.js": {
           "sha256": "bea7e471a2fcc7043ba2954a1daadb7ae57c75e743f7215f526ae8190fc98ec2",
@@ -2567,8 +2667,8 @@
           "size": 1507
         },
         "tests/pastel-preservation.test.js": {
-          "sha256": "8e2709187f5e5f26d42eaed69de876cf0fa51d8f68e4bc8f4c212e75a0d2a9cc",
-          "size": 4712
+          "sha256": "1ae61a9f2d6291294d7d1c5252962654caa81344f7023ee563a246977fe27533",
+          "size": 5869
         },
         "tests/pastel-rider.test.js": {
           "sha256": "969e183bb7a0573ab07b43dbac3990e1cf1a2fd28c0bc32f2f6a51cb665d11c5",
@@ -2610,13 +2710,21 @@
           "sha256": "4d1be9689c27c08b572b59020670b8a0296481a87cf8a36f4afde7c912043e55",
           "size": 2317
         },
+        "tests/royal-eel-frames.test.js": {
+          "sha256": "6718decaf8ceac5eaeb3841b710d0680d4651514fc98cf036a26932cfb176e68",
+          "size": 763
+        },
+        "tests/royal-finale.test.js": {
+          "sha256": "b1bd46dcd2c01771da69ee87fd6756d741a1e208d3ba41908773f5b5a8f23b06",
+          "size": 5232
+        },
         "tests/royal-level.test.js": {
           "sha256": "0248cf57b0a71f7210104e7e4099bde19d2c750d2e526f84d33943f98b045080",
           "size": 3854
         },
         "tests/royal-living-world.test.js": {
-          "sha256": "cd36c460f39403bb6a4b8526293813505f85b7539a1ff2797a500649d9a100b8",
-          "size": 3247
+          "sha256": "306aa400059db6d132f28e18f81e181bb268f1097a6b992d881d908b0ec6dcb3",
+          "size": 3278
         },
         "tests/saltik-duel-engine.test.js": {
           "sha256": "eae7bb3711c0282aa6d068da0eb74fa5a263321b127d0a9aace83836aea21c61",
@@ -2635,8 +2743,8 @@
           "size": 5440
         },
         "tests/speech-captions.test.js": {
-          "sha256": "4a4ec36d54f38af138ca5c771b3f19a546c597bd540a5e4ee86154ef649f3496",
-          "size": 1682
+          "sha256": "a80a25f7f397a200e3f973e38cceab638af0b4f9abe10dec29cd083eb50ac1bd",
+          "size": 2136
         },
         "tests/startup-fullscreen.test.js": {
           "sha256": "39710a6e0a815839d043aabbcbd64f4eb09be3f7daf5bf7b55def823c2fd9727",
@@ -2671,8 +2779,8 @@
           "size": 9395
         },
         "tests/velvet-refinements.test.js": {
-          "sha256": "c412662e3445e5d1a4e530b4d666fb77b85d7f0cd69c36314b53036c858e99a7",
-          "size": 2333
+          "sha256": "cac296b2b130bb112d7eb2e920a7d0cd07e84472e5afe29866faa7e9deba756a",
+          "size": 1796
         },
         "tests/velvet-water-flow.test.js": {
           "sha256": "548b02c1f03da6e9162c5c66d2450dd335cdc043efb3407eb09c292c6ed3fca9",
@@ -2687,8 +2795,8 @@
           "size": 10674
         },
         "tests/voice-lines.test.js": {
-          "sha256": "f3b8dc7a506a691aedbf7c9fecec2f5ed200d28ee5a279ffdbfe33f53474da88",
-          "size": 14115
+          "sha256": "9746c384419bd9f0cdd9e69139c85bcaedc0ea26430a99e8d7d3a5c602b2302e",
+          "size": 16981
         },
         "tests/walkable-routes.test.js": {
           "sha256": "0093dfda8aed420be006b09e0de0c4d2745b80fd069479c1ca5d89533598113e",
@@ -2706,11 +2814,12 @@
           "duration_native_run_seconds": 82.0166666666633
         }
       ],
-      "update_note": "Reference screenshot received: harmonized the large tiered waterfall under the bridge with full-width blended downward veils, fine streams, attached foam and base mist. Reusable masked layer preserves gold/velvet/transparent pixels. All assets, approved distant water, other v41 animations and gameplay unchanged.",
-      "published_source_commit": "ce280f9394d382d728673a48c1994a18092e8c58",
+      "update_note": "Lossless asset audit: 262205327 to 175976522 bytes; 13 historical files excluded only from publication; every original retained.",
+      "published_source_commit": "55ba38422ecdb6c438ea14f79a2ea1e76bf63e09",
       "publication_status": "Published and verified",
       "github_import_base": "4c9b8e64bf3232c222f9b6f534ca37d660da3f7b",
-      "live_published_version": 42
+      "live_published_version": 44,
+      "last_confirmed_saved_version": 44
     },
     {
       "slug": "saltik-ink",

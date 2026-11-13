@@ -6,7 +6,14 @@ export const VOICE_PATHS=Object.freeze({
   'grab-him':'./audio/voices/grab-him.ogg',
   goodbye:'./audio/voices/goodbye.ogg',
   'saltik-dont-kill-saltik':'./audio/voices/saltik-dont-kill-saltik.ogg',
-  victory:'./audio/voices/victory.ogg'
+  victory:'./audio/voices/victory.ogg',
+  'gatling-ready':'./audio/voices/gatling-ready.ogg',
+  'gatling-target-lock':'./audio/voices/gatling-target-lock.ogg',
+  'gatling-enemy-brother':'./audio/voices/gatling-enemy-brother.ogg',
+  'gatling-grab-him':'./audio/voices/gatling-grab-him.ogg',
+  'gatling-see-you-later':'./audio/voices/gatling-see-you-later.ogg',
+  'gatling-carrier':'./audio/voices/gatling-carrier.ogg',
+  'gatling-victory':'./audio/voices/gatling-victory.ogg'
 });
 
 export const VOICE_EVENTS=Object.freeze({
@@ -15,11 +22,12 @@ export const VOICE_EVENTS=Object.freeze({
   'carrier-disconnected':'saltik-dont-kill-saltik',won:'victory'
 });
 
-// Retain the original recordings; each playable chassis owns its delivery.
+// Striker/BT retain their recordings. Gatling uses newly synthesized rms recordings.
+export const GATLING_VOICE_IDS=Object.freeze({ready:'gatling-ready','target-lock':'gatling-target-lock','saltik-detected':'gatling-enemy-brother','grab-him':'gatling-grab-him',goodbye:'gatling-see-you-later','saltik-dont-kill-saltik':'gatling-carrier',victory:'gatling-victory'});
 export const VOICE_PROFILES=Object.freeze({
  striker:Object.freeze({rate:1,filter:null}),
  bt:Object.freeze({rate:.84,filter:'lowpass',frequency:2600}),
- gatling:Object.freeze({rate:1.13,filter:'highpass',frequency:210})
+ gatling:Object.freeze({rate:1,filter:null})
 });
 
 export function createVoiceLines(context,destination,onStart,onCancel=()=>{}){
@@ -73,6 +81,7 @@ export function createVoiceLines(context,destination,onStart,onCancel=()=>{}){
   }
 
   function enqueue(id,character='striker'){
+    if(character==='gatling')id=GATLING_VOICE_IDS[id]??id;
     if(!VOICE_PATHS[id])return;
     queue.push({id,character});pump();
   }

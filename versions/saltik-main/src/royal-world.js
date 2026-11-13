@@ -2,7 +2,7 @@ import {drawRoyalEel,drawRoyalGardenLife} from './royal-atmosphere.js';
 import {drawRoyalRainbow} from './royal-rainbow.js';
 import {drawRoyalWaterfalls} from './royal-waterfalls.js';
 import {drawRoyalProps} from './royal-props.js';
-import {ROYAL_CELLS,ROYAL_SITES,royalGroundAt} from './royal-layout.js';
+import {ROYAL_CELLS,ROYAL_SITES,royalGroundAt,royalSample} from './royal-layout.js';
 const GOLD='#d99b29',TAU=Math.PI*2;
 export function royalPaintedBounds(s){const cell=ROYAL_CELLS[s.kind];return{x:s.left,y:s.top,w:cell.crop[2]*s.scale,h:cell.crop[3]*s.scale};}
 function paintSite(c,art,s,camera=0,time=0){const cell=ROYAL_CELLS[s.kind],image=cell.source==='bridge'?art?.bridge:cell.source==='organic'?art?.organic:art?.atlas;if(!image)return;const b=royalPaintedBounds(s);c.drawImage(image,...cell.crop,b.x-camera,b.y,b.w,b.h);if(cell.source==='bridge'||cell.source==='organic')drawRoyalWaterfalls(c,image,cell.source,{x:b.x-camera-cell.crop[0]*s.scale,y:b.y-cell.crop[1]*s.scale,scale:s.scale,time,sourceCrop:cell.crop});}
@@ -10,7 +10,7 @@ export function drawRoyalBackdrop(c,{camera,width,height,image,art,time=0,atmosp
  c.save();c.globalAlpha=1;c.fillStyle='#041454';c.fillRect(0,0,width,height);
  // Keep the reference composition readable: tree at left, mountains and full
  // rainbow in the center/right. Only a restrained panoramic drift is applied.
- if(image){const w=Math.max(width*1.08,height*image.width/image.height),h=w*image.height/image.width,x=(width-w)/2-Math.min(1,Math.max(0,camera/17800))*(w-width)*.35;const y=Math.min(0,(height-h)*.22);c.drawImage(image,x,y,w,h);drawRoyalWaterfalls(c,image,'backdrop',{x,y,scale:w/1672,scaleY:h/941,time});drawRoyalEel(c,eel,atmosphere,{width,height,far:true,farCeiling:y+166*h/941});drawRoyalRainbow(c,image,{x,y,scale:w/1672,scaleY:h/941,time});drawRoyalEel(c,eel,atmosphere,{width,height,far:false});drawRoyalGardenLife(c,{x,y,scale:w/1672,scaleY:h/941,time});}
+ if(image){const w=Math.max(width*1.08,height*image.width/image.height),h=w*image.height/image.width,x=(width-w)/2-Math.min(1,Math.max(0,camera/17800))*(w-width)*.35;const y=Math.min(0,(height-h)*.22);c.drawImage(image,x,y,w,h);drawRoyalWaterfalls(c,image,'backdrop',{x,y,scale:w/1672,scaleY:h/941,time});drawRoyalRainbow(c,image,{x,y,scale:w/1672,scaleY:h/941,time});drawRoyalEel(c,eel,atmosphere,{width,height,far:true});drawRoyalEel(c,eel,atmosphere,{width,height,far:false});drawRoyalGardenLife(c,{x,y,scale:w/1672,scaleY:h/941,time});}
  // Small opaque wooded islands occupy a clearly separate middle distance.
  if(art?.atlas)for(const [i,world] of [1600,5500,9800,14300,18500].entries()){
   const x=width*.7+(world-camera)*.19,w=290+(i%2)*70,h=w*512/768,y=height*.56;
@@ -43,8 +43,12 @@ export function drawRoyalWorld(c,g,{camera,width,time,art}){
 }
 export function drawRoyalForeground(c,g,{camera,width,art}){
  // The native near-side bridge rail occludes feet/legs in perspective, while
- // its far rail and deck stay behind the hero. No translucent overlay.
- if(art?.railFront)for(const s of ROYAL_SITES.filter(s=>s.kind==='bridge')){
+ // its far rail and deck stay behind the hero. A garden descent leaves this
+ // depth plane, so it must not receive the near rail over its cabin.
+ // Solid plinth riders can remain on ground support (no platformId). Use
+ // the registered deck plane so both grounded crossings and jumps keep rails.
+ const p=g.player;
+ if(art?.railFront&&p)for(const s of ROYAL_SITES.filter(s=>s.kind==='bridge'&&p.x>=s.x1-45&&p.x<=s.x2+45&&p.y<=royalSample(s.points,p.x)+10)){
   const b=royalPaintedBounds(s);if(b.x+b.w<camera||b.x>camera+width)continue;
   c.drawImage(art.railFront,0,0,1774,887,b.x-camera,b.y,b.w,b.h);
  }

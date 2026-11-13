@@ -1,0 +1,114 @@
+{
+  "version_number": 43,
+  "version_id": "appgprj_6ae77e1b6da081918600675fc2e2b738~appgver_cdde11a187888191ae41b1f8e2a91ae4",
+  "source_commit": "92164be30381ac39bbbce45ffa507aa1d1075310",
+  "deployment": {
+    "id": "appgdep_6af72ce8aa5081919c98f237684b0e72",
+    "project_id": "appgprj_6ae77e1b6da081918600675fc2e2b738",
+    "title": "SALTIK V2 — Matin Doré",
+    "version_id": "appgprj_6ae77e1b6da081918600675fc2e2b738~appgver_cdde11a187888191ae41b1f8e2a91ae4",
+    "type": "publish",
+    "status": "failed",
+    "url": null,
+    "has_mcp": false,
+    "screenshot_asset_pointer": null,
+    "provider_deployment_id": "site---6ae77e1b6da081918600675fc2e2b738",
+    "failure_message": "Failed to publish the built site.",
+    "env_set_revision": 0,
+    "updated_at": "2026-11-13T15:29:51.936611+00:00"
+  },
+  "publication_status": "Validated source backed up; hosting failed, reduced-runtime retry pending",
+  "confirmed_live_version": 42,
+  "confirmed_live_source_commit": "ce280f9394d382d728673a48c1994a18092e8c58",
+  "tests": {
+    "passed": 793,
+    "failed": 0
+  },
+  "pending": "Hosting deployment retry; feature implementation complete.",
+  "browser": {
+    "real_assets": {
+      "artLoaded": true
+    },
+    "audio": {
+      "started": {
+        "wanted": true,
+        "playing": true,
+        "loaded": true,
+        "loading": false,
+        "failed": false
+      },
+      "released": {
+        "wanted": false,
+        "playing": false,
+        "loaded": true,
+        "loading": false,
+        "failed": false
+      },
+      "resumed": {
+        "wanted": true,
+        "playing": true,
+        "loaded": true,
+        "loading": false,
+        "failed": false
+      },
+      "paused": {
+        "wanted": false,
+        "playing": false,
+        "loaded": true,
+        "loading": false,
+        "failed": false
+      },
+      "muted": {
+        "wanted": false,
+        "playing": false,
+        "loaded": true,
+        "loading": false,
+        "failed": false
+      }
+    },
+    "characters": [
+      "striker",
+      "gatling",
+      "bt"
+    ],
+    "finale_frames": [
+      0,
+      0.7,
+      1.6,
+      2.5,
+      3.5,
+      5.4
+    ],
+    "errors": [],
+    "final_staging_all_characters": true
+  },
+  "main_files": 693,
+  "other_four_editions_unchanged": true,
+  "ui_browser": {
+    "actual_main_keyboard_and_audio": true,
+    "art_and_renderer_stubbed_only_for_UI": true,
+    "restored_next_finish": 2,
+    "immediate_recoil_delta": -6.599999999999625,
+    "overheat_at_seconds": 4,
+    "loop_starts": 3,
+    "loop_stops": 3,
+    "errors": []
+  },
+  "preservation": {
+    "all_original_images_and_audio_unchanged": true,
+    "original_uploaded_wav_preserved": true,
+    "unchanged_source_hashes": {
+      "src/royal-bridge-water.js": "30e67c61f4b1837718be53241fc12f0826ca97dfdbb4c73c9996c728b29498d1",
+      "src/royal-waterfalls.js": "e189a8929db28400502a2fac02b9b5f1a5f56b99211fb020d873c0f9e5a5bbaa",
+      "src/jump-leg-pose.js": "56736acd36f7a1ad8bda08037cad09cf4ea5c1545c9f42506cdfa71f4d0c081b",
+      "src/royal-rainbow.js": "4ba2ef85aed19c5e94f0feeb546d1a178f9b824783000bc077443cd2c0de9a8b",
+      "src/modern-striker-art.js": "5903cfeb6647200320214f21a320e0867067033d1067eb1eb7d872fe48dd887e",
+      "src/gatling-art.js": "84999e32e18b8c9135cc13e16b1945cea5231dad2887e99ebc5387cd480e2de0",
+      "src/bt-finish-visual.js": "46d28182d035ce7a7f9c6cdc584a3134d70ac66f85ea72c84e2bc786bfbbb9ee",
+      "src/bt-finish-timing.js": "3d46beb609507379864e2ef421c8ebfd450a378c3a89255868bf88dbcabcf505",
+      "src/bt-finish-frames.js": "5b304b6cf00369d4e5e1054a35e2a4dfca27b0f51f4ead04041167111e725398",
+      "src/fullscreen.js": "593efd1ac7ab209a68107552a241459286aa7299c982c3e071e00530fb99348e"
+    },
+    "scope": "New royal swim/finale, royal route fixes, Gatling-only combat/audio/voice, persistent four BT finishes"
+  }
+}

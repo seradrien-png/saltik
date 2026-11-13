@@ -1,0 +1,3 @@
+import test from 'node:test';import assert from 'node:assert/strict';
+import {ROYAL_EEL_FRAMES,royalEelFrameAt,drawRoyalEelSprite} from '../src/royal-eel-frames.js';
+test('swim actually selects eight different native drawings rather than deforming one source',()=>{assert.equal(ROYAL_EEL_FRAMES.length,8);assert.equal(new Set(ROYAL_EEL_FRAMES.map(r=>r.join())).size,8);const frames=Array.from({length:8},(_,id)=>({id})),image={swimFrames:frames},used=[],c=new Proxy({drawImage:im=>used.push(im.id)},{get:(t,k)=>k in t?t[k]:()=>{}});for(let i=0;i<8;i++)drawRoyalEelSprite(c,image,{x:0,y:0,w:1024,h:340,time:i*.3+.01});assert.deepEqual(used,[0,1,2,3,4,5,6,7]);assert.equal(royalEelFrameAt(2.4).index,0);assert.deepEqual(royalEelFrameAt(.5),royalEelFrameAt(.5));});

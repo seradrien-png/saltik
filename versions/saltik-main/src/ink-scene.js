@@ -38,7 +38,12 @@ export function createInkScene(options={}){
  g.schedule.push({id:carrierId,type:'carrier',x:8940,guardianId:guardian?.id});g.schedule.sort((a,b)=>a.x-b.x);
  return g;
 }
-export function updateInkScene(g,input,dt){
+export function updateInkScene(g,input,dt=1/60){
+ if(g.level===3&&g.royal?.finale?.active){
+  if(g.status!=='playing')return;
+  const step=Math.max(0,Math.min(1/30,Number.isFinite(dt)?dt:0));
+  g.time+=step;advanceRoyalObjective(g,step);return;
+ }
  const before=g.time;update(g,desertInput(g,input),dt);
  if(g.level===2)advanceLunarObjective(g,g.time-before);
  if(g.level===4)advanceDesertObjective(g,g.time-before);

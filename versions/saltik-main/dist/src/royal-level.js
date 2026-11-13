@@ -1,4 +1,6 @@
 import {createRoyalAtmosphere,advanceRoyalAtmosphere} from './royal-atmosphere.js';
+import {cancelMelee} from './melee-state.js';
+import {createRoyalFinale,advanceRoyalFinale} from './royal-finale.js';
 import {clearPlayerWeaponQueue} from './engine.js';
 import {ROYAL_END,royalGroundAt,createRoyalRoutes,royalDepthScaleAt} from './royal-layout.js';
 export const ROYAL_SHRINES=[{x:4800,name:'LA CLAIRIÈRE BRODÉE',types:['drone','soldier','turret']},{x:10400,name:'LE BELVÉDÈRE DES CASCADES',types:['walker','drone','turret','drone']},{x:16450,name:'LE SANCTUAIRE D’OR',types:['turret','walker','drone','soldier']}];
@@ -11,12 +13,14 @@ export function applyRoyalLevel(g){
  for(const route of g.platforms.filter(p=>['tree','terrace'].includes(p.royalKind)))g.schedule.push({id:`${route.id}-guard`,type:'soldier',x:route.x1+(route.x2-route.x1)*.58,platformId:route.id,tier:1});
  g.schedule.sort((a,b)=>a.x-b.x);g.pickups=[2100,4200,6400,8500,11200,13700,15700].map(x=>({x,y:royalGroundAt(x)-30,type:'repair'}));
  for(const p of g.platforms.filter(p=>p.royalKind!=='bridge'))g.pickups.push({x:p.x2-80,y:p.points.at(-1)[1]-30,type:'repair'});
- Object.assign(g.player,{skin:'royal',artScale:royalDepthScaleAt(g.player.x),y:royalGroundAt(g.player.x),supportY:royalGroundAt(g.player.x),supportPose:null});g.royal={atmosphere:createRoyalAtmosphere(),phase:'traverse',seals:0,elapsed:0,checkpoint:180,falls:0};return g;
+ Object.assign(g.player,{skin:'royal',artScale:royalDepthScaleAt(g.player.x),y:royalGroundAt(g.player.x),supportY:royalGroundAt(g.player.x),supportPose:null});g.royal={atmosphere:createRoyalAtmosphere(),phase:'traverse',seals:0,elapsed:0,checkpoint:180,falls:0,finale:null};return g;
 }
 export function advanceRoyalObjective(g,dt){
  advanceRoyalAtmosphere(g,dt);
  if(!(dt>0)||!Number.isFinite(dt)||g.level!==3||g.status!=='playing'||g.introElapsed<g.introDuration||g.duel||g.carrierShutdown)return;
- const r=g.royal,p=g.player;r.elapsed+=dt;p.artScale=royalDepthScaleAt(p.x);
+ const r=g.royal,p=g.player;r.elapsed+=dt;
+ if(r.finale?.active){if(advanceRoyalFinale(r.finale,dt)){r.phase='open';g.status='won';g.progress=1;g.events.push({type:'royal-open',x:p.x,y:p.y});}return;}
+ p.artScale=royalDepthScaleAt(p.x);
  if(p.y>1050){p.hp=Math.max(0,p.hp-10);r.falls++;Object.assign(p,{x:r.checkpoint,y:royalGroundAt(r.checkpoint),vx:0,vy:0,onGround:true,platformId:null,rampId:null,tier:0,obstacleId:null,bossSupport:null,dropThrough:null,supportPose:null,invulnerable:2,turn:null});p.supportY=p.y;clearPlayerWeaponQueue(p);g.projectiles=[];if(!p.hp){g.status='dead';p.knockedOut=true;}return;}
  if(p.onGround&&!p.platformId&&!p.rampId&&p.x>r.checkpoint+1200)r.checkpoint=p.x;
  const shrine=ROYAL_SHRINES[r.seals];
@@ -26,5 +30,5 @@ export function advanceRoyalObjective(g,dt){
   const pending=g.schedule.slice(g.nextSpawn).some(e=>e.royalSeal===r.seals+1),alive=g.enemies.some(e=>e.royalSeal===r.seals+1&&e.hp>0&&!e.neutralized);
   if(!pending&&!alive){r.seals++;r.phase='traverse';g.projectiles=g.projectiles.filter(s=>s.team!=='enemy');g.pickups.push({x:p.x+90,y:royalGroundAt(p.x+90)-30,type:'repair'});g.events.push({type:'royal-seal-open',x:shrine.x,y:royalGroundAt(shrine.x)});}
  }
- if(r.seals===3&&p.x>=17450){r.phase='open';g.status='won';g.progress=1;g.projectiles=[];g.events.push({type:'royal-open',x:p.x,y:p.y});}
+ if(r.seals===3&&p.x>=17450){r.phase='finale';r.finale=createRoyalFinale(p);g.projectiles=[];g.enemies=[];g.schedule=[];g.nextSpawn=0;g.duel=null;g.carrierShutdown=null;g.pendingVictory=false;clearPlayerWeaponQueue(p);cancelMelee(p.melee);Object.assign(p,{vx:0,vy:0,dir:1,turn:null,evasion:null,crouching:false,podCycle:null,muzzle:0,mirvFlash:0,homingFlash:0,damagePose:false});g.events.push({type:'royal-finale-start',x:p.x,y:p.y});}
 }

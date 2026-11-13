@@ -38,10 +38,15 @@ test('Gatling heat feedback retains held fire through cooldown and Striker reloa
  assert.doesNotMatch(main,/\$\('fire-button'\)\.disabled/);
  assert.match(css,/data-state="overheat"/);assert.match(css,/max-height:520px/);
 });
-test('rotary audio cadence is independent of unchanged Striker cadence and resets with restart',()=>{
+test('Gatling uses the supplied continuous loop while Striker keeps its cadence and restart reset',()=>{
  const audio=readFileSync(new URL('../src/audio.js',import.meta.url),'utf8');
- assert.match(audio,/currentTime-lastGatlingShot<1\/15-.001/);
- assert.match(audio,/if\(restart\)\{lastGatlingShot=-Infinity;lastShot=-Infinity/);
+ assert.match(audio,/gatlingLoopPath='\.\/audio\/gatling-brrrt-loop\.ogg'/);
+ assert.match(audio,/function setGatlingFiring\(value\)/);
+ assert.match(audio,/source\.buffer=gatlingBuffer;source\.loop=true/);
+ assert.match(audio,/if\(!playing\|\|restart\)\{stopVoices\(\)/);
+ assert.match(audio,/function stopVoices\(\)\{\s*stopGatlingLoop\(\)/);
+ assert.match(audio,/currentTime-lastShot<\.055/);
+ assert.match(audio,/if\(restart\)\{lastShot=-Infinity/);
  for(const event of ['gatling-shot','gatling-rocket','gatling-overheat','gatling-cooled'])assert.ok(audio.includes(`e.type==='${event}'`));
  assert.match(audio,/burst\(\.12,\.0462875\*1.15\*1.20,900/);
 });
@@ -54,14 +59,14 @@ test('thermal feedback distinguishes a fresh firing budget from residual heat af
   const $=id=>{if(!elements.has(id))elements.set(id,{style:{},dataset:{},attributes:{},classList:{toggle(){}},setAttribute(key,value){this.attributes[key]=value;}});return elements.get(id);};
   vm.runInNewContext(code,{thermal,$,clamp:(v,min,max)=>Math.max(min,Math.min(max,v))});return $;
  }
- const burst=feedback({heat:.8,sustained:4,cooldown:0});
- assert.equal(burst('fire-cooldown').textContent,'1.0 / 5 s');
+ const burst=feedback({heat:.75,sustained:3,cooldown:0});
+ assert.equal(burst('fire-cooldown').textContent,'1.0 / 4 s');
  const released=feedback({heat:.765,sustained:0,cooldown:0});
- assert.equal(released('fire-cooldown').textContent,'5.0 / 5 s');
- assert.match(released('fire-button').attributes['aria-label'],/5.0 secondes avant surchauffe/);
+ assert.equal(released('fire-cooldown').textContent,'4.0 / 4 s');
+ assert.match(released('fire-button').attributes['aria-label'],/4.0 secondes avant surchauffe/);
  assert.equal(released('heat-fill').style.width,'76.5%');
  const resumed=feedback({heat:.02,sustained:.1,cooldown:0});
- assert.equal(resumed('fire-cooldown').textContent,'4.9 / 5 s');
- const cooling=feedback({heat:.8,sustained:0,cooldown:4});
- assert.equal(cooling('fire-cooldown').textContent,'SURCHAUFFE 4.0s');
+ assert.equal(resumed('fire-cooldown').textContent,'3.9 / 4 s');
+ const cooling=feedback({heat:.8,sustained:0,cooldown:5});
+ assert.equal(cooling('fire-cooldown').textContent,'SURCHAUFFE 5.0s');
 });

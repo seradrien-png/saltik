@@ -8,7 +8,7 @@ Les cinq états ci-dessous sont conservés dans des dossiers indépendants, sans
 
 | Jeu / sources | État réel | GitHub Pages après activation | Commit source |
 | --- | --- | --- | --- |
-| [SALTIK V2 — Matin Doré](versions/saltik-main) | Publiée v42 — grande cascade du pont harmonisée | [Jouer](https://saltik-v2-matin-dore.ser-adrien.chatgpt.site) | `ce280f9394d3` |
+| [SALTIK V2 — Matin Doré](versions/saltik-main) | Publiée v44 — paquet allégé sans perte | [Jouer](https://saltik-v2-matin-dore.ser-adrien.chatgpt.site) | `55ba38422ecd` |
 | [SALTIK — Ink Edition publiée](versions/saltik-ink) | Publiée v4 | [Jouer](https://seradrien-png.github.io/saltik/versions/saltik-ink/dist/) | `44110aa2dd80` |
 | [SALTIK INK — brouillon local avec épilogue](versions/autres-versions/saltik-ink-brouillon) | Brouillon local non publié | [Jouer](https://seradrien-png.github.io/saltik/versions/autres-versions/saltik-ink-brouillon/dist/) | `21dcc4ca32c5` |
 | [Feral Steel — Opération Canopée, référence Saltik](versions/autres-versions/saltik-feral-steel) | Publiée v24 | [Jouer](https://seradrien-png.github.io/saltik/versions/autres-versions/saltik-feral-steel/dist/) | `dbc331d0b7a2` |
@@ -170,3 +170,11 @@ Saut revenu à un écartement modéré des pieds, nage lente continue de l’ang
 ### 13 novembre 2026 — grande cascade sous le pont
 
 Référence reçue : grande cascade en gradins sous le pont retravaillée, écoulement continu fondu, filets descendants, écume et brume douce. Or, velours, zones transparentes, illustrations, eau de fond approuvée et gameplay préservés. L’attente de photo de la version précédente est résolue. Version Sites v42 publiée ; source `ce280f9394d382d728673a48c1994a18092e8c58`. Rapport : [bridge-cascade-release.json](bridge-cascade-release.json). Autres éditions et historique préservés.
+
+### 13 novembre 2026 — départ avec l’anguille royale et Gatling A10
+
+Huit poses dessinées de l’anguille royale, passages gigantesques devant les montagnes, course/saut/embarquement et départ à la fin du velours. Ponts solides sans passage sous cascade et rambardes correctement placées. Gatling : boucle A10 fournie, nouvelle voix métallique (Enemy brother / See you later), recul immédiat, chauffe4s/refroidissement5s. Les quatre projections du BT se succèdent et leur cycle est mémorisé entre parties. 793 tests réussis. Assets originaux et autres éditions préservés. Version Sites v43 sauvegardée, publication bloquée côté hébergeur ; v42 reste en ligne. Source `92164be30381ac39bbbce45ffa507aa1d1075310`. Rapport : [royal-finale-gatling-release.json](royal-finale-gatling-release.json). Autres éditions et historique préservés.
+
+### 13 novembre 2026 — audit des assets, publication v44
+
+Le paquet publié de Matin Doré passe de 262 205 327 à 175 976 522 octets (−32,886 %, économie de 86 228 805 octets). Treize illustrations historiques inutilisées sont exclues du seul paquet de publication ; 84 images actives sont compressées en WebP sans perte, dimensions et pixels identiques. Tous les originaux restent dans `versions/saltik-main/dist/`, les huit poses de l’anguille, A10, voix, films et cinq éditions sont préservés. 793 tests passent ; les 12 combinaisons personnage/niveau et l’audio ont été vérifiés dans Chromium. Publication v44 réussie, source `55ba38422ecdb6c438ea14f79a2ea1e76bf63e09`. [Rapport détaillé et liste des exclusions](asset-audit-release.json). Le blocage de publication de v43 est résolu.

@@ -25,7 +25,7 @@ import {createBossBreach,advanceBossBreach,BREACH_PHASE_SECONDS} from './boss-br
 import {selectGuidedTargets,initializeGuidedShot,steerGuidedProjectile} from './guided-navigation.js';
 import {createEnemySaltik,advanceEnemySaltik,SALTIK_GUARD_HP} from './enemy-saltik.js';
 import {enemySaltikGeometry} from './enemy-saltik-art.js';
-import {createSaltikDuel,advanceSaltikDuel} from './saltik-duel.js';
+import {createSaltikDuel,advanceSaltikDuel,nextSaltikDuelVariant} from './saltik-duel.js';
 import {createDroneCarrier,damageDroneCarrier,isCarrierTargetable,advanceDroneCarrier,advanceCarrierDrone} from './drone-carrier.js';
 import {createCarrierShutdown,advanceCarrierShutdown,CARRIER_SHUTDOWN_PHASE_SECONDS} from './carrier-shutdown.js';
 import {inkCarrierGeometry,carrierShutdownPlacement} from './ink-carrier.js';
@@ -166,7 +166,7 @@ function canGrapple(p,e){
 function cancelMirvAim(p){p.mirvAiming=false;p.mirvAimElapsed=0;p.mirvPending=false;p.mirvPrepare=0;p.mirvPrepareFrom=0;p.cannonHold=0;p.cannonReturnFrom=p.cannonElevation;p.cannonReturnElapsed=0;}
 function parkTurret(p){cancelMirvAim(p);p.cannonElevation=0;p.cannonReturnFrom=0;p.cannonReturnElapsed=0;p.turretLift=0;p.turretReturnFrom=0;p.turretReturnElapsed=0;}
 function startDuel(g,e){
-  const p=g.player;parkTurret(p);e.duelStarted=true;g.duel=createSaltikDuel(p,e);
+  const p=g.player;parkTurret(p);e.duelStarted=true;g.duel=createSaltikDuel(p,e,nextSaltikDuelVariant(g));
   g.duel.enemyPodCycle=e.podCycle?structuredClone(e.podCycle):null;
   if(p.podCycle)p.podCycle.pending=[];if(e.podCycle)e.podCycle.pending=[];
   clearPlayerWeaponQueue(p);cancelMelee(p.melee);g.projectiles=[];
@@ -460,7 +460,7 @@ function movePlayer(g,input,dt){
   p.crouching=!!input.crouch&&p.onGround&&!jumpNow;p.h=(p.crouching?30:54)*PLAYER_COLLISION_SCALE;
   const move=firingLock?0:(input.right?1:0)-(input.left?1:0);p.turn??=createTachikomaTurn(p.dir);
   p.vx=move*(p.crouching?100:230);if(move)p.dir=move;advanceTachikomaTurn(p.turn,p.dir,dt);
-  if(firingLock){const streak=p.gatling.sustained;p.vx=-p.dir*12*Math.max(0,Math.min(dt,streak+dt-2))/dt;}
+  if(firingLock)p.vx=-p.dir*12;
   const dropping=!firingLock&&input.drop&&!g.dropHeld&&p.onGround&&(p.platformId||p.bossSupport||p.rampId);
   if(dropping){p.dropThrough=p.rampId||p.platformId||`boss:${p.bossSupport}`;p.rampId=null;p.platformId=null;p.bossSupport=null;p.onGround=false;p.vy=45;emit(g,'drop',p.x,p.y);}
   // Original immediate jump response; canyon gravity/apex retain all 3 routes.

@@ -1,0 +1,51 @@
+{
+  "loop": {
+    "original": "audio-sources/A10_BRRRT_boucle.wav",
+    "original_sha256": "f6778dd1ec910a3dbaa24c045ea4559cbf25c8dcdfed19e49a691938f391eba0",
+    "asset": "dist/audio/gatling-brrrt-loop.ogg",
+    "asset_sha256": "e40f137f274197666f59fe0a685609677f01bdcb7252e5408d718e0e62f63794",
+    "conversion": "Full original 3.2 s stereo 48000 Hz; Ogg Vorbis quality 5; no trim/fades/pitch changes"
+  },
+  "voice": {
+    "provider": "Local FFmpeg libflite",
+    "speaker": "rms (male); original uses slt (female)",
+    "method": "All seven phrases synthesized anew from text. Highpass/lowpass, short metallic echo and 45 Hz tremolo; no old clip input or browser TTS. Local Ogg Vorbis mono 44100 Hz.",
+    "clips": [
+      {
+        "path": "dist/audio/voices/gatling-ready.ogg",
+        "text": "Gatling online.",
+        "sha256": "9bd38b943bdc216b454bbd7676b7ea6d3b74f0b8099502e54126bd1003e49064"
+      },
+      {
+        "path": "dist/audio/voices/gatling-target-lock.ogg",
+        "text": "Target lock!",
+        "sha256": "81e079e47f273c4c0e3244ade248afd32522dab6aa9f6fb7017d9a7e3fc11868"
+      },
+      {
+        "path": "dist/audio/voices/gatling-enemy-brother.ogg",
+        "text": "Enemy brother",
+        "sha256": "69acb840a22a4704340aa952a9a68a31db0872f2b1ec1df1236a622c8513bd5b"
+      },
+      {
+        "path": "dist/audio/voices/gatling-grab-him.ogg",
+        "text": "Grab him!",
+        "sha256": "811b5a898be31e7df0ec6b30fc6fd1ede7f99c08cdd2aab8a983fa7b3d837d0f"
+      },
+      {
+        "path": "dist/audio/voices/gatling-see-you-later.ogg",
+        "text": "See you later",
+        "sha256": "acfb535d2266f4625a4ea02099ef1b68c7d5e7f47a4c6d47ea2efe5c210f83de"
+      },
+      {
+        "path": "dist/audio/voices/gatling-carrier.ogg",
+        "text": "Saltik don't kill Saltik",
+        "sha256": "0ac7805f73893e9258f9b289f79462c531411942631e820863490b777153721c"
+      },
+      {
+        "path": "dist/audio/voices/gatling-victory.ogg",
+        "text": "Victory!",
+        "sha256": "0ebac1625aacbf282b765129760d09e9101f9d061c14121613110553cf5a72a1"
+      }
+    ]
+  }
+}

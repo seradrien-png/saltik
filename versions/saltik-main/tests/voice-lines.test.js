@@ -90,8 +90,8 @@ test('carrier unplug queues its exact new line while carrier damage stays silent
   assert.equal(audio.speechSnapshot.playing,null,'resume cannot replay the canceled unplug line');
 }));
 
-test('all seven local voice paths resolve to Ogg clips and all six retained clips stay exact',()=>{
-  assert.equal(Object.keys(VOICE_PATHS).length,7);
+test('all fourteen local voice paths resolve to Ogg clips and all six retained clips stay exact',()=>{
+  assert.equal(Object.keys(VOICE_PATHS).length,14);
   const retained={
     ready:'2f482c0351696b134451db76c36a6cd942039405f8543aa82f236c923cbda85a',
     goodbye:'1317bddb5e3f67fa5d00f73b2183f321f3d270eded83f443fc852aaa4f35c444',
@@ -218,9 +218,50 @@ test('subtitle callbacks follow actual queued clips and clear immediately on pau
 
 test('BT and Gatling have distinct queued voice tones and captions follow actual playback duration',async()=>{
  const {createVoiceLines,VOICE_PROFILES}=await import('../src/voice-lines.js');
- assert(VOICE_PROFILES.bt.rate<1);assert(VOICE_PROFILES.gatling.rate>1);
+ assert(VOICE_PROFILES.bt.rate<1);assert.equal(VOICE_PROFILES.gatling.rate,1);
  const oldWindow=globalThis.window,sources=[],starts=[];
  globalThis.window={fetch:async()=>({ok:true,arrayBuffer:async()=>new ArrayBuffer(2)})};
  const ctx={decodeAudioData:async()=>({duration:1}),createBufferSource(){const s={playbackRate:{value:1},connect(){},start(){},stop(){}};sources.push(s);return s;},createBiquadFilter(){return{frequency:{value:0},connect(){}};}};
- try{const voice=createVoiceLines(ctx,{},duration=>starts.push(duration));voice.enqueue('ready','bt');voice.enqueue('goodbye','gatling');await settle();assert.equal(sources[0].playbackRate.value,.84);assert(Math.abs(starts[0]-1/.84)<1e-9);assert.equal(voice.snapshot().character,'bt');sources[0].onended();await settle();assert.equal(sources[1].playbackRate.value,1.13);assert.equal(voice.snapshot().character,'gatling');voice.cancel();}finally{if(oldWindow===undefined)delete globalThis.window;else globalThis.window=oldWindow;}
+ try{const voice=createVoiceLines(ctx,{},duration=>starts.push(duration));voice.enqueue('ready','bt');voice.enqueue('goodbye','gatling');await settle();assert.equal(sources[0].playbackRate.value,.84);assert(Math.abs(starts[0]-1/.84)<1e-9);assert.equal(voice.snapshot().character,'bt');sources[0].onended();await settle();assert.equal(sources[1].playbackRate.value,1);assert.equal(voice.snapshot().character,'gatling');voice.cancel();}finally{if(oldWindow===undefined)delete globalThis.window;else globalThis.window=oldWindow;}
+});
+
+test('Gatling selects new local recordings and exact replacement phrases without changing Striker or BT',async()=>withAudio(async f=>{
+ const audio=createAudio();audio.setPlaying(true);audio.setCharacter('gatling');audio.unlock();
+ for(const type of ['start','homing','saltik-detected','saltik-grab-ready','duel-throw','carrier-disconnected','won'])audio.play({type});
+ await settle();
+ const ids=['gatling-ready','gatling-target-lock','gatling-enemy-brother','gatling-grab-him','gatling-see-you-later','gatling-carrier','gatling-victory'];
+ for(let i=0;i<ids.length;i++){
+  assert.equal(audio.speechSnapshot.playing,ids[i]);
+  assert.equal(f.requests[i],VOICE_PATHS[ids[i]]);
+  f.voiceSources[i].finish();await settle();
+ }
+ audio.setCharacter('bt');audio.play({type:'saltik-detected'});await settle();
+ assert.equal(audio.speechSnapshot.playing,'saltik-detected');
+ audio.setPlaying(false);audio.setPlaying(true);audio.setCharacter('striker');audio.play({type:'duel-throw'});await settle();
+ assert.equal(audio.speechSnapshot.playing,'goodbye');
+}));
+
+test('supplied Gatling loop starts once, replaces bullet synthesis, and stops on every lifecycle boundary',async()=>withAudio(async f=>{
+ const audio=createAudio();audio.setPlaying(true);audio.setCharacter('gatling');audio.unlock();
+ audio.setGatlingFiring(true);await settle();
+ assert.deepEqual(f.requests,['./audio/gatling-brrrt-loop.ogg']);
+ assert.equal(audio.gatlingSnapshot.playing,true);assert.equal(f.sources[0].loop,true);
+ const count=f.sources.length;for(let i=0;i<30;i++){audio.play({type:'gatling-shot'});audio.setGatlingFiring(true);}
+ assert.equal(f.sources.length,count,'no per-bullet synthetic sources or duplicate loops');
+ for(const stop of [()=>audio.setGatlingFiring(false),()=>audio.play({type:'gatling-overheat'}),()=>audio.setPlaying(false),()=>audio.setEnabled(false),()=>audio.setCharacter('bt')]){
+  audio.setEnabled(true);audio.setPlaying(true);audio.setCharacter('gatling');audio.setGatlingFiring(true);await settle();
+  const current=f.sources.findLast(s=>s.loop&&s.started&&!s.stopped);assert.ok(current);
+  stop();assert.equal(current.stopped,true);assert.equal(audio.gatlingSnapshot.playing,false);
+ }
+ assert.equal(f.requests.length,1,'decoded loop is reused across fresh firing actions');
+}));
+
+test('releasing while the Gatling sample decodes prevents late playback',async()=>{
+ let resolveLoop;
+ await withAudio(async f=>{
+  const audio=createAudio();audio.setPlaying(true);audio.unlock();audio.setGatlingFiring(true);
+  audio.setGatlingFiring(false);resolveLoop({ok:true,arrayBuffer:async()=>new ArrayBuffer(4)});await settle();
+  assert.equal(audio.gatlingSnapshot.playing,false);assert.equal(f.sources.length,0);
+  audio.setGatlingFiring(true);assert.equal(audio.gatlingSnapshot.playing,true);
+ },{fetchResult:()=>new Promise(resolve=>resolveLoop=resolve)});
 });

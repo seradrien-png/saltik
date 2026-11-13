@@ -422,3 +422,5 @@ kbd{display:inline-flex;align-items:center;justify-content:center;min-width:19px
  .character-picker{margin-bottom:3px}.skin-picker{margin-bottom:3px}.level-picker{margin-bottom:4px}
  .title-content .start-meta{display:none}
 }
+
+#app[data-cinematic=royal-finale] #hud,#app[data-cinematic=royal-finale] #controls,#app[data-cinematic=royal-finale] #boss-hud{visibility:hidden;pointer-events:none}
