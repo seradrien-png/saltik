@@ -8,7 +8,7 @@ Les cinq états ci-dessous sont conservés dans des dossiers indépendants, sans
 
 | Jeu / sources | État réel | GitHub Pages après activation | Commit source |
 | --- | --- | --- | --- |
-| [SALTIK V2 — Matin Doré](versions/saltik-main) | Publiée v47 — décors détaillés et départ en POV | [Jouer](https://saltik-v2-matin-dore.ser-adrien.chatgpt.site) | `056e258c3df3` |
+| [SALTIK V2 — Matin Doré](versions/saltik-main) | Publiée v48 — nouveau Dragon Velours | [Jouer](https://saltik-v2-matin-dore.ser-adrien.chatgpt.site) | `c8d50097cdd9` |
 | [SALTIK — Ink Edition publiée](versions/saltik-ink) | Publiée v4 | [Jouer](https://seradrien-png.github.io/saltik/versions/saltik-ink/dist/) | `44110aa2dd80` |
 | [SALTIK INK — brouillon local avec épilogue](versions/autres-versions/saltik-ink-brouillon) | Brouillon local non publié | [Jouer](https://seradrien-png.github.io/saltik/versions/autres-versions/saltik-ink-brouillon/dist/) | `21dcc4ca32c5` |
 | [Feral Steel — Opération Canopée, référence Saltik](versions/autres-versions/saltik-feral-steel) | Publiée v24 | [Jouer](https://seradrien-png.github.io/saltik/versions/autres-versions/saltik-feral-steel/dist/) | `dbc331d0b7a2` |
@@ -191,3 +191,8 @@ Les sept OGG du kit utilisateur sont intégrés sans réencodage : départ uniqu
 ### 14 novembre 2026 — décors détaillés, Striker enregistré et départ en POV (v47)
 
 Dix-sept modules redessinés à partir des références : douze gagnent en définition native et cinq déjà grands reçoivent de nouveaux détails. Premier plan décoratif du velours retiré, semelles raccordées au terrain, embarquement continu puis courte vue subjective sur le dos de l’anguille. Canon Abrams, mortier M327 et missile TOW enregistrés ; sifflement de chute d’archives cinématographiques. Sources CC0 documentées. Physique, dégâts, voix, A10, huit poses et ressources originales préservés. 838 tests passent et les quatre mondes ont été contrôlés dans Chromium. Publication v47 réussie, source `056e258c3df31f5bfb975aa1688b5eda37c5e912`. V46 préservée sur GitHub dans `583761bcbcbe8152cde62bce3280385ce7dd8cb3`. [Rapport et preuves](world-detail-boarding-release.json). Cinq éditions et historique conservés.
+
+
+### 14 novembre 2026 — nouveau Dragon Velours (v48)
+
+Le seul Striker Dragon des Jardins de velours reprend la référence utilisateur : velours émeraude, dragon et nuages brodés dorés, panneaux rouges et pompons, visage crème. Illustration native et trois vues de retournement séparées, raccords de pince/suspension/canon adaptés et aperçu de sélection actualisé. Taille et gameplay identiques ; autres skins et niveaux préservés, dix-neuf autres aperçus identiques. 838 tests réussis ; contrôles Chromium des deux sens, trois perspectives, accroupissement, saut et élévation du canon sans erreur JavaScript. Origines et cinq éditions conservées ; v47 disponible dans le parent GitHub 90b6da5cf6bb3feee2420da88368f31c6a61da72. Publication v48 réussie, source `c8d50097cdd9a1846310c087b7a522baa0a15efe`. [Rapport](dragon-velvet-release.json).

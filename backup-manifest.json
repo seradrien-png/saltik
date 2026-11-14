@@ -7,15 +7,15 @@
       "slug": "saltik-main",
       "repo": "saltik-v2-matin-dore",
       "title": "SALTIK V2 \u2014 Matin Dor\u00e9",
-      "commit": "056e258c3df31f5bfb975aa1688b5eda37c5e912",
-      "published_version": 47,
+      "commit": "c8d50097cdd9a1846310c087b7a522baa0a15efe",
+      "published_version": 48,
       "url": "https://saltik-v2-matin-dore.ser-adrien.chatgpt.site",
       "base_commit": "ce280f9394d382d728673a48c1994a18092e8c58",
       "source_path": "/workspace/sites/saltik-v2-matin-dore",
       "export_path": "versions/saltik-main",
       "web_entry": "versions/saltik-main/dist/index.html",
-      "file_count": 789,
-      "bytes": 351210787,
+      "file_count": 793,
+      "bytes": 354681060,
       "uncommitted_changes": "",
       "files": {
         ".gitignore": {
@@ -89,6 +89,14 @@
         "dist/assets/dragon-turn-material.png": {
           "sha256": "f0f8d2b0178a0c9cb7481d0b6effa7ff04bbedd7bea2603f95afa86001861280",
           "size": 2281528
+        },
+        "dist/assets/dragon-velvet-body.png": {
+          "sha256": "3017ec77897d37ff8fdaa3392af389602c5a8b68eb14c0644c843a3b01b4283b",
+          "size": 910203
+        },
+        "dist/assets/dragon-velvet-turn.png": {
+          "sha256": "ba7744a3f16bdbc4e8442fe94d141c6bd7f0b806e80dc7b7d349213cff1a5845",
+          "size": 2537879
         },
         "dist/assets/gatling-lunar-material.png": {
           "sha256": "c6d6b2bc5f9d66ff5cddb790f19862d5d3b9bfcebaa026ffd74b6eaf6d61c9ce",
@@ -743,8 +751,8 @@
           "size": 206594
         },
         "dist/menu/level3-striker-dragon.webp": {
-          "sha256": "da428e262f0ce41d8720bf854db5af345210d0b121b2f28ed0d323c63ded2b72",
-          "size": 227842
+          "sha256": "693dc1747f0b9e888452a9a68d0e49dbe62863c2058908d50ecde318736f8482",
+          "size": 242180
         },
         "dist/menu/level4-bt-default.webp": {
           "sha256": "d7677c56f97f007c55c667d00bfe17e579eecdfad42220d8e356d66a6a75d85c",
@@ -963,8 +971,8 @@
           "size": 5484
         },
         "dist/src/ink-renderer.js": {
-          "sha256": "d44730cbe386455af17f68eeea84cf4f213fdcc153460de1ce56be683cc07dea",
-          "size": 22864
+          "sha256": "18c5a36591e59b8722ce0640ec3aa657246dc7d8a9d8aa97751dd16ca4075a1f",
+          "size": 22906
         },
         "dist/src/ink-saltik.js": {
           "sha256": "ba15550e74f822e3897a3929289ebb1559b4c5b15e5f7be155d8ce1e42f03cb2",
@@ -1059,8 +1067,8 @@
           "size": 1708
         },
         "dist/src/modern-striker-art.js": {
-          "sha256": "8a93837144c3ebdf40905e081b3d9267e2fd40732bf03b84b9ac94a15ca78d37",
-          "size": 8324
+          "sha256": "1d6b4f6c45dec4422378922277be4affd75070afd792233d765d3e23d18daaa2",
+          "size": 9148
         },
         "dist/src/motor-motion.js": {
           "sha256": "4cd5f7608a358e829486fb3044179c75876304c3623a922a6fb701055a468691",
@@ -1083,8 +1091,8 @@
           "size": 2720
         },
         "dist/src/player-skins.js": {
-          "sha256": "2efbf738b10b826738a011f2ff8b32e8bcced80e4d7281273a59dad83112f5a0",
-          "size": 4313
+          "sha256": "e311d6c31538039dac9dc31069cd7e0809ebfde4d8e68b4e3ea511ed71d4291c",
+          "size": 4792
         },
         "dist/src/real-weapon-paths.js": {
           "sha256": "8289d47ac98da6236b07a2e4fa8e850ea88a5963fb09dd24ec0603224b33764d",
@@ -1237,6 +1245,14 @@
         "docs/desert-art.md": {
           "sha256": "258f8617d751b1a91eefe4be6bec0b72652ccf3078178c2f56d6fa80659fcfa7",
           "size": 1668
+        },
+        "docs/dragon-velvet-reference.md": {
+          "sha256": "0c797e1f660ec3a2d5bca827ad9f7f964362c23f5e75dcc6729c451176af1546",
+          "size": 1791
+        },
+        "docs/dragon-velvet-validation.json": {
+          "sha256": "fa1a48a391917a34014a5b7357b6536d39daf53fe997c4a30037f7b63b7bf0fb",
+          "size": 3372
         },
         "docs/epilogue/README.md": {
           "sha256": "f111bb2b4bbd03fc55432a40d8d4755288a5a33e4e3cbd9b8d7ee107b6d5354f",
@@ -2239,8 +2255,8 @@
           "size": 5484
         },
         "src/ink-renderer.js": {
-          "sha256": "d44730cbe386455af17f68eeea84cf4f213fdcc153460de1ce56be683cc07dea",
-          "size": 22864
+          "sha256": "18c5a36591e59b8722ce0640ec3aa657246dc7d8a9d8aa97751dd16ca4075a1f",
+          "size": 22906
         },
         "src/ink-saltik.js": {
           "sha256": "ba15550e74f822e3897a3929289ebb1559b4c5b15e5f7be155d8ce1e42f03cb2",
@@ -2335,8 +2351,8 @@
           "size": 1708
         },
         "src/modern-striker-art.js": {
-          "sha256": "8a93837144c3ebdf40905e081b3d9267e2fd40732bf03b84b9ac94a15ca78d37",
-          "size": 8324
+          "sha256": "1d6b4f6c45dec4422378922277be4affd75070afd792233d765d3e23d18daaa2",
+          "size": 9148
         },
         "src/motor-motion.js": {
           "sha256": "4cd5f7608a358e829486fb3044179c75876304c3623a922a6fb701055a468691",
@@ -2359,8 +2375,8 @@
           "size": 2720
         },
         "src/player-skins.js": {
-          "sha256": "2efbf738b10b826738a011f2ff8b32e8bcced80e4d7281273a59dad83112f5a0",
-          "size": 4313
+          "sha256": "e311d6c31538039dac9dc31069cd7e0809ebfde4d8e68b4e3ea511ed71d4291c",
+          "size": 4792
         },
         "src/real-weapon-paths.js": {
           "sha256": "8289d47ac98da6236b07a2e4fa8e850ea88a5963fb09dd24ec0603224b33764d",
@@ -3186,12 +3202,12 @@
           "duration_native_run_seconds": 82.0166666666633
         }
       ],
-      "update_note": "17 native redrawn modules, clear Velours foreground and grounded structures; real recorded Striker weapon audio and archival falling whistle; continuous eel boarding with brief POV ride.",
-      "published_source_commit": "056e258c3df31f5bfb975aa1688b5eda37c5e912",
+      "update_note": "Only level3 Dragon Striker uses the new emerald velvet/red/gold reference skin; three native turn views and one menu portrait updated. Draw masks registered for crouch, cannon and jump; other missions, skins and gameplay retained.",
+      "published_source_commit": "c8d50097cdd9a1846310c087b7a522baa0a15efe",
       "publication_status": "Published and verified",
       "github_import_base": "4c9b8e64bf3232c222f9b6f534ca37d660da3f7b",
-      "live_published_version": 47,
-      "last_confirmed_saved_version": 47
+      "live_published_version": 48,
+      "last_confirmed_saved_version": 48
     },
     {
       "slug": "saltik-ink",
@@ -7558,6 +7574,6 @@
   "github_repository": "seradrien-png/saltik",
   "preserved_github_parent": "a2658100e8259a69c772a6dd4cfbfcdb833f1221",
   "github_backup_commit": "55e0af78812ba737a6758403be9c2993ef2fa903",
-  "latest_main_source_commit": "056e258c3df31f5bfb975aa1688b5eda37c5e912",
+  "latest_main_source_commit": "c8d50097cdd9a1846310c087b7a522baa0a15efe",
   "history_note": "Source bundles preserve the initial backup capture. Subsequent project updates are preserved by commits of this GitHub repository."
 }

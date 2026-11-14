@@ -27,6 +27,13 @@ export function prepareModernStriker(images){
   const dragonBody=document.createElement('canvas');dragonBody.width=dragonBody.height=724;dragonBody.getContext('2d').drawImage(dragonAtlas,costume*724,16,724,697,0,17,724,689);
   images[`modern-striker-dragon-${level}`]=missionSurface(dragonBody,level===4?4:1);
   images[`modern-striker-dragon-turn-${level}`]=missionSurface(dragonTurn,level);
+  // The embroidered emerald/red costume is exclusive to the Velvet Dragon.
+  // Its registered native sheet uses the same rig, anchor and gameplay scale.
+  if(level===3){
+   images['modern-striker-dragon-3']=images['dragon-velvet-body']??images['modern-striker-dragon-3'];
+   if(images['dragon-velvet-body'])images['dragon-velvet-body'].velvetDragonCutout=true;
+   images['modern-striker-dragon-turn-3']=images['dragon-velvet-turn']??images['modern-striker-dragon-turn-3'];
+  }
  }
 }
 export function preparePlayerSkins(images){

@@ -1,0 +1,244 @@
+{
+  "tests": {
+    "passed": 838,
+    "failed": 0
+  },
+  "browser": {
+    "body_four_levels_eight_skins": [
+      {
+        "model": "modern-striker",
+        "scale": 1,
+        "modern": true,
+        "feet": [
+          520,
+          520,
+          520
+        ],
+        "muzzle": {
+          "x": 444.7866473149492,
+          "y": 253.37010159651663
+        },
+        "cannon": {
+          "x": 496.3570391872279,
+          "y": 218.2583454281567
+        }
+      },
+      {
+        "model": "modern-striker",
+        "scale": 1,
+        "modern": true,
+        "feet": [
+          520,
+          520,
+          520
+        ],
+        "muzzle": {
+          "x": 444.7866473149492,
+          "y": 253.37010159651663
+        },
+        "cannon": {
+          "x": 496.3570391872279,
+          "y": 218.2583454281567
+        }
+      },
+      {
+        "model": "modern-striker",
+        "scale": 1,
+        "modern": true,
+        "feet": [
+          520,
+          520,
+          520
+        ],
+        "muzzle": {
+          "x": 444.7866473149492,
+          "y": 253.37010159651663
+        },
+        "cannon": {
+          "x": 496.3570391872279,
+          "y": 218.2583454281567
+        }
+      },
+      {
+        "model": "modern-striker",
+        "scale": 1,
+        "modern": true,
+        "feet": [
+          520,
+          520,
+          520
+        ],
+        "muzzle": {
+          "x": 444.7866473149492,
+          "y": 253.37010159651663
+        },
+        "cannon": {
+          "x": 496.3570391872279,
+          "y": 218.2583454281567
+        }
+      },
+      {
+        "model": "modern-striker",
+        "scale": 1,
+        "modern": true,
+        "feet": [
+          520,
+          520,
+          520
+        ],
+        "muzzle": {
+          "x": 444.7866473149492,
+          "y": 253.37010159651663
+        },
+        "cannon": {
+          "x": 496.3570391872279,
+          "y": 218.2583454281567
+        }
+      },
+      {
+        "model": "modern-striker",
+        "scale": 1,
+        "modern": true,
+        "feet": [
+          520,
+          520,
+          520
+        ],
+        "muzzle": {
+          "x": 444.7866473149492,
+          "y": 253.37010159651663
+        },
+        "cannon": {
+          "x": 496.3570391872279,
+          "y": 218.2583454281567
+        }
+      },
+      {
+        "model": "modern-striker",
+        "scale": 1,
+        "modern": true,
+        "feet": [
+          520,
+          520,
+          520
+        ],
+        "muzzle": {
+          "x": 444.7866473149492,
+          "y": 253.37010159651663
+        },
+        "cannon": {
+          "x": 496.3570391872279,
+          "y": 218.2583454281567
+        }
+      },
+      {
+        "model": "modern-striker",
+        "scale": 1,
+        "modern": true,
+        "feet": [
+          520,
+          520,
+          520
+        ],
+        "muzzle": {
+          "x": 444.7866473149492,
+          "y": 253.37010159651663
+        },
+        "cannon": {
+          "x": 496.3570391872279,
+          "y": 218.2583454281567
+        }
+      }
+    ],
+    "native_turn_views": 9,
+    "crouch_and_mirv": true,
+    "live_controls": true,
+    "errors": []
+  },
+  "jump_visual_checked": true,
+  "scope": "Only level3 Striker Dragon; 19 other menu portraits unchanged; existing art, audio, physics and damage preserved.",
+  "previous_github_backup": "90b6da5cf6bb3feee2420da88368f31c6a61da72",
+  "publication": {
+    "version": {
+      "id": "appgprj_6ae77e1b6da081918600675fc2e2b738~appgver_46f3426435bc8191ab102940f5a0083c",
+      "project_id": "appgprj_6ae77e1b6da081918600675fc2e2b738",
+      "version_number": 48,
+      "source": {
+        "commit_sha": "c8d50097cdd9a1846310c087b7a522baa0a15efe"
+      },
+      "archive_storage": {
+        "archive_format": "tar",
+        "sediment_file_id": "file_000000001058820aace8217062b67538",
+        "content_hash": "sha256:80a635029936fb396e259eb82039e0248aa21dd9ac09f39c94caaa882b8f23d4",
+        "size_bytes": 231055360,
+        "file_count": 283
+      },
+      "screenshot_url": null,
+      "deployment_id": null
+    },
+    "deployment": {
+      "id": "appgdep_6af811e4485c81919f687a8fe7c58bc7",
+      "project_id": "appgprj_6ae77e1b6da081918600675fc2e2b738",
+      "title": "SALTIK V2 \u2014 Matin Dor\u00e9",
+      "version_id": "appgprj_6ae77e1b6da081918600675fc2e2b738~appgver_46f3426435bc8191ab102940f5a0083c",
+      "type": "publish",
+      "status": "succeeded",
+      "url": "https://saltik-v2-matin-dore.ser-adrien.chatgpt.site",
+      "has_mcp": false,
+      "screenshot_asset_pointer": null,
+      "provider_deployment_id": "site---6ae77e1b6da081918600675fc2e2b738",
+      "failure_message": null,
+      "env_set_revision": 0,
+      "updated_at": "2026-11-14T07:47:02.225569+00:00"
+    }
+  },
+  "source_commit": "c8d50097cdd9a1846310c087b7a522baa0a15efe",
+  "package": {
+    "before_bytes": 339059632,
+    "after_bytes": 230828219,
+    "reduction_percent": 31.921,
+    "originals_retained": true
+  },
+  "public_resources": {
+    "url": "https://saltik-v2-matin-dore.ser-adrien.chatgpt.site",
+    "files": [
+      {
+        "path": "src/player-skins.js",
+        "status": 200,
+        "bytes": 4792,
+        "matches": true
+      },
+      {
+        "path": "src/modern-striker-art.js",
+        "status": 200,
+        "bytes": 9148,
+        "matches": true
+      },
+      {
+        "path": "src/ink-renderer.js",
+        "status": 200,
+        "bytes": 29089,
+        "matches": true
+      },
+      {
+        "path": "assets/dragon-velvet-body.webp",
+        "status": 200,
+        "bytes": 747728,
+        "matches": true
+      },
+      {
+        "path": "assets/dragon-velvet-turn.webp",
+        "status": 200,
+        "bytes": 2153546,
+        "matches": true
+      },
+      {
+        "path": "menu/level3-striker-dragon.webp",
+        "status": 200,
+        "bytes": 242180,
+        "matches": true
+      }
+    ],
+    "passed": true
+  }
+}

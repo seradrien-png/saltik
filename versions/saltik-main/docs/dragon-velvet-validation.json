@@ -1,0 +1,161 @@
+{
+  "tests": {
+    "passed": 838,
+    "failed": 0
+  },
+  "browser": {
+    "body_four_levels_eight_skins": [
+      {
+        "model": "modern-striker",
+        "scale": 1,
+        "modern": true,
+        "feet": [
+          520,
+          520,
+          520
+        ],
+        "muzzle": {
+          "x": 444.7866473149492,
+          "y": 253.37010159651663
+        },
+        "cannon": {
+          "x": 496.3570391872279,
+          "y": 218.2583454281567
+        }
+      },
+      {
+        "model": "modern-striker",
+        "scale": 1,
+        "modern": true,
+        "feet": [
+          520,
+          520,
+          520
+        ],
+        "muzzle": {
+          "x": 444.7866473149492,
+          "y": 253.37010159651663
+        },
+        "cannon": {
+          "x": 496.3570391872279,
+          "y": 218.2583454281567
+        }
+      },
+      {
+        "model": "modern-striker",
+        "scale": 1,
+        "modern": true,
+        "feet": [
+          520,
+          520,
+          520
+        ],
+        "muzzle": {
+          "x": 444.7866473149492,
+          "y": 253.37010159651663
+        },
+        "cannon": {
+          "x": 496.3570391872279,
+          "y": 218.2583454281567
+        }
+      },
+      {
+        "model": "modern-striker",
+        "scale": 1,
+        "modern": true,
+        "feet": [
+          520,
+          520,
+          520
+        ],
+        "muzzle": {
+          "x": 444.7866473149492,
+          "y": 253.37010159651663
+        },
+        "cannon": {
+          "x": 496.3570391872279,
+          "y": 218.2583454281567
+        }
+      },
+      {
+        "model": "modern-striker",
+        "scale": 1,
+        "modern": true,
+        "feet": [
+          520,
+          520,
+          520
+        ],
+        "muzzle": {
+          "x": 444.7866473149492,
+          "y": 253.37010159651663
+        },
+        "cannon": {
+          "x": 496.3570391872279,
+          "y": 218.2583454281567
+        }
+      },
+      {
+        "model": "modern-striker",
+        "scale": 1,
+        "modern": true,
+        "feet": [
+          520,
+          520,
+          520
+        ],
+        "muzzle": {
+          "x": 444.7866473149492,
+          "y": 253.37010159651663
+        },
+        "cannon": {
+          "x": 496.3570391872279,
+          "y": 218.2583454281567
+        }
+      },
+      {
+        "model": "modern-striker",
+        "scale": 1,
+        "modern": true,
+        "feet": [
+          520,
+          520,
+          520
+        ],
+        "muzzle": {
+          "x": 444.7866473149492,
+          "y": 253.37010159651663
+        },
+        "cannon": {
+          "x": 496.3570391872279,
+          "y": 218.2583454281567
+        }
+      },
+      {
+        "model": "modern-striker",
+        "scale": 1,
+        "modern": true,
+        "feet": [
+          520,
+          520,
+          520
+        ],
+        "muzzle": {
+          "x": 444.7866473149492,
+          "y": 253.37010159651663
+        },
+        "cannon": {
+          "x": 496.3570391872279,
+          "y": 218.2583454281567
+        }
+      }
+    ],
+    "native_turn_views": 9,
+    "crouch_and_mirv": true,
+    "live_controls": true,
+    "errors": []
+  },
+  "jump_visual_checked": true,
+  "scope": "Only level3 Striker Dragon; 19 other menu portraits unchanged; existing art, audio, physics and damage preserved.",
+  "previous_github_backup": "90b6da5cf6bb3feee2420da88368f31c6a61da72"
+}
