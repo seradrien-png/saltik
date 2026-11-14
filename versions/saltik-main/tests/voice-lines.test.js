@@ -28,7 +28,7 @@ async function withAudio(run,{fetchResult}={}){
   }
   const media={paused:true,play(){this.paused=false;return Promise.resolve();},pause(){this.paused=true;}};
   globalThis.window={AudioContext,fetch:(url)=>{
-    requests.push(url);
+    if(!url.includes('/audio/mirv/'))requests.push(url);
     return fetchResult?.(url)??Promise.resolve({ok:true,arrayBuffer:()=>Promise.resolve(new ArrayBuffer(4))});
   }};
   globalThis.document={getElementById:()=>media};

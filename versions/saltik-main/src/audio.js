@@ -1,8 +1,10 @@
 const VOICE_PROFILES_SAFE=value=>['bt','gatling'].includes(value)?value:'striker';
 import {createVoiceLines,VOICE_EVENTS} from './voice-lines.js';
+import {createMirvAudio} from './mirv-audio.js';
 
 export function createAudio({onSpeech=()=>{}}={}){
   let ctx=null,master=null,output=null,musicBus=null,enabled=true,noise=null,lastShot=-Infinity;
+  let mirv=null;
   let gatlingLoop=null,gatlingBuffer=null,gatlingLoading=null,gatlingWanted=false,gatlingFailed=false;
   const gatlingLoopPath='./audio/gatling-brrrt-loop.ogg';
   let lastEnemyShot=-Infinity,lastExplosion=-Infinity,lastVolley=-Infinity;
@@ -46,6 +48,7 @@ export function createAudio({onSpeech=()=>{}}={}){
     if(restart){lastShot=-Infinity;lastEnemyShot=-Infinity;lastExplosion=-Infinity;lastVolley=-Infinity;}
     if(restart&&music){music.pause();try{music.currentTime=0;}catch{}}
     syncMusic();
+    mirv?.setActive(playing&&enabled&&character==='striker');
   }
   function unlock(){
     if(!enabled)return;syncMusic();
@@ -53,6 +56,7 @@ export function createAudio({onSpeech=()=>{}}={}){
       if(!ctx){
         ctx=new (window.AudioContext||window.webkitAudioContext)();
         master=ctx.createGain();master.gain.value=.80;
+        mirv=createMirvAudio(ctx,master);mirv.setActive(playing&&enabled&&character==='striker');void mirv.preload();
         const limiter=ctx.createDynamicsCompressor();
         limiter.threshold.value=-7;limiter.knee.value=6;limiter.ratio.value=16;
         limiter.attack.value=.003;limiter.release.value=.18;
@@ -100,6 +104,7 @@ export function createAudio({onSpeech=()=>{}}={}){
   }
   function stopVoices(){
     stopGatlingLoop();
+    mirv?.setActive(false);
     if(!ctx)return;
     for(const source of voices)try{source.stop(ctx.currentTime);}catch{}
     voices.clear();
@@ -136,6 +141,8 @@ export function createAudio({onSpeech=()=>{}}={}){
   }
   function play(e){
     if(!ctx||!enabled||(!effectsActive&&e.type!=='won'))return;
+    if(e.type.startsWith('mirv-')){mirv?.play(e);return;}
+    if(e.mirvAudio)return;
     const line=VOICE_EVENTS[e.type];if(line)speech?.enqueue(line,e.character??character);
     if(e.type==='gatling-shot'){
       // Continuous firing is synchronized to combat state, never to individual bullets.
@@ -283,7 +290,8 @@ export function createAudio({onSpeech=()=>{}}={}){
     else if(e.type==='start'){tone(220,660,.4,.18,'triangle');}
     else if(e.type==='won'){tone(330,660,.5,.22,'triangle',0,true);tone(440,880,.6,.18,'triangle',.18,true);}
   }
-  return {unlock,play,setPlaying,setGatlingFiring,setCharacter(value){character=VOICE_PROFILES_SAFE(value);if(character!=='gatling')stopGatlingLoop();},setMusicEnabled(value){musicEnabled=!!value;syncMusic();},setEnabled(value){enabled=!!value;if(output){hold(output.gain,ctx.currentTime);output.gain.setTargetAtTime(enabled?1:0,ctx.currentTime,.012);}if(!enabled){stopVoices();speech?.cancel();clearDucking();}syncMusic();},get enabled(){return enabled;},
+  return {unlock,play,setPlaying,setGatlingFiring,syncMirv(projectiles){mirv?.sync(projectiles);},setCharacter(value){character=VOICE_PROFILES_SAFE(value);if(character!=='gatling')stopGatlingLoop();mirv?.setActive(playing&&enabled&&character==='striker');},setMusicEnabled(value){musicEnabled=!!value;syncMusic();},setEnabled(value){enabled=!!value;if(output){hold(output.gain,ctx.currentTime);output.gain.setTargetAtTime(enabled?1:0,ctx.currentTime,.012);}if(!enabled){stopVoices();speech?.cancel();clearDucking();}syncMusic();mirv?.setActive(playing&&enabled&&character==='striker');},get enabled(){return enabled;},
+    get mirvSnapshot(){return mirv?.snapshot??Object.freeze({active:false,loaded:0,flightLoops:0,fallLoop:false,oneShots:0,pending:0});},
     get gatlingSnapshot(){return Object.freeze({wanted:gatlingWanted,playing:!!gatlingLoop,loaded:!!gatlingBuffer,loading:!!gatlingLoading,failed:gatlingFailed});},
     get speechSnapshot(){return speech?.snapshot()??Object.freeze({playing:null,queued:0,loading:0,lastLine:null,played:Object.freeze({}),failed:0});}};
 }

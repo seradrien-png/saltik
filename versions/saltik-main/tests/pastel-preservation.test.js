@@ -35,6 +35,19 @@ test('V2 preserves V1 native pixels, walkable geometry, native motions and encou
    // Numeric V1 ids retain the exact native animation; lunar text ids use a finite seed.
    .replace(' const bobSeed=Number.isFinite(e.id)?e.id:Number.isFinite(e.phase)?e.phase:0;\n const bob=walking?Math.sin(time*10+bobSeed)*.9:0;',
     ' const bob=walking?Math.sin(time*10+(e.id??0))*.9:0;'));
+  // Authorized MIRV sampler hooks are additive; retain the original checksum
+  // assertion for every pre-existing weapon/voice/mix branch below.
+  if(path==='src/audio.js')content=Buffer.from(content.toString()
+   .replace("import {createMirvAudio} from './mirv-audio.js';\n",'')
+   .replace('  let mirv=null;\n','')
+   .replace("    mirv?.setActive(playing&&enabled&&character==='striker');\n",'')
+   .replace('    mirv?.setActive(false);\n','')
+   .replace("        mirv=createMirvAudio(ctx,master);mirv.setActive(playing&&enabled&&character==='striker');void mirv.preload();\n",'')
+   .replace("    if(e.type.startsWith('mirv-')){mirv?.play(e);return;}\n",'')
+   .replace('    if(e.mirvAudio)return;\n','')
+   .replace('syncMirv(projectiles){mirv?.sync(projectiles);},','')
+   .replaceAll("mirv?.setActive(playing&&enabled&&character==='striker');",'')
+   .replace(/^    get mirvSnapshot\(\)\{[^\n]+\n/gm,''));
   if(path==='src/audio.js')content=Buffer.from(content.toString()
    // Authorized continuous Gatling sound is isolated from the retained Striker mix.
    .replace(/  let gatlingLoop=null[^\n]+\n  const gatlingLoopPath=[^\n]+\n/,'')

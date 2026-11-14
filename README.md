@@ -8,7 +8,7 @@ Les cinq états ci-dessous sont conservés dans des dossiers indépendants, sans
 
 | Jeu / sources | État réel | GitHub Pages après activation | Commit source |
 | --- | --- | --- | --- |
-| [SALTIK V2 — Matin Doré](versions/saltik-main) | Publiée v45 — cinématique et animations corrigées | [Jouer](https://saltik-v2-matin-dore.ser-adrien.chatgpt.site) | `2677b3bdc111` |
+| [SALTIK V2 — Matin Doré](versions/saltik-main) | Publiée v46 — MIRV sonore synchronisé | [Jouer](https://saltik-v2-matin-dore.ser-adrien.chatgpt.site) | `7090c4d5fab6` |
 | [SALTIK — Ink Edition publiée](versions/saltik-ink) | Publiée v4 | [Jouer](https://seradrien-png.github.io/saltik/versions/saltik-ink/dist/) | `44110aa2dd80` |
 | [SALTIK INK — brouillon local avec épilogue](versions/autres-versions/saltik-ink-brouillon) | Brouillon local non publié | [Jouer](https://seradrien-png.github.io/saltik/versions/autres-versions/saltik-ink-brouillon/dist/) | `21dcc4ca32c5` |
 | [Feral Steel — Opération Canopée, référence Saltik](versions/autres-versions/saltik-feral-steel) | Publiée v24 | [Jouer](https://seradrien-png.github.io/saltik/versions/autres-versions/saltik-feral-steel/dist/) | `dbc331d0b7a2` |
@@ -182,3 +182,7 @@ Le paquet publié de Matin Doré passe de 262 205 327 à 175 976 522 octets (−
 ### 13 novembre 2026 — corrections v45
 
 Cinématique d’embarquement débloquée (état esquive conservé), huit dessins natifs 2172×724 pour l’anguille, nouvelle voix enfantine du Gatling, cascade du pont animée avec masque protégeant le décor, vingt aperçus complets pour le menu en préparation et pattes solidement ancrées pendant le saut. 803 tests passent. Boucle réelle de finale vérifiée pour les trois Saltik ; contrôle supplémentaire Gatling avec graphismes réels. Publication Sites v45 réussie, source `2677b3bdc111d5b26e6ef6df3da2a156a298f4d3`. A10, Striker/BT, originaux et cinq éditions préservés. Paquet léger sans perte conservé : 191 069 633 octets au lieu de 280 404 005 pour les fichiers complets actuels. [Rapport et preuves](v45-corrections-release.json).
+
+### 13 novembre 2026 — MIRV Striker, sept bruitages fournis (v46)
+
+Les sept OGG du kit utilisateur sont intégrés sans réencodage : départ unique, vol bouclé, séparation réelle, boucle de chute commune modulée par vitesse verticale et cinq impacts individuels choisis parmi trois variantes aux collisions effectives. Fondus 80 ms, voix plafonnées, aucun événement sonore artificiel à expiration. Trois portées testées en Web Audio réel et navigateur mobile émulé ; 822 tests passent. Trajectoires, dégâts et statistiques identiques avant/après ; autres sons, voix et images inchangés. Démonstrations MP3 hors paquet publié. V45 conservée dans le commit `c0eca837dde542436ce82c26bc2e4f09ac3bc6ee` avant modification. Source `7090c4d5fab62f6cae323b0c07eb2494f8a71e9c`, publication v46 réussie. [Rapport complet](mirv-audio-release.json).

@@ -306,9 +306,10 @@ function launchMirv(g){
   const p=g.player;if(g.inkCampaign)p.mirvFlash=.18;
   const pose=g.weaponGeometry?.(p,g.time)??tachikomaGeometry(p,g.time),mount=pose.cannon;
   const direction=pose.cannonDirection;
-  projectile(g,mount,mirvLaunch(mount,direction,{dir:p.dir,ink:!!g.inkCampaign}));
+  const shot=projectile(g,mount,mirvLaunch(mount,direction,{dir:p.dir,ink:!!g.inkCampaign}));
+  if(!p.character||p.character==='striker'){shot.mirvSalvoId=shot.id;emit(g,'mirv-launch',mount.x,mount.y,{projectileId:shot.id,salvoId:shot.id});}
   p.mirvAiming=false;p.mirvAimElapsed=0;p.mirvPending=false;p.mirvPrepare=0;p.cannonHold=g.inkCampaign?.22:.12;p.turretLift=0;p.turretReturnFrom=0;p.turretReturnElapsed=0;p.cannonReturnFrom=p.cannonElevation;p.cannonReturnElapsed=0;
-  p.mirvIn=MIRV_RECHARGE;p.mirvFlash=.18;g.stats.mirvs++;emit(g,'missile',mount.x,mount.y,{dir:p.dir});
+  p.mirvIn=MIRV_RECHARGE;p.mirvFlash=.18;g.stats.mirvs++;emit(g,'missile',mount.x,mount.y,{dir:p.dir,...(shot.mirvSalvoId?{mirvAudio:true,projectileId:shot.id,salvoId:shot.mirvSalvoId}:{})});
 }
 export function combatTarget(e,time=0){
   const geometry=e.type==='carrier'?{target:carrierAim(e)}:e.type==='saltik'?enemySaltikGeometry(e,time):enemyGeometry(e,time);
@@ -669,8 +670,8 @@ function updatePlayerWeapons(g,input,dt){
   if(g.inkCampaign)p.turretLift=0;
 
 }
-function areaBlast(g,x,y,radius,damage,{fraction=1,dt=0,team='player',collisionCache=null}={}){
-  emit(g,'explosion',x,y,{radius});g.shake=Math.max(g.shake,7);
+function areaBlast(g,x,y,radius,damage,{fraction=1,dt=0,team='player',collisionCache=null,mirvAudio=false}={}){
+  emit(g,'explosion',x,y,{radius,...(mirvAudio?{mirvAudio:true}:{})});g.shake=Math.max(g.shake,7);
   if(team==='enemy'){
     const r=playerHitbox(g.player),dx=Math.max(r.x-x,0,x-r.x-r.w),dy=Math.max(r.y-y,0,y-r.y-r.h);
     if(Math.hypot(dx,dy)<=radius)hurtPlayer(g,damage,{dt,fraction});
@@ -743,7 +744,9 @@ function refreshCachedProjectileTarget(g,entry){
  entry.rect=bounds(entry.target,g.time);entry.blastRect=bounds(entry.target);entry.state=state;
 }
 function deployMirv(g,shot,children){
- for(const child of splitMirv(shot))children.push({id:g.nextProjectileId++,...child});
+ const childIds=[];
+ for(const child of splitMirv(shot)){const id=g.nextProjectileId++;childIds.push(id);children.push({id,...child,...(shot.mirvSalvoId?{mirvSalvoId:shot.mirvSalvoId}:{})});}
+ if(shot.mirvSalvoId)emit(g,'mirv-separation',shot.x,shot.y,{projectileId:shot.id,salvoId:shot.mirvSalvoId,childIds});
  emit(g,'cluster',shot.x,shot.y);emit(g,'spark',shot.x,shot.y);shot.life=0;
 }
 function updateProjectiles(g,dt,playerMovement,collisionCache=null){
@@ -819,15 +822,16 @@ function updateProjectiles(g,dt,playerMovement,collisionCache=null){
     if(response==='avoid')continue;
     shot.x=point.x;shot.y=point.y;
     if(kind==='expire'){
-      if(shot.kind==='grenade'||shot.kind==='gatling-rocket'||shot.team==='enemy'&&shot.splash)areaBlast(g,point.x,point.y,shot.splash,shot.damage,{dt,fraction,team:shot.team,collisionCache});
+      if(shot.kind==='grenade'||shot.kind==='gatling-rocket'||shot.team==='enemy'&&shot.splash)areaBlast(g,point.x,point.y,shot.splash,shot.damage,{dt,fraction,team:shot.team,collisionCache,mirvAudio:!!shot.mirvSalvoId});
       shot.life=0;continue;
     }
+    if(shot.mirvSalvoId)emit(g,'mirv-impact',point.x,point.y,{projectileId:shot.id,salvoId:shot.mirvSalvoId,collisionKind:kind});
     if(kind==='player'){
       if(shot.splash)areaBlast(g,point.x,point.y,shot.splash,shot.damage,{dt,fraction,team:shot.team,collisionCache});
       else if(response==='hit')hurtPlayer(g,shot.damage,{dt,fraction});
       emit(g,'spark',point.x,point.y);
     }else if(shot.team==='player'){
-      if(shot.splash)areaBlast(g,point.x,point.y,shot.splash,shot.damage,{dt,fraction,collisionCache});
+      if(shot.splash)areaBlast(g,point.x,point.y,shot.splash,shot.damage,{dt,fraction,collisionCache,mirvAudio:!!shot.mirvSalvoId});
       else if(kind==='target')hurtTarget(g,target,shot.damage,{ranged:true,bayIndex:collision.bayIndex});
       else emit(g,'spark',point.x,point.y);
     }else if(shot.splash)areaBlast(g,point.x,point.y,shot.splash,shot.damage,{dt,fraction,team:shot.team,collisionCache});
