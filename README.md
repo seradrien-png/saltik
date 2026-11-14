@@ -8,7 +8,7 @@ Les cinq états ci-dessous sont conservés dans des dossiers indépendants, sans
 
 | Jeu / sources | État réel | GitHub Pages après activation | Commit source |
 | --- | --- | --- | --- |
-| [SALTIK V2 — Matin Doré](versions/saltik-main) | Publiée v46 — MIRV sonore synchronisé | [Jouer](https://saltik-v2-matin-dore.ser-adrien.chatgpt.site) | `7090c4d5fab6` |
+| [SALTIK V2 — Matin Doré](versions/saltik-main) | Publiée v47 — décors détaillés et départ en POV | [Jouer](https://saltik-v2-matin-dore.ser-adrien.chatgpt.site) | `056e258c3df3` |
 | [SALTIK — Ink Edition publiée](versions/saltik-ink) | Publiée v4 | [Jouer](https://seradrien-png.github.io/saltik/versions/saltik-ink/dist/) | `44110aa2dd80` |
 | [SALTIK INK — brouillon local avec épilogue](versions/autres-versions/saltik-ink-brouillon) | Brouillon local non publié | [Jouer](https://seradrien-png.github.io/saltik/versions/autres-versions/saltik-ink-brouillon/dist/) | `21dcc4ca32c5` |
 | [Feral Steel — Opération Canopée, référence Saltik](versions/autres-versions/saltik-feral-steel) | Publiée v24 | [Jouer](https://seradrien-png.github.io/saltik/versions/autres-versions/saltik-feral-steel/dist/) | `dbc331d0b7a2` |
@@ -186,3 +186,8 @@ Cinématique d’embarquement débloquée (état esquive conservé), huit dessin
 ### 13 novembre 2026 — MIRV Striker, sept bruitages fournis (v46)
 
 Les sept OGG du kit utilisateur sont intégrés sans réencodage : départ unique, vol bouclé, séparation réelle, boucle de chute commune modulée par vitesse verticale et cinq impacts individuels choisis parmi trois variantes aux collisions effectives. Fondus 80 ms, voix plafonnées, aucun événement sonore artificiel à expiration. Trois portées testées en Web Audio réel et navigateur mobile émulé ; 822 tests passent. Trajectoires, dégâts et statistiques identiques avant/après ; autres sons, voix et images inchangés. Démonstrations MP3 hors paquet publié. V45 conservée dans le commit `c0eca837dde542436ce82c26bc2e4f09ac3bc6ee` avant modification. Source `7090c4d5fab62f6cae323b0c07eb2494f8a71e9c`, publication v46 réussie. [Rapport complet](mirv-audio-release.json).
+
+
+### 14 novembre 2026 — décors détaillés, Striker enregistré et départ en POV (v47)
+
+Dix-sept modules redessinés à partir des références : douze gagnent en définition native et cinq déjà grands reçoivent de nouveaux détails. Premier plan décoratif du velours retiré, semelles raccordées au terrain, embarquement continu puis courte vue subjective sur le dos de l’anguille. Canon Abrams, mortier M327 et missile TOW enregistrés ; sifflement de chute d’archives cinématographiques. Sources CC0 documentées. Physique, dégâts, voix, A10, huit poses et ressources originales préservés. 838 tests passent et les quatre mondes ont été contrôlés dans Chromium. Publication v47 réussie, source `056e258c3df31f5bfb975aa1688b5eda37c5e912`. V46 préservée sur GitHub dans `583761bcbcbe8152cde62bce3280385ce7dd8cb3`. [Rapport et preuves](world-detail-boarding-release.json). Cinq éditions et historique conservés.

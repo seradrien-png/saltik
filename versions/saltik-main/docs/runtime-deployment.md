@@ -5,7 +5,7 @@ La sauvegarde GitHub conserve ces fichiers, les sources audio et les autres édi
 Aucun original n'est supprimé ou remplacé.
 
 Le paquet publié utilise `out/`, construit séparément par `scripts/package-runtime.py`.
-Il exclut uniquement 13 illustrations historiques absentes du registre résolu
+Il exclut uniquement 15 illustrations historiques absentes du registre résolu
 `INK_ART_NAMES` et des URL directes du code, des pages HTML, du CSS et du manifeste :
 
 - `ink-boss`, `ink-boss-parts` : le jeu charge `pastel-boss*` sous ces clés.
@@ -25,6 +25,8 @@ Tous les sons, voix, musiques, icônes, polices, deux films et affiches restent
 présents. Les fichiers audio/vidéo/icônes sont comparés par SHA-256. Le son A10
 et les nouvelles voix ne sont pas réencodés. Les huit poses de l'anguille sont
 préservées. `promo.html` et `android.html` restent fonctionnels.
+
+Les décorations de premier plan `royal-foreground-props` et `royal-flora` sont également exclues depuis leur retrait visuel demandé le 14 novembre 2026. Les originaux restent conservés.
 
 ## Reproduction
 

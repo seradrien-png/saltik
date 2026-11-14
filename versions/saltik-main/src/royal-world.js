@@ -1,21 +1,56 @@
+import {hdModuleImage,drawHDModule} from './hd-module-art.js';
 import {drawRoyalEel,drawRoyalGardenLife} from './royal-atmosphere.js';
 import {drawRoyalRainbow} from './royal-rainbow.js';
 import {drawRoyalWaterfalls} from './royal-waterfalls.js';
-import {drawRoyalProps} from './royal-props.js';
 import {ROYAL_CELLS,ROYAL_SITES,royalGroundAt,royalSample} from './royal-layout.js';
 const GOLD='#d99b29',TAU=Math.PI*2;
 export function royalPaintedBounds(s){const cell=ROYAL_CELLS[s.kind];return{x:s.left,y:s.top,w:cell.crop[2]*s.scale,h:cell.crop[3]*s.scale};}
-function paintSite(c,art,s,camera=0,time=0){const cell=ROYAL_CELLS[s.kind],image=cell.source==='bridge'?art?.bridge:cell.source==='organic'?art?.organic:art?.atlas;if(!image)return;const b=royalPaintedBounds(s);c.drawImage(image,...cell.crop,b.x-camera,b.y,b.w,b.h);if(cell.source==='bridge'||cell.source==='organic')drawRoyalWaterfalls(c,image,cell.source,{x:b.x-camera-cell.crop[0]*s.scale,y:b.y-cell.crop[1]*s.scale,scale:s.scale,time,sourceCrop:cell.crop});}
+const foundationProfiles=new WeakMap();
+function foundationProfile(image){
+ if(foundationProfiles.has(image))return foundationProfiles.get(image);
+ if(typeof document==='undefined')return null;
+ const w=image.naturalWidth??image.width,h=image.naturalHeight??image.height,canvas=document.createElement('canvas');canvas.width=w;canvas.height=h;
+ const context=canvas.getContext('2d',{willReadFrequently:true});if(!context)return null;
+ context.drawImage(image,0,0);const pixels=context.getImageData(0,0,w,h).data,profile=[];
+ for(let x=0;x<w;x+=8){let y=h-1;while(y>=0&&pixels[(y*w+x)*4+3]<128)y--;profile.push({u:x/w,v:(y+1)/h,visible:y>=0});}
+ foundationProfiles.set(image,profile);return profile;
+}
+function paintFoundationSeam(c,art,image,s,b,camera){
+ // The painted feet can end a few pixels above their authored ground sample.
+ // Fill only that narrow seam with native velvet, following the opaque foot
+ // in each column. No platform or collision coordinate moves.
+ const profile=foundationProfile(image);if(!profile||!art?.ground)return;
+ c.save();c.beginPath();let visible=false;
+ for(let i=0;i<profile.length;i++){
+  const p=profile[i],x=b.x+p.u*b.w,right=b.x+(profile[i+1]?.u??1)*b.w,y=b.y+p.v*b.h,floor=royalGroundAt((x+right)/2);
+  if(p.visible&&floor>y&&floor-y<40){c.rect(x-camera,y-2,right-x+1,floor-y+10);visible=true;}
+ }
+ if(visible){c.clip();const tw=260,th=tw*art.ground.height/art.ground.width;
+  for(let x=Math.floor(b.x/tw)*tw;x<b.x+b.w;x+=tw)for(let y=Math.floor((b.y+b.h-80)/th)*th;y<b.y+b.h+60;y+=th)c.drawImage(art.ground,x-camera,y,tw,th);
+ }
+ c.restore();
+}
+function paintSite(c,art,s,camera=0,time=0){
+ const cell=ROYAL_CELLS[s.kind],image=cell.source==='bridge'?art?.bridge:cell.source==='organic'?art?.organic:art?.atlas;if(!image)return;
+ const b=royalPaintedBounds(s),hd=hdModuleImage(art,`royal-${s.kind}`);
+ if(hd){paintFoundationSeam(c,art,hd,s,b,camera);drawHDModule(c,hd,b.x-camera,b.y,b.w,b.h);}
+ else c.drawImage(image,...cell.crop,b.x-camera,b.y,b.w,b.h);
+ // Water animation keeps its original atlas registration; HD cells never
+ // reinterpret these source rectangles as coordinates in another image.
+ if(cell.source==='bridge'||cell.source==='organic')drawRoyalWaterfalls(c,image,cell.source,{x:b.x-camera-cell.crop[0]*s.scale,y:b.y-cell.crop[1]*s.scale,scale:s.scale,time,sourceCrop:cell.crop});
+}
 export function drawRoyalBackdrop(c,{camera,width,height,image,art,time=0,atmosphere=null,eel=null}){
  c.save();c.globalAlpha=1;c.fillStyle='#041454';c.fillRect(0,0,width,height);
  // Keep the reference composition readable: tree at left, mountains and full
  // rainbow in the center/right. Only a restrained panoramic drift is applied.
- if(image){const w=Math.max(width*1.08,height*image.width/image.height),h=w*image.height/image.width,x=(width-w)/2-Math.min(1,Math.max(0,camera/17800))*(w-width)*.35;const y=Math.min(0,(height-h)*.22);c.drawImage(image,x,y,w,h);drawRoyalWaterfalls(c,image,'backdrop',{x,y,scale:w/1672,scaleY:h/941,time});drawRoyalRainbow(c,image,{x,y,scale:w/1672,scaleY:h/941,time});drawRoyalEel(c,eel,atmosphere,{width,height,far:true});drawRoyalEel(c,eel,atmosphere,{width,height,far:false});drawRoyalGardenLife(c,{x,y,scale:w/1672,scaleY:h/941,time});}
+ if(image){const w=Math.max(width*1.08,height*image.width/image.height),h=w*image.height/image.width,x=(width-w)/2-Math.min(1,Math.max(0,camera/17800))*(w-width)*.35;const y=Math.min(0,(height-h)*.22);c.drawImage(image,x,y,w,h);drawRoyalWaterfalls(c,image,'backdrop',{x,y,scale:w/1672,scaleY:h/941,time});drawRoyalRainbow(c,image,{x,y,scale:w/1672,scaleY:h/941,time});drawRoyalGardenLife(c,{x,y,scale:w/1672,scaleY:h/941,time});}
  // Small opaque wooded islands occupy a clearly separate middle distance.
  if(art?.atlas)for(const [i,world] of [1600,5500,9800,14300,18500].entries()){
   const x=width*.7+(world-camera)*.19,w=290+(i%2)*70,h=w*512/768,y=height*.56;
   if(x+w<0||x>width)continue;const cell=ROYAL_CELLS[i%2?'arch':'tree'];c.drawImage(art.atlas,...cell.crop,x,y,w,h);
  }
+ // The gigantic eel shares the same depth plane before and during boarding.
+ drawRoyalEel(c,eel,atmosphere,{width,height,far:true});drawRoyalEel(c,eel,atmosphere,{width,height,far:false});
  c.restore();
 }
 function ground(c,{camera,width,art}){
@@ -52,10 +87,6 @@ export function drawRoyalForeground(c,g,{camera,width,art}){
   const b=royalPaintedBounds(s);if(b.x+b.w<camera||b.x>camera+width)continue;
   c.drawImage(art.railFront,0,0,1774,887,b.x-camera,b.y,b.w,b.h);
  }
- drawRoyalProps(c,art?.props,{camera,width});
- // Small native velvet flowers frame the lower edge; no unusable foreground stairs.
- if(art?.flora)for(let i=Math.floor(camera*1.025/500)-1;i<Math.floor((camera*1.025+width)/500)+2;i++){
-  const x=i*500-camera*1.025,world=x+camera,y=royalGroundAt(world)+60,sw=art.flora.width/3,sh=art.flora.height,w=100,h=w*sh/sw;
-  c.drawImage(art.flora,Math.abs(i%3)*sw,0,sw,sh,x,y-h,w,h);
- }
+ // Keep the playable lane clear: no decorative plants, jars or textile props
+ // in front of the Saltik. Near-side bridge rails remain the actual structure.
 }

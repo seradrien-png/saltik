@@ -126,7 +126,7 @@ export function paintInkSalvageGrain(c,{x,y,w,h}){
   const descriptor=art.wreck;if(!descriptor?.source)return;
   // A measured patch of the existing cylindrical wreck supplies engraved
   // steel grain. Its drawing is only a material wash inside each cover shell.
-  const s=descriptor.source,sx=s.x+92,sy=s.y+105,sw=160,sh=116,tileW=112,tileH=tileW*sh/sw;
+  const s=descriptor.source,k=descriptor.sourceScale??1,sx=s.x+92*k,sy=s.y+105*k,sw=160*k,sh=116*k,tileW=112,tileH=tileW*sh/sw;
   c.save();c.globalAlpha*=.38;
   for(let ix=Math.floor(x/tileW);ix<Math.ceil((x+w)/tileW);ix++)
     for(let iy=Math.floor(y/tileH);iy<Math.ceil((y+h)/tileH);iy++)

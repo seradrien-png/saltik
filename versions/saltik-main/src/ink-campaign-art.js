@@ -30,6 +30,12 @@ export const INK_WORLD_ART=Object.freeze({
 
 export function inkLandmarkArt(images){
   return Object.fromEntries(Object.entries(INK_WORLD_ART).map(([name,definition])=>[name,{
-    ...definition,image:images[definition.asset],clip:'none'
+    ...definition,...(()=>{
+      const key={checkpointTurn:'checkpoint',roof:'checkpoint',breachLanding:'breach'}[name]??name;
+      const image=images[`hd-ink-${key}`];
+      if(!image)return {image:images[definition.asset]};
+      const width=image.naturalWidth??image.width,height=image.naturalHeight??image.height;
+      return {image,source:{x:0,y:0,w:width,h:height},sourceScale:definition.source?width/definition.source.w:1};
+    })(),clip:'none'
   }]));
 }

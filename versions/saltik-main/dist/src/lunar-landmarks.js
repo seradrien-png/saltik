@@ -1,3 +1,4 @@
+import {hdModuleImage,drawHDModule} from './hd-module-art.js';
 import {lunarBaseGroundAt} from './lunar-terrain.js';
 // Native painted contours, measured in the unmodified 1536 x 1024 atlas.
 // All art stays in world coordinates, exactly like the level-one cutouts.
@@ -39,7 +40,8 @@ export function paintLunarCutout(c,art,kind,{x,y,w,h,alpha=1,flip=false}){
  if(!art)return;const cell=LUNAR_CELLS[kind],pack='atlas' in art||'bridge' in art;
  const image=pack?(cell.source==='bridge'?art.bridge:art.atlas):art;if(!image)return;
  c.save();c.globalAlpha*=alpha;c.translate(x+(flip?w:0),y);if(flip)c.scale(-1,1);
- c.drawImage(image,...cell.crop,0,0,w,h);c.restore();
+ const hd=hdModuleImage(art,`lunar-${kind}`);
+ if(hd)drawHDModule(c,hd,0,0,w,h);else c.drawImage(image,...cell.crop,0,0,w,h);c.restore();
 }
 export function paintLunarStair(c,art,entry,camera){
  if(!art)return;

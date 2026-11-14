@@ -1,0 +1,240 @@
+[
+  {
+    "asset": "dist/assets/hd-desert-dais.png",
+    "dimensions": [
+      1536,
+      1024
+    ],
+    "original_crop_dimensions": [
+      768,
+      512
+    ],
+    "width_ratio": 2.0,
+    "sha256": "730e514733edab5d808a9f4ab25a8d3c6990c4f12c877c73cd0fd5b89dc3b1d2",
+    "method": "New image-generation reference redraw; no artificial final upscaling; full logical world bounds retained"
+  },
+  {
+    "asset": "dist/assets/hd-ink-breach.png",
+    "dimensions": [
+      1588,
+      991
+    ],
+    "original_crop_dimensions": [
+      874,
+      546
+    ],
+    "width_ratio": 1.817,
+    "sha256": "82f175ffdd52922363128aee59501b0137bc02c28246fef5a76c7332ebff6e16",
+    "method": "New image-generation reference redraw; no artificial final upscaling; full logical world bounds retained"
+  },
+  {
+    "asset": "dist/assets/hd-ink-bridge.png",
+    "dimensions": [
+      1991,
+      790
+    ],
+    "original_crop_dimensions": [
+      1991,
+      790
+    ],
+    "width_ratio": 1.0,
+    "sha256": "103cdc39d7beabebd6d832bcef892213889c4bed7a040c9b49757cf4a3612992",
+    "method": "New image-generation reference redraw; no artificial final upscaling; full logical world bounds retained"
+  },
+  {
+    "asset": "dist/assets/hd-ink-checkpoint.png",
+    "dimensions": [
+      1983,
+      793
+    ],
+    "original_crop_dimensions": [
+      1983,
+      793
+    ],
+    "width_ratio": 1.0,
+    "sha256": "a6822d24f4ac7b889fca3c2eee843e1ffd383095d7c0b7742249fbd1ecf2bdae",
+    "method": "New image-generation reference redraw; no artificial final upscaling; full logical world bounds retained"
+  },
+  {
+    "asset": "dist/assets/hd-ink-gorge.png",
+    "dimensions": [
+      2035,
+      773
+    ],
+    "original_crop_dimensions": [
+      1011,
+      385
+    ],
+    "width_ratio": 2.013,
+    "sha256": "a6b06cc0a8a83e27595f18ba51177aded1ab4feda4159716cd599d6baa15196e",
+    "method": "New image-generation reference redraw; no artificial final upscaling; full logical world bounds retained"
+  },
+  {
+    "asset": "dist/assets/hd-ink-observatory.png",
+    "dimensions": [
+      1774,
+      887
+    ],
+    "original_crop_dimensions": [
+      1774,
+      887
+    ],
+    "width_ratio": 1.0,
+    "sha256": "b70c33bfb0913d1a004c6fa72039d7e88f6479bcce306cfc69a54c880d27fcf4",
+    "method": "New image-generation reference redraw; no artificial final upscaling; full logical world bounds retained"
+  },
+  {
+    "asset": "dist/assets/hd-ink-wreck.png",
+    "dimensions": [
+      1954,
+      805
+    ],
+    "original_crop_dimensions": [
+      824,
+      339
+    ],
+    "width_ratio": 2.371,
+    "sha256": "c8fe27b2a43856dd3bf04be76a141a9958f7580901040c4298be578bd01502d2",
+    "method": "New image-generation reference redraw; no artificial final upscaling; full logical world bounds retained"
+  },
+  {
+    "asset": "dist/assets/hd-lunar-aqueduct.png",
+    "dimensions": [
+      1774,
+      887
+    ],
+    "original_crop_dimensions": [
+      1774,
+      887
+    ],
+    "width_ratio": 1.0,
+    "sha256": "282bec12a6542516719a354d89cd7a9930afd018dcd08490e961af6d0d8cc345",
+    "method": "New image-generation reference redraw; no artificial final upscaling; full logical world bounds retained"
+  },
+  {
+    "asset": "dist/assets/hd-lunar-bastion.png",
+    "dimensions": [
+      1536,
+      1024
+    ],
+    "original_crop_dimensions": [
+      768,
+      512
+    ],
+    "width_ratio": 2.0,
+    "sha256": "c2b87d4e5e022595d91ffbff8f07944ed2ecb6756e3f7ee7ea36c8beff60ccdf",
+    "method": "New image-generation reference redraw; no artificial final upscaling; full logical world bounds retained"
+  },
+  {
+    "asset": "dist/assets/hd-lunar-gate.png",
+    "dimensions": [
+      1536,
+      1024
+    ],
+    "original_crop_dimensions": [
+      768,
+      512
+    ],
+    "width_ratio": 2.0,
+    "sha256": "baf4d45683861092f690cde21737654d5c0ba5e4f67fcf41894e8438fd0ac2cd",
+    "method": "New image-generation reference redraw; no artificial final upscaling; full logical world bounds retained"
+  },
+  {
+    "asset": "dist/assets/hd-lunar-observatory.png",
+    "dimensions": [
+      1536,
+      1024
+    ],
+    "original_crop_dimensions": [
+      768,
+      500
+    ],
+    "width_ratio": 2.0,
+    "sha256": "6578462c94b288d42010e21d61220f3d1eb58d04f0e4f5f7acab82a9c806507d",
+    "method": "New image-generation reference redraw; no artificial final upscaling; full logical world bounds retained"
+  },
+  {
+    "asset": "dist/assets/hd-royal-arch.png",
+    "dimensions": [
+      1536,
+      1024
+    ],
+    "original_crop_dimensions": [
+      768,
+      512
+    ],
+    "width_ratio": 2.0,
+    "sha256": "2ad6ef04aeddbd5469fe25107166abb63b7f765f33bc6add811fca0737b19991",
+    "method": "New image-generation reference redraw; no artificial final upscaling; full logical world bounds retained"
+  },
+  {
+    "asset": "dist/assets/hd-royal-bridge.png",
+    "dimensions": [
+      1774,
+      887
+    ],
+    "original_crop_dimensions": [
+      1774,
+      887
+    ],
+    "width_ratio": 1.0,
+    "sha256": "43e25ec86e8bdf27d13ddca0c7f34d06bb389cb15191caae415e9ded1134a3ac",
+    "method": "New image-generation reference redraw; no artificial final upscaling; full logical world bounds retained"
+  },
+  {
+    "asset": "dist/assets/hd-royal-root.png",
+    "dimensions": [
+      1536,
+      1024
+    ],
+    "original_crop_dimensions": [
+      768,
+      512
+    ],
+    "width_ratio": 2.0,
+    "sha256": "07f5cfae8aafde82f1938d6ed9f6572def6f32c8e20a446ad45032d5f7158ef2",
+    "method": "New image-generation reference redraw; no artificial final upscaling; full logical world bounds retained"
+  },
+  {
+    "asset": "dist/assets/hd-royal-spool.png",
+    "dimensions": [
+      1536,
+      1024
+    ],
+    "original_crop_dimensions": [
+      768,
+      512
+    ],
+    "width_ratio": 2.0,
+    "sha256": "a01fdfad64b05ffb6454e9bb197e7b3f8233d970a3a01ba11dfaa7a9123d3f9f",
+    "method": "New image-generation reference redraw; no artificial final upscaling; full logical world bounds retained"
+  },
+  {
+    "asset": "dist/assets/hd-royal-tree.png",
+    "dimensions": [
+      1536,
+      1024
+    ],
+    "original_crop_dimensions": [
+      768,
+      512
+    ],
+    "width_ratio": 2.0,
+    "sha256": "58fdb31b9a1dd1dcb0afd1b4e4deb96736b2d31e92fe0dcf39489a37f21d08d0",
+    "method": "New image-generation reference redraw; no artificial final upscaling; full logical world bounds retained"
+  },
+  {
+    "asset": "dist/assets/hd-royal-wheel.png",
+    "dimensions": [
+      1536,
+      1024
+    ],
+    "original_crop_dimensions": [
+      768,
+      512
+    ],
+    "width_ratio": 2.0,
+    "sha256": "a32c3dcf3be7f8709fb5ad1c005830352cebc1b896466ffa25e6313d050b300b",
+    "method": "New image-generation reference redraw; no artificial final upscaling; full logical world bounds retained"
+  }
+]

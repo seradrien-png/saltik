@@ -1,10 +1,13 @@
 const VOICE_PROFILES_SAFE=value=>['bt','gatling'].includes(value)?value:'striker';
 import {createVoiceLines,VOICE_EVENTS} from './voice-lines.js';
 import {createMirvAudio} from './mirv-audio.js';
+import {REAL_MIRV_PATHS,REAL_WEAPON_PATHS} from './real-weapon-paths.js';
 
 export function createAudio({onSpeech=()=>{}}={}){
   let ctx=null,master=null,output=null,musicBus=null,enabled=true,noise=null,lastShot=-Infinity;
   let mirv=null;
+  const weaponBuffers=new Map(),weaponVoices=new Set();
+  let weaponLoading=null,weaponFailed=0;
   let gatlingLoop=null,gatlingBuffer=null,gatlingLoading=null,gatlingWanted=false,gatlingFailed=false;
   const gatlingLoopPath='./audio/gatling-brrrt-loop.ogg';
   let lastEnemyShot=-Infinity,lastExplosion=-Infinity,lastVolley=-Infinity;
@@ -56,7 +59,7 @@ export function createAudio({onSpeech=()=>{}}={}){
       if(!ctx){
         ctx=new (window.AudioContext||window.webkitAudioContext)();
         master=ctx.createGain();master.gain.value=.80;
-        mirv=createMirvAudio(ctx,master);mirv.setActive(playing&&enabled&&character==='striker');void mirv.preload();
+        mirv=createMirvAudio(ctx,master,{paths:REAL_MIRV_PATHS});mirv.setActive(playing&&enabled&&character==='striker');void mirv.preload();
         const limiter=ctx.createDynamicsCompressor();
         limiter.threshold.value=-7;limiter.knee.value=6;limiter.ratio.value=16;
         limiter.attack.value=.003;limiter.release.value=.18;
@@ -71,8 +74,42 @@ export function createAudio({onSpeech=()=>{}}={}){
         noise=ctx.createBuffer(1,ctx.sampleRate,ctx.sampleRate);
         const data=noise.getChannelData(0);for(let i=0;i<data.length;i++)data[i]=Math.random()*2-1;
       }
+      preloadWeapons();
       if(ctx.state==='suspended')ctx.resume()?.catch(()=>{});
     }catch{}
+  }
+  function preloadWeapons(){
+    if(weaponLoading||typeof window.fetch!=='function')return;
+    // Decoding never schedules a report: only the physical fire event can play it.
+    weaponLoading=Promise.all(Object.entries(REAL_WEAPON_PATHS).map(async([key,path])=>{
+      try{
+        const response=await window.fetch(path);
+        if(!response.ok)throw new Error('Weapon recording unavailable');
+        const buffer=await ctx.decodeAudioData(await response.arrayBuffer());
+        if(!buffer)throw new Error('Weapon recording undecodable');
+        weaponBuffers.set(key,buffer);
+      }catch{weaponFailed++;}
+    }));
+  }
+  function recordedWeapon(key,volume,maxDuration){
+    if(character!=='striker'||!weaponBuffers.has(key))return false;
+    const buffer=weaponBuffers.get(key),at=ctx.currentTime;
+    const duration=Math.min(buffer.duration??maxDuration,maxDuration);
+    const source=ctx.createBufferSource(),gain=ctx.createGain();
+    source.buffer=buffer;
+    gain.gain.setValueAtTime(0,at);
+    gain.gain.linearRampToValueAtTime(volume,at+.003);
+    gain.gain.setValueAtTime(volume,at+Math.max(.004,duration-.035));
+    gain.gain.linearRampToValueAtTime(0,at+duration);
+    source.connect(gain);gain.connect(master);
+    voices.add(source);weaponVoices.add(source);
+    source.onended=()=>{voices.delete(source);weaponVoices.delete(source);source.disconnect?.();gain.disconnect?.();};
+    source.start(at);source.stop(at+duration);
+    return true;
+  }
+  function stopRecordedWeapons(){
+    for(const source of weaponVoices){try{source.stop(ctx.currentTime);}catch{}voices.delete(source);}
+    weaponVoices.clear();
   }
   function stopGatlingLoop(){
     gatlingWanted=false;
@@ -107,7 +144,7 @@ export function createAudio({onSpeech=()=>{}}={}){
     mirv?.setActive(false);
     if(!ctx)return;
     for(const source of voices)try{source.stop(ctx.currentTime);}catch{}
-    voices.clear();
+    voices.clear();weaponVoices.clear();
   }
   function voice(source,at,duration,offset){
     voices.add(source);
@@ -159,7 +196,9 @@ export function createAudio({onSpeech=()=>{}}={}){
     else if(e.type==='shot'){
       if(ctx.currentTime-lastShot<.055)return;lastShot=ctx.currentTime;
       duck(.90,.06,.12);
-      // A low pulse with a soft puff stays behind the score during sustained fire.
+      // A real Abrams report has a bounded tail for the engine’s .095s cadence.
+      if(recordedWeapon('cannon',.25,.26))return;
+      // The previous soft pulse remains available while offline/decoding.
       burst(.12,.0462875*1.15*1.20,900,0,'lowpass',.016);
       tone(115,62,.15,.06348*1.15*1.20,'sine',0,false,.016);
       tone(82,48,.13,.034385*1.15*1.20,'triangle',.012,false,.014);
@@ -171,6 +210,7 @@ export function createAudio({onSpeech=()=>{}}={}){
     }
     else if(e.type==='homing'){
       duck(.70,.43,.22);
+      if(recordedWeapon('guided',.22,1.64))return;
       burst(.09,.09,2300,0,'lowpass',.012);burst(.52,.16,1200);
       tone(108,38,.47,.15,'triangle');tone(230,580,.17,.055,'sine',.025);
       burst(.05,.045,2400,.07,'bandpass',.008);
@@ -290,7 +330,8 @@ export function createAudio({onSpeech=()=>{}}={}){
     else if(e.type==='start'){tone(220,660,.4,.18,'triangle');}
     else if(e.type==='won'){tone(330,660,.5,.22,'triangle',0,true);tone(440,880,.6,.18,'triangle',.18,true);}
   }
-  return {unlock,play,setPlaying,setGatlingFiring,syncMirv(projectiles){mirv?.sync(projectiles);},setCharacter(value){character=VOICE_PROFILES_SAFE(value);if(character!=='gatling')stopGatlingLoop();mirv?.setActive(playing&&enabled&&character==='striker');},setMusicEnabled(value){musicEnabled=!!value;syncMusic();},setEnabled(value){enabled=!!value;if(output){hold(output.gain,ctx.currentTime);output.gain.setTargetAtTime(enabled?1:0,ctx.currentTime,.012);}if(!enabled){stopVoices();speech?.cancel();clearDucking();}syncMusic();mirv?.setActive(playing&&enabled&&character==='striker');},get enabled(){return enabled;},
+  return {unlock,play,setPlaying,setGatlingFiring,syncMirv(projectiles){mirv?.sync(projectiles);},setCharacter(value){character=VOICE_PROFILES_SAFE(value);if(character!=='striker')stopRecordedWeapons();if(character!=='gatling')stopGatlingLoop();mirv?.setActive(playing&&enabled&&character==='striker');},setMusicEnabled(value){musicEnabled=!!value;syncMusic();},setEnabled(value){enabled=!!value;if(output){hold(output.gain,ctx.currentTime);output.gain.setTargetAtTime(enabled?1:0,ctx.currentTime,.012);}if(!enabled){stopVoices();speech?.cancel();clearDucking();}syncMusic();mirv?.setActive(playing&&enabled&&character==='striker');},get enabled(){return enabled;},
+    get weaponSnapshot(){return Object.freeze({loaded:weaponBuffers.size,loading:!!weaponLoading&&weaponBuffers.size+weaponFailed<2,failed:weaponFailed,voices:weaponVoices.size});},
     get mirvSnapshot(){return mirv?.snapshot??Object.freeze({active:false,loaded:0,flightLoops:0,fallLoop:false,oneShots:0,pending:0});},
     get gatlingSnapshot(){return Object.freeze({wanted:gatlingWanted,playing:!!gatlingLoop,loaded:!!gatlingBuffer,loading:!!gatlingLoading,failed:gatlingFailed});},
     get speechSnapshot(){return speech?.snapshot()??Object.freeze({playing:null,queued:0,loading:0,lastLine:null,played:Object.freeze({}),failed:0});}};

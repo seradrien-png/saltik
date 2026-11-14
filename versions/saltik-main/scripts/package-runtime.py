@@ -20,6 +20,7 @@ EXCLUDED = {
     'ink-carrier-platform', 'ink-carrier-profile-dr01', 'ink-carrier-support-dr01',
     'ink-carrier-two-eyes-dr01', 'lunar-archives-sky', 'lunar-archives-stone',
     'lunar-carrier-material', 'lunar-coherent-world', 'lunar-sky-layer',
+    'royal-foreground-props', 'royal-flora',
 }
 
 def digest(path):

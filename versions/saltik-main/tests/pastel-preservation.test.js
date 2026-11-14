@@ -35,6 +35,19 @@ test('V2 preserves V1 native pixels, walkable geometry, native motions and encou
    // Numeric V1 ids retain the exact native animation; lunar text ids use a finite seed.
    .replace(' const bobSeed=Number.isFinite(e.id)?e.id:Number.isFinite(e.phase)?e.phase:0;\n const bob=walking?Math.sin(time*10+bobSeed)*.9:0;',
     ' const bob=walking?Math.sin(time*10+(e.id??0))*.9:0;'));
+  // Recorded Striker reports replace their synthetic path only when decoded.
+  // Strip that authorized sampler layer while verifying every original fallback.
+  if(path==='src/audio.js')content=Buffer.from(content.toString()
+   .replace("import {REAL_MIRV_PATHS,REAL_WEAPON_PATHS} from './real-weapon-paths.js';\n",'')
+   .replace('  const weaponBuffers=new Map(),weaponVoices=new Set();\n  let weaponLoading=null,weaponFailed=0;\n','')
+   .replace('createMirvAudio(ctx,master,{paths:REAL_MIRV_PATHS})','createMirvAudio(ctx,master)')
+   .replace('      preloadWeapons();\n','')
+   .replace(/  function preloadWeapons\(\)\{[\s\S]*?(?=  function stopGatlingLoop\()/,'')
+   .replace('voices.clear();weaponVoices.clear();','voices.clear();')
+   .replace("      // A real Abrams report has a bounded tail for the engine’s .095s cadence.\n      if(recordedWeapon('cannon',.25,.26))return;\n      // The previous soft pulse remains available while offline/decoding.", '      // A low pulse with a soft puff stays behind the score during sustained fire.')
+   .replace("      if(recordedWeapon('guided',.22,1.64))return;\n",'')
+   .replace("if(character!=='striker')stopRecordedWeapons();",'')
+   .replace(/^    get weaponSnapshot\(\)\{[^\n]+\n/gm,''));
   // Authorized MIRV sampler hooks are additive; retain the original checksum
   // assertion for every pre-existing weapon/voice/mix branch below.
   if(path==='src/audio.js')content=Buffer.from(content.toString()

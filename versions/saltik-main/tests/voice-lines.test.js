@@ -23,13 +23,13 @@ async function withAudio(run,{fetchResult}={}){
     createBufferSource(){const source=Object.assign(node(),{start(){this.started=true;},stop(){this.stopped=true;},finish(){this.onended?.();}});sources.push(source);return source;}
     createBiquadFilter(){return Object.assign(node(),{frequency:param(),Q:param()});}
     createOscillator(){const source=Object.assign(node(),{frequency:param(),start(){},stop(){this.stopped=true;}});return source;}
-    async decodeAudioData(bytes){return{duration:.6,bytes};}
+    async decodeAudioData(bytes){return{duration:.6,bytes:!bytes.audioURL||bytes.audioURL.includes('/voices/')?bytes:undefined,audioURL:bytes.audioURL};}
     resume(){return Promise.resolve();}
   }
   const media={paused:true,play(){this.paused=false;return Promise.resolve();},pause(){this.paused=true;}};
   globalThis.window={AudioContext,fetch:(url)=>{
-    if(!url.includes('/audio/mirv/'))requests.push(url);
-    return fetchResult?.(url)??Promise.resolve({ok:true,arrayBuffer:()=>Promise.resolve(new ArrayBuffer(4))});
+    if(!url.includes('/audio/mirv/')&&!url.includes('/audio/real-weapons/'))requests.push(url);
+    return fetchResult?.(url)??Promise.resolve({ok:true,arrayBuffer:()=>Promise.resolve(Object.assign(new ArrayBuffer(4),{audioURL:url}))});
   }};
   globalThis.document={getElementById:()=>media};
   try{await run({requests,sources,media,get voiceSources(){return sources.filter(s=>s.buffer?.bytes);},get context(){return context;}});}finally{

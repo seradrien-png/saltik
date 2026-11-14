@@ -11,7 +11,7 @@ for(const character of ['striker','gatling','bt'])test(`boarding keeps ${charact
  assert(g.royal.finale?.active);
  assert.equal(p.evasion,evasion,'HUD/input keep their canonical evasion state object');
  assert.equal(p.evasion.active,false);assert.equal(p.evasion.held,false);assert.equal(p.melee,melee);
- for(let i=0;i<340;i++){
+ for(let i=0;i<500;i++){
   updateInkScene(g,{},1/60);
   assert.equal(typeof p.evasion.active,'boolean','HUD can be updated on every frame');
  }

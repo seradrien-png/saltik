@@ -1,3 +1,4 @@
+import {hdModuleImage,drawHDModule} from './hd-module-art.js';
 import {DESERT_STRUCTURES,DESERT_ROOMS,desertStructurePlacement,desertVistaBox,projectDesertPlayer} from './desert-layout.js';
 import {drawInkSaltik} from './ink-saltik.js';
 const clamp=(n,a=0,b=1)=>Math.max(a,Math.min(b,n));
@@ -30,9 +31,9 @@ export function drawDesertInteriorBackdrop(c,image,{camera,width,height,cameraY=
  // Near structural ribs make the enormous hall read as an enclosed building.
  c.fillStyle='#211710';for(const at of [110,2450,5010,7460]){const xx=at-camera*.30;if(xx>width+80||xx<-80)continue;c.fillRect(xx,0,17,Math.min(height,510+cameraY));c.fillStyle='#4b2d1d';c.fillRect(xx+4,0,5,Math.min(height,510+cameraY));c.fillStyle='#211710';}
 }
-export function drawDesertWorld(c,g,{camera,width,height,atlas,texture,vista}){
+export function drawDesertWorld(c,g,{camera,width,height,atlas,texture,vista,hd}){
  const floor=g.groundAt,left=camera-80,right=camera+width+80;
- for(const s of DESERT_STRUCTURES){if(s.right<left||s.left>right)continue;const p=desertStructurePlacement(s);c.drawImage(atlas,...s.crop,s.left-camera,p.y,s.right-s.left,512*p.k);}
+ for(const s of DESERT_STRUCTURES){if(s.right<left||s.left>right)continue;const p=desertStructurePlacement(s);const painting=hdModuleImage({hd},`desert-${s.kind}`);if(painting)drawHDModule(c,painting,s.left-camera,p.y,s.right-s.left,512*p.k);else c.drawImage(atlas,...s.crop,s.left-camera,p.y,s.right-s.left,512*p.k);}
  // The physical ground and the illustrated foundation share this exact outline.
  c.save();c.beginPath();c.moveTo(left-camera,height+400);for(let x=left;x<right;x+=18)c.lineTo(x-camera,floor(x));c.lineTo(right-camera,floor(right));c.lineTo(right-camera,height+400);c.closePath();c.clip();
  c.fillStyle='#6f3522';c.fillRect(-80,400,width+160,height+400);
@@ -53,10 +54,10 @@ function drawAirlock(c,texture,x,y,width,open=false,vista=null){
  if(open){c.save();c.beginPath();c.ellipse(x+120,y-144,86,121,0,0,Math.PI*2);c.clip();c.fillStyle='#f1ae70';c.fillRect(x+30,y-270,180,250);if(vista){const w=vista.naturalWidth??vista.width,h=vista.naturalHeight??vista.height;c.drawImage(vista,w*.32,0,w*.24,h,x+30,y-270,180,250);}c.restore();c.strokeStyle='#efad64';c.lineWidth=3;c.beginPath();c.ellipse(x+120,y-144,87,122,0,0,Math.PI*2);c.stroke();}
  c.fillStyle=open?'#badca0':'#f2bd63';c.fillRect(x+203,y-177,3,6);
 }
-export function drawDesertForeground(c,g,{camera,width,atlas}){
+export function drawDesertForeground(c,g,{camera,width,atlas,hd}){
  const floor=g.groundAt;
  for(const [i,x]of [650,2780,5220,7050].entries()){if(x<camera-280||x>camera+width+280)continue;prop(c,atlas,i%2?2:3,x-camera,floor(x)+52,i%2?220:200,i===2);}
  // The illustrated dais' front fascia occludes feet at its deck edge, while
  // the actors remain in front of the back-side railing.
- for(const s of DESERT_STRUCTURES.filter(s=>s.walkable)){const p=desertStructurePlacement(s);const top=p.point(s.cap[0])[1];if(s.right<camera||s.left>camera+width)continue;c.save();c.beginPath();c.rect(s.left-camera,top+2,s.right-s.left,24);c.clip();c.drawImage(atlas,...s.crop,s.left-camera,p.y,s.right-s.left,512*p.k);c.restore();}
+ for(const s of DESERT_STRUCTURES.filter(s=>s.walkable)){const p=desertStructurePlacement(s);const top=p.point(s.cap[0])[1];if(s.right<camera||s.left>camera+width)continue;c.save();c.beginPath();c.rect(s.left-camera,top+2,s.right-s.left,24);c.clip();const painting=hdModuleImage({hd},`desert-${s.kind}`);if(painting)drawHDModule(c,painting,s.left-camera,p.y,s.right-s.left,512*p.k);else c.drawImage(atlas,...s.crop,s.left-camera,p.y,s.right-s.left,512*p.k);c.restore();}
 }

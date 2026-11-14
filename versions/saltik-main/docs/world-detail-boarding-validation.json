@@ -1,0 +1,51 @@
+{
+  "date": "2026-11-14",
+  "tests": {
+    "passed": 838,
+    "failed": 0
+  },
+  "browser": {
+    "graphics": {
+      "loaded": true
+    },
+    "audio": {
+      "weapons": {
+        "loaded": 2,
+        "loading": false,
+        "failed": 0,
+        "voices": 0
+      },
+      "mirv": {
+        "active": true,
+        "disposed": false,
+        "epoch": 0,
+        "loaded": 7,
+        "failed": 0,
+        "pending": 0,
+        "seenEvents": 0,
+        "oneShots": 0,
+        "flightLoops": 0,
+        "fallLoop": false,
+        "fallRate": 0.85,
+        "fallGain": 0
+      }
+    },
+    "errors": [],
+    "missing": [],
+    "worlds": 4,
+    "hd_modules": 17,
+    "finale_to_pov": true
+  },
+  "package": {
+    "source_bytes": 335595867,
+    "published_bytes": 227911148,
+    "lossless_images": true
+  },
+  "preservation": {
+    "previous_github_backup": "583761bcbcbe8152cde62bce3280385ce7dd8cb3",
+    "original_assets_retained": true,
+    "physics_unchanged": true
+  },
+  "hd_modules": 17,
+  "note": "12 drawings have increased native width; five already large drawings retain native dimensions with new fine detail. Falling whistle is an archival effect, not a verified live incoming shell recording."
+}

@@ -27,7 +27,7 @@ function quietLoopRegion(buffer){
   end:(quietest(buffer.length-width,buffer.length-1)+1)/buffer.sampleRate};
 }
 
-export function createMirvAudio(context,destination,{fetch:fetchSample=globalThis.window?.fetch?.bind(globalThis.window)??globalThis.fetch?.bind(globalThis),random=Math.random}={}){
+export function createMirvAudio(context,destination,{fetch:fetchSample=globalThis.window?.fetch?.bind(globalThis.window)??globalThis.fetch?.bind(globalThis),random=Math.random,paths={}}={}){
  const bus=context.createGain();bus.gain.value=.62;
  const compressor=context.createDynamicsCompressor?.();
  if(compressor){
@@ -106,9 +106,9 @@ export function createMirvAudio(context,destination,{fetch:fetchSample=globalThi
   loading=Promise.all(Object.entries(SAMPLES).map(async([key,file])=>{
    try{
     if(typeof fetchSample!=='function'||typeof context.decodeAudioData!=='function')throw new Error('Audio loading unavailable');
-    const response=await fetchSample(`./audio/mirv/${file}.ogg`);
-    if(!response||response.ok===false)throw new Error('Sample unavailable');
-    const buffer=await context.decodeAudioData(await response.arrayBuffer());
+    const fallback=`./audio/mirv/${file}.ogg`,preferred=paths[key]??fallback;
+    const load=async url=>{const response=await fetchSample(url);if(!response||response.ok===false)throw new Error('Sample unavailable');return context.decodeAudioData(await response.arrayBuffer());};
+    let buffer;try{buffer=await load(preferred);}catch(error){if(preferred===fallback)throw error;buffer=await load(fallback);}
     if(!buffer)throw new Error('Sample undecodable');
     if(!disposed){
      buffers.set(key,buffer);
