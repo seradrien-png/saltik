@@ -7,15 +7,15 @@
       "slug": "saltik-main",
       "repo": "saltik-v2-matin-dore",
       "title": "SALTIK V2 \u2014 Matin Dor\u00e9",
-      "commit": "c8d50097cdd9a1846310c087b7a522baa0a15efe",
-      "published_version": 48,
+      "commit": "6bb97199d6140fbae7464d00d9ec81a36cd5e9c5",
+      "published_version": 49,
       "url": "https://saltik-v2-matin-dore.ser-adrien.chatgpt.site",
       "base_commit": "ce280f9394d382d728673a48c1994a18092e8c58",
       "source_path": "/workspace/sites/saltik-v2-matin-dore",
       "export_path": "versions/saltik-main",
       "web_entry": "versions/saltik-main/dist/index.html",
-      "file_count": 793,
-      "bytes": 354681060,
+      "file_count": 799,
+      "bytes": 355945739,
       "uncommitted_changes": "",
       "files": {
         ".gitignore": {
@@ -33,6 +33,10 @@
         "audio-sources/A10_BRRRT_boucle.wav": {
           "sha256": "f6778dd1ec910a3dbaa24c045ea4559cbf25c8dcdfed19e49a691938f391eba0",
           "size": 614444
+        },
+        "audio-sources/SALTIK_Velours_Mecanique_pour_Codex.zip": {
+          "sha256": "258635c78da62613431b7894962d13e60fff81842ee25070143826a2511b348f",
+          "size": 614721
         },
         "audio-sources/Saltik_MIRV_kit_audio.zip": {
           "sha256": "475045c7f2a83af61f38b59d9bf202762a0979984fc79e13a5b7e2433caa30df",
@@ -606,6 +610,10 @@
           "sha256": "43ae75ac86b6a139e4a8f85389934ef34e207d676cf6ec2069bd42ee4360e7a8",
           "size": 16158
         },
+        "dist/audio/saltik_velours_01_mecanique.mp3": {
+          "sha256": "c61a6e4ac5234c4a93974efece00e52d5b4feea4b44939528f6481498ff2f260",
+          "size": 641996
+        },
         "dist/audio/voices/gatling-carrier.ogg": {
           "sha256": "bd2211d6fc0b55e59892eb51f300eaa48000a150048aa4362fb688718b1744a6",
           "size": 19013
@@ -1031,8 +1039,8 @@
           "size": 4153
         },
         "dist/src/main.js": {
-          "sha256": "dcee8e6c9a746ee624dac8afc97d9c8ecca86aa918ea1db4940a7662e873d6b9",
-          "size": 33779
+          "sha256": "3fa6f0a0ed8577f686827685de9cbd09bb2fbcbc1dbca8a3f60c6818b0d96b60",
+          "size": 33869
         },
         "dist/src/melee-state.js": {
           "sha256": "f24e08a07354668edbe7d54291517edc973dd34f9dfa9653c4f5776fe2b1eb87",
@@ -1073,6 +1081,10 @@
         "dist/src/motor-motion.js": {
           "sha256": "4cd5f7608a358e829486fb3044179c75876304c3623a922a6fb701055a468691",
           "size": 839
+        },
+        "dist/src/music-tracks.js": {
+          "sha256": "377c3735ebbd657525d16be0afe5509641c1e0b0f191d2084087035c45a48b2f",
+          "size": 610
         },
         "dist/src/obstacle-art.js": {
           "sha256": "6dd185502e05622eadcb9d88fb82efb5a06cee306850feee7ab61f142813cc3a",
@@ -1834,6 +1846,14 @@
           "sha256": "88008aa3b8ae06fd0ea26e814a1527b76340330d54515868552c94f15bf2693e",
           "size": 52000
         },
+        "docs/velvet-music-validation.json": {
+          "sha256": "d524af638807610531ab37098ede29d677e53739f1d3542e3aea2bf1f134724c",
+          "size": 4536
+        },
+        "docs/velvet-music.md": {
+          "sha256": "c9b09f6ab7306f84ef7b7427d9d4f075c5784a2ee009662ae50d5b91fb10f0c7",
+          "size": 2026
+        },
         "docs/world-detail-and-boarding.md": {
           "sha256": "d206f298fface07a9a8383816ba5cbbf3e615bf531d23b3c1af15edadefe2d61",
           "size": 3009
@@ -2315,8 +2335,8 @@
           "size": 4153
         },
         "src/main.js": {
-          "sha256": "dcee8e6c9a746ee624dac8afc97d9c8ecca86aa918ea1db4940a7662e873d6b9",
-          "size": 33779
+          "sha256": "3fa6f0a0ed8577f686827685de9cbd09bb2fbcbc1dbca8a3f60c6818b0d96b60",
+          "size": 33869
         },
         "src/melee-state.js": {
           "sha256": "f24e08a07354668edbe7d54291517edc973dd34f9dfa9653c4f5776fe2b1eb87",
@@ -2357,6 +2377,10 @@
         "src/motor-motion.js": {
           "sha256": "4cd5f7608a358e829486fb3044179c75876304c3623a922a6fb701055a468691",
           "size": 839
+        },
+        "src/music-tracks.js": {
+          "sha256": "377c3735ebbd657525d16be0afe5509641c1e0b0f191d2084087035c45a48b2f",
+          "size": 610
         },
         "src/obstacle-art.js": {
           "sha256": "6dd185502e05622eadcb9d88fb82efb5a06cee306850feee7ab61f142813cc3a",
@@ -3202,12 +3226,12 @@
           "duration_native_run_seconds": 82.0166666666633
         }
       ],
-      "update_note": "Only level3 Dragon Striker uses the new emerald velvet/red/gold reference skin; three native turn views and one menu portrait updated. Draw masks registered for crouch, cannon and jump; other missions, skins and gameplay retained.",
-      "published_source_commit": "c8d50097cdd9a1846310c087b7a522baa0a15efe",
+      "update_note": "Original supplied Velours mecanique MP3 loops in level3 only at25%, using the existing single media element and pause/mute/menu lifecycle. Level1 forest score unchanged; levels2/4 remain silent; all effects and voices unchanged.",
+      "published_source_commit": "6bb97199d6140fbae7464d00d9ec81a36cd5e9c5",
       "publication_status": "Published and verified",
       "github_import_base": "4c9b8e64bf3232c222f9b6f534ca37d660da3f7b",
-      "live_published_version": 48,
-      "last_confirmed_saved_version": 48
+      "live_published_version": 49,
+      "last_confirmed_saved_version": 49
     },
     {
       "slug": "saltik-ink",
@@ -7574,6 +7598,6 @@
   "github_repository": "seradrien-png/saltik",
   "preserved_github_parent": "a2658100e8259a69c772a6dd4cfbfcdb833f1221",
   "github_backup_commit": "55e0af78812ba737a6758403be9c2993ef2fa903",
-  "latest_main_source_commit": "c8d50097cdd9a1846310c087b7a522baa0a15efe",
+  "latest_main_source_commit": "6bb97199d6140fbae7464d00d9ec81a36cd5e9c5",
   "history_note": "Source bundles preserve the initial backup capture. Subsequent project updates are preserved by commits of this GitHub repository."
 }

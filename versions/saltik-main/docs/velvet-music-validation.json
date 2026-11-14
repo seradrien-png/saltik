@@ -1,0 +1,179 @@
+{
+  "date": "2026-11-14",
+  "tests": {
+    "passed": 838,
+    "failed": 0
+  },
+  "source_mp3": {
+    "sha256": "c61a6e4ac5234c4a93974efece00e52d5b4feea4b44939528f6481498ff2f260",
+    "bytes": 641996,
+    "unchanged_from_zip": true
+  },
+  "analysis": {
+    "decoded_duration": 26.66665625,
+    "peak": 0.8705234527587891,
+    "boundary_jump": [
+      0.0006083138287067413,
+      0.0005818717181682587
+    ],
+    "rms_first_50ms": 0.11906281113624573,
+    "rms_last_50ms": 0.0859970897436142,
+    "rms_first_half_second": 0.15428981184959412,
+    "rms_last_half_second": 0.1298464685678482
+  },
+  "preservation": {
+    "previous_github_backup": "ca54419f8e3dc31a2ea364e6f3901d63ccca0bdf",
+    "existing_audio_files_changed": [],
+    "audio_engine_unchanged": true
+  },
+  "browser": [
+    {
+      "viewport": [
+        1440,
+        900
+      ],
+      "loaded": {
+        "src": "http://127.0.0.1:4370/audio/saltik_velours_01_mecanique.mp3",
+        "paused": false,
+        "volume": 0.25,
+        "loop": true,
+        "time": 0.912,
+        "error": null
+      },
+      "loop": {
+        "wrapped": true,
+        "before": 0.044513081435337234,
+        "tail": 0.03847313638170956,
+        "after": 0.054748141790806525,
+        "currentTime": 0.279739,
+        "paused": false,
+        "metadataDuration": 26.666656,
+        "seekDuration": 26.666656,
+        "wrapDuration": 26.666656,
+        "finalDuration": 26.666656
+      },
+      "pause_resume_mute_restart_home": "passed",
+      "world_selection": [
+        {
+          "level": 1,
+          "media": {
+            "src": "http://127.0.0.1:4370/audio/forest-loop.ogg",
+            "paused": false,
+            "volume": 0.2,
+            "loop": true,
+            "time": 0.229297,
+            "error": null
+          }
+        },
+        {
+          "level": 2,
+          "media": {
+            "src": "http://127.0.0.1:4370/audio/forest-loop.ogg",
+            "paused": true,
+            "volume": 0.2,
+            "loop": true,
+            "time": 0,
+            "error": null
+          }
+        },
+        {
+          "level": 4,
+          "media": {
+            "src": "http://127.0.0.1:4370/audio/forest-loop.ogg",
+            "paused": true,
+            "volume": 0.2,
+            "loop": true,
+            "time": 0,
+            "error": null
+          }
+        },
+        {
+          "level": 3,
+          "media": {
+            "src": "http://127.0.0.1:4370/audio/saltik_velours_01_mecanique.mp3",
+            "paused": false,
+            "volume": 0.25,
+            "loop": true,
+            "time": 0.26,
+            "error": null
+          }
+        }
+      ],
+      "errors": []
+    },
+    {
+      "viewport": [
+        844,
+        390
+      ],
+      "loaded": {
+        "src": "http://127.0.0.1:4370/audio/saltik_velours_01_mecanique.mp3",
+        "paused": false,
+        "volume": 0.25,
+        "loop": true,
+        "time": 0.98,
+        "error": null
+      },
+      "loop": {
+        "wrapped": true,
+        "before": 0.04428468761740067,
+        "tail": 0.03799674697166808,
+        "after": 0.05453433204483221,
+        "currentTime": 0.252,
+        "paused": false,
+        "metadataDuration": 26.666656,
+        "seekDuration": 26.666656,
+        "wrapDuration": 26.666656,
+        "finalDuration": 26.666656
+      },
+      "pause_resume_mute_restart_home": "passed",
+      "world_selection": [
+        {
+          "level": 1,
+          "media": {
+            "src": "http://127.0.0.1:4370/audio/forest-loop.ogg",
+            "paused": false,
+            "volume": 0.2,
+            "loop": true,
+            "time": 0.316635,
+            "error": null
+          }
+        },
+        {
+          "level": 2,
+          "media": {
+            "src": "http://127.0.0.1:4370/audio/forest-loop.ogg",
+            "paused": true,
+            "volume": 0.2,
+            "loop": true,
+            "time": 0,
+            "error": null
+          }
+        },
+        {
+          "level": 4,
+          "media": {
+            "src": "http://127.0.0.1:4370/audio/forest-loop.ogg",
+            "paused": true,
+            "volume": 0.2,
+            "loop": true,
+            "time": 0,
+            "error": null
+          }
+        },
+        {
+          "level": 3,
+          "media": {
+            "src": "http://127.0.0.1:4370/audio/saltik_velours_01_mecanique.mp3",
+            "paused": false,
+            "volume": 0.25,
+            "loop": true,
+            "time": 0.3,
+            "error": null
+          }
+        }
+      ],
+      "errors": []
+    }
+  ]
+}

@@ -1,3 +1,4 @@
+import {selectLevelMusic} from './music-tracks.js';
 import {readBTFinishCycle,saveBTFinishCycle} from './bt-finish-cycle-store.js';
 import {setupFullscreen} from './fullscreen.js';
 import {normalizeSkin} from './player-skins.js';
@@ -102,7 +103,7 @@ function setView(next){view=next;audio.setPlaying(next==='playing');app.classNam
 function soundUI(){$('sound').classList.toggle('muted',!audio.enabled);$('sound').setAttribute('aria-pressed',String(!audio.enabled));$('sound').setAttribute('aria-label',audio.enabled?'Couper le son':'Activer le son');victoryFilm.syncSound();}
 function toggleSound(){audio.setEnabled(!audio.enabled);if(audio.enabled)audio.unlock();soundUI();try{localStorage.setItem('feral-steel-sound',audio.enabled?'on':'off');}catch{}}
 function toast(text){$('toast').textContent=text;$('toast').hidden=false;setTimeout(()=>{$('toast').hidden=true;},4000);}
-function start(){if(!artReady)return;audio.setCharacter(selectedCharacter);victoryFilm.cancel();audio.setMusicEnabled(selectedLevel===1);audio.setPlaying(true,{restart:true});audio.unlock();audio.play({type:'start'});clearInput();game=createGame({intro:true,level:selectedLevel,character:selectedCharacter,skin:selectedSkin});duelPhase=null;breachPhase=null;introActive=false;renderer.reset();lastFrame=performance.now();accumulator=0;resultAt=0;$('boss-hud').hidden=true;$('result-screen').hidden=true;setView('playing');$('start').blur();$('replay').blur();$('restart-pause').blur();updateUI();}
+function start(){if(!artReady)return;audio.setPlaying(false);audio.setCharacter(selectedCharacter);victoryFilm.cancel();audio.setMusicEnabled(selectLevelMusic(selectedLevel));audio.setPlaying(true,{restart:true});audio.unlock();audio.play({type:'start'});clearInput();game=createGame({intro:true,level:selectedLevel,character:selectedCharacter,skin:selectedSkin});duelPhase=null;breachPhase=null;introActive=false;renderer.reset();lastFrame=performance.now();accumulator=0;resultAt=0;$('boss-hud').hidden=true;$('result-screen').hidden=true;setView('playing');$('start').blur();$('replay').blur();$('restart-pause').blur();updateUI();}
 function pause(){if(view!=='playing')return;clearInput();game.status='paused';setView('paused');$('resume').focus({preventScroll:true});}
 function resume(){if(view!=='paused'||matchMedia('(orientation: portrait)').matches)return;clearInput();audio.unlock();game.status='playing';setView('playing');lastFrame=performance.now();accumulator=0;$('resume').blur();}
 function home(){victoryFilm.cancel();clearInput();game=createGame({level:selectedLevel,character:selectedCharacter,skin:selectedSkin});game.status='title';duelPhase=null;breachPhase=null;renderer.reset();resultAt=0;setView('title');$('boss-hud').hidden=true;$('start').focus({preventScroll:true});}

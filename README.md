@@ -8,7 +8,7 @@ Les cinq états ci-dessous sont conservés dans des dossiers indépendants, sans
 
 | Jeu / sources | État réel | GitHub Pages après activation | Commit source |
 | --- | --- | --- | --- |
-| [SALTIK V2 — Matin Doré](versions/saltik-main) | Publiée v48 — nouveau Dragon Velours | [Jouer](https://saltik-v2-matin-dore.ser-adrien.chatgpt.site) | `c8d50097cdd9` |
+| [SALTIK V2 — Matin Doré](versions/saltik-main) | Publiée v49 — musique Velours mécanique | [Jouer](https://saltik-v2-matin-dore.ser-adrien.chatgpt.site) | `6bb97199d614` |
 | [SALTIK — Ink Edition publiée](versions/saltik-ink) | Publiée v4 | [Jouer](https://seradrien-png.github.io/saltik/versions/saltik-ink/dist/) | `44110aa2dd80` |
 | [SALTIK INK — brouillon local avec épilogue](versions/autres-versions/saltik-ink-brouillon) | Brouillon local non publié | [Jouer](https://seradrien-png.github.io/saltik/versions/autres-versions/saltik-ink-brouillon/dist/) | `21dcc4ca32c5` |
 | [Feral Steel — Opération Canopée, référence Saltik](versions/autres-versions/saltik-feral-steel) | Publiée v24 | [Jouer](https://seradrien-png.github.io/saltik/versions/autres-versions/saltik-feral-steel/dist/) | `dbc331d0b7a2` |
@@ -196,3 +196,8 @@ Dix-sept modules redessinés à partir des références : douze gagnent en défi
 ### 14 novembre 2026 — nouveau Dragon Velours (v48)
 
 Le seul Striker Dragon des Jardins de velours reprend la référence utilisateur : velours émeraude, dragon et nuages brodés dorés, panneaux rouges et pompons, visage crème. Illustration native et trois vues de retournement séparées, raccords de pince/suspension/canon adaptés et aperçu de sélection actualisé. Taille et gameplay identiques ; autres skins et niveaux préservés, dix-neuf autres aperçus identiques. 838 tests réussis ; contrôles Chromium des deux sens, trois perspectives, accroupissement, saut et élévation du canon sans erreur JavaScript. Origines et cinq éditions conservées ; v47 disponible dans le parent GitHub 90b6da5cf6bb3feee2420da88368f31c6a61da72. Publication v48 réussie, source `c8d50097cdd9a1846310c087b7a522baa0a15efe`. [Rapport](dragon-velvet-release.json).
+
+
+### 14 novembre 2026 — musique Velours mécanique (v49)
+
+MP3 original fourni intégré uniquement aux Jardins de velours, sans transcodage, en boucle native à25%. Un seul élément audio, lancement par interaction, pause/reprise, muet, redémarrage et retour au menu vérifiés. La musique du niveau1 reste à20%, les niveaux2/4 restent sans musique. Bruitages, voix, A10, physique et illustrations inchangés. Boucle réelle avec son mesuré avant/après, ordinateur et mobile paysage émulé, zéro erreur JavaScript ; 838 tests passent. ZIP original conservé hors publication. Source `6bb97199d6140fbae7464d00d9ec81a36cd5e9c5`, publication v49 réussie. V48 conservée dans le parent GitHub ca54419f8e3dc31a2ea364e6f3901d63ccca0bdf. [Rapport et fichiers](velvet-music-release.json).

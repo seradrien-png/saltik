@@ -1,0 +1,244 @@
+{
+  "date": "2026-11-14",
+  "tests": {
+    "passed": 838,
+    "failed": 0
+  },
+  "source_mp3": {
+    "sha256": "c61a6e4ac5234c4a93974efece00e52d5b4feea4b44939528f6481498ff2f260",
+    "bytes": 641996,
+    "unchanged_from_zip": true
+  },
+  "analysis": {
+    "decoded_duration": 26.66665625,
+    "peak": 0.8705234527587891,
+    "boundary_jump": [
+      0.0006083138287067413,
+      0.0005818717181682587
+    ],
+    "rms_first_50ms": 0.11906281113624573,
+    "rms_last_50ms": 0.0859970897436142,
+    "rms_first_half_second": 0.15428981184959412,
+    "rms_last_half_second": 0.1298464685678482
+  },
+  "preservation": {
+    "previous_github_backup": "ca54419f8e3dc31a2ea364e6f3901d63ccca0bdf",
+    "existing_audio_files_changed": [],
+    "audio_engine_unchanged": true
+  },
+  "browser": [
+    {
+      "viewport": [
+        1440,
+        900
+      ],
+      "loaded": {
+        "src": "http://127.0.0.1:4370/audio/saltik_velours_01_mecanique.mp3",
+        "paused": false,
+        "volume": 0.25,
+        "loop": true,
+        "time": 0.912,
+        "error": null
+      },
+      "loop": {
+        "wrapped": true,
+        "before": 0.044513081435337234,
+        "tail": 0.03847313638170956,
+        "after": 0.054748141790806525,
+        "currentTime": 0.279739,
+        "paused": false,
+        "metadataDuration": 26.666656,
+        "seekDuration": 26.666656,
+        "wrapDuration": 26.666656,
+        "finalDuration": 26.666656
+      },
+      "pause_resume_mute_restart_home": "passed",
+      "world_selection": [
+        {
+          "level": 1,
+          "media": {
+            "src": "http://127.0.0.1:4370/audio/forest-loop.ogg",
+            "paused": false,
+            "volume": 0.2,
+            "loop": true,
+            "time": 0.229297,
+            "error": null
+          }
+        },
+        {
+          "level": 2,
+          "media": {
+            "src": "http://127.0.0.1:4370/audio/forest-loop.ogg",
+            "paused": true,
+            "volume": 0.2,
+            "loop": true,
+            "time": 0,
+            "error": null
+          }
+        },
+        {
+          "level": 4,
+          "media": {
+            "src": "http://127.0.0.1:4370/audio/forest-loop.ogg",
+            "paused": true,
+            "volume": 0.2,
+            "loop": true,
+            "time": 0,
+            "error": null
+          }
+        },
+        {
+          "level": 3,
+          "media": {
+            "src": "http://127.0.0.1:4370/audio/saltik_velours_01_mecanique.mp3",
+            "paused": false,
+            "volume": 0.25,
+            "loop": true,
+            "time": 0.26,
+            "error": null
+          }
+        }
+      ],
+      "errors": []
+    },
+    {
+      "viewport": [
+        844,
+        390
+      ],
+      "loaded": {
+        "src": "http://127.0.0.1:4370/audio/saltik_velours_01_mecanique.mp3",
+        "paused": false,
+        "volume": 0.25,
+        "loop": true,
+        "time": 0.98,
+        "error": null
+      },
+      "loop": {
+        "wrapped": true,
+        "before": 0.04428468761740067,
+        "tail": 0.03799674697166808,
+        "after": 0.05453433204483221,
+        "currentTime": 0.252,
+        "paused": false,
+        "metadataDuration": 26.666656,
+        "seekDuration": 26.666656,
+        "wrapDuration": 26.666656,
+        "finalDuration": 26.666656
+      },
+      "pause_resume_mute_restart_home": "passed",
+      "world_selection": [
+        {
+          "level": 1,
+          "media": {
+            "src": "http://127.0.0.1:4370/audio/forest-loop.ogg",
+            "paused": false,
+            "volume": 0.2,
+            "loop": true,
+            "time": 0.316635,
+            "error": null
+          }
+        },
+        {
+          "level": 2,
+          "media": {
+            "src": "http://127.0.0.1:4370/audio/forest-loop.ogg",
+            "paused": true,
+            "volume": 0.2,
+            "loop": true,
+            "time": 0,
+            "error": null
+          }
+        },
+        {
+          "level": 4,
+          "media": {
+            "src": "http://127.0.0.1:4370/audio/forest-loop.ogg",
+            "paused": true,
+            "volume": 0.2,
+            "loop": true,
+            "time": 0,
+            "error": null
+          }
+        },
+        {
+          "level": 3,
+          "media": {
+            "src": "http://127.0.0.1:4370/audio/saltik_velours_01_mecanique.mp3",
+            "paused": false,
+            "volume": 0.25,
+            "loop": true,
+            "time": 0.3,
+            "error": null
+          }
+        }
+      ],
+      "errors": []
+    }
+  ],
+  "publication": {
+    "version": {
+      "id": "appgprj_6ae77e1b6da081918600675fc2e2b738~appgver_cddeaccaf66c819196d75ebcf55bc1d0",
+      "project_id": "appgprj_6ae77e1b6da081918600675fc2e2b738",
+      "version_number": 49,
+      "source": {
+        "commit_sha": "6bb97199d6140fbae7464d00d9ec81a36cd5e9c5"
+      },
+      "archive_storage": {
+        "archive_format": "tar",
+        "sediment_file_id": "file_00000000b8d8820aa079457fb874b58b",
+        "content_hash": "sha256:a79505c7c4be2d72405982d517720a410f962977ca9016c9ac98dbd6f9792103",
+        "size_bytes": 231700480,
+        "file_count": 285
+      },
+      "screenshot_url": null,
+      "deployment_id": null
+    },
+    "deployment": {
+      "id": "appgdep_6af814ddfd888191ac35530252b74ae9",
+      "project_id": "appgprj_6ae77e1b6da081918600675fc2e2b738",
+      "title": "SALTIK V2 \u2014 Matin Dor\u00e9",
+      "version_id": "appgprj_6ae77e1b6da081918600675fc2e2b738~appgver_cddeaccaf66c819196d75ebcf55bc1d0",
+      "type": "publish",
+      "status": "succeeded",
+      "url": "https://saltik-v2-matin-dore.ser-adrien.chatgpt.site",
+      "has_mcp": false,
+      "screenshot_asset_pointer": null,
+      "provider_deployment_id": "site---6ae77e1b6da081918600675fc2e2b738",
+      "failure_message": null,
+      "env_set_revision": 0,
+      "updated_at": "2026-11-14T07:59:42.061605+00:00"
+    }
+  },
+  "source_commit": "6bb97199d6140fbae7464d00d9ec81a36cd5e9c5",
+  "package": {
+    "before_bytes": 339702328,
+    "after_bytes": 231470915,
+    "reduction_percent": 31.861,
+    "originals_retained": true
+  },
+  "public_resources": {
+    "url": "https://saltik-v2-matin-dore.ser-adrien.chatgpt.site",
+    "files": [
+      {
+        "path": "src/main.js",
+        "status": 200,
+        "bytes": 33869,
+        "matches": true
+      },
+      {
+        "path": "src/music-tracks.js",
+        "status": 200,
+        "bytes": 610,
+        "matches": true
+      },
+      {
+        "path": "audio/saltik_velours_01_mecanique.mp3",
+        "status": 200,
+        "bytes": 641996,
+        "matches": true
+      }
+    ],
+    "passed": true
+  }
+}
