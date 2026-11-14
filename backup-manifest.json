@@ -7,15 +7,15 @@
       "slug": "saltik-main",
       "repo": "saltik-v2-matin-dore",
       "title": "SALTIK V2 \u2014 Matin Dor\u00e9",
-      "commit": "6bb97199d6140fbae7464d00d9ec81a36cd5e9c5",
-      "published_version": 49,
+      "commit": "b42892fe9be9ef438232d07bc949936d8de9b40b",
+      "published_version": 50,
       "url": "https://saltik-v2-matin-dore.ser-adrien.chatgpt.site",
       "base_commit": "ce280f9394d382d728673a48c1994a18092e8c58",
       "source_path": "/workspace/sites/saltik-v2-matin-dore",
       "export_path": "versions/saltik-main",
       "web_entry": "versions/saltik-main/dist/index.html",
-      "file_count": 799,
-      "bytes": 355945739,
+      "file_count": 809,
+      "bytes": 368495861,
       "uncommitted_changes": "",
       "files": {
         ".gitignore": {
@@ -177,6 +177,14 @@
         "dist/assets/hd-royal-bridge.png": {
           "sha256": "43e25ec86e8bdf27d13ddca0c7f34d06bb389cb15191caae415e9ded1134a3ac",
           "size": 2553337
+        },
+        "dist/assets/hd-royal-gallery.png": {
+          "sha256": "8c1815aa184a02065be8e5f8d9501ada205ad0cf17b4b6bce0c018ec24bd4b37",
+          "size": 3344385
+        },
+        "dist/assets/hd-royal-pavilion.png": {
+          "sha256": "ce1c4da0b985ee0c1f5d18ff2fe2f6fab9733ea996da0dd19cb34e64dd8b46e7",
+          "size": 3400487
         },
         "dist/assets/hd-royal-root.png": {
           "sha256": "07f5cfae8aafde82f1938d6ed9f6572def6f32c8e20a446ad45032d5f7158ef2",
@@ -549,6 +557,14 @@
         "dist/assets/royal-velvet-ground.png": {
           "sha256": "6ee038a2d3c02c8c162b0be2be91a1caf025d64f521aa2600a153dc0de713699",
           "size": 3110923
+        },
+        "dist/assets/royal-wheel-rotor.png": {
+          "sha256": "7093a8eec7ad70e6949bee46d42c6284eec8db710eecc7646123bbe3a495800c",
+          "size": 2346712
+        },
+        "dist/assets/royal-wheel-runoff.png": {
+          "sha256": "2a6069d77e93d9d60bd00e6e1a101dc7e8d03cc05dad7920ae51dc7495df465b",
+          "size": 3430182
         },
         "dist/assets/royal-world.png": {
           "sha256": "2e5f4a06f1810c86131cf996ad6fd16763759cc504864ea86315617447f36479",
@@ -935,8 +951,8 @@
           "size": 14682
         },
         "dist/src/hd-module-art.js": {
-          "sha256": "2bb4421e1abb115e182c255a014bf10b7ffa4d8b1af7221555fc33979fb159f0",
-          "size": 715
+          "sha256": "46d3ef8b297f049c27123acbb4457e3f496fe09a7fc6ff663d77793c696c8594",
+          "size": 748
         },
         "dist/src/ink-actors.js": {
           "sha256": "eb16e7399aaefe1cfedfbe13e4ee636663e2096df613f002ad809a160cf0d031",
@@ -979,8 +995,8 @@
           "size": 5484
         },
         "dist/src/ink-renderer.js": {
-          "sha256": "18c5a36591e59b8722ce0640ec3aa657246dc7d8a9d8aa97751dd16ca4075a1f",
-          "size": 22906
+          "sha256": "fcee719630e0924ff52ee91dec49fc6e13439d2bfcf60e607bbc70fec853f33d",
+          "size": 22993
         },
         "dist/src/ink-saltik.js": {
           "sha256": "ba15550e74f822e3897a3929289ebb1559b4c5b15e5f7be155d8ce1e42f03cb2",
@@ -1135,8 +1151,8 @@
           "size": 2173
         },
         "dist/src/royal-layout.js": {
-          "sha256": "1602fa7940c1a69750dd88ded9996f25a6f15c2a5f47de53797d350f0b2d15f1",
-          "size": 4903
+          "sha256": "9eb965360e0e30e59feef1925fcf4bc22f7047b9a8266bb4000dcd55202e2167",
+          "size": 5831
         },
         "dist/src/royal-level.js": {
           "sha256": "f66d3da6dea113a978e288253beaaa4196b4348ae92d45418c8ad8d32ee0d82f",
@@ -1162,9 +1178,13 @@
           "sha256": "e189a8929db28400502a2fac02b9b5f1a5f56b99211fb020d873c0f9e5a5bbaa",
           "size": 5244
         },
+        "dist/src/royal-wheel-water.js": {
+          "sha256": "1ffbbb41a44c090423c92ecb7cc80cc573c56af0f7af48f5e163370d24ad148e",
+          "size": 7010
+        },
         "dist/src/royal-world.js": {
-          "sha256": "4990c78c18945467dc1986bf1f6549c7be97d8c238c6de540d0bebf2f5703879",
-          "size": 6959
+          "sha256": "c577074c1a9819aa0808f5a41fcd7663e230acfd6a06293b78b6582ca2ce69b9",
+          "size": 7469
         },
         "dist/src/saltik-duel.js": {
           "sha256": "658f2c417bfc63f595429dfd6b158178d764c4af7af7ed0d9ca2c77593f9c8e6",
@@ -1291,8 +1311,8 @@
           "size": 3066
         },
         "docs/hd-module-assets.json": {
-          "sha256": "1c6165efca12dd39d2e4a7cdf37e4695217212391036ca32359162af8990113b",
-          "size": 6731
+          "sha256": "8bf0bbc57e7d0d674871d5def5a32bfb8c50a2d8838ed67748c741676ff7332b",
+          "size": 7542
         },
         "docs/implementation-ledger.md": {
           "sha256": "b41cbd00b8a41d5bf0962e717c8a97642bd0adafd732328af697470ca4b98bf9",
@@ -1393,6 +1413,14 @@
         "docs/releases/SALTIK-reference-2026-10-28.md": {
           "sha256": "a3a0d3cca93e7b86607e4d29e0a36c8d8a04f4ef99f6d53a82e8f148582255d8",
           "size": 1106
+        },
+        "docs/royal-modules-water-validation.json": {
+          "sha256": "79db77e5e41d17d6214382c6848d5beff907cceec460e41965fd31b9254a3950",
+          "size": 3283
+        },
+        "docs/royal-modules-water.md": {
+          "sha256": "69d312818873196de14e41a15ef4f6b6dc14f505470f2a3849b30d92c6142c0c",
+          "size": 3392
         },
         "docs/runtime-deployment.md": {
           "sha256": "9a733b047ac71f23e3a5d87ad21a9a813b2bd389e3ca20269644a891b36e2663",
@@ -2231,8 +2259,8 @@
           "size": 14682
         },
         "src/hd-module-art.js": {
-          "sha256": "2bb4421e1abb115e182c255a014bf10b7ffa4d8b1af7221555fc33979fb159f0",
-          "size": 715
+          "sha256": "46d3ef8b297f049c27123acbb4457e3f496fe09a7fc6ff663d77793c696c8594",
+          "size": 748
         },
         "src/ink-actors.js": {
           "sha256": "eb16e7399aaefe1cfedfbe13e4ee636663e2096df613f002ad809a160cf0d031",
@@ -2275,8 +2303,8 @@
           "size": 5484
         },
         "src/ink-renderer.js": {
-          "sha256": "18c5a36591e59b8722ce0640ec3aa657246dc7d8a9d8aa97751dd16ca4075a1f",
-          "size": 22906
+          "sha256": "fcee719630e0924ff52ee91dec49fc6e13439d2bfcf60e607bbc70fec853f33d",
+          "size": 22993
         },
         "src/ink-saltik.js": {
           "sha256": "ba15550e74f822e3897a3929289ebb1559b4c5b15e5f7be155d8ce1e42f03cb2",
@@ -2431,8 +2459,8 @@
           "size": 2173
         },
         "src/royal-layout.js": {
-          "sha256": "1602fa7940c1a69750dd88ded9996f25a6f15c2a5f47de53797d350f0b2d15f1",
-          "size": 4903
+          "sha256": "9eb965360e0e30e59feef1925fcf4bc22f7047b9a8266bb4000dcd55202e2167",
+          "size": 5831
         },
         "src/royal-level.js": {
           "sha256": "f66d3da6dea113a978e288253beaaa4196b4348ae92d45418c8ad8d32ee0d82f",
@@ -2458,9 +2486,13 @@
           "sha256": "e189a8929db28400502a2fac02b9b5f1a5f56b99211fb020d873c0f9e5a5bbaa",
           "size": 5244
         },
+        "src/royal-wheel-water.js": {
+          "sha256": "1ffbbb41a44c090423c92ecb7cc80cc573c56af0f7af48f5e163370d24ad148e",
+          "size": 7010
+        },
         "src/royal-world.js": {
-          "sha256": "4990c78c18945467dc1986bf1f6549c7be97d8c238c6de540d0bebf2f5703879",
-          "size": 6959
+          "sha256": "c577074c1a9819aa0808f5a41fcd7663e230acfd6a06293b78b6582ca2ce69b9",
+          "size": 7469
         },
         "src/saltik-duel.js": {
           "sha256": "658f2c417bfc63f595429dfd6b158178d764c4af7af7ed0d9ca2c77593f9c8e6",
@@ -3127,8 +3159,8 @@
           "size": 5339
         },
         "tests/royal-level.test.js": {
-          "sha256": "0248cf57b0a71f7210104e7e4099bde19d2c750d2e526f84d33943f98b045080",
-          "size": 3854
+          "sha256": "38f8e26210a5c7004c252f6336582fb71e5e58099f374e1764c749729ed731cd",
+          "size": 4039
         },
         "tests/royal-living-world.test.js": {
           "sha256": "306aa400059db6d132f28e18f81e181bb268f1097a6b992d881d908b0ec6dcb3",
@@ -3137,6 +3169,14 @@
         "tests/royal-pov.test.js": {
           "sha256": "f862603868588511c8b236ddd4acf9ec537367eeaa96758d53881edeaaad739b",
           "size": 615
+        },
+        "tests/royal-tiered-modules.test.js": {
+          "sha256": "83fd3d0f62f6f61484707d15a814bf14d1426c8ccc78fd7909be392a9f96e2ba",
+          "size": 2058
+        },
+        "tests/royal-wheel-water.test.js": {
+          "sha256": "4a3714452c1dd98a689d78a2bfd4e499733438a4e682116395216aefdbf885ea",
+          "size": 1491
         },
         "tests/saltik-duel-engine.test.js": {
           "sha256": "eae7bb3711c0282aa6d068da0eb74fa5a263321b127d0a9aace83836aea21c61",
@@ -3226,12 +3266,12 @@
           "duration_native_run_seconds": 82.0166666666633
         }
       ],
-      "update_note": "Original supplied Velours mecanique MP3 loops in level3 only at25%, using the existing single media element and pause/mute/menu lifecycle. Level1 forest score unchanged; levels2/4 remain silent; all effects and voices unchanged.",
-      "published_source_commit": "6bb97199d6140fbae7464d00d9ec81a36cd5e9c5",
+      "update_note": "Two distinct Velvet buildings now have ground/middle/top supports and linked stairs. Independent rotating waterwheel disk, native water flow and painted foreground river/cascade over purple plinth. Existing audio/art/other worlds preserved.",
+      "published_source_commit": "b42892fe9be9ef438232d07bc949936d8de9b40b",
       "publication_status": "Published and verified",
       "github_import_base": "4c9b8e64bf3232c222f9b6f534ca37d660da3f7b",
-      "live_published_version": 49,
-      "last_confirmed_saved_version": 49
+      "live_published_version": 50,
+      "last_confirmed_saved_version": 50
     },
     {
       "slug": "saltik-ink",
@@ -7598,6 +7638,6 @@
   "github_repository": "seradrien-png/saltik",
   "preserved_github_parent": "a2658100e8259a69c772a6dd4cfbfcdb833f1221",
   "github_backup_commit": "55e0af78812ba737a6758403be9c2993ef2fa903",
-  "latest_main_source_commit": "6bb97199d6140fbae7464d00d9ec81a36cd5e9c5",
+  "latest_main_source_commit": "b42892fe9be9ef438232d07bc949936d8de9b40b",
   "history_note": "Source bundles preserve the initial backup capture. Subsequent project updates are preserved by commits of this GitHub repository."
 }

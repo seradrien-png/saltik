@@ -1,0 +1,7 @@
+import test from 'node:test';import assert from 'node:assert/strict';
+import {ROYAL_SITES,royalGroundAt} from '../src/royal-layout.js';
+import {royalWheelFrame,royalRunoffGeometry,drawRoyalWheelWater} from '../src/royal-wheel-water.js';
+const s=ROYAL_SITES.find(s=>s.kind==='wheel');
+test('wheel turns slowly with the descending left-hand stream and freezes at equal simulation time',()=>{const a=royalWheelFrame(s,2),b=royalWheelFrame(s,3);assert(b.angle<a.angle);assert(Math.abs(b.angle-a.angle)<.3);assert.deepEqual(a,royalWheelFrame(s,2));assert.equal(a.x,b.x);assert.equal(a.y,b.y);});
+test('runoff starts at the painted river mouth and stays below the playable ground edge',()=>{const p=royalRunoffGeometry(s);assert(Math.abs(p.startY-royalGroundAt(p.startX))<6);assert(p.lipY>p.startY+60);assert(p.bottom>p.lipY+250);assert(p.lipWidth>p.mouthWidth);});
+test('only the independent moving disk is rotated, rather than the whole terrain illustration',()=>{const rotor={width:1024,height:1024},image={width:1536,height:1024},draws=[],rotations=[];const grad={addColorStop(){}};const c=new Proxy({drawImage:(im,...args)=>draws.push({im,args}),rotate:r=>rotations.push(r),createLinearGradient:()=>grad,createRadialGradient:()=>grad},{get:(o,k)=>k in o?o[k]:()=>{}});drawRoyalWheelWater(c,image,s,{time:5,rotor});assert(rotations.some(r=>Math.abs(r)>.1));assert(draws.some(d=>d.im===rotor));assert(!draws.some(d=>d.im===image&&d.args.length===4),'the whole static module is never spun');});

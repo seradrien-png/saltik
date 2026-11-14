@@ -236,5 +236,31 @@
     "width_ratio": 2.0,
     "sha256": "a32c3dcf3be7f8709fb5ad1c005830352cebc1b896466ffa25e6313d050b300b",
     "method": "New image-generation reference redraw; no artificial final upscaling; full logical world bounds retained"
+  },
+  {
+    "asset": "dist/assets/hd-royal-gallery.png",
+    "dimensions": [
+      1536,
+      1024
+    ],
+    "logical_dimensions": [
+      768,
+      512
+    ],
+    "sha256": "8c1815aa184a02065be8e5f8d9501ada205ad0cf17b4b6bce0c018ec24bd4b37",
+    "method": "New reference-based royal architecture, independently painted with two stair flights and a real intermediate landing; no artificial upscaling."
+  },
+  {
+    "asset": "dist/assets/hd-royal-pavilion.png",
+    "dimensions": [
+      1536,
+      1024
+    ],
+    "logical_dimensions": [
+      768,
+      512
+    ],
+    "sha256": "ce1c4da0b985ee0c1f5d18ff2fe2f6fab9733ea996da0dd19cb34e64dd8b46e7",
+    "method": "New reference-based royal architecture, independently painted with two stair flights and a real intermediate landing; no artificial upscaling."
   }
 ]

@@ -1,0 +1,149 @@
+{
+  "date": "2026-11-14",
+  "tests": {
+    "passed": 843,
+    "failed": 0
+  },
+  "focused_tests": {
+    "passed": 5,
+    "all_three_characters_ascend_and_descend": true
+  },
+  "desktop": {
+    "poses": [
+      {
+        "kind": "gallery",
+        "tier": 0,
+        "x": 5199.479166666667,
+        "y": 593.2132439732459,
+        "scale": 1
+      },
+      {
+        "kind": "gallery",
+        "tier": 1,
+        "x": 5276.302083333334,
+        "y": 338.1611606399125,
+        "scale": 1
+      },
+      {
+        "kind": "gallery",
+        "tier": 2,
+        "x": 5794.856770833333,
+        "y": 202.9528273065792,
+        "scale": 1
+      },
+      {
+        "kind": "pavilion",
+        "tier": 0,
+        "x": 16780.729166666668,
+        "y": 569.4239819290168,
+        "scale": 1
+      },
+      {
+        "kind": "pavilion",
+        "tier": 1,
+        "x": 16868.5546875,
+        "y": 378.98127359568343,
+        "scale": 1
+      },
+      {
+        "kind": "pavilion",
+        "tier": 2,
+        "x": 17483.333333333336,
+        "y": 146.01252359568343,
+        "scale": 1
+      }
+    ],
+    "animation": {
+      "changedPixels": 148658
+    },
+    "errors": [],
+    "missing": []
+  },
+  "mobile_landscape_emulation": {
+    "poses": [
+      {
+        "kind": "gallery",
+        "tier": 0,
+        "x": 5199.479166666667,
+        "y": 593.2132439732459,
+        "scale": 1
+      },
+      {
+        "kind": "gallery",
+        "tier": 1,
+        "x": 5276.302083333334,
+        "y": 338.1611606399125,
+        "scale": 1
+      },
+      {
+        "kind": "gallery",
+        "tier": 2,
+        "x": 5794.856770833333,
+        "y": 202.9528273065792,
+        "scale": 1
+      },
+      {
+        "kind": "pavilion",
+        "tier": 0,
+        "x": 16780.729166666668,
+        "y": 569.4239819290168,
+        "scale": 1
+      },
+      {
+        "kind": "pavilion",
+        "tier": 1,
+        "x": 16868.5546875,
+        "y": 378.98127359568343,
+        "scale": 1
+      },
+      {
+        "kind": "pavilion",
+        "tier": 2,
+        "x": 17483.333333333336,
+        "y": 146.01252359568343,
+        "scale": 1
+      }
+    ],
+    "animation": {
+      "changedPixels": 59125
+    },
+    "errors": [],
+    "missing": []
+  },
+  "new_assets": {
+    "hd-royal-gallery.png": {
+      "sha256": "8c1815aa184a02065be8e5f8d9501ada205ad0cf17b4b6bce0c018ec24bd4b37",
+      "bytes": 3344385
+    },
+    "hd-royal-pavilion.png": {
+      "sha256": "ce1c4da0b985ee0c1f5d18ff2fe2f6fab9733ea996da0dd19cb34e64dd8b46e7",
+      "bytes": 3400487
+    },
+    "royal-wheel-rotor.png": {
+      "sha256": "7093a8eec7ad70e6949bee46d42c6284eec8db710eecc7646123bbe3a495800c",
+      "bytes": 2346712
+    },
+    "royal-wheel-runoff.png": {
+      "sha256": "2a6069d77e93d9d60bd00e6e1a101dc7e8d03cc05dad7920ae51dc7495df465b",
+      "bytes": 3430182
+    }
+  },
+  "preservation": {
+    "previous_github_backup": "8a20d3e4615006b5884e7973fbbd3dc0bc426f01",
+    "existing_assets_audio_portraits_unchanged": true,
+    "other_world_geometry_unchanged": true
+  },
+  "review": {
+    "critical": 0,
+    "important": 0,
+    "minor": 0,
+    "ready": true
+  },
+  "package": {
+    "before_bytes": 352232662,
+    "after_bytes": 241602955,
+    "saved_bytes": 110629707,
+    "reduction_percent": 31.408,
+    "originals_retained": true
+  }
+}

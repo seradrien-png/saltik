@@ -1,0 +1,250 @@
+{
+  "date": "2026-11-14",
+  "tests": {
+    "passed": 843,
+    "failed": 0
+  },
+  "focused_tests": {
+    "passed": 5,
+    "all_three_characters_ascend_and_descend": true
+  },
+  "desktop": {
+    "poses": [
+      {
+        "kind": "gallery",
+        "tier": 0,
+        "x": 5199.479166666667,
+        "y": 593.2132439732459,
+        "scale": 1
+      },
+      {
+        "kind": "gallery",
+        "tier": 1,
+        "x": 5276.302083333334,
+        "y": 338.1611606399125,
+        "scale": 1
+      },
+      {
+        "kind": "gallery",
+        "tier": 2,
+        "x": 5794.856770833333,
+        "y": 202.9528273065792,
+        "scale": 1
+      },
+      {
+        "kind": "pavilion",
+        "tier": 0,
+        "x": 16780.729166666668,
+        "y": 569.4239819290168,
+        "scale": 1
+      },
+      {
+        "kind": "pavilion",
+        "tier": 1,
+        "x": 16868.5546875,
+        "y": 378.98127359568343,
+        "scale": 1
+      },
+      {
+        "kind": "pavilion",
+        "tier": 2,
+        "x": 17483.333333333336,
+        "y": 146.01252359568343,
+        "scale": 1
+      }
+    ],
+    "animation": {
+      "changedPixels": 148658
+    },
+    "errors": [],
+    "missing": []
+  },
+  "mobile_landscape_emulation": {
+    "poses": [
+      {
+        "kind": "gallery",
+        "tier": 0,
+        "x": 5199.479166666667,
+        "y": 593.2132439732459,
+        "scale": 1
+      },
+      {
+        "kind": "gallery",
+        "tier": 1,
+        "x": 5276.302083333334,
+        "y": 338.1611606399125,
+        "scale": 1
+      },
+      {
+        "kind": "gallery",
+        "tier": 2,
+        "x": 5794.856770833333,
+        "y": 202.9528273065792,
+        "scale": 1
+      },
+      {
+        "kind": "pavilion",
+        "tier": 0,
+        "x": 16780.729166666668,
+        "y": 569.4239819290168,
+        "scale": 1
+      },
+      {
+        "kind": "pavilion",
+        "tier": 1,
+        "x": 16868.5546875,
+        "y": 378.98127359568343,
+        "scale": 1
+      },
+      {
+        "kind": "pavilion",
+        "tier": 2,
+        "x": 17483.333333333336,
+        "y": 146.01252359568343,
+        "scale": 1
+      }
+    ],
+    "animation": {
+      "changedPixels": 59125
+    },
+    "errors": [],
+    "missing": []
+  },
+  "new_assets": {
+    "hd-royal-gallery.png": {
+      "sha256": "8c1815aa184a02065be8e5f8d9501ada205ad0cf17b4b6bce0c018ec24bd4b37",
+      "bytes": 3344385
+    },
+    "hd-royal-pavilion.png": {
+      "sha256": "ce1c4da0b985ee0c1f5d18ff2fe2f6fab9733ea996da0dd19cb34e64dd8b46e7",
+      "bytes": 3400487
+    },
+    "royal-wheel-rotor.png": {
+      "sha256": "7093a8eec7ad70e6949bee46d42c6284eec8db710eecc7646123bbe3a495800c",
+      "bytes": 2346712
+    },
+    "royal-wheel-runoff.png": {
+      "sha256": "2a6069d77e93d9d60bd00e6e1a101dc7e8d03cc05dad7920ae51dc7495df465b",
+      "bytes": 3430182
+    }
+  },
+  "preservation": {
+    "previous_github_backup": "8a20d3e4615006b5884e7973fbbd3dc0bc426f01",
+    "existing_assets_audio_portraits_unchanged": true,
+    "other_world_geometry_unchanged": true
+  },
+  "review": {
+    "critical": 0,
+    "important": 0,
+    "minor": 0,
+    "ready": true
+  },
+  "package": {
+    "before_bytes": 352232662,
+    "after_bytes": 241602955,
+    "saved_bytes": 110629707,
+    "reduction_percent": 31.408,
+    "originals_retained": true
+  },
+  "publication": {
+    "version": {
+      "id": "appgprj_6ae77e1b6da081918600675fc2e2b738~appgver_f7e8b38884d081918330d74af1ffbe5e",
+      "project_id": "appgprj_6ae77e1b6da081918600675fc2e2b738",
+      "version_number": 50,
+      "source": {
+        "commit_sha": "b42892fe9be9ef438232d07bc949936d8de9b40b"
+      },
+      "archive_storage": {
+        "archive_format": "tar",
+        "sediment_file_id": "file_00000000fe748246876f4116651d30fe",
+        "content_hash": "sha256:8264ef7b3f03f2d422fb72cf30c94100a5ec0a08b8c1016963853852cf887c50",
+        "size_bytes": 241838080,
+        "file_count": 290
+      },
+      "screenshot_url": null,
+      "deployment_id": null
+    },
+    "deployment": {
+      "id": "appgdep_6af844c1f5e88191a564c162b26cd590",
+      "project_id": "appgprj_6ae77e1b6da081918600675fc2e2b738",
+      "title": "SALTIK V2 \u2014 Matin Dor\u00e9",
+      "version_id": "appgprj_6ae77e1b6da081918600675fc2e2b738~appgver_f7e8b38884d081918330d74af1ffbe5e",
+      "type": "publish",
+      "status": "succeeded",
+      "url": "https://saltik-v2-matin-dore.ser-adrien.chatgpt.site",
+      "has_mcp": false,
+      "screenshot_asset_pointer": null,
+      "provider_deployment_id": "site---6ae77e1b6da081918600675fc2e2b738",
+      "failure_message": null,
+      "env_set_revision": 0,
+      "updated_at": "2026-11-14T11:24:07.715406+00:00"
+    }
+  },
+  "source_commit": "b42892fe9be9ef438232d07bc949936d8de9b40b",
+  "public_resources": {
+    "url": "https://saltik-v2-matin-dore.ser-adrien.chatgpt.site",
+    "files": [
+      {
+        "path": "src/royal-layout.js",
+        "status": 200,
+        "bytes": 5831,
+        "matches": true
+      },
+      {
+        "path": "src/royal-world.js",
+        "status": 200,
+        "bytes": 7469,
+        "matches": true
+      },
+      {
+        "path": "src/royal-wheel-water.js",
+        "status": 200,
+        "bytes": 7010,
+        "matches": true
+      },
+      {
+        "path": "src/ink-renderer.js",
+        "status": 200,
+        "bytes": 29396,
+        "matches": true
+      },
+      {
+        "path": "src/hd-module-art.js",
+        "status": 200,
+        "bytes": 748,
+        "matches": true
+      },
+      {
+        "path": "assets/hd-royal-gallery.webp",
+        "status": 200,
+        "bytes": 2737076,
+        "matches": true
+      },
+      {
+        "path": "assets/hd-royal-pavilion.webp",
+        "status": 200,
+        "bytes": 2759688,
+        "matches": true
+      },
+      {
+        "path": "assets/royal-wheel-rotor.webp",
+        "status": 200,
+        "bytes": 1944840,
+        "matches": true
+      },
+      {
+        "path": "assets/royal-wheel-runoff.webp",
+        "status": 200,
+        "bytes": 2681648,
+        "matches": true
+      },
+      {
+        "path": "audio/saltik_velours_01_mecanique.mp3",
+        "status": 200,
+        "bytes": 641996,
+        "matches": true
+      }
+    ],
+    "passed": true
+  }
+}

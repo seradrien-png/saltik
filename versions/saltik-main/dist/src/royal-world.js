@@ -1,3 +1,4 @@
+import {drawRoyalWheelWater,drawRoyalWheelRunoff} from './royal-wheel-water.js';
 import {hdModuleImage,drawHDModule} from './hd-module-art.js';
 import {drawRoyalEel,drawRoyalGardenLife} from './royal-atmosphere.js';
 import {drawRoyalRainbow} from './royal-rainbow.js';
@@ -37,6 +38,7 @@ function paintSite(c,art,s,camera=0,time=0){
  else c.drawImage(image,...cell.crop,b.x-camera,b.y,b.w,b.h);
  // Water animation keeps its original atlas registration; HD cells never
  // reinterpret these source rectangles as coordinates in another image.
+ if(s.kind==='wheel'){drawRoyalWheelWater(c,hd??image,s,{camera,time,rotor:art?.hd?.['royal-wheel-rotor']});return;}
  if(cell.source==='bridge'||cell.source==='organic')drawRoyalWaterfalls(c,image,cell.source,{x:b.x-camera-cell.crop[0]*s.scale,y:b.y-cell.crop[1]*s.scale,scale:s.scale,time,sourceCrop:cell.crop});
 }
 export function drawRoyalBackdrop(c,{camera,width,height,image,art,time=0,atmosphere=null,eel=null}){
@@ -74,6 +76,8 @@ function ground(c,{camera,width,art}){
 export function drawRoyalWorld(c,g,{camera,width,time,art}){
  ground(c,{camera,width,art});
  for(const s of ROYAL_SITES){const b=royalPaintedBounds(s);if(b.x+b.w<camera-100||b.x>camera+width+100)continue;paintSite(c,art,s,camera,time);}
+ // The stream crosses the purple plinth below the walking lane, then falls.
+ for(const s of ROYAL_SITES.filter(s=>s.kind==='wheel'))if(s.left+s.scale*768>=camera&&s.left<=camera+width)drawRoyalWheelRunoff(c,hdModuleImage(art,'royal-wheel')??art?.organic,s,{camera,time,runoff:art?.hd?.['royal-wheel-runoff']});
 
 }
 export function drawRoyalForeground(c,g,{camera,width,art}){

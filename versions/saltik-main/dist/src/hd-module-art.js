@@ -3,7 +3,7 @@
 export const HD_MODULE_ASSETS=Object.freeze([
  'ink-bridge','ink-observatory','ink-wreck','ink-gorge','ink-checkpoint','ink-breach',
  'lunar-aqueduct','lunar-observatory','lunar-bastion','lunar-gate',
- 'royal-root','royal-wheel','royal-spool','royal-tree','royal-arch','royal-bridge','desert-dais'
+ 'royal-gallery','royal-pavilion','royal-root','royal-wheel','royal-spool','royal-tree','royal-arch','royal-bridge','desert-dais'
 ].map(name=>`hd-${name}`));
 export function hdModuleImage(art,name){return art?.hd?.[`hd-${name}`]??null;}
 export function drawHDModule(c,image,x,y,w,h){
