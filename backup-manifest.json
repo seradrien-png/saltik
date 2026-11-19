@@ -7,15 +7,15 @@
       "slug": "saltik-main",
       "repo": "saltik-v2-matin-dore",
       "title": "SALTIK V2 \u2014 Matin Dor\u00e9",
-      "commit": "8fa2dae6e596233bc94a93749bd136bbf4cc7066",
-      "published_version": 51,
+      "commit": "3ee9d7065d1a77a35f9df49d485b57670669599f",
+      "published_version": 52,
       "url": "https://saltik-v2-matin-dore.ser-adrien.chatgpt.site",
       "base_commit": "ce280f9394d382d728673a48c1994a18092e8c58",
       "source_path": "/workspace/sites/saltik-v2-matin-dore",
       "export_path": "versions/saltik-main",
       "web_entry": "versions/saltik-main/dist/index.html",
-      "file_count": 822,
-      "bytes": 368804400,
+      "file_count": 835,
+      "bytes": 373722660,
       "uncommitted_changes": "",
       "files": {
         ".gitignore": {
@@ -82,6 +82,10 @@
           "sha256": "bd2bd6aa2d150e1f5515b5c22857db45d6f5bd3ea990ab3b35efb6987ed9743d",
           "size": 3889306
         },
+        "dist/assets/desert-giant-legs.png": {
+          "sha256": "4aafd8729b0ea1d05bef4c4104def41ec0afb0d3cd3f74fcf8a71b79a66afdef",
+          "size": 1142242
+        },
         "dist/assets/desert-red-vista.png": {
           "sha256": "8971352464cdc881450806e9d3d00c42fbe15624f38d07ae9c8c47f89a87e8de",
           "size": 3766520
@@ -89,6 +93,10 @@
         "dist/assets/desert-structures.png": {
           "sha256": "9fe07022a7afaec1f32fcd8135c4a373e080b5bdc8f1c723917990836a75cb48",
           "size": 2903781
+        },
+        "dist/assets/desert-two-routes-vista.png": {
+          "sha256": "d81c8d300ee6a2b0e171dfe3d871461c92db6f53f0b0256ca31f5c8f41016565",
+          "size": 3722570
         },
         "dist/assets/dragon-striker-material.png": {
           "sha256": "dadce55ed0085b97d3db23369f192ea5d6a41736503d98bd9350283cfe47c24c",
@@ -906,17 +914,29 @@
           "sha256": "b84d493c5b1b7355e4a1df6d0a56c8e0c0547d4a552e49dc6c710c034eda2209",
           "size": 952
         },
+        "dist/src/desert-giant.js": {
+          "sha256": "e967ffc54ad3294208d3bd393d000f9b4b8f198de52f8375ff687a09c293b965",
+          "size": 2900
+        },
         "dist/src/desert-layout.js": {
           "sha256": "45f91e4d93dea6cf40989aca0a453f422071826be6a6e285a35f6bf7633d8ce0",
           "size": 2792
         },
         "dist/src/desert-level.js": {
-          "sha256": "290bceeeb62326f7288aa7f0683edf8102ee8eecbaac018df3218b8f000e52bb",
-          "size": 4691
+          "sha256": "a38f38eb682a3e2a3b33ace7b50bd9cb688a9e29bfe47acd590b47c45d9cf059",
+          "size": 4886
+        },
+        "dist/src/desert-route-art.js": {
+          "sha256": "9cb83585284c4bd6ef4438f984b83ed9c9d4daa33f3329b27967c6c6311fef7b",
+          "size": 1470
+        },
+        "dist/src/desert-two-lanes.js": {
+          "sha256": "e9553741ae3c365d16afbbf1bfabff4ba35a54ff63682e4cad5e38a872718c45",
+          "size": 7139
         },
         "dist/src/desert-world.js": {
-          "sha256": "050d7478bb0dad167fbe8294d4045bd14803ba453a265330cd72e4e5b7449614",
-          "size": 6883
+          "sha256": "4b265ad82b790eadd4759f6784fa1d3c2a93ae5b32ad5c555de6c4e5d14ccb79",
+          "size": 9944
         },
         "dist/src/drone-carrier.js": {
           "sha256": "d8d973eea1cb1208581a133cecac62a82294708e8e587da909243067955da62b",
@@ -943,8 +963,8 @@
           "size": 3417
         },
         "dist/src/engine.js": {
-          "sha256": "79f70a264f4c5b22d6cb60806e979073dba047402e6c8451a4f138b6641bbfcb",
-          "size": 78327
+          "sha256": "20780b186eba461515d8e5457bb442ad8d5472607ee721d560654b496d236dfb",
+          "size": 80265
         },
         "dist/src/evasion.js": {
           "sha256": "3b9e6a5daafd5098d12f20a67279e98eca7b85ef500b79b67ea5862199992aeb",
@@ -1015,16 +1035,16 @@
           "size": 5484
         },
         "dist/src/ink-renderer.js": {
-          "sha256": "9f16c37d0922ae6126f64405fc65857603999dd0c42137adb36ea04c4d96b90f",
-          "size": 23165
+          "sha256": "f9c1edc04c06bd8182aa58cfb2bf74170a7a9225f5a958d0194ca38ca72b9d34",
+          "size": 23373
         },
         "dist/src/ink-saltik.js": {
           "sha256": "ba15550e74f822e3897a3929289ebb1559b4c5b15e5f7be155d8ce1e42f03cb2",
           "size": 21342
         },
         "dist/src/ink-scene.js": {
-          "sha256": "be92eba136afa2d50e03287253397e453a32af0087c8d9e763b4a3f829525340",
-          "size": 4851
+          "sha256": "f623e5d6dd8539dedbe96413cb464b26e22174b84bfa7746b6ad6cc46a870a1e",
+          "size": 5069
         },
         "dist/src/ink-turn.js": {
           "sha256": "e2e281634ce901d5e484fe5c5a6770ddc9365574f832550ee3ee2ff1162f8050",
@@ -1075,8 +1095,8 @@
           "size": 4153
         },
         "dist/src/main.js": {
-          "sha256": "12acb02b105d1488b2de92c28a6fbfd78a7c61f377f8cfac83b88169a579b183",
-          "size": 34282
+          "sha256": "940d5978d68677f9cc03b7a69b6e95b970d3ab9e2209ab69cf801740d28fee7d",
+          "size": 34857
         },
         "dist/src/melee-state.js": {
           "sha256": "f24e08a07354668edbe7d54291517edc973dd34f9dfa9653c4f5776fe2b1eb87",
@@ -1301,6 +1321,18 @@
         "docs/desert-art.md": {
           "sha256": "258f8617d751b1a91eefe4be6bec0b72652ccf3078178c2f56d6fa80659fcfa7",
           "size": 1668
+        },
+        "docs/desert-giant.md": {
+          "sha256": "f95ea5b4af21ee2637119ab0632339249bbdff59166313df2af0e2d74bd49cf9",
+          "size": 2144
+        },
+        "docs/desert-two-routes-validation.json": {
+          "sha256": "413c5d0ce1fa03d8b22b7bb8c52b3cfbdec1eff9289d0e8c8a407690474bf78a",
+          "size": 2202
+        },
+        "docs/desert-two-routes.md": {
+          "sha256": "c5a4ef073ea0618d322ef7757aaec913a1f56412bc38b9086e33c8b5167ca20c",
+          "size": 3557
         },
         "docs/dragon-velvet-reference.md": {
           "sha256": "0c797e1f660ec3a2d5bca827ad9f7f964362c23f5e75dcc6729c451176af1546",
@@ -2226,17 +2258,29 @@
           "sha256": "b84d493c5b1b7355e4a1df6d0a56c8e0c0547d4a552e49dc6c710c034eda2209",
           "size": 952
         },
+        "src/desert-giant.js": {
+          "sha256": "e967ffc54ad3294208d3bd393d000f9b4b8f198de52f8375ff687a09c293b965",
+          "size": 2900
+        },
         "src/desert-layout.js": {
           "sha256": "45f91e4d93dea6cf40989aca0a453f422071826be6a6e285a35f6bf7633d8ce0",
           "size": 2792
         },
         "src/desert-level.js": {
-          "sha256": "290bceeeb62326f7288aa7f0683edf8102ee8eecbaac018df3218b8f000e52bb",
-          "size": 4691
+          "sha256": "a38f38eb682a3e2a3b33ace7b50bd9cb688a9e29bfe47acd590b47c45d9cf059",
+          "size": 4886
+        },
+        "src/desert-route-art.js": {
+          "sha256": "9cb83585284c4bd6ef4438f984b83ed9c9d4daa33f3329b27967c6c6311fef7b",
+          "size": 1470
+        },
+        "src/desert-two-lanes.js": {
+          "sha256": "e9553741ae3c365d16afbbf1bfabff4ba35a54ff63682e4cad5e38a872718c45",
+          "size": 7139
         },
         "src/desert-world.js": {
-          "sha256": "050d7478bb0dad167fbe8294d4045bd14803ba453a265330cd72e4e5b7449614",
-          "size": 6883
+          "sha256": "4b265ad82b790eadd4759f6784fa1d3c2a93ae5b32ad5c555de6c4e5d14ccb79",
+          "size": 9944
         },
         "src/drone-carrier.js": {
           "sha256": "d8d973eea1cb1208581a133cecac62a82294708e8e587da909243067955da62b",
@@ -2263,8 +2307,8 @@
           "size": 3417
         },
         "src/engine.js": {
-          "sha256": "79f70a264f4c5b22d6cb60806e979073dba047402e6c8451a4f138b6641bbfcb",
-          "size": 78327
+          "sha256": "20780b186eba461515d8e5457bb442ad8d5472607ee721d560654b496d236dfb",
+          "size": 80265
         },
         "src/evasion.js": {
           "sha256": "3b9e6a5daafd5098d12f20a67279e98eca7b85ef500b79b67ea5862199992aeb",
@@ -2335,16 +2379,16 @@
           "size": 5484
         },
         "src/ink-renderer.js": {
-          "sha256": "9f16c37d0922ae6126f64405fc65857603999dd0c42137adb36ea04c4d96b90f",
-          "size": 23165
+          "sha256": "f9c1edc04c06bd8182aa58cfb2bf74170a7a9225f5a958d0194ca38ca72b9d34",
+          "size": 23373
         },
         "src/ink-saltik.js": {
           "sha256": "ba15550e74f822e3897a3929289ebb1559b4c5b15e5f7be155d8ce1e42f03cb2",
           "size": 21342
         },
         "src/ink-scene.js": {
-          "sha256": "be92eba136afa2d50e03287253397e453a32af0087c8d9e763b4a3f829525340",
-          "size": 4851
+          "sha256": "f623e5d6dd8539dedbe96413cb464b26e22174b84bfa7746b6ad6cc46a870a1e",
+          "size": 5069
         },
         "src/ink-turn.js": {
           "sha256": "e2e281634ce901d5e484fe5c5a6770ddc9365574f832550ee3ee2ff1162f8050",
@@ -2395,8 +2439,8 @@
           "size": 4153
         },
         "src/main.js": {
-          "sha256": "12acb02b105d1488b2de92c28a6fbfd78a7c61f377f8cfac83b88169a579b183",
-          "size": 34282
+          "sha256": "940d5978d68677f9cc03b7a69b6e95b970d3ab9e2209ab69cf801740d28fee7d",
+          "size": 34857
         },
         "src/melee-state.js": {
           "sha256": "f24e08a07354668edbe7d54291517edc973dd34f9dfa9653c4f5776fe2b1eb87",
@@ -2866,13 +2910,21 @@
           "sha256": "384e3ecb73fa2857ef96afc81c752ab16f91d935a94bb8803a6f1a3e1d131f1b",
           "size": 1856
         },
+        "tests/desert-giant.test.js": {
+          "sha256": "bb935fa02b9a1fc319e6c0eaf5c19a5db38360bc8e7c98fd747ed68ac90be341",
+          "size": 3056
+        },
         "tests/desert-level.test.js": {
-          "sha256": "1445e96a34657bae1e771399fd729f361ea6bfc6163d761ed925b3569099d59d",
-          "size": 4201
+          "sha256": "c3cf032cca8cecf1c779a3af38f6b18d1cf86c74bca92ec5b805e06bd110b82f",
+          "size": 4072
         },
         "tests/desert-menu.test.js": {
           "sha256": "2f731be5b16d8d31ba9de5e10c8b2ae30db924ae7f0b0e39f1bfc475e941706b",
           "size": 555
+        },
+        "tests/desert-two-lanes.test.js": {
+          "sha256": "12911098b41c87c98dc4aa9be5a62de5fd1f4552083a86d1032fe8510607257d",
+          "size": 7210
         },
         "tests/desert-world.test.js": {
           "sha256": "ed582054c1b13a948ecab6406f105a03dab6c064c3161a60ed394c66cad8509c",
@@ -3318,12 +3370,12 @@
           "duration_native_run_seconds": 82.0166666666633
         }
       ],
-      "update_note": "Connected perspective waterwheel; physical descent beyond final building before boarding;45s native-weapon manual-trigger/autoaim POV flight and5s descent. Striker shots90%, recorded main reload and enemy guided-hit/destruction sounds.",
-      "published_source_commit": "8fa2dae6e596233bc94a93749bd136bbf4cc7066",
+      "update_note": "Two hand-authored Red Desert lanes around skull; smooth depth switching, native weapons and logical splash; single8s articulated giant lower-leg passage; C07 interior and return preserved.",
+      "published_source_commit": "3ee9d7065d1a77a35f9df49d485b57670669599f",
       "publication_status": "Published and verified",
       "github_import_base": "4c9b8e64bf3232c222f9b6f534ca37d660da3f7b",
-      "live_published_version": 51,
-      "last_confirmed_saved_version": 51
+      "live_published_version": 52,
+      "last_confirmed_saved_version": 52
     },
     {
       "slug": "saltik-ink",
@@ -7690,6 +7742,6 @@
   "github_repository": "seradrien-png/saltik",
   "preserved_github_parent": "a2658100e8259a69c772a6dd4cfbfcdb833f1221",
   "github_backup_commit": "55e0af78812ba737a6758403be9c2993ef2fa903",
-  "latest_main_source_commit": "8fa2dae6e596233bc94a93749bd136bbf4cc7066",
+  "latest_main_source_commit": "3ee9d7065d1a77a35f9df49d485b57670669599f",
   "history_note": "Source bundles preserve the initial backup capture. Subsequent project updates are preserved by commits of this GitHub repository."
 }

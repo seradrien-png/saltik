@@ -1,3 +1,4 @@
+import {desertLaneVistaBox} from './desert-route-art.js';
 import {drawMenuPortrait} from './menu-portraits.js';
 import {HD_MODULE_ASSETS} from './hd-module-art.js';
 import {ROYAL_EEL_POSE_ASSETS,prepareRoyalEelFrames,drawRoyalEelSprite,royalEelBackSocket} from './royal-eel-frames.js';
@@ -34,7 +35,7 @@ import {drawCarrierShutdown} from './carrier-shutdown-art.js';
 import {inkHitImage} from './ink-hit-cache.js';
 import {createMirvPreview} from './mirv-preview.js';
 const PAINT={...PASTEL_ENVIRONMENT_PAINT,...PASTEL_CHARACTER_PAINT};
-const BASE_ART=['royal-wheel-runoff','royal-wheel-rotor','dragon-velvet-body','dragon-velvet-turn','royal-eel-swim','royal-eel','bt-finish-frames','bt-impact-underside','modern-gatling-atlas','modern-gatling-turn-normal','modern-gatling-turn-lunar','modern-gatling-turn-velvet','modern-gatling-turn-desert','modern-gatling-limule-atlas','modern-gatling-limule-turn','modern-striker-turn-velvet','modern-striker-dragon-atlas','modern-striker-dragon-turn-material','modern-striker-atlas','modern-striker-turn-normal','modern-striker-turn-lunar','bt-turn-lunar-material','bt-turn-velvet-material','gatling-turn-lunar-material','gatling-turn-velvet-material','bt-turn','gatling-turn','dragon-striker-material','dragon-turn-material','limule-gatling-material','limule-gatling-turn-material','desert-red-vista','desert-c07-interior','desert-structures','gatling-snow','gatling-lunar-material','gatling-velvet-material','lunar-pennant','lunar-low-depth','royal-rail-mask','royal-organic-landmarks','lunar-hero-map','lunar-turn-map','royal-world','royal-velvet-ground','royal-structures','royal-quarter-bridge','royal-hero-map','royal-turn-map','boss-assault-atlas','lunar-natural-world','lunar-island-layers','lunar-sandstone','lunar-aqueduct','lunar-monuments','ink-canyon','ink-saltik','ink-enemies','ink-rock','ink-bridge','ink-turn','ink-observatory',...INK_LANDMARK_ASSETS.map(a=>a.name),'ink-enemy-saltik',INK_CARRIER_ASSET];
+const BASE_ART=['desert-two-routes-vista','desert-giant-legs','royal-wheel-runoff','royal-wheel-rotor','dragon-velvet-body','dragon-velvet-turn','royal-eel-swim','royal-eel','bt-finish-frames','bt-impact-underside','modern-gatling-atlas','modern-gatling-turn-normal','modern-gatling-turn-lunar','modern-gatling-turn-velvet','modern-gatling-turn-desert','modern-gatling-limule-atlas','modern-gatling-limule-turn','modern-striker-turn-velvet','modern-striker-dragon-atlas','modern-striker-dragon-turn-material','modern-striker-atlas','modern-striker-turn-normal','modern-striker-turn-lunar','bt-turn-lunar-material','bt-turn-velvet-material','gatling-turn-lunar-material','gatling-turn-velvet-material','bt-turn','gatling-turn','dragon-striker-material','dragon-turn-material','limule-gatling-material','limule-gatling-turn-material','desert-red-vista','desert-c07-interior','desert-structures','gatling-snow','gatling-lunar-material','gatling-velvet-material','lunar-pennant','lunar-low-depth','royal-rail-mask','royal-organic-landmarks','lunar-hero-map','lunar-turn-map','royal-world','royal-velvet-ground','royal-structures','royal-quarter-bridge','royal-hero-map','royal-turn-map','boss-assault-atlas','lunar-natural-world','lunar-island-layers','lunar-sandstone','lunar-aqueduct','lunar-monuments','ink-canyon','ink-saltik','ink-enemies','ink-rock','ink-bridge','ink-turn','ink-observatory',...INK_LANDMARK_ASSETS.map(a=>a.name),'ink-enemy-saltik',INK_CARRIER_ASSET];
 BASE_ART.push(...ROYAL_EEL_POSE_ASSETS);
 BASE_ART.push('royal-eel-pov');
 BASE_ART.push(...HD_MODULE_ASSETS);
@@ -114,7 +115,7 @@ export function createRenderer(canvas){
   if(!['explosion','debris','intercept','deflect','spark','cluster','jump','land','shot','missile','homing','enemyshot'].includes(e.type))return;
   if(['shot','missile','homing','enemyshot'].includes(e.type))return;
   const blast=['explosion','debris','intercept','cluster'].includes(e.type),dust=['jump','land'].includes(e.type);
-  effects.push({x:e.x,y:e.y,type:e.type,age:0,life:blast?1.25:dust?.55:.26,radius:blast?(e.radius??42):dust?20:12,blast,dust,id:serial++});
+  effects.push({x:e.x,y:e.y,desertDepth:e.desertDepth,type:e.type,age:0,life:blast?1.25:dust?.55:.26,radius:blast?(e.radius??42):dust?20:12,blast,dust,id:serial++});
   if(effects.length>48)effects.shift();
  }
  function backdrop(time){
@@ -167,8 +168,8 @@ export function createRenderer(canvas){
   if(g.level===4&&(view==='title'||desertVisualStage(g)==='exterior')){
    height=720/BASE_ZOOM;width=canvas.width/canvas.height*height;camera=0;cameraY=0;zoom=BASE_ZOOM;c.setTransform(canvas.width/width,0,0,canvas.height/height,0,0);c.clearRect(0,0,width,height);
    const art=sceneArtImages(images,4,g.player.character,g.player.cosmeticSkin,g.player.visualModel),time=view==='title'?now/1000:g.time;
-   if(view==='title'){drawDesertVista(c,images['desert-red-vista'],{width,height});drawInkSaltik(c,art['ink-saltik'],inkTitlePlayer(g.player,desertVistaBox(width,height).x+desertVistaBox(width,height).w*.73,desertVistaBox(width,height).y+desertVistaBox(width,height).h*.96),{time,scale:width>1100?2:1.7});}
-   else drawDesertExterior(c,{...images,'ink-saltik':art['ink-saltik'],'ink-turn':art['ink-turn']},g,{width,height,time,victoryAge:view==='won'?presentationAge:null});
+   if(view==='title'){drawDesertVista(c,images['desert-two-routes-vista'],{width,height,twoLanes:true});drawInkSaltik(c,art['ink-saltik'],inkTitlePlayer(g.player,desertLaneVistaBox(width,height).x+desertLaneVistaBox(width,height).w*.73,desertLaneVistaBox(width,height).y+desertLaneVistaBox(width,height).h*.96),{time,scale:width>1100?2:1.7});}
+   else drawDesertExterior(c,{...images,'ink-saltik':art['ink-saltik'],'ink-turn':art['ink-turn'],'ink-enemies':art['ink-enemies']},g,{width,height,time,effects,victoryAge:view==='won'?presentationAge:null});
    drawDesertCurtain(c,width,height,desertDoor);return;
   }
   if(g.level===4&&g.desert.phase==='entering')g={...g,player:{...g.player,x:180,y:620,supportY:620,artScale:1,dir:1,supportPose:null},platforms:createDesertRoutes(),enemies:[],pickups:[],groundAt:desertInteriorGroundAt};

@@ -1,0 +1,176 @@
+{
+  "date": "2026-11-20",
+  "base_source_commit": "8fa2dae6e596233bc94a93749bd136bbf4cc7066",
+  "previous_github_commit": "09377cdf7f58d7198cf283a547f4cac7dc94189d",
+  "scope": "Existing level4 two-lane Red Desert prototype and articulated gigantic lower-leg passage",
+  "specification": "SALTIK_Cahier_des_charges_Deux_Voies_Desert_Rouge.pdf",
+  "automated_tests": {
+    "passed": 886,
+    "failed": 0
+  },
+  "browser": [
+    {
+      "character": "striker",
+      "nativeShots": 5,
+      "laneButtons": true,
+      "pause": true,
+      "C07InteriorPreserved": true,
+      "returnWon": true,
+      "errors": [],
+      "missing": []
+    },
+    {
+      "character": "gatling",
+      "nativeShots": 13,
+      "laneButtons": true,
+      "pause": true,
+      "C07InteriorPreserved": true,
+      "returnWon": true,
+      "errors": [],
+      "missing": []
+    },
+    {
+      "character": "bt",
+      "nativeShots": 3,
+      "laneButtons": true,
+      "pause": true,
+      "C07InteriorPreserved": true,
+      "returnWon": true,
+      "errors": [],
+      "missing": []
+    }
+  ],
+  "mobile": {
+    "viewport": [
+      844,
+      390
+    ],
+    "deviceScaleFactor": 2,
+    "touchLaneUpDown": true,
+    "simultaneousPrimaryAndLocks": true,
+    "locks": 3,
+    "shots": 2,
+    "errors": []
+  },
+  "independent_review": "No release blockers after fixes; 17 focused lane/giant tests re-run successfully.",
+  "package": {
+    "before_bytes": 357189545,
+    "after_bytes": 245375100,
+    "saved_bytes": 111814445,
+    "reduction_percent": 31.304,
+    "all_audio_video_icons_unchanged": true,
+    "originals_retained": true
+  },
+  "preserved": [
+    "all previous game versions and original panorama",
+    "C07 three-room cleanup and return",
+    "levels1-3 and royal mounted POV combat",
+    "all active poses, A10, voices and weapons audio"
+  ],
+  "new_assets": [
+    {
+      "path": "dist/assets/desert-two-routes-vista.png",
+      "bytes": 3722570,
+      "sha256": "d81c8d300ee6a2b0e171dfe3d871461c92db6f53f0b0256ca31f5c8f41016565"
+    },
+    {
+      "path": "dist/assets/desert-giant-legs.png",
+      "bytes": 1142242,
+      "sha256": "4aafd8729b0ea1d05bef4c4104def41ec0afb0d3cd3f74fcf8a71b79a66afdef"
+    }
+  ],
+  "source_commit": "3ee9d7065d1a77a35f9df49d485b57670669599f",
+  "publication": {
+    "version_number": 52,
+    "version_id": "appgprj_6ae77e1b6da081918600675fc2e2b738~appgver_3390209030dc81918755365ad6ab0cd9",
+    "deployment_id": "appgdep_6aff85af5bc481918cd535cf46e87041",
+    "status": "succeeded",
+    "url": "https://saltik-v2-matin-dore.ser-adrien.chatgpt.site",
+    "archive_sha256": "6aef4f46cdf3e6128cea20f286fbfae5826a08f3fbd3510f9862bc179a353283",
+    "archive_file_count": 300
+  },
+  "public_resources": {
+    "url": "https://saltik-v2-matin-dore.ser-adrien.chatgpt.site",
+    "files": [
+      {
+        "path": "src/desert-two-lanes.js",
+        "status": 200,
+        "bytes": 7139,
+        "matches": true
+      },
+      {
+        "path": "src/desert-route-art.js",
+        "status": 200,
+        "bytes": 1470,
+        "matches": true
+      },
+      {
+        "path": "src/desert-giant.js",
+        "status": 200,
+        "bytes": 2900,
+        "matches": true
+      },
+      {
+        "path": "src/desert-world.js",
+        "status": 200,
+        "bytes": 9944,
+        "matches": true
+      },
+      {
+        "path": "src/desert-level.js",
+        "status": 200,
+        "bytes": 4886,
+        "matches": true
+      },
+      {
+        "path": "src/ink-renderer.js",
+        "status": 200,
+        "bytes": 29898,
+        "matches": true
+      },
+      {
+        "path": "src/ink-scene.js",
+        "status": 200,
+        "bytes": 5069,
+        "matches": true
+      },
+      {
+        "path": "src/main.js",
+        "status": 200,
+        "bytes": 34857,
+        "matches": true
+      },
+      {
+        "path": "src/engine.js",
+        "status": 200,
+        "bytes": 80265,
+        "matches": true
+      },
+      {
+        "path": "src/royal-pov-combat.js",
+        "status": 200,
+        "bytes": 4691,
+        "matches": true
+      },
+      {
+        "path": "assets/desert-two-routes-vista.webp",
+        "status": 200,
+        "bytes": 2879712,
+        "matches": true
+      },
+      {
+        "path": "assets/desert-giant-legs.webp",
+        "status": 200,
+        "bytes": 800240,
+        "matches": true
+      },
+      {
+        "path": "audio/real-weapons/guided-destruction.ogg",
+        "status": 200,
+        "bytes": 17023,
+        "matches": true
+      }
+    ],
+    "passed": true
+  }
+}

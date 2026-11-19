@@ -2,6 +2,7 @@ import {advanceRoyalPovCombat,clearRoyalPovCombat} from './royal-pov-combat.js';
 import {beginRoyalBoarding,ROYAL_FINALE_TIMING} from './royal-finale.js';
 import {nativeTurnSockets} from './character-turns.js';
 import {normalizeSkin} from './player-skins.js';
+import {advanceDesertTwoLanes} from './desert-two-lanes.js';
 import {applyDesertLevel,advanceDesertObjective,desertInput} from './desert-level.js';
 import {applyRoyalLevel,advanceRoyalObjective} from './royal-level.js';
 import {createGame,update,LEVEL_END,advanceRoyalWeaponSimulation} from './engine.js';
@@ -58,7 +59,9 @@ export function updateInkScene(g,input,dt=1/60){
   if(previous<ROYAL_FINALE_TIMING.combatEnd&&f.elapsed>=ROYAL_FINALE_TIMING.combatEnd)clearRoyalPovCombat(g);
   return;
  }
- const before=g.time;update(g,desertInput(g,input),dt);
+ const before=g.time;
+ if(g.level===4&&['outbound','return','entering'].includes(g.desert?.phase)&&g.desert.lanes?.active)advanceDesertTwoLanes(g,desertInput(g,input),dt);
+ else update(g,desertInput(g,input),dt);
  if(g.level===2)advanceLunarObjective(g,g.time-before);
  if(g.level===4)advanceDesertObjective(g,g.time-before);
  if(g.level===3)advanceRoyalObjective(g,g.time-before);

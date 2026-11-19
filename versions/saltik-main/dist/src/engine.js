@@ -74,7 +74,7 @@ export function createGame({seed=92741,intro=false,character}={}) {
   const viewport={x:player.x-360,y:0,w:1280,h:720};
   return {viewport,_defaultViewport:viewport,nextProjectileId:1,platforms,obstacles,status:'playing',time:0,introDuration:intro?2.2:0,introElapsed:0,seed,player,enemies:[],carrierShutdown:null,duel:null,duelInputSuspended:false,bossBreach:null,bossBreachUsed:false,bossPodUsed:false,bossPodLandedAt:null,bossBreachInputSuspended:false,bossActionHeld:false,bossActionSuspended:false,projectiles:[],events:[],pickups:[3600,7400,11600,15800].map(x=>({x,y:terrainHeight(x)-30,type:'repair'})).concat(elevatedRepairs),schedule:guardedSchedule,nextSpawn:0,boss:null,bossActivated:false,progress:0,maxX:180,jumpHeld:false,dropHeld:false,homingHeld:false,noTargetNotified:false,stats:{kills:0,shots:0,mirvs:0,homingSalvos:0,meleeSwings:0,meleeHits:0,interceptions:0,score:0,obstacles:0},shake:0,flash:0};
 }
-function emit(g,type,x,y,extra={}){g.events.push({type,x,y,...extra});}
+function emit(g,type,x,y,extra={}){const event={type,x,y,...extra};g.desertCombatHooks?.decorateEvent(event);g.events.push(event);}
 function saltikVisible(g,e){
   const viewport=g.viewport;
   if(!viewport)return false;
@@ -271,7 +271,7 @@ function pointDefenseAim(g,mount){
   return null;
 }
 function aim(g,mount){
-  const p=g.player;let angle=p.dir===1?0:Math.PI,best=Infinity;
+  const p=g.player;if(g.desertCombatHooks)return g.desertCombatHooks.primaryAngle(p);let angle=p.dir===1?0:Math.PI,best=Infinity;
   if(p.bossSupport&&g.boss?.hp>0){
     const target=bossGeometry(g.boss).target;
     p.aim=Math.atan2(target.y-mount.y,target.x-mount.x);
@@ -290,6 +290,7 @@ function aim(g,mount){
 }
 function projectile(g,mount,values){
   const shot={id:g.nextProjectileId++,x:mount.x,y:mount.y,launchX:mount.x,launchY:mount.y,team:'player',age:0,...values};
+  g.desertCombatHooks?.initializeProjectile(shot);
   g.projectiles.push(shot);return shot;
 }
 function shoot(g){
@@ -297,7 +298,7 @@ function shoot(g){
   const pose=g.weaponGeometry?.(p,g.time)??tachikomaGeometry(p,g.time),mount=pose.arm;
   // A raised coax follows its real bore while the MIRV assembly pivots.
   // Keep the established ground autoaim once the housing returns to rest.
-  const a=g.inkCampaign&&pose.turretArticulated&&pose.armDirection?Math.atan2(pose.armDirection.y,pose.armDirection.x):aim(g,mount),speed=BULLET_SPEED;
+  const a=g.desertCombatHooks?g.desertCombatHooks.primaryAngle(p):g.inkCampaign&&pose.turretArticulated&&pose.armDirection?Math.atan2(pose.armDirection.y,pose.armDirection.x):aim(g,mount),speed=BULLET_SPEED;
   p.aim=a;
   projectile(g,mount,{vx:Math.cos(a)*speed,vy:Math.sin(a)*speed,damage:1,life:1.5,radius:3,kind:'bullet'});
   p.muzzle=.07;p.fireIn=.095;g.stats.shots++;emit(g,'shot',mount.x,mount.y,{dir:p.dir});
@@ -337,7 +338,7 @@ export function navigationContext(g){
   const blockers=g.obstacles.filter(o=>o.hp>0).map(o=>({...bounds(o),id:o.id,material:o.type,obstacle:true}));
   blockers.push(...routeNavigationSlabs(g.platforms));
   return {targets:[...g.enemies,...(g.boss&&g.boss.hp>0?[g.boss]:[])].filter(e=>e.hp>0&&e.type!=='crate'&&targetable(e)).map(e=>combatTarget(e,g.time)),
-    projectiles:g.projectiles,viewport:g.viewport??{x:g.player.x-360,y:0,w:1280,h:720},blockers,groundAt:g.groundAt??terrainHeight};
+    projectiles:g.projectiles,viewport:g.viewport??{x:g.player.x-360,y:0,w:1280,h:720},blockers,groundAt:g.desertCombatHooks?.navigationGroundAt??g.groundAt??terrainHeight};
 }
 function launchGuidedRound(g,index,targetId){
   const p=g.player,pose=g.weaponGeometry?.(p,g.time)??tachikomaGeometry(p,g.time),tube=pose.cabinTubes[index],context=navigationContext(g);
@@ -706,12 +707,12 @@ function areaBlast(g,x,y,radius,damage,{fraction=1,dt=0,team='player',collisionC
     }
   }
 }
-function terrainImpact(g,x0,y0,x1,y1,groundOffset=3){
+function terrainImpact(g,x0,y0,x1,y1,groundOffset=3,shot=null){
   let closest=null;
   const minX=Math.min(x0,x1),maxX=Math.max(x0,x1);
   const surfaces=[null,...(y1>y0?g.platforms.filter(surface=>surface.x1<=maxX&&surface.x2>=minX):[])],steps=Math.max(1,Math.ceil(Math.hypot(x1-x0,y1-y0)/12));
   for(const surface of surfaces){
-    const floor=x=>surface?surfaceHeight(surface,x):terrainAt(g,x)-groundOffset;
+    const floor=x=>surface?surfaceHeight(surface,x):(g.desertCombatHooks?.projectileGroundAt(shot,x)??terrainAt(g,x))-groundOffset;
     const valid=x=>!surface||(x>=surface.x1&&x<=surface.x2);
     let previous=y0-floor(x0),previousT=0,previousX=x0;
     if(!surface&&previous>=0){closest=0;break;}
@@ -754,7 +755,7 @@ function refreshCachedProjectileTarget(g,entry){
 }
 function deployMirv(g,shot,children){
  const childIds=[];
- for(const child of splitMirv(shot)){const id=g.nextProjectileId++;childIds.push(id);children.push({id,...child,...(shot.mirvSalvoId?{mirvSalvoId:shot.mirvSalvoId}:{})});}
+ for(const child of splitMirv(shot)){const id=g.nextProjectileId++;childIds.push(id);children.push({id,...child,...(shot.desertDepth!==undefined?{desertDepth:shot.desertDepth}:{}),...(shot.mirvSalvoId?{mirvSalvoId:shot.mirvSalvoId}:{})});}
  if(shot.mirvSalvoId)emit(g,'mirv-separation',shot.x,shot.y,{projectileId:shot.id,salvoId:shot.mirvSalvoId,childIds});
  emit(g,'cluster',shot.x,shot.y);emit(g,'spark',shot.x,shot.y);shot.life=0;
 }
@@ -773,6 +774,7 @@ function updateProjectiles(g,dt,playerMovement,collisionCache=null){
     if(shot.life<=0)continue;
     if(!Number.isInteger(shot.id))shot.id=g.nextProjectileId++;
     else g.nextProjectileId=Math.max(g.nextProjectileId,shot.id+1);
+    g.desertCombatHooks?.beforeProjectileStep(shot,dt);
     const x0=shot.x,y0=shot.y,lifetime=shot.life;shot.age=(shot.age||0)+dt;shot.life=Math.max(1e-9,lifetime-dt);
     if(lifetime<=dt)collisions.push({fraction:lifetime/dt,kind:'expire',shot});
     if(shot.kind==='homing')steerGuidedProjectile(shot,context,dt);
@@ -791,16 +793,16 @@ function updateProjectiles(g,dt,playerMovement,collisionCache=null){
       if(!shot.inkMirv)continue;
     }
     for(const {target,rect,bayIndex} of shot.team==='player'&&shot.kind!=='mirv'?liveTargets:liveObstacles){
-      if(target.hp<=0)continue;
+      if(target.hp<=0||g.desertCombatHooks?.canHit(shot,target)===false)continue;
       const fraction=segmentRect(x0,y0,shot.x,shot.y,rect,shot.radius||0);
       if(fraction!==null)collisions.push({fraction,kind:'target',shot,target,bayIndex});
     }
-    if(shot.team==='enemy'&&!(shot.riderClearance&&shot.sourceBossId===g.boss?.id)){
+    if(shot.team==='enemy'&&g.desertCombatHooks?.canHit(shot,p)!==false&&!(shot.riderClearance&&shot.sourceBossId===g.boss?.id)){
       const fraction=playerCollisionFraction(x0,y0,shot.x-playerMovement.x,shot.y-playerMovement.y,startHitbox,shot.radius||0,p.evasion,dt);
       if(fraction!==null)collisions.push({fraction,kind:'player',shot});
     }
     const groundPad=shot.kind==='homing'||shot.kind==='enemy-missile'?shot.radius||0:0;
-    let fraction=terrainImpact(g,x0,y0+groundPad,shot.x,shot.y+groundPad,groundPad?0:3);
+    let fraction=terrainImpact(g,x0,y0+groundPad,shot.x,shot.y+groundPad,groundPad?0:3,shot);
     if(shot.kind==='homing'||shot.kind==='enemy-missile'||shot.kind==='gatling-rocket'){
       for(const blocker of context.blockers){
         if(blocker.obstacle)continue; // Live obstacle candidates already carry their actual damageable target.
@@ -829,6 +831,7 @@ function updateProjectiles(g,dt,playerMovement,collisionCache=null){
     // The rear body never intersects the projectile's forward plane. Keep its
     // real segment end and allow later physical cover/expiry candidates to win.
     if(response==='avoid')continue;
+    g.desertCombatHooks?.onImpact(shot);
     shot.x=point.x;shot.y=point.y;
     if(kind==='expire'){
       if(shot.kind==='grenade'||shot.kind==='gatling-rocket'||shot.team==='enemy'&&shot.splash)areaBlast(g,point.x,point.y,shot.splash,shot.damage,{dt,fraction,team:shot.team,collisionCache,mirvAudio:!!shot.mirvSalvoId});
@@ -973,14 +976,35 @@ function updateBossBreach(g,held,dt){
 
 // The mounted finale supplies a separate flight corridor, while keeping the
 // original player and every native weapon clock, projectile and damage rule.
-export function advanceRoyalWeaponSimulation(g,input,dt){
+export function advanceRoyalWeaponSimulation(g,input,dt,playerMovement={x:0,y:0}){
   const p=g.player;
   p.turn??=createTachikomaTurn(p.dir);
   for(const field of ['invulnerable','mirvIn','homingIn','muzzle','mirvFlash','homingFlash'])p[field]=Math.max(0,(p[field]??0)-dt);
   g.shake=Math.max(0,g.shake-dt*30);g.flash=Math.max(0,g.flash-dt);
   advancePlayerPods(g,dt);
   updatePlayerWeapons(g,input,dt);
-  updateProjectiles(g,dt,{x:0,y:0});
+  updateProjectiles(g,dt,playerMovement);
+}
+// Small exterior adapters retain the canonical movement and native enemy guns.
+export function advanceDesertNativeMovement(g,input,dt){
+ const p=g.player,start={x:p.x,y:p.y,vx:p.vx};
+ p.evasion??=createEvasionState();
+ if(!input.shift)endEvasion(p.evasion);
+ p.landingCompression=Math.max(0,(p.landingCompression??0)-dt/.18);
+ const fireEligible=p.character!=='gatling'||gatlingCanFire(p,input);
+ movePlayer(g,input,dt);
+ if(g.inkCampaign)advanceMotorMotion(p,dt,{previousVx:start.vx,distance:p.x-start.x});
+ if(p.evasion.active&&(!p.onGround||!input.shift))endEvasion(p.evasion);
+ if(input.shift&&!p.shiftHeld&&p.onGround&&!p.turn.active&&!p.evasion.active){
+  if(beginEvasion(p.evasion)){if(p.character!=='bt')clearPlayerWeaponQueue(p);cancelMelee(p.melee);emit(g,'shift',p.x,p.y,{kind:p.evasion.kind});}
+ }
+ p.shiftHeld=!!input.shift;
+ return {x:p.x-start.x,y:p.y-start.y,fireEligible};
+}
+export function finishDesertNativeFrame(g,dt){g.player.damagePose=g.flash>.17;advanceEvasion(g.player.evasion,dt);}
+export function spawnDesertNativeTarget(g,descriptor){spawn(g,descriptor);return g.enemies.at(-1);}
+export function fireDesertNativeTarget(g,enemy){
+ hostileShot(g,enemy);const shot=g.projectiles.at(-1);shot.desertDepth=enemy.desertDepth;g.events.at(-1).desertDepth=enemy.desertDepth;return shot;
 }
 export function damageRoyalPovPlayer(g,damage){hurtPlayer(g,damage);}
 function safeCarrierShutdownPlacement(g,e){

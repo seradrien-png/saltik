@@ -1,0 +1,82 @@
+{
+  "date": "2026-11-20",
+  "base_source_commit": "8fa2dae6e596233bc94a93749bd136bbf4cc7066",
+  "previous_github_commit": "09377cdf7f58d7198cf283a547f4cac7dc94189d",
+  "scope": "Existing level4 two-lane Red Desert prototype and articulated gigantic lower-leg passage",
+  "specification": "SALTIK_Cahier_des_charges_Deux_Voies_Desert_Rouge.pdf",
+  "automated_tests": {
+    "passed": 886,
+    "failed": 0
+  },
+  "browser": [
+    {
+      "character": "striker",
+      "nativeShots": 5,
+      "laneButtons": true,
+      "pause": true,
+      "C07InteriorPreserved": true,
+      "returnWon": true,
+      "errors": [],
+      "missing": []
+    },
+    {
+      "character": "gatling",
+      "nativeShots": 13,
+      "laneButtons": true,
+      "pause": true,
+      "C07InteriorPreserved": true,
+      "returnWon": true,
+      "errors": [],
+      "missing": []
+    },
+    {
+      "character": "bt",
+      "nativeShots": 3,
+      "laneButtons": true,
+      "pause": true,
+      "C07InteriorPreserved": true,
+      "returnWon": true,
+      "errors": [],
+      "missing": []
+    }
+  ],
+  "mobile": {
+    "viewport": [
+      844,
+      390
+    ],
+    "deviceScaleFactor": 2,
+    "touchLaneUpDown": true,
+    "simultaneousPrimaryAndLocks": true,
+    "locks": 3,
+    "shots": 2,
+    "errors": []
+  },
+  "independent_review": "No release blockers after fixes; 17 focused lane/giant tests re-run successfully.",
+  "package": {
+    "before_bytes": 357189545,
+    "after_bytes": 245375100,
+    "saved_bytes": 111814445,
+    "reduction_percent": 31.304,
+    "all_audio_video_icons_unchanged": true,
+    "originals_retained": true
+  },
+  "preserved": [
+    "all previous game versions and original panorama",
+    "C07 three-room cleanup and return",
+    "levels1-3 and royal mounted POV combat",
+    "all active poses, A10, voices and weapons audio"
+  ],
+  "new_assets": [
+    {
+      "path": "dist/assets/desert-two-routes-vista.png",
+      "bytes": 3722570,
+      "sha256": "d81c8d300ee6a2b0e171dfe3d871461c92db6f53f0b0256ca31f5c8f41016565"
+    },
+    {
+      "path": "dist/assets/desert-giant-legs.png",
+      "bytes": 1142242,
+      "sha256": "4aafd8729b0ea1d05bef4c4104def41ec0afb0d3cd3f74fcf8a71b79a66afdef"
+    }
+  ]
+}
