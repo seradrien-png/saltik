@@ -1,4 +1,4 @@
-import {drawRoyalWheelWater,drawRoyalWheelRunoff} from './royal-wheel-water.js';
+import {drawRoyalWheelWater,drawRoyalWheelRunoff,royalWheelStaticImage} from './royal-wheel-water.js';
 import {hdModuleImage,drawHDModule} from './hd-module-art.js';
 import {drawRoyalEel,drawRoyalGardenLife} from './royal-atmosphere.js';
 import {drawRoyalRainbow} from './royal-rainbow.js';
@@ -34,7 +34,7 @@ function paintFoundationSeam(c,art,image,s,b,camera){
 function paintSite(c,art,s,camera=0,time=0){
  const cell=ROYAL_CELLS[s.kind],image=cell.source==='bridge'?art?.bridge:cell.source==='organic'?art?.organic:art?.atlas;if(!image)return;
  const b=royalPaintedBounds(s),hd=hdModuleImage(art,`royal-${s.kind}`);
- if(hd){paintFoundationSeam(c,art,hd,s,b,camera);drawHDModule(c,hd,b.x-camera,b.y,b.w,b.h);}
+ if(hd){paintFoundationSeam(c,art,hd,s,b,camera);drawHDModule(c,s.kind==='wheel'&&art?.hd?.['royal-wheel-rotor']?royalWheelStaticImage(hd):hd,b.x-camera,b.y,b.w,b.h);}
  else c.drawImage(image,...cell.crop,b.x-camera,b.y,b.w,b.h);
  // Water animation keeps its original atlas registration; HD cells never
  // reinterpret these source rectangles as coordinates in another image.

@@ -1,5 +1,5 @@
 {
-  "version": 1,
+  "version": 2,
   "notes": "Only recording excerpts, gain/filter/fades and Ogg encoding. No generated noise or oscillators in these assets. Archival shell effect is not claimed as a verified live shell recording.",
   "sources": [
     {
@@ -69,6 +69,80 @@
       "ffmpegFilter": "atrim=start=0.22:end=1.3,asetpts=PTS-STARTPTS,highpass=f=200,volume=5,afade=t=in:d=0.025,afade=t=out:st=1.03:d=0.05",
       "encoding": "mono 44.1kHz Ogg Vorbis quality 5",
       "retrieved": "2026-11-14"
+    },
+    {
+      "id": 386777,
+      "author": "ken788",
+      "title": "Machine_Gun_Reload.wav",
+      "sourcePage": "https://freesound.org/people/ken788/sounds/386777/",
+      "downloadURL": "https://cdn.freesound.org/previews/386/386777_5768130-hq.mp3",
+      "downloadKind": "Freesound publicly served HQ MP3 preview; not the lossless original",
+      "license": "CC0-1.0",
+      "licenseURL": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "provenance": "Actual machine-gun reload recording, first latch and magazine/feed movement; silence between movements retained.",
+      "downloadSHA256": "8ee6aada2cf3dd72154d6ff8e964cecb2c76893f258375e123b82316e9845486",
+      "asset": "dist/audio/real-weapons/striker-reload-start.ogg",
+      "assetSHA256": "cbb3947b5f766ff83205370fe0241c5e8f725f1e11fd322d39babd04c2dfdb00",
+      "ffmpegFilter": "atrim=start=0:end=1.10,asetpts=PTS-STARTPTS,highpass=f=90,volume=0.8,afade=t=in:d=0.003,afade=t=out:st=1.07:d=0.03",
+      "encoding": "mono 44.1kHz Ogg Vorbis quality 5",
+      "retrieved": "2026-11-14",
+      "sourceArchive": "audio-sources/striker-v51-source-kit.zip"
+    },
+    {
+      "id": 386777,
+      "author": "ken788",
+      "title": "Machine_Gun_Reload.wav",
+      "sourcePage": "https://freesound.org/people/ken788/sounds/386777/",
+      "downloadURL": "https://cdn.freesound.org/previews/386/386777_5768130-hq.mp3",
+      "downloadKind": "Freesound publicly served HQ MP3 preview; not the lossless original",
+      "license": "CC0-1.0",
+      "licenseURL": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "provenance": "Final rack/return movement excerpted from the same recorded machine-gun reload; triggered only at reload-end.",
+      "downloadSHA256": "8ee6aada2cf3dd72154d6ff8e964cecb2c76893f258375e123b82316e9845486",
+      "asset": "dist/audio/real-weapons/striker-reload-end.ogg",
+      "assetSHA256": "470ac7e467a2764d0cafb00ac82102d847e0f40c93fb34940f16c37ff4af7e91",
+      "ffmpegFilter": "atrim=start=1.50:end=1.83,asetpts=PTS-STARTPTS,highpass=f=90,volume=0.8,afade=t=in:d=0.003,afade=t=out:st=0.30:d=0.03",
+      "encoding": "mono 44.1kHz Ogg Vorbis quality 5",
+      "retrieved": "2026-11-14",
+      "sourceArchive": "audio-sources/striker-v51-source-kit.zip"
+    },
+    {
+      "id": 855898,
+      "author": "qubodup",
+      "title": "Fire Explosion",
+      "sourcePage": "https://freesound.org/people/qubodup/sounds/855898/",
+      "downloadURL": "https://cdn.freesound.org/previews/855/855898_71257-hq.mp3",
+      "downloadKind": "Freesound publicly served HQ MP3 preview; not the lossless original",
+      "license": "CC0-1.0",
+      "licenseURL": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "provenance": "Actual EOD explosive detonation from EOD Broll package (Nov 18, 2020), Seaman Kelly Meyer, AFN Okinawa. Source editor applied RX Spectral De-noise.",
+      "downloadSHA256": "61fc9b61298d9245777fddecf8879a1ac55ef1cbb5323c0ae4c0f89bab38f259",
+      "asset": "dist/audio/real-weapons/guided-impact.ogg",
+      "assetSHA256": "d114a63286eb61c6f62b03f30ae0d91f0f4c4bb5c0026a9044d2d7e1e3d109ac",
+      "ffmpegFilter": "atrim=start=0:end=1.23,asetpts=PTS-STARTPTS,highpass=f=45,volume=0.8,afade=t=in:d=0.002,afade=t=out:st=1.11:d=0.12",
+      "encoding": "mono 44.1kHz Ogg Vorbis quality 5",
+      "retrieved": "2026-11-14",
+      "sourceArchive": "audio-sources/striker-v51-source-kit.zip",
+      "originalVideoURL": "https://www.dvidshub.net/video/774073/eod-broll-package"
+    },
+    {
+      "id": 855896,
+      "author": "qubodup",
+      "title": "Blow Up Sound",
+      "sourcePage": "https://freesound.org/people/qubodup/sounds/855896/",
+      "downloadURL": "https://cdn.freesound.org/previews/855/855896_71257-hq.mp3",
+      "downloadKind": "Freesound publicly served HQ MP3 preview; not the lossless original",
+      "license": "CC0-1.0",
+      "licenseURL": "https://creativecommons.org/publicdomain/zero/1.0/",
+      "provenance": "Actual EOD blast/shock wave from EOD Broll package (Nov 18, 2020), Seaman Kelly Meyer, AFN Okinawa. Source editor applied Audacity Limiter.",
+      "downloadSHA256": "18ea3c866e5f7c379ca04a0d6eb4a5f0beb71ca08b9e4e15c1f0586ea31f7c87",
+      "asset": "dist/audio/real-weapons/guided-destruction.ogg",
+      "assetSHA256": "63f5aebad780ca3c2cceb1d92ed2cc202607fcfdf5a3e7113ca7b7295f5e0223",
+      "ffmpegFilter": "atrim=start=0:end=1.60,asetpts=PTS-STARTPTS,highpass=f=40,volume=0.7,afade=t=in:d=0.002,afade=t=out:st=1.40:d=0.20",
+      "encoding": "mono 44.1kHz Ogg Vorbis quality 5",
+      "retrieved": "2026-11-14",
+      "sourceArchive": "audio-sources/striker-v51-source-kit.zip",
+      "originalVideoURL": "https://www.dvidshub.net/video/774073/eod-broll-package"
     }
   ]
 }

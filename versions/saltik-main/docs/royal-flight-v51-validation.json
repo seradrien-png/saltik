@@ -1,0 +1,214 @@
+{
+  "date": "2026-11-19",
+  "tests": {
+    "passed": 869,
+    "failed": 0
+  },
+  "desktop": [
+    {
+      "character": "striker",
+      "ground_launch": {
+        "x": 17822.833333333216,
+        "y": 550.1499740959852,
+        "onGround": true
+      },
+      "manualShots": 7,
+      "weaponState": {
+        "fireSpent": 0.5999999999999979,
+        "reloadIn": 0,
+        "mirvIn": 0,
+        "homingIn": 0,
+        "gatling": null,
+        "bt": null
+      },
+      "paused": true,
+      "combat45": true,
+      "descent5": true,
+      "won": true,
+      "errors": [],
+      "missing": []
+    },
+    {
+      "character": "gatling",
+      "ground_launch": {
+        "x": 17822.833333333216,
+        "y": 550.1499740959852,
+        "onGround": true
+      },
+      "manualShots": 120,
+      "weaponState": {
+        "fireSpent": 0,
+        "reloadIn": 0,
+        "mirvIn": 0,
+        "homingIn": 0,
+        "gatling": {
+          "firing": false,
+          "heat": 0.946666666666664,
+          "sustained": 0,
+          "cooldown": 4.73333333333332,
+          "spin": 120.00000000000055,
+          "rocketFlash": 0,
+          "rocketIndex": 0,
+          "gunIndex": 120,
+          "shotClock": 0,
+          "rocketClock": 0,
+          "rocketRemaining": 0,
+          "rocketRecharge": 0,
+          "recoil": 0
+        },
+        "bt": null
+      },
+      "paused": true,
+      "combat45": true,
+      "descent5": true,
+      "won": true,
+      "errors": [],
+      "missing": []
+    },
+    {
+      "character": "bt",
+      "ground_launch": {
+        "x": 17822.833333333216,
+        "y": 550.1499740959852,
+        "onGround": true
+      },
+      "manualShots": 3,
+      "weaponState": {
+        "fireSpent": 0,
+        "reloadIn": 0,
+        "mirvIn": 0,
+        "homingIn": 0,
+        "gatling": null,
+        "bt": {
+          "loaded": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+          ],
+          "locks": [],
+          "locking": false,
+          "lockClock": 0,
+          "missileHeld": false,
+          "fireHeld": false,
+          "panicHeld": false,
+          "suppressed": false,
+          "burstRemaining": 0,
+          "burstClock": 0.20000000000000145,
+          "burstCooldown": 0.516666666666669,
+          "refillClock": 0,
+          "quiet": 0,
+          "panicFlash": 0,
+          "launchFlash": 0,
+          "lastTube": -1,
+          "refilling": false,
+          "aimPoints": []
+        }
+      },
+      "paused": true,
+      "combat45": true,
+      "descent5": true,
+      "won": true,
+      "errors": [],
+      "missing": []
+    }
+  ],
+  "mobile_landscape_touch": [
+    {
+      "character": "bt",
+      "ground_launch": {
+        "x": 17822.833333333216,
+        "y": 550.1499740959852,
+        "onGround": true
+      },
+      "manualShots": 3,
+      "weaponState": {
+        "fireSpent": 0,
+        "reloadIn": 0,
+        "mirvIn": 0,
+        "homingIn": 0,
+        "gatling": null,
+        "bt": {
+          "loaded": [
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true,
+            true
+          ],
+          "locks": [],
+          "locking": false,
+          "lockClock": 0,
+          "missileHeld": false,
+          "fireHeld": false,
+          "panicHeld": false,
+          "suppressed": false,
+          "burstRemaining": 0,
+          "burstClock": 0.20000000000000145,
+          "burstCooldown": 0.516666666666669,
+          "refillClock": 0,
+          "quiet": 0,
+          "panicFlash": 0,
+          "launchFlash": 0,
+          "lastTube": -1,
+          "refilling": false,
+          "aimPoints": []
+        }
+      },
+      "paused": true,
+      "combat45": true,
+      "descent5": true,
+      "won": true,
+      "errors": [],
+      "missing": []
+    }
+  ],
+  "timing": {
+    "combat": 45,
+    "descent": 5,
+    "boarding": 4.4,
+    "total_after_ground_clearance": 54.4
+  },
+  "previous_github_backup": "f7ec8bd5a6f6316a3d6d73444b5ea5f3718a647a",
+  "review": {
+    "critical": 0,
+    "important": 0,
+    "minor_found": 1,
+    "minor_fixed": "native no-target denial flag preserved and reset after release; regression passed"
+  },
+  "audio": {
+    "striker-reload-start.ogg": "cbb3947b5f766ff83205370fe0241c5e8f725f1e11fd322d39babd04c2dfdb00",
+    "striker-reload-end.ogg": "470ac7e467a2764d0cafb00ac82102d847e0f40c93fb34940f16c37ff4af7e91",
+    "guided-impact.ogg": "d114a63286eb61c6f62b03f30ae0d91f0f4c4bb5c0026a9044d2d7e1e3d109ac",
+    "guided-destruction.ogg": "63f5aebad780ca3c2cceb1d92ed2cc202607fcfdf5a3e7113ca7b7295f5e0223"
+  },
+  "package": {
+    "before_bytes": 352307029,
+    "after_bytes": 241677322,
+    "reduction_percent": 31.402,
+    "originals_retained": true
+  }
+}

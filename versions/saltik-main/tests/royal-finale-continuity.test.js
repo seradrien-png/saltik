@@ -18,7 +18,7 @@ test('cinema inherits the live eel transform and joins the actual animated socke
  assert.equal(landed.player.y,landed.eel.y+(options.backSocket.y-.5)*landed.eel.scale*options.aspect/(1024/340));
  f.elapsed=ROYAL_FINALE_TIMING.total-1;
  assert(getRoyalFinalePose(f,options).pov>0.99,'forward ride is held before completion');
- assert(ROYAL_FINALE_TIMING.total<=10);
+ assert.equal(ROYAL_FINALE_TIMING.pov,45);assert.equal(ROYAL_FINALE_TIMING.descent,5);
  assert(advanceRoyalFinale(f,2));
 });
 

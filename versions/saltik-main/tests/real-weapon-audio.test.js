@@ -6,8 +6,8 @@ import {createAudio} from '../src/audio.js';
 
 async function fixture(run,{fail=false,defer=false}={}){
  const previousWindow=globalThis.window,previousDocument=globalThis.document;
- const param=(value=1)=>({value,setValueAtTime(v){this.value=v;},linearRampToValueAtTime(){},exponentialRampToValueAtTime(){},setTargetAtTime(){},cancelAndHoldAtTime(){}});
- const node=()=>({connect(){},disconnect(){this.disconnected=true;}});
+ const param=(value=1)=>({value,setValueAtTime(v){this.value=v;},linearRampToValueAtTime(v){this.peak=Math.max(this.peak??0,v);},exponentialRampToValueAtTime(){},setTargetAtTime(){},cancelAndHoldAtTime(){}});
+ const node=()=>({connect(destination){this.destination=destination;},disconnect(){this.disconnected=true;}});
  let ctx;const pending=[];
  class Context{
   constructor(){ctx=this;this.currentTime=0;this.sampleRate=128;this.state='running';this.destination=node();this.sources=[];this.tones=[];}
@@ -48,17 +48,17 @@ test('recorded sources stop at pause, mute, restart and character swap',async()=
 }));
 
 test('loading never replays stale fire events after pause',async()=>fixture(async({audio,ctx,release,settle})=>{
- audio.play({type:'homing'});audio.setPlaying(false);const before=ctx.sources.length;
+ audio.play({type:'homing'});audio.play({type:'reload-start'});audio.play({type:'explosion',strikerGuided:true,enemyImpact:true,enemyDestroyed:true});audio.setPlaying(false);const before=ctx.sources.length;
  release();await settle();assert.equal(ctx.sources.length,before);assert.equal(audio.weaponSnapshot.voices,0);
 },{defer:true}));
 
 test('unavailable recordings keep the existing audible fallback',async()=>fixture(async({audio,ctx})=>{
- audio.play({type:'shot'});audio.play({type:'homing'});assert.ok(ctx.tones.length>=4);assert.equal(audio.weaponSnapshot.loaded,0);assert.equal(audio.weaponSnapshot.failed,2);
+ audio.play({type:'shot'});audio.play({type:'homing'});assert.ok(ctx.tones.length>=4);assert.equal(audio.weaponSnapshot.loaded,0);assert.equal(audio.weaponSnapshot.failed,6);
 },{fail:true}));
 
 test('shipped real weapon assets match their recorded source manifest',()=>{
  const manifest=JSON.parse(readFileSync(new URL('../docs/real-weapon-audio-provenance.json',import.meta.url)));
- assert.equal(manifest.sources.length,4);
+ assert.equal(manifest.sources.length,8);
  for(const source of manifest.sources){
   assert.equal(source.license,'CC0-1.0');
   const bytes=readFileSync(new URL(`../${source.asset}`,import.meta.url));
@@ -75,3 +75,54 @@ test('recording completion removes its source and character swaps retain BT synt
  audio.setCharacter('gatling');const before=ctx.sources.length;audio.play({type:'gatling-shot'});
  assert.equal(ctx.sources.length,before,'Gatling continues to use its continuous A10 loop');
 }));
+
+test('Striker reload recordings start only at main reload events and finish at engine completion',async()=>fixture(async({audio,ctx})=>{
+ audio.play({type:'shot'});audio.play({type:'homing'});
+ assert.equal(ctx.sources.filter(s=>s.buffer?.recording?.includes('reload')).length,0);
+ ctx.currentTime=2;audio.play({type:'reload-start'});
+ const magazine=ctx.sources.at(-1);assert.match(magazine.buffer?.recording??'',/striker-reload-start/);assert.equal(magazine.started[0],2);assert.ok(magazine.stopAt<=3.32);
+ ctx.currentTime=3.32;audio.play({type:'reload-end'});
+ const bolt=ctx.sources.at(-1);assert.match(bolt.buffer?.recording??'',/striker-reload-end/);assert.equal(bolt.started[0],3.32);
+ audio.setCharacter('bt');ctx.currentTime=5;const before=ctx.tones.length;audio.play({type:'reload-start'});assert.ok(ctx.tones.length>before);
+}));
+
+test('guided impact and destruction recordings require Striker and actual enemy metadata',async()=>fixture(async({audio,ctx})=>{
+ for(const destroyed of [false,true]){
+  ctx.currentTime+=1;const before=ctx.sources.length;
+  audio.play({type:'explosion',strikerGuided:true,enemyImpact:true,enemyDestroyed:destroyed});
+  const records=ctx.sources.slice(before).filter(s=>s.buffer?.recording?.includes('/real-weapons/'));
+  assert.equal(records.length,1);assert.match(records[0].buffer.recording,destroyed?/guided-destruction/:/guided-impact/);
+ }
+ for(const character of ['striker','bt','gatling']){
+  audio.setCharacter(character);ctx.currentTime+=1;
+  const before=ctx.sources.length;
+  audio.play({type:'explosion',...(character==='striker'?{}:{strikerGuided:true,enemyImpact:true})});
+  assert.equal(ctx.sources.slice(before).filter(s=>s.buffer?.recording?.includes('/real-weapons/')).length,0);
+ }
+}));
+
+
+test('Striker cannon and guided reports are exactly 10 percent quieter',async()=>fixture(async({audio,ctx})=>{
+ audio.play({type:'shot'});assert.equal(ctx.sources.at(-1).destination.gain.peak,.25*.9);
+ audio.play({type:'homing'});assert.equal(ctx.sources.at(-1).destination.gain.peak,.22*.9);
+}));
+
+test('recorded reloads and explosions share bounded sources and cancel on lifecycle changes',async()=>fixture(async({audio,ctx})=>{
+ for(let i=0;i<30;i++){ctx.currentTime+=.1;audio.play({type:'explosion',strikerGuided:true,enemyImpact:true,enemyDestroyed:true});}
+ assert.ok(audio.weaponSnapshot.voices<=16);
+ for(const action of [()=>audio.setPlaying(false),()=>audio.setEnabled(false),()=>audio.setPlaying(true,{restart:true}),()=>audio.setCharacter('gatling')]){
+  audio.setCharacter('striker');audio.setEnabled(true);audio.setPlaying(true,{restart:true});audio.play({type:'reload-start'});
+  const source=ctx.sources.at(-1);action();assert.equal(source.stopAt,ctx.currentTime);assert.equal(audio.weaponSnapshot.voices,0);
+ }
+}));
+
+
+test('offline Striker main and both missile fallbacks retain exactly 90 percent of BT levels',async()=>fixture(async({audio,ctx})=>{
+ for(const type of ['shot','missile','homing']){
+  audio.setCharacter('striker');ctx.currentTime+=1;const from=ctx.tones.length;audio.play({type});
+  const striker=ctx.tones.slice(from).map(t=>t.destination.gain.peak);
+  audio.setCharacter('bt');ctx.currentTime+=1;const btFrom=ctx.tones.length;audio.play({type});
+  const bt=ctx.tones.slice(btFrom).map(t=>t.destination.gain.peak);
+  assert.ok(striker.length>0);assert.deepEqual(striker,bt.map(level=>level*.9));
+ }
+},{fail:true}));

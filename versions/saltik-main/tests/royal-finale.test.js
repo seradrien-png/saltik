@@ -15,7 +15,7 @@ test('finale trajectory joins the eel back continuously, departs together and co
  assert.equal(board.stage,'ride');assert(Math.hypot(landing.player.x-board.rider.x,landing.player.y-board.rider.y)<1e-7);
  assert.deepEqual({x:board.player.x,y:board.player.y},board.rider);
  advanceRoyalFinale(f,1);const depart=getRoyalFinalePose(f);assert(depart.eel.x>board.eel.x);assert(depart.player.scale<board.player.scale);
- assert.equal(advanceRoyalFinale(f,10),true);assert.equal(advanceRoyalFinale(f,10),false);
+ assert.equal(advanceRoyalFinale(f,ROYAL_FINALE_TIMING.total),true);assert.equal(advanceRoyalFinale(f,10),false);
  assert.equal(f.elapsed,ROYAL_FINALE_TIMING.total);assert.equal(f.completed,true);assert.equal(f.active,false);
 });
 
@@ -27,9 +27,9 @@ test('exit starts cinema before victory; pause freezes it and hostile inputs can
  const initial=structuredClone(g.royal.finale),time=g.time,x=g.player.x,hp=g.player.hp;
  g.status='paused';for(let i=0;i<30;i++)updateInkScene(g,{fire:true,jump:true},1/60);
  assert.deepEqual(g.royal.finale,initial);assert.equal(g.time,time);
- g.status='playing';for(let i=0;i<600&&g.status==='playing';i++)updateInkScene(g,{fire:true,homing:true,missile:true,jump:true,shift:true,qte:true},1/60);
- assert.equal(g.status,'won');assert(g.royal.finale.completed);assert.equal(g.player.x,x);assert.equal(g.player.hp,hp);assert.equal(g.projectiles.length,0);assert.equal(g.duel,null);
- assert(Math.abs((g.time-time)-ROYAL_FINALE_TIMING.total)<.02);assert.equal(g.events.filter(e=>e.type==='royal-open').length,1);
+ g.status='playing';for(let i=0;i<4200&&g.status==='playing';i++)updateInkScene(g,{fire:true,homing:true,missile:true,jump:true,shift:true,qte:true},1/60);
+ assert.equal(g.status,'won');assert(g.royal.finale.completed);assert(g.player.x>x);assert(g.royal.finale.startWorld.x>=17810);assert.equal(g.player.hp,hp);assert.equal(g.projectiles.length,0);assert.equal(g.duel,null);
+ assert.equal(g.royal.finale.elapsed,ROYAL_FINALE_TIMING.total);assert(g.time-time>=ROYAL_FINALE_TIMING.total&&g.time-time<ROYAL_FINALE_TIMING.total+12);assert.equal(g.events.filter(e=>e.type==='royal-open').length,1);
  advanceRoyalObjective(g,1);updateInkScene(g,{},1/60);assert.equal(g.events.filter(e=>e.type==='royal-open').length,1);
  assert.equal(createInkScene({level:3}).royal.finale,null);
 });

@@ -8,7 +8,7 @@ Les cinq états ci-dessous sont conservés dans des dossiers indépendants, sans
 
 | Jeu / sources | État réel | GitHub Pages après activation | Commit source |
 | --- | --- | --- | --- |
-| [SALTIK V2 — Matin Doré](versions/saltik-main) | Publiée v50 — modules à paliers et roue animée | [Jouer](https://saltik-v2-matin-dore.ser-adrien.chatgpt.site) | `b42892fe9be9` |
+| [SALTIK V2 — Matin Doré](versions/saltik-main) | Publiée v51 — combat POV sur l’anguille | [Jouer](https://saltik-v2-matin-dore.ser-adrien.chatgpt.site) | `8fa2dae6e596` |
 | [SALTIK — Ink Edition publiée](versions/saltik-ink) | Publiée v4 | [Jouer](https://seradrien-png.github.io/saltik/versions/saltik-ink/dist/) | `44110aa2dd80` |
 | [SALTIK INK — brouillon local avec épilogue](versions/autres-versions/saltik-ink-brouillon) | Brouillon local non publié | [Jouer](https://seradrien-png.github.io/saltik/versions/autres-versions/saltik-ink-brouillon/dist/) | `21dcc4ca32c5` |
 | [Feral Steel — Opération Canopée, référence Saltik](versions/autres-versions/saltik-feral-steel) | Publiée v24 | [Jouer](https://seradrien-png.github.io/saltik/versions/autres-versions/saltik-feral-steel/dist/) | `dbc331d0b7a2` |
@@ -206,3 +206,8 @@ MP3 original fourni intégré uniquement aux Jardins de velours, sans transcodag
 ### 14 novembre 2026 — architectures à paliers et roue animée (v50)
 
 Deux répétitions de grand escalier du Velours deviennent une galerie-jardin et un pavillon musical, avec trois hauteurs praticables et un vrai palier intermédiaire relié au sol puis au haut par deux volées. Montée et descente testées pour Striker/Gatling/BT. La roue possède un disque animé indépendant, son support reste fixe ; eau motrice animée, rivière poursuivie sur le premier plan pourpre et cascade peinte à crête arrondie. Animation au temps de simulation, masques et textures en cache. Musique fournie, voix, A10, anciens visuels et autres mondes préservés. 843 tests passent, vues ordinateur/mobile sans erreur et revue sans problème bloquant. Source `b42892fe9be9ef438232d07bc949936d8de9b40b`, publication v50 réussie. V49 conservée dans le parent GitHub8a20d3e4615006b5884e7973fbbd3dc0bc426f01. [Rapport](royal-modules-water-release.json).
+
+
+### 19 novembre 2026 — roue complète et combat POV sur l’anguille (v51)
+
+La roue comprend deux jantes ouvertes, rayons et douze palettes projetés en perspective, reliés autour d’un axe fixe ; les supports et le passage restent fixes. Le Saltik descend réellement au sol et dépasse le dernier bâtiment avant le saut. Après embarquement :45s en POV avec progression/visée automatiques mais déclenchement manuel de toutes les armes, règles natives de chargeur/recharge/chauffe/verrous conservées pour Striker/Gatling/BT ; descente de5s vers le paysage suivant, toujours sur le dos de l’anguille. Tirs Striker à90%, enregistrement CC0 de rechargement et détonations EOD réservées aux impacts/destructions guidés ennemis. 869 tests réussis, vrai clavier pour les3personnages et multi-touch BT mobile émulé, pause et nettoyage vérifiés ; revue sans point bloquant, notification aucune cible corrigée. Source `8fa2dae6e596233bc94a93749bd136bbf4cc7066`, publication v51 réussie. V50 conservée dans le parent GitHub f7ec8bd5a6f6316a3d6d73444b5ea5f3718a647a. [Rapport](royal-flight-v51-release.json).

@@ -8,3 +8,9 @@ test('an unavailable real recording falls back to its preserved user-kit OGG',as
  const urls=[],audio=createMirvAudio(context(),{},{paths:{launch:'./audio/real-weapons/missing.ogg'},fetch:async url=>{urls.push(url);return{ok:!url.includes('/real-weapons/'),arrayBuffer:async()=>new ArrayBuffer(4)};}});
  await audio.preload();assert(urls.includes('./audio/real-weapons/missing.ogg'));assert(urls.includes('./audio/mirv/01_mortier_depart.ogg'));assert.equal(audio.snapshot.loaded,7);assert.equal(audio.snapshot.failed,0);
 });
+
+
+test('the entire Striker MIRV kit is 10 percent quieter on its private bus',()=>{
+ const gains=[],ctx={currentTime:0,createGain(){const gain={gain:{value:1},connect(){}};gains.push(gain);return gain;}};
+ createMirvAudio(ctx,{});assert.equal(gains[0].gain.value,.62*.9);
+});

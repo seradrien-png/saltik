@@ -48,7 +48,8 @@ test('Gatling uses the supplied continuous loop while Striker keeps its cadence 
  assert.match(audio,/currentTime-lastShot<\.055/);
  assert.match(audio,/if\(restart\)\{lastShot=-Infinity/);
  for(const event of ['gatling-shot','gatling-rocket','gatling-overheat','gatling-cooled'])assert.ok(audio.includes(`e.type==='${event}'`));
- assert.match(audio,/burst\(\.12,\.0462875\*1.15\*1.20,900/);
+ assert.match(audio,/const shotGain=character==='striker'\?\.9:1/);
+ assert.match(audio,/burst\(\.12,\.0462875\*1.15\*1.20\*shotGain,900/);
 });
 
 test('thermal feedback distinguishes a fresh firing budget from residual heat after release',()=>{

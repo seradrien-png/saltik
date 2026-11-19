@@ -153,6 +153,7 @@ export function createRenderer(canvas){
   last=now;lastGameTime=g.time;for(const e of effects)e.age+=dt;effects=effects.filter(e=>e.age<e.life);
   if(view==='won')presentationAge+=wall;else if(view!=='paused')presentationAge=0;
   const finale=g.level===3&&(g.royal?.finale?.active||g.royal?.finale?.completed)?g.royal.finale:null;
+  const approaching=finale?.stage==='approach';
   zoom=finale?BASE_ZOOM:missionZoom({view,introDuration:g.introDuration,introElapsed:g.introElapsed,presentationAge});
   if(view==='title'&&!completeArtReady){
    height=720/zoom;width=canvas.width/canvas.height*height;camera=100;cameraY=height-720;
@@ -173,7 +174,7 @@ export function createRenderer(canvas){
   if(g.level===4&&g.desert.phase==='entering')g={...g,player:{...g.player,x:180,y:620,supportY:620,artScale:1,dir:1,supportPose:null},platforms:createDesertRoutes(),enemies:[],pickups:[],groundAt:desertInteriorGroundAt};
 
   if(view==='title'){height=720/zoom;width=canvas.width/canvas.height*height;camera=100;cameraY=height-720;}
-  else if(finale){
+  else if(finale&&!approaching){
    if(finaleAnchor?.finale!==finale){if(Math.abs(finale.startWorld.x-camera)>width*1.5)camera=finale.startWorld.x-width*.34;finaleAnchor={finale,camera,cameraY,startX:(finale.startWorld.x-camera)/width,startY:(finale.startWorld.y+cameraY)/height,...captureRoyalFinaleEel(g.royal.atmosphere,{width,height,time:g.time})};}
    height=720/BASE_ZOOM;width=canvas.width/canvas.height*height;camera=finaleAnchor.camera;cameraY=finaleAnchor.cameraY;
   }else{
@@ -181,9 +182,9 @@ export function createRenderer(canvas){
    ({width,height,camera,cameraY}=q);
   }
   const playerImages=sceneArtImages(images,g.level,g.player.character,g.player.cosmeticSkin,g.player.visualModel),royalArt={atlas:images['royal-structures'],bridge:images['royal-quarter-bridge'],ground:images['royal-velvet-ground'],organic:images['royal-organic-landmarks'],railFront:images['royal-bridge-front'],hd:images};
-  const time=view==='title'?now/1000:g.time;c.setTransform(canvas.width/width,0,0,canvas.height/height,0,0);c.clearRect(0,0,width,height);g.level===4?drawDesertInteriorBackdrop(c,images['desert-c07-interior'],{camera,width,height,cameraY}):g.level===3?drawRoyalBackdrop(c,{camera,width,height,time,image:images['royal-world'],art:royalArt,atmosphere:view==='title'||finale?null:g.royal.atmosphere,eel:images['royal-eel']}):g.level===2?drawLunarBackdrop(c,{camera,width,height,time,image:images['lunar-natural-world'],layers:images['lunar-island-layers'],art:{atlas:images['lunar-monuments'],bridge:images['lunar-aqueduct'],hd:images}}):backdrop(time);
+  const time=view==='title'?now/1000:g.time;c.setTransform(canvas.width/width,0,0,canvas.height/height,0,0);c.clearRect(0,0,width,height);g.level===4?drawDesertInteriorBackdrop(c,images['desert-c07-interior'],{camera,width,height,cameraY}):g.level===3?drawRoyalBackdrop(c,{camera,width,height,time,image:images['royal-world'],art:royalArt,atmosphere:view==='title'||finale&&!approaching?null:g.royal.atmosphere,eel:images['royal-eel']}):g.level===2?drawLunarBackdrop(c,{camera,width,height,time,image:images['lunar-natural-world'],layers:images['lunar-island-layers'],art:{atlas:images['lunar-monuments'],bridge:images['lunar-aqueduct'],hd:images}}):backdrop(time);
   const eelTime=g.time+(finaleAnchor?.eelTimeOffset??0);
-  const finalePose=finale?getRoyalFinalePose(finale,{...finaleAnchor,aspect:width/height,backSocket:royalEelBackSocket(images['royal-eel'],eelTime)}):null;
+  const finalePose=finale&&!approaching?getRoyalFinalePose(finale,{...finaleAnchor,aspect:width/height,backSocket:royalEelBackSocket(images['royal-eel'],eelTime)}):null;
   const drawFinalePlayer=()=>{
    const q=finalePose;
    const p={...g.player,x:q.player.x*width,y:q.player.y*height,artScale:1,dir:1,vx:q.stage==='run'?220+q.stageProgress*380:0,vy:q.stage==='jump'?-300*Math.cos(q.stageProgress*Math.PI):0,onGround:q.stage!=='jump',turn:null,evasion:null,melee:null,crouching:false,invulnerable:0,tilt:q.player.angle,supportPose:null,supportY:0,motionDistance:(g.player.motionDistance??0)+finale.elapsed*240,jumpLegs:{spread:q.stage==='jump'?Math.sin(q.stageProgress*Math.PI)*.7:0},muzzle:0,mirvFlash:0,homingFlash:0};p.supportY=p.y;
@@ -203,7 +204,7 @@ export function createRenderer(canvas){
    const disconnecting=drawCarrierShutdown(c,playerImages,g.carrierShutdown,g.enemies.find(e=>e.id===g.carrierShutdown?.enemyId),{camera,time,player:g.player});
    const dueling=drawInkDuelWorld(c,playerImages,g.duel,{camera,width,height,cameraY,time,player:g.player});
    const playerKO=g.status==='dead'&&!!g.player.knockedOut;
-   if(!finale&&(g.status!=='dead'||playerKO)&&!paired&&!dueling&&!disconnecting){
+   if((!finale||approaching)&&(g.status!=='dead'||playerKO)&&!paired&&!dueling&&!disconnecting){
     const p=playerKO?{...g.player,vx:0,vy:0,turn:null,evasion:null,melee:null,crouching:g.player.onGround!==false,invulnerable:0,damagePose:false,muzzle:0,mirvFlash:0,homingFlash:0,cannonElevation:0,cannonRecoil:0,motionLean:0,motionHeave:0,jumpCompression:0,landingCompression:0}:g.player,rear=p.evasion?.active;const shade=rear?.7:1;
     c.save();if(rear){c.globalAlpha=.86;c.translate(p.x-camera,p.y);c.scale(.92,.92);c.translate(-(p.x-camera),-p.y);}
     oval(c,p.x-camera,p.supportY??p.y,43*shade*(p.artScale??1),4,'#18181566');const pose=drawInkSaltik(c,playerImages['ink-saltik'],p,{camera,time,turnImage:playerImages['ink-turn'],sampleGround:x=>supportHeight(g,p,x),victoryAge:view==='won'?presentationAge:null});
@@ -219,7 +220,7 @@ export function createRenderer(canvas){
   }
   if(view!=='title')drawInkDuelScreen(c,playerImages,g.duel,{camera,cameraY,width,height,time});
   if(desertDoor)drawDesertCurtain(c,width,height,desertDoor);
-  if(finalePose?.pov>0)drawRoyalPov(c,images,{width,height,time,travel:finalePose.travel,alpha:finalePose.pov});
+  if(finalePose?.pov>0)drawRoyalPov(c,images,{width,height,time,travel:finalePose.travel,alpha:finalePose.pov,combat:finale.combat,phase:finale.stage,descent:finalePose.descent});
   if(finale?.active){c.fillStyle='#08091dcc';const bar=height*.055*clamp(finale.elapsed/.25,0,1);c.fillRect(0,0,width,bar);c.fillRect(0,height-bar,width,bar);}
   film(time);if(g.flash>0){c.fillStyle=`rgba(240,227,201,${g.flash*.2})`;c.fillRect(0,0,width,height);}
  }

@@ -1,8 +1,10 @@
+import {advanceRoyalPovCombat,clearRoyalPovCombat} from './royal-pov-combat.js';
+import {beginRoyalBoarding,ROYAL_FINALE_TIMING} from './royal-finale.js';
 import {nativeTurnSockets} from './character-turns.js';
 import {normalizeSkin} from './player-skins.js';
 import {applyDesertLevel,advanceDesertObjective,desertInput} from './desert-level.js';
 import {applyRoyalLevel,advanceRoyalObjective} from './royal-level.js';
-import {createGame,update,LEVEL_END} from './engine.js';
+import {createGame,update,LEVEL_END,advanceRoyalWeaponSimulation} from './engine.js';
 import {applyLunarLevel,advanceLunarObjective} from './lunar-level.js';
 import {inkSaltikGeometry} from './ink-saltik.js';
 import {inkPlayerPodGeometry} from './ink-pods.js';
@@ -42,7 +44,19 @@ export function updateInkScene(g,input,dt=1/60){
  if(g.level===3&&g.royal?.finale?.active){
   if(g.status!=='playing')return;
   const step=Math.max(0,Math.min(1/30,Number.isFinite(dt)?dt:0));
-  g.time+=step;advanceRoyalObjective(g,step);return;
+  const f=g.royal.finale;
+  if(f.stage==='approach'){
+   const end=g.levelEnd;g.levelEnd=Math.max(end,f.launchX+500);
+   try{update(g,{right:g.player.x<f.launchX},step);}finally{g.levelEnd=end;}
+   if(g.player.onGround&&g.player.x>=f.launchX)beginRoyalBoarding(f,g.player);
+   advanceRoyalObjective(g,step);return;
+  }
+  const previous=f.elapsed;g.time+=step;advanceRoyalObjective(g,step);
+  const combatStep=Math.max(0,Math.min(f.elapsed,ROYAL_FINALE_TIMING.combatEnd)-Math.max(previous,ROYAL_FINALE_TIMING.combatStart));
+  if(combatStep>0)advanceRoyalPovCombat(g,input,combatStep);
+  else advanceRoyalWeaponSimulation(g,{},step);
+  if(previous<ROYAL_FINALE_TIMING.combatEnd&&f.elapsed>=ROYAL_FINALE_TIMING.combatEnd)clearRoyalPovCombat(g);
+  return;
  }
  const before=g.time;update(g,desertInput(g,input),dt);
  if(g.level===2)advanceLunarObjective(g,g.time-before);

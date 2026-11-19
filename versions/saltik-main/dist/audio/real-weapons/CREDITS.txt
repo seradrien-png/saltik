@@ -16,3 +16,10 @@ Processing consists of excerpts, fixed gain, high-pass filtering, short edge fad
 MIRV recording paths are optional overrides of the existing lifecycle manager. The seven original user-supplied MIRV OGGs and original `Saltik_MIRV_kit_audio.zip` remain intact as fallback. Flight, separation, and all three impact variations retain the user's kit. Only the existing falling loop changes pitch according to downward velocity. The loaded primary/guided recording path adds no procedural layers; the previous synthesis remains a fallback if its recording is unavailable. BT, Gatling A10, and voices retain their existing audio paths.
 
 Runtime-readable credits are shipped as `dist/audio/real-weapons/CREDITS.txt`.
+
+V51 recorded Striker reload and guided enemy impacts (2026-11-14):
+striker-reload-start.ogg: Machine_Gun_Reload.wav by ken788 — https://freesound.org/people/ken788/sounds/386777/ — CC0 1.0 https://creativecommons.org/publicdomain/zero/1.0/
+striker-reload-end.ogg: Machine_Gun_Reload.wav by ken788 — https://freesound.org/people/ken788/sounds/386777/ — CC0 1.0 https://creativecommons.org/publicdomain/zero/1.0/
+guided-impact.ogg: Fire Explosion by qubodup — https://freesound.org/people/qubodup/sounds/855898/ — CC0 1.0 https://creativecommons.org/publicdomain/zero/1.0/
+guided-destruction.ogg: Blow Up Sound by qubodup — https://freesound.org/people/qubodup/sounds/855896/ — CC0 1.0 https://creativecommons.org/publicdomain/zero/1.0/
+EOD source footage: EOD Broll package, Seaman Kelly Meyer / AFN Okinawa, 2020-11-18, https://www.dvidshub.net/video/774073/eod-broll-package (public domain). Source HQ previews, page snapshots and exact processing manifest archived outside the published runtime.

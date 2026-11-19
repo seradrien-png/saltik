@@ -1,7 +1,7 @@
 const TAU=Math.PI*2,mod=(n,d)=>((n%d)+d)%d;
 // Positions are authored against the 768x512 logical wheel module, independent
 // of its HD source pixels and of camera movement.
-export function royalWheelFrame(s,time=0){return{x:s.left+483*s.scale,y:s.top+173*s.scale,rx:130*s.scale,ry:146*s.scale,angle:-time*.18};}
+export function royalWheelFrame(s,time=0){return{x:s.left+483*s.scale,y:s.top+205*s.scale,rx:139*s.scale,ry:165*s.scale,angle:-time*.18};}
 export function royalRunoffGeometry(s){return{startX:s.left+400*s.scale,startY:s.top+475*s.scale,mouthWidth:136*s.scale,lipX:s.left+425*s.scale,lipY:s.top+520*s.scale,lipWidth:176*s.scale,bottom:1420};}
 const materialCache=new WeakMap();
 function materials(image){
@@ -27,15 +27,65 @@ function wheelWater(c,image,s,camera,time){
  for(const phase of [0,.5]){const travel=mod(time*44+phase*32,32);c.globalAlpha=Math.sin(travel/32*Math.PI)*.7;c.drawImage(m.water,0,0,m.w,m.h,0,travel,768,512);}
  c.restore();
 }
+// Authored three-quarter axes in the original 768×512 painting. Both wheel
+// faces and every bucket share this projection and the simulation phase.
+const wheelBasis={u:{x:139,y:25},v:{x:-24,y:165},depth:{x:-86,y:-32}};
+export function royalWheelGeometry(s,time=0){
+ const angle=-time*.18,point=(theta,z=0,r=1)=>({x:s.left+(483+wheelBasis.u.x*Math.cos(theta)*r+wheelBasis.v.x*Math.sin(theta)*r+wheelBasis.depth.x*z)*s.scale,y:s.top+(205+wheelBasis.u.y*Math.cos(theta)*r+wheelBasis.v.y*Math.sin(theta)*r+wheelBasis.depth.y*z)*s.scale});
+ return{angle,axle:{near:{x:s.left+483*s.scale,y:s.top+205*s.scale},far:{x:s.left+397*s.scale,y:s.top+173*s.scale}},basis:wheelBasis,paddles:Array.from({length:12},(_,i)=>{const theta=angle+i*TAU/12;return{theta,near:point(theta),far:point(theta,1),corners:[point(theta-.036,0,.9),point(theta-.036,1,.9),point(theta-.036,1,1.015),point(theta-.036,0,1.015)],cap:[point(theta-.036,0,1.015),point(theta-.036,1,1.015),point(theta+.036,1,1.015),point(theta+.036,0,1.015)]};})};
+}
+const wheelCache=new WeakMap(),faceCache=new WeakMap();
+function inSupport(x,y){return (x>=495&&x<=550&&y>=216)||(x>=576&&x<=624&&y>=273);}
+function bridgeEdge(x){return 269+Math.pow((x-382)/1.55,2)/430;}
+function wheelHull(x,y){const q=(cx,cy)=>{const xx=x-cx,yy=y-cy,det=139*165+24*25,u=(165*xx+24*yy)/det,v=(-25*xx+139*yy)/det;return u*u+v*v<1.34;};return (x>220&&x<640&&y<230)||q(483,205)||q(397,173)||(x>270&&x<525&&y>35&&y<230);}
+// A cached replacement for the base module removes only the moving mechanism.
+// Native water, pillars and the walking bridge are retained pixel for pixel.
+export function royalWheelStaticImage(image){
+ if(wheelCache.has(image))return wheelCache.get(image);
+ if(typeof document==='undefined'||!image?.width)return image;
+ const w=image.naturalWidth??image.width,h=image.naturalHeight??image.height,base=document.createElement('canvas');base.width=w;base.height=h;const c=base.getContext('2d',{willReadFrequently:true});c.drawImage(image,0,0);const pixels=c.getImageData(0,0,w,h),a=pixels.data;
+ for(let yy=0;yy<h;yy++)for(let xx=0;xx<w;xx++){const x=xx*768/w,y=yy*512/h;if(y>=bridgeEdge(x)||inSupport(x,y)||!wheelHull(x,y))continue;const i=(yy*w+xx)*4,water=a[i+1]>70&&a[i+2]>130&&a[i+1]>a[i]*1.12&&a[i+2]>a[i+1]*1.025;if(!water)a[i+3]=0;}
+ c.putImageData(pixels,0,0);wheelCache.set(image,base);return base;
+}
+function wheelFace(rotor){
+ if(faceCache.has(rotor))return faceCache.get(rotor);
+ if(typeof document==='undefined')return rotor;
+ const n=1024,face=document.createElement('canvas');face.width=face.height=n;const c=face.getContext('2d');
+ // Open gaps replace the rejected solid ornamental plate. The actual native
+ // rim, eight decorated spokes and floral nave remain, without repainting.
+ c.save();c.translate(n/2,n/2);c.beginPath();c.arc(0,0,n*.495,0,TAU);c.arc(0,0,n*.392,0,TAU,true);c.clip('evenodd');c.drawImage(rotor,-n/2,-n/2,n,n);c.restore();
+ for(let i=0;i<8;i++){const a=i*TAU/8,ux=Math.cos(a),uy=Math.sin(a),vx=-uy,vy=ux;c.save();c.translate(n/2,n/2);c.beginPath();c.moveTo(vx*24,vy*24);c.lineTo(ux*n*.43+vx*30,uy*n*.43+vy*30);c.lineTo(ux*n*.43-vx*30,uy*n*.43-vy*30);c.lineTo(-vx*24,-vy*24);c.closePath();c.clip();c.drawImage(rotor,-n/2,-n/2,n,n);c.restore();}
+ c.save();c.translate(n/2,n/2);c.beginPath();c.arc(0,0,n*.155,0,TAU);c.clip();c.drawImage(rotor,-n/2,-n/2,n,n);c.restore();faceCache.set(rotor,face);return face;
+}
+function texturedQuad(c,image,points){
+ const iw=image.naturalWidth??image.width,ih=image.naturalHeight??image.height;
+ const [p,a,b,d]=points;c.save();c.beginPath();points.forEach((q,i)=>c[i?'lineTo':'moveTo'](q.x,q.y));c.closePath();c.clip();
+ // A native embossed spoke supplies the bucket plank's gold carving. It is
+ // mapped over the entire physical bucket, including its visible outer lip.
+ c.transform((a.x-p.x)/210,(a.y-p.y)/210,(d.x-p.x)/75,(d.y-p.y)/75,p.x,p.y);c.drawImage(image,iw*.43,ih*.455,iw*.24,ih*.075,0,0,210,75);c.restore();
+}
+function drawWheelFace(c,face,s,angle,z,camera){
+ const co=Math.cos(angle),si=Math.sin(angle),u=wheelBasis.u,v=wheelBasis.v,p={x:483+wheelBasis.depth.x*z,y:205+wheelBasis.depth.y*z};
+ c.save();c.translate(s.left-camera+p.x*s.scale,s.top+p.y*s.scale);c.transform((u.x*co+v.x*si)*s.scale,(u.y*co+v.y*si)*s.scale,(-u.x*si+v.x*co)*s.scale,(-u.y*si+v.y*co)*s.scale,0,0);c.drawImage(face,-1,-1,2,2);c.restore();
+}
+function drawPerspectiveWheel(c,image,rotor,s,camera,time){
+ const g=royalWheelGeometry(s,time),face=wheelFace(rotor);drawWheelFace(c,face,s,g.angle,1,camera);
+ // Bucket faces connect both rims. Opposite buckets change foreshortening
+ // together; the waterfall-side return never stays frozen behind a disk.
+ const buckets=[...g.paddles].sort((a,b)=>Math.sin(a.theta)-Math.sin(b.theta));
+ for(const bucket of buckets)for(const points of [bucket.corners,bucket.cap])texturedQuad(c,rotor,points.map(p=>({x:p.x-camera,y:p.y})));
+ drawWheelFace(c,face,s,g.angle,0,camera);
+ // Restore the exact foreground pixels; the axle pedestal and walking lane
+ // occlude the wheel instead of rotating along with it.
+ c.save();c.translate(s.left-camera,s.top);c.scale(s.scale,s.scale);c.beginPath();c.moveTo(0,bridgeEdge(0));for(let x=0;x<=768;x+=4)c.lineTo(x,bridgeEdge(x));c.lineTo(768,512);c.lineTo(0,512);c.closePath();c.rect(495,216,55,150);c.rect(576,273,48,110);c.clip();c.drawImage(image,0,0,image.naturalWidth??image.width,image.naturalHeight??image.height,0,0,768,512);c.restore();
+}
+
 export function drawRoyalWheelWater(c,image,s,{camera=0,time=0,rotor=null}={}){
  if(!image)return;
- if(rotor){const p=royalWheelFrame(s,time);c.save();c.translate(p.x-camera,p.y);c.scale(p.rx,p.ry);c.beginPath();c.arc(0,0,1,0,TAU);c.clip();c.rotate(p.angle);c.drawImage(rotor,0,0,rotor.naturalWidth??rotor.width,rotor.naturalHeight??rotor.height,-1,-1,2,2);c.restore();
-  // The near axle pedestal is part of the stationary structure, in front of
-  // the disk. Restore only its narrow native polygon, never the whole image.
-  c.save();c.translate(s.left-camera,s.top);c.scale(s.scale,s.scale);c.beginPath();for(const [i,q] of [[499,218],[535,219],[541,249],[549,252],[548,358],[506,357],[506,254],[494,251]].entries())c[i?'lineTo':'moveTo'](...q);c.closePath();c.clip();c.drawImage(image,0,0,image.naturalWidth??image.width,image.naturalHeight??image.height,0,0,768,512);c.restore();
- }
+ if(rotor)drawPerspectiveWheel(c,image,rotor,s,camera,time);
  wheelWater(c,image,s,camera,time);
 }
+
 function channel(c,p,camera){const x=p.startX-camera,y=p.startY,l=p.lipX-camera,w=p.mouthWidth/2,r=p.lipWidth/2;c.beginPath();c.moveTo(x-w,y);c.bezierCurveTo(x-w-20,y+40,l-r,y+60,l-r,p.lipY);c.lineTo(l+r,p.lipY);c.bezierCurveTo(l+r,y+60,x+w+25,y+30,x+w,y);c.closePath();}
 function falling(c,p,camera){const x=p.lipX-camera,w=p.lipWidth/2;c.beginPath();c.moveTo(x-w,p.lipY);c.bezierCurveTo(x-w-8,p.lipY+100,x-w+8,p.bottom-90,x-w-15,p.bottom);c.lineTo(x+w+15,p.bottom);c.bezierCurveTo(x+w+8,p.bottom-90,x+w+8,p.lipY+100,x+w,p.lipY);c.closePath();}
 function flowTexture(c,m,x,y,w,h,time,speed){

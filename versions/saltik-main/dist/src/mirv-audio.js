@@ -28,7 +28,7 @@ function quietLoopRegion(buffer){
 }
 
 export function createMirvAudio(context,destination,{fetch:fetchSample=globalThis.window?.fetch?.bind(globalThis.window)??globalThis.fetch?.bind(globalThis),random=Math.random,paths={}}={}){
- const bus=context.createGain();bus.gain.value=.62;
+ const bus=context.createGain();bus.gain.value=.62*.9;
  const compressor=context.createDynamicsCompressor?.();
  if(compressor){
   for(const [key,value] of Object.entries({threshold:-12,knee:8,ratio:8,attack:.004,release:.16}))if(compressor[key])compressor[key].value=value;

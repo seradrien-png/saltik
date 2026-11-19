@@ -7,15 +7,15 @@
       "slug": "saltik-main",
       "repo": "saltik-v2-matin-dore",
       "title": "SALTIK V2 \u2014 Matin Dor\u00e9",
-      "commit": "b42892fe9be9ef438232d07bc949936d8de9b40b",
-      "published_version": 50,
+      "commit": "8fa2dae6e596233bc94a93749bd136bbf4cc7066",
+      "published_version": 51,
       "url": "https://saltik-v2-matin-dore.ser-adrien.chatgpt.site",
       "base_commit": "ce280f9394d382d728673a48c1994a18092e8c58",
       "source_path": "/workspace/sites/saltik-v2-matin-dore",
       "export_path": "versions/saltik-main",
       "web_entry": "versions/saltik-main/dist/index.html",
-      "file_count": 809,
-      "bytes": 368495861,
+      "file_count": 822,
+      "bytes": 368804400,
       "uncommitted_changes": "",
       "files": {
         ".gitignore": {
@@ -45,6 +45,10 @@
         "audio-sources/real-weapons-source-kit.zip": {
           "sha256": "99396a434bc98be19d2266551bb3b068cd842e87d419fd7198377d1b791d246a",
           "size": 315711
+        },
+        "audio-sources/striker-v51-source-kit.zip": {
+          "sha256": "efbfc39b8737b0e37db13e589cd2ba7135cfc46be5e1eadb0dc3bfe856f77107",
+          "size": 183408
         },
         "dist/android.html": {
           "sha256": "a9bd28ec16740008b6b6d2fde22920696d3f231053b4636a6f61c626a9b648a8",
@@ -607,12 +611,20 @@
           "size": 33509
         },
         "dist/audio/real-weapons/CREDITS.txt": {
-          "sha256": "71d90244539bd93032ee04025bb8dc241c6279573c0fe560a821ae0766f0a068",
-          "size": 2848
+          "sha256": "398a5715cc6db410ed139c2c87c45d3a23736581b5f4a1f852964329e320c073",
+          "size": 3863
         },
         "dist/audio/real-weapons/archival-shell-whistle.ogg": {
           "sha256": "a401590133206422b007b288f09e4208c7d1f98f1b3df914e8edd4e100f29e30",
           "size": 14171
+        },
+        "dist/audio/real-weapons/guided-destruction.ogg": {
+          "sha256": "63f5aebad780ca3c2cceb1d92ed2cc202607fcfdf5a3e7113ca7b7295f5e0223",
+          "size": 17023
+        },
+        "dist/audio/real-weapons/guided-impact.ogg": {
+          "sha256": "d114a63286eb61c6f62b03f30ae0d91f0f4c4bb5c0026a9044d2d7e1e3d109ac",
+          "size": 14873
         },
         "dist/audio/real-weapons/m327-mortar-launch.ogg": {
           "sha256": "d0e7b024d319701c7ea1af92940e32568bdda171b1bd888c3f001aea17421402",
@@ -621,6 +633,14 @@
         "dist/audio/real-weapons/striker-cannon.ogg": {
           "sha256": "855e9b5ea6bd930fa029e44cbdccdbe8d37283c78bba40c5a8333e176cc41f5d",
           "size": 6541
+        },
+        "dist/audio/real-weapons/striker-reload-end.ogg": {
+          "sha256": "470ac7e467a2764d0cafb00ac82102d847e0f40c93fb34940f16c37ff4af7e91",
+          "size": 7743
+        },
+        "dist/audio/real-weapons/striker-reload-start.ogg": {
+          "sha256": "cbb3947b5f766ff83205370fe0241c5e8f725f1e11fd322d39babd04c2dfdb00",
+          "size": 15583
         },
         "dist/audio/real-weapons/tow-guided-launch.ogg": {
           "sha256": "43ae75ac86b6a139e4a8f85389934ef34e207d676cf6ec2069bd42ee4360e7a8",
@@ -803,8 +823,8 @@
           "size": 3073
         },
         "dist/src/audio.js": {
-          "sha256": "40c35ed4f9cf65ad99ffaeb6d69e968a196f3c4545530fdfde01e44cc528bb2b",
-          "size": 18598
+          "sha256": "0a1553d94cca986b6024a233c4434206be5e1537cb8870d5a7e9e85c477f6e1e",
+          "size": 19547
         },
         "dist/src/background-motion.js": {
           "sha256": "3678cee146d7d6f5c57ce4f0218b809c0befc002fd2809e9f7a05c895c7711f5",
@@ -923,8 +943,8 @@
           "size": 3417
         },
         "dist/src/engine.js": {
-          "sha256": "a28d89c65f165351e2988ecb8a1a0b1e29738dc75f735ae317988250a88a7a7e",
-          "size": 76999
+          "sha256": "79f70a264f4c5b22d6cb60806e979073dba047402e6c8451a4f138b6641bbfcb",
+          "size": 78327
         },
         "dist/src/evasion.js": {
           "sha256": "3b9e6a5daafd5098d12f20a67279e98eca7b85ef500b79b67ea5862199992aeb",
@@ -995,16 +1015,16 @@
           "size": 5484
         },
         "dist/src/ink-renderer.js": {
-          "sha256": "fcee719630e0924ff52ee91dec49fc6e13439d2bfcf60e607bbc70fec853f33d",
-          "size": 22993
+          "sha256": "9f16c37d0922ae6126f64405fc65857603999dd0c42137adb36ea04c4d96b90f",
+          "size": 23165
         },
         "dist/src/ink-saltik.js": {
           "sha256": "ba15550e74f822e3897a3929289ebb1559b4c5b15e5f7be155d8ce1e42f03cb2",
           "size": 21342
         },
         "dist/src/ink-scene.js": {
-          "sha256": "91d85005679c39c1060f60d79282b7eb5c90546da8c488d61b0b0c962d269dcb",
-          "size": 3968
+          "sha256": "be92eba136afa2d50e03287253397e453a32af0087c8d9e763b4a3f829525340",
+          "size": 4851
         },
         "dist/src/ink-turn.js": {
           "sha256": "e2e281634ce901d5e484fe5c5a6770ddc9365574f832550ee3ee2ff1162f8050",
@@ -1055,8 +1075,8 @@
           "size": 4153
         },
         "dist/src/main.js": {
-          "sha256": "3fa6f0a0ed8577f686827685de9cbd09bb2fbcbc1dbca8a3f60c6818b0d96b60",
-          "size": 33869
+          "sha256": "12acb02b105d1488b2de92c28a6fbfd78a7c61f377f8cfac83b88169a579b183",
+          "size": 34282
         },
         "dist/src/melee-state.js": {
           "sha256": "f24e08a07354668edbe7d54291517edc973dd34f9dfa9653c4f5776fe2b1eb87",
@@ -1067,8 +1087,8 @@
           "size": 1035
         },
         "dist/src/mirv-audio.js": {
-          "sha256": "bbdc35fbb36ee84ad85126cbe510271da182c8ea45ce1609254a75ac215fb4f1",
-          "size": 9286
+          "sha256": "1c0770466555dde8a2c8f4f3e60c35ec3cf3ac20d72bc9acfc682a55a831dab2",
+          "size": 9289
         },
         "dist/src/mirv-preview.js": {
           "sha256": "2f5c1f276ac66d1276b6d21ddb757ccf951d3024d3b300cc64027a973624e650",
@@ -1123,8 +1143,8 @@
           "size": 4792
         },
         "dist/src/real-weapon-paths.js": {
-          "sha256": "8289d47ac98da6236b07a2e4fa8e850ea88a5963fb09dd24ec0603224b33764d",
-          "size": 391
+          "sha256": "19a515f49e6616cc96474ba0402cd7527d5d7576e359c744e5327730b2a56112",
+          "size": 633
         },
         "dist/src/renderer.js": {
           "sha256": "f1e5891145283d8c07d159855d91a58318573f7d10baa74b797a6109d187c7a2",
@@ -1147,20 +1167,24 @@
           "size": 2806
         },
         "dist/src/royal-finale.js": {
-          "sha256": "78a45f55eff0155a5108aedd5bfc6f9952f832873e9c70f99f8389ee6645a4b6",
-          "size": 2173
+          "sha256": "7f78accf686ca7f0e384c4513d0ed0c2df3581e9d66e71529f4678260b8f4139",
+          "size": 2601
         },
         "dist/src/royal-layout.js": {
           "sha256": "9eb965360e0e30e59feef1925fcf4bc22f7047b9a8266bb4000dcd55202e2167",
           "size": 5831
         },
         "dist/src/royal-level.js": {
-          "sha256": "f66d3da6dea113a978e288253beaaa4196b4348ae92d45418c8ad8d32ee0d82f",
-          "size": 4618
+          "sha256": "4770ac12df5155f9be036a1caf3ad5257b2e702858ed202e1fe18166f6f454ca",
+          "size": 4689
+        },
+        "dist/src/royal-pov-combat.js": {
+          "sha256": "be67ebdac2a1dc439e376a9fa3dee4dc5ffafb05fdb6fa1551a6f2f8aa0ca065",
+          "size": 4691
         },
         "dist/src/royal-pov.js": {
-          "sha256": "7789eb5ea46a48359ce3e2f947ed749dba28920c6746a439d723ad9503b2ca4e",
-          "size": 4079
+          "sha256": "6d439365054d7aa827941ab105784e6bd1bcc0e447f49f24ed01058c4cba77c2",
+          "size": 7973
         },
         "dist/src/royal-props.js": {
           "sha256": "9826fe184441137207f0eb7eb2179929d1a3459088c907727ae17fbc088673ea",
@@ -1179,12 +1203,12 @@
           "size": 5244
         },
         "dist/src/royal-wheel-water.js": {
-          "sha256": "1ffbbb41a44c090423c92ecb7cc80cc573c56af0f7af48f5e163370d24ad148e",
-          "size": 7010
+          "sha256": "1fc9ca78b37ae5ea4a8a90b685070a9ce3518f3694df50ada6b31fc272763e0c",
+          "size": 11718
         },
         "dist/src/royal-world.js": {
-          "sha256": "c577074c1a9819aa0808f5a41fcd7663e230acfd6a06293b78b6582ca2ce69b9",
-          "size": 7469
+          "sha256": "aa5cf0724b965adfe9f6d30dce4cf468797a26ef5be711f37b56ac69f594c456",
+          "size": 7566
         },
         "dist/src/saltik-duel.js": {
           "sha256": "658f2c417bfc63f595429dfd6b158178d764c4af7af7ed0d9ca2c77593f9c8e6",
@@ -1243,8 +1267,8 @@
           "size": 9418
         },
         "dist/style.css": {
-          "sha256": "635c312e7f07673c8720a0da30ce374e0a6608484d707172c7f3a66111553421",
-          "size": 47020
+          "sha256": "4ccf56d9dd444a6e09a57d17b68e77de6896df05165394227ed5dfd9998f1c71",
+          "size": 47271
         },
         "dist/video/saltik-free-together-poster.jpg": {
           "sha256": "de77c185c42f5b31e582f895bda0a8e5ea1c54cc0f9670bef8946a7c2cf3c767",
@@ -1403,16 +1427,24 @@
           "size": 1553
         },
         "docs/real-weapon-audio-provenance.json": {
-          "sha256": "7d61c9b190897c3066cd1a68a43cd66400ada1049c383fb1c933b7458852c87b",
-          "size": 4478
+          "sha256": "a9ca99aacddc10d676acc26d66e39363643c539967c791191b7783d2201755f7",
+          "size": 9210
         },
         "docs/real-weapon-audio.md": {
-          "sha256": "71d90244539bd93032ee04025bb8dc241c6279573c0fe560a821ae0766f0a068",
-          "size": 2848
+          "sha256": "206133c68ff3d84f2e3c1483300d57698044fcc23610b23e0de95577f1012a23",
+          "size": 5916
         },
         "docs/releases/SALTIK-reference-2026-10-28.md": {
           "sha256": "a3a0d3cca93e7b86607e4d29e0a36c8d8a04f4ef99f6d53a82e8f148582255d8",
           "size": 1106
+        },
+        "docs/royal-flight-v51-validation.json": {
+          "sha256": "e8cb062ca61dcc077df4a1a1268937f94b4b20d5f880ee746bc08d01cc647658",
+          "size": 5084
+        },
+        "docs/royal-flight-v51.md": {
+          "sha256": "556704ad49910fcb40ec7e000213a863db7baa8424a68e4043ac7651a620ba05",
+          "size": 4196
         },
         "docs/royal-modules-water-validation.json": {
           "sha256": "79db77e5e41d17d6214382c6848d5beff907cceec460e41965fd31b9254a3950",
@@ -2111,8 +2143,8 @@
           "size": 2317
         },
         "src/audio.js": {
-          "sha256": "40c35ed4f9cf65ad99ffaeb6d69e968a196f3c4545530fdfde01e44cc528bb2b",
-          "size": 18598
+          "sha256": "0a1553d94cca986b6024a233c4434206be5e1537cb8870d5a7e9e85c477f6e1e",
+          "size": 19547
         },
         "src/background-motion.js": {
           "sha256": "3678cee146d7d6f5c57ce4f0218b809c0befc002fd2809e9f7a05c895c7711f5",
@@ -2231,8 +2263,8 @@
           "size": 3417
         },
         "src/engine.js": {
-          "sha256": "a28d89c65f165351e2988ecb8a1a0b1e29738dc75f735ae317988250a88a7a7e",
-          "size": 76999
+          "sha256": "79f70a264f4c5b22d6cb60806e979073dba047402e6c8451a4f138b6641bbfcb",
+          "size": 78327
         },
         "src/evasion.js": {
           "sha256": "3b9e6a5daafd5098d12f20a67279e98eca7b85ef500b79b67ea5862199992aeb",
@@ -2303,16 +2335,16 @@
           "size": 5484
         },
         "src/ink-renderer.js": {
-          "sha256": "fcee719630e0924ff52ee91dec49fc6e13439d2bfcf60e607bbc70fec853f33d",
-          "size": 22993
+          "sha256": "9f16c37d0922ae6126f64405fc65857603999dd0c42137adb36ea04c4d96b90f",
+          "size": 23165
         },
         "src/ink-saltik.js": {
           "sha256": "ba15550e74f822e3897a3929289ebb1559b4c5b15e5f7be155d8ce1e42f03cb2",
           "size": 21342
         },
         "src/ink-scene.js": {
-          "sha256": "91d85005679c39c1060f60d79282b7eb5c90546da8c488d61b0b0c962d269dcb",
-          "size": 3968
+          "sha256": "be92eba136afa2d50e03287253397e453a32af0087c8d9e763b4a3f829525340",
+          "size": 4851
         },
         "src/ink-turn.js": {
           "sha256": "e2e281634ce901d5e484fe5c5a6770ddc9365574f832550ee3ee2ff1162f8050",
@@ -2363,8 +2395,8 @@
           "size": 4153
         },
         "src/main.js": {
-          "sha256": "3fa6f0a0ed8577f686827685de9cbd09bb2fbcbc1dbca8a3f60c6818b0d96b60",
-          "size": 33869
+          "sha256": "12acb02b105d1488b2de92c28a6fbfd78a7c61f377f8cfac83b88169a579b183",
+          "size": 34282
         },
         "src/melee-state.js": {
           "sha256": "f24e08a07354668edbe7d54291517edc973dd34f9dfa9653c4f5776fe2b1eb87",
@@ -2375,8 +2407,8 @@
           "size": 1035
         },
         "src/mirv-audio.js": {
-          "sha256": "bbdc35fbb36ee84ad85126cbe510271da182c8ea45ce1609254a75ac215fb4f1",
-          "size": 9286
+          "sha256": "1c0770466555dde8a2c8f4f3e60c35ec3cf3ac20d72bc9acfc682a55a831dab2",
+          "size": 9289
         },
         "src/mirv-preview.js": {
           "sha256": "2f5c1f276ac66d1276b6d21ddb757ccf951d3024d3b300cc64027a973624e650",
@@ -2431,8 +2463,8 @@
           "size": 4792
         },
         "src/real-weapon-paths.js": {
-          "sha256": "8289d47ac98da6236b07a2e4fa8e850ea88a5963fb09dd24ec0603224b33764d",
-          "size": 391
+          "sha256": "19a515f49e6616cc96474ba0402cd7527d5d7576e359c744e5327730b2a56112",
+          "size": 633
         },
         "src/renderer.js": {
           "sha256": "f1e5891145283d8c07d159855d91a58318573f7d10baa74b797a6109d187c7a2",
@@ -2455,20 +2487,24 @@
           "size": 2806
         },
         "src/royal-finale.js": {
-          "sha256": "78a45f55eff0155a5108aedd5bfc6f9952f832873e9c70f99f8389ee6645a4b6",
-          "size": 2173
+          "sha256": "7f78accf686ca7f0e384c4513d0ed0c2df3581e9d66e71529f4678260b8f4139",
+          "size": 2601
         },
         "src/royal-layout.js": {
           "sha256": "9eb965360e0e30e59feef1925fcf4bc22f7047b9a8266bb4000dcd55202e2167",
           "size": 5831
         },
         "src/royal-level.js": {
-          "sha256": "f66d3da6dea113a978e288253beaaa4196b4348ae92d45418c8ad8d32ee0d82f",
-          "size": 4618
+          "sha256": "4770ac12df5155f9be036a1caf3ad5257b2e702858ed202e1fe18166f6f454ca",
+          "size": 4689
+        },
+        "src/royal-pov-combat.js": {
+          "sha256": "be67ebdac2a1dc439e376a9fa3dee4dc5ffafb05fdb6fa1551a6f2f8aa0ca065",
+          "size": 4691
         },
         "src/royal-pov.js": {
-          "sha256": "7789eb5ea46a48359ce3e2f947ed749dba28920c6746a439d723ad9503b2ca4e",
-          "size": 4079
+          "sha256": "6d439365054d7aa827941ab105784e6bd1bcc0e447f49f24ed01058c4cba77c2",
+          "size": 7973
         },
         "src/royal-props.js": {
           "sha256": "9826fe184441137207f0eb7eb2179929d1a3459088c907727ae17fbc088673ea",
@@ -2487,12 +2523,12 @@
           "size": 5244
         },
         "src/royal-wheel-water.js": {
-          "sha256": "1ffbbb41a44c090423c92ecb7cc80cc573c56af0f7af48f5e163370d24ad148e",
-          "size": 7010
+          "sha256": "1fc9ca78b37ae5ea4a8a90b685070a9ce3518f3694df50ada6b31fc272763e0c",
+          "size": 11718
         },
         "src/royal-world.js": {
-          "sha256": "c577074c1a9819aa0808f5a41fcd7663e230acfd6a06293b78b6582ca2ce69b9",
-          "size": 7469
+          "sha256": "aa5cf0724b965adfe9f6d30dce4cf468797a26ef5be711f37b56ac69f594c456",
+          "size": 7566
         },
         "src/saltik-duel.js": {
           "sha256": "658f2c417bfc63f595429dfd6b158178d764c4af7af7ed0d9ca2c77593f9c8e6",
@@ -2551,8 +2587,8 @@
           "size": 9418
         },
         "style.css": {
-          "sha256": "635c312e7f07673c8720a0da30ce374e0a6608484d707172c7f3a66111553421",
-          "size": 47020
+          "sha256": "4ccf56d9dd444a6e09a57d17b68e77de6896df05165394227ed5dfd9998f1c71",
+          "size": 47271
         },
         "tests/arsenal-integration.test.js": {
           "sha256": "73a6ad38b4bc4243d05dc5b48af82396520cdc4248d0b6116776ac01f48937b5",
@@ -2899,8 +2935,8 @@
           "size": 1810
         },
         "tests/gatling-ui.test.js": {
-          "sha256": "5dbc47eac69dafaaa3194212dd28953eb09ca5f536466fd73be1c6f2b96f065b",
-          "size": 5241
+          "sha256": "1f17c6d981a3e36262901e2645c44095ac1ecab9e76e174d5cf23ac69299f3ed",
+          "size": 5319
         },
         "tests/guided-navigation.test.js": {
           "sha256": "bea7e471a2fcc7043ba2954a1daadb7ae57c75e743f7215f526ae8190fc98ec2",
@@ -3043,8 +3079,8 @@
           "size": 6887
         },
         "tests/mirv-audio-paths.test.js": {
-          "sha256": "86f889c99743295953ac1bfb4e4d585dc9ee902c0b639aa2b4ec2a5b1bd2e180",
-          "size": 1437
+          "sha256": "9add87634bbc5197daf557c9d5da1ab7f5bc2ccccbb9d722b4896d02eb0fccf6",
+          "size": 1713
         },
         "tests/mirv-audio.test.js": {
           "sha256": "dd3897d729645412b1fde85ee05ef5a910e8d832c2703935da0938dbeb3828b2",
@@ -3091,8 +3127,8 @@
           "size": 1507
         },
         "tests/pastel-preservation.test.js": {
-          "sha256": "5d4df8313d997ae76dbaf4646c6edce0e4bdddf3f0174fadb80cfcfd68815bbc",
-          "size": 8033
+          "sha256": "c45e8a7e0dc7673592f8dbc1c79dc997bc8457d3d34ff0e20f518548364c47c5",
+          "size": 8903
         },
         "tests/pastel-rider.test.js": {
           "sha256": "969e183bb7a0573ab07b43dbac3990e1cf1a2fd28c0bc32f2f6a51cb665d11c5",
@@ -3103,8 +3139,8 @@
           "size": 5788
         },
         "tests/real-weapon-audio.test.js": {
-          "sha256": "c59292a17fa088a296488b8475abe8dfcdb1abc66f23beab1d37a327f793c6cd",
-          "size": 5452
+          "sha256": "2a506fd1ed956de52a456a1719dfc941f18f9a27e8306c960018a94072f2d31f",
+          "size": 9052
         },
         "tests/renderer-clipping.test.js": {
           "sha256": "ab234118f7cdca8eca1dea232289c6b14fe2f8e1b600aabc2cb1dc7f1b7737db",
@@ -3134,6 +3170,10 @@
           "sha256": "ee526863b1c34eaf5642e23b9e94787150dd44b2a6b4b7f75f730c49b814d261",
           "size": 1639
         },
+        "tests/royal-boarding-approach.test.js": {
+          "sha256": "5d579f583349e23f0240ee6a2720472013a6eaf05ea71c3471553fd6a9b6ca89",
+          "size": 1240
+        },
         "tests/royal-clear-foreground.test.js": {
           "sha256": "9b375459d7da084e4837caca23e7ef65bdd145e5add1e2e9f40097f06fd4cff2",
           "size": 1098
@@ -3147,24 +3187,28 @@
           "size": 763
         },
         "tests/royal-finale-continuity.test.js": {
-          "sha256": "b49aa2ec275368eb392d8fbf28e493d3b4b88a47e85d972e308cca5cd5273952",
-          "size": 3531
+          "sha256": "934a9dcbd5ddaeaafcc411f9146763e6945f42cdfe474419bb1ea2416eb127a7",
+          "size": 3578
         },
         "tests/royal-finale-state.test.js": {
-          "sha256": "a499d1cc8f79036a4ed8efca351fcf62c4359a3ed9436c9e7c01954c922dd772",
-          "size": 1087
+          "sha256": "7598e19f98b5c0fcb29a2dd8b5ca0508d500386d086681ad455f809ca71e21ed",
+          "size": 1088
         },
         "tests/royal-finale.test.js": {
-          "sha256": "c2587c54ecfc0de09cbdf04391e2d156707e787ae0c5ad101e7420917bf5466e",
-          "size": 5339
+          "sha256": "bf78fe22abac7ae1045f6af3490bdef69aba1198c0b4d41e4f43b74432f528b9",
+          "size": 5490
         },
         "tests/royal-level.test.js": {
-          "sha256": "38f8e26210a5c7004c252f6336582fb71e5e58099f374e1764c749729ed731cd",
+          "sha256": "0039fe12398bc70e21517c1dbcb81bed4f6e74a15f82b4877415077bab3367ce",
           "size": 4039
         },
         "tests/royal-living-world.test.js": {
           "sha256": "306aa400059db6d132f28e18f81e181bb268f1097a6b992d881d908b0ec6dcb3",
           "size": 3278
+        },
+        "tests/royal-pov-combat.test.js": {
+          "sha256": "6809b997f53c34c211184c4b4aebaeffb063dc1ca0ef01ca013d0913867d673c",
+          "size": 5782
         },
         "tests/royal-pov.test.js": {
           "sha256": "f862603868588511c8b236ddd4acf9ec537367eeaa96758d53881edeaaad739b",
@@ -3174,9 +3218,13 @@
           "sha256": "83fd3d0f62f6f61484707d15a814bf14d1426c8ccc78fd7909be392a9f96e2ba",
           "size": 2058
         },
+        "tests/royal-wheel-perspective.test.js": {
+          "sha256": "f3e4bb5a8011a991d1d7f2c85e95d6897b53b79bd1937fe84f16b619748b7329",
+          "size": 1247
+        },
         "tests/royal-wheel-water.test.js": {
-          "sha256": "4a3714452c1dd98a689d78a2bfd4e499733438a4e682116395216aefdbf885ea",
-          "size": 1491
+          "sha256": "3b74d686ef7df4c60a0dec8ed625d55644e4362394d0b577100e1c4f31f9dc2f",
+          "size": 1535
         },
         "tests/saltik-duel-engine.test.js": {
           "sha256": "eae7bb3711c0282aa6d068da0eb74fa5a263321b127d0a9aace83836aea21c61",
@@ -3205,6 +3253,10 @@
         "tests/startup-viewport.test.js": {
           "sha256": "f385c6584815785be05c82d425d0225183fdb7aecb6a9e8406409da606d66182",
           "size": 1532
+        },
+        "tests/striker-guided-audio-events.test.js": {
+          "sha256": "301b916827c41797ec7a70ea2e89b439bd1cb9f638b47df85e7a06ef9594841c",
+          "size": 2218
         },
         "tests/support-pose.test.js": {
           "sha256": "eb331c41655f09ef0995f0aa1e0bcbc1091361fc1afed7e6da30018e9da660ce",
@@ -3266,12 +3318,12 @@
           "duration_native_run_seconds": 82.0166666666633
         }
       ],
-      "update_note": "Two distinct Velvet buildings now have ground/middle/top supports and linked stairs. Independent rotating waterwheel disk, native water flow and painted foreground river/cascade over purple plinth. Existing audio/art/other worlds preserved.",
-      "published_source_commit": "b42892fe9be9ef438232d07bc949936d8de9b40b",
+      "update_note": "Connected perspective waterwheel; physical descent beyond final building before boarding;45s native-weapon manual-trigger/autoaim POV flight and5s descent. Striker shots90%, recorded main reload and enemy guided-hit/destruction sounds.",
+      "published_source_commit": "8fa2dae6e596233bc94a93749bd136bbf4cc7066",
       "publication_status": "Published and verified",
       "github_import_base": "4c9b8e64bf3232c222f9b6f534ca37d660da3f7b",
-      "live_published_version": 50,
-      "last_confirmed_saved_version": 50
+      "live_published_version": 51,
+      "last_confirmed_saved_version": 51
     },
     {
       "slug": "saltik-ink",
@@ -7638,6 +7690,6 @@
   "github_repository": "seradrien-png/saltik",
   "preserved_github_parent": "a2658100e8259a69c772a6dd4cfbfcdb833f1221",
   "github_backup_commit": "55e0af78812ba737a6758403be9c2993ef2fa903",
-  "latest_main_source_commit": "b42892fe9be9ef438232d07bc949936d8de9b40b",
+  "latest_main_source_commit": "8fa2dae6e596233bc94a93749bd136bbf4cc7066",
   "history_note": "Source bundles preserve the initial backup capture. Subsequent project updates are preserved by commits of this GitHub repository."
 }

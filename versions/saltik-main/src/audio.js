@@ -93,6 +93,12 @@ export function createAudio({onSpeech=()=>{}}={}){
   }
   function recordedWeapon(key,volume,maxDuration){
     if(character!=='striker'||!weaponBuffers.has(key))return false;
+    // All recorded Striker transients share one bounded pool, including salvos.
+    if(weaponVoices.size>=16){
+      const oldest=weaponVoices.values().next().value;
+      try{oldest.stop(ctx.currentTime);}catch{}
+      weaponVoices.delete(oldest);voices.delete(oldest);
+    }
     const buffer=weaponBuffers.get(key),at=ctx.currentTime;
     const duration=Math.min(buffer.duration??maxDuration,maxDuration);
     const source=ctx.createBufferSource(),gain=ctx.createGain();
@@ -180,6 +186,8 @@ export function createAudio({onSpeech=()=>{}}={}){
     if(!ctx||!enabled||(!effectsActive&&e.type!=='won'))return;
     if(e.type.startsWith('mirv-')){mirv?.play(e);return;}
     if(e.mirvAudio)return;
+    if(e.strikerGuidedCompanion&&character==='striker')return;
+    const shotGain=character==='striker'?.9:1;
     const line=VOICE_EVENTS[e.type];if(line)speech?.enqueue(line,e.character??character);
     if(e.type==='gatling-shot'){
       // Continuous firing is synchronized to combat state, never to individual bullets.
@@ -197,23 +205,23 @@ export function createAudio({onSpeech=()=>{}}={}){
       if(ctx.currentTime-lastShot<.055)return;lastShot=ctx.currentTime;
       duck(.90,.06,.12);
       // A real Abrams report has a bounded tail for the engine’s .095s cadence.
-      if(recordedWeapon('cannon',.25,.26))return;
+      if(recordedWeapon('cannon',.25*shotGain,.26))return;
       // The previous soft pulse remains available while offline/decoding.
-      burst(.12,.0462875*1.15*1.20,900,0,'lowpass',.016);
-      tone(115,62,.15,.06348*1.15*1.20,'sine',0,false,.016);
-      tone(82,48,.13,.034385*1.15*1.20,'triangle',.012,false,.014);
+      burst(.12,.0462875*1.15*1.20*shotGain,900,0,'lowpass',.016);
+      tone(115,62,.15,.06348*1.15*1.20*shotGain,'sine',0,false,.016);
+      tone(82,48,.13,.034385*1.15*1.20*shotGain,'triangle',.012,false,.014);
     }
     else if(e.type==='missile'){
       duck(.70,.44,.22);
-      burst(.10,.105,2100,0,'lowpass',.012);burst(.58,.18,1050);
-      tone(122,39,.49,.17,'triangle');burst(.055,.055,1800,.014,'bandpass',.008);
+      burst(.10,.105*shotGain,2100,0,'lowpass',.012);burst(.58,.18*shotGain,1050);
+      tone(122,39,.49,.17*shotGain,'triangle');burst(.055,.055*shotGain,1800,.014,'bandpass',.008);
     }
     else if(e.type==='homing'){
       duck(.70,.43,.22);
-      if(recordedWeapon('guided',.22,1.64))return;
-      burst(.09,.09,2300,0,'lowpass',.012);burst(.52,.16,1200);
-      tone(108,38,.47,.15,'triangle');tone(230,580,.17,.055,'sine',.025);
-      burst(.05,.045,2400,.07,'bandpass',.008);
+      if(recordedWeapon('guided',.22*shotGain,1.64))return;
+      burst(.09,.09*shotGain,2300,0,'lowpass',.012);burst(.52,.16*shotGain,1200);
+      tone(108,38,.47,.15*shotGain,'triangle');tone(230,580,.17,.055*shotGain,'sine',.025);
+      burst(.05,.045*shotGain,2400,.07,'bandpass',.008);
     }
     else if(e.type==='carrier-drone-deploy'){tone(210,430,.24,.05,'sine');burst(.18,.045,1000);}
     else if(e.type==='carrier-bay-disabled'){burst(.19,.11,1400);tone(180,65,.22,.07,'triangle');}
@@ -224,6 +232,7 @@ export function createAudio({onSpeech=()=>{}}={}){
     else if(e.type==='parry-start'){duck(.4,.14,.13);burst(.055,.16,2400);tone(210,520,.13,.14,'triangle');}
     else if(e.type==='reload-start'){
       duck(.46,1.08,.18);
+      if(recordedWeapon('reloadStart',.25,1.32))return;
       // Latch, draw, feed, and seat the magazine over the 1.32 s cycle.
       burst(.065,.28,2700,0,'bandpass');tone(170,75,.10,.13,'triangle');
       burst(.11,.27,1900,.20,'bandpass');tone(470,290,.11,.14,'triangle',.20);
@@ -233,6 +242,7 @@ export function createAudio({onSpeech=()=>{}}={}){
     }
     else if(e.type==='reload-end'){
       duck(.38,.29,.13);
+      if(recordedWeapon('reloadEnd',.25,.33))return;
       // Rack and spring return begin when the engine completes its 1.32 s reload.
       burst(.15,.29,1500);tone(160,80,.17,.18,'triangle');
       burst(.085,.32,2700,.12,'bandpass');tone(280,110,.10,.13,'triangle',.12);
@@ -260,6 +270,10 @@ export function createAudio({onSpeech=()=>{}}={}){
     }
     else if(e.type==='no-target'){tone(160,100,.12,.1,'sine');}
     else if(e.type==='explosion'){
+      if(character==='striker'&&e.strikerGuided&&e.enemyImpact){
+        duck(e.enemyDestroyed?.38:.62,e.enemyDestroyed?.6:.32,.25);
+        if(recordedWeapon(e.enemyDestroyed?'guidedDestruction':'guidedImpact',(e.enemyDestroyed?.34:.28)*shotGain,e.enemyDestroyed?1.6:1.23))return;
+      }
       if(!e.big&&ctx.currentTime-lastExplosion<.065)return;
       lastExplosion=ctx.currentTime;
       duck(e.big?.38:.62,e.big?.6:.32,.25);
@@ -331,7 +345,7 @@ export function createAudio({onSpeech=()=>{}}={}){
     else if(e.type==='won'){tone(330,660,.5,.22,'triangle',0,true);tone(440,880,.6,.18,'triangle',.18,true);}
   }
   return {unlock,play,setPlaying,setGatlingFiring,syncMirv(projectiles){mirv?.sync(projectiles);},setCharacter(value){character=VOICE_PROFILES_SAFE(value);if(character!=='striker')stopRecordedWeapons();if(character!=='gatling')stopGatlingLoop();mirv?.setActive(playing&&enabled&&character==='striker');},setMusicEnabled(value){musicEnabled=!!value;syncMusic();},setEnabled(value){enabled=!!value;if(output){hold(output.gain,ctx.currentTime);output.gain.setTargetAtTime(enabled?1:0,ctx.currentTime,.012);}if(!enabled){stopVoices();speech?.cancel();clearDucking();}syncMusic();mirv?.setActive(playing&&enabled&&character==='striker');},get enabled(){return enabled;},
-    get weaponSnapshot(){return Object.freeze({loaded:weaponBuffers.size,loading:!!weaponLoading&&weaponBuffers.size+weaponFailed<2,failed:weaponFailed,voices:weaponVoices.size});},
+    get weaponSnapshot(){return Object.freeze({loaded:weaponBuffers.size,loading:!!weaponLoading&&weaponBuffers.size+weaponFailed<Object.keys(REAL_WEAPON_PATHS).length,failed:weaponFailed,voices:weaponVoices.size});},
     get mirvSnapshot(){return mirv?.snapshot??Object.freeze({active:false,loaded:0,flightLoops:0,fallLoop:false,oneShots:0,pending:0});},
     get gatlingSnapshot(){return Object.freeze({wanted:gatlingWanted,playing:!!gatlingLoop,loaded:!!gatlingBuffer,loading:!!gatlingLoading,failed:gatlingFailed});},
     get speechSnapshot(){return speech?.snapshot()??Object.freeze({playing:null,queued:0,loading:0,lastLine:null,played:Object.freeze({}),failed:0});}};

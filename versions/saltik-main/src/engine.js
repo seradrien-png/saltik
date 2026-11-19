@@ -670,7 +670,8 @@ function updatePlayerWeapons(g,input,dt){
   if(g.inkCampaign)p.turretLift=0;
 
 }
-function areaBlast(g,x,y,radius,damage,{fraction=1,dt=0,team='player',collisionCache=null,mirvAudio=false}={}){
+function areaBlast(g,x,y,radius,damage,{fraction=1,dt=0,team='player',collisionCache=null,mirvAudio=false,strikerGuided=false}={}){
+  const audioEventStart=g.events.length;let enemyImpact=false,enemyDestroyed=false;
   emit(g,'explosion',x,y,{radius,...(mirvAudio?{mirvAudio:true}:{})});g.shake=Math.max(g.shake,7);
   if(team==='enemy'){
     const r=playerHitbox(g.player),dx=Math.max(r.x-x,0,x-r.x-r.w),dy=Math.max(r.y-y,0,y-r.y-r.h);
@@ -684,7 +685,15 @@ function areaBlast(g,x,y,radius,damage,{fraction=1,dt=0,team='player',collisionC
     if(collisionCache)refreshCachedProjectileTarget(g,entry);
     const r=collisionCache?entry.blastRect:bounds(target);
     const dx=Math.max(r.x-x,0,x-r.x-r.w),dy=Math.max(r.y-y,0,y-r.y-r.h);
-    if(Math.hypot(dx,dy)<=radius)hurtTarget(g,target,damage,{ranged:true});
+    if(Math.hypot(dx,dy)<=radius){
+      const hp=target.hp;hurtTarget(g,target,damage,{ranged:true});
+      if(strikerGuided&&!(target.w&&target.h)&&target.hp<hp){enemyImpact=true;if(target.hp<=0)enemyDestroyed=true;}
+    }
+  }
+  // Audio metadata only: one real report represents this guided enemy blast.
+  if(strikerGuided&&enemyImpact){
+    Object.assign(g.events[audioEventStart],{strikerGuided:true,enemyImpact,enemyDestroyed});
+    for(let i=audioEventStart+1;i<g.events.length;i++)if(g.events[i].type==='explosion')g.events[i].strikerGuidedCompanion=true;
   }
   // The original MIRV's blast also clears hostile bullets in its radius.
   for(const shot of g.projectiles){
@@ -831,7 +840,7 @@ function updateProjectiles(g,dt,playerMovement,collisionCache=null){
       else if(response==='hit')hurtPlayer(g,shot.damage,{dt,fraction});
       emit(g,'spark',point.x,point.y);
     }else if(shot.team==='player'){
-      if(shot.splash)areaBlast(g,point.x,point.y,shot.splash,shot.damage,{dt,fraction,collisionCache,mirvAudio:!!shot.mirvSalvoId});
+      if(shot.splash)areaBlast(g,point.x,point.y,shot.splash,shot.damage,{dt,fraction,collisionCache,mirvAudio:!!shot.mirvSalvoId,strikerGuided:shot.kind==='homing'&&!shot.btRocket&&(!p.character||p.character==='striker')});
       else if(kind==='target')hurtTarget(g,target,shot.damage,{ranged:true,bayIndex:collision.bayIndex});
       else emit(g,'spark',point.x,point.y);
     }else if(shot.splash)areaBlast(g,point.x,point.y,shot.splash,shot.damage,{dt,fraction,team:shot.team,collisionCache});
@@ -961,6 +970,19 @@ function updateBossBreach(g,held,dt){
   }
   if(g.events.length>200)g.events.splice(0,g.events.length-200);
 }
+
+// The mounted finale supplies a separate flight corridor, while keeping the
+// original player and every native weapon clock, projectile and damage rule.
+export function advanceRoyalWeaponSimulation(g,input,dt){
+  const p=g.player;
+  p.turn??=createTachikomaTurn(p.dir);
+  for(const field of ['invulnerable','mirvIn','homingIn','muzzle','mirvFlash','homingFlash'])p[field]=Math.max(0,(p[field]??0)-dt);
+  g.shake=Math.max(0,g.shake-dt*30);g.flash=Math.max(0,g.flash-dt);
+  advancePlayerPods(g,dt);
+  updatePlayerWeapons(g,input,dt);
+  updateProjectiles(g,dt,{x:0,y:0});
+}
+export function damageRoyalPovPlayer(g,damage){hurtPlayer(g,damage);}
 function safeCarrierShutdownPlacement(g,e){
  const floor=x=>terrainAt(g,x),supportPose=e.supportPose??computeSupportPose({...e,onGround:true},floor,null,1/60,{retainSurface:true});
  const overlaps=(a,b)=>a.x<b.x+b.w&&a.x+a.w>b.x&&a.y<b.y+b.h&&a.y+a.h>b.y;
