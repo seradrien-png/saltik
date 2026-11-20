@@ -432,3 +432,5 @@ kbd{display:inline-flex;align-items:center;justify-content:center;min-width:19px
 #app[data-level="5"] .title-content h1 em{color:#ed9d60;letter-spacing:.03em}
 #app[data-level="5"] .level-choice[aria-pressed="true"]{background:#efd4ae;color:#3c251d;border-color:#e3a76e}
 @media(max-height:520px){#app[data-level="5"] .title-content h1 em{font-size:.31em}}
+/* The desert BT chooser uses the same current model as its large preview. */
+#app:is([data-level="4"],[data-level="5"]) .bt-thumbnail{background-image:url('./menu/level4-bt-default.webp');background-size:contain;background-position:center}

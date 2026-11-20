@@ -25,7 +25,7 @@ export function redWastesGroundAt(x){
 }
 export function structurePlacement(site){
  const foot=redWastesGroundAt(site.x+site.w/2);
- return {x:site.x,y:foot-site.h,w:site.w,h:site.h,foot,midY:foot-150,roofY:foot-300,tunnelY:foot-400};
+ return {x:site.x,y:foot-site.h*(site.kind==='skull'?.8:1),w:site.w,h:site.h,foot,midY:foot-150,roofY:foot-300,tunnelY:foot-400};
 }
 const cap=(site,name,x1,x2,y,tier)=>({id:`${site.id}-${name}`,siteId:site.id,kind:site.kind,tier,x1:site.x+x1,x2:site.x+x2,points:[[site.x+x1,y],[site.x+x2,y]],bodyDepth:3,seed:91,walkableEntries:[]});
 const ramp=(site,name,upper,lower,from,to)=>({id:`${site.id}-${name}`,platformId:upper.id,lowerId:lower?.id??null,nativeArt:true,stepRun:12,points:[[site.x+from,lower?lower.points[0][1]:redWastesGroundAt(site.x+from)],[site.x+to,upper.points[0][1]]]});
@@ -34,9 +34,21 @@ export function createRedWastesRoutes(){
  for(const site of RED_WASTES_SITES){
   const box=structurePlacement(site);
   if(site.kind==='skull'){
-   const tunnel=cap(site,'tunnel',650,1200,box.tunnelY,1);
-   tunnel.walkableEntries=[ramp(site,'eye-entry',tunnel,null,0,680),ramp(site,'eye-exit',tunnel,null,1600,1150)];
-   platforms.push(tunnel);
+   // The image includes a soft shadow below the teeth; bury that margin.
+   // These points trace the nose bridge, actual orbital sill, and cheekbone.
+   const painted=(x,v)=>[site.x+x,box.y+v*box.h];
+   const tunnel=cap(site,'tunnel',780,1050,box.y+.625*box.h,1);
+   tunnel.points=[painted(780,.60),painted(900,.625),painted(1000,.625),painted(1050,.61)];
+   tunnel.walkableEntries=[
+    {...ramp(site,'eye-entry',tunnel,null,0,780),stepRun:1,points:[
+     [site.x,box.foot],painted(100,.75),painted(180,.68),painted(300,.61),painted(440,.56),painted(590,.43),painted(660,.53),painted(720,.59),painted(780,.60)]},
+    {...ramp(site,'eye-exit',tunnel,null,1600,1050),stepRun:1,points:[
+     [site.x+1600,box.foot],painted(1500,.82),painted(1400,.81),painted(1300,.77),painted(1200,.72),painted(1150,.66),painted(1100,.60),painted(1050,.61)]}
+   ];
+   const crown=cap(site,'crown',740,1120,box.y+.12*box.h,2);
+   crown.kind='skull-crown';crown.points=[painted(740,.16),painted(900,.105),painted(1050,.12),painted(1120,.15)];
+   crown.bottomPoints=[painted(740,.42),painted(900,.37),painted(1050,.39),painted(1120,.45)];
+   platforms.push(tunnel,crown);
   }else{
    const mid=cap(site,'gallery',350,1450,box.midY,1),roof=cap(site,'roof',900,1250,box.roofY,2);
    // A short landing between flights lets native support finish one entry
@@ -54,4 +66,34 @@ export function createRedWastesRoutes(){
   }
  }
  return platforms;
+}
+
+// Bone is static scenery, never a damageable combat target. The orbital sill
+// and access bones have the exact same top as native walking supports.
+export function createRedWastesSolids(platforms){
+ return platforms.filter(p=>p.kind==='skull'||p.kind==='skull-crown').flatMap(platform=>[
+  {id:platform.id,platformId:platform.id,tier:platform.tier,points:platform.points,smooth:true,depth:65,bottomPoints:platform.bottomPoints},
+  ...platform.walkableEntries.map(entry=>({id:entry.id,rampId:entry.id,tier:platform.tier,points:entry.points,depth:55}))
+ ]);
+}
+function solidHeight(solid,x){
+ const points=solid.points[0][0]<solid.points.at(-1)[0]?solid.points:[...solid.points].reverse();
+ const i=points.findIndex((p,i)=>i<points.length-1&&x<=points[i+1][0]);
+ const a=points[Math.max(0,i)],b=points[Math.max(0,i)+1],t=clamp((x-a[0])/(b[0]-a[0]),0,1);
+ return a[1]+(b[1]-a[1])*(solid.smooth?smooth(t):t);
+}
+export function resolveRedWastesSolids(g,p,oldX,oldY,{finalPose=false}={}){
+ let bodyHeight;
+ for(const solid of g.worldSolids??[]){
+  const lo=Math.min(solid.points[0][0],solid.points.at(-1)[0]),hi=Math.max(solid.points[0][0],solid.points.at(-1)[0]);
+  if(p.x<lo||p.x>hi)continue;
+  bodyHeight??=Math.max(p.h,...(g.playerHitboxes?.(p,g.time)??[]).map(box=>p.y-box.y+8));
+  const top=solidHeight(solid,p.x),bottom=solid.bottomPoints?solidHeight({...solid,points:solid.bottomPoints},p.x):top+solid.depth;
+  if(p.onGround&&(p.platformId===solid.platformId&&solid.platformId||p.rampId===solid.rampId&&solid.rampId))continue;
+  if(p.y<=top||p.y-bodyHeight>=bottom)continue;
+  if(oldY<=solidHeight(solid,clamp(oldX,lo,hi))+.01&&p.vy>=0){
+   p.y=top;p.vy=0;p.onGround=true;p.platformId=solid.platformId??null;p.rampId=solid.rampId??null;p.tier=solid.tier;p.dropThrough=null;
+  }else if(oldY-bodyHeight>=bottom-.01&&p.vy<0||finalPose&&p.y>=bottom){p.y=bottom+bodyHeight;p.vy=Math.max(0,p.vy);}
+  else if(oldX<lo||oldX>hi){p.x=oldX;p.vx=0;}
+ }
 }

@@ -93,11 +93,14 @@ export function inkPlayerPodGeometry(p,geo){
  }
  return geometry(p,geo,INK_PLAYER_POD_SLOTS.map((s,i)=>({...s,ammoIndex:i<4?0:i<6?1:2})));
 }
-export function inkEnemyPodGeometry(e,geo){return geometry(e,geo,(geo.view==='front'?ENEMY_FRONT_PODS:INK_ENEMY_POD_SLOTS).map((s,i)=>({...s,activeIndex:e.bt?i:s.activeIndex,ammoIndex:e.bt?i:i<4?0:1,podIndex:i<4?0:1})));}
+export function inkEnemyPodGeometry(e,geo){return geometry(e,geo,(geo.customSlots??(geo.view==='front'?ENEMY_FRONT_PODS:INK_ENEMY_POD_SLOTS)).map((s,i)=>({...s,activeIndex:e.bt?i:s.activeIndex,ammoIndex:e.bt?i:i<4?0:1,podIndex:i<4?0:1})));}
 function drawSlots(c,geo,slots,enemy){
  if(typeof c.ellipse!=='function'||typeof c.stroke!=='function')return;
  for(const slot of slots){
   const {muzzle,rx,ry,round,flash}=slot,k=slot.k??geo.k,angle=slot.angle??geo.tilt??geo.rotation??0;
+  // The desert source paints closed cream covers. Keep those exact pixels
+  // until a tube launches; spent sockets reveal their dark inner bore.
+  if(geo.customSlots&&round===1&&flash<=0)continue;
   c.save();c.translate(muzzle.x,muzzle.y);c.rotate(angle);
   // Deep dark sockets cover the native drawn warhead, leaving its rim intact.
   c.fillStyle='#141814';c.beginPath();c.ellipse(0,0,rx*k,ry*k,0,0,Math.PI*2);c.fill();
@@ -105,7 +108,7 @@ function drawSlots(c,geo,slots,enemy){
   if(round>0){
    c.save();c.beginPath();c.ellipse(0,0,rx*k*.9,ry*k*.9,0,0,Math.PI*2);c.clip();
    const drop=(1-round)*ry*k*1.8;c.translate(0,drop);
-   c.fillStyle=enemy?'#f5a145':'#36c6dc';c.strokeStyle='#20251f';c.lineWidth=.6;
+   c.fillStyle=geo.customSlots?'#d9cfab':enemy?'#f5a145':'#36c6dc';c.strokeStyle='#20251f';c.lineWidth=.6;
    c.beginPath();c.ellipse(0,0,rx*k*.94,ry*k*.94,-.12,0,Math.PI*2);c.fill();c.stroke();
    c.fillStyle='#fff1cd';c.beginPath();c.ellipse(-rx*k*.16,-ry*k*.21,rx*k*.53,ry*k*.56,-.25,0,Math.PI*2);c.fill();c.restore();
   }

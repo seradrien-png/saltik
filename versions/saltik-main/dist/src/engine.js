@@ -1,3 +1,4 @@
+import {resolveRedWastesSolids} from './red-wastes-layout.js';
 import {initializeBT,stopBT,advanceBT,BT_TUNING} from './bt-combat.js';
 // All positions use world units. The renderer alone knows pixels and camera offsets.
 export const PARALLAX_LAYERS = Object.freeze([
@@ -116,7 +117,13 @@ function contactPlayer(g,damage,dt){
   const collision={dt,fraction:1};if(isEvasionProtected(g.player.evasion,collision))return;
   hurtPlayer(g,damage,collision);
 }
-function playerHitbox(p){return{x:p.x-22.5*PLAYER_COLLISION_SCALE,y:p.y-p.h/2-(p.crouching?10:19)*PLAYER_COLLISION_SCALE,w:45*PLAYER_COLLISION_SCALE,h:(p.crouching?20:38)*PLAYER_COLLISION_SCALE};}
+function playerHitboxes(g){
+  const p=g.player;
+  // Native Ink rigs provide separate world-space cabin and limb rectangles.
+  // The original compact combat box remains the legacy engine default.
+  if(g.playerHitboxes)return g.playerHitboxes(p,g.time);
+  return[{x:p.x-22.5*PLAYER_COLLISION_SCALE,y:p.y-p.h/2-(p.crouching?10:19)*PLAYER_COLLISION_SCALE,w:45*PLAYER_COLLISION_SCALE,h:(p.crouching?20:38)*PLAYER_COLLISION_SCALE}];
+}
 function hurtEnemy(g,e,damage,{ranged=false,bayIndex}={}){
   if(e.hp<=0||e.neutralized||e.duelFinished)return;
   if(e.type==='carrier'){
@@ -444,7 +451,7 @@ function spawn(g,s){
   if(g.enemyArtScale)s={...s,artScale:g.enemyArtScale};
   const route=g.platforms.find(p=>p.id===s.platformId),y=s.type==='drone'?terrainAt(g,s.x)-140:route?surfaceHeight(route,s.x):terrainAt(g,s.x);
   if(s.type==='carrier'){g.enemies.push(createDroneCarrier(s,{y,random:random(g)}));return;}
-  if(s.type==='saltik'){g.enemies.push(createEnemySaltik(s,{y,random:random(g)}));return;}
+  if(s.type==='saltik'){g.enemies.push(createEnemySaltik(g.inkCampaign&&[4,5].includes(g.level)?{...s,btVariant:'desert'}:s,{y,random:random(g)}));return;}
   const hp={walker:5,soldier:5,drone:3,turret:9,crate:3}[s.type];
   g.enemies.push({...s,y,origin:s.x,hp,maxHp:hp,cooldown:1.5+random(g)*1.4,phase:random(g)*6.28,hit:0,firePose:0});
 }
@@ -510,6 +517,7 @@ function movePlayer(g,input,dt){
       if(p.y>=landing.y){if(p.vy>200){p.landingCompression=clamp(p.vy/520,.35,1);emit(g,'land',p.x,landing.y);}p.y=landing.y;p.vy=0;p.onGround=true;p.tier=landing.tier;p.platformId=landing.id;p.obstacleId=landing.obstacleId;p.bossSupport=landing.bossSupport;p.rampId=landing.rampId??null;}
     }
   }
+  if(g.worldSolids?.length)resolveRedWastesSolids(g,p,oldX,oldY);
   if(p.onGround&&p.bossEject)p.bossEject.clearTank=false;
   if(p.dropThrough){
     if(p.dropThrough.startsWith('boss:')){if(!g.boss||p.y>bossGeometry(g.boss).roof.y+12)p.dropThrough=null;}
@@ -605,6 +613,14 @@ function updateGatlingWeapons(g,input,dt){
 }
 function updateBTWeapons(g,input,dt){
  const p=g.player,context=navigationContext(g);
+ // The desert machine's higher barrel uses the standard forward aim cone.
+ // Rotate its actual painted cannon before sampling the projectile muzzle.
+ if(p.btVariant==='desert'){
+  const pose=g.weaponGeometry?.(p,g.time)??tachikomaGeometry(p,g.time),native=pose.btNative;
+  const pivot=native?native.sourcePoint(native.cannonPart.pivot):pose.arm,a=aim(g,pivot);
+  p.btAimTarget={x:pivot.x+Math.cos(a)*1000,y:pivot.y+Math.sin(a)*1000};
+ }
+
  const v=context.viewport,targets=selectGuidedTargets(context.targets,{x:p.x,y:p.y},v).filter(t=>{const b=t.bounds;return b.x+b.w>=v.x&&b.x<=v.x+v.w&&b.y+b.h>=v.y&&b.y<=v.y+v.h;});
  advanceBT(p,input,dt,{targets,event:type=>emit(g,type,p.x,p.y-70),
   shot:()=>{const pose=g.weaponGeometry?.(p,g.time)??tachikomaGeometry(p,g.time),mount=pose.arm,axis=pose.armDirection??{x:p.dir,y:0};
@@ -675,8 +691,10 @@ function areaBlast(g,x,y,radius,damage,{fraction=1,dt=0,team='player',collisionC
   const audioEventStart=g.events.length;let enemyImpact=false,enemyDestroyed=false;
   emit(g,'explosion',x,y,{radius,...(mirvAudio?{mirvAudio:true}:{})});g.shake=Math.max(g.shake,7);
   if(team==='enemy'){
-    const r=playerHitbox(g.player),dx=Math.max(r.x-x,0,x-r.x-r.w),dy=Math.max(r.y-y,0,y-r.y-r.h);
-    if(Math.hypot(dx,dy)<=radius)hurtPlayer(g,damage,{dt,fraction});
+    if(playerHitboxes(g).some(r=>{
+      const dx=Math.max(r.x-x,0,x-r.x-r.w),dy=Math.max(r.y-y,0,y-r.y-r.h);
+      return Math.hypot(dx,dy)<=radius;
+    }))hurtPlayer(g,damage,{dt,fraction});
     return;
   }
   const blastTargets=collisionCache?collisionCache.targets.filter(({target})=>target.hp>0&&targetable(target)):allTargets(g).map(target=>({target}));
@@ -768,8 +786,7 @@ function updateProjectiles(g,dt,playerMovement,collisionCache=null){
     return true;
   }):allTargets(g).filter(target=>target.hp>0).map(target=>({target,rect:bounds(target,g.time)}));
   const liveObstacles=liveTargets.filter(({target})=>target.w&&target.h);
-  const hitbox=playerHitbox(p);
-  const startHitbox={...hitbox,x:hitbox.x-playerMovement.x,y:hitbox.y-playerMovement.y};
+  const startHitboxes=playerHitboxes(g).map(hitbox=>({...hitbox,x:hitbox.x-playerMovement.x,y:hitbox.y-playerMovement.y}));
   for(const shot of g.projectiles){
     if(shot.life<=0)continue;
     if(!Number.isInteger(shot.id))shot.id=g.nextProjectileId++;
@@ -798,8 +815,10 @@ function updateProjectiles(g,dt,playerMovement,collisionCache=null){
       if(fraction!==null)collisions.push({fraction,kind:'target',shot,target,bayIndex});
     }
     if(shot.team==='enemy'&&g.desertCombatHooks?.canHit(shot,p)!==false&&!(shot.riderClearance&&shot.sourceBossId===g.boss?.id)){
-      const fraction=playerCollisionFraction(x0,y0,shot.x-playerMovement.x,shot.y-playerMovement.y,startHitbox,shot.radius||0,p.evasion,dt);
-      if(fraction!==null)collisions.push({fraction,kind:'player',shot});
+      for(const hitbox of startHitboxes){
+        const fraction=playerCollisionFraction(x0,y0,shot.x-playerMovement.x,shot.y-playerMovement.y,hitbox,shot.radius||0,p.evasion,dt);
+        if(fraction!==null)collisions.push({fraction,kind:'player',shot});
+      }
     }
     const groundPad=shot.kind==='homing'||shot.kind==='enemy-missile'?shot.radius||0:0;
     let fraction=terrainImpact(g,x0,y0+groundPad,shot.x,shot.y+groundPad,groundPad?0:3,shot);
@@ -1213,6 +1232,9 @@ export function update(g,input={},dt=1/60){
   updateProjectiles(g,dt,{x:p.x-playerStart.x,y:p.y-playerStart.y});
   emitSaltikVoiceCues(g);
   advanceEvasion(p.evasion,dt);
+  // Weapons, motor poses and evasion can extend the visible cabin after the
+  // movement pass. Reconcile that final silhouette against static bone too.
+  if(g.worldSolids?.length)resolveRedWastesSolids(g,p,playerStart.x,playerStart.y,{finalPose:true});
   g.enemies=g.enemies.filter(e=>(e.hp>0||e.type==='carrier'&&e.knockedOut)&&(e.lunarWave||e.royalSeal||e.desertRoom!==undefined||e.x>p.x-1800));
   g.pickups=g.pickups.filter(item=>{if(Math.abs(item.x-p.x)<75&&Math.abs(item.y-(p.y-30))<80){p.hp=Math.min(p.maxHp,p.hp+30);g.stats.score+=75;emit(g,'repair',item.x,item.y);return false;}return item.x>p.x-1500;});
   if(g.events.length>200)g.events.splice(0,g.events.length-200);

@@ -1,5 +1,6 @@
 import {btFinishVisual} from './bt-finish-visual.js';
 import {BT_FINISH_FRAMES} from './bt-finish-frames.js';
+import {DESERT_BT_FINISH_FRAMES} from './desert-bt-finish-frames.js';
 import {drawBossAssault,bossAssaultPodPose} from './boss-assault-art.js';
 import {bossGeometry,bossCannonWarningProgress} from './boss-tank.js';
 import {drawInkSaltik,inkSaltikGeometry,INK_SALTIK_CROP,INK_SALTIK_ANCHOR,INK_SALTIK_PARTS} from './ink-saltik.js';
@@ -352,10 +353,17 @@ export function inkDuelGripGeometry(q,{camera=0,player={}}={}){
  const v=inkDuelVisual(q,{camera});if(!v?.world)return null;
  const p={...player,x:v.player.x,y:v.player.y,supportY:v.player.y,supportPose:null,supportClearance:undefined,tilt:0,motionLean:0,motionHeave:0,dir:v.dir,turn:null,onGround:true,vx:0,vy:0,crouching:false,
   landingCompression:0,jumpCompression:0,preJump:0,melee:null,evasion:null,muzzle:0,mirvFlash:0,cannonRecoil:0,invulnerable:0,deflect:null};
- const e={x:v.enemy.x,y:v.enemy.y,dir:-v.dir,hp:1,podCycle:q.enemyPodCycle},pg=inkSaltikGeometry(p,{camera,time:0}),eg=inkEnemySaltikGeometry(e,0,{camera});
+ const e={x:v.enemy.x,y:v.enemy.y,dir:-v.dir,hp:1,btVariant:q.enemyBTVariant,podCycle:q.enemyPodCycle},pg=inkSaltikGeometry(p,{camera,time:0}),eg=inkEnemySaltikGeometry(e,0,{camera});
  const playerArms=INK_SALTIK_PARTS.arms.map((part,index)=>gripArm({...part,wristY:index?936:957,stretchY:index?880:885},index?-1.12-v.effort*.035:-.9, index?100:0,pg));
- const enemyArms=DUEL_ENEMY_ARMS.map((part,index)=>gripArm(part,index?-.4:-1-v.effort*.035,index?0:60,eg));
- return{v,p,e,pg,eg,playerArms,enemyArms,playerGrip:playerArms[1].handPoint([1080,995]),enemyGrip:enemyArms[0].handPoint([714,679])};
+ const playerGrip=playerArms[1].handPoint([1080,995]),parts=e.btVariant==='desert'?eg.profileParts:null,enemyHand=parts?.arms[0].hand??[714,679];
+ const enemyArms=(parts?.arms??DUEL_ENEMY_ARMS).map((part,index)=>{
+  if(!parts||index)return gripArm(part,index?-.4:-1-v.effort*.035,index?0:60,eg);
+  const pivot=eg.sourcePoint(part.pivot),dx=(playerGrip.x-pivot.x)/(eg.k*eg.flip),dy=(playerGrip.y-pivot.y)/eg.k,hx=enemyHand[0]-part.pivot[0],hy=enemyHand[1]-part.pivot[1];
+  const extension=clamp(Math.sqrt(Math.max(0,dx*dx+dy*dy-hx*hx))-hy,-30,90),rotation=Math.atan2(dy,dx)-Math.atan2(hy+extension,hx);
+  return gripArm(part,rotation,extension,eg);
+ });
+ const front=parts?.legs[2],enemyFrontLeg=front?{...front,pivot:[front.foot[0],front.hinge]}:DUEL_ENEMY_FRONT_LEG;
+ return{v,p,e,pg,eg,playerArms,enemyArms,enemyFrontLeg,playerGrip,enemyGrip:enemyArms[0].handPoint(enemyHand)};
 }
 function withoutNativeParts(c,geometry,parts,draw){
  c.save();
@@ -376,11 +384,11 @@ function drawTuckedLeg(c,image,crop,part,angle){
  c.save();c.translate(0,lift);c.translate(...part.pivot);c.rotate(angle);c.translate(-part.pivot[0],-part.pivot[1]);c.beginPath();polygon(c,part.polygon);c.clip();c.drawImage(image,...crop,...crop);c.restore();
 }
 export function drawInkDuelWorld(c,images,q,{camera=0,time=0,player={},...viewport}={}){
- const g=inkDuelGripGeometry(q,{camera,player});if(!g||!images['ink-saltik']||!images['ink-enemy-saltik'])return false;
- const {v,p,e,pg,eg,playerArms,enemyArms}=g,front=INK_SALTIK_PARTS.legs[2];
- withoutNativeParts(c,eg,[...enemyArms,DUEL_ENEMY_FRONT_LEG],()=>drawInkEnemySaltik(c,images['ink-enemy-saltik'],e,{camera,time:0}));
+ const g=inkDuelGripGeometry(q,{camera,player}),enemyImage=q?.enemyBTVariant==='desert'?images['desert-bt-body']:images['ink-enemy-saltik'];if(!g||!images['ink-saltik']||!enemyImage)return false;
+ const {v,p,e,pg,eg,playerArms,enemyArms,enemyFrontLeg}=g,front=INK_SALTIK_PARTS.legs[2];
+ withoutNativeParts(c,eg,[...enemyArms,enemyFrontLeg],()=>drawInkEnemySaltik(c,enemyImage,e,{camera,time:0}));
  c.save();c.translate(e.x-camera,e.y);c.scale(eg.k*eg.flip,eg.k);c.translate(-eg.anchor[0],-eg.anchor[1]);
- drawTuckedLeg(c,images['ink-enemy-saltik'],eg.crop,DUEL_ENEMY_FRONT_LEG,.23);c.restore();
+ drawTuckedLeg(c,enemyImage,eg.crop,enemyFrontLeg,.23);c.restore();
  if(p.visualModel==='modern-striker'){const targets=playerArms.map((arm,index)=>{const h=arm.handPoint(NATIVE_HAND_POINTS[index]);return{x:h.x+camera,y:h.y};});drawInkSaltik(c,images['ink-saltik'],{...p,modernGripTargets:targets},{camera,time});}
  else if(p.character==='bt'){const targets=playerArms.map((arm,index)=>{const h=arm.handPoint(NATIVE_HAND_POINTS[index]);return{x:h.x+camera,y:h.y};});drawInkSaltik(c,images['ink-saltik'],{...p,btGripTargets:targets},{camera,time});}
  else if(p.character==='gatling'){
@@ -393,7 +401,7 @@ export function drawInkDuelWorld(c,images,q,{camera=0,time=0,player={},...viewpo
   for(const arm of playerArms)drawGripArm(c,images['ink-saltik'],INK_SALTIK_CROP,arm);c.restore();
  }
  c.save();c.translate(e.x-camera,e.y);c.scale(eg.k*eg.flip,eg.k);c.translate(-eg.anchor[0],-eg.anchor[1]);
- for(const arm of enemyArms)drawGripArm(c,images['ink-enemy-saltik'],eg.crop,arm);c.restore();
+ for(const arm of enemyArms)drawGripArm(c,enemyImage,eg.crop,arm);c.restore();
  if(v.effort>.3){const x=(g.playerGrip.x+g.enemyGrip.x)/2,y=(g.playerGrip.y+g.enemyGrip.y)/2;c.save();c.strokeStyle=INK;c.lineWidth=1.3;for(let i=0;i<3;i++){c.beginPath();c.moveTo(x-7+i*6,y-5);c.lineTo(x-4+i*6,y-12-v.effort*4);c.stroke();}c.restore();}
  return true;
 }
@@ -422,10 +430,18 @@ function glassCracks(c,x,y,width,height,alpha){
  for(const [color,lineWidth] of [[INK+'e8',3.5],[PAPER+'dd',1.15]]){c.strokeStyle=color;c.lineWidth=lineWidth;c.beginPath();for(const points of segments)points.forEach(([px,py],i)=>i?c.lineTo(px,py):c.moveTo(px,py));c.stroke();}c.restore();
 }
 
+// Native, separately painted poses preserve the new machine's cargo, true
+// underside and expressions while the existing finish controls its motion.
+function drawDesertDuelFinish(c,image,q,pose){
+ const crop=DESERT_BT_FINISH_FRAMES[q.throwVariant]??DESERT_BT_FINISH_FRAMES[0],h=INK_ENEMY_SALTIK_HEIGHT*pose.scale,w=h*crop[2]/crop[3];
+ c.drawImage(image,...crop,-w/2,-h,w,h);
+}
+
 export function drawInkDuelScreen(c,images,q,viewport={}){
- const v=inkDuelVisual(q,viewport);if(!v||!v.screen&&v.cracks<=0||!images['ink-enemy-saltik'])return false;
+ const v=inkDuelVisual(q,viewport),desert=q?.enemyBTVariant==='desert',enemyImage=desert?images['desert-bt-finishes']:images['ink-enemy-saltik'];if(!v||!v.screen&&v.cracks<=0||!enemyImage)return false;
  if(v.screen){const p=v.screen;c.save();c.translate(p.x,p.y);c.rotate(p.angle);c.globalAlpha*=p.alpha;
-  if(p.frame!==undefined&&images['bt-finish-frames']){const image=images['bt-finish-frames'],crop=BT_FINISH_FRAMES[p.frame],h=INK_ENEMY_SALTIK_HEIGHT*p.scale,w=h*crop[2]/crop[3];c.drawImage(image,...crop,-w/2,-h,w,h);}
+  if(desert)drawDesertDuelFinish(c,enemyImage,q,p);
+  else if(p.frame!==undefined&&images['bt-finish-frames']){const image=images['bt-finish-frames'],crop=BT_FINISH_FRAMES[p.frame],h=INK_ENEMY_SALTIK_HEIGHT*p.scale,w=h*crop[2]/crop[3];c.drawImage(image,...crop,-w/2,-h,w,h);}
   else if(p.underside&&images['bt-impact-underside']){const image=images['bt-impact-underside'],h=INK_ENEMY_SALTIK_HEIGHT*p.scale,w=h*image.width/image.height;c.drawImage(image,-w/2,-h,w,h);}
   else drawInkEnemySaltik(c,images['ink-enemy-saltik'],{x:0,y:0,hp:1,podCycle:q.enemyPodCycle},{view:'front',scale:p.scale});c.restore();}
  glassCracks(c,v.crackX,v.crackY,viewport.width??1280,viewport.height??720,v.cracks);return true;

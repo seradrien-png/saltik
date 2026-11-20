@@ -14,6 +14,8 @@ test('V2 preserves V1 native pixels, walkable geometry, native motions and encou
    .replace('// Keep encounter order on the game, never in module state: a fresh run starts\n// at the head impact and every four encounters show all four finishes.\nexport function nextSaltikDuelVariant(game){\n  const variant=game.nextSaltikDuelVariant??0;\n  game.nextSaltikDuelVariant=(variant+1)%4;\n  return variant;\n}\n\n// Numeric selection is used by the game cycle; random callbacks remain valid\n// for isolated callers that intentionally sample a particular finish.\n','')
    .replace('createSaltikDuel(player,enemy,selection=Math.random){\n  const throwVariant=typeof selection===\'function\'?Math.floor(selection()*4):selection;','createSaltikDuel(player,enemy){')
    .replace('throwVariant:Math.min(3,Math.max(0,throwVariant)),','')
+   // A held encounter retains only the actual enemy's new desert costume.
+   .replace('enemyBTVariant:enemy.btVariant,','')
    .replace('throwVariant:duel.throwVariant??0,','')
    .replace('  const previousElapsed=duel.elapsed;\n','')
    .replace(/  if\(duel.phase==='slide'&&previousElapsed<btFinishHold\(duel\)[\s\S]*?\n  }\n/,''));

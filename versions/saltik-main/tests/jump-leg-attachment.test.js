@@ -41,3 +41,32 @@ test('full jump splay keeps a compact eight-unit stance independent of native re
   assert(jumpLegExtension(actor,k*scale,scale)*k*scale<=4.8*scale+1e-9);
  }
 });
+
+for(const character of ['striker','gatling'])test(`${character} walking fixes cabin roots and keeps each wheel joined to its suspension`,()=>{
+ for(const dir of [-1,1])for(const scale of [.55,1,1.4])for(const distance of [11*Math.PI/2,11*Math.PI*1.5])for(const velvetDragonCutout of [false,true]){
+  const p={...createInkScene({character}).player,x:500,y:500,supportY:500,dir,onGround:true,supportPose:null,artScale:scale,vx:180,motionDistance:distance};
+  const g=inkSaltikGeometry(p),legs=g.modernLegs??g.nativeLegs,c=maskCanvas();
+  (character==='striker'?drawModernStriker:drawGatling)(c.context,{velvetDragonCutout},p,g);
+  for(const [index,leg]of legs.entries()){
+   const center=leg.polygon.reduce((a,b)=>[a[0]+b[0]/leg.polygon.length,a[1]+b[1]/leg.polygon.length],[0,0]);
+   for(const [i,a]of leg.polygon.entries()){
+    const b=leg.polygon[(i+1)%leg.polygon.length];
+    for(const t of [.1,.5,.9]){
+     const edge=[a[0]*(1-t)+b[0]*t,a[1]*(1-t)+b[1]*t],sample=[edge[0]*.999+center[0]*.001,edge[1]*.999+center[1]*.001];
+     if(sample[1]>=leg.hinge)continue;
+     const world=g.nativePoint(sample);assert(painted(c.draws,[world.x,world.y]),`${character} leg${index} walking left its cabin root empty`);
+    }
+   }
+   // The strut's lower affine edge and the rigid wheel's upper edge must
+   // describe exactly the same seam, including floor correction and lift.
+   const top=leg.wheel.filter(q=>Math.abs(q[1]-leg.wheelTop)<1e-8);
+   for(const [x,y]of top){
+    const strut=g.nativePoint([x+(y-leg.hinge)*leg.roll/(leg.wheelTop-leg.hinge),leg.hinge+(y-leg.hinge)*leg.stretch]);
+    const wheel=g.nativePoint([x+leg.roll,y+leg.offset]);
+    assert(Math.hypot(strut.x-wheel.x,strut.y-wheel.y)<1e-8);
+   }
+   const seamX=top.reduce((sum,q)=>sum+q[0],0)/top.length;
+   for(const dy of [-.05,.05]){const q=g.nativePoint([seamX+leg.roll,leg.wheelTop+leg.offset+dy]);assert(painted(c.draws,[q.x,q.y]),`${character} leg${index} suspension-wheel seam is empty`);}
+  }
+ }
+});

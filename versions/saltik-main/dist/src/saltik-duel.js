@@ -16,7 +16,7 @@ export function nextSaltikDuelVariant(game){
 // for isolated callers that intentionally sample a particular finish.
 export function createSaltikDuel(player,enemy,selection=Math.random){
   const throwVariant=typeof selection==='function'?Math.floor(selection()*4):selection;
-  return {throwVariant:Math.min(3,Math.max(0,throwVariant)),phase:'engage',elapsed:0,taps:0,effortsCompleted:0,effortElapsed:0,enemyId:enemy.id,
+  return {throwVariant:Math.min(3,Math.max(0,throwVariant)),phase:'engage',elapsed:0,taps:0,effortsCompleted:0,effortElapsed:0,enemyId:enemy.id,enemyBTVariant:enemy.btVariant,
     x:(player.x+enemy.x)/2,y:(player.y+enemy.y)/2,
     dir:enemy.x>=player.x?1:-1,
     playerX:player.x,enemyX:enemy.x,playerY:player.y,enemyY:enemy.y,

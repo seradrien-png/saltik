@@ -54,12 +54,12 @@ test('all three native characters walk each registered structure both ways, with
  }
 });
 
-test('the skull passage floor is registered inside the real orbit and can be left with the existing drop input',()=>{
+test('the skull passage follows the orbital floor and opaque bone prevents dropping through it',()=>{
  const site=RED_WASTES_SITES.find(site=>site.kind==='skull'),box=structurePlacement(site);
- const g=empty('striker'),p=g.player,x=site.x+900;
- Object.assign(p,{x,y:box.tunnelY,supportY:box.tunnelY,onGround:true,tier:1,platformId:`${site.id}-tunnel`});
- assert.equal(p.y,box.foot-400);assert.equal(g.groundAt(x)-p.y,400);
- update(g,{drop:true},1/60);assert(!p.onGround);assert.equal(p.platformId,null);
- for(let n=0;n<100;n++)update(g,{},1/60);
- assert(p.onGround);assert.equal(p.platformId,null);assert.equal(p.y,g.groundAt(x));
+ const g=empty('striker'),p=g.player,x=site.x+900,route=g.platforms.find(p=>p.id===`${site.id}-tunnel`);
+ const y=route.points.find(point=>point[0]===x)[1];
+ Object.assign(p,{x,y,supportY:y,onGround:true,tier:1,platformId:route.id});
+ assert(y>box.y+.60*box.h&&y<box.y+.65*box.h);
+ update(g,{drop:true},1/60);assert(p.onGround);assert.equal(p.platformId,route.id);
+ assert.equal(p.y,y);
 });

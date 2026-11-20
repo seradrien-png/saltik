@@ -66,7 +66,7 @@ RENDER = """async()=>{
   const art=sceneArtImages(window.__portraitImages,level,character,skin,player.visualModel);
   if(!art['ink-saltik'])throw new Error(`Missing ${level}/${character}/${skin} native texture`);
   c.clearRect(0,0,512,512);
-  drawInkSaltik(c,art['ink-saltik'],inkTitlePlayer(player,256,490),{time:0,scale:3});
+  drawInkSaltik(c,art['ink-saltik'],inkTitlePlayer(player,256,490),{time:0,scale:level===4&&character==='bt'?2.8:3});
   result.push({name:`level${level}-${character}-${skin}.webp`,level,character,skin,
    visualModel:player.visualModel??'bt-native',png:canvas.toDataURL('image/png').split(',')[1]});
  }

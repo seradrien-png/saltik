@@ -13,7 +13,7 @@ export function btGeometry(p,{camera=0,time=0,scale=1}={},base={}){
 export function drawBT(c,image,p,{camera=0,time=0,scale=1}={}){
  const view=p.turn?.active&&Math.abs(Math.cos(p.turn.yaw??0))<.55?'front':'side';
  c.save();if(p.invulnerable>0&&Math.floor(time*18)%2)c.globalAlpha*=.65;
- const native=drawInkEnemySaltik(c,image,btActor(p),{camera,time,scale,view});if(native)drawFriendlyEyes(c,native);c.restore();return native;
+ const native=drawInkEnemySaltik(c,image,btActor(p),{camera,time,scale,view});if(native&&!native.profile)drawFriendlyEyes(c,native);c.restore();return native;
 }
 export function drawBTLocks(c,g,camera){
  const s=g.player.bt;if(!s?.locks.length)return;

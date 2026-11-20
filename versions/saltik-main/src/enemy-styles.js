@@ -17,6 +17,7 @@ export function sceneArtImages(images,level,character='striker',skin='default',v
  if(character==='striker'&&skin==='dragon'||character==='gatling'&&skin==='limule')player={...player,'ink-saltik':images[`cosmetic-${character}-${skin}-${level}`]??player['ink-saltik'],'ink-turn':images[`cosmetic-${character}-${skin}-turn-${level}`]??player['ink-turn']};
  if(visualModel==='modern-striker')player={...player,'ink-saltik':images[`modern-striker-${skin==='dragon'?'dragon-':''}${level}`]??player['ink-saltik'],'ink-turn':images[`modern-striker-${skin==='dragon'?'dragon-':''}turn-${level}`]??player['ink-turn']};
  if(visualModel==='modern-gatling')player={...player,'ink-saltik':images[`modern-gatling-${skin==='limule'?'limule-':''}${level}`]??player['ink-saltik'],'ink-turn':images[`modern-gatling-${skin==='limule'?'limule-':''}turn-${level}`]??player['ink-turn']};
+ if(level===4&&images['desert-bt-body'])player={...player,'ink-enemy-saltik':images['desert-bt-body'],...(character==='bt'?{'ink-saltik':images['desert-bt-body'],'ink-turn':images['desert-bt-turn']}: {})};
  if(!set)return player;
  const result={...player};for(const [native,name] of Object.entries(set))result[native]=images[name]??images[native];return result;
 }

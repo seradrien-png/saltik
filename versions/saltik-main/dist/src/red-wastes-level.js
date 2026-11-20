@@ -1,5 +1,5 @@
 import {clearPlayerWeaponQueue} from './engine.js';
-import {redWastesGroundAt,createRedWastesRoutes} from './red-wastes-layout.js';
+import {redWastesGroundAt,createRedWastesRoutes,createRedWastesSolids} from './red-wastes-layout.js';
 export {redWastesGroundAt} from './red-wastes-layout.js';
 
 // The Red Wastes use the canyon's native world, movement and combat clocks.
@@ -7,6 +7,7 @@ export {redWastesGroundAt} from './red-wastes-layout.js';
 export const RED_WASTES_END=23000;
 
 export function applyRedWastesLevel(g){
+ const platforms=createRedWastesRoutes();
  const types=['soldier','drone','turret','walker','drone','soldier','walker','turret'];
  const schedule=Array.from({length:32},(_,i)=>({
   id:`red-wastes-patrol-${i}`,type:types[i%types.length],x:1250+i*660,
@@ -15,7 +16,7 @@ export function applyRedWastesLevel(g){
  schedule.sort((a,b)=>a.x-b.x);
  Object.assign(g,{level:5,levelTitle:'Les Fossiles rouges',levelEnd:RED_WASTES_END+150,
   disableBoss:true,boss:null,bossActivated:false,groundAt:redWastesGroundAt,
-  platforms:createRedWastesRoutes(),obstacles:[],schedule,nextSpawn:0,enemies:[],projectiles:[],
+  platforms,worldSolids:createRedWastesSolids(platforms),obstacles:[],schedule,nextSpawn:0,enemies:[],projectiles:[],
   pickups:[3400,7000,10600,14900,18100,21400].map(x=>({x,y:redWastesGroundAt(x)-30,type:'repair'})),
   maxX:180,progress:0,redWastes:{elapsed:0,complete:false}});
  // Only placement changes here. Character weapons, armor, physics, and inputs

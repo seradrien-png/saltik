@@ -1,0 +1,441 @@
+{
+  "date": "2026-11-20",
+  "base_source_commit": "5a9cbd41d8e2f93a5c8e26bb9b502f6320175e6c",
+  "previous_github_commit": "4d14989cab2933baff11ce667b380f1a632202ba",
+  "scope": "Level5 supplied MIDI score, continuous sand, solid planted orbital skull; native enemy hitboxes and turn silhouettes; attached Striker/Gatling walk; new desert BT profile on4/5 incl turns and four genuine finish drawings",
+  "tests": {
+    "passed": 973,
+    "failed": 0
+  },
+  "native_campaign": {
+    "status": "won",
+    "time": 109.69999999999506,
+    "hp": 100,
+    "x": 23000,
+    "stats": {
+      "kills": 30,
+      "shots": 736,
+      "mirvs": 13,
+      "homingSalvos": 4,
+      "meleeSwings": 5,
+      "meleeHits": 5,
+      "interceptions": 1,
+      "score": 8925,
+      "obstacles": 0,
+      "neutralized": 3
+    },
+    "giantSteps": 5,
+    "variant": "desert"
+  },
+  "desktop": [
+    {
+      "character": "striker",
+      "threeHeightsReached": true,
+      "actualEyePassage": true,
+      "sandTracks": true,
+      "lateWeapons": true,
+      "pause": true,
+      "errors": [],
+      "missing": []
+    },
+    {
+      "character": "gatling",
+      "threeHeightsReached": true,
+      "actualEyePassage": true,
+      "sandTracks": true,
+      "lateWeapons": true,
+      "pause": true,
+      "errors": [],
+      "missing": []
+    },
+    {
+      "character": "bt",
+      "threeHeightsReached": true,
+      "actualEyePassage": true,
+      "sandTracks": true,
+      "lateWeapons": true,
+      "pause": true,
+      "errors": [],
+      "missing": []
+    }
+  ],
+  "mobile": {
+    "viewport": [
+      844,
+      390
+    ],
+    "dpr": 2,
+    "nativeBunkerRampAndEyePassage": true,
+    "touchTracks": true,
+    "nativeThreeGuidedRoundsAndEmptyCovers": true,
+    "primary": true,
+    "pause": true,
+    "errors": [],
+    "score_real_playback": true,
+    "score_pauses_with_game": true
+  },
+  "finish_visuals": {
+    "variants": 4,
+    "errors": [],
+    "newBody": true
+  },
+  "music": {
+    "source": "Saltik_Sable_Rouge_La_Plaine_des_Ombres_V2.mid",
+    "source_sha256": "ec7328b897e7a53ddeb380096ddb54f8c2857edd77b7aed11fa9fdc56167d9b4",
+    "source_bytes": 8979,
+    "format": 1,
+    "tracks": 17,
+    "ticks_per_quarter": 220,
+    "track_names": [
+      {
+        "track": 1,
+        "name": "Drones et souffle"
+      },
+      {
+        "track": 2,
+        "name": "Cordes suspendues"
+      },
+      {
+        "track": 3,
+        "name": "Violoncelles"
+      },
+      {
+        "track": 4,
+        "name": "Cor anglais"
+      },
+      {
+        "track": 5,
+        "name": "Harpe"
+      },
+      {
+        "track": 6,
+        "name": "Cors"
+      },
+      {
+        "track": 7,
+        "name": "Choeur sans paroles"
+      },
+      {
+        "track": 8,
+        "name": "Violons lyriques"
+      },
+      {
+        "track": 9,
+        "name": "Contrebasses"
+      },
+      {
+        "track": 10,
+        "name": "Timbales"
+      },
+      {
+        "track": 11,
+        "name": "Cordes agitees"
+      },
+      {
+        "track": 12,
+        "name": "Flute spectrale"
+      },
+      {
+        "track": 13,
+        "name": "Metal grave"
+      },
+      {
+        "track": 14,
+        "name": "Percussions"
+      },
+      {
+        "track": 15,
+        "name": "Violoncelle principal"
+      },
+      {
+        "track": 16,
+        "name": "Violoncelles profonds ensemble"
+      }
+    ],
+    "duration_seconds": 89.37521064545422,
+    "note_on_count": 1292,
+    "tempos": [
+      {
+        "tick": 0,
+        "microseconds_per_quarter": 697674
+      }
+    ],
+    "program_changes": [
+      {
+        "tick": 0,
+        "channel": 0,
+        "program_zero_based": 88
+      },
+      {
+        "tick": 0,
+        "channel": 1,
+        "program_zero_based": 48
+      },
+      {
+        "tick": 0,
+        "channel": 2,
+        "program_zero_based": 42
+      },
+      {
+        "tick": 0,
+        "channel": 3,
+        "program_zero_based": 69
+      },
+      {
+        "tick": 0,
+        "channel": 4,
+        "program_zero_based": 46
+      },
+      {
+        "tick": 0,
+        "channel": 5,
+        "program_zero_based": 60
+      },
+      {
+        "tick": 0,
+        "channel": 6,
+        "program_zero_based": 52
+      },
+      {
+        "tick": 0,
+        "channel": 7,
+        "program_zero_based": 40
+      },
+      {
+        "tick": 0,
+        "channel": 8,
+        "program_zero_based": 43
+      },
+      {
+        "tick": 0,
+        "channel": 10,
+        "program_zero_based": 47
+      },
+      {
+        "tick": 0,
+        "channel": 11,
+        "program_zero_based": 44
+      },
+      {
+        "tick": 0,
+        "channel": 12,
+        "program_zero_based": 73
+      },
+      {
+        "tick": 0,
+        "channel": 13,
+        "program_zero_based": 14
+      },
+      {
+        "tick": 0,
+        "channel": 9,
+        "program_zero_based": 0
+      },
+      {
+        "tick": 0,
+        "channel": 15,
+        "program_zero_based": 42
+      },
+      {
+        "tick": 0,
+        "channel": 0,
+        "program_zero_based": 42
+      }
+    ],
+    "sysex_events": 0,
+    "soundfont": "TimGM6mb.sf2",
+    "soundfont_sha256": "c5378b62028c920cb11e4803327983fee2f2cdff5dc89c708e39da417e51c854",
+    "sample_rate": 44100,
+    "channels": 2,
+    "release_tail_seconds": 2.0,
+    "rendered_duration_seconds": 91.37521541950113,
+    "pcm_peak": 0.757568359375,
+    "pcm_rms": 0.1044388788801051,
+    "output": "dist/audio/saltik_sable_rouge_v2.ogg",
+    "output_bytes": 1572127,
+    "output_sha256": "40983c986567c745562600d2522c7171033ae3856f8537d31acc0b104281a5c3"
+  },
+  "package": {
+    "before_bytes": 383206154,
+    "after_bytes": 265972130,
+    "saved_bytes": 117234024,
+    "reduction_percent": 30.593,
+    "all_audio_video_icons_unchanged": true,
+    "originals_retained": true
+  },
+  "preserved": "Previous editions, Git history, all previous poses/assets, A10, voices, other music and arsenal tuning; MIDI original outside publication in audio-sources/",
+  "review": "No remaining critical/important findings after measured turn hitbox and four-finish art fixes",
+  "source_commit": "acd956dc98ae24e7e6ee1726e7e6c141de21398f",
+  "published_version": 56,
+  "version_id": "appgprj_6ae77e1b6da081918600675fc2e2b738~appgver_35d6deb0365c8191a786ff1fd7d65870",
+  "deployment_id": "appgdep_6b00850039cc819186d4606107443be0",
+  "deployment_status": "succeeded",
+  "published_verification": {
+    "url": "https://saltik-v2-matin-dore.ser-adrien.chatgpt.site",
+    "files": [
+      {
+        "path": "index.html",
+        "status": 200,
+        "bytes": 17925,
+        "matches": true
+      },
+      {
+        "path": "style.css",
+        "status": 200,
+        "bytes": 47964,
+        "matches": true
+      },
+      {
+        "path": "audio/saltik_sable_rouge_v2.ogg",
+        "status": 200,
+        "bytes": 1572127,
+        "matches": true
+      },
+      {
+        "path": "menu/level4-bt-default.webp",
+        "status": 200,
+        "bytes": 261246,
+        "matches": true
+      },
+      {
+        "path": "assets/desert-bt-body.webp",
+        "status": 200,
+        "bytes": 1974424,
+        "matches": true
+      },
+      {
+        "path": "assets/desert-bt-finishes.webp",
+        "status": 200,
+        "bytes": 2050146,
+        "matches": true
+      },
+      {
+        "path": "assets/desert-bt-turn.webp",
+        "status": 200,
+        "bytes": 2193318,
+        "matches": true
+      },
+      {
+        "path": "src/bt-art.js",
+        "status": 200,
+        "bytes": 2869,
+        "matches": true
+      },
+      {
+        "path": "src/character-turns.js",
+        "status": 200,
+        "bytes": 8636,
+        "matches": true
+      },
+      {
+        "path": "src/desert-bt-art.js",
+        "status": 200,
+        "bytes": 4872,
+        "matches": true
+      },
+      {
+        "path": "src/desert-bt-finish-frames.js",
+        "status": 200,
+        "bytes": 341,
+        "matches": true
+      },
+      {
+        "path": "src/enemy-styles.js",
+        "status": 200,
+        "bytes": 3722,
+        "matches": true
+      },
+      {
+        "path": "src/engine.js",
+        "status": 200,
+        "bytes": 81494,
+        "matches": true
+      },
+      {
+        "path": "src/gatling-art.js",
+        "status": 200,
+        "bytes": 11516,
+        "matches": true
+      },
+      {
+        "path": "src/ink-encounters.js",
+        "status": 200,
+        "bytes": 38557,
+        "matches": true
+      },
+      {
+        "path": "src/ink-enemy-saltik.js",
+        "status": 200,
+        "bytes": 16721,
+        "matches": true
+      },
+      {
+        "path": "src/ink-player-hitbox.js",
+        "status": 200,
+        "bytes": 3627,
+        "matches": true
+      },
+      {
+        "path": "src/ink-pods.js",
+        "status": 200,
+        "bytes": 7705,
+        "matches": true
+      },
+      {
+        "path": "src/ink-renderer.js",
+        "status": 200,
+        "bytes": 31457,
+        "matches": true
+      },
+      {
+        "path": "src/ink-scene.js",
+        "status": 200,
+        "bytes": 5894,
+        "matches": true
+      },
+      {
+        "path": "src/modern-striker-art.js",
+        "status": 200,
+        "bytes": 10233,
+        "matches": true
+      },
+      {
+        "path": "src/music-tracks.js",
+        "status": 200,
+        "bytes": 676,
+        "matches": true
+      },
+      {
+        "path": "src/native-turn-hitboxes.js",
+        "status": 200,
+        "bytes": 15765,
+        "matches": true
+      },
+      {
+        "path": "src/red-wastes-layout.js",
+        "status": 200,
+        "bytes": 6065,
+        "matches": true
+      },
+      {
+        "path": "src/red-wastes-level.js",
+        "status": 200,
+        "bytes": 2515,
+        "matches": true
+      },
+      {
+        "path": "src/red-wastes-world.js",
+        "status": 200,
+        "bytes": 4235,
+        "matches": true
+      },
+      {
+        "path": "src/saltik-duel.js",
+        "status": 200,
+        "bytes": 3214,
+        "matches": true
+      }
+    ],
+    "passed": true
+  }
+}

@@ -1,3 +1,4 @@
+import {inkPlayerHitboxes} from './ink-player-hitbox.js';
 import {advanceRedWastesSand} from './red-wastes-sand.js';
 import {advanceRoyalPovCombat,clearRoyalPovCombat} from './royal-pov-combat.js';
 import {beginRoyalBoarding,ROYAL_FINALE_TIMING} from './royal-finale.js';
@@ -31,7 +32,10 @@ export function inkWeaponGeometry(p,time){
 export function createInkScene(options={}){
  const g=createGame(options);if(!g.player.character||g.player.character==='striker')g.player.visualModel='modern-striker';else if(g.player.character==='gatling')g.player.visualModel='modern-gatling';const cosmetic=normalizeSkin(options.character,options.skin);if(cosmetic!=='default')g.player.cosmeticSkin=cosmetic;g.inkPreview=true;g.inkCampaign=true;g.weaponGeometry=inkWeaponGeometry;
  if([4,5].includes(options.level)&&g.player.visualModel==='modern-striker'&&cosmetic==='default')g.player.strikerVariant='desert';
- g.enemyWeaponGeometry=inkEnemyGeometry;g.enemySaltikGeometry=inkEnemySaltikGeometry;
+ g.playerHitboxes=inkPlayerHitboxes;
+ if([4,5].includes(options.level)&&g.player.character==='bt')g.player.btVariant='desert';
+ g.enemyWeaponGeometry=inkEnemyGeometry;
+ g.enemySaltikGeometry=[4,5].includes(options.level)?(enemy,...args)=>inkEnemySaltikGeometry(Object.assign(enemy,{btVariant:'desert'}),...args):inkEnemySaltikGeometry;
  g.level=1;g.levelTitle='Le Canyon';
  if(options.level===5)return applyRedWastesLevel(g);
  if(options.level===4)return applyDesertLevel(g);

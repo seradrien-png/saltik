@@ -1,3 +1,4 @@
+import {DESERT_BT} from './desert-bt-art.js';
 import {drawJumpLegStrut,jumpLegOffset,jumpLegExtension,jumpLegPose,jumpLegPoint,applyJumpLegPose} from './jump-leg-pose.js';
 import {sampleSupportSurface} from './support-pose.js';
 import {plantInkWheel} from './ink-leg-support.js';
@@ -61,7 +62,7 @@ function splitAtY(points,y,lower){
  }
  return result;
 }
-for(const leg of INK_ENEMY_SALTIK_PARTS.legs){
+for(const leg of [...INK_ENEMY_SALTIK_PARTS.legs,...DESERT_BT.parts.legs]){
  leg.strutPolygon=splitAtY(leg.polygon,leg.wheelTop,false);
  leg.wheelPolygon=splitAtY(leg.polygon,leg.wheelTop,true);
 }
@@ -72,8 +73,9 @@ function rotatePoint(point,pivot,angle,offsetX=0){
 
 export function inkEnemySaltikGeometry(e,time=0,{camera=0,scale=1,view='side'}={}){
  view=view==='front'?'front':'side';scale=Math.max(.01,finite(scale,1))*(e.artScale??1);
- const frame=INK_ENEMY_SALTIK_VIEWS[view]??INK_ENEMY_SALTIK_VIEWS.side;
- const k=PIXEL_SCALE*scale,flip=view==='front'?1:e.dir===-1?-1:1;
+ const profile=e.btVariant==='desert'?DESERT_BT:null,parts=profile?.parts??INK_ENEMY_SALTIK_PARTS;
+ const frame=(profile?.views??INK_ENEMY_SALTIK_VIEWS)[view];
+ const k=(profile?.pixelScale??PIXEL_SCALE)*scale,flip=view==='front'?1:e.dir===-1?-1:1;
  const dodging=view==='side'&&e.guardFlash>0&&e.guardResponse==='dodge';
  const effort=dodging?Math.sin(Math.PI*clamp(e.guardFlash/.25)):0;
  const airborne=e.onGround===false,walking=!airborne&&view==='side'&&Math.abs(finite(e.vx))>5;
@@ -87,7 +89,7 @@ export function inkEnemySaltikGeometry(e,time=0,{camera=0,scale=1,view='side'}={
  const bodyDrop=(walking?Math.sin(phase*2)*.65*scale:0)+(e.bt&&e.crouching?12*scale:0);
  const co=Math.cos(rotation),si=Math.sin(rotation);
  const sourcePoint=([px,py])=>{const xx=(px-frame.anchor[0])*k*flip,yy=(py-frame.anchor[1])*k;return{x:x+offsetX+xx*co-yy*si,y:y+heave+bodyDrop+xx*si+yy*co};};
- const legs=view==='front'?[]:INK_ENEMY_SALTIK_PARTS.legs.map((part,index)=>{
+ const legs=view==='front'?[]:parts.legs.map((part,index)=>{
   const stride=walking?Math.sin(phase+(index===1?Math.PI:0))*10:0;
   const jumpPose=jumpLegPose(e,part,frame.anchor[0]),legPoint=q=>sourcePoint(jumpLegPoint(jumpPose,q)),splay=jumpLegOffset(e,part.foot[0],frame.anchor[0],k,scale);
   const native=legPoint([part.foot[0]+stride+splay,part.foot[1]]);
@@ -97,8 +99,11 @@ export function inkEnemySaltikGeometry(e,time=0,{camera=0,scale=1,view='side'}={
   // The duel masks these same pixels before drawing its held leg and hands.
   if(!airborne&&e.supportPose){
    const floor=at=>{const support=sampleSupportSurface(e.supportPose,finite(e.x)+(at-x)/scale);return Number.isFinite(support)?y+(support-y)*scale:NaN;};
-   const planted=plantInkWheel(native,{k,cos:co,sin:si,floor,orientation:flip,maxOffset:140});
-   offset=planted.offset;roll+=planted.roll;grounded=planted.grounded&&lift<.001;
+   const planted=plantInkWheel(native,{k,cos:co,sin:si,floor,orientation:flip,maxOffset:profile?240:140});
+   // A desert strut can extend to reach the skull's nose, but must never
+   // invert through its cabin attachment when the trailing ground rises.
+   const compressionLimit=profile?-(part.wheelTop-part.hinge)*.85:-Infinity;
+   offset=Math.max(compressionLimit,planted.offset);roll+=planted.roll;grounded=planted.grounded&&offset===planted.offset&&lift<.001;
   }
   offset-=lift/(k*co);
   return{...part,jumpPose,offset,roll,lift,grounded,stretch:1+offset/(part.wheelTop-part.hinge),
@@ -106,8 +111,8 @@ export function inkEnemySaltikGeometry(e,time=0,{camera=0,scale=1,view='side'}={
    contact:legPoint([part.foot[0]+roll,part.foot[1]+offset])};
  });
  const recoil=view==='side'?clamp(finite(e.cannonRecoil,finite(e.firePose)/.14)):0;
- const cannonPart={...INK_ENEMY_SALTIK_PARTS.cannon,offsetX:-22*recoil,rotation:view==='side'?-clamp(finite(e.cannonElevation),-.12,.18):0};
- const arms=view==='front'?[]:INK_ENEMY_SALTIK_PARTS.arms.map((part,index)=>({...part,
+ const cannonPart={...parts.cannon,offsetX:-22*recoil,rotation:view==='side'?-clamp(finite(e.cannonElevation),-.12,.18):0};
+ const arms=view==='front'?[]:parts.arms.map((part,index)=>({...part,
   rotation:walking?Math.sin(phase*.5+(index?Math.PI:0))*.035:0}));
  if(e.btAimTarget&&view==='side'){
   const pivot=sourcePoint(cannonPart.pivot),dx=e.btAimTarget.x-camera-pivot.x,dy=e.btAimTarget.y-pivot.y;
@@ -116,25 +121,25 @@ export function inkEnemySaltikGeometry(e,time=0,{camera=0,scale=1,view='side'}={
  for(const [i,arm] of arms.entries())if(e.btGripTargets?.[i]){
   const target=e.btGripTargets[i],pivot=sourcePoint(arm.pivot),dx=target.x-camera-pivot.x,dy=target.y-pivot.y;
   const xx=(dx*co+dy*si)/(k*flip),yy=(-dx*si+dy*co)/k;
-  const hand=i?[617,719]:[721,684],hx=hand[0]-arm.pivot[0],hy=hand[1]-arm.pivot[1];
-  arm.btExtension=Math.max(-10,Math.min(400,Math.sqrt(Math.max(0,xx*xx+yy*yy-hx*hx))-hy));arm.btStretchY=arm.pivot[1]+12;arm.btWristY=i?690:654;
+  const hand=arm.hand??(i?[617,719]:[721,684]),hx=hand[0]-arm.pivot[0],hy=hand[1]-arm.pivot[1];
+  arm.btExtension=Math.max(-10,Math.min(400,Math.sqrt(Math.max(0,xx*xx+yy*yy-hx*hx))-hy));arm.btStretchY=arm.stretchY??arm.pivot[1]+12;arm.btWristY=arm.wristY??(i?690:654);
   arm.rotation=Math.atan2(yy,xx)-Math.atan2(hy+arm.btExtension,hx);
  }
  const cannonPoint=point=>sourcePoint(rotatePoint(point,cannonPart.pivot,cannonPart.rotation,cannonPart.offsetX));
  const muzzle=view==='side'?cannonPoint(frame.muzzle):sourcePoint(frame.muzzle);
  const gunBase=view==='side'?cannonPoint(frame.gunBase):sourcePoint(frame.gunBase);
  const raised=clamp(finite(e.podRaise)),deployment=raised*raised*(3-2*raised);
- const podParts=view==='front'?[]:[
+ const podParts=view==='front'?[]:(profile?.parts.pods??[
   {id:'left-pod',pivot:[262,323],polygon:[[183,15],[407,10],[463,42],[473,135],[429,167],[338,156],[305,223],[282,285],[290,338],[248,350],[217,321],[236,279],[264,204],[280,151],[197,134],[176,86]]},
   {id:'right-pod',pivot:[775,346],polygon:[[775,42],[970,60],[994,89],[991,196],[940,221],[846,198],[828,267],[806,314],[802,357],[759,368],[738,336],[758,291],[785,223],[805,190],[769,158],[758,96]]},
- ].map((part,index)=>({...part,rotation:(index?-.045:.045)*deployment,offsetX:0}));
+ ]).map((part,index)=>({...part,rotation:(index?-.045:.045)*deployment,offsetX:0}));
  if(e.bt)for(const [i,part] of podParts.entries()){
   const target=e.bt.aimPoints?.[i%e.bt.aimPoints.length];
   if(e.bt.panicFlash>0)part.rotation=(i?1:-1)*.25*Math.min(1,e.bt.panicFlash/.2);
   else if(e.bt.locking&&target){const pivot=sourcePoint(part.pivot),dx=target.x-camera-pivot.x,dy=target.y-pivot.y;part.rotation=Math.max(-.7,Math.min(.7,Math.atan2((-dx*si+dy*co)/k,(dx*co+dy*si)/(k*flip))-Math.atan2(-50,28)));}
  }
  const podSourcePoint=(point,index)=>{const part=podParts[index];return sourcePoint(part?rotatePoint(point,part.pivot,part.rotation):point);};
- const podSlots=view==='side'||e.bt?inkEnemyPodGeometry(e,{view,sourcePoint,podSourcePoint,k,rotation}):[];
+ const podSlots=view==='side'||e.bt?inkEnemyPodGeometry(e,{view,sourcePoint,podSourcePoint,k,rotation,customSlots:profile?.podSlots[view]}):[];
  const activePods=podSlots.filter(slot=>slot.activeIndex>=0);
  const podMuzzles=view==='side'?activePods.map(slot=>slot.muzzle):frame.pods.map(sourcePoint),target=sourcePoint(frame.target);
  const podDirections=view==='side'?activePods.map(slot=>slot.axis):podMuzzles.map((mouth,i)=>unit(mouth,sourcePoint(frame.podBases[i])));
@@ -146,7 +151,7 @@ export function inkEnemySaltikGeometry(e,time=0,{camera=0,scale=1,view='side'}={
   ]),...arms.flatMap(part=>part.polygon.map(point=>sourcePoint(rotatePoint(point,part.pivot,part.rotation)))),
   ...(view==='side'?cannonPart.polygon.map(cannonPoint):[])];
  const xs=boundsPoints.map(point=>point.x),ys=boundsPoints.map(point=>point.y);
- return{view,frame,crop:frame.crop,anchor:frame.anchor,cropPolygon,k,scale,flip,rotation,offsetX,heave,bodyDrop,x,y,sourcePoint,
+ return{view,frame,profile:profile?.id,profileParts:parts,eyes:profile?.eyes[view],customSlots:profile?.podSlots[view],crop:frame.crop,anchor:frame.anchor,cropPolygon,k,scale,flip,rotation,offsetX,heave,bodyDrop,x,y,sourcePoint,
   legs,arms,cannonPart,cannonPoint,muzzle,muzzleDirection:unit(muzzle,gunBase),cannon:view==='side'?cannonPoint(frame.cannon):sourcePoint(frame.cannon),podMuzzles,
   podDirections,podSlots,podParts,podSourcePoint,
   podsOpen:true,target,targetY:target.y,
@@ -190,7 +195,7 @@ export function drawInkEnemySaltik(c,image,e,{camera=0,time=0,scale=1,view='side
   }
   // Faint light moves within the two existing eyes; no facial aperture moves.
   c.globalAlpha*=.08+.035*Math.sin(time*1.7);c.fillStyle=hit?'#ffffff':'#fff4db';
-  for(const [x,y] of [[607,541],[704,541]]){c.beginPath();c.ellipse(x+Math.sin(time*.8)*1.4,y,2.4,3.2,0,0,Math.PI*2);c.fill();}
+  for(const [x,y] of geo.eyes??[[607,541],[704,541]]){c.beginPath();c.ellipse(x+Math.sin(time*.8)*1.4,y,2.4,3.2,0,0,Math.PI*2);c.fill();}
  }
  c.restore();
  drawLunarPennants(c,image,geo);

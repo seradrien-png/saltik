@@ -16,20 +16,21 @@ export function drawRedWastesBackdrop(c,images,{camera=0,width,height,cameraY=0}
 
 function sandPlane(c,image,{camera,width,height}){
  if(!image)return;
- // Bend the complete opaque painting with the same broad dune curve as feet.
- // Its transparent horizon stays well above the route: no exposed earth edge.
  const h=Math.max(660,height-310),w=h*image.width/image.height,strip=24;
- c.fillStyle='#d74a15';c.fillRect(0,500,width,Math.max(0,height-500));
- // Fixed-sized strips bound the loop independently of floating-point seams.
- // A tiny negative world coordinate can otherwise round local back to w,
- // produce span=0 and stall the browser during ordinary camera motion.
- for(let screen=-strip;screen<width+strip;screen+=strip){
-  const world=screen+camera,tile=Math.floor(world/w),local=Math.max(0,Math.min(w-strip,world-tile*w));
-  const source=tile%2?w-local-strip:local,y=redWastesGroundAt(world+strip/2)-270;
-  c.save();
-  if(tile%2){c.translate(screen+strip,y);c.scale(-1,1);c.drawImage(image,source/w*image.width,0,strip/w*image.width,image.height,0,0,strip,h);}
-  else c.drawImage(image,source/w*image.width,0,strip/w*image.width,image.height,screen,y,strip,h);
-  c.restore();
+ // Join both ends of every slice with an affine shear. Translating independent
+ // columns made every painted dune break into stairs. World-anchored sections
+ // also keep the texture stable while the camera moves by a fractional pixel.
+ const first=Math.floor(camera/w),last=Math.floor((camera+width)/w);
+ for(let tile=first;tile<=last;tile++){
+  const start=tile*w,flip=Math.abs(tile%2)===1;
+  for(let local=Math.max(0,Math.floor((camera-start)/strip)*strip);local<w&&start+local<camera+width;local+=strip){
+   const span=Math.min(strip,w-local),world=start+local;
+   const left=redWastesGroundAt(world)-270,right=redWastesGroundAt(world+span)-270;
+   const source=flip?w-local-span:local;
+   c.save();c.transform(flip?-1:1,flip?-(right-left)/span:(right-left)/span,0,1,world-camera+(flip?span:0),flip?right:left);
+   c.drawImage(image,source/w*image.width,0,span/w*image.width,image.height,0,0,span,h);
+   c.restore();
+  }
  }
 }
 
@@ -58,7 +59,7 @@ export function drawRedWastesWorld(c,images,g,{camera=0,width,height}){
   if(site.kind==='bunker')bunker(c,images,site,camera);
   else{
    const b=structurePlacement(site);
-   skull(c,images['red-wastes-skull'],b.x+b.w/2-camera,b.foot,b.w);
+   skull(c,images['red-wastes-skull'],b.x+b.w/2-camera,b.y+b.h,b.w);
   }
  }
 }
@@ -68,12 +69,10 @@ export function drawRedWastesFrontStructures(c,images,g,{camera=0,width}){
  for(const site of RED_WASTES_SITES){
   if(site.kind!=='skull'||site.x+site.w<camera||site.x>camera+width)continue;
   const b=structurePlacement(site),x=b.x-camera,y=b.y;
-  // Original opaque bone forms the orbital sill in front of native actors.
-  c.save();
-  // Only the near orbital sill crosses the playable eye passage. The outer
-  // jaw stays behind entering actors, avoiding an isolated wheel below bone.
-  c.beginPath();c.rect(x+600,y,650,b.h);c.clip();c.beginPath();
-  const contour=[[0,.74],[.28,.70],[.42,.60],[.49,.65],[.60,.65],[.69,.59],[.77,.50],[1,.58],[1,1],[0,1]];
+  // Draw only the lower orbital lip in front of the wheels. A full-width
+  // contour has no vertical clipping edge cutting through the original skull.
+  c.save();c.beginPath();
+  const contour=[[0,1],[.39,1],[.43,.57],[.49,.60],[.60,.625],[.68,.60],[.72,.54],[.77,.66],[.84,.73],[.93,.81],[1,1]];
   contour.forEach(([u,v],i)=>i?c.lineTo(x+u*b.w,y+v*b.h):c.moveTo(x+u*b.w,y+v*b.h));
   c.closePath();c.clip();c.drawImage(image,x,y,b.w,b.h);c.restore();
  }
