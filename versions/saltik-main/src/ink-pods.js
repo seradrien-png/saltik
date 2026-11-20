@@ -37,6 +37,35 @@ const TURN_CENTERS=[
  [[1545.5,299],[1503,300],[1546,342],[1503,342],[2003.5,279],[1952.5,282],[2003.5,328.5],[1952.5,330]],
 ];
 const clamp=n=>Math.max(0,Math.min(1,n));
+// Eight physical apertures share the existing three-round native pod groups.
+export function desertPodPresentation(actor,index){
+ const activeIndex=[2,4,7].indexOf(index),ammoIndex=index<4?0:index<6?1:2;
+ const cycle=actor?.podCycle,fired=cycle?.fired?.[ammoIndex];
+ if(!fired||cycle.elapsed>=cycle.duration)return {activeIndex,round:1,cover:1,flash:0,feeding:false};
+ const age=Math.max(0,(cycle.elapsed??0)-(cycle.firedAt?.[ammoIndex]??ammoIndex*.085));
+ return {activeIndex,round:0,cover:clamp(1-age/.1),flash:activeIndex<0?0:clamp(1-age/.11),feeding:false};
+}
+// Draw in native image coordinates so covers share the source art transform.
+// `slots` use [x,y,rx,ry], in physical order: four left, four right.
+export function drawDesertPodCovers(c,actor,slots,{drop=0,image,sourceOffset=[0,0]}={}){
+ for(const [i,[x,y,rx,ry,visible]]of slots.entries()){
+  if(visible===false)continue;
+  const slot=desertPodPresentation(actor,i);if(slot.cover===1)continue;
+  c.save();c.translate(x,y+drop);
+  c.fillStyle='#111713';c.beginPath();c.ellipse(0,0,rx,ry,0,0,Math.PI*2);c.fill();
+  c.strokeStyle='#544a31';c.lineWidth=Math.max(1,rx*.12);c.beginPath();c.ellipse(0,0,rx*.94,ry*.94,0,0,Math.PI*2);c.stroke();
+  if(slot.cover>0){
+   c.save();c.beginPath();c.ellipse(0,0,rx*.91,ry*.91,0,0,Math.PI*2);c.clip();c.translate((1-slot.cover)*rx*2,0);
+   if(image)c.drawImage(image,sourceOffset[0]+x-rx,sourceOffset[1]+y-ry,rx*2,ry*2,-rx,-ry,rx*2,ry*2);
+   else{
+   c.fillStyle='#d9cfab';c.strokeStyle='#7b7558';c.lineWidth=Math.max(1,rx*.1);c.beginPath();c.ellipse(0,0,rx*.91,ry*.91,0,0,Math.PI*2);c.fill();c.stroke();
+   c.strokeStyle='#f2e7c4';c.lineWidth=Math.max(1,rx*.08);c.beginPath();c.ellipse(-rx*.12,-ry*.14,rx*.65,ry*.65,0,Math.PI,Math.PI*1.75);c.stroke();
+   }c.restore();
+  }
+  if(slot.flash>0){c.globalAlpha*=slot.flash;c.strokeStyle='#fff1c9';c.lineWidth=2;c.beginPath();c.ellipse(0,0,rx*(1+slot.flash*.45),ry*(1+slot.flash*.45),0,0,Math.PI*2);c.stroke();}
+  c.restore();
+ }
+}
 export function podSlotPresentation(actor,index){
  if(actor?.bt)return {round:actor.bt.loaded[index]||actor.bt.loaded[index+8]?1:0,flash:actor.bt.lastTube%8===index?Math.min(1,(actor.bt.launchFlash??0)/.18):0,feeding:false};
  if(index<0)return {round:0,flash:0,feeding:false};

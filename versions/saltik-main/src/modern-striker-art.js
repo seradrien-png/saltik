@@ -1,8 +1,9 @@
 import {drawJumpLegStrut,jumpLegOffset,jumpLegExtension,jumpLegPose,jumpLegPoint,applyJumpLegPose} from './jump-leg-pose.js';
 import {sampleSupportSurface} from './support-pose.js';
 import {plantInkWheel} from './ink-leg-support.js';
-import {podSlotPresentation} from './ink-pods.js';
-const A=[365,706],K=126/689,TAU=Math.PI*2;
+import {podSlotPresentation,drawDesertPodCovers} from './ink-pods.js';
+import {DESERT_STRIKER} from './desert-striker-art.js';
+const A=[365,706],TAU=Math.PI*2;
 const finite=n=>Number.isFinite(n)?n:0,clamp=(n,a,b)=>Math.max(a,Math.min(b,n));
 // Coordinates measured on the registered 724px angular Striker reference.
 export const MODERN_STRIKER={anchor:A,height:689,
@@ -14,34 +15,36 @@ function polygon(c,p){c.moveTo(...p[0]);for(const q of p.slice(1))c.lineTo(...q)
 function split(p,y,lower){const out=[],inside=q=>lower?q[1]>=y:q[1]<=y;for(let i=0;i<p.length;i++){const a=p[i],b=p[(i+1)%p.length],aa=inside(a),bb=inside(b);if(aa)out.push(a);if(aa!==bb){const t=(y-a[1])/(b[1]-a[1]);out.push([a[0]+(b[0]-a[0])*t,y]);}}return out;}
 function rot(p,pivot,a,dx=0){const x=p[0]-pivot[0],y=p[1]-pivot[1],co=Math.cos(a),si=Math.sin(a);return[pivot[0]+x*co-y*si+dx,pivot[1]+x*si+y*co];}
 export function augmentModernGeometry(p,base,{camera=0,time=0,sampleGround}={}){
- const k=K*base.scale,orientation=base.orientation,co=Math.cos(base.tilt),si=Math.sin(base.tilt);
- const nativePoint=([px,py])=>{const x=(px-A[0])*k*orientation,y=(py-A[1])*k;return{x:base.x+x*co-y*si,y:base.y+base.heave+base.bodyDrop+x*si+y*co};};
- const modernArms=MODERN_STRIKER.arms.map((arm,i)=>{let rotation=base.arms[i].rotation,extension=0;const target=p.modernGripTargets?.[i];
+ const profile=p.strikerVariant==='desert'?DESERT_STRIKER:MODERN_STRIKER,anchor=profile.anchor,nativeScale=126/profile.height,k=nativeScale*base.scale,orientation=base.orientation,co=Math.cos(base.tilt),si=Math.sin(base.tilt);
+ const nativePoint=([px,py])=>{const x=(px-anchor[0])*k*orientation,y=(py-anchor[1])*k;return{x:base.x+x*co-y*si,y:base.y+base.heave+base.bodyDrop+x*si+y*co};};
+ const modernArms=profile.arms.map((arm,i)=>{let rotation=base.arms[i].rotation,extension=0;const target=p.modernGripTargets?.[i];
   if(target){const pivot=nativePoint(arm.pivot),wx=target.x-camera-pivot.x,wy=target.y-pivot.y,dx=(wx*co+wy*si)/(k*orientation),dy=(-wx*si+wy*co)/k,hx=arm.hand[0]-arm.pivot[0],hy=arm.hand[1]-arm.pivot[1];extension=clamp(Math.sqrt(Math.max(0,dx*dx+dy*dy-hx*hx))-hy,-25,240);rotation=Math.atan2(dy,dx)-Math.atan2(hy+extension,hx);}
   return{...arm,rotation,extension,handPoint:q=>nativePoint(rot([q[0],q[1]+extension],arm.pivot,rotation))};});
- const modernLegs=MODERN_STRIKER.legs.map(part=>{const jumpPose=jumpLegPose(p,part,A[0]),legPoint=q=>nativePoint(jumpLegPoint(jumpPose,q));let offset=base.airborne?(p.jumpLegs?jumpLegExtension(p,k,base.scale):-15-base.compression*22):0,roll=jumpLegOffset(p,part.foot[0],A[0],k,base.scale),grounded=false;const splay=roll,native=legPoint([part.foot[0]+splay,part.foot[1]]);
+ const modernLegs=profile.legs.map(part=>{const jumpPose=jumpLegPose(p,part,anchor[0]),legPoint=q=>nativePoint(jumpLegPoint(jumpPose,q));let offset=base.airborne?(p.jumpLegs?jumpLegExtension(p,k,base.scale):-15-base.compression*22):0,roll=jumpLegOffset(p,part.foot[0],anchor[0],k,base.scale),grounded=false;const splay=roll,native=legPoint([part.foot[0]+splay,part.foot[1]]);
   if(!base.airborne){const floor=at=>{const world=at+camera,support=sampleGround?.(world)??sampleSupportSurface(p.supportPose,world);if(p.supportPose?.surface&&!Number.isFinite(support))return NaN;return support??p.supportY??p.y;};({offset,roll,grounded}=plantInkWheel(native,{k,cos:co,sin:si,floor,orientation,maxOffset:220}));roll+=splay;}
-  return{...part,jumpPose,offset,roll,grounded,stretch:1+offset/(part.wheelTop-part.hinge),contact:legPoint([part.foot[0]+roll,part.foot[1]+offset]),spin:finite(p.motionDistance)/(part.hub[3]*K)*orientation,strut:split(part.polygon,part.wheelTop,false),wheel:split(part.polygon,part.wheelTop,true)};});
- const modernGuns=MODERN_STRIKER.guns.map((part,i)=>{let rotation=-(base.weaponsLocked?0:clamp(finite(p.cannonElevation),0,1.1)),recoil=-(i?finite(p.muzzle)/.07*4:finite(p.cannonRecoil)*7);if(p.modernAimTarget){const a=nativePoint(part.pivot),wx=p.modernAimTarget.x-camera-a.x,wy=p.modernAimTarget.y-a.y;rotation=Math.atan2((-wx*si+wy*co)/k,(wx*co+wy*si)/(k*orientation))-Math.atan2(part.muzzle[1]-part.pivot[1],part.muzzle[0]-part.pivot[0]);}
+  return{...part,jumpPose,offset,roll,grounded,stretch:1+offset/(part.wheelTop-part.hinge),contact:legPoint([part.foot[0]+roll,part.foot[1]+offset]),spin:finite(p.motionDistance)/(part.hub[3]*nativeScale)*orientation,strut:split(part.polygon,part.wheelTop,false),wheel:split(part.polygon,part.wheelTop,true)};});
+ const modernGuns=profile.guns.map((part,i)=>{let rotation=-(base.weaponsLocked?0:clamp(finite(p.cannonElevation),0,1.1)),recoil=-(i?finite(p.muzzle)/.07*4:finite(p.cannonRecoil)*7);if(p.modernAimTarget){const a=nativePoint(part.pivot),wx=p.modernAimTarget.x-camera-a.x,wy=p.modernAimTarget.y-a.y;rotation=Math.atan2((-wx*si+wy*co)/k,(wx*co+wy*si)/(k*orientation))-Math.atan2(part.muzzle[1]-part.pivot[1],part.muzzle[0]-part.pivot[0]);}
   const point=q=>nativePoint(rot(q,part.pivot,rotation,recoil)),muzzle=point(part.muzzle),pivot=point(part.pivot),length=Math.hypot(muzzle.x-pivot.x,muzzle.y-pivot.y)||1;return{...part,rotation,recoil,point,muzzle,direction:{x:(muzzle.x-pivot.x)/length,y:(muzzle.y-pivot.y)/length}};});
- const modernTubes=MODERN_STRIKER.rockets.map((q,i)=>{const muzzle=nativePoint(q),raw=nativePoint([q[0]-15,q[1]+28]);return{muzzle,base:raw,activeIndex:[2,4,7].indexOf(i)};});
- const boundsPoints=[[12,17],[723,17],[723,706],[12,706]].map(nativePoint).concat(modernLegs.map(l=>l.contact),modernGuns.flatMap(g=>g.polygon.map(g.point))),xs=boundsPoints.map(q=>q.x),ys=boundsPoints.map(q=>q.y);
- return{...base,modern:true,nativeK:k,nativePoint,modernArms,modernLegs,modernGuns,modernTubes,cannon:modernGuns[0].muzzle,cannonBase:modernGuns[0].point(modernGuns[0].pivot),cannonAngle:Math.atan2(modernGuns[0].direction.y,modernGuns[0].direction.x),coaxPart:modernGuns[1],coaxPoint:modernGuns[1].point,arm:modernGuns[1].muzzle,armDirection:modernGuns[1].direction,face:nativePoint([496,438]),bounds:{x:Math.min(...xs),y:Math.min(...ys),w:Math.max(...xs)-Math.min(...xs),h:Math.max(...ys)-Math.min(...ys)}};
+ const modernTubes=profile.rockets.map((q,i)=>{const muzzle=nativePoint(q),raw=nativePoint([q[0]-15,q[1]+28]);return{muzzle,base:raw,activeIndex:[2,4,7].indexOf(i)};});
+ const boundsPoints=(profile.bounds??[[12,17],[723,17],[723,706],[12,706]]).map(nativePoint).concat(modernLegs.map(l=>l.contact),modernGuns.flatMap(g=>g.polygon.map(g.point))),xs=boundsPoints.map(q=>q.x),ys=boundsPoints.map(q=>q.y);
+ return{...base,modern:true,modernProfile:profile,nativeK:k,nativePoint,modernArms,modernLegs,modernGuns,modernTubes,cannon:modernGuns[0].muzzle,cannonBase:modernGuns[0].point(modernGuns[0].pivot),cannonAngle:Math.atan2(modernGuns[0].direction.y,modernGuns[0].direction.x),coaxPart:modernGuns[1],coaxPoint:modernGuns[1].point,arm:modernGuns[1].muzzle,armDirection:modernGuns[1].direction,face:nativePoint(profile.face??[496,438]),bounds:{x:Math.min(...xs),y:Math.min(...ys),w:Math.max(...xs)-Math.min(...xs),h:Math.max(...ys)-Math.min(...ys)}};
 }
 function transform(c,part){c.translate(part.pivot[0]+(part.recoil??0),part.pivot[1]);c.rotate(part.rotation);c.translate(-part.pivot[0],-part.pivot[1]);}
 export function drawModernStriker(c,image,p,geo,{time=0}={}){
+ const profile=geo.modernProfile??MODERN_STRIKER,[width,height]=profile.size??[724,724],anchor=profile.anchor;
  const legs=image.velvetDragonCutout?geo.modernLegs.map((leg,i)=>{if(i!==2)return leg;const polygon=[[564,430],[605,430],[654,457],[685,500],[710,548],[724,595],[724,724],[548,724],[548,590],[550,558],[538,506]];return{...leg,polygon,strut:split(polygon,leg.wheelTop,false),wheel:split(polygon,leg.wheelTop,true)};}):geo.modernLegs;
  const guns=image.velvetDragonCutout?geo.modernGuns.map((gun,i)=>({...gun,polygon:i?[[374,214],[452,205],[506,198],[544,193],[556,198],[559,213],[552,231],[510,236],[448,242],[385,246]]:[[299,72],[704,72],[704,214],[556,214],[552,237],[385,249],[280,249],[280,149],[299,149]]})):geo.modernGuns;
  const arms=image.velvetDragonCutout?geo.modernArms.map((arm,i)=>i?{...arm,polygon:[[505,503],[539,505],[551,521],[568,547],[583,569],[589,589],[589,613],[577,633],[550,641],[528,631],[511,612],[508,588],[512,568],[500,546]]}:arm):geo.modernArms;
- const draw=()=>c.drawImage(image,0,0,724,724,0,0,724,724);c.save();c.imageSmoothingEnabled=true;if(p.invulnerable>0&&Math.floor(time*18)%2)c.globalAlpha*=.65;c.translate(geo.x,geo.y+geo.heave+geo.bodyDrop);c.rotate(geo.tilt);c.scale(geo.nativeK*geo.orientation,geo.nativeK);c.translate(-A[0],-A[1]);
+ const draw=()=>c.drawImage(image,0,0,width,height,0,0,width,height);c.save();c.imageSmoothingEnabled=true;if(p.invulnerable>0&&Math.floor(time*18)%2)c.globalAlpha*=.65;c.translate(geo.x,geo.y+geo.heave+geo.bodyDrop);c.rotate(geo.tilt);c.scale(geo.nativeK*geo.orientation,geo.nativeK);c.translate(-anchor[0],-anchor[1]);
  // Rigid tire patches remain planted; only the connecting suspension compresses.
- const drawLeg=()=>{c.save();for(const arm of arms){c.beginPath();c.rect(0,0,724,724);polygon(c,arm.polygon);c.clip('evenodd');}draw();c.restore();};
+ const drawLeg=()=>{c.save();for(const arm of arms){c.beginPath();c.rect(0,0,width,height);polygon(c,arm.polygon);c.clip('evenodd');}draw();c.restore();};
  for(const leg of legs){c.save();applyJumpLegPose(c,leg.jumpPose);drawJumpLegStrut(c,leg,leg.strut,drawLeg,!!p.jumpLegs?.spread);c.save();c.translate(leg.roll,leg.offset);c.beginPath();polygon(c,leg.wheel);c.clip();drawLeg();
  /* Original wheel painting stays fixed. */c.restore();c.restore();}
- c.save();c.beginPath();c.rect(0,0,724,image.velvetDragonCutout?724:540);c.clip();for(const part of [...legs,...arms,...guns]){c.beginPath();c.rect(0,0,724,724);polygon(c,part.polygon);c.clip('evenodd');}draw();c.restore();
- for(const [index,gun]of guns.entries()){c.save();transform(c,gun);c.beginPath();polygon(c,gun.polygon);c.clip();if(index===0){c.beginPath();c.rect(0,0,724,724);polygon(c,guns[1].polygon);c.clip('evenodd');}draw();c.restore();}
+ c.save();c.beginPath();c.rect(0,0,width,profile.id==='desert-striker'?height:image.velvetDragonCutout?724:540);c.clip();for(const part of [...legs,...arms,...guns]){c.beginPath();c.rect(0,0,width,height);polygon(c,part.polygon);c.clip('evenodd');}draw();c.restore();
+ for(const [index,gun]of guns.entries()){c.save();transform(c,gun);c.beginPath();polygon(c,gun.polygon);c.clip();if(index===0){c.beginPath();c.rect(0,0,width,height);polygon(c,guns[1].polygon);c.clip('evenodd');}draw();c.restore();}
  for(const arm of arms){c.save();transform(c,arm);if(!arm.extension){c.beginPath();polygon(c,arm.polygon);c.clip();draw();}else{for(const [poly,kind]of [[split(arm.polygon,arm.stretchY,false),0],[split(split(arm.polygon,arm.stretchY,true),arm.wristY,false),1],[split(arm.polygon,arm.wristY,true),2]]){c.save();if(kind===1){c.translate(0,arm.stretchY);c.scale(1,1+arm.extension/(arm.wristY-arm.stretchY));c.translate(0,-arm.stretchY);}else if(kind===2)c.translate(0,arm.extension);c.beginPath();polygon(c,poly);c.clip();draw();c.restore();}}c.restore();}
  // Keep all eight physical apertures while retaining the original 3-round balance.
- for(const [i,[x,y]]of MODERN_STRIKER.rockets.entries()){const ammo=i<4?0:i<6?1:2,slot=podSlotPresentation(p,ammo);if(slot.round>=1)continue;c.fillStyle='#171b1a';c.beginPath();c.ellipse(x,y,i<4?11:9,12,0,0,TAU);c.fill();}
+ if(profile.id==='desert-striker')drawDesertPodCovers(c,p,profile.podSlots,{image});
+ else for(const [i,[x,y]]of profile.rockets.entries()){const ammo=i<4?0:i<6?1:2,slot=podSlotPresentation(p,ammo);if(slot.round>=1)continue;c.fillStyle='#171b1a';c.beginPath();c.ellipse(x,y,i<4?11:9,12,0,0,TAU);c.fill();}
  c.restore();return geo;
 }

@@ -1,24 +1,22 @@
 import {clearPlayerWeaponQueue} from './engine.js';
+import {redWastesGroundAt,createRedWastesRoutes} from './red-wastes-layout.js';
+export {redWastesGroundAt} from './red-wastes-layout.js';
 
 // The Red Wastes use the canyon's native world, movement and combat clocks.
 // At the native 230 units/second, this route takes about 99 seconds to cross.
 export const RED_WASTES_END=23000;
-
-export function redWastesGroundAt(x){
- return 620+13*Math.sin(x/1250)+6*Math.sin(x/490);
-}
 
 export function applyRedWastesLevel(g){
  const types=['soldier','drone','turret','walker','drone','soldier','walker','turret'];
  const schedule=Array.from({length:32},(_,i)=>({
   id:`red-wastes-patrol-${i}`,type:types[i%types.length],x:1250+i*660,
  }));
- for(const [i,x] of [5500,11400,17600].entries())schedule.push({id:`red-wastes-saltik-${i}`,type:'saltik',x});
+ for(const [i,x] of [7000,11400,17600].entries())schedule.push({id:`red-wastes-saltik-${i}`,type:'saltik',x});
  schedule.sort((a,b)=>a.x-b.x);
  Object.assign(g,{level:5,levelTitle:'Les Fossiles rouges',levelEnd:RED_WASTES_END+150,
   disableBoss:true,boss:null,bossActivated:false,groundAt:redWastesGroundAt,
-  platforms:[],obstacles:[],schedule,nextSpawn:0,enemies:[],projectiles:[],
-  pickups:[3400,7000,10600,14300,18100,21400].map(x=>({x,y:redWastesGroundAt(x)-30,type:'repair'})),
+  platforms:createRedWastesRoutes(),obstacles:[],schedule,nextSpawn:0,enemies:[],projectiles:[],
+  pickups:[3400,7000,10600,14900,18100,21400].map(x=>({x,y:redWastesGroundAt(x)-30,type:'repair'})),
   maxX:180,progress:0,redWastes:{elapsed:0,complete:false}});
  // Only placement changes here. Character weapons, armor, physics, and inputs
  // continue through engine.update without a replacement combat simulation.

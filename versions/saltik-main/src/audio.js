@@ -189,7 +189,14 @@ export function createAudio({onSpeech=()=>{}}={}){
     if(e.strikerGuidedCompanion&&character==='striker')return;
     const shotGain=character==='striker'?.9:1;
     const line=VOICE_EVENTS[e.type];if(line)speech?.enqueue(line,e.character??character);
-    if(e.type==='gatling-shot'){
+    if(e.type==='desert-giant-step'){
+      const weight=Math.max(.35,Math.min(1,e.strength??1));
+      tone(e.index?67:59,27,.72,.17*weight,'sine',0,false,.009);
+      tone(106,40,.28,.045*weight,'triangle',.012,false,.012);
+      burst(.48,.085*weight,380,.012,'lowpass',.014);
+      burst(.09,.035*weight,1450,.025,'highpass',.008);
+    }
+    else if(e.type==='gatling-shot'){
       // Continuous firing is synchronized to combat state, never to individual bullets.
       return;
     }

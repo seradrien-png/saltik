@@ -37,3 +37,13 @@ test('renderer clips panorama and draws only separate foot and long lower-shin a
  for(let i=0;i<paints.length;i+=2){const shin=paints[i],foot=paints[i+1],scale=foot[8]/734;assert.ok(shin[7]+shin[9]>=60*scale);assert.equal(foot[2],520);}
  const a=JSON.stringify(calls);calls.length=0;drawDesertGiant(c,{},g,{box:{x:0,y:0,w:1000,h:500},time:200});assert.equal(JSON.stringify(calls),a);
 });
+
+test('heavy step events and brief shake follow actual alternating landings and freeze on pause',()=>{
+ const g={level:5,status:'playing',introElapsed:0,introDuration:0,player:{x:9300,y:620},redWastes:{},events:[],groundAt:()=>620};
+ for(let i=0;i<60*8;i++)advanceDesertGiant(g,1/60);
+ const steps=g.events.filter(e=>e.type==='desert-giant-step');assert(steps.length>=4&&steps.length<=6);
+ for(const e of steps){const p=desertGiantPose(e.landing,{x:0,y:0,w:1,h:1})[e.index];assert.equal(p.contact,true);assert.equal(p.lift,0);}
+ assert(g.shake>0&&g.shake<4);assert.deepEqual(steps.slice(0,4).map(e=>e.index),[1,0,1,0]);
+ const count=g.events.length;g.status='paused';advanceDesertGiant(g,1);assert.equal(g.events.length,count);
+ g.status='playing';advanceDesertGiant(g,1);assert.equal(g.events.length,count);
+});

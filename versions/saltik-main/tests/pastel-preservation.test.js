@@ -47,6 +47,8 @@ test('V2 preserves V1 native pixels, walkable geometry, native motions and encou
    .replace("      if(recordedWeapon('reloadEnd',.25,.33))return;\n",'')
    .replace("      if(character==='striker'&&e.strikerGuided&&e.enemyImpact){\n        duck(e.enemyDestroyed?.38:.62,e.enemyDestroyed?.6:.32,.25);\n        if(recordedWeapon(e.enemyDestroyed?'guidedDestruction':'guidedImpact',(e.enemyDestroyed?.34:.28),e.enemyDestroyed?1.6:1.23))return;\n      }\n",''));
   if(path==='src/audio.js')content=Buffer.from(content.toString()
+   // Desert giant footfalls are additive and cannot alter any earlier mix.
+   .replace(/    if\(e.type==='desert-giant-step'\)\{[\s\S]*?\n    }\n    else if\(e.type==='gatling-shot'\)\{/g,"    if(e.type==='gatling-shot'){")
    .replace("import {REAL_MIRV_PATHS,REAL_WEAPON_PATHS} from './real-weapon-paths.js';\n",'')
    .replace('  const weaponBuffers=new Map(),weaponVoices=new Set();\n  let weaponLoading=null,weaponFailed=0;\n','')
    .replace('createMirvAudio(ctx,master,{paths:REAL_MIRV_PATHS})','createMirvAudio(ctx,master)')

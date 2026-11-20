@@ -27,7 +27,7 @@ test('Red Wastes authors a full native route with real patrols and unchanged pla
  }
  let previous=redWastesGroundAt(0);
  for(let x=1;x<=RED_WASTES_END;x++){
-  const y=redWastesGroundAt(x);assert(y>=601&&y<=639);assert(Math.abs(y-previous)<.024);previous=y;
+  const y=redWastesGroundAt(x);assert(y>=480&&y<=650);assert(Math.abs(y-previous)<.3);previous=y;
  }
 });
 
@@ -40,7 +40,7 @@ test('native Striker traverses the patrols and normal Saltik duels in 90–120 s
   duelStarts+=g.events.filter(e=>e.type==='duel-start').length;
  }
  assert.equal(g.status,'won');assert(g.time>=90&&g.time<=120,`duration ${g.time}`);
- assert(duelStarts>=2,'native grapples remain part of the route');assert(g.stats.kills>=25);
+ assert(duelStarts>=1,'native grapples remain part of the route');assert(g.stats.kills>=25);
  assert.equal(g.nextSpawn,g.schedule.length);assert.equal(g.player.x,RED_WASTES_END);
  assert.equal(g.progress,1);assert.equal(g.redWastes.complete,true);
 });

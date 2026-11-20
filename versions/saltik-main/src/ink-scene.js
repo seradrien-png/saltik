@@ -1,3 +1,4 @@
+import {advanceRedWastesSand} from './red-wastes-sand.js';
 import {advanceRoyalPovCombat,clearRoyalPovCombat} from './royal-pov-combat.js';
 import {beginRoyalBoarding,ROYAL_FINALE_TIMING} from './royal-finale.js';
 import {nativeTurnSockets} from './character-turns.js';
@@ -18,7 +19,10 @@ export function inkWeaponGeometry(p,time){
  const pose=inkSaltikGeometry(p,{time,scale:p.evasion?.active ? .92 : 1});
  if(p.character==='bt'){const tubes=nativeTurnSockets(p,{scale:p.evasion?.active ? .92 : 1})??pose.btTubes;return {...pose,btTubes:tubes,cannonDirection:pose.armDirection,cabinTubes:tubes.map(t=>({muzzle:t.muzzle,base:t.base})),tubes:tubes.map(t=>t.muzzle)};}
  if(p.character==='gatling')return {...pose,armDirection:pose.gatlingDirections[0],cannonDirection:{x:p.dir===-1?-1:1,y:0},tubes:pose.rocketMuzzles,cabinTubes:pose.rocketMuzzles.map(muzzle=>({muzzle,base:{x:muzzle.x-(p.dir===-1?-8:8),y:muzzle.y}}))};
- if(pose.modern)return {...pose,armDirection:pose.modernGuns[1].direction,cannonDirection:pose.modernGuns[0].direction,cabinTubes:pose.modernTubes.filter((t,i)=>[2,4,7].includes(i)),tubes:pose.modernTubes.filter((t,i)=>[2,4,7].includes(i)).map(t=>t.muzzle)};
+ if(pose.modern){
+  const tubes=nativeTurnSockets(p,{scale:p.evasion?.active?.92:1})??pose.modernTubes,cabinTubes=tubes.filter((t,i)=>[2,4,7].includes(i));
+  return {...pose,armDirection:pose.modernGuns[1].direction,cannonDirection:pose.modernGuns[0].direction,cabinTubes,tubes:cabinTubes.map(t=>t.muzzle)};
+ }
  const armBase=pose.coaxPoint(pose.coaxPart.pivot),dx=pose.arm.x-armBase.x,dy=pose.arm.y-armBase.y,length=Math.hypot(dx,dy)||1;
  const armDirection={x:dx/length,y:dy/length};
  const tubes=inkPlayerPodGeometry(p,pose).filter(slot=>slot.activeIndex>=0).sort((a,b)=>a.activeIndex-b.activeIndex).map(slot=>({muzzle:slot.muzzle,base:slot.base}));
@@ -26,6 +30,7 @@ export function inkWeaponGeometry(p,time){
 }
 export function createInkScene(options={}){
  const g=createGame(options);if(!g.player.character||g.player.character==='striker')g.player.visualModel='modern-striker';else if(g.player.character==='gatling')g.player.visualModel='modern-gatling';const cosmetic=normalizeSkin(options.character,options.skin);if(cosmetic!=='default')g.player.cosmeticSkin=cosmetic;g.inkPreview=true;g.inkCampaign=true;g.weaponGeometry=inkWeaponGeometry;
+ if([4,5].includes(options.level)&&g.player.visualModel==='modern-striker'&&cosmetic==='default')g.player.strikerVariant='desert';
  g.enemyWeaponGeometry=inkEnemyGeometry;g.enemySaltikGeometry=inkEnemySaltikGeometry;
  g.level=1;g.levelTitle='Le Canyon';
  if(options.level===5)return applyRedWastesLevel(g);
@@ -65,6 +70,10 @@ export function updateInkScene(g,input,dt=1/60){
  update(g,desertInput(g,input),dt);
  if(g.level===2)advanceLunarObjective(g,g.time-before);
  if(g.level===4)advanceDesertObjective(g,g.time-before);
- if(g.level===5){advanceRedWastesObjective(g,g.time-before);advanceDesertGiant(g,g.time-before);}
+ if(g.level===5){
+  advanceRedWastesObjective(g,g.time-before);advanceDesertGiant(g,g.time-before);
+  const pose=inkSaltikGeometry(g.player,{time:g.time}),feet=(pose.modernLegs??pose.btNative?.legs??pose.nativeLegs??pose.legs??[]).map(l=>l.contact);
+  advanceRedWastesSand(g,g.time-before,feet);
+ }
  if(g.level===3)advanceRoyalObjective(g,g.time-before);
 }

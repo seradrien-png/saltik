@@ -1,0 +1,123 @@
+{
+  "date": "2026-11-20",
+  "base_source_commit": "9ae3ced85b9d3e05e5b1ee2b78aee4c9b13ba3cf",
+  "previous_github_commit": "8a86ea907edf2ee387fea7d8465e86b2cbeca665",
+  "scope": "Rusted S-03 Striker on4/5; native dune curves/buried three-height bunkers/orbital skull passage and sand/giant feedback on5",
+  "automated_tests": {
+    "passed": 911,
+    "failed": 0
+  },
+  "full_run_normal_armor": {
+    "status": "won",
+    "time": 109.69999999999506,
+    "hp": 100,
+    "x": 23000,
+    "stats": {
+      "kills": 29,
+      "shots": 736,
+      "mirvs": 13,
+      "homingSalvos": 4,
+      "meleeSwings": 5,
+      "meleeHits": 5,
+      "interceptions": 1,
+      "score": 8675,
+      "obstacles": 0,
+      "neutralized": 3
+    },
+    "giantSteps": 5,
+    "strikerVariant": "desert",
+    "activeDust": 0,
+    "tracks": 339
+  },
+  "browser": [
+    {
+      "character": "striker",
+      "threeHeightsReached": true,
+      "actualEyePassage": true,
+      "sandTracks": true,
+      "lateWeapons": true,
+      "pause": true,
+      "errors": [],
+      "missing": []
+    },
+    {
+      "character": "gatling",
+      "threeHeightsReached": true,
+      "actualEyePassage": true,
+      "sandTracks": true,
+      "lateWeapons": true,
+      "pause": true,
+      "errors": [],
+      "missing": []
+    },
+    {
+      "character": "bt",
+      "threeHeightsReached": true,
+      "actualEyePassage": true,
+      "sandTracks": true,
+      "lateWeapons": true,
+      "pause": true,
+      "errors": [],
+      "missing": []
+    }
+  ],
+  "mobile": {
+    "viewport": [
+      844,
+      390
+    ],
+    "dpr": 2,
+    "nativeBunkerRampAndEyePassage": true,
+    "touchTracks": true,
+    "nativeThreeGuidedRoundsAndEmptyCovers": true,
+    "primary": true,
+    "pause": true,
+    "errors": []
+  },
+  "visual": {
+    "bunkerAndSkullPositions": [
+      4650,
+      5150,
+      8600,
+      8850,
+      9300,
+      9800
+    ],
+    "level4Skin": true,
+    "errors": []
+  },
+  "independent_review": "No important functional defect; intermediate bunker ramps were measured and calibrated after visual review; fixed bounded terrain seams.",
+  "regression": "Camera14.617535054032224 produced zero-width adaptive strip and stalled; old renderer test failed, bounded strip loop passes.",
+  "source_runtime_identical": true,
+  "protected": [
+    "all previous editions and versions",
+    "native weapon stock/damage/cooldowns/heat",
+    "other level appearances and optional skins",
+    "all original sound files, voices, music and A10"
+  ],
+  "package": {
+    "before_bytes": 373206672,
+    "after_bytes": 258035141,
+    "saved_bytes": 115171531,
+    "reduction_percent": 30.86,
+    "all_audio_video_icons_unchanged": true,
+    "originals_retained": true
+  },
+  "new_assets": [
+    {
+      "path": "dist/assets/desert-striker-body.png",
+      "size": 2514696,
+      "sha256": "9bc776805cb1502a86005a22680bcb942a9745ac9dde573da92bdad9e27bb6b9"
+    },
+    {
+      "path": "dist/assets/desert-striker-turn.png",
+      "size": 2775356,
+      "sha256": "ee32ed0e43cabfd74ab42b31b6467f890eb78f35f93c30f7aa17bcc46dc31bd3"
+    },
+    {
+      "path": "dist/assets/red-wastes-bunker.png",
+      "size": 1928613,
+      "sha256": "811dcc6c301c87b61319b1c242e0d50573ff1f6a71e129a9aa50c61c6a875999"
+    }
+  ]
+}

@@ -7,15 +7,15 @@
       "slug": "saltik-main",
       "repo": "saltik-v2-matin-dore",
       "title": "SALTIK V2 \u2014 Matin Dor\u00e9",
-      "commit": "9ae3ced85b9d3e05e5b1ee2b78aee4c9b13ba3cf",
-      "published_version": 54,
+      "commit": "5a9cbd41d8e2f93a5c8e26bb9b502f6320175e6c",
+      "published_version": 55,
       "url": "https://saltik-v2-matin-dore.ser-adrien.chatgpt.site",
       "base_commit": "ce280f9394d382d728673a48c1994a18092e8c58",
       "source_path": "/workspace/sites/saltik-v2-matin-dore",
       "export_path": "versions/saltik-main",
       "web_entry": "versions/saltik-main/dist/index.html",
-      "file_count": 848,
-      "bytes": 385049315,
+      "file_count": 865,
+      "bytes": 392427730,
       "uncommitted_changes": "",
       "files": {
         ".gitignore": {
@@ -89,6 +89,14 @@
         "dist/assets/desert-red-vista.png": {
           "sha256": "8971352464cdc881450806e9d3d00c42fbe15624f38d07ae9c8c47f89a87e8de",
           "size": 3766520
+        },
+        "dist/assets/desert-striker-body.png": {
+          "sha256": "9bc776805cb1502a86005a22680bcb942a9745ac9dde573da92bdad9e27bb6b9",
+          "size": 2514696
+        },
+        "dist/assets/desert-striker-turn.png": {
+          "sha256": "ee32ed0e43cabfd74ab42b31b6467f890eb78f35f93c30f7aa17bcc46dc31bd3",
+          "size": 2775356
         },
         "dist/assets/desert-structures.png": {
           "sha256": "9fe07022a7afaec1f32fcd8135c4a373e080b5bdc8f1c723917990836a75cb48",
@@ -482,6 +490,10 @@
           "sha256": "6302bc4d7c4ce8cb432cd1bbd919d7aab463ccfe232793b96e27bae053587ed2",
           "size": 1908510
         },
+        "dist/assets/red-wastes-bunker.png": {
+          "sha256": "811dcc6c301c87b61319b1c242e0d50573ff1f6a71e129a9aa50c61c6a875999",
+          "size": 1928613
+        },
         "dist/assets/red-wastes-sand-plane.png": {
           "sha256": "96cd30f7c938ac24f0152c7dd091b03465cdaece6ff2b2687140d3a7a9802761",
           "size": 3162939
@@ -831,8 +843,8 @@
           "size": 201526
         },
         "dist/menu/level4-striker-default.webp": {
-          "sha256": "cac92b7dc8e8e8a753a74d19c48d62b4e7573f4b4e061251aa96966cdba6902e",
-          "size": 156628
+          "sha256": "067dde9d5ff5bcc68cb17683beb3dabcc7cd4d0c204a8d8e763565bf8789ca92",
+          "size": 257350
         },
         "dist/menu/level4-striker-dragon.webp": {
           "sha256": "ca0b59f805b434b89587c9f6af8514bf92e14bfda126ff9d094944c020ebc4ee",
@@ -843,8 +855,8 @@
           "size": 3073
         },
         "dist/src/audio.js": {
-          "sha256": "0a1553d94cca986b6024a233c4434206be5e1537cb8870d5a7e9e85c477f6e1e",
-          "size": 19547
+          "sha256": "c578ac55488f257fd3966e0079f66633ee84c67a01fc40875aefae0f63ae6bd0",
+          "size": 19894
         },
         "dist/src/background-motion.js": {
           "sha256": "3678cee146d7d6f5c57ce4f0218b809c0befc002fd2809e9f7a05c895c7711f5",
@@ -915,8 +927,8 @@
           "size": 2186
         },
         "dist/src/character-turns.js": {
-          "sha256": "8efa8ef9e7f795c9add209d8f3041128754d98550fc45d6a2b181f40d391a0c0",
-          "size": 7037
+          "sha256": "0de0464cb5033a0101ca1c5b9280bee11b9ba67784db98060615d81104160b57",
+          "size": 8074
         },
         "dist/src/combat-effects.js": {
           "sha256": "5d475228d929abf59da0f35109d5713517062dfa876bc4763dffe0f6a24b8f4e",
@@ -927,8 +939,8 @@
           "size": 952
         },
         "dist/src/desert-giant.js": {
-          "sha256": "bbac8a7926f5616219dcd36c1690fb618165cc85ef82d5ff538181b96ec79190",
-          "size": 3123
+          "sha256": "9da5037b1f958a1b4d0c90573c1bc4334c8a3ab3480d80aa6814cda031cbac32",
+          "size": 3910
         },
         "dist/src/desert-layout.js": {
           "sha256": "45f91e4d93dea6cf40989aca0a453f422071826be6a6e285a35f6bf7633d8ce0",
@@ -941,6 +953,10 @@
         "dist/src/desert-route-art.js": {
           "sha256": "9cb83585284c4bd6ef4438f984b83ed9c9d4daa33f3329b27967c6c6311fef7b",
           "size": 1470
+        },
+        "dist/src/desert-striker-art.js": {
+          "sha256": "caeaf39bdad767e3c9c2fec1885a470f72f2043c0f1d0423833733db16265efa",
+          "size": 5051
         },
         "dist/src/desert-two-lanes.js": {
           "sha256": "e9553741ae3c365d16afbbf1bfabff4ba35a54ff63682e4cad5e38a872718c45",
@@ -1043,20 +1059,20 @@
           "size": 1003
         },
         "dist/src/ink-pods.js": {
-          "sha256": "b85ce28d8f8af969dd9484c6ffd964f237936f5664706f7d93572d0347595177",
-          "size": 5484
+          "sha256": "d5175ced4ac026e6244e10f18a2560e90ab2566675ee8fbe9ad2196fa4db2fd9",
+          "size": 7461
         },
         "dist/src/ink-renderer.js": {
-          "sha256": "6e1a78fa2d5f63f06f9f233c682fe84de40bd9269df767aaede74bb4df3465dc",
-          "size": 23851
+          "sha256": "f58e9dcc993f98c0510b5da1338c84c108fff9ce3ccff4578b26addbfc781577",
+          "size": 24378
         },
         "dist/src/ink-saltik.js": {
           "sha256": "ba15550e74f822e3897a3929289ebb1559b4c5b15e5f7be155d8ce1e42f03cb2",
           "size": 21342
         },
         "dist/src/ink-scene.js": {
-          "sha256": "d2138d8fabd20c3d2e0cb144525af75e08d4fd9ade3a8f351800eb865b755623",
-          "size": 5143
+          "sha256": "c22dbecda4608d0f58dd09610dee65fa4074e1a010dd530a5196182f3b8e388f",
+          "size": 5586
         },
         "dist/src/ink-turn.js": {
           "sha256": "e2e281634ce901d5e484fe5c5a6770ddc9365574f832550ee3ee2ff1162f8050",
@@ -1143,8 +1159,8 @@
           "size": 1708
         },
         "dist/src/modern-striker-art.js": {
-          "sha256": "1d6b4f6c45dec4422378922277be4affd75070afd792233d765d3e23d18daaa2",
-          "size": 9148
+          "sha256": "968aec3d457951630d251c267d3441804d28237554dc45539dcec4c5fd0f0354",
+          "size": 9667
         },
         "dist/src/motor-motion.js": {
           "sha256": "4cd5f7608a358e829486fb3044179c75876304c3623a922a6fb701055a468691",
@@ -1178,13 +1194,21 @@
           "sha256": "19a515f49e6616cc96474ba0402cd7527d5d7576e359c744e5327730b2a56112",
           "size": 633
         },
+        "dist/src/red-wastes-layout.js": {
+          "sha256": "51c664321a3362e77650e0eab77ae93513113f1348e8c5be395bce25793e0767",
+          "size": 3138
+        },
         "dist/src/red-wastes-level.js": {
-          "sha256": "f005bc46e97f26310619535bcaf93b7d6c6da994b01b590a68d75c8b1569eb5d",
-          "size": 2363
+          "sha256": "ba4b1f5fb2207750f9dbeff3ae4442c58f9e50cc7c79416695a99c3c29e45213",
+          "size": 2430
+        },
+        "dist/src/red-wastes-sand.js": {
+          "sha256": "e80e04e371e73f5245853e15f01d79cbc60f13e1633ed7a764b4766add9ff5fd",
+          "size": 2598
         },
         "dist/src/red-wastes-world.js": {
-          "sha256": "49827ff07b2202acbbcab6ef905d64c303d2d22a3ccc35aaf0d8a775f0ac9ee3",
-          "size": 2847
+          "sha256": "2ab3fa4abec17b405e4a09d7a9664efa2b797da4751e68b8abc4a218d8e062d8",
+          "size": 4386
         },
         "dist/src/renderer.js": {
           "sha256": "f1e5891145283d8c07d159855d91a58318573f7d10baa74b797a6109d187c7a2",
@@ -1498,6 +1522,18 @@
           "sha256": "206133c68ff3d84f2e3c1483300d57698044fcc23610b23e0de95577f1012a23",
           "size": 5916
         },
+        "docs/red-dunes-upgrade.md": {
+          "sha256": "961d49712cf6152682c4984f1d91f3d510782a544d32c2a47c18c588aba6c745",
+          "size": 3586
+        },
+        "docs/red-dunes-validation.json": {
+          "sha256": "a1df4836ac3a6590fabc46126b806a5cfced516f1badc573c731f494df39d762",
+          "size": 3250
+        },
+        "docs/red-wastes-bunker-art.md": {
+          "sha256": "2b152bc314a63550da93d3fcf3b0aedddf66368465e3c4636d5fafa5e7d8b72e",
+          "size": 1779
+        },
         "docs/releases/SALTIK-reference-2026-10-28.md": {
           "sha256": "a3a0d3cca93e7b86607e4d29e0a36c8d8a04f4ef99f6d53a82e8f148582255d8",
           "size": 1106
@@ -1773,6 +1809,10 @@
         "docs/superpowers/plans/2026-11-13-velvet-water-flow.md": {
           "sha256": "6fb69471bc028db16b4e5c2dcc4fdc3613468835e0cd46fa893bcf9901efa956",
           "size": 1290
+        },
+        "docs/superpowers/plans/2026-11-20-red-dunes-integration.md": {
+          "sha256": "06e190e0dab64e31891fbcaf7a459ff7654e77ead78b8439559b687f7c8444ae",
+          "size": 2135
         },
         "docs/superpowers/plans/2026-11-20-separate-red-desert-level.md": {
           "sha256": "4ed7fafb39b6a527168ffda90d70e4a3f61b2b8264e720b05a33fd8a329f8a8e",
@@ -2215,8 +2255,8 @@
           "size": 2317
         },
         "src/audio.js": {
-          "sha256": "0a1553d94cca986b6024a233c4434206be5e1537cb8870d5a7e9e85c477f6e1e",
-          "size": 19547
+          "sha256": "c578ac55488f257fd3966e0079f66633ee84c67a01fc40875aefae0f63ae6bd0",
+          "size": 19894
         },
         "src/background-motion.js": {
           "sha256": "3678cee146d7d6f5c57ce4f0218b809c0befc002fd2809e9f7a05c895c7711f5",
@@ -2287,8 +2327,8 @@
           "size": 2186
         },
         "src/character-turns.js": {
-          "sha256": "8efa8ef9e7f795c9add209d8f3041128754d98550fc45d6a2b181f40d391a0c0",
-          "size": 7037
+          "sha256": "0de0464cb5033a0101ca1c5b9280bee11b9ba67784db98060615d81104160b57",
+          "size": 8074
         },
         "src/combat-effects.js": {
           "sha256": "5d475228d929abf59da0f35109d5713517062dfa876bc4763dffe0f6a24b8f4e",
@@ -2299,8 +2339,8 @@
           "size": 952
         },
         "src/desert-giant.js": {
-          "sha256": "bbac8a7926f5616219dcd36c1690fb618165cc85ef82d5ff538181b96ec79190",
-          "size": 3123
+          "sha256": "9da5037b1f958a1b4d0c90573c1bc4334c8a3ab3480d80aa6814cda031cbac32",
+          "size": 3910
         },
         "src/desert-layout.js": {
           "sha256": "45f91e4d93dea6cf40989aca0a453f422071826be6a6e285a35f6bf7633d8ce0",
@@ -2313,6 +2353,10 @@
         "src/desert-route-art.js": {
           "sha256": "9cb83585284c4bd6ef4438f984b83ed9c9d4daa33f3329b27967c6c6311fef7b",
           "size": 1470
+        },
+        "src/desert-striker-art.js": {
+          "sha256": "caeaf39bdad767e3c9c2fec1885a470f72f2043c0f1d0423833733db16265efa",
+          "size": 5051
         },
         "src/desert-two-lanes.js": {
           "sha256": "e9553741ae3c365d16afbbf1bfabff4ba35a54ff63682e4cad5e38a872718c45",
@@ -2415,20 +2459,20 @@
           "size": 1003
         },
         "src/ink-pods.js": {
-          "sha256": "b85ce28d8f8af969dd9484c6ffd964f237936f5664706f7d93572d0347595177",
-          "size": 5484
+          "sha256": "d5175ced4ac026e6244e10f18a2560e90ab2566675ee8fbe9ad2196fa4db2fd9",
+          "size": 7461
         },
         "src/ink-renderer.js": {
-          "sha256": "6e1a78fa2d5f63f06f9f233c682fe84de40bd9269df767aaede74bb4df3465dc",
-          "size": 23851
+          "sha256": "f58e9dcc993f98c0510b5da1338c84c108fff9ce3ccff4578b26addbfc781577",
+          "size": 24378
         },
         "src/ink-saltik.js": {
           "sha256": "ba15550e74f822e3897a3929289ebb1559b4c5b15e5f7be155d8ce1e42f03cb2",
           "size": 21342
         },
         "src/ink-scene.js": {
-          "sha256": "d2138d8fabd20c3d2e0cb144525af75e08d4fd9ade3a8f351800eb865b755623",
-          "size": 5143
+          "sha256": "c22dbecda4608d0f58dd09610dee65fa4074e1a010dd530a5196182f3b8e388f",
+          "size": 5586
         },
         "src/ink-turn.js": {
           "sha256": "e2e281634ce901d5e484fe5c5a6770ddc9365574f832550ee3ee2ff1162f8050",
@@ -2515,8 +2559,8 @@
           "size": 1708
         },
         "src/modern-striker-art.js": {
-          "sha256": "1d6b4f6c45dec4422378922277be4affd75070afd792233d765d3e23d18daaa2",
-          "size": 9148
+          "sha256": "968aec3d457951630d251c267d3441804d28237554dc45539dcec4c5fd0f0354",
+          "size": 9667
         },
         "src/motor-motion.js": {
           "sha256": "4cd5f7608a358e829486fb3044179c75876304c3623a922a6fb701055a468691",
@@ -2550,13 +2594,21 @@
           "sha256": "19a515f49e6616cc96474ba0402cd7527d5d7576e359c744e5327730b2a56112",
           "size": 633
         },
+        "src/red-wastes-layout.js": {
+          "sha256": "51c664321a3362e77650e0eab77ae93513113f1348e8c5be395bce25793e0767",
+          "size": 3138
+        },
         "src/red-wastes-level.js": {
-          "sha256": "f005bc46e97f26310619535bcaf93b7d6c6da994b01b590a68d75c8b1569eb5d",
-          "size": 2363
+          "sha256": "ba4b1f5fb2207750f9dbeff3ae4442c58f9e50cc7c79416695a99c3c29e45213",
+          "size": 2430
+        },
+        "src/red-wastes-sand.js": {
+          "sha256": "e80e04e371e73f5245853e15f01d79cbc60f13e1633ed7a764b4766add9ff5fd",
+          "size": 2598
         },
         "src/red-wastes-world.js": {
-          "sha256": "49827ff07b2202acbbcab6ef905d64c303d2d22a3ccc35aaf0d8a775f0ac9ee3",
-          "size": 2847
+          "sha256": "2ab3fa4abec17b405e4a09d7a9664efa2b797da4751e68b8abc4a218d8e062d8",
+          "size": 4386
         },
         "src/renderer.js": {
           "sha256": "f1e5891145283d8c07d159855d91a58318573f7d10baa74b797a6109d187c7a2",
@@ -2691,8 +2743,8 @@
           "size": 4040
         },
         "tests/audio.test.js": {
-          "sha256": "3a2c024d30e10713299894b6a5d28d91061708d897dad017ea811a47c4c6384b",
-          "size": 17337
+          "sha256": "07e5dfd0834a44330e09e719386d57db0cf815edc293fe234b6a64f7ee248072",
+          "size": 18007
         },
         "tests/background-motion.test.js": {
           "sha256": "b2ed18c174b699460961c74362aade366d189d00462dba78c0e885bd1b7ec050",
@@ -2959,8 +3011,8 @@
           "size": 1856
         },
         "tests/desert-giant.test.js": {
-          "sha256": "bb935fa02b9a1fc319e6c0eaf5c19a5db38360bc8e7c98fd747ed68ac90be341",
-          "size": 3056
+          "sha256": "74a468b06d3c1d6bcd56fc6527e84a8e39e1bd7996999f433e46e3b5b0d53a34",
+          "size": 3869
         },
         "tests/desert-level.test.js": {
           "sha256": "1445e96a34657bae1e771399fd729f361ea6bfc6163d761ed925b3569099d59d",
@@ -2969,6 +3021,10 @@
         "tests/desert-menu.test.js": {
           "sha256": "a35b2d1322d895f6ffa7877b1d831a370408960ec298007cf012a58491dabf19",
           "size": 597
+        },
+        "tests/desert-striker.test.js": {
+          "sha256": "8a911fa28d2e9f4f5137ab9cd28565eb31d6fff890ba914cb2a37fdef13af46e",
+          "size": 3455
         },
         "tests/desert-two-lanes.test.js": {
           "sha256": "12911098b41c87c98dc4aa9be5a62de5fd1f4552083a86d1032fe8510607257d",
@@ -3227,8 +3283,8 @@
           "size": 1507
         },
         "tests/pastel-preservation.test.js": {
-          "sha256": "c45e8a7e0dc7673592f8dbc1c79dc997bc8457d3d34ff0e20f518548364c47c5",
-          "size": 8903
+          "sha256": "700dda0a9c8fe7885fbeae7002b17afa5fdd06771581ea9fad161c02b3b48498",
+          "size": 9128
         },
         "tests/pastel-rider.test.js": {
           "sha256": "969e183bb7a0573ab07b43dbac3990e1cf1a2fd28c0bc32f2f6a51cb665d11c5",
@@ -3243,8 +3299,20 @@
           "size": 9052
         },
         "tests/red-wastes-level.test.js": {
-          "sha256": "c6749052a6e3bea515199cfd72f1ade42606e164ef5d3c4831e64f7a6eae34cd",
-          "size": 8107
+          "sha256": "594d83b6450d330bd2e4fd85233496089c03f927f3fb0fbd0926fd80956fdb05",
+          "size": 8105
+        },
+        "tests/red-wastes-routes.test.js": {
+          "sha256": "6c6a333cb2e22d9b6dc02eb8d8da7c9045b0fa557d1cbf75f600debce4da6769",
+          "size": 3659
+        },
+        "tests/red-wastes-sand.test.js": {
+          "sha256": "0575a169caa759d14601ab9f831d4ac35def0d3abeed0c1b20b0024aee85827e",
+          "size": 2471
+        },
+        "tests/red-wastes-world.test.js": {
+          "sha256": "8aa3f8564b7a40b8d50bc4e1087f578df1f93539c9158e4738b8cdecd70a7ac1",
+          "size": 927
         },
         "tests/renderer-clipping.test.js": {
           "sha256": "ab234118f7cdca8eca1dea232289c6b14fe2f8e1b600aabc2cb1dc7f1b7737db",

@@ -10,7 +10,23 @@ export function advanceDesertGiant(g,dt){
  if(!(dt>0)||!Number.isFinite(dt)||g.status!=='playing'||(d.phase??'outbound')!=='outbound'||g.introElapsed<g.introDuration||g.duel||g.carrierShutdown)return;
  if(!s.triggered&&g.player.x>=(g.level===5?9200:DESERT_GIANT_TRIGGER_X))s.triggered=true;
  if(!s.triggered||s.complete)return;
+ const previous=s.elapsed;
  s.elapsed=Math.min(DESERT_GIANT_DURATION,s.elapsed+dt);
+ // A foot lands at the wrap from its lifted swing to a planted stance.
+ // Detect crossings, not rendering frames, to avoid duplicate or paused beats.
+ for(const index of [0,1]){
+  const offset=index*1.2;
+  if(Math.floor((previous+offset+1e-8)/2.4)<Math.floor((s.elapsed+offset+1e-8)/2.4)){
+   const landing=Math.round((s.elapsed+offset)/2.4)*2.4-offset;
+   const foot=desertGiantPose(landing,{x:0,y:0,w:1,h:1})[index];
+   const centre=foot.x+foot.footWidth*(g.level===5?1.4:1)*.24;
+   if(centre>=-.08&&centre<=1.15){
+    const strength=Math.max(.45,1-Math.abs(centre-.5)*.5);
+    g.shake=Math.max(g.shake??0,strength*3.5);
+    g.events?.push({type:'desert-giant-step',x:g.player.x,y:g.groundAt?.(g.player.x)??g.player.y,index,strength,landing});
+   }
+  }
+ }
  if(s.elapsed>=DESERT_GIANT_DURATION-1e-8){s.elapsed=DESERT_GIANT_DURATION;s.complete=true;}
 }
 // A stance occupies half a 2.4s stride and has a genuinely fixed world contact.

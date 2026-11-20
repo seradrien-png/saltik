@@ -276,3 +276,10 @@ test('pod raise and pod rupture have distinct layered cues',()=>audioFixture(f=>
   assert.ok(rupture.filter(s=>s.kind==='noise').length>=2,'rupture needs tear and low explosion layers');
   assert.ok(rupture.some(s=>s.kind==='tone'),'rupture needs its own pitched impact');
 }));
+
+test('giant landings have a bounded low report and stop with pause and mute',()=>audioFixture(f=>{
+ const audio=createAudio();audio.setPlaying(true);audio.unlock();audio.play({type:'desert-giant-step',index:0,strength:1});
+ assert.equal(f.context.starts.filter(v=>v.kind==='tone').length,2);assert.equal(f.context.starts.filter(v=>v.kind==='noise').length,2);
+ audio.setPlaying(false);const count=f.context.starts.length;audio.play({type:'desert-giant-step',index:1,strength:1});assert.equal(f.context.starts.length,count);
+ audio.setPlaying(true);audio.setEnabled(false);audio.play({type:'desert-giant-step',index:1});assert.equal(f.context.starts.length,count);
+}));

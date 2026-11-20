@@ -8,7 +8,7 @@ Les cinq états ci-dessous sont conservés dans des dossiers indépendants, sans
 
 | Jeu / sources | État réel | GitHub Pages après activation | Commit source |
 | --- | --- | --- | --- |
-| [SALTIK V2 — Matin Doré](versions/saltik-main) | Publiée v54 — cinq niveaux et icône actuelle | [Jouer](https://saltik-v2-matin-dore.ser-adrien.chatgpt.site) | `9ae3ced85b9d` |
+| [SALTIK V2 — Matin Doré](versions/saltik-main) | Publiée v55 — S-03 et parcours des dunes | [Jouer](https://saltik-v2-matin-dore.ser-adrien.chatgpt.site) | `5a9cbd41d8e2` |
 | [SALTIK — Ink Edition publiée](versions/saltik-ink) | Publiée v4 | [Jouer](https://seradrien-png.github.io/saltik/versions/saltik-ink/dist/) | `44110aa2dd80` |
 | [SALTIK INK — brouillon local avec épilogue](versions/autres-versions/saltik-ink-brouillon) | Brouillon local non publié | [Jouer](https://seradrien-png.github.io/saltik/versions/autres-versions/saltik-ink-brouillon/dist/) | `21dcc4ca32c5` |
 | [Feral Steel — Opération Canopée, référence Saltik](versions/autres-versions/saltik-feral-steel) | Publiée v24 | [Jouer](https://seradrien-png.github.io/saltik/versions/autres-versions/saltik-feral-steel/dist/) | `dbc331d0b7a2` |
@@ -226,3 +226,8 @@ La v52 avait remplacé le quatrième niveau par le prototype du PDF. Cette port�
 ### 20 novembre 2026 — icône actuelle du raccourci téléphone (v54)
 
 L’ancienne miniature beige est remplacée par le Striker noir/orange actuel. Nouvelle image PNG1254×1254 sous une nouvelle adresse ; manifeste, icône Apple, favicon et aperçus d’installation mis à jour, y compris la page Android simple. L’identifiant d’application et le lien de lancement restent identiques, le gameplay est inchangé. Les anciennes icônes sont conservées. Build et références/dimensions vérifiés ;4ressources publiées comparées parSHA. Un téléphone peut conserver une ancienne image de raccourci jusqu’à son actualisation ou sa recréation. Publicationv54 réussie, source `9ae3ced85b9d3e05e5b1ee2b78aee4c9b13ba3cf`, version53 conservée dans le parent GitHub `386468fd49cea0a967849f0d8fbedad88f28a563`. [Rapport](launcher-icon-release.json).
+
+
+### 20 novembre 2026 — S-03 et parcours des dunes (v55)
+
+Le Striker par défaut des deux niveaux rouges reprend le modèle S-03 rouillé fourni, avec huit vues de retournement et huit caches de pods synchronisés sur les trois groupes de missiles natifs et leur cooldown. Le niveau 5 conserve la vitesse et tous les arsenaux : courbes de dunes, deux bunkers ensablés à trois hauteurs, passage réel dans une orbite du crâne. Traces persistantes et poussière aux roues ; cinq pas du géant synchronisés avec bruit grave et légère secousse. Les autres niveaux, skins optionnels, voix, A10 et anciennes ressources restent présents. 911 tests réussis ; contrôles navigateur ordinateur et mobile des trois Saltiks, supports et armes, aucune erreur JavaScript. Parcours avec armure normale : 109,7 secondes. Dix-sept ressources publiées comparées par SHA et identiques au paquet testé. Publication v55 réussie, source `5a9cbd41d8e2f93a5c8e26bb9b502f6320175e6c`. La v54 reste dans le parent GitHub `8a86ea907edf2ee387fea7d8465e86b2cbeca665` ; quatre autres éditions et historiques inchangés. [Rapport](red-dunes-release.json).
