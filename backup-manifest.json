@@ -7,15 +7,15 @@
       "slug": "saltik-main",
       "repo": "saltik-v2-matin-dore",
       "title": "SALTIK V2 \u2014 Matin Dor\u00e9",
-      "commit": "61a597e009791b9dc38b6bae21d32a47f1822274",
-      "published_version": 53,
+      "commit": "9ae3ced85b9d3e05e5b1ee2b78aee4c9b13ba3cf",
+      "published_version": 54,
       "url": "https://saltik-v2-matin-dore.ser-adrien.chatgpt.site",
       "base_commit": "ce280f9394d382d728673a48c1994a18092e8c58",
       "source_path": "/workspace/sites/saltik-v2-matin-dore",
       "export_path": "versions/saltik-main",
       "web_entry": "versions/saltik-main/dist/index.html",
-      "file_count": 845,
-      "bytes": 379798335,
+      "file_count": 848,
+      "bytes": 385049315,
       "uncommitted_changes": "",
       "files": {
         ".gitignore": {
@@ -51,8 +51,8 @@
           "size": 183408
         },
         "dist/android.html": {
-          "sha256": "0594daf62ea533f494c39bf98b9b1ca98e01a4155859d5e203c620bd247419a8",
-          "size": 17566
+          "sha256": "91e8b1a0f5f8346e6825e4b7c9668622d4d42b394fdca8ea150aeb26c485fc1c",
+          "size": 17636
         },
         "dist/assets/boss-assault-atlas.png": {
           "sha256": "f9859847a2d5a0f2b630bafaaef3f9f2eba725ace3629396825f5d2fd6986b63",
@@ -746,13 +746,17 @@
           "sha256": "79e76bebed3b71cdcaf844a38b88ce6184767e53e76be0ec019e0f42f78e06bd",
           "size": 253204
         },
+        "dist/icons/saltik-striker-current.png": {
+          "sha256": "ed147ef225331283696281d68b0d750c8f24c86a276ed1c6483b8772f2b34ff5",
+          "size": 2624775
+        },
         "dist/index.html": {
-          "sha256": "1328cf26675b545b127090ac4ffff9b36f0d9db12234272c254ffbb3268c8307",
-          "size": 17837
+          "sha256": "9d8b8f30b0b6e763d8ea52d547ee9ba059519557e4fc223725df932f2cefd7ff",
+          "size": 17925
         },
         "dist/manifest.webmanifest": {
-          "sha256": "3bb9a40c683b079ae3d60392946f0e04677dda91737ba9904ddf539f957ea539",
-          "size": 569
+          "sha256": "252d37ed9862a195c25a90e88e6223cfa6fd3890cfa4aaa1d26bc39c44a05eb5",
+          "size": 553
         },
         "dist/menu/level1-bt-default.webp": {
           "sha256": "d7677c56f97f007c55c667d00bfe17e579eecdfad42220d8e356d66a6a75d85c",
@@ -1398,6 +1402,10 @@
           "sha256": "41422d490984e34988f6be9b8e0de9d649ff491dcdb5054e966146e588e2ca50",
           "size": 262
         },
+        "docs/launcher-icon-validation.json": {
+          "sha256": "c420d8a3a7102be1056c75e8b6d15a6eb42333fe41d093f855500a267dcbbd63",
+          "size": 1202
+        },
         "docs/level-design/level-1-reference-hashes.json": {
           "sha256": "b1247f7140bdd7338be141cacb322915e346cc86a6833d48f0c84b7271a6e1ae",
           "size": 1185
@@ -2006,13 +2014,17 @@
           "sha256": "79e76bebed3b71cdcaf844a38b88ce6184767e53e76be0ec019e0f42f78e06bd",
           "size": 253204
         },
+        "icons/saltik-striker-current.png": {
+          "sha256": "ed147ef225331283696281d68b0d750c8f24c86a276ed1c6483b8772f2b34ff5",
+          "size": 2624775
+        },
         "index.html": {
-          "sha256": "1328cf26675b545b127090ac4ffff9b36f0d9db12234272c254ffbb3268c8307",
-          "size": 17837
+          "sha256": "9d8b8f30b0b6e763d8ea52d547ee9ba059519557e4fc223725df932f2cefd7ff",
+          "size": 17925
         },
         "manifest.webmanifest": {
-          "sha256": "3bb9a40c683b079ae3d60392946f0e04677dda91737ba9904ddf539f957ea539",
-          "size": 569
+          "sha256": "252d37ed9862a195c25a90e88e6223cfa6fd3890cfa4aaa1d26bc39c44a05eb5",
+          "size": 553
         },
         "package.json": {
           "sha256": "7763930470453775e12841fcea9a6f1434f1a6077e38134d3f73844cd9c4ea82",
@@ -2023,8 +2035,8 @@
           "size": 3073
         },
         "scripts/build.mjs": {
-          "sha256": "5296aa7e61cf4a0d1fa1a7de9c12d9533e1a2729c164bf817d6f75c4c31381b7",
-          "size": 1070
+          "sha256": "920f23a26c69366816a6d12e6c47cb1280189c0be6102c8fceb6b42bddc4b99b",
+          "size": 1084
         },
         "scripts/carrier-preview/assets/proposed-carrier.png": {
           "sha256": "ee45864e7aa3947a187d8e137d86e8b660f95387d5671d4b547291db9117e31d",
@@ -3410,12 +3422,12 @@
           "duration_native_run_seconds": 82.0166666666633
         }
       ],
-      "update_note": "Restore original level4 C07 journey. Add independent level5 Fossiles rouges:23000units, native speed/combat/all weapons,109.72s normal-armor full-arsenal run; continuous painted sand and colossal lower-leg passage.",
-      "published_source_commit": "61a597e009791b9dc38b6bae21d32a47f1822274",
+      "update_note": "Current black/orange Striker launcher icon, fresh PNG URL and manifest cache key; favicon/Apple/Android/install previews updated, same app id/start URL. No gameplay changes; legacy icons retained.",
+      "published_source_commit": "9ae3ced85b9d3e05e5b1ee2b78aee4c9b13ba3cf",
       "publication_status": "Published and verified",
       "github_import_base": "4c9b8e64bf3232c222f9b6f534ca37d660da3f7b",
-      "live_published_version": 53,
-      "last_confirmed_saved_version": 53
+      "live_published_version": 54,
+      "last_confirmed_saved_version": 54
     },
     {
       "slug": "saltik-ink",
@@ -7782,6 +7794,6 @@
   "github_repository": "seradrien-png/saltik",
   "preserved_github_parent": "a2658100e8259a69c772a6dd4cfbfcdb833f1221",
   "github_backup_commit": "55e0af78812ba737a6758403be9c2993ef2fa903",
-  "latest_main_source_commit": "61a597e009791b9dc38b6bae21d32a47f1822274",
+  "latest_main_source_commit": "9ae3ced85b9d3e05e5b1ee2b78aee4c9b13ba3cf",
   "history_note": "Source bundles preserve the initial backup capture. Subsequent project updates are preserved by commits of this GitHub repository."
 }

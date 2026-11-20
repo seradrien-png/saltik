@@ -1,0 +1,42 @@
+{
+  "icon": "icons/saltik-striker-current.png",
+  "dimensions": [
+    1254,
+    1254
+  ],
+  "sha256": "ed147ef225331283696281d68b0d750c8f24c86a276ed1c6483b8772f2b34ff5",
+  "bytes": 2624775,
+  "pages": [
+    {
+      "page": "index.html",
+      "icon_links": [
+        "./icons/saltik-striker-current.png",
+        "./icons/saltik-striker-current.png"
+      ],
+      "shortcut_preview_images": 3,
+      "manifest": [
+        "./manifest.webmanifest?v=striker-current"
+      ]
+    },
+    {
+      "page": "android.html",
+      "icon_links": [
+        "./icons/saltik-striker-current.png",
+        "./icons/saltik-striker-current.png"
+      ],
+      "shortcut_preview_images": 3,
+      "manifest": []
+    }
+  ],
+  "app_identity_and_launch_preserved": true,
+  "legacy_icon_retained": true,
+  "date": "2026-11-20",
+  "scope": "Launcher thumbnail updated to current black/orange Striker; no gameplay or launch identity changes",
+  "checks": [
+    "build completed",
+    "PNG decodes at declared dimensions",
+    "default and Android pages use current icon for favicon, Apple icon and three installation previews",
+    "manifest unique icon URL, stable app id and start URL",
+    "legacy icons preserved"
+  ]
+}

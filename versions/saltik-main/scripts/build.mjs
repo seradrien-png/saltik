@@ -8,7 +8,7 @@ const browserPage=(await readFile('index.html','utf8'))
   .replace(/<link rel="manifest"[^>]*>/g,'')
   .replace(/<meta name="(?:mobile-web-app-capable|apple-mobile-web-app-[^"]+)"[^>]*>/g,'')
   .replace(/^[ \t]+$/gm,'')
-  .replace('<link rel="icon" href="./favicon.svg" type="image/svg+xml">','<link rel="icon" href="./icons/ink-icon.png" type="image/png" sizes="1254x1254">');
+  .replace('<link rel="icon" href="./favicon.svg" type="image/svg+xml">','<link rel="icon" href="./icons/saltik-striker-current.png" type="image/png" sizes="1254x1254">');
 await writeFile('dist/android.html',browserPage);
 await cp('icons','dist/icons',{recursive:true});
 await cp('src','dist/src',{recursive:true});

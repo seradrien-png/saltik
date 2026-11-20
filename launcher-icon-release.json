@@ -1,0 +1,81 @@
+{
+  "icon": "icons/saltik-striker-current.png",
+  "dimensions": [
+    1254,
+    1254
+  ],
+  "sha256": "ed147ef225331283696281d68b0d750c8f24c86a276ed1c6483b8772f2b34ff5",
+  "bytes": 2624775,
+  "pages": [
+    {
+      "page": "index.html",
+      "icon_links": [
+        "./icons/saltik-striker-current.png",
+        "./icons/saltik-striker-current.png"
+      ],
+      "shortcut_preview_images": 3,
+      "manifest": [
+        "./manifest.webmanifest?v=striker-current"
+      ]
+    },
+    {
+      "page": "android.html",
+      "icon_links": [
+        "./icons/saltik-striker-current.png",
+        "./icons/saltik-striker-current.png"
+      ],
+      "shortcut_preview_images": 3,
+      "manifest": []
+    }
+  ],
+  "app_identity_and_launch_preserved": true,
+  "legacy_icon_retained": true,
+  "date": "2026-11-20",
+  "scope": "Launcher thumbnail updated to current black/orange Striker; no gameplay or launch identity changes",
+  "checks": [
+    "build completed",
+    "PNG decodes at declared dimensions",
+    "default and Android pages use current icon for favicon, Apple icon and three installation previews",
+    "manifest unique icon URL, stable app id and start URL",
+    "legacy icons preserved"
+  ],
+  "source_commit": "9ae3ced85b9d3e05e5b1ee2b78aee4c9b13ba3cf",
+  "previous_github_commit": "386468fd49cea0a967849f0d8fbedad88f28a563",
+  "publication": {
+    "version_number": 54,
+    "version_id": "appgprj_6ae77e1b6da081918600675fc2e2b738~appgver_1d6429f843908191bf6560441f36db47",
+    "deployment_id": "appgdep_6afff11ef6c881918f549c51f0d628b6",
+    "status": "succeeded",
+    "url": "https://saltik-v2-matin-dore.ser-adrien.chatgpt.site"
+  },
+  "public_resources": {
+    "url": "https://saltik-v2-matin-dore.ser-adrien.chatgpt.site",
+    "files": [
+      {
+        "path": "index.html",
+        "status": 200,
+        "bytes": 17925,
+        "matches": true
+      },
+      {
+        "path": "android.html",
+        "status": 200,
+        "bytes": 17636,
+        "matches": true
+      },
+      {
+        "path": "manifest.webmanifest?v=striker-current",
+        "status": 200,
+        "bytes": 553,
+        "matches": true
+      },
+      {
+        "path": "icons/saltik-striker-current.png",
+        "status": 200,
+        "bytes": 2624775,
+        "matches": true
+      }
+    ],
+    "passed": true
+  }
+}
