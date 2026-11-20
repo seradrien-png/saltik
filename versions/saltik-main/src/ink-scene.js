@@ -2,7 +2,8 @@ import {advanceRoyalPovCombat,clearRoyalPovCombat} from './royal-pov-combat.js';
 import {beginRoyalBoarding,ROYAL_FINALE_TIMING} from './royal-finale.js';
 import {nativeTurnSockets} from './character-turns.js';
 import {normalizeSkin} from './player-skins.js';
-import {advanceDesertTwoLanes} from './desert-two-lanes.js';
+import {applyRedWastesLevel,advanceRedWastesObjective} from './red-wastes-level.js';
+import {advanceDesertGiant} from './desert-giant.js';
 import {applyDesertLevel,advanceDesertObjective,desertInput} from './desert-level.js';
 import {applyRoyalLevel,advanceRoyalObjective} from './royal-level.js';
 import {createGame,update,LEVEL_END,advanceRoyalWeaponSimulation} from './engine.js';
@@ -27,6 +28,7 @@ export function createInkScene(options={}){
  const g=createGame(options);if(!g.player.character||g.player.character==='striker')g.player.visualModel='modern-striker';else if(g.player.character==='gatling')g.player.visualModel='modern-gatling';const cosmetic=normalizeSkin(options.character,options.skin);if(cosmetic!=='default')g.player.cosmeticSkin=cosmetic;g.inkPreview=true;g.inkCampaign=true;g.weaponGeometry=inkWeaponGeometry;
  g.enemyWeaponGeometry=inkEnemyGeometry;g.enemySaltikGeometry=inkEnemySaltikGeometry;
  g.level=1;g.levelTitle='Le Canyon';
+ if(options.level===5)return applyRedWastesLevel(g);
  if(options.level===4)return applyDesertLevel(g);
  if(options.level===2)return applyLunarLevel(g);
  if(options.level===3)return applyRoyalLevel(g);
@@ -60,9 +62,9 @@ export function updateInkScene(g,input,dt=1/60){
   return;
  }
  const before=g.time;
- if(g.level===4&&['outbound','return','entering'].includes(g.desert?.phase)&&g.desert.lanes?.active)advanceDesertTwoLanes(g,desertInput(g,input),dt);
- else update(g,desertInput(g,input),dt);
+ update(g,desertInput(g,input),dt);
  if(g.level===2)advanceLunarObjective(g,g.time-before);
  if(g.level===4)advanceDesertObjective(g,g.time-before);
+ if(g.level===5){advanceRedWastesObjective(g,g.time-before);advanceDesertGiant(g,g.time-before);}
  if(g.level===3)advanceRoyalObjective(g,g.time-before);
 }

@@ -5,10 +5,10 @@ export const DESERT_GIANT_TRIGGER_X=2800;
 const TAU=Math.PI*2;
 const smooth=t=>t*t*(3-2*t);
 export function advanceDesertGiant(g,dt){
- if(g.level!==4||!g.desert)return;
- const d=g.desert,s=d.giant??(d.giant={triggered:false,elapsed:0,complete:false});
- if(!(dt>0)||!Number.isFinite(dt)||g.status!=='playing'||d.phase!=='outbound'||g.introElapsed<g.introDuration||g.duel||g.carrierShutdown)return;
- if(!s.triggered&&g.player.x>=DESERT_GIANT_TRIGGER_X)s.triggered=true;
+ if(![4,5].includes(g.level)||!(g.redWastes??g.desert))return;
+ const d=g.redWastes??g.desert,s=d.giant??(d.giant={triggered:false,elapsed:0,complete:false});
+ if(!(dt>0)||!Number.isFinite(dt)||g.status!=='playing'||(d.phase??'outbound')!=='outbound'||g.introElapsed<g.introDuration||g.duel||g.carrierShutdown)return;
+ if(!s.triggered&&g.player.x>=(g.level===5?9200:DESERT_GIANT_TRIGGER_X))s.triggered=true;
  if(!s.triggered||s.complete)return;
  s.elapsed=Math.min(DESERT_GIANT_DURATION,s.elapsed+dt);
  if(s.elapsed>=DESERT_GIANT_DURATION-1e-8){s.elapsed=DESERT_GIANT_DURATION;s.complete=true;}
@@ -28,11 +28,12 @@ export function desertGiantPose(elapsed,box){
  });
 }
 export function drawDesertGiant(c,image,g,{box}){
- const s=g.desert?.giant;if(!image||!s?.triggered||s.complete||!['outbound','entering'].includes(g.desert.phase))return;
+ const state=g.redWastes??g.desert,s=state?.giant;if(!image||!s?.triggered||s.complete||!['outbound','entering'].includes(state.phase??'outbound'))return;
  c.save();c.beginPath();c.rect(box.x,box.y,box.w,box.h);c.clip();
  // Far leg first. Ground shadows contract as each foot rises and never follow
  // wall time, so pausing produces a pixel-identical articulated pose.
- for(const p of desertGiantPose(s.elapsed,box).reverse()){
+ for(const native of desertGiantPose(s.elapsed,box).reverse()){
+  const size=g.level===5?1.4:1,p={...native,footWidth:native.footWidth*size,shinWidth:native.shinWidth*size};
   const k=p.footWidth/734,ankleY=p.groundY-p.lift-240*k;
   c.fillStyle=p.index?'#752e20':'#63281d';c.beginPath();c.ellipse(p.x+p.footWidth*.24,p.groundY+2,p.footWidth*(.41-p.lift/box.h*.7),box.h*.009,0,0,TAU);c.fill();
   // Seat the tibia inside the socket, with overlap hidden by the foot rim.

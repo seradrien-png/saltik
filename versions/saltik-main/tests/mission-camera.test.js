@@ -65,3 +65,11 @@ test('actual renderer projection follows intro simulation, freezes on pause, rev
     r.render(g,9000,'title');near(r.cameraZoom,BASE_ZOOM);
   }finally{if(previous===undefined)delete globalThis.window;else globalThis.window=previous;}
 });
+
+test('longer additional missions keep the native player visible past the canyon boundary',()=>{
+ const game={level:5,levelEnd:23150,player:{x:20500,y:620}};
+ const p=projectMissionCamera({cssWidth:1280,cssHeight:720,zoom:BASE_ZOOM,game,playerTop:500,dt:1,camera:0,cameraY:0});
+ assert(game.player.x-p.camera>100&&game.player.x-p.camera<p.width-100);
+ const q=projectMissionCamera({cssWidth:1280,cssHeight:720,zoom:BASE_ZOOM,game:{...game,player:{x:20730,y:620}},playerTop:500,dt:1,camera:p.camera,cameraY:p.cameraY});
+ assert(Math.abs(q.camera-p.camera-230)<.001);
+});

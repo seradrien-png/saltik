@@ -9,6 +9,8 @@ export const ENEMY_MATERIALS=Object.freeze([
 ]);
 const sets={2:{'ink-enemies':'lunar-enemies','ink-enemy-saltik':'lunar-enemy-saltik','ink-carrier':'lunar-carrier'},3:{'ink-enemies':'royal-enemies','ink-enemy-saltik':'royal-enemy-saltik','ink-carrier':'royal-carrier'}};
 export function sceneArtImages(images,level,character='striker',skin='default',visualModel=null){
+ // The new red desert reuses the approved desert costumes and turn sheets.
+ if(level===5)level=4;
  let player=royalPlayerImages(images,level);const set=sets[level];
  if(character==='gatling')player={...player,'ink-saltik':images[level===2?'gatling-lunar':level===3?'gatling-velvet':'gatling-snow']??images['ink-saltik'],'ink-turn':images[`gatling-turn-${level}`]??images['gatling-turn']??null};
  if(character==='bt')player={...player,'ink-saltik':images[level===2?'lunar-enemy-saltik':level===3?'royal-enemy-saltik':'ink-enemy-saltik']??images['ink-enemy-saltik'],'ink-turn':images[`bt-turn-${level}`]??images['bt-turn']??null};

@@ -426,3 +426,9 @@ kbd{display:inline-flex;align-items:center;justify-content:center;min-width:19px
 #app[data-cinematic=royal-finale] #hud,#app[data-cinematic=royal-finale] #controls,#app[data-cinematic=royal-finale] #boss-hud{visibility:hidden;pointer-events:none}
 
 #app[data-cinematic=royal-pov-combat] .move-controls,#app[data-cinematic=royal-pov-combat] #directional-pad,#app[data-cinematic=royal-pov-combat] #drop-button,#app[data-cinematic=royal-pov-combat] #shift-button{visibility:hidden;pointer-events:none}
+
+/* Five independent missions; new desert keeps the native combat controls. */
+.level-picker{width:min(600px,100%);display:grid;grid-template-columns:repeat(5,minmax(0,1fr))}
+#app[data-level="5"] .title-content h1 em{color:#ed9d60;letter-spacing:.03em}
+#app[data-level="5"] .level-choice[aria-pressed="true"]{background:#efd4ae;color:#3c251d;border-color:#e3a76e}
+@media(max-height:520px){#app[data-level="5"] .title-content h1 em{font-size:.31em}}

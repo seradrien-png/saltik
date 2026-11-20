@@ -1,0 +1,109 @@
+{
+  "date": "2026-11-20",
+  "scope": "Restore original level4 and add independent level5 Fossiles rouges with native speed/combat/weapons and continuous illustrated sand",
+  "base_source_commit": "3ee9d7065d1a77a35f9df49d485b57670669599f",
+  "previous_github_commit": "f1c8ebc3ac3f9c85bfbb131aa1ddffba9659775b",
+  "automated_tests": {
+    "passed": 897,
+    "failed": 0
+  },
+  "level4_restored_exactly_from": "8fa2dae6e596233bc94a93749bd136bbf4cc7066 (desert-level.js and desert-world.js verified byte-for-byte)",
+  "full_run_normal_armor": {
+    "status": "won",
+    "time": 109.71666666666172,
+    "normalArmor": true,
+    "hp": 100,
+    "x": 23000,
+    "stats": {
+      "kills": 32,
+      "shots": 736,
+      "mirvs": 13,
+      "homingSalvos": 5,
+      "meleeSwings": 3,
+      "meleeHits": 3,
+      "interceptions": 0,
+      "score": 9425,
+      "obstacles": 0,
+      "neutralized": 3
+    }
+  },
+  "browser": {
+    "characters": [
+      {
+        "character": "striker",
+        "normalRunCamera": true,
+        "nativeJumpCrouch": true,
+        "weaponsAfter20000": true,
+        "pause": true,
+        "exit": true,
+        "errors": [],
+        "missing": []
+      },
+      {
+        "character": "gatling",
+        "normalRunCamera": true,
+        "nativeJumpCrouch": true,
+        "weaponsAfter20000": true,
+        "pause": true,
+        "exit": true,
+        "errors": [],
+        "missing": []
+      },
+      {
+        "character": "bt",
+        "normalRunCamera": true,
+        "nativeJumpCrouch": true,
+        "weaponsAfter20000": true,
+        "pause": true,
+        "exit": true,
+        "errors": [],
+        "missing": []
+      }
+    ],
+    "level4Restored": true
+  },
+  "mobile": {
+    "viewport": [
+      844,
+      390
+    ],
+    "deviceScaleFactor": 2,
+    "fiveLevelMenu": true,
+    "nativeTouchRunJumpCrouch": true,
+    "simultaneousLatePrimaryAndLocks": true,
+    "locks": 3,
+    "shots": 2,
+    "lateCameraVisible": true,
+    "pause": true,
+    "errors": []
+  },
+  "independent_review": "Camera capped at old17800 and frozen exit projectiles identified, corrected and re-reviewed; no remaining blockers.",
+  "camera_regression": "20500-unit visible player +230-unit world/camera parity, failed before fix and passed after.",
+  "weapons": "Native motor path, no lane hooks; primary/MIRV/guided, Gatling rockets/recoil/heat, BT locks/release/panic/refill tested after20500.",
+  "package": {
+    "before_bytes": 363244338,
+    "after_bytes": 249927147,
+    "saved_bytes": 113317191,
+    "reduction_percent": 31.196,
+    "all_audio_video_icons_unchanged": true,
+    "originals_retained": true
+  },
+  "preserved": [
+    "Original level4 C07 journey/interior/return",
+    "prior published versions and all other editions",
+    "all prior audio/music/voices/A10 and poses",
+    "native jump/crouch/evasion and character weapon clocks"
+  ],
+  "new_assets": [
+    {
+      "path": "dist/assets/red-wastes-sand-plane.png",
+      "bytes": 3162939,
+      "sha256": "96cd30f7c938ac24f0152c7dd091b03465cdaece6ff2b2687140d3a7a9802761"
+    },
+    {
+      "path": "dist/assets/red-wastes-skull.png",
+      "bytes": 2887965,
+      "sha256": "4267821a4192bd68b7621f27cca8313fff61a8c31ab88d3a0c33db02df843a26"
+    }
+  ]
+}

@@ -8,7 +8,7 @@ Les cinq états ci-dessous sont conservés dans des dossiers indépendants, sans
 
 | Jeu / sources | État réel | GitHub Pages après activation | Commit source |
 | --- | --- | --- | --- |
-| [SALTIK V2 — Matin Doré](versions/saltik-main) | Publiée v52 — deux voies du désert et squelette géant | [Jouer](https://saltik-v2-matin-dore.ser-adrien.chatgpt.site) | `3ee9d7065d1a` |
+| [SALTIK V2 — Matin Doré](versions/saltik-main) | Publiée v53 — niveau4 restauré et nouveau niveau5 | [Jouer](https://saltik-v2-matin-dore.ser-adrien.chatgpt.site) | `61a597e00979` |
 | [SALTIK — Ink Edition publiée](versions/saltik-ink) | Publiée v4 | [Jouer](https://seradrien-png.github.io/saltik/versions/saltik-ink/dist/) | `44110aa2dd80` |
 | [SALTIK INK — brouillon local avec épilogue](versions/autres-versions/saltik-ink-brouillon) | Brouillon local non publié | [Jouer](https://seradrien-png.github.io/saltik/versions/autres-versions/saltik-ink-brouillon/dist/) | `21dcc4ca32c5` |
 | [Feral Steel — Opération Canopée, référence Saltik](versions/autres-versions/saltik-feral-steel) | Publiée v24 | [Jouer](https://seradrien-png.github.io/saltik/versions/autres-versions/saltik-feral-steel/dist/) | `dbc331d0b7a2` |
@@ -216,3 +216,8 @@ La roue comprend deux jantes ouvertes, rayons et douze palettes projetés en per
 ### 20 novembre 2026 — deux voies du désert rouge et squelette géant (v52)
 
 Le prototype du PDF est intégré au niveau4 existant : voie basse devant le crâne, voie haute à80% derrière les masques opaques, montée/descente douce via les commandes haut/bas. Armes et esquive natives des trois personnages, canon principalement sur sa voie, guidés entre voies, mortier circulaire en coordonnées logiques communes. Un squelette colossal traverse une seule fois pendant8s ; seuls pieds et bas des jambes sont visibles, aux couleurs fossiles du décor, avec appuis plantés et chevilles articulées. Les salles de C-07 et le retour restent jouables. 886tests réussis, clavier trois personnages et multi-touch BT mobile émulé,13ressources publiées comparées par SHA. Publication v52 réussie. Source `3ee9d7065d1a77a35f9df49d485b57670669599f` ; version précédente conservée dans le parent GitHub `09377cdf7f58d7198cf283a547f4cac7dc94189d`. [Validation](desert-two-routes-release.json).
+
+
+### 20 novembre 2026 — niveau4 restauré, nouveau niveau5 natif (v53)
+
+La v52 avait remplacé le quatrième niveau par le prototype du PDF. Cette portée est corrigée : le niveau4 retrouve son panorama et son parcours vers C-07, son intérieur et son retour. Le nouveau cinquième choix « Fossiles rouges » propose une traversée de23000unités au défilement et à la vitesse normaux,35ennemis dont3Saltiks et6réparations. Les trois arsenaux, le saut, l’accroupissement, l’esquive et les QTE conservent leur fonctionnement ; les tests vérifient aussi les tirs et la caméra aprèsx20000. Un parcours intégré avec armure normale et les vrais maintiens/relâchements du MIRV termine en109,72s,32destructions et3Saltiks neutralisés. Deux illustrations ajoutent du sable continu et un crâne détouré, sans tranche de terre ni bord de plateforme. Le passage géant est conservé.897tests réussis, clavier3personnages et multitouchBT mobile,17ressources publiées comparées parSHA ; revue sansblocage. Publicationv53 réussie, source `61a597e009791b9dc38b6bae21d32a47f1822274`. La v52 reste dans le parent GitHub `f1c8ebc3ac3f9c85bfbb131aa1ddffba9659775b`, toutes les autres éditions et archives restent inchangées. [Rapport](new-red-level-release.json).

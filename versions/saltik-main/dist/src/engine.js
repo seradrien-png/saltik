@@ -854,7 +854,7 @@ function updateProjectiles(g,dt,playerMovement,collisionCache=null){
   for(const shot of g.projectiles){
     delete shot._segment;
   }
-  g.projectiles=g.status==='won'?[]:g.projectiles.filter(shot=>shot.life>0&&[shot.x,shot.y,shot.vx,shot.vy].every(Number.isFinite)&&shot.x>=-250&&shot.x<=LEVEL_END+500&&shot.y>=-900&&shot.y<900).concat(children);
+  g.projectiles=g.status==='won'?[]:g.projectiles.filter(shot=>shot.life>0&&[shot.x,shot.y,shot.vx,shot.vy].every(Number.isFinite)&&shot.x>=-250&&shot.x<=(g.levelEnd??LEVEL_END)+500&&shot.y>=-900&&shot.y<900).concat(children);
 }
 export function predictMirvImpact(g,p=g.player){
  if(!g.inkCampaign||!p.mirvAiming||g.status!=='playing'||p.evasion?.active||p.turn?.active)return null;
@@ -1155,7 +1155,7 @@ export function update(g,input={},dt=1/60){
         const dir=Math.sign(p.x-e.x),cover=blockers.find(o=>dir*(o.x-e.x)>0&&Math.abs(o.x-e.x)<o.w/2+80);
         if(cover&&e.obstacleStrikeIn<=0){hurtObstacle(g,cover,6);e.obstacleStrikeIn=.55;e.firePose=.14;}
       }
-      const movement={minX:route?route.x1+55:70,maxX:route?route.x2-55:LEVEL_END-150,groundAt:floor,
+      const movement={minX:route?route.x1+55:70,maxX:route?route.x2-55:(g.levelEnd??LEVEL_END)-150,groundAt:floor,
         canOccupy:x=>!blockers.some(o=>o.hp>0&&Math.abs(x-o.x)<o.w/2+46)};
       if(e.desertRoom!==undefined){movement.minX=Math.max(movement.minX,e.arenaMin);movement.maxX=Math.min(movement.maxX,e.arenaMax);}
       const ward=g.enemies.find(a=>a.id===e.protectsCarrierId&&!a.neutralized);

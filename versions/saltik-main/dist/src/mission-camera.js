@@ -22,7 +22,7 @@ export function projectMissionCamera({cssWidth,cssHeight,zoom,game,playerTop,vie
   const duel=game.duel,boss=game.boss;
   const normalFraming=duel?duel.x-width*.5:boss&&boss.hp>0?
     Math.min(p.x-110,((p.x-80)+(boss.x+185)-width)/2):p.x-width*(phone?.35:.29);
-  const normalX=clamp(normalFraming,70-width*(phone?.35:.29),LEVEL_END-width+250);
+  const normalX=clamp(normalFraming,70-width*(phone?.35:.29),(game.levelEnd??LEVEL_END)-width+250);
   const targetX=lerp(normalX,p.x-width*.5,centerWeight);
   const cinematic=intro||view==='won';
   const nextX=cinematic?targetX:camera+(targetX-camera)*Math.min(1,dt*5);

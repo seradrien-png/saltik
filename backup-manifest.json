@@ -7,15 +7,15 @@
       "slug": "saltik-main",
       "repo": "saltik-v2-matin-dore",
       "title": "SALTIK V2 \u2014 Matin Dor\u00e9",
-      "commit": "3ee9d7065d1a77a35f9df49d485b57670669599f",
-      "published_version": 52,
+      "commit": "61a597e009791b9dc38b6bae21d32a47f1822274",
+      "published_version": 53,
       "url": "https://saltik-v2-matin-dore.ser-adrien.chatgpt.site",
       "base_commit": "ce280f9394d382d728673a48c1994a18092e8c58",
       "source_path": "/workspace/sites/saltik-v2-matin-dore",
       "export_path": "versions/saltik-main",
       "web_entry": "versions/saltik-main/dist/index.html",
-      "file_count": 835,
-      "bytes": 373722660,
+      "file_count": 845,
+      "bytes": 379798335,
       "uncommitted_changes": "",
       "files": {
         ".gitignore": {
@@ -51,8 +51,8 @@
           "size": 183408
         },
         "dist/android.html": {
-          "sha256": "a9bd28ec16740008b6b6d2fde22920696d3f231053b4636a6f61c626a9b648a8",
-          "size": 17427
+          "sha256": "0594daf62ea533f494c39bf98b9b1ca98e01a4155859d5e203c620bd247419a8",
+          "size": 17566
         },
         "dist/assets/boss-assault-atlas.png": {
           "sha256": "f9859847a2d5a0f2b630bafaaef3f9f2eba725ace3629396825f5d2fd6986b63",
@@ -482,6 +482,14 @@
           "sha256": "6302bc4d7c4ce8cb432cd1bbd919d7aab463ccfe232793b96e27bae053587ed2",
           "size": 1908510
         },
+        "dist/assets/red-wastes-sand-plane.png": {
+          "sha256": "96cd30f7c938ac24f0152c7dd091b03465cdaece6ff2b2687140d3a7a9802761",
+          "size": 3162939
+        },
+        "dist/assets/red-wastes-skull.png": {
+          "sha256": "4267821a4192bd68b7621f27cca8313fff61a8c31ab88d3a0c33db02df843a26",
+          "size": 2887965
+        },
         "dist/assets/royal-carrier-material.png": {
           "sha256": "21d98f3dc8b9cc3ec4de241365b178225a716f02736b6bfe2c37ede8ed78927c",
           "size": 2549293
@@ -739,8 +747,8 @@
           "size": 253204
         },
         "dist/index.html": {
-          "sha256": "23a6b43cec2fcb62644d670301d3977dbec3dfeab8d61bf6383dc354ed646d13",
-          "size": 17698
+          "sha256": "1328cf26675b545b127090ac4ffff9b36f0d9db12234272c254ffbb3268c8307",
+          "size": 17837
         },
         "dist/manifest.webmanifest": {
           "sha256": "3bb9a40c683b079ae3d60392946f0e04677dda91737ba9904ddf539f957ea539",
@@ -915,16 +923,16 @@
           "size": 952
         },
         "dist/src/desert-giant.js": {
-          "sha256": "e967ffc54ad3294208d3bd393d000f9b4b8f198de52f8375ff687a09c293b965",
-          "size": 2900
+          "sha256": "bbac8a7926f5616219dcd36c1690fb618165cc85ef82d5ff538181b96ec79190",
+          "size": 3123
         },
         "dist/src/desert-layout.js": {
           "sha256": "45f91e4d93dea6cf40989aca0a453f422071826be6a6e285a35f6bf7633d8ce0",
           "size": 2792
         },
         "dist/src/desert-level.js": {
-          "sha256": "a38f38eb682a3e2a3b33ace7b50bd9cb688a9e29bfe47acd590b47c45d9cf059",
-          "size": 4886
+          "sha256": "290bceeeb62326f7288aa7f0683edf8102ee8eecbaac018df3218b8f000e52bb",
+          "size": 4691
         },
         "dist/src/desert-route-art.js": {
           "sha256": "9cb83585284c4bd6ef4438f984b83ed9c9d4daa33f3329b27967c6c6311fef7b",
@@ -935,8 +943,8 @@
           "size": 7139
         },
         "dist/src/desert-world.js": {
-          "sha256": "4b265ad82b790eadd4759f6784fa1d3c2a93ae5b32ad5c555de6c4e5d14ccb79",
-          "size": 9944
+          "sha256": "050d7478bb0dad167fbe8294d4045bd14803ba453a265330cd72e4e5b7449614",
+          "size": 6883
         },
         "dist/src/drone-carrier.js": {
           "sha256": "d8d973eea1cb1208581a133cecac62a82294708e8e587da909243067955da62b",
@@ -959,12 +967,12 @@
           "size": 7983
         },
         "dist/src/enemy-styles.js": {
-          "sha256": "23c2f0c7060bef921affb7eba812ed247302f0c35fa4c277b22c36c7a69e9b44",
-          "size": 3417
+          "sha256": "785f98399b27c739929449a18821befb6e2fa3cc9aa25dd703b45eb3b997cb5c",
+          "size": 3516
         },
         "dist/src/engine.js": {
-          "sha256": "20780b186eba461515d8e5457bb442ad8d5472607ee721d560654b496d236dfb",
-          "size": 80265
+          "sha256": "89e19002f94c7aef03cf09e1d10e121a21562b0e44b5c590414e2470572cb3cc",
+          "size": 80293
         },
         "dist/src/evasion.js": {
           "sha256": "3b9e6a5daafd5098d12f20a67279e98eca7b85ef500b79b67ea5862199992aeb",
@@ -1035,16 +1043,16 @@
           "size": 5484
         },
         "dist/src/ink-renderer.js": {
-          "sha256": "f9c1edc04c06bd8182aa58cfb2bf74170a7a9225f5a958d0194ca38ca72b9d34",
-          "size": 23373
+          "sha256": "6e1a78fa2d5f63f06f9f233c682fe84de40bd9269df767aaede74bb4df3465dc",
+          "size": 23851
         },
         "dist/src/ink-saltik.js": {
           "sha256": "ba15550e74f822e3897a3929289ebb1559b4c5b15e5f7be155d8ce1e42f03cb2",
           "size": 21342
         },
         "dist/src/ink-scene.js": {
-          "sha256": "f623e5d6dd8539dedbe96413cb464b26e22174b84bfa7746b6ad6cc46a870a1e",
-          "size": 5069
+          "sha256": "d2138d8fabd20c3d2e0cb144525af75e08d4fd9ade3a8f351800eb865b755623",
+          "size": 5143
         },
         "dist/src/ink-turn.js": {
           "sha256": "e2e281634ce901d5e484fe5c5a6770ddc9365574f832550ee3ee2ff1162f8050",
@@ -1095,16 +1103,16 @@
           "size": 4153
         },
         "dist/src/main.js": {
-          "sha256": "940d5978d68677f9cc03b7a69b6e95b970d3ab9e2209ab69cf801740d28fee7d",
-          "size": 34857
+          "sha256": "4e6f5fc664c320baf92141918f76d32fc5302f0ce2ca59871ab8ba3b06cdca88",
+          "size": 35134
         },
         "dist/src/melee-state.js": {
           "sha256": "f24e08a07354668edbe7d54291517edc973dd34f9dfa9653c4f5776fe2b1eb87",
           "size": 941
         },
         "dist/src/menu-portraits.js": {
-          "sha256": "871ab07ea26fc8f04b63051e65a182a04c986c224ed9f14a671f00eafbc2b39f",
-          "size": 1035
+          "sha256": "b0d52ede131060847089d3fc0a44b41adaee679a82fc4f7117d6222e88b94c30",
+          "size": 1047
         },
         "dist/src/mirv-audio.js": {
           "sha256": "1c0770466555dde8a2c8f4f3e60c35ec3cf3ac20d72bc9acfc682a55a831dab2",
@@ -1119,8 +1127,8 @@
           "size": 1183
         },
         "dist/src/mission-camera.js": {
-          "sha256": "379a897695ad2473f03d59dd8ba04301bc377b051a1d0f40b07c39d80f3b0301",
-          "size": 2075
+          "sha256": "6721c2f7b596d7ba4003fcd25fcf9939e05342ae6c0abb7e91476ba2f70c0ab0",
+          "size": 2092
         },
         "dist/src/modern-gatling-profile.js": {
           "sha256": "22382cc9236f3872278e3efa6ba21f2e108fdf3614971b0a2f4cf5422c2bf4d7",
@@ -1165,6 +1173,14 @@
         "dist/src/real-weapon-paths.js": {
           "sha256": "19a515f49e6616cc96474ba0402cd7527d5d7576e359c744e5327730b2a56112",
           "size": 633
+        },
+        "dist/src/red-wastes-level.js": {
+          "sha256": "f005bc46e97f26310619535bcaf93b7d6c6da994b01b590a68d75c8b1569eb5d",
+          "size": 2363
+        },
+        "dist/src/red-wastes-world.js": {
+          "sha256": "49827ff07b2202acbbcab6ef905d64c303d2d22a3ccc35aaf0d8a775f0ac9ee3",
+          "size": 2847
         },
         "dist/src/renderer.js": {
           "sha256": "f1e5891145283d8c07d159855d91a58318573f7d10baa74b797a6109d187c7a2",
@@ -1287,8 +1303,8 @@
           "size": 9418
         },
         "dist/style.css": {
-          "sha256": "4ccf56d9dd444a6e09a57d17b68e77de6896df05165394227ed5dfd9998f1c71",
-          "size": 47271
+          "sha256": "68ec2bb634934350a65d29eef19fd707987418265d8d2d3e053880de479846fe",
+          "size": 47720
         },
         "dist/video/saltik-free-together-poster.jpg": {
           "sha256": "de77c185c42f5b31e582f895bda0a8e5ea1c54cc0f9670bef8946a7c2cf3c767",
@@ -1449,6 +1465,14 @@
         "docs/natural-world-refinement.md": {
           "sha256": "ebaf630a9c768b050aeb0fbb4f521297261e6c1324c0409a1894cd5ea6021bbc",
           "size": 3319
+        },
+        "docs/new-red-level-validation.json": {
+          "sha256": "ad2fec3642ddc36c26326e79e08baff1f532d80efd922fcf67a8368818d4ce33",
+          "size": 3227
+        },
+        "docs/new-red-level.md": {
+          "sha256": "6caf2cb6c093984707671d540a976a4a1f933bcbea87c2a938f202aa7848fd69",
+          "size": 3089
         },
         "docs/pastel-v2-finishing-verification.md": {
           "sha256": "5308590f33386d2fe234a965a497fe2a320ff3114a2f72cb0e5faf8a4494c1c2",
@@ -1742,6 +1766,10 @@
           "sha256": "6fb69471bc028db16b4e5c2dcc4fdc3613468835e0cd46fa893bcf9901efa956",
           "size": 1290
         },
+        "docs/superpowers/plans/2026-11-20-separate-red-desert-level.md": {
+          "sha256": "4ed7fafb39b6a527168ffda90d70e4a3f61b2b8264e720b05a33fd8a329f8a8e",
+          "size": 1968
+        },
         "docs/superpowers/platform-combat-validation-2026-11-02.md": {
           "sha256": "d9c70c0fb0cfee3a448ee230fe67717dc9c6b77de7174183e325a1951356601d",
           "size": 5307
@@ -1979,8 +2007,8 @@
           "size": 253204
         },
         "index.html": {
-          "sha256": "23a6b43cec2fcb62644d670301d3977dbec3dfeab8d61bf6383dc354ed646d13",
-          "size": 17698
+          "sha256": "1328cf26675b545b127090ac4ffff9b36f0d9db12234272c254ffbb3268c8307",
+          "size": 17837
         },
         "manifest.webmanifest": {
           "sha256": "3bb9a40c683b079ae3d60392946f0e04677dda91737ba9904ddf539f957ea539",
@@ -2259,16 +2287,16 @@
           "size": 952
         },
         "src/desert-giant.js": {
-          "sha256": "e967ffc54ad3294208d3bd393d000f9b4b8f198de52f8375ff687a09c293b965",
-          "size": 2900
+          "sha256": "bbac8a7926f5616219dcd36c1690fb618165cc85ef82d5ff538181b96ec79190",
+          "size": 3123
         },
         "src/desert-layout.js": {
           "sha256": "45f91e4d93dea6cf40989aca0a453f422071826be6a6e285a35f6bf7633d8ce0",
           "size": 2792
         },
         "src/desert-level.js": {
-          "sha256": "a38f38eb682a3e2a3b33ace7b50bd9cb688a9e29bfe47acd590b47c45d9cf059",
-          "size": 4886
+          "sha256": "290bceeeb62326f7288aa7f0683edf8102ee8eecbaac018df3218b8f000e52bb",
+          "size": 4691
         },
         "src/desert-route-art.js": {
           "sha256": "9cb83585284c4bd6ef4438f984b83ed9c9d4daa33f3329b27967c6c6311fef7b",
@@ -2279,8 +2307,8 @@
           "size": 7139
         },
         "src/desert-world.js": {
-          "sha256": "4b265ad82b790eadd4759f6784fa1d3c2a93ae5b32ad5c555de6c4e5d14ccb79",
-          "size": 9944
+          "sha256": "050d7478bb0dad167fbe8294d4045bd14803ba453a265330cd72e4e5b7449614",
+          "size": 6883
         },
         "src/drone-carrier.js": {
           "sha256": "d8d973eea1cb1208581a133cecac62a82294708e8e587da909243067955da62b",
@@ -2303,12 +2331,12 @@
           "size": 7983
         },
         "src/enemy-styles.js": {
-          "sha256": "23c2f0c7060bef921affb7eba812ed247302f0c35fa4c277b22c36c7a69e9b44",
-          "size": 3417
+          "sha256": "785f98399b27c739929449a18821befb6e2fa3cc9aa25dd703b45eb3b997cb5c",
+          "size": 3516
         },
         "src/engine.js": {
-          "sha256": "20780b186eba461515d8e5457bb442ad8d5472607ee721d560654b496d236dfb",
-          "size": 80265
+          "sha256": "89e19002f94c7aef03cf09e1d10e121a21562b0e44b5c590414e2470572cb3cc",
+          "size": 80293
         },
         "src/evasion.js": {
           "sha256": "3b9e6a5daafd5098d12f20a67279e98eca7b85ef500b79b67ea5862199992aeb",
@@ -2379,16 +2407,16 @@
           "size": 5484
         },
         "src/ink-renderer.js": {
-          "sha256": "f9c1edc04c06bd8182aa58cfb2bf74170a7a9225f5a958d0194ca38ca72b9d34",
-          "size": 23373
+          "sha256": "6e1a78fa2d5f63f06f9f233c682fe84de40bd9269df767aaede74bb4df3465dc",
+          "size": 23851
         },
         "src/ink-saltik.js": {
           "sha256": "ba15550e74f822e3897a3929289ebb1559b4c5b15e5f7be155d8ce1e42f03cb2",
           "size": 21342
         },
         "src/ink-scene.js": {
-          "sha256": "f623e5d6dd8539dedbe96413cb464b26e22174b84bfa7746b6ad6cc46a870a1e",
-          "size": 5069
+          "sha256": "d2138d8fabd20c3d2e0cb144525af75e08d4fd9ade3a8f351800eb865b755623",
+          "size": 5143
         },
         "src/ink-turn.js": {
           "sha256": "e2e281634ce901d5e484fe5c5a6770ddc9365574f832550ee3ee2ff1162f8050",
@@ -2439,16 +2467,16 @@
           "size": 4153
         },
         "src/main.js": {
-          "sha256": "940d5978d68677f9cc03b7a69b6e95b970d3ab9e2209ab69cf801740d28fee7d",
-          "size": 34857
+          "sha256": "4e6f5fc664c320baf92141918f76d32fc5302f0ce2ca59871ab8ba3b06cdca88",
+          "size": 35134
         },
         "src/melee-state.js": {
           "sha256": "f24e08a07354668edbe7d54291517edc973dd34f9dfa9653c4f5776fe2b1eb87",
           "size": 941
         },
         "src/menu-portraits.js": {
-          "sha256": "871ab07ea26fc8f04b63051e65a182a04c986c224ed9f14a671f00eafbc2b39f",
-          "size": 1035
+          "sha256": "b0d52ede131060847089d3fc0a44b41adaee679a82fc4f7117d6222e88b94c30",
+          "size": 1047
         },
         "src/mirv-audio.js": {
           "sha256": "1c0770466555dde8a2c8f4f3e60c35ec3cf3ac20d72bc9acfc682a55a831dab2",
@@ -2463,8 +2491,8 @@
           "size": 1183
         },
         "src/mission-camera.js": {
-          "sha256": "379a897695ad2473f03d59dd8ba04301bc377b051a1d0f40b07c39d80f3b0301",
-          "size": 2075
+          "sha256": "6721c2f7b596d7ba4003fcd25fcf9939e05342ae6c0abb7e91476ba2f70c0ab0",
+          "size": 2092
         },
         "src/modern-gatling-profile.js": {
           "sha256": "22382cc9236f3872278e3efa6ba21f2e108fdf3614971b0a2f4cf5422c2bf4d7",
@@ -2509,6 +2537,14 @@
         "src/real-weapon-paths.js": {
           "sha256": "19a515f49e6616cc96474ba0402cd7527d5d7576e359c744e5327730b2a56112",
           "size": 633
+        },
+        "src/red-wastes-level.js": {
+          "sha256": "f005bc46e97f26310619535bcaf93b7d6c6da994b01b590a68d75c8b1569eb5d",
+          "size": 2363
+        },
+        "src/red-wastes-world.js": {
+          "sha256": "49827ff07b2202acbbcab6ef905d64c303d2d22a3ccc35aaf0d8a775f0ac9ee3",
+          "size": 2847
         },
         "src/renderer.js": {
           "sha256": "f1e5891145283d8c07d159855d91a58318573f7d10baa74b797a6109d187c7a2",
@@ -2631,8 +2667,8 @@
           "size": 9418
         },
         "style.css": {
-          "sha256": "4ccf56d9dd444a6e09a57d17b68e77de6896df05165394227ed5dfd9998f1c71",
-          "size": 47271
+          "sha256": "68ec2bb634934350a65d29eef19fd707987418265d8d2d3e053880de479846fe",
+          "size": 47720
         },
         "tests/arsenal-integration.test.js": {
           "sha256": "73a6ad38b4bc4243d05dc5b48af82396520cdc4248d0b6116776ac01f48937b5",
@@ -2915,12 +2951,12 @@
           "size": 3056
         },
         "tests/desert-level.test.js": {
-          "sha256": "c3cf032cca8cecf1c779a3af38f6b18d1cf86c74bca92ec5b805e06bd110b82f",
-          "size": 4072
+          "sha256": "1445e96a34657bae1e771399fd729f361ea6bfc6163d761ed925b3569099d59d",
+          "size": 4201
         },
         "tests/desert-menu.test.js": {
-          "sha256": "2f731be5b16d8d31ba9de5e10c8b2ae30db924ae7f0b0e39f1bfc475e941706b",
-          "size": 555
+          "sha256": "a35b2d1322d895f6ffa7877b1d831a370408960ec298007cf012a58491dabf19",
+          "size": 597
         },
         "tests/desert-two-lanes.test.js": {
           "sha256": "12911098b41c87c98dc4aa9be5a62de5fd1f4552083a86d1032fe8510607257d",
@@ -3143,8 +3179,8 @@
           "size": 3545
         },
         "tests/mission-camera.test.js": {
-          "sha256": "07c719466588573ae7a349a5c39f1414c3d936d59dedbf055922e9ef25aa11de",
-          "size": 4205
+          "sha256": "bfd9b72728f4117d7ec13e26645c792e8a46d361a98ff6ee9e3a76879a0954df",
+          "size": 4775
         },
         "tests/modern-gatling.test.js": {
           "sha256": "76471cc5649db33fe6dd6582cf227d8fa57da19dc45370bd8b07f466c761acdd",
@@ -3193,6 +3229,10 @@
         "tests/real-weapon-audio.test.js": {
           "sha256": "2a506fd1ed956de52a456a1719dfc941f18f9a27e8306c960018a94072f2d31f",
           "size": 9052
+        },
+        "tests/red-wastes-level.test.js": {
+          "sha256": "c6749052a6e3bea515199cfd72f1ade42606e164ef5d3c4831e64f7a6eae34cd",
+          "size": 8107
         },
         "tests/renderer-clipping.test.js": {
           "sha256": "ab234118f7cdca8eca1dea232289c6b14fe2f8e1b600aabc2cb1dc7f1b7737db",
@@ -3370,12 +3410,12 @@
           "duration_native_run_seconds": 82.0166666666633
         }
       ],
-      "update_note": "Two hand-authored Red Desert lanes around skull; smooth depth switching, native weapons and logical splash; single8s articulated giant lower-leg passage; C07 interior and return preserved.",
-      "published_source_commit": "3ee9d7065d1a77a35f9df49d485b57670669599f",
+      "update_note": "Restore original level4 C07 journey. Add independent level5 Fossiles rouges:23000units, native speed/combat/all weapons,109.72s normal-armor full-arsenal run; continuous painted sand and colossal lower-leg passage.",
+      "published_source_commit": "61a597e009791b9dc38b6bae21d32a47f1822274",
       "publication_status": "Published and verified",
       "github_import_base": "4c9b8e64bf3232c222f9b6f534ca37d660da3f7b",
-      "live_published_version": 52,
-      "last_confirmed_saved_version": 52
+      "live_published_version": 53,
+      "last_confirmed_saved_version": 53
     },
     {
       "slug": "saltik-ink",
@@ -7742,6 +7782,6 @@
   "github_repository": "seradrien-png/saltik",
   "preserved_github_parent": "a2658100e8259a69c772a6dd4cfbfcdb833f1221",
   "github_backup_commit": "55e0af78812ba737a6758403be9c2993ef2fa903",
-  "latest_main_source_commit": "3ee9d7065d1a77a35f9df49d485b57670669599f",
+  "latest_main_source_commit": "61a597e009791b9dc38b6bae21d32a47f1822274",
   "history_note": "Source bundles preserve the initial backup capture. Subsequent project updates are preserved by commits of this GitHub repository."
 }

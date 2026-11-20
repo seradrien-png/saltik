@@ -1,7 +1,7 @@
 import {normalizeSkin} from './player-skins.js';
 const cache=new Map();
 export function menuPortraitPath({level=1,character='striker',cosmeticSkin='default'}={}){
- const l=[1,2,3,4].includes(level)?level:1,c=['striker','gatling','bt'].includes(character)?character:'striker';
+ const l=level===5?4:[1,2,3,4].includes(level)?level:1,c=['striker','gatling','bt'].includes(character)?character:'striker';
  return `../menu/level${l}-${c}-${normalizeSkin(c,cosmeticSkin)}.webp`;
 }
 // Small, complete current-model portraits have priority over full game textures.
