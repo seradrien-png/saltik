@@ -6,7 +6,7 @@ import {availableCarrierShutdown,navigationContext} from '../src/engine.js';
 import {createEnemySaltik} from '../src/enemy-saltik.js';
 function fixture(){const g=createInkScene();g.schedule=[];g.obstacles=[];g.platforms=[];g.groundAt=()=>600;g.player.x=8700;g.player.y=600;g.player.supportY=600;g.player.invulnerable=99;g.maxX=8700;g.enemies=[createDroneCarrier({id:901,x:8940,guardianId:902},{y:600,random:.3}),createEnemySaltik({id:902,x:8800,protectsCarrierId:901},{y:600,random:.5})];return g;}
 const tick=(g,n,input={})=>{for(let i=0;i<n;i++)updateInkScene(g,input,1/60);};
-test('midpoint carrier has its own escort while preserving the three existing Saltiks',()=>{const g=createInkScene(),e=g.schedule.find(e=>e.type==='carrier');assert.ok(e.x>8000&&e.x<9600);assert.equal(g.schedule.filter(e=>e.type==='saltik').length,3);const guard=g.schedule.find(a=>a.id===e.guardianId);assert.equal(guard.protectsCarrierId,e.id);assert.ok(Math.abs(guard.x-e.x)<300);});
+test('midpoint carrier has its own escort while preserving the three existing Saltiks',()=>{const g=createInkScene(),e=g.schedule.find(e=>e.type==='carrier');assert.ok(e.x>8000&&e.x<9600);assert.equal(g.schedule.filter(e=>e.type==='saltik'&&e.enemyModel!=='longrange').length,3);const guard=g.schedule.find(a=>a.id===e.guardianId);assert.equal(guard.protectsCarrierId,e.id);assert.ok(Math.abs(guard.x-e.x)<300);});
 test('physical bullets exhaust combat readiness and knock out the intact occupied carrier',()=>{
  const g=fixture(),e=g.enemies[0];g.enemies=[e];e.cooldown=99;e.droneSlots.forEach(s=>s.recharge=99);
  for(let i=0;i<10&&!e.immobilized;i++){

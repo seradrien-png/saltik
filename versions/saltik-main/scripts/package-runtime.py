@@ -22,7 +22,7 @@ EXCLUDED = {
     'lunar-carrier-material', 'lunar-coherent-world', 'lunar-sky-layer',
     'royal-foreground-props', 'royal-flora',
     # Screen projections were explicitly retired; source/backup drawings remain.
-    'bt-finish-frames', 'bt-impact-underside', 'desert-bt-finishes',
+    'bt-finish-frames', 'bt-impact-underside', 'desert-bt-finishes', 'enemy-rust-striker',
 }
 
 def digest(path):

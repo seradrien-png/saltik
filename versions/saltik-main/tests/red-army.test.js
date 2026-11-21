@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import {createRedArmySchedule,createRedArmyHooks} from '../src/red-army.js';
 import {createInkScene} from '../src/ink-scene.js';
 import {update,combatBounds,combatTarget} from '../src/engine.js';
-import {enemyRustStrikerGeometry} from '../src/enemy-rust-striker-art.js';
+import {specialistGeometry as enemyRustStrikerGeometry} from '../src/enemy-specialists.js';
 import {applyRedWastesLevel} from '../src/red-wastes-level.js';
 const floor=()=>620;
 function soldier(role='gunner',type='soldier'){

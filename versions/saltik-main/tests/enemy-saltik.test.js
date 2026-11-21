@@ -21,8 +21,8 @@ function encounter({seconds=12,sample=.25,step=1/120,x=700}={}){
 test('Saltik factory preserves scheduled support and its armor scale',()=>{
   assert.equal(typeof createEnemySaltik,'function','enemy Saltik API is missing');
   const e=createEnemySaltik({id:19,x:700,type:'turret',tier:1,platformId:'ledge'},{y:620,random:.25});
-  assert.deepEqual([e.id,e.x,e.y,e.type,e.tier,e.platformId,e.hp,e.maxHp],[19,700,620,'saltik',1,'ledge',40,40]);
-  assert.equal(behavior.SALTIK_GUARD_HP/e.maxHp,.2);
+  assert.deepEqual([e.id,e.x,e.y,e.type,e.tier,e.platformId,e.hp,e.maxHp],[19,700,620,'saltik',1,'ledge',48,48]);
+  assert.equal(behavior.SALTIK_GUARD_HP/e.maxHp,8/48);
   assert.deepEqual(e,createEnemySaltik({id:19,x:700,type:'turret',tier:1,platformId:'ledge'},{y:620,random:.25}));
 });
 

@@ -22,5 +22,5 @@ test('spawned red patrol BT carries its new profile before attack and duel',()=>
  const g=createInkScene({level:5,character:'striker'});g.player.invulnerable=999;
  g.schedule=[{id:'red-bt',type:'saltik',x:1000}];g.nextSpawn=0;
  updateInkScene(g,{},1/60);const e=g.enemies.find(e=>e.type==='saltik');assert(e);
- assert.equal(e.btVariant,'desert');assert.equal(g.enemySaltikGeometry(e).profile,'desert-bt');
+ assert.equal(e.btVariant,undefined);assert.equal(g.enemySaltikGeometry(e).profile,undefined);
 });

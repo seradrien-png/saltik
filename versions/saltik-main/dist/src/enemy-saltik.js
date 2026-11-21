@@ -1,7 +1,7 @@
 import {BT_TUNING} from './bt-combat.js';
 import {enemySaltikGeometry} from './enemy-saltik-art.js';
 
-export const SALTIK_HP=40;
+export const SALTIK_HP=48;
 export const SALTIK_GUARD_HP=8;
 export const SALTIK_LOCK_TIME=.82;
 const clamp=(value,low,high)=>Math.max(low,Math.min(high,value));

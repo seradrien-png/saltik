@@ -19,7 +19,7 @@ test('oversized ranged damage defeats a BT on its support without guard or QTE',
  assert.equal(g.stats.kills,1);assert.equal(g.stats.score,250);assert.equal(g.stats.neutralized,1);noFinish(g);
 });
 test('damage crosses the former eight HP threshold normally and the final hit kills',()=>{
- const g=quiet(),e=saltik(g);g.enemies=[e];strike(g,e,32);assert.equal(e.hp,SALTIK_GUARD_HP);assert.equal(e.guard,false);
+ const g=quiet(),e=saltik(g);g.enemies=[e];strike(g,e,40);assert.equal(e.hp,SALTIK_GUARD_HP);assert.equal(e.guard,false);
  strike(g,e,7);assert.equal(e.hp,1);strike(g,e,1);assert.equal(e.hp,0);assert.equal(g.stats.kills,1);noFinish(g);
 });
 test('oversized melee damage kills before corpse contact can hurt the player',()=>{

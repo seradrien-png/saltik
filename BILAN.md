@@ -232,3 +232,7 @@ Roues animées sans marche des pattes, Saltiks ennemis couchés KO, BT à salves
 ## Publication v59 — 21 novembre 2026
 
 Correction HS selon la référence : le corps descend entre ses pattes repliées, les roues restent au sol et les couleurs sont conservées. Rotation globale et filtre sombre retirés. Source a0d6c647747d98b6e7c27271e90aebface826c6c. 1 015 tests réussis, poses BT et Striker contrôlées dans Chromium. 1 969 fichiers des cinq éditions et les historiques vérifiés ; anciennes versions conservées. Détails : grounded-collapse-v59-release.json.
+
+## Publication v61 — 21 novembre 2026
+
+BT ennemi original vert et orange, nouveau Striker noir et doré avec canon/guidés/MIRV, Longrange bleu et rouge à salves lointaines pré-déployées. PV ennemis +20 % ; HS animé avec yeux éteints et carcasse persistante. Source 17c86e6fae7e3d6d260c3f3cabec8073161b1bcb. 1 023 tests réussis, essais Chromium sur ordinateur et mobile simulé. 1 977 fichiers et les historiques vérifiés. Anciens dessins et versions conservés ; autres éditions inchangées. Détails dans enemy-specialists-release.json.

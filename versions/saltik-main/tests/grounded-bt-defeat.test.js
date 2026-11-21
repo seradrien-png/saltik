@@ -13,8 +13,8 @@ test('BT collapse keeps its lowest tire on the support in both directions and fr
    const gaps=contacts.map(point=>{const x=point.x-e.x,y=point.y-e.y,xx=e.x+x*co-y*si,yy=e.y+pose.offsetY+(x*si+y*co)*pose.scaleY;return yy-(600+(xx-500)*slope);});
    near(Math.max(...gaps),0);assert.ok(gaps.every(gap=>gap<1e-7));
   }
-  assert.deepEqual(groundedBTDefeatPose(e,11,{contacts}),groundedBTDefeatPose(e,100,{contacts}));
-  const settled=groundedBTDefeatPose(e,11,{contacts});near(settled.rotation,0);near(settled.scaleY,1);
+  assert.deepEqual(groundedBTDefeatPose(e,12,{contacts}),groundedBTDefeatPose(e,100,{contacts}));
+  const settled=groundedBTDefeatPose(e,12,{contacts});near(settled.rotation,0);near(settled.scaleY,1);
  }
 });
 

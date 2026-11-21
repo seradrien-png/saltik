@@ -1,6 +1,6 @@
 import {sampleSupportSurface} from './support-pose.js';
 
-export const BT_COLLAPSE_SECONDS=.48;
+export const BT_COLLAPSE_SECONDS=1.05;
 const hulls=new WeakMap();
 // Read the existing cutout's opaque boundary once. Using the actual painting
 // prevents the empty corners of a crop rectangle from holding a wreck aloft.
@@ -34,16 +34,26 @@ export function groundedBTDefeatPose(e,time=0,{contacts=[]}={}){
  return{progress,settled,rotation:0,scaleY:1,offsetY:Number.isFinite(penetration)?-penetration:0};
 }
 
+// Paint no wreck pixels through its own solid support, including small native
+// claw outlines that extend beyond the calibrated articulation masks.
+export function clipDefeatedSupport(c,e,{camera=0}={}){
+ const span=300*(e.artScale??1),left=e.x-span,right=e.x+span;
+ c.beginPath();c.moveTo(left-camera,e.y-500);c.lineTo(right-camera,e.y-500);
+ for(let x=right;x>=left;x-=10){const floor=sampleSupportSurface(e.supportPose,x);c.lineTo(x-camera,(Number.isFinite(floor)?floor:e.y)+1);}
+ c.closePath();c.clip();
+}
 export function drawGroundedBTDefeat(c,draw,e,{camera=0,time=0,contacts=[],silhouette=contacts}={}){
  const pose=groundedBTDefeatPose(e,time,{contacts,silhouette});
- c.save();c.translate(e.x-camera,e.y+pose.offsetY);c.scale(1,pose.scaleY);c.rotate(pose.rotation);c.translate(-(e.x-camera),-e.y);
+ c.save();clipDefeatedSupport(c,e,{camera});c.translate(e.x-camera,e.y+pose.offsetY);c.scale(1,pose.scaleY);c.rotate(pose.rotation);c.translate(-(e.x-camera),-e.y);
  draw();c.restore();return pose;
 }
 
-// Preserve the native eye pixels and costume palette. A narrow closed lid is
-// enough to convey shutdown without filling or recoloring either eye.
-export function drawNativeKOEyes(c,eyes,{radius=9}={}){
- c.save();c.lineWidth=Math.max(2,radius*.12);c.lineCap='round';c.strokeStyle='#241f1a';
- for(const [x,y,rx=radius,ry=radius*.7] of eyes){c.beginPath();c.moveTo(x-rx*.7,y);c.quadraticCurveTo(x,y+ry*.25,x+rx*.7,y);c.stroke();}
- c.restore();
+// Electrical shutdown affects only the calibrated eye glass. The costume
+// keeps its original material and color throughout the short collapse.
+export function drawNativeKOEyes(c,eyes,{radius=9,progress=1}={}){
+ const fade=Math.max(0,Math.min(1,(progress-.12)/.48));
+ const flicker=progress<.5&&Math.sin(progress*55)>0?.35:1;
+ const alpha=c.globalAlpha;c.save();c.fillStyle='#131a19';c.strokeStyle='#343d39';
+ for(const [x,y,rx=radius,ry=radius*.7] of eyes){c.save();c.globalAlpha*=fade*flicker;c.beginPath();c.ellipse(x,y,rx*.85,ry*.85,0,0,Math.PI*2);c.fill();c.lineWidth=Math.max(1,rx*.06);c.stroke();c.restore();c.globalAlpha=alpha;}
+ c.restore();c.globalAlpha=alpha;
 }

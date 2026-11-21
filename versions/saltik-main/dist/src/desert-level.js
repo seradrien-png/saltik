@@ -16,6 +16,7 @@ function enterInterior(g){
  const d=g.desert;d.phase='interior';d.phaseElapsed=0;d.interiorVisits++;d.checkpoint=180;
  g.levelEnd=DESERT_INTERIOR_END;g.platforms=createDesertRoutes();g.nextSpawn=0;g.enemies=[];
  g.schedule=DESERT_ROOMS.flatMap((room,i)=>room.types.map((type,j)=>({id:`desert-room-${i}-${j}`,type,x:room.center-250+j*115,desertRoom:i,arenaMin:room.center-450,arenaMax:room.gate-120,...(type==='turret'&&i===0?{platformId:'desert-dais',tier:1}:{})}))).sort((a,b)=>a.x-b.x);
+ const farRoom=DESERT_ROOMS[1];g.schedule.push({id:'desert-longrange',type:'saltik',enemyModel:'longrange',x:farRoom.center+80,desertRoom:1,arenaMin:farRoom.center-450,arenaMax:farRoom.gate-120});g.schedule.sort((a,b)=>a.x-b.x);
  g.pickups=[850,3000,5600,7200].map(x=>({x,y:desertInteriorGroundAt(x)-30,type:'repair'}));
  place(g,180);g.player.artScale=1;g.events.push({type:'desert-entry',x:180,y:620});
 }

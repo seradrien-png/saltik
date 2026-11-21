@@ -178,7 +178,7 @@ export function drawInkEnemySaltik(c,image,e,{camera=0,time=0,scale=1,view='side
  if(e.groundedDefeat&&!e.drawingGroundedDefeat){
   const resting={...e,hp:1,drawingGroundedDefeat:true,hit:0,guard:false,guardFlash:0,firePose:0,
    vx:0,vy:0,onGround:true,jumpLegs:null,podCycle:null,bt:null,btAimTarget:null,btGripTargets:null,
-   defeatCollapse:groundedBTDefeatPose(e,time).settled,motionLean:0,cannonRecoil:0,cannonElevation:0,attackPhase:'idle',podRaise:0,podLaunch:0};
+   defeatCollapse:groundedBTDefeatPose(e,time).settled,defeatEyeProgress:groundedBTDefeatPose(e,time).progress,motionLean:0,cannonRecoil:0,cannonElevation:0,attackPhase:'idle',podRaise:0,podLaunch:0};
   const frozenTime=e.defeatStartedAt??time,geo=inkEnemySaltikGeometry(resting,frozenTime,{scale,view});
   drawGroundedBTDefeat(c,()=>drawInkEnemySaltik(c,image,resting,{camera,time:frozenTime,scale,view}),e,
    {camera,time,contacts:geo.legs.map(leg=>leg.contact)});
@@ -215,7 +215,7 @@ export function drawInkEnemySaltik(c,image,e,{camera=0,time=0,scale=1,view='side
     c.translate(0,part.btExtension);c.beginPath();polygon(c,hand);c.clip();draw();
    }else{c.beginPath();polygon(c,part.polygon);c.clip();draw();}c.restore();
   }
-  if(e.drawingGroundedDefeat)drawNativeKOEyes(c,geo.eyes??[[607,541,18,23],[704,541,18,23]],{radius:18});
+  if(e.drawingGroundedDefeat)drawNativeKOEyes(c,geo.eyes??[[607,541,18,23],[704,541,18,23]],{radius:18,progress:e.defeatEyeProgress??1});
   // Faint light moves within the two existing eyes; no facial aperture moves.
   c.globalAlpha*=e.groundedDefeat?0:.08+.035*Math.sin(time*1.7);c.fillStyle=hit?'#ffffff':'#fff4db';
   for(const [x,y] of geo.eyes??[[607,541],[704,541]]){c.beginPath();c.ellipse(x+Math.sin(time*.8)*1.4,y,2.4,3.2,0,0,Math.PI*2);c.fill();}

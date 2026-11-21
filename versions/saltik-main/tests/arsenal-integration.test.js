@@ -145,7 +145,7 @@ test('a guided salvo physically clears a nearby real barrier from the native pod
 test('a replacement Saltik spawns at native size and emits physical gun and locking missiles through the engine',()=>{
   const g=quiet(),entry=createGame().schedule.find(e=>e.type==='saltik');g.schedule=[entry];
   Object.assign(g.player,{x:entry.x-700,y:terrainHeight(entry.x-700),supportY:terrainHeight(entry.x-700)});g.maxX=g.player.x;
-  step(g);const foe=g.enemies[0];assert.equal(foe.type,'saltik');assert.equal(foe.hp,40);assert.equal(foe.y,terrainHeight(foe.x));
+  step(g);const foe=g.enemies[0];assert.equal(foe.type,'saltik');assert.equal(foe.hp,48);assert.equal(foe.y,terrainHeight(foe.x));
   const seen=new Set(),ids=new Set();
   for(let frame=0;frame<270;frame++){
     step(g);

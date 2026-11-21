@@ -7,15 +7,15 @@
       "slug": "saltik-main",
       "repo": "saltik-v2-matin-dore",
       "title": "SALTIK V2 \u2014 Matin Dor\u00e9",
-      "commit": "a0d6c647747d98b6e7c27271e90aebface826c6c",
+      "commit": "17c86e6fae7e3d6d260c3f3cabec8073161b1bcb",
       "published_version": 57,
       "url": "https://saltik-v2-matin-dore.ser-adrien.chatgpt.site",
       "base_commit": "ce280f9394d382d728673a48c1994a18092e8c58",
       "source_path": "/workspace/sites/saltik-v2-matin-dore",
       "export_path": "versions/saltik-main",
       "web_entry": "versions/saltik-main/dist/index.html",
-      "file_count": 920,
-      "bytes": 410317580,
+      "file_count": 928,
+      "bytes": 412247563,
       "uncommitted_changes": "",
       "files": {
         ".gitignore": {
@@ -141,6 +141,10 @@
         "dist/assets/enemy-rust-striker.png": {
           "sha256": "cb4c4cc05a4c44826a6f602aae50a6525ffa108b8a8f86b5146782178a54935a",
           "size": 2617076
+        },
+        "dist/assets/enemy-specialists.png": {
+          "sha256": "3c3fffd497e8e8fad2d4e1467bf7a942b5764a9e7ad760f26400f9b528cdf440",
+          "size": 1897896
         },
         "dist/assets/gatling-desert-starless-atlas.png": {
           "sha256": "75fe2a505738499549c3549b2f5abe991f4e8286cea6e220a1a581faa403f863",
@@ -987,8 +991,8 @@
           "size": 2792
         },
         "dist/src/desert-level.js": {
-          "sha256": "290bceeeb62326f7288aa7f0683edf8102ee8eecbaac018df3218b8f000e52bb",
-          "size": 4691
+          "sha256": "99786470b14f1e1573d800ef7a99378abeb62b07daa3f3cbd15aee39d8d1aff0",
+          "size": 4920
         },
         "dist/src/desert-route-art.js": {
           "sha256": "9cb83585284c4bd6ef4438f984b83ed9c9d4daa33f3329b27967c6c6311fef7b",
@@ -1031,16 +1035,20 @@
           "size": 2328
         },
         "dist/src/enemy-saltik.js": {
-          "sha256": "34a9afa74ec667f7fd18cc97ca18c33b47d1f873a0b5314c2a9a26258b870485",
+          "sha256": "63f2812be2f8bc96749fa6df386cec31a1473050b9029e8d8b1c41e79144b103",
           "size": 8284
+        },
+        "dist/src/enemy-specialists.js": {
+          "sha256": "16d1fac86e3025426d3e5a17083a07b4a220969f0eb00b7262c85e56ed20cec6",
+          "size": 7161
         },
         "dist/src/enemy-styles.js": {
           "sha256": "0a4ff72c5ca247de876459edd8f2eb2e2be0e8bfebfb2fc548eba75f152eca5b",
           "size": 3722
         },
         "dist/src/engine.js": {
-          "sha256": "fab1bee9413d6a5effd0247a7467dd3b3bb9aa5c3bf4908517b2b15b6a373005",
-          "size": 83030
+          "sha256": "9c6ccb2a5c6813d9c3c082d213b246330a825f864b1ad3e55d802b4e375a6bcb",
+          "size": 83666
         },
         "dist/src/evasion.js": {
           "sha256": "3b9e6a5daafd5098d12f20a67279e98eca7b85ef500b79b67ea5862199992aeb",
@@ -1067,8 +1075,8 @@
           "size": 1765
         },
         "dist/src/grounded-bt-defeat.js": {
-          "sha256": "63e04fd680f42c830e481ef0aee655aac879682da197d9242b143f54dc259adb",
-          "size": 2698
+          "sha256": "130fda0627d31dae7b2a2e429805513f24895970ceee93af6a01eb892807a830",
+          "size": 3474
         },
         "dist/src/guided-navigation.js": {
           "sha256": "adc9ef558a36437adc80c58724fccafd63b1186a67b7bb1c81e308d5941e6957",
@@ -1099,8 +1107,8 @@
           "size": 38557
         },
         "dist/src/ink-enemy-saltik.js": {
-          "sha256": "2c1aac7811f042df1cdd8caf2c305d3857bd99dfac1f63d7991d5ca13a4c8679",
-          "size": 18115
+          "sha256": "4a6c4fba889a3254166a8014164cfe21324c9fd7218081cebf1e50291b40c0a9",
+          "size": 18203
         },
         "dist/src/ink-hit-cache.js": {
           "sha256": "7e9903deb9b50802faa19d302bb0c118da012ebf4213be0882c5bc493b113a80",
@@ -1123,16 +1131,16 @@
           "size": 7944
         },
         "dist/src/ink-renderer.js": {
-          "sha256": "182c0f84106451be54fc662ccd4e629394f81775b060c37ee0bb2f79641d1ed4",
-          "size": 24708
+          "sha256": "ab97bc69aae2602d1adff039a1b5c2bfb455c524a3965ab4eeb52d7e5a325a2a",
+          "size": 24748
         },
         "dist/src/ink-saltik.js": {
           "sha256": "9b229f04aa24d21f0b7ed23f18e1566decfd91a5636d15fe315c86b82ac40246",
           "size": 21312
         },
         "dist/src/ink-scene.js": {
-          "sha256": "670b268cfe804519b5720cd8814ae79b2acf4003e1a2b884e0d2fa10286d7355",
-          "size": 5894
+          "sha256": "6a565055abd9649c813b73671cd4077dcdad498370c0fc74818143004a08fd0f",
+          "size": 6106
         },
         "dist/src/ink-turn.js": {
           "sha256": "e2e281634ce901d5e484fe5c5a6770ddc9365574f832550ee3ee2ff1162f8050",
@@ -1153,6 +1161,10 @@
         "dist/src/jump-leg-pose.js": {
           "sha256": "5dd4f58b0adaa5712fed1b15b0e0060f7b47adf646613df6c7862cd0c5a5c55d",
           "size": 2805
+        },
+        "dist/src/longrange-enemy.js": {
+          "sha256": "858eb75f3e9ccebfa9dea6e29b4e9d8f18834d062b1705cd4de1e8a67c46625b",
+          "size": 2097
         },
         "dist/src/lunar-architecture.js": {
           "sha256": "c1eb7b42baec02ca72082ab52c34acb76a174105bf8bbf9f97f10d0ef919f4bf",
@@ -1473,6 +1485,14 @@
         "docs/enemy-arsenals.md": {
           "sha256": "04a5efc0ea1aa6e6fb4a554476ab68dd707bd9edca0a73b5ca5b18293fe202d0",
           "size": 1937
+        },
+        "docs/enemy-specialists-v60-validation.json": {
+          "sha256": "cf848febffda9529ab5f969b00f3de31a4f926525df7cee820c3cf6a05421d74",
+          "size": 1122
+        },
+        "docs/enemy-specialists-v60.md": {
+          "sha256": "dda8051aae4432fec3cb17345ccf54c4f2109adee38ff7be4607d4c4bac7ec8f",
+          "size": 2895
         },
         "docs/epilogue/README.md": {
           "sha256": "f111bb2b4bbd03fc55432a40d8d4755288a5a33e4e3cbd9b8d7ee107b6d5354f",
@@ -2279,8 +2299,8 @@
           "size": 4193
         },
         "scripts/package-runtime.py": {
-          "sha256": "e7363c28f43e6a6db7d49691b54d48deb741bd600bd3825b38476c4520077213",
-          "size": 7164
+          "sha256": "247dd1a3bfd01cbb2170742f6518234a3b11c7229943a64fb1fe2150d8726d87",
+          "size": 7186
         },
         "scripts/promo-v2/README.md": {
           "sha256": "ef893c27871e5bcdff25e446fa34a4fe64fec9242bb433fd7e45b784773bd4d6",
@@ -2483,8 +2503,8 @@
           "size": 2792
         },
         "src/desert-level.js": {
-          "sha256": "290bceeeb62326f7288aa7f0683edf8102ee8eecbaac018df3218b8f000e52bb",
-          "size": 4691
+          "sha256": "99786470b14f1e1573d800ef7a99378abeb62b07daa3f3cbd15aee39d8d1aff0",
+          "size": 4920
         },
         "src/desert-route-art.js": {
           "sha256": "9cb83585284c4bd6ef4438f984b83ed9c9d4daa33f3329b27967c6c6311fef7b",
@@ -2527,16 +2547,20 @@
           "size": 2328
         },
         "src/enemy-saltik.js": {
-          "sha256": "34a9afa74ec667f7fd18cc97ca18c33b47d1f873a0b5314c2a9a26258b870485",
+          "sha256": "63f2812be2f8bc96749fa6df386cec31a1473050b9029e8d8b1c41e79144b103",
           "size": 8284
+        },
+        "src/enemy-specialists.js": {
+          "sha256": "16d1fac86e3025426d3e5a17083a07b4a220969f0eb00b7262c85e56ed20cec6",
+          "size": 7161
         },
         "src/enemy-styles.js": {
           "sha256": "0a4ff72c5ca247de876459edd8f2eb2e2be0e8bfebfb2fc548eba75f152eca5b",
           "size": 3722
         },
         "src/engine.js": {
-          "sha256": "fab1bee9413d6a5effd0247a7467dd3b3bb9aa5c3bf4908517b2b15b6a373005",
-          "size": 83030
+          "sha256": "9c6ccb2a5c6813d9c3c082d213b246330a825f864b1ad3e55d802b4e375a6bcb",
+          "size": 83666
         },
         "src/evasion.js": {
           "sha256": "3b9e6a5daafd5098d12f20a67279e98eca7b85ef500b79b67ea5862199992aeb",
@@ -2563,8 +2587,8 @@
           "size": 1765
         },
         "src/grounded-bt-defeat.js": {
-          "sha256": "63e04fd680f42c830e481ef0aee655aac879682da197d9242b143f54dc259adb",
-          "size": 2698
+          "sha256": "130fda0627d31dae7b2a2e429805513f24895970ceee93af6a01eb892807a830",
+          "size": 3474
         },
         "src/guided-navigation.js": {
           "sha256": "adc9ef558a36437adc80c58724fccafd63b1186a67b7bb1c81e308d5941e6957",
@@ -2595,8 +2619,8 @@
           "size": 38557
         },
         "src/ink-enemy-saltik.js": {
-          "sha256": "2c1aac7811f042df1cdd8caf2c305d3857bd99dfac1f63d7991d5ca13a4c8679",
-          "size": 18115
+          "sha256": "4a6c4fba889a3254166a8014164cfe21324c9fd7218081cebf1e50291b40c0a9",
+          "size": 18203
         },
         "src/ink-hit-cache.js": {
           "sha256": "7e9903deb9b50802faa19d302bb0c118da012ebf4213be0882c5bc493b113a80",
@@ -2619,16 +2643,16 @@
           "size": 7944
         },
         "src/ink-renderer.js": {
-          "sha256": "182c0f84106451be54fc662ccd4e629394f81775b060c37ee0bb2f79641d1ed4",
-          "size": 24708
+          "sha256": "ab97bc69aae2602d1adff039a1b5c2bfb455c524a3965ab4eeb52d7e5a325a2a",
+          "size": 24748
         },
         "src/ink-saltik.js": {
           "sha256": "9b229f04aa24d21f0b7ed23f18e1566decfd91a5636d15fe315c86b82ac40246",
           "size": 21312
         },
         "src/ink-scene.js": {
-          "sha256": "670b268cfe804519b5720cd8814ae79b2acf4003e1a2b884e0d2fa10286d7355",
-          "size": 5894
+          "sha256": "6a565055abd9649c813b73671cd4077dcdad498370c0fc74818143004a08fd0f",
+          "size": 6106
         },
         "src/ink-turn.js": {
           "sha256": "e2e281634ce901d5e484fe5c5a6770ddc9365574f832550ee3ee2ff1162f8050",
@@ -2649,6 +2673,10 @@
         "src/jump-leg-pose.js": {
           "sha256": "5dd4f58b0adaa5712fed1b15b0e0060f7b47adf646613df6c7862cd0c5a5c55d",
           "size": 2805
+        },
+        "src/longrange-enemy.js": {
+          "sha256": "858eb75f3e9ccebfa9dea6e29b4e9d8f18834d062b1705cd4de1e8a67c46625b",
+          "size": 2097
         },
         "src/lunar-architecture.js": {
           "sha256": "c1eb7b42baec02ca72082ab52c34acb76a174105bf8bbf9f97f10d0ef919f4bf",
@@ -2903,7 +2931,7 @@
           "size": 47961
         },
         "tests/arsenal-integration.test.js": {
-          "sha256": "73a6ad38b4bc4243d05dc5b48af82396520cdc4248d0b6116776ac01f48937b5",
+          "sha256": "7dd1d604a0aa15f0200566511117a711bf04ede98be375a971d77f28d5820d27",
           "size": 14788
         },
         "tests/art-loading.test.js": {
@@ -3143,8 +3171,8 @@
           "size": 5172
         },
         "tests/carrier-integration.test.js": {
-          "sha256": "bbeaecea069a851289dcc814a3654654322a0cc5843c3077a999aa581b262935",
-          "size": 3497
+          "sha256": "8fe801c1250029fd203961dfe4d4427760c179b0fe6bf6c84b791b926b34a627",
+          "size": 3525
         },
         "tests/carrier-shutdown.test.js": {
           "sha256": "b31942e4303338d1767df3d2992e640146bb4c86df0c7298844061e632d1bca2",
@@ -3183,7 +3211,7 @@
           "size": 3679
         },
         "tests/desert-campaign.test.js": {
-          "sha256": "d79e4d4e820c21eed6a0b3f4480201e6475abcee758d419d2178783d77e06ffc",
+          "sha256": "6575927b41374bb959efa8ec492cdf245c73f9052aa5eabfcdee675a05d8c98c",
           "size": 1856
         },
         "tests/desert-giant.test.js": {
@@ -3191,7 +3219,7 @@
           "size": 4742
         },
         "tests/desert-level.test.js": {
-          "sha256": "1445e96a34657bae1e771399fd729f361ea6bfc6163d761ed925b3569099d59d",
+          "sha256": "6f400ffac90e3186b800a998745f82f81c24b1769ea17513bcfbdd90038ef7c9",
           "size": 4201
         },
         "tests/desert-menu.test.js": {
@@ -3207,8 +3235,8 @@
           "size": 7210
         },
         "tests/desert-v56-integration.test.js": {
-          "sha256": "78d286039092ec33e816999af633a59852844acad472303edbcbe8d21f3fb09d",
-          "size": 1629
+          "sha256": "e3d997496b1635697da3d6c64400272203f6dbb59d24c593428f5af9659acc6b",
+          "size": 1628
         },
         "tests/desert-world.test.js": {
           "sha256": "ed582054c1b13a948ecab6406f105a03dab6c064c3161a60ed394c66cad8509c",
@@ -3231,16 +3259,16 @@
           "size": 3657
         },
         "tests/enemy-rust-striker-art.test.js": {
-          "sha256": "a4790bb4a856f687aadc75f3b5eff141d2a3881ca76357110c6b9df411ccd3e4",
-          "size": 4246
+          "sha256": "4ace32f74bc174dc4e8955b6f2196c16b97f3c1a87b358ad581fb9fabbbfd765",
+          "size": 4245
         },
         "tests/enemy-saltik-art.test.js": {
           "sha256": "1024d72842050abb078bfca45eec44198f1dc3b021cfa85f1f180e7c5f71b580",
           "size": 2778
         },
         "tests/enemy-saltik.test.js": {
-          "sha256": "ee07b98cf0e025423369dac26f55334325891cebe9b83ca87f899b457983c8e8",
-          "size": 8231
+          "sha256": "8f6c7ad9befe557c969d9a5a7aba0b3a099a0239ad89559d00e29b8863dd0e37",
+          "size": 8233
         },
         "tests/enemy-styles.test.js": {
           "sha256": "54929a3982f615c03e8c87879e52607a64449b222d000bfbe4b6d4e478fbbb60",
@@ -3287,7 +3315,7 @@
           "size": 5319
         },
         "tests/grounded-bt-defeat.test.js": {
-          "sha256": "436073824938e51769827b0fba4605f8dee1ade1829e0ed2a5720c4657300580",
+          "sha256": "47e690bc6d0ed91bc37cff760212369a0c10338e7b3592227cbedf8d3dd75b26",
           "size": 4549
         },
         "tests/guided-navigation.test.js": {
@@ -3369,6 +3397,10 @@
         "tests/live-weapon-art.test.js": {
           "sha256": "a476b8a0109c6331e58503a43855957999661f9223c6fe53411a5becb6dad702",
           "size": 6534
+        },
+        "tests/longrange-specialists.test.js": {
+          "sha256": "b8d3a8c3664d4a0f21ec4b9ee448488036b63953e9aa863900f236ca9eccc831",
+          "size": 5396
         },
         "tests/lunar-architecture.test.js": {
           "sha256": "d34065fc65e093e639079f1057f606404e9a0df1133d2af47a45d4f187ef4b1f",
@@ -3503,8 +3535,8 @@
           "size": 9052
         },
         "tests/red-army.test.js": {
-          "sha256": "822446f7e3f69b30c149a5932d387d141dd300a781c3ad54fe9497a6c6c8affd",
-          "size": 8448
+          "sha256": "1b4122d243a83573fd876439c4fe6f53d989b1ae01e3e503330c2b0106e12821",
+          "size": 8465
         },
         "tests/red-sand-music.test.js": {
           "sha256": "28573d779cc9d4437d4f1204ada94f9fce364622fc307e0a8579eb3edfaf87ac",
@@ -3587,8 +3619,8 @@
           "size": 5490
         },
         "tests/royal-level.test.js": {
-          "sha256": "0039fe12398bc70e21517c1dbcb81bed4f6e74a15f82b4877415077bab3367ce",
-          "size": 4039
+          "sha256": "d46ff556b74559ec94fa45de319a5971d3d0ef3bb06f3b4f425bba2469f24a0f",
+          "size": 4168
         },
         "tests/royal-living-world.test.js": {
           "sha256": "306aa400059db6d132f28e18f81e181bb268f1097a6b992d881d908b0ec6dcb3",
@@ -3615,7 +3647,7 @@
           "size": 1535
         },
         "tests/saltik-duel-engine.test.js": {
-          "sha256": "32e8e9cedd05b7328782e23634f2c952e9286c736c3effdd5044f7dc00d8b47d",
+          "sha256": "be0aa4ec9442543f9560d6b08fbae9b0de0dba60d6ee6fd91b233985543d3659",
           "size": 4844
         },
         "tests/saltik-duel.test.js": {

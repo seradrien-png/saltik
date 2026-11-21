@@ -1,0 +1,55 @@
+{
+  "date": "2026-11-21",
+  "base_source_commit": "a0d6c647747d98b6e7c27271e90aebface826c6c",
+  "previous_github_commit": "e4e9b1ca4840a39216667fdb33e98974ef663aec",
+  "tests": {
+    "passed": 1023,
+    "failed": 0
+  },
+  "browser": {
+    "models": [
+      "original BT",
+      "black gold Striker",
+      "Longrange"
+    ],
+    "health": 48,
+    "threeGroundedDefeats": true,
+    "shutdownFramesCaptured": true,
+    "longrangeBeyondViewport": true,
+    "pause": true,
+    "errors": [],
+    "missing": []
+  },
+  "browser_viewports": [
+    [
+      1440,
+      810
+    ],
+    [
+      844,
+      390
+    ]
+  ],
+  "mobile_dpr": 2,
+  "archive_bytes": 266260480,
+  "runtime_bytes": 265648366,
+  "armor": {
+    "before": 40,
+    "after": 48,
+    "increase_percent": 20
+  },
+  "longrange": {
+    "salvo": 6,
+    "range": 3600,
+    "interval_seconds": 5.2,
+    "warning_seconds": 1.15,
+    "predeployment_offset": 2400,
+    "real_far_spawn_verified": true
+  },
+  "original_assets_preserved": true,
+  "package_verified_against_source_with_asset_url_rewriting": true,
+  "integration_tests": {
+    "passed": 28,
+    "failed": 0
+  }
+}

@@ -23,7 +23,7 @@ test('enemy pod covers retain native art when loaded and reveal only genuinely s
  assert.equal(ready.calls.length,empty.calls.length);assert.equal(refill.calls.length,ready.calls.length+2);assert(ready.calls.every(a=>a[0]===image));
 });
 test('grounded rust Striker keeps the same image and never draws a screen projection',()=>{
- const image={id:'rust'},e={x:1000,y:600,dir:1,hp:0,groundedDefeat:true,defeatStartedAt:5,neutralized:true},a=context();const before=structuredClone(e),pose=drawEnemyRustStriker(a.c,image,e,{time:5.48});
+ const image={id:'rust'},e={x:1000,y:600,dir:1,hp:0,groundedDefeat:true,defeatStartedAt:5,neutralized:true},a=context();const before=structuredClone(e),pose=drawEnemyRustStriker(a.c,image,e,{time:6.1});
  assert.equal(pose.progress,1);assert(a.calls.length>0);assert(a.calls.every(c=>c[0]===image));assert.deepEqual(e,before);
 });
 test('starless patch rectangles stay inside desert cell and match the original turn canvas',()=>{

@@ -1,3 +1,5 @@
+import {addLongrangePositions} from './longrange-enemy.js';
+import {isSpecialist,specialistGeometry} from './enemy-specialists.js';
 import {inkPlayerHitboxes} from './ink-player-hitbox.js';
 import {advanceRedWastesSand} from './red-wastes-sand.js';
 import {advanceRoyalPovCombat,clearRoyalPovCombat} from './royal-pov-combat.js';
@@ -35,12 +37,12 @@ export function createInkScene(options={}){
  g.playerHitboxes=inkPlayerHitboxes;
  if([4,5].includes(options.level)&&g.player.character==='bt')g.player.btVariant='desert';
  g.enemyWeaponGeometry=inkEnemyGeometry;
- g.enemySaltikGeometry=[4,5].includes(options.level)?(enemy,...args)=>inkEnemySaltikGeometry(Object.assign(enemy,{btVariant:'desert'}),...args):inkEnemySaltikGeometry;
+ g.enemySaltikGeometry=(enemy,...args)=>isSpecialist(enemy)?specialistGeometry(enemy,...args):inkEnemySaltikGeometry(enemy,...args);
  g.level=1;g.levelTitle='Le Canyon';
- if(options.level===5)return applyRedWastesLevel(g);
- if(options.level===4)return applyDesertLevel(g);
- if(options.level===2)return applyLunarLevel(g);
- if(options.level===3)return applyRoyalLevel(g);
+ if(options.level===5)return addLongrangePositions(applyRedWastesLevel(g));
+ if(options.level===4)return addLongrangePositions(applyDesertLevel(g));
+ if(options.level===2)return addLongrangePositions(applyLunarLevel(g));
+ if(options.level===3)return addLongrangePositions(applyRoyalLevel(g));
  applyInkLandmarkLayout(g);
  // This rock previously occupied the carrier's exact spawn and trapped it.
  // Move the authored cover to the far shoulder; preserve physical collisions.
@@ -50,7 +52,7 @@ export function createInkScene(options={}){
  const guardian=g.schedule.filter(e=>e.type==='saltik'&&!e.platformId).sort((a,b)=>Math.abs(a.x-8700)-Math.abs(b.x-8700))[0];
  if(guardian){guardian.x=8700;guardian.protectsCarrierId=carrierId;}
  g.schedule.push({id:carrierId,type:'carrier',x:8940,guardianId:guardian?.id});g.schedule.sort((a,b)=>a.x-b.x);
- return g;
+ return addLongrangePositions(g);
 }
 export function updateInkScene(g,input,dt=1/60){
  if(g.level===3&&g.royal?.finale?.active){

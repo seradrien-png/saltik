@@ -1,0 +1,152 @@
+{
+  "date": "2026-11-21",
+  "base_source_commit": "a0d6c647747d98b6e7c27271e90aebface826c6c",
+  "previous_github_commit": "e4e9b1ca4840a39216667fdb33e98974ef663aec",
+  "tests": {
+    "passed": 1023,
+    "failed": 0
+  },
+  "browser": {
+    "models": [
+      "original BT",
+      "black gold Striker",
+      "Longrange"
+    ],
+    "health": 48,
+    "threeGroundedDefeats": true,
+    "shutdownFramesCaptured": true,
+    "longrangeBeyondViewport": true,
+    "pause": true,
+    "errors": [],
+    "missing": []
+  },
+  "browser_viewports": [
+    [
+      1440,
+      810
+    ],
+    [
+      844,
+      390
+    ]
+  ],
+  "mobile_dpr": 2,
+  "archive_bytes": 266260480,
+  "runtime_bytes": 265648366,
+  "armor": {
+    "before": 40,
+    "after": 48,
+    "increase_percent": 20
+  },
+  "longrange": {
+    "salvo": 6,
+    "range": 3600,
+    "interval_seconds": 5.2,
+    "warning_seconds": 1.15,
+    "predeployment_offset": 2400,
+    "real_far_spawn_verified": true
+  },
+  "original_assets_preserved": true,
+  "package_verified_against_source_with_asset_url_rewriting": true,
+  "integration_tests": {
+    "passed": 28,
+    "failed": 0
+  },
+  "source_commit": "17c86e6fae7e3d6d260c3f3cabec8073161b1bcb",
+  "version": 61,
+  "version_id": "appgprj_6ae77e1b6da081918600675fc2e2b738~appgver_e64e1987f6cc8191ae4065959a4c2215",
+  "deployment_id": "appgdep_6b0201474bf08191b8f88284345093f4",
+  "deployment_status": "succeeded",
+  "url": "https://saltik-v2-matin-dore.ser-adrien.chatgpt.site",
+  "backup_verified_files": 1977,
+  "public_verification": {
+    "url": "https://saltik-v2-matin-dore.ser-adrien.chatgpt.site",
+    "files": [
+      {
+        "path": "index.html",
+        "status": 200,
+        "bytes": 17746,
+        "matches": true
+      },
+      {
+        "path": "android.html",
+        "status": 200,
+        "bytes": 17457,
+        "matches": true
+      },
+      {
+        "path": "assets/enemy-specialists.webp",
+        "status": 200,
+        "bytes": 1311120,
+        "matches": true
+      },
+      {
+        "path": "audio/gatling-brrrt-loop.ogg",
+        "status": 200,
+        "bytes": 47581,
+        "matches": true
+      },
+      {
+        "path": "audio/saltik_sable_rouge_v2.ogg",
+        "status": 200,
+        "bytes": 1572127,
+        "matches": true
+      },
+      {
+        "path": "src/desert-level.js",
+        "status": 200,
+        "bytes": 4920,
+        "matches": true
+      },
+      {
+        "path": "src/enemy-saltik.js",
+        "status": 200,
+        "bytes": 8284,
+        "matches": true
+      },
+      {
+        "path": "src/enemy-specialists.js",
+        "status": 200,
+        "bytes": 7161,
+        "matches": true
+      },
+      {
+        "path": "src/engine.js",
+        "status": 200,
+        "bytes": 83666,
+        "matches": true
+      },
+      {
+        "path": "src/grounded-bt-defeat.js",
+        "status": 200,
+        "bytes": 3474,
+        "matches": true
+      },
+      {
+        "path": "src/ink-enemy-saltik.js",
+        "status": 200,
+        "bytes": 18203,
+        "matches": true
+      },
+      {
+        "path": "src/ink-renderer.js",
+        "status": 200,
+        "bytes": 31759,
+        "matches": true
+      },
+      {
+        "path": "src/ink-scene.js",
+        "status": 200,
+        "bytes": 6106,
+        "matches": true
+      },
+      {
+        "path": "src/longrange-enemy.js",
+        "status": 200,
+        "bytes": 2097,
+        "matches": true
+      }
+    ],
+    "passed": true
+  }
+}

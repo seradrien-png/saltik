@@ -21,5 +21,5 @@ for(const character of ['striker','gatling','bt'])test(`native ${character} clea
   }
   updateInkScene(g,input,1/60);
  }
- assert.equal(g.status,'won',JSON.stringify({character,phase:g.desert.phase,x:g.player.x,hp:g.player.hp,rooms:g.desert.roomsCleared,enemies:g.enemies.map(e=>({type:e.type,x:e.x,hp:e.hp}))}));assert.equal(g.desert.roomsCleared,3);assert.equal(g.desert.phase,'complete');assert.equal(g.stats.kills,18);assert.equal(g.stats.neutralized,2);assert(g.player.hp>0);assert(g.time>=50&&g.time<180);assert.equal(g.desert.falls,0);
+ assert.equal(g.status,'won',JSON.stringify({character,phase:g.desert.phase,x:g.player.x,hp:g.player.hp,rooms:g.desert.roomsCleared,enemies:g.enemies.map(e=>({type:e.type,x:e.x,hp:e.hp}))}));assert.equal(g.desert.roomsCleared,3);assert.equal(g.desert.phase,'complete');assert.equal(g.stats.kills,19);assert.equal(g.stats.neutralized,3);assert(g.player.hp>0);assert(g.time>=50&&g.time<180);assert.equal(g.desert.falls,0);
 });
