@@ -1,5 +1,5 @@
 import {wheelRollPhase,drawWheelRoll} from './wheel-roll.js';
-import {drawGroundedBTDefeat,nativeDefeatSilhouette,drawNativeKOEyes} from './grounded-bt-defeat.js';
+import {drawGroundedBTDefeat,groundedBTDefeatPose,drawNativeKOEyes} from './grounded-bt-defeat.js';
 import {DESERT_BT} from './desert-bt-art.js';
 import {drawJumpLegStrut,jumpLegOffset,jumpLegExtension,jumpLegPose,jumpLegPoint,applyJumpLegPose} from './jump-leg-pose.js';
 import {sampleSupportSurface} from './support-pose.js';
@@ -88,7 +88,8 @@ export function inkEnemySaltikGeometry(e,time=0,{camera=0,scale=1,view='side'}={
  const rotation=view==='side'?clamp(slope+finite(e.motionLean)-.13*effort*dir,-.34,.34):0;
  const offsetX=-dir*7*effort*scale;
  const heave=view==='side'?finite(e.supportPose?.heave)*scale:0;
- const bodyDrop=e.bt&&e.crouching?12*scale:0;
+ const collapse=clamp(finite(e.defeatCollapse)),collapseDrop=Math.min(...parts.legs.map(p=>(p.wheelTop-p.hinge)*.82))*k*collapse;
+ const bodyDrop=collapseDrop+(e.bt&&e.crouching?12*scale:0);
  const co=Math.cos(rotation),si=Math.sin(rotation);
  const sourcePoint=([px,py])=>{const xx=(px-frame.anchor[0])*k*flip,yy=(py-frame.anchor[1])*k;return{x:x+offsetX+xx*co-yy*si,y:y+heave+bodyDrop+xx*si+yy*co};};
  const legs=view==='front'?[]:parts.legs.map((part,index)=>{
@@ -99,8 +100,8 @@ export function inkEnemySaltikGeometry(e,time=0,{camera=0,scale=1,view='side'}={
   let offset=airborne?(e.jumpLegs?jumpLegExtension(e,k,scale):-15):0,roll=stride+splay,grounded=false;
   // With no terrain supplied, leave the resting native leg exactly in place.
   // The duel masks these same pixels before drawing its held leg and hands.
-  if(!airborne&&e.supportPose){
-   const floor=at=>{const support=sampleSupportSurface(e.supportPose,finite(e.x)+(at-x)/scale);return Number.isFinite(support)?y+(support-y)*scale:NaN;};
+  if(!airborne&&(e.supportPose||collapse)){
+   const floor=at=>{const support=sampleSupportSurface(e.supportPose,finite(e.x)+(at-x)/scale);return Number.isFinite(support)?y+(support-y)*scale:collapse?y:NaN;};
    const planted=plantInkWheel(native,{k,cos:co,sin:si,floor,orientation:flip,maxOffset:profile?240:140});
    // A desert strut can extend to reach the skull's nose, but must never
    // invert through its cabin attachment when the trailing ground rises.
@@ -116,6 +117,16 @@ export function inkEnemySaltikGeometry(e,time=0,{camera=0,scale=1,view='side'}={
  const cannonPart={...parts.cannon,offsetX:-22*recoil,rotation:view==='side'?-clamp(finite(e.cannonElevation),-.12,.18):0};
  const arms=view==='front'?[]:parts.arms.map((part,index)=>({...part,
   rotation:walking?Math.sin(phase*.5+(index?Math.PI:0))*.035:0}));
+ // Fold the little arms at their original shoulder sockets as the cabin
+ // descends, so the claws settle on the surface instead of entering the sand.
+ if(collapse)for(const arm of arms){
+  const floorY=frame.anchor[1]-collapseDrop/k;
+  for(let step=0;step<36;step++){
+   const bottom=Math.max(...arm.polygon.map(q=>rotatePoint(q,arm.pivot,arm.rotation)[1]));
+   if(bottom<=floorY)break;
+   arm.rotation-=.04;
+  }
+ }
  if(e.btAimTarget&&view==='side'){
   const pivot=sourcePoint(cannonPart.pivot),dx=e.btAimTarget.x-camera-pivot.x,dy=e.btAimTarget.y-pivot.y;
   cannonPart.rotation=Math.atan2((-dx*si+dy*co)/k,(dx*co+dy*si)/(k*flip))-Math.atan2(frame.muzzle[1]-cannonPart.pivot[1],frame.muzzle[0]-cannonPart.pivot[0]);
@@ -167,10 +178,10 @@ export function drawInkEnemySaltik(c,image,e,{camera=0,time=0,scale=1,view='side
  if(e.groundedDefeat&&!e.drawingGroundedDefeat){
   const resting={...e,hp:1,drawingGroundedDefeat:true,hit:0,guard:false,guardFlash:0,firePose:0,
    vx:0,vy:0,onGround:true,jumpLegs:null,podCycle:null,bt:null,btAimTarget:null,btGripTargets:null,
-   motionLean:0,cannonRecoil:0,cannonElevation:0,attackPhase:'idle',podRaise:0,podLaunch:0};
+   defeatCollapse:groundedBTDefeatPose(e,time).settled,motionLean:0,cannonRecoil:0,cannonElevation:0,attackPhase:'idle',podRaise:0,podLaunch:0};
   const frozenTime=e.defeatStartedAt??time,geo=inkEnemySaltikGeometry(resting,frozenTime,{scale,view});
   drawGroundedBTDefeat(c,()=>drawInkEnemySaltik(c,image,resting,{camera,time:frozenTime,scale,view}),e,
-   {camera,time,contacts:geo.legs.map(leg=>leg.contact),silhouette:nativeDefeatSilhouette(image,geo.sourcePoint,{crop:geo.crop,fallback:geo.cropPolygon.map(geo.sourcePoint)})});
+   {camera,time,contacts:geo.legs.map(leg=>leg.contact)});
   return geo;
  }
  const geo=inkEnemySaltikGeometry(e,time,{camera,scale,view});scale=geo.scale;

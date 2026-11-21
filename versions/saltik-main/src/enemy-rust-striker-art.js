@@ -3,7 +3,7 @@ import {wheelRollPhase,drawWheelRoll} from './wheel-roll.js';
 // Positions below are measured in that source, never in a player costume atlas.
 import {sampleSupportSurface} from './support-pose.js';
 import {plantInkWheel} from './ink-leg-support.js';
-import {drawGroundedBTDefeat,nativeDefeatSilhouette,drawNativeKOEyes} from './grounded-bt-defeat.js';
+import {drawGroundedBTDefeat,groundedBTDefeatPose,drawNativeKOEyes} from './grounded-bt-defeat.js';
 export const ENEMY_RUST_STRIKER={size:[1254,1254],anchor:[630,1200],height:1180,
  body:[285,400,775,470],target:[832,715],
  guns:[
@@ -23,7 +23,8 @@ function split(points,y,lower){const out=[],inside=p=>lower?p[1]>=y:p[1]<=y;for(
 const pointBounds=points=>{const xs=points.map(p=>p.x),ys=points.map(p=>p.y),x=Math.min(...xs),y=Math.min(...ys);return{x,y,w:Math.max(...xs)-x,h:Math.max(...ys)-y};};
 export function enemyRustStrikerGeometry(e,time=0,{camera=0,scale=1}={}){
  const p=ENEMY_RUST_STRIKER,k=126/p.height*scale*(e.artScale??1),flip=e.dir===-1?-1:1,x=finite(e.x)-camera,y=finite(e.y),rotation=clamp(finite(e.supportPose?.tilt),-.32,.32),co=Math.cos(rotation),si=Math.sin(rotation);
- const sourcePoint=([px,py])=>{const xx=(px-p.anchor[0])*k*flip,yy=(py-p.anchor[1])*k;return{x:x+xx*co-yy*si,y:y+xx*si+yy*co};};
+ const bodyDrop=Math.min(...p.legs.map(l=>(l.wheelTop-l.hinge)*.82))*k*clamp(finite(e.defeatCollapse));
+ const sourcePoint=([px,py])=>{const xx=(px-p.anchor[0])*k*flip,yy=(py-p.anchor[1])*k;return{x:x+xx*co-yy*si,y:y+bodyDrop+xx*si+yy*co};};
  const guns=p.guns.map((gun,index)=>{const pivot=sourcePoint(gun.pivot),target=e.armyAimTarget??e.aimTarget;let angle=0;
   if(target){const dx=target.x-camera-pivot.x,dy=target.y-pivot.y;angle=Math.atan2((-dx*si+dy*co)/k,(dx*co+dy*si)/(k*flip))-Math.atan2(gun.muzzle[1]-gun.pivot[1],gun.muzzle[0]-gun.pivot[0]);angle=clamp(angle,-.7,.7);}
   const recoil=-finite(e.firePose)/.13*(index?4:11),ca=Math.cos(angle),sa=Math.sin(angle),point=([px,py])=>{const dx=px-gun.pivot[0],dy=py-gun.pivot[1];return sourcePoint([gun.pivot[0]+dx*ca-dy*sa+recoil,gun.pivot[1]+dx*sa+dy*ca]);},muzzle=point(gun.muzzle),base=point(gun.pivot),n=Math.hypot(muzzle.x-base.x,muzzle.y-base.y)||1;
@@ -32,18 +33,18 @@ export function enemyRustStrikerGeometry(e,time=0,{camera=0,scale=1}={}){
  const legs=p.legs.map(leg=>{const contact=sourcePoint(leg.foot),floor=at=>{const value=sampleSupportSurface(e.supportPose,at+camera);return Number.isFinite(value)?value:y;};const planted=plantInkWheel(contact,{k,cos:co,sin:si,floor,orientation:flip,maxOffset:180});return{...leg,...planted,spin:wheelRollPhase(e,leg.hub,k,flip),strut:split(leg.poly,leg.wheelTop,false),wheel:split(leg.poly,leg.wheelTop,true),stretch:1+planted.offset/(leg.wheelTop-leg.hinge),contact:sourcePoint([leg.foot[0]+planted.roll,leg.foot[1]+planted.offset])};});
  const podSlots=p.slots.map(([px,py,rx,ry],index)=>{const muzzle=sourcePoint([px,py]),base=sourcePoint([px-18,py+30]),dx=muzzle.x-base.x,dy=muzzle.y-base.y,n=Math.hypot(dx,dy)||1;return{index,activeIndex:index===0?0:index===4?1:-1,muzzle,base,axis:{x:dx/n,y:dy/n},rx,ry,k};});
  const corners=[[10,20],[1248,20],[1248,1212],[10,1212]].map(sourcePoint),target=sourcePoint(p.target),muzzle=guns[0].muzzle;
- return{x,y,k,flip,rotation,sourcePoint,legs,guns,muzzle,cannon:muzzle,muzzleDirection:guns[0].direction,cannonDirection:guns[0].direction,
+ return{x,y,bodyDrop,k,flip,rotation,sourcePoint,legs,guns,muzzle,cannon:muzzle,muzzleDirection:guns[0].direction,cannonDirection:guns[0].direction,
   podSlots,podSlots8:podSlots,podMuzzles:[podSlots[0].muzzle,podSlots[4].muzzle],podDirections:[podSlots[0].axis,podSlots[4].axis],target,targetY:target.y,bounds:pointBounds(corners)};
 }
 export function drawEnemyRustStriker(c,image,e,{camera=0,time=0,scale=1}={}){
  if(!image)return null;
  if(e.groundedDefeat){
-  const live={...e,hp:1,groundedDefeat:false,drawingGroundedDefeat:true,neutralized:false,defeated:false,firePose:0,hit:0,armyPodSpent:Array(8).fill(true),armyReloadProgress:0},frozen=e.defeatStartedAt??time,geo=enemyRustStrikerGeometry(live,frozen,{camera:0,scale});
-  return drawGroundedBTDefeat(c,()=>{c.save();c.filter='brightness(.65) saturate(.6)';drawEnemyRustStriker(c,image,live,{camera,time:frozen,scale});c.restore();},e,{camera,time,contacts:geo.legs.map(l=>l.contact),silhouette:nativeDefeatSilhouette(image,geo.sourcePoint,{fallback:[[10,20],[1248,20],[1248,1212],[10,1212]].map(geo.sourcePoint)})});
+  const live={...e,hp:1,groundedDefeat:false,drawingGroundedDefeat:true,defeatCollapse:groundedBTDefeatPose(e,time).settled,armyAimTarget:null,aimTarget:null,neutralized:false,defeated:false,firePose:0,hit:0,armyPodSpent:Array(8).fill(true),armyReloadProgress:0},frozen=e.defeatStartedAt??time,geo=enemyRustStrikerGeometry(live,frozen,{camera:0,scale});
+  return drawGroundedBTDefeat(c,()=>drawEnemyRustStriker(c,image,live,{camera,time:frozen,scale}),e,{camera,time,contacts:geo.legs.map(l=>l.contact)});
  }
  const g=enemyRustStrikerGeometry(e,time,{camera,scale}),p=ENEMY_RUST_STRIKER;
  const dead=e.hp<=0||e.neutralized||e.defeated,elapsed=finite(e.defeatElapsed,finite(e.defeat?.elapsed,finite(e.groundDefeat?.elapsed,1))),fall=dead?clamp(elapsed/.45):0;
- c.save();c.translate(g.x,g.y);if(dead){c.translate(0,-4*scale);c.rotate((g.flip===1?.13:-.13)*fall);c.scale(1,1-fall*.28);}c.rotate(g.rotation);c.scale(g.k*g.flip,g.k);c.translate(-p.anchor[0],-p.anchor[1]);c.imageSmoothingEnabled=true;
+ c.save();c.translate(g.x,g.y+g.bodyDrop);if(dead){c.translate(0,-4*scale);c.rotate((g.flip===1?.13:-.13)*fall);c.scale(1,1-fall*.28);}c.rotate(g.rotation);c.scale(g.k*g.flip,g.k);c.translate(-p.anchor[0],-p.anchor[1]);c.imageSmoothingEnabled=true;
  const draw=()=>c.drawImage(image,0,0,...p.size,0,0,...p.size);
  // Preserve the original silhouette, masking only truly moving barrel and leg patches.
  c.save();c.beginPath();c.rect(0,0,...p.size);for(const part of [...g.guns,...g.legs])poly(c,part.polygon??part.poly);c.clip('evenodd');draw();c.restore();

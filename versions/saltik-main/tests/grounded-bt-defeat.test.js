@@ -14,7 +14,7 @@ test('BT collapse keeps its lowest tire on the support in both directions and fr
    near(Math.max(...gaps),0);assert.ok(gaps.every(gap=>gap<1e-7));
   }
   assert.deepEqual(groundedBTDefeatPose(e,11,{contacts}),groundedBTDefeatPose(e,100,{contacts}));
-  const settled=groundedBTDefeatPose(e,11,{contacts});near(Math.abs(settled.rotation),Math.PI/2);assert.ok(settled.scaleY<.5);
+  const settled=groundedBTDefeatPose(e,11,{contacts});near(settled.rotation,0);near(settled.scaleY,1);
  }
 });
 
@@ -35,16 +35,31 @@ test('a defeated BT draws the original costume while leaving simulation and posi
  assert.equal(drawInkEnemySaltik(c,image,{...e,groundedDefeat:false}),null);
 });
 
-test('the complete horizontal wreck silhouette rests on ground in both facings without sinking its cabin',()=>{
- const hull=[[-65,0],[65,0],[-58,-120],[58,-120],[-28,-155],[25,-155]];
- for(const dir of [-1,1])for(const slope of [0,.12,-.1]){
-  const e={x:500,y:600,dir,defeatStartedAt:10,supportPose:{surface:{x:250,step:10,heights:Array.from({length:61},(_,i)=>600+(250+i*10-500)*slope)}}};
-  const silhouette=hull.map(([x,y])=>({x:e.x+x,y:e.y+y}));
-  const pose=groundedBTDefeatPose(e,11,{silhouette}),co=Math.cos(pose.rotation),si=Math.sin(pose.rotation);
-  const transformed=silhouette.map(p=>{const dx=p.x-e.x,dy=p.y-e.y;return{x:e.x+dx*co-dy*si,y:e.y+pose.offsetY+(dx*si+dy*co)*pose.scaleY};});
-  near(Math.max(...transformed.map(p=>p.y-(600+(p.x-500)*slope))),0);
-  const height=Math.max(...transformed.map(p=>p.y))-Math.min(...transformed.map(p=>p.y)),width=Math.max(...transformed.map(p=>p.x))-Math.min(...transformed.map(p=>p.x));
-  assert.ok(height/width<.42);assert.ok(transformed.every(p=>p.y<=600+(p.x-500)*slope+1e-7));
-  assert.equal(e.x,500);assert.equal(e.y,600);
+test('collapse lowers the cabin by folding attached struts while keeping all wheel contacts planted',async()=>{
+ const {enemyRustStrikerGeometry}=await import('../src/enemy-rust-striker-art.js');
+ for(const dir of [-1,1])for(const variant of ['original','desert','striker']){
+  const e={x:500,y:600,dir,hp:1,onGround:true,btVariant:variant==='desert'?'desert':undefined,drawingGroundedDefeat:true};
+  const geometry=variant==='striker'?enemyRustStrikerGeometry:inkEnemySaltikGeometry;
+  const alive=geometry(e),flat=geometry({...e,defeatCollapse:1});
+  assert.ok(flat.bodyDrop>14&&flat.bodyDrop<30);
+  assert.equal(flat.rotation,alive.rotation);
+  for(const arm of flat.arms??[]){
+   const ca=Math.cos(arm.rotation),sa=Math.sin(arm.rotation);
+   for(const [px,py] of arm.polygon){const dx=px-arm.pivot[0],dy=py-arm.pivot[1];const point=flat.sourcePoint([arm.pivot[0]+dx*ca-dy*sa,arm.pivot[1]+dx*sa+dy*ca]);assert.ok(point.y<=600.01);}
+  }
+  for(let i=0;i<flat.legs.length;i++){
+   assert.ok(flat.legs[i].stretch>0&&flat.legs[i].stretch<alive.legs[i].stretch);
+   near(flat.legs[i].contact.y,600);
+   assert.ok(Math.abs(flat.legs[i].contact.x-alive.legs[i].contact.x)<.001);
+  }
+ }
+});
+
+test('defeated native paintings retain their palette without whole-image filters or eye fills',async()=>{
+ const {drawEnemyRustStriker}=await import('../src/enemy-rust-striker-art.js');
+ for(const draw of [drawInkEnemySaltik,drawEnemyRustStriker]){
+  const filters=[],calls=[],c=new Proxy({globalAlpha:1},{get:(t,k)=>k in t?t[k]:(...a)=>calls.push([k,...a]),set:(t,k,v)=>{if(k==='filter')filters.push(v);t[k]=v;return true;}});
+  draw(c,{width:1254,height:1254},{x:500,y:600,dir:1,hp:0,groundedDefeat:true,defeatStartedAt:0},{time:1});
+  assert.deepEqual(filters,[]);assert.ok(calls.some(([name])=>name==='drawImage'));
  }
 });

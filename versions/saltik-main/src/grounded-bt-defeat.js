@@ -21,19 +21,17 @@ export function nativeDefeatSilhouette(image,point,{crop,fallback=[]}={}){
  }
  return boundary.length?boundary.map(point):fallback;
 }
-// A quarter turn puts the original cabin on its flank. Vertical compression
-// settles the hanging wheels and pods into a low, horizontal grounded wreck.
-export function groundedBTDefeatPose(e,time=0,{contacts=[],silhouette=contacts}={}){
+// Collapse articulated supports in their native rigs. Never rotate, tint or
+// flatten the entire painting: the chassis settles down between planted wheels.
+export function groundedBTDefeatPose(e,time=0,{contacts=[]}={}){
  const progress=Math.max(0,Math.min(1,(time-(e.defeatStartedAt??time))/BT_COLLAPSE_SECONDS));
- const settled=progress*progress*(3-2*progress),rotation=(e.dir===-1?-1:1)*Math.PI/2*settled,scaleY=1-.52*settled;
- const co=Math.cos(rotation),si=Math.sin(rotation);
+ const settled=progress*progress*(3-2*progress);
  let penetration=-Infinity;
- for(const point of silhouette){
-  const x=point.x-e.x,y=point.y-e.y,worldX=e.x+x*co-y*si,worldY=e.y+(x*si+y*co)*scaleY;
-  const surface=sampleSupportSurface(e.supportPose,worldX),floor=Number.isFinite(surface)?surface:e.y;
-  penetration=Math.max(penetration,worldY-floor);
+ for(const point of contacts){
+  const surface=sampleSupportSurface(e.supportPose,point.x),floor=Number.isFinite(surface)?surface:e.y;
+  penetration=Math.max(penetration,point.y-floor);
  }
- return{progress,rotation,scaleY,offsetY:Number.isFinite(penetration)?-penetration:0};
+ return{progress,settled,rotation:0,scaleY:1,offsetY:Number.isFinite(penetration)?-penetration:0};
 }
 
 export function drawGroundedBTDefeat(c,draw,e,{camera=0,time=0,contacts=[],silhouette=contacts}={}){
@@ -42,10 +40,10 @@ export function drawGroundedBTDefeat(c,draw,e,{camera=0,time=0,contacts=[],silho
  draw();c.restore();return pose;
 }
 
+// Preserve the native eye pixels and costume palette. A narrow closed lid is
+// enough to convey shutdown without filling or recoloring either eye.
 export function drawNativeKOEyes(c,eyes,{radius=9}={}){
- c.save();c.lineWidth=Math.max(2,radius*.24);c.lineCap='round';c.strokeStyle='#241f1a';
- for(const eye of eyes){const [x,y,rx=radius,ry=radius*.7]=eye;c.save();c.beginPath();c.ellipse(x,y,rx,ry,0,0,Math.PI*2);c.clip();
-  c.fillStyle='#b1a48a';c.globalAlpha*=.85;c.fill();c.globalAlpha/= .85;c.beginPath();
-  c.moveTo(x-rx*.65,y-ry*.65);c.lineTo(x+rx*.65,y+ry*.65);c.moveTo(x-rx*.65,y+ry*.65);c.lineTo(x+rx*.65,y-ry*.65);c.stroke();c.restore();}
+ c.save();c.lineWidth=Math.max(2,radius*.12);c.lineCap='round';c.strokeStyle='#241f1a';
+ for(const [x,y,rx=radius,ry=radius*.7] of eyes){c.beginPath();c.moveTo(x-rx*.7,y);c.quadraticCurveTo(x,y+ry*.25,x+rx*.7,y);c.stroke();}
  c.restore();
 }

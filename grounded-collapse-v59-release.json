@@ -1,0 +1,110 @@
+{
+  "date": "2026-11-21",
+  "base_source_commit": "d1b1c3d4c687f286752e64cba41684f8d17e54ec",
+  "tests": {
+    "passed": 1015,
+    "failed": 0
+  },
+  "targeted": {
+    "passed": 19,
+    "failed": 0
+  },
+  "browser": [
+    {
+      "character": "striker",
+      "defendedPositions": true,
+      "defenders": 96,
+      "allNativeArms": true,
+      "skullWalk": true,
+      "speechSubtitlesAbsent": true,
+      "pause": true,
+      "errors": [],
+      "missing": []
+    }
+  ],
+  "archive_bytes": 266874880,
+  "runtime_bytes": 266265715,
+  "no_new_assets": true,
+  "palette_preserved": true,
+  "collapse": "native suspension compression and attached arm folding, no whole-image rotation or scaling",
+  "source_commit": "a0d6c647747d98b6e7c27271e90aebface826c6c",
+  "version": 59,
+  "version_id": "appgprj_6ae77e1b6da081918600675fc2e2b738~appgver_aebdb616c6d0819198e3d8919a6f7b08",
+  "deployment_id": "appgdep_6b019001def08191a649569badb860c8",
+  "deployment_status": "succeeded",
+  "url": "https://saltik-v2-matin-dore.ser-adrien.chatgpt.site",
+  "backup_verified_files": 1969,
+  "previous_github_commit": "a62ee392f4ed0fbf5e28ba09b892ab746144de95",
+  "public_verification": {
+    "url": "https://saltik-v2-matin-dore.ser-adrien.chatgpt.site",
+    "files": [
+      {
+        "path": "index.html",
+        "status": 200,
+        "bytes": 17746,
+        "matches": true
+      },
+      {
+        "path": "android.html",
+        "status": 200,
+        "bytes": 17457,
+        "matches": true
+      },
+      {
+        "path": "menu/level4-gatling-default.webp",
+        "status": 200,
+        "bytes": 220430,
+        "matches": true
+      },
+      {
+        "path": "audio/gatling-brrrt-loop.ogg",
+        "status": 200,
+        "bytes": 47581,
+        "matches": true
+      },
+      {
+        "path": "audio/saltik_sable_rouge_v2.ogg",
+        "status": 200,
+        "bytes": 1572127,
+        "matches": true
+      },
+      {
+        "path": "src/enemy-rust-striker-art.js",
+        "status": 200,
+        "bytes": 7614,
+        "matches": true
+      },
+      {
+        "path": "src/grounded-bt-defeat.js",
+        "status": 200,
+        "bytes": 2698,
+        "matches": true
+      },
+      {
+        "path": "src/ink-enemy-saltik.js",
+        "status": 200,
+        "bytes": 18115,
+        "matches": true
+      },
+      {
+        "path": "assets/enemy-rust-striker.webp",
+        "status": 200,
+        "bytes": 1939706,
+        "matches": true
+      },
+      {
+        "path": "assets/gatling-desert-starless-atlas.webp",
+        "status": 200,
+        "bytes": 1947876,
+        "matches": true
+      },
+      {
+        "path": "assets/gatling-desert-starless-turn.webp",
+        "status": 200,
+        "bytes": 1744206,
+        "matches": true
+      }
+    ],
+    "passed": true
+  }
+}

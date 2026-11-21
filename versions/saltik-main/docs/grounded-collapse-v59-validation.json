@@ -1,0 +1,30 @@
+{
+  "date": "2026-11-21",
+  "base_source_commit": "d1b1c3d4c687f286752e64cba41684f8d17e54ec",
+  "tests": {
+    "passed": 1015,
+    "failed": 0
+  },
+  "targeted": {
+    "passed": 19,
+    "failed": 0
+  },
+  "browser": [
+    {
+      "character": "striker",
+      "defendedPositions": true,
+      "defenders": 96,
+      "allNativeArms": true,
+      "skullWalk": true,
+      "speechSubtitlesAbsent": true,
+      "pause": true,
+      "errors": [],
+      "missing": []
+    }
+  ],
+  "archive_bytes": 266874880,
+  "runtime_bytes": 266265715,
+  "no_new_assets": true,
+  "palette_preserved": true,
+  "collapse": "native suspension compression and attached arm folding, no whole-image rotation or scaling"
+}

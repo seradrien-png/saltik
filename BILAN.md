@@ -228,3 +228,7 @@ Les sous-titres de voix et cycles de marche articulée sont retirés ; les voix,
 ## Publication v58 — 21 novembre 2026
 
 Roues animées sans marche des pattes, Saltiks ennemis couchés KO, BT à salves montantes et Strikers avec canon/recharge/guidés/MIRV, matérialisation numérique des autres troupes, musique renforcée. Source d1b1c3d4c687f286752e64cba41684f8d17e54ec. 1 014 tests réussis, essais navigateur des trois arsenaux et commandes tactiles. 1 967 fichiers originaux et tous les historiques vérifiés. Les quatre autres éditions et les anciennes sauvegardes restent inchangées. Détails dans enemy-arsenals-release.json.
+
+## Publication v59 — 21 novembre 2026
+
+Correction HS selon la référence : le corps descend entre ses pattes repliées, les roues restent au sol et les couleurs sont conservées. Rotation globale et filtre sombre retirés. Source a0d6c647747d98b6e7c27271e90aebface826c6c. 1 015 tests réussis, poses BT et Striker contrôlées dans Chromium. 1 969 fichiers des cinq éditions et les historiques vérifiés ; anciennes versions conservées. Détails : grounded-collapse-v59-release.json.
