@@ -67,6 +67,7 @@ export function drawDesertPodCovers(c,actor,slots,{drop=0,image,sourceOffset=[0,
  }
 }
 export function podSlotPresentation(actor,index){
+ if(actor?.missileLoaded){const slot=index%8;return {round:actor.missileLoaded[slot]||actor.missileLoaded[slot+8]?1:0,flash:actor.missileLastTube%8===slot?clamp((actor.podLaunch??0)/.2):0,feeding:false};}
  if(actor?.bt)return {round:actor.bt.loaded[index]||actor.bt.loaded[index+8]?1:0,flash:actor.bt.lastTube%8===index?Math.min(1,(actor.bt.launchFlash??0)/.18):0,feeding:false};
  if(index<0)return {round:0,flash:0,feeding:false};
  const cycle=actor?.podCycle;
@@ -93,7 +94,7 @@ export function inkPlayerPodGeometry(p,geo){
  }
  return geometry(p,geo,INK_PLAYER_POD_SLOTS.map((s,i)=>({...s,ammoIndex:i<4?0:i<6?1:2})));
 }
-export function inkEnemyPodGeometry(e,geo){return geometry(e,geo,(geo.customSlots??(geo.view==='front'?ENEMY_FRONT_PODS:INK_ENEMY_POD_SLOTS)).map((s,i)=>({...s,activeIndex:e.bt?i:s.activeIndex,ammoIndex:e.bt?i:i<4?0:1,podIndex:i<4?0:1})));}
+export function inkEnemyPodGeometry(e,geo){return geometry(e,geo,(geo.customSlots??(geo.view==='front'?ENEMY_FRONT_PODS:INK_ENEMY_POD_SLOTS)).map((s,i)=>({...s,activeIndex:e.bt||e.missileLoaded?i:s.activeIndex,ammoIndex:e.bt||e.missileLoaded?i:i<4?0:1,podIndex:i<4?0:1})));}
 function drawSlots(c,geo,slots,enemy){
  if(typeof c.ellipse!=='function'||typeof c.stroke!=='function')return;
  for(const slot of slots){

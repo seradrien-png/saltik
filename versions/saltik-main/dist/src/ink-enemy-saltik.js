@@ -1,4 +1,5 @@
-import {drawGroundedBTDefeat} from './grounded-bt-defeat.js';
+import {wheelRollPhase,drawWheelRoll} from './wheel-roll.js';
+import {drawGroundedBTDefeat,nativeDefeatSilhouette,drawNativeKOEyes} from './grounded-bt-defeat.js';
 import {DESERT_BT} from './desert-bt-art.js';
 import {drawJumpLegStrut,jumpLegOffset,jumpLegExtension,jumpLegPose,jumpLegPoint,applyJumpLegPose} from './jump-leg-pose.js';
 import {sampleSupportSurface} from './support-pose.js';
@@ -108,7 +109,7 @@ export function inkEnemySaltikGeometry(e,time=0,{camera=0,scale=1,view='side'}={
   }
   offset-=lift/(k*co);
   return{...part,jumpPose,offset,roll,lift,grounded,stretch:1+offset/(part.wheelTop-part.hinge),
-   spin:distance/(part.hub[3]*PIXEL_SCALE)*flip,
+   spin:wheelRollPhase(e,part.hub,k,flip),
    contact:legPoint([part.foot[0]+roll,part.foot[1]+offset])};
  });
  const recoil=view==='side'?clamp(finite(e.cannonRecoil,finite(e.firePose)/.14)):0;
@@ -169,7 +170,7 @@ export function drawInkEnemySaltik(c,image,e,{camera=0,time=0,scale=1,view='side
    motionLean:0,cannonRecoil:0,cannonElevation:0,attackPhase:'idle',podRaise:0,podLaunch:0};
   const frozenTime=e.defeatStartedAt??time,geo=inkEnemySaltikGeometry(resting,frozenTime,{scale,view});
   drawGroundedBTDefeat(c,()=>drawInkEnemySaltik(c,image,resting,{camera,time:frozenTime,scale,view}),e,
-   {camera,time,contacts:geo.legs.map(leg=>leg.contact)});
+   {camera,time,contacts:geo.legs.map(leg=>leg.contact),silhouette:nativeDefeatSilhouette(image,geo.sourcePoint,{crop:geo.crop,fallback:geo.cropPolygon.map(geo.sourcePoint)})});
   return geo;
  }
  const geo=inkEnemySaltikGeometry(e,time,{camera,scale,view});scale=geo.scale;
@@ -191,7 +192,7 @@ export function drawInkEnemySaltik(c,image,e,{camera=0,time=0,scale=1,view='side
    c.beginPath();polygon(c,part.wheelPolygon);c.clip();drawLeg();
    // Rotate only the existing inset hub texture inside its native projected
    // ellipse. The tire outline and the planted contact stay in the same place.
-   /* Original wheel painting stays fixed. */
+   drawWheelRoll(c,part,{disabled:!!e.groundedDefeat||!!e.drawingGroundedDefeat});
    c.restore();c.restore();
   }
   for(const part of [geo.cannonPart,...geo.podParts,...geo.arms]){
@@ -203,6 +204,7 @@ export function drawInkEnemySaltik(c,image,e,{camera=0,time=0,scale=1,view='side
     c.translate(0,part.btExtension);c.beginPath();polygon(c,hand);c.clip();draw();
    }else{c.beginPath();polygon(c,part.polygon);c.clip();draw();}c.restore();
   }
+  if(e.drawingGroundedDefeat)drawNativeKOEyes(c,geo.eyes??[[607,541,18,23],[704,541,18,23]],{radius:18});
   // Faint light moves within the two existing eyes; no facial aperture moves.
   c.globalAlpha*=e.groundedDefeat?0:.08+.035*Math.sin(time*1.7);c.fillStyle=hit?'#ffffff':'#fff4db';
   for(const [x,y] of geo.eyes??[[607,541],[704,541]]){c.beginPath();c.ellipse(x+Math.sin(time*.8)*1.4,y,2.4,3.2,0,0,Math.PI*2);c.fill();}

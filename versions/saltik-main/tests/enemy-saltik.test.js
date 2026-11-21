@@ -26,35 +26,12 @@ test('Saltik factory preserves scheduled support and its armor scale',()=>{
   assert.deepEqual(e,createEnemySaltik({id:19,x:700,type:'turret',tier:1,platformId:'ledge'},{y:620,random:.25}));
 });
 
-test('seeded attacks mix bounded gun bursts with telegraphed physical missile pairs',()=>{
-  const result=encounter(),kinds=result.shots.map(shot=>shot.kind);
-  assert.ok(kinds.includes('plasma')&&kinds.includes('enemy-missile'));
-  const patterns=[];
-  for(const sample of [0,.11,.25,.37,.53,.71,.89,1]){
-    const run=encounter({sample,seconds:25}),bursts=[];
-    let previous=null;
-    for(const shot of run.shots){
-      if(shot.kind==='plasma'){
-        if(previous?.kind==='plasma'&&shot.time-previous.time<.4)bursts[bursts.length-1]++;
-        else bursts.push(1);
-      }
-      previous=shot;
-    }
-    assert.ok(bursts.slice(0,-1).every(count=>count>=2&&count<=4));
-    patterns.push(bursts.slice(0,-1));
-  }
-  assert.ok(new Set(patterns.map(pattern=>pattern.join(','))).size>=4,'seeds must vary decisions beyond their initial cooldown');
-  assert.deepEqual([...new Set(patterns.flat())].sort(),[2,3,4]);
-  const firstLock=result.events.find(event=>event.type==='enemy-lock'),firstMissile=result.shots.find(shot=>shot.kind==='enemy-missile');
-  assert.ok(firstMissile.time-firstLock.time>=.65,`lock lasted ${firstMissile.time-firstLock.time}`);
-  assert.ok(result.frames.some(frame=>frame.phase==='lock'&&frame.lock>.2&&frame.lock<.9&&frame.podRaise>.5));
-  assert.ok(result.shots.filter(shot=>shot.kind==='plasma').slice(0,3).every(shot=>shot.damage===6&&shot.radius===4&&shot.life===4&&shot.team==='enemy'));
-  for(const shot of result.shots.filter(shot=>shot.kind==='enemy-missile')){
-    assert.deepEqual([shot.damage,shot.radius,shot.life,shot.hp,shot.locking,shot.age,shot.team],[10,6,5,1,true,0,'enemy']);
-    assert.ok(Math.hypot(shot.vx,shot.vy)<=310);assert.ok(Array.isArray(shot.trail));
-  }
-  assert.ok(result.events.some(event=>event.type==='enemyshot'));assert.ok(result.events.some(event=>event.type==='enemy-missile'));
-  assert.equal(result.enemy.x,700);assert.equal(result.enemy.y,620);assert.equal(result.enemy.platformId,'ledge');assert.ok(result.enemy.phase>10);
+test('BT fires exact heavy triples with progressively acquired physical salvos',()=>{
+ const r=encounter({seconds:30}),main=r.shots.filter(s=>s.kind==='plasma'),missiles=r.shots.filter(s=>s.kind==='enemy-missile');
+ assert(main.length>30);assert(main.every(s=>s.btHeavy&&s.damage===3));
+ for(let i=1;i<main.length;i++)assert(Math.abs((main[i].time-main[i-1].time)-(i%3===0?.8:.2))<.02);
+ assert(missiles.some(s=>s.salvoCount===8));assert(missiles.every(s=>s.hp===1&&s.hostileLoft&&s.team==='enemy'));
+ assert(r.frames.some(f=>f.phase==='lock'&&f.lock>.2&&f.lock<.9));
 });
 
 test('gun and raised-pod launches originate at the canonical painted apertures and axes',()=>{
@@ -70,7 +47,7 @@ test('gun and raised-pod launches originate at the canonical painted apertures a
         assert.equal(geometry.podsOpen,true,'missile must not leave closed pod artwork');
         const index=geometry.podMuzzles.findIndex(m=>Math.hypot(m.x-shot.x,m.y-shot.y)<1e-9);
         assert.ok(index>=0);const axis=geometry.podDirections[index],speed=Math.hypot(shot.vx,shot.vy);
-        assert.ok(Math.abs(shot.vx/speed-axis.x)<1e-9&&Math.abs(shot.vy/speed-axis.y)<1e-9);
+        assert(shot.hostileLoft&&shot.vy<0,'raised missile has a real upward launch');
       }
       seen.push(shot.kind);
     }
@@ -83,12 +60,12 @@ test('range and death suppress attacks and re-entering range earns a fresh full 
   const original={...player};
   for(let i=0;i<300;i++)assert.equal(advanceEnemySaltik(e,{player,dt:1/60,time:i/60}).shots.length,0);
   assert.deepEqual(player,original);
-  e.x=700;e.nextAttack='missile';e.cooldown=0;
+  e.x=700;e.missileCooldown=0;e.btMainClock=100;
   advanceEnemySaltik(e,{player,dt:.4,time:5});assert.equal(e.attackPhase,'lock');
   e.x=1600;advanceEnemySaltik(e,{player,dt:.1,time:5.4});
   e.x=700;
   let firstShot=null;
-  for(let i=0;i<180;i++){const result=advanceEnemySaltik(e,{player,dt:1/120,time:5.5+i/120});if(result.shots.length){firstShot=i/120;break;}}
+  for(let i=0;i<360;i++){const result=advanceEnemySaltik(e,{player,dt:1/120,time:5.5+i/120});if(result.shots.length){firstShot=i/120;break;}}
   assert.ok(firstShot>=.65,`re-entry fired after ${firstShot}`);
   e.hp=0;assert.equal(advanceEnemySaltik(e,{player,dt:10,time:10}).shots.length,0);
 });
@@ -100,15 +77,12 @@ test('attack timings remain stable across simulation step sizes and seeded runs'
   assert.deepEqual(small,encounter({step:1/120}));
 });
 
-test('interrupting a burst at the range edge cannot restart free gun barrages',()=>{
-  const e=createEnemySaltik({id:19,x:700},{y:620,random:0});e.cooldown=0;
-  assert.equal(advanceEnemySaltik(e,{player,dt:1/120,time:0}).shots.length,1);
-  e.x=1600;advanceEnemySaltik(e,{player,dt:1/120,time:1/120});e.x=700;
-  const kinds=[];
-  for(let i=0;i<240;i++)for(const shot of advanceEnemySaltik(e,{player,dt:1/120,time:2/120+i/120}).shots)kinds.push(shot.kind);
-  assert.deepEqual(kinds,['enemy-missile','enemy-missile']);
+test('crossing the range edge preserves the heavy cannon interval',()=>{
+ const e=createEnemySaltik({id:19,x:700},{y:620,random:0});e.cooldown=0;
+ assert.equal(advanceEnemySaltik(e,{player,dt:1/120,time:0}).shots.length,1);
+ e.x=1600;advanceEnemySaltik(e,{player,dt:1/120,time:1/120});e.x=700;
+ assert.equal(advanceEnemySaltik(e,{player,dt:1/120,time:2/120}).shots.length,0);
 });
-
 
 test('normal movement retreats from nearby players and advances from distant players on its support',()=>{
   const movement={minX:100,maxX:1000,groundAt:x=>600+x*.05};

@@ -1,3 +1,4 @@
+import {initializeEnemyDownload,advanceEnemyDownload,enemyDownloadPending} from './enemy-download.js';
 import {resolveRedWastesSolids} from './red-wastes-layout.js';
 import {initializeBT,stopBT,advanceBT,BT_TUNING} from './bt-combat.js';
 // All positions use world units. The renderer alone knows pixels and camera offsets.
@@ -254,7 +255,7 @@ const meleeGuard=(p,e)=>p.melee.phase==='windup'&&p.melee.targetKey===targetKey(
 function pointDefenseAim(g,mount){
   const p=g.player,candidates=[],viewport=g.viewport;
   for(const shot of g.projectiles){
-    if(shot.team!=='enemy'||shot.kind!=='enemy-missile'||shot.life<=0||(shot.hp??1)<=0)continue;
+    if(!interceptableHostile(shot)||shot.life<=0||(shot.hp??1)<=0)continue;
     const radius=shot.radius??6;
     if(viewport&&(shot.x+radius<viewport.x-40||shot.x-radius>viewport.x+viewport.w+40||shot.y+radius<viewport.y-40||shot.y-radius>viewport.y+viewport.h+40))continue;
     const x=shot.x-mount.x,y=shot.y-mount.y,forward=x*p.dir,range=Math.hypot(x,y);
@@ -455,7 +456,7 @@ function spawn(g,s){
   if(s.type==='carrier'){g.enemies.push(createDroneCarrier(s,{y,random:random(g)}));return;}
   if(s.type==='saltik'){const enemy=createEnemySaltik(g.inkCampaign&&[4,5].includes(g.level)?{...s,btVariant:'desert'}:s,{y,random:random(g)});g.armyHooks?.initialize(enemy);g.enemies.push(enemy);return;}
   const hp={walker:5,soldier:5,drone:3,turret:9,crate:3}[s.type];
-  const enemy={...s,y,origin:s.x,hp,maxHp:hp,cooldown:1.5+random(g)*1.4,phase:random(g)*6.28,hit:0,firePose:0};g.armyHooks?.initialize(enemy);g.enemies.push(enemy);
+  const enemy={...s,y,origin:s.x,hp,maxHp:hp,cooldown:1.5+random(g)*1.4,phase:random(g)*6.28,hit:0,firePose:0};g.armyHooks?.initialize(enemy);initializeEnemyDownload(g,enemy,s.type==='drone'?terrainAt(g,s.x):y);g.enemies.push(enemy);
 }
 function obstacleHasWheelSupport(p,o){
   const top=o.y-o.h,pose=computeSupportPose({...p,y:top,onGround:true,turn:null,supportClearance:Infinity},
@@ -720,7 +721,7 @@ function areaBlast(g,x,y,radius,damage,{fraction=1,dt=0,team='player',collisionC
   for(const shot of g.projectiles){
     const segment=shot._segment,xx=segment?segment.x0+(segment.x1-segment.x0)*fraction:shot.x,yy=segment?segment.y0+(segment.y1-segment.y0)*fraction:shot.y;
     if(shot.team==='enemy'&&shot.life>0&&Math.hypot(xx-x,yy-y)<=radius+(shot.radius||0)){
-      if(shot.kind==='enemy-missile'){
+      if(interceptableHostile(shot)){
         shot.hp=0;g.stats.interceptions++;emit(g,'intercept',xx,yy);
       }
       shot.life=0;
@@ -748,10 +749,12 @@ function terrainImpact(g,x0,y0,x1,y1,groundOffset=3,shot=null){
   }
   return closest;
 }
+const interceptableHostile=shot=>shot.team==='enemy'&&['enemy-missile','enemy-mirv','enemy-cluster','enemy-rocket'].includes(shot.kind);
 function steerHostileMissile(g,shot,dt){
   // A volley launched with a rider on this tank clears the deck in its
   // original fan; it must not turn back through that rider during ejection.
   if(shot.riderClearance&&shot.sourceBossId===g.boss?.id)return;
+  if(shot.hostileLoft&&shot.age<.72){shot.vy+=90*dt;return;}
   if(shot.age<=.10)return;
   const p=g.player,heading=Math.atan2(shot.vy,shot.vx),goal=Math.atan2(p.y-35-shot.y,p.x-shot.x);
   const error=Math.atan2(Math.sin(goal-heading),Math.cos(goal-heading)),angle=heading+clamp(error,-2.5*dt,2.5*dt);
@@ -775,13 +778,13 @@ function refreshCachedProjectileTarget(g,entry){
 }
 function deployMirv(g,shot,children){
  const childIds=[];
- for(const child of splitMirv(shot)){const id=g.nextProjectileId++;childIds.push(id);children.push({id,...child,...(shot.desertDepth!==undefined?{desertDepth:shot.desertDepth}:{}),...(shot.mirvSalvoId?{mirvSalvoId:shot.mirvSalvoId}:{})});}
+ for(const raw of splitMirv(shot)){if(shot.team==='enemy'&&g.projectiles.filter(s=>s!==shot&&s.team==='enemy'&&s.life>0).length+children.filter(s=>s.team==='enemy').length>=48)break;const child=shot.team==='enemy'?{...raw,kind:'enemy-cluster',team:'enemy',sourceEnemyId:shot.sourceEnemyId,hp:1,damage:shot.damage,splash:shot.splash}:raw;const id=g.nextProjectileId++;childIds.push(id);children.push({id,...child,...(shot.desertDepth!==undefined?{desertDepth:shot.desertDepth}:{}),...(shot.mirvSalvoId?{mirvSalvoId:shot.mirvSalvoId}:{})});}
  if(shot.mirvSalvoId)emit(g,'mirv-separation',shot.x,shot.y,{projectileId:shot.id,salvoId:shot.mirvSalvoId,childIds});
  emit(g,'cluster',shot.x,shot.y);emit(g,'spark',shot.x,shot.y);shot.life=0;
 }
 function updateProjectiles(g,dt,playerMovement,collisionCache=null){
   if(!g.projectiles.length)return;
-  const children=[],pendingSplits=[],p=g.player,context=g.projectiles.some(s=>s.kind==='homing'||s.kind==='enemy-missile'||s.kind==='gatling-rocket')?navigationContext(g):null,collisions=[],resolved=new Set();
+  const children=[],pendingSplits=[],p=g.player,context=g.projectiles.some(s=>s.kind==='homing'||interceptableHostile(s)||s.kind==='gatling-rocket')?navigationContext(g):null,collisions=[],resolved=new Set();
   const liveTargets=collisionCache?collisionCache.targets.filter(entry=>{
     if(entry.target.hp<=0||!targetable(entry.target))return false;
     refreshCachedProjectileTarget(g,entry);
@@ -799,11 +802,13 @@ function updateProjectiles(g,dt,playerMovement,collisionCache=null){
     if(shot.kind==='homing')steerGuidedProjectile(shot,context,dt);
     else if(shot.kind==='enemy-missile')steerHostileMissile(g,shot,dt);
     if(shot.kind==='mirv'||shot.kind==='grenade')advanceMirvBallistic(shot,dt);
+    else if(shot.kind==='enemy-mirv'||shot.kind==='enemy-cluster'){shot.vy+=(shot.kind==='enemy-mirv'?125:775)*dt;shot.x+=shot.vx*dt;shot.y+=shot.vy*dt;}
     else {shot.x+=shot.vx*dt;shot.y+=shot.vy*dt;}
     shot._segment={x0,y0,x1:shot.x,y1:shot.y};
     if(shot.trail&&!collisionCache){shot.trail.push({x:shot.x,y:shot.y});if(shot.trail.length>18)shot.trail.shift();}
     // Legacy carriers retain their uninterrupted ascent. The ink carrier also
     // respects physical cover and terrain while its new low angles are aimed.
+    if(shot.kind==='enemy-mirv'&&shouldSplitMirv(shot))pendingSplits.push(shot);
     if(shot.kind==='mirv'){
       if(shouldSplitMirv(shot)){
         if(shot.inkMirv)pendingSplits.push(shot);
@@ -822,9 +827,9 @@ function updateProjectiles(g,dt,playerMovement,collisionCache=null){
         if(fraction!==null)collisions.push({fraction,kind:'player',shot});
       }
     }
-    const groundPad=shot.kind==='homing'||shot.kind==='enemy-missile'?shot.radius||0:0;
+    const groundPad=shot.kind==='homing'||interceptableHostile(shot)?shot.radius||0:0;
     let fraction=terrainImpact(g,x0,y0+groundPad,shot.x,shot.y+groundPad,groundPad?0:3,shot);
-    if(shot.kind==='homing'||shot.kind==='enemy-missile'||shot.kind==='gatling-rocket'){
+    if(shot.kind==='homing'||interceptableHostile(shot)||shot.kind==='gatling-rocket'){
       for(const blocker of context.blockers){
         if(blocker.obstacle)continue; // Live obstacle candidates already carry their actual damageable target.
         const t=segmentRect(x0,y0,shot.x,shot.y,blocker,shot.radius||0);
@@ -834,7 +839,7 @@ function updateProjectiles(g,dt,playerMovement,collisionCache=null){
     if(fraction!==null)collisions.push({fraction,kind:'world',shot});
   }
   const bullets=g.projectiles.filter(s=>s.team==='player'&&s.kind==='bullet'&&s.life>0);
-  for(const missile of g.projectiles.filter(s=>s.team==='enemy'&&s.kind==='enemy-missile'&&s.life>0))for(const bullet of bullets){
+  for(const missile of g.projectiles.filter(s=>interceptableHostile(s)&&s.life>0))for(const bullet of bullets){
     const fraction=relativeImpact(bullet,missile);if(fraction!==null)collisions.push({fraction,kind:'intercept',shot:bullet,target:missile});
   }
   collisions.sort((a,b)=>a.fraction-b.fraction||Number(b.kind==='intercept')-Number(a.kind==='intercept')||a.shot.id-b.shot.id);
@@ -1165,7 +1170,7 @@ export function update(g,input={},dt=1/60){
     for(const shot of result.shots)projectile(g,shot,shot);g.events.push(...result.events);
     const release=result.events.find(event=>event.type==='carrier-drone-deploy');if(release){e.deployBay=release.bayIndex;e.deployFlash=.7;}else e.deployFlash=Math.max(0,(e.deployFlash??0)-dt);
   }
-  for(const e of g.enemies){e.hit=Math.max(0,(e.hit||0)-dt);if(e.type!=='saltik')e.firePose=Math.max(0,(e.firePose||0)-dt);if(e.hp<=0||e.neutralized||e.duelFinished||e.type==='crate'||e.type==='carrier')continue;if(e.type!=='saltik')e.phase+=dt;
+  for(const e of g.enemies){e.hit=Math.max(0,(e.hit||0)-dt);if(e.type!=='saltik')e.firePose=Math.max(0,(e.firePose||0)-dt);if(e.hp<=0||e.neutralized||e.duelFinished||e.type==='crate'||e.type==='carrier')continue;if(advanceEnemyDownload(g,e,dt))continue;if(e.type!=='saltik')e.phase+=dt;
     if(e.carrierId){const result=advanceCarrierDrone(e,{carrier:g.enemies.find(a=>a.id===e.carrierId),player:p,dt,time:g.time,groundAt:g.groundAt??terrainHeight,geometry:g.enemyWeaponGeometry});for(const shot of result.shots)projectile(g,shot,shot);g.events.push(...result.events);continue;}
     if(g.armyHooks&&e.armyRole){
       const route=g.platforms.find(a=>a.id===e.platformId),floor=x=>route?surfaceHeight(route,x):terrainAt(g,x);
@@ -1206,15 +1211,9 @@ export function update(g,input={},dt=1/60){
         }
       };
       const geometry=(actor,time)=>{prepare();return baseGeometry(actor,time);};
-      const result=advanceEnemySaltik(e,{player:p,dt,time:g.time,movement,geometry});prepare();
-      if(g.inkCampaign)advanceEnemyPods(g,e,dt,geometry);
-      const volley=result.shots.filter(shot=>shot.kind==='enemy-missile');
-      if(g.inkCampaign&&volley.length===2){
-        e.podCycle={elapsed:0,duration:2.2,fired:[true,false],firedAt:[0,null],pending:[{index:1,at:.09,shot:volley[1]}]};
-        projectile(g,volley[0],volley[0]);emit(g,'enemy-missile',volley[0].x,volley[0].y,{enemyId:e.id});
-      }
-      for(const descriptor of result.shots)if(!g.inkCampaign||descriptor.kind!=='enemy-missile')projectile(g,descriptor,descriptor);
-      for(const event of result.events)if(!g.inkCampaign||event.type!=='enemy-missile')g.events.push(event);continue;
+      const result=advanceEnemySaltik(e,{player:p,dt,time:g.time,movement,geometry,enemyProjectileCount:g.projectiles.filter(s=>s.team==='enemy'&&s.life>0).length});prepare();
+      for(const descriptor of result.shots)projectile(g,descriptor,descriptor);
+      g.events.push(...result.events);continue;
     }
     if(e.type==='drone'){e.y=terrainAt(g,e.origin??e.x)-140+Math.sin(e.phase*2.1)*38;if(e.lunarWave)e.x=clamp((e.origin??e.x)+Math.sin(e.phase*.55)*110,16350,17650);else if(e.royalSeal||e.desertRoom!==undefined)e.x=clamp((e.origin??e.x)+Math.sin(e.phase*.55)*100,e.arenaMin,e.arenaMax);else e.x-=dt*12;}
     if(e.type==='walker'||e.type==='soldier'){e.vx=e.lunarWave||e.desertRoom!==undefined?(Math.sign(p.x-e.x)||-1)*23:-23;e.x+=dt*e.vx;if(e.lunarWave)e.x=clamp(e.x,16350,17650);if(e.royalSeal||e.desertRoom!==undefined)e.x=clamp(e.x,e.arenaMin,e.arenaMax);const ledge=g.platforms.find(a=>a.id===e.platformId);if(ledge)e.x=clamp(e.x,ledge.x1+50,ledge.x2-50);e.y=ledge?surfaceHeight(ledge,e.x):terrainAt(g,e.x);}
@@ -1228,7 +1227,7 @@ export function update(g,input={},dt=1/60){
   if(meleeGrappler){startDuel(g,meleeGrappler);return;}
   updatePlayerWeapons(g,gatlingFireEligible?input:{...input,fire:false},dt);
   if(!input.fire||p.evasion.active||p.turn.active)p.aim+=((p.dir===1?0:Math.PI)-p.aim)*Math.min(1,dt*10);
-  for(const e of g.enemies)if(e.hp>0&&e.type!=='crate'&&!(e.type==='carrier'&&(e.disabled||e.neutralized))&&!e.harmless&&Math.abs(e.x-p.x)<70&&Math.abs(e.y-p.y)<75&&!meleeGuard(p,e))contactPlayer(g,10,dt);
+  for(const e of g.enemies)if(e.hp>0&&!enemyDownloadPending(e)&&e.type!=='crate'&&!(e.type==='carrier'&&(e.disabled||e.neutralized))&&!e.harmless&&Math.abs(e.x-p.x)<70&&Math.abs(e.y-p.y)<75&&!meleeGuard(p,e))contactPlayer(g,10,dt);
   if(g.boss&&g.boss.hp>0){const b=g.boss;
     const signal=advanceBossWeapons(b,dt,{targetInRange:Math.abs(b.x-p.x)<900});
     if(signal==='pod-warning')emit(g,'boss-pod-warning',b.x+95,b.y-151);

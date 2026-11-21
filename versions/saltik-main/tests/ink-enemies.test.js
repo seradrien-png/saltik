@@ -50,16 +50,14 @@ test('Ink Saltik guns and both raised pods launch from the native atlas aperture
    const draw=c.calls[0],barrel=c.calls.find(call=>call.clipRule!=='evenodd'&&contains([851,394],call.clipPath));
    assert.ok(barrel,'gunfire uses the articulated native barrel patch');
    const gun=barrel.sourcePoint(851,394),gunBase=barrel.sourcePoint(720,401);
-   const podDraws=[[334,52.5],[893.5,104]].map(point=>c.calls.find(call=>call.clipRule!=='evenodd'&&contains(point,call.clipPath)));
-   const mouths=[[334,52.5],[893.5,104]].map((p,i)=>podDraws[i].sourcePoint(...p));
-   const axes=[[[334,52.5],[306,102.5]],[[893.5,104],[865.5,154]]].map(([a,b],i)=>{const p=podDraws[i].sourcePoint(...a),q=podDraws[i].sourcePoint(...b),n=Math.hypot(p.x-q.x,p.y-q.y);return{x:(p.x-q.x)/n,y:(p.y-q.y)/n};});
+   const native=saltik.inkEnemySaltikGeometry(e,time),mouths=native.podSlots.map(s=>s.muzzle),axes=native.podSlots.map(s=>s.axis);
    for(const shot of result.shots){
     const speed=Math.hypot(shot.vx,shot.vy);
     if(shot.kind==='plasma'){
      close(shot.x,gun.x);close(shot.y,gun.y);guns++;
      const n=Math.hypot(gun.x-gunBase.x,gun.y-gunBase.y);close(shot.vx/speed,(gun.x-gunBase.x)/n);close(shot.vy/speed,(gun.y-gunBase.y)/n);
     }else{
-     const index=mouths.findIndex(p=>Math.hypot(shot.x-p.x,shot.y-p.y)<1e-7);assert.ok(index>=0,'missile starts inside one of the two painted raised pods');
+     const index=mouths.findIndex(p=>Math.hypot(shot.x-p.x,shot.y-p.y)<1e-7);assert.ok(index>=0,'missile starts inside a painted raised pod aperture');
      close(shot.vx/speed,axes[index].x);close(shot.vy/speed,axes[index].y);missiles++;
     }
    }

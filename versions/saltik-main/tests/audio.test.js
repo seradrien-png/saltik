@@ -60,7 +60,7 @@ test('music and combat sounds share a protected output and transients schedule a
   assert.ok(ctx.mediaSource,'music must pass through the same protected output as effects');
   const musicBus=ctx.mediaSource.connections[0],limiter=musicBus.connections[0];
   assert.equal(limiter,ctx.compressor);assert.ok(limiter.connections[0].connections.includes(ctx.destination));
-  assert.ok(f.media.volume>=.195&&f.media.volume<=.205,'the score should be twice its prior mix level');
+  assert.ok(f.media.volume>=.315&&f.media.volume<=.325,'the score should remain clearly audible in the louder mix');
   audio.play({type:'missile'});
   assert.ok(musicBus.gain.events.some(e=>e[0]==='linear'&&e[1]>=.68&&e[1]<=.72&&e[2]<=.035),'launch duck should leave the louder score present');
   assert.ok(musicBus.gain.events.some(e=>e[0]==='target'&&e[1]===1&&e[2]>.2),'music recovery is scheduled on the audio clock');

@@ -1,3 +1,4 @@
+import {advanceEnemySaltik,createEnemySaltik} from './enemy-saltik.js';
 // Defensive sections exist at world positions before entering the camera.
 // A section holds a short sector: its guns, patrol and flanker do not migrate
 // across the whole map into a procession following the player's camera.
@@ -36,13 +37,15 @@ function initialize(e){
  if(!e.armyRole)return e;
  e.anchorX??=e.x;e.armyPhase??=0;e.armyClock=0;e.armyCycle=0;
  e.armyPodSpent=Array(8).fill(false);e.armyReloadProgress=1;
+ e.armyGuidedNext=0;e.armyMirvNext=2.6;e.armyMainSpent=0;e.armyMainReload=0;e.armyMainNext=0;e.armyMissileCycle=0;
  e.armyNext=.8+(e.armyPhase%1.2);e.armyPending=[];e.vx=0;e.dir=-1;
  return e;
 }
 function advance(e,{g,dt,groundAt,geometry}){
  if(!e.armyRole)return null;
  const shots=[],events=[],p=g.player;
- if(!(dt>0)||e.hp<=0||e.neutralized||e.duelFinished)return {shots,events};
+ if(e.armyRole==='bt-support'){if(e.btMainClock===undefined){const state=createEnemySaltik({id:e.id,x:e.x},{y:e.y});for(const [key,value] of Object.entries(state))if(e[key]===undefined)e[key]=value;}e.btAimTarget={x:p.x,y:p.y-35};return advanceEnemySaltik(e,{player:p,dt,time:g.time,geometry,enemyProjectileCount:g.projectiles.filter(s=>s.team==='enemy'&&s.life>0).length});}
+ if(!(dt>0)||e.hp<=0||e.neutralized||e.duelFinished||p.hp<=0){if(e.hp<=0||e.neutralized||e.duelFinished||p.hp<=0)e.armyPending=[];return {shots,events};}
  e.armyClock+=dt;if(e.type==='saltik')e.phase=(e.phase??0)+dt;e.firePose=Math.max(0,(e.firePose??0)-dt);
  e.guard=false;e.guardFlash=0;
  const previous=e.x,t=e.armyClock+e.armyPhase;
@@ -60,36 +63,50 @@ function advance(e,{g,dt,groundAt,geometry}){
  const pose=()=>geometry?.(e,g.time)??{};
  const fire=(kind,index=0)=>{
   if(g.projectiles.filter(s=>s.team==='enemy'&&s.life>0).length+shots.length>=36)return;
-  const geo=pose(),podIndex=kind==='rocket'?[1,2,5][index]:[0,4][index%2];
-  const mount=kind==='gun'?(geo.muzzle??{x:e.x+e.dir*38,y:e.y-43}):((geo.podSlots8??geo.podSlots)?.[podIndex]?.muzzle??geo.podMuzzles?.[index%2]??geo.muzzle??{x:e.x+e.dir*20,y:e.y-72});
+  const geo=pose(),podIndex=kind==='guided'?[0,4,1,5,2,6,3,7][index%8]:0;
+  const mount=kind==='gun'||kind==='mirv'?(geo.muzzle??{x:e.x+e.dir*38,y:e.y-43}):((geo.podSlots8??geo.podSlots)?.[podIndex]?.muzzle??geo.podMuzzles?.[index%2]??geo.muzzle??{x:e.x+e.dir*20,y:e.y-72});
+  const podAxis=(geo.podSlots8??geo.podSlots)?.[podIndex]?.axis??geo.podDirections?.[index%2];
   const axis=kind==='gun'&&(e.enemyModel==='rust-striker'||e.armyRole==='bt-support')?geo.muzzleDirection:null;
-  const angle=(axis?Math.atan2(axis.y,axis.x):Math.atan2(p.y-35-mount.y,p.x-mount.x))+(kind==='rocket'?(index-1)*.14:0),speed=kind==='guided'?225:kind==='rocket'?345:330;
-  const missile=kind==='guided',rocket=kind==='rocket',barrelGuided=missile&&e.type!=='saltik',launchAxis=geo.muzzleDirection??{x:Math.cos(angle),y:Math.sin(angle)};
+  const angle=(axis?Math.atan2(axis.y,axis.x):Math.atan2(p.y-35-mount.y,p.x-mount.x))+(kind==='rocket'?(index-1)*.14:0),speed=kind==='guided'?245:330;
+  const missile=kind==='guided',mirv=kind==='mirv',rocket=kind==='rocket',barrelGuided=missile&&e.type!=='saltik',launchAxis=geo.muzzleDirection??{x:Math.cos(angle),y:Math.sin(angle)};
   if(missile||rocket)e.armyPodSpent[podIndex]=true;
-  shots.push({kind:missile?'enemy-missile':rocket?'enemy-rocket':'plasma',team:'enemy',sourceEnemyId:e.id,
-   x:mount.x,y:mount.y,vx:missile?(barrelGuided?launchAxis.x*speed:e.dir*130):Math.cos(angle)*speed,vy:missile?(barrelGuided?launchAxis.y*speed:-160-index*35):Math.sin(angle)*speed,
-   damage:missile?8:rocket?6:e.type==='saltik'?6:4,radius:missile||rocket?5:3.5,life:missile?5:3.4,
-   ...(missile?{hp:1,locking:true,age:0,trail:[{...mount}]}:{}),...(rocket?{armyRocket:true,splash:34,trail:[{...mount}]}:{})});
-  e.firePose=.13;e.attackPhase=missile?'launch':rocket?'rocket':'burst';
+  shots.push({kind:missile?'enemy-missile':mirv?'enemy-mirv':rocket?'enemy-rocket':'plasma',team:'enemy',sourceEnemyId:e.id,
+   x:mount.x,y:mount.y,vx:mirv?e.dir*360:missile?(barrelGuided?launchAxis.x*speed:(podAxis?.x??e.dir*.25)*speed):Math.cos(angle)*speed,vy:mirv?-300:missile?(barrelGuided?launchAxis.y*speed:(podAxis?.y??-1)*speed):Math.sin(angle)*speed,
+   damage:missile?8:mirv?6:e.armyRole==='bt-support'?3:e.type==='saltik'?1:4,radius:missile||rocket?5:3.5,life:missile?5:3.4,
+   ...(e.armyRole==='bt-support'&&kind==='gun'?{btHeavy:true}:{}),...(missile?{hp:1,locking:true,hostileLoft:!barrelGuided,age:0,salvoIndex:index,salvoCount:e.armySalvoCount,trail:[{...mount}]}:{}),...(mirv?{hp:1,age:0,dir:e.dir,splash:65,trail:[{...mount}]}:{}),...(rocket?{armyRocket:true,splash:34,trail:[{...mount}]}:{})});
+  if(missile)e.armySalvoFired=index+1;e.firePose=.13;if(!(kind==='gun'&&e.armyRole==='heavy'&&e.armyPending?.length))e.attackPhase=missile?'launch':rocket?'rocket':'burst';
   event(missile?'enemy-missile':'enemyshot',mount);
   if(e.armyRole==='heavy')event(kind==='gun'?'red-army-cannon':`red-army-${kind}`,mount,{burstIndex:index});
  };
- if(!inRange){e.armyPending=[];e.lockProgress=0;e.podRaise=0;e.attackPhase='idle';e.armyNext=Math.max(e.armyNext,e.armyClock+.35);return {shots,events};}
- if(e.armyClock>=e.armyNext){
-  // A line alternates short attack windows instead of every defender firing
-  // in the same frame. Queued defenders hold their position and try again.
+ if(!inRange){e.armyMainNext=e.armyClock+.095;e.armyPending=[];e.lockProgress=0;e.podRaise=0;e.attackPhase='idle';e.armyNext=Math.max(e.armyNext,e.armyClock+.35);return {shots,events};}
+ // Rust inherits the playable Striker's three-second stream and 1.32s reload.
+ // Secondary weapons run independently, so its identity survives pod locks.
+ if(e.armyRole==='heavy'){
+  e.armyMainReload=Math.max(0,e.armyMainReload-dt);
+  if(e.armyMainReload<=0){
+   if(e.armyMainSpent>=3){e.armyMainSpent=0;e.armyMainNext=e.armyClock;}
+   e.armyMainSpent+=dt;
+   while(e.armyMainNext<=e.armyClock+1e-9){fire('gun');e.armyMainNext+=.095;}
+   if(e.armyMainSpent>=3){e.armyMainReload=1.32;event('enemy-reload',pose().muzzle??{x:e.x,y:e.y-43});}
+  }
+ }
+ if(e.armyClock>=e.armyNext&&!e.armyPending.length){
   if((g.enemies??[]).filter(a=>a!==e&&a.hp>0&&a.armyPending?.length).length>=3){e.armyNext=e.armyClock+.25;return {shots,events};}
   const heavy=e.armyRole==='heavy',support=e.armyRole==='bt-support',missile=e.armyRole==='missile-team';
   e.armyPodSpent.fill(false);e.armyAttackAt=e.armyClock;
-  const kind=heavy?['gun','guided','rocket'][e.armyCycle%3]:support?['gun','guided'][e.armyCycle%2]:missile?'guided':'gun';
-  const count=kind==='guided'?2:3,telegraph=kind==='guided'?.85:kind==='rocket'?.5:0;
-  if(telegraph){e.attackPhase='lock';e.podRaise=1;e.lockProgress=.01;event('enemy-lock',pose().target??{x:e.x,y:e.y-65},{weapon:kind});}
-  for(let i=0;i<count;i++)e.armyPending.push({at:e.armyClock+telegraph+i*(kind==='gun'?.16:.18),kind,index:i});
-  e.armyNext=e.armyClock+(heavy?3.4:support?4.4:missile?5.3:e.armyRole==='gunner'?3.8:4.8);e.armyCycle++;
+  const kind=heavy?(e.armyClock>=e.armyGuidedNext?'guided':'mirv'):support?(e.armyCycle%2?'guided':'gun'):missile?'guided':'gun';
+  const count=kind==='guided'?(support?Math.min(8,2**(++e.armyMissileCycle)):heavy?3:2):kind==='mirv'?1:3;
+  const telegraph=kind==='guided'?(support?.65+count*.16:.85):kind==='mirv'?.64:0;
+  e.armySalvoCount=kind==='guided'?count:0;e.armySalvoFired=0;
+  if(telegraph){e.attackPhase='lock';e.podRaise=1;e.lockProgress=.01;event('enemy-lock',pose().target??{x:e.x,y:e.y-65},{weapon:kind,salvoCount:count});}
+  if(heavy){if(kind==='guided')e.armyGuidedNext=e.armyClock+9.5;else e.armyMirvNext=e.armyClock+5.2;}
+  e.armyLockDuration=telegraph;
+  for(let i=0;i<count;i++)e.armyPending.push({at:e.armyClock+telegraph+i*(kind==='gun'?.2:.16),kind,index:i});
+  e.armyNext=heavy?Math.min(e.armyGuidedNext,e.armyMirvNext):e.armyClock+(support?4.4:missile?5.3:e.armyRole==='gunner'?3.8:4.8);e.armyCycle++;
  }
  for(const pending of e.armyPending)if(pending.at<=e.armyClock+1e-9){fire(pending.kind,pending.index);pending.fired=true;}
  e.armyPending=e.armyPending.filter(s=>!s.fired);
- if(e.armyPending.length&&e.attackPhase==='lock')e.lockProgress=Math.min(1,(e.lockProgress??0)+dt/.85);
+ if(e.armyPending.length&&e.attackPhase==='lock')e.lockProgress=Math.min(1,(e.lockProgress??0)+dt/(e.armyLockDuration||.85));
  e.armyReloadProgress=clamp((e.armyClock-(e.armyAttackAt??0))/3.4,0,1);
  if(!e.armyPending.length){e.podRaise=0;e.lockProgress=0;if(e.firePose<=0)e.attackPhase='idle';}
  return {shots,events};

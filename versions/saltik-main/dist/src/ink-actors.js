@@ -1,3 +1,4 @@
+import {drawEnemyDownload} from './enemy-download.js';
 import {combatBounds} from './engine.js';
 import {inkEnemySaltikGeometry} from './ink-enemy-saltik.js';
 import {inkHitImage} from './ink-hit-cache.js';
@@ -17,7 +18,15 @@ export function inkEnemyGeometry(e,time=0){
  return{cell,k,flip,bob,rotation,sourcePoint,muzzle,muzzleDirection:{x:(muzzle.x-base.x)/n,y:(muzzle.y-base.y)/n}};
 }
 const oval=(c,x,y,rx,ry,fill)=>{c.fillStyle=fill;c.beginPath();c.ellipse(x,y,rx,ry,0,0,TAU);c.fill();};
-export function drawInkEnemy(c,image,e,{camera=0,time=0}={}){
+export function drawInkEnemy(c,image,e,opts={}){
+ const geo=inkEnemyGeometry(e,opts.time??0);
+ if(!geo||!e.download)return drawInkEnemyBody(c,image,e,opts);
+ const [sx,sy,sw,sh]=geo.cell.crop,points=[[sx,sy],[sx+sw,sy],[sx,sy+sh],[sx+sw,sy+sh]].map(geo.sourcePoint);
+ const x=Math.min(...points.map(p=>p.x)),y=Math.min(...points.map(p=>p.y));
+ const bounds={x,y,w:Math.max(...points.map(p=>p.x))-x,h:Math.max(...points.map(p=>p.y))-y};
+ if(e.hp>0)drawEnemyDownload(c,e,bounds,opts,()=>drawInkEnemyBody(c,image,e,opts));
+}
+function drawInkEnemyBody(c,image,e,{camera=0,time=0}={}){
  if(e.hp<=0)return;const cell=cells[e.type];
  if(!cell){c.save();c.translate(e.x-camera,e.y);c.fillStyle='#A8B28D';c.strokeStyle=INK;c.lineWidth=3;c.fillRect(-22,-45,44,45);c.strokeRect(-22,-45,44,45);c.beginPath();c.moveTo(-20,-43);c.lineTo(20,-2);c.moveTo(20,-43);c.lineTo(-20,-2);c.stroke();c.restore();return;}
  const {k,flip,bob,rotation,muzzle,muzzleDirection}=inkEnemyGeometry(e,time),[sx,sy,sw,sh]=cell.crop;
@@ -43,8 +52,8 @@ export function drawInkProjectile(c,s,camera,time){
  const color=s.team==='enemy'?'#DF9A8B':s.kind==='homing'?'#9FCED1':s.kind==='mirv'?'#E9B19A':s.kind==='grenade'?'#B7A4CC':'#F3CB88';
  c.save();c.lineCap='round';
  if(s.trail?.length>1){c.strokeStyle=`${color}AA`;c.lineWidth=3;c.beginPath();s.trail.forEach((p,i)=>i?c.lineTo(p.x-camera,p.y):c.moveTo(p.x-camera,p.y));c.stroke();}
- c.translate(s.x-camera,s.y);c.rotate(Math.atan2(s.vy,s.vx));if(s.btHeavy)c.scale(1.5,1.5);c.strokeStyle=INK;c.fillStyle=color;c.lineWidth=1.5;
- if(['homing','mirv','enemy-missile','enemy-rocket','grenade','gatling-rocket'].includes(s.kind)){
+ c.translate(s.x-camera,s.y);c.rotate(Math.atan2(s.vy,s.vx));if(s.btHeavy)c.scale(1.5,1.5);if(s.kind==='enemy-cluster')c.scale(.65,.65);c.strokeStyle=INK;c.fillStyle=color;c.lineWidth=1.5;
+ if(['homing','mirv','enemy-missile','enemy-rocket','enemy-mirv','enemy-cluster','grenade','gatling-rocket'].includes(s.kind)){
   c.beginPath();c.moveTo(-9,-3);c.lineTo(7,-3);c.lineTo(12,0);c.lineTo(7,3);c.lineTo(-9,3);c.closePath();c.fill();c.stroke();
   c.fillStyle=s.kind==='mirv'?'#B7A4CC':INK;c.fillRect(-5,-5,3,10);c.fillStyle=PAPER;c.beginPath();c.moveTo(-10,-2);c.lineTo(-21-Math.sin(time*61)*4,0);c.lineTo(-10,2);c.fill();
  }else{c.fillStyle=PAPER;c.strokeStyle=color;c.lineWidth=1.4;c.beginPath();c.roundRect(-12,-2.2,19,4.4,2.2);c.fill();c.stroke();}

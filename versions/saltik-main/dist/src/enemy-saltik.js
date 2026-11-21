@@ -1,3 +1,4 @@
+import {BT_TUNING} from './bt-combat.js';
 import {enemySaltikGeometry} from './enemy-saltik-art.js';
 
 export const SALTIK_HP=40;
@@ -9,14 +10,6 @@ function randomDecision(e,key){
   let seed=e[key]>>>0||0x9e3779b9;
   seed^=seed<<13;seed^=seed>>>17;seed^=seed<<5;
   e[key]=seed>>>0;return e[key]/0x100000000;
-}
-
-function finishAttack(e,kind){
-  e.attackStreak=e.lastAttack===kind?(e.attackStreak??0)+1:1;e.lastAttack=kind;
-  const roll=randomDecision(e,'attackSeed');
-  // At most two of one attack in a row, so both weapons stay in the encounter.
-  e.nextAttack=e.attackStreak>=2?(kind==='gun'?'missile':'gun'):(roll<.52?'gun':'missile');
-  e.cooldown=kind==='gun'?.82+randomDecision(e,'attackSeed')*.65:1.35+randomDecision(e,'attackSeed')*.95;
 }
 
 function moveOnRoute(e,player,dt,movement,rushing){
@@ -67,17 +60,18 @@ export function createEnemySaltik(schedule,{y,random=0}={}){
     burstRemaining:0,lockProgress:0,lockElapsed:0,podRaise:0,podLaunch:0};
 }
 
-export function advanceEnemySaltik(e,{player,dt,time=0,geometry=enemySaltikGeometry,movement}={}){
+export function advanceEnemySaltik(e,{player,dt,time=0,geometry=enemySaltikGeometry,movement,enemyProjectileCount=0}={}){
   const shots=[],events=[];
   if(!(dt>0)||e.hp<=0||e.neutralized||e.duelFinished||e.duelStarted||!player||player.hp<=0)return {shots,events};
   e.phase=(e.phase??0)+dt;e.firePose=Math.max(0,(e.firePose??0)-dt);
+  e.podLaunch=Math.max(0,(e.podLaunch??0)-dt);if(e.attackPhase==='idle'&&e.podLaunch<=0)e.podRaise=0;
   e.guardFlash=Math.max(0,(e.guardFlash??0)-dt);
   e.guard=false;
   const inRange=Math.hypot(player.x-e.x,(player.y-32)-(e.y-43))<=1050;
   if(!inRange){
     // An interrupted lock must visibly earn the full telegraph after re-entry.
     if(e.attackPhase==='lock'||e.attackPhase==='launch'){
-      e.nextAttack='missile';e.cooldown=.35;
+      e.nextAttack='missile';e.cooldown=.35;e.missileCooldown=.35;
     }else if(e.attackPhase==='burst'){
       e.nextAttack='missile';e.cooldown=.65;e.burstRemaining=0;e.attackTimer=0;
     }
@@ -89,61 +83,54 @@ export function advanceEnemySaltik(e,{player,dt,time=0,geometry=enemySaltikGeome
   const geo=()=>typeof geometry==='function'?geometry(e,time):geometry??enemySaltikGeometry(e,time);
   const event=(type,mount)=>events.push({type,x:mount.x,y:mount.y,enemyId:e.id});
   const gun=()=>{
+    if(enemyProjectileCount+shots.length>=48)return;
     e.firePose=.14;const geometry=geo(),mount=geometry.muzzle,axis=geometry.muzzleDirection;
-    const aim=axis?Math.atan2(axis.y,axis.x):Math.atan2(player.y-32-mount.y,player.x-mount.x),speed=285;
+    const aim=axis?Math.atan2(axis.y,axis.x):Math.atan2(player.y-32-mount.y,player.x-mount.x),speed=420;
     shots.push({kind:'plasma',team:'enemy',x:mount.x,y:mount.y,vx:Math.cos(aim)*speed,vy:Math.sin(aim)*speed,
-      damage:6,radius:4,life:4});
+      damage:BT_TUNING.cannonDamage,btHeavy:true,radius:6,life:4,sourceEnemyId:e.id});
     event('enemyshot',mount);
   };
-  const missiles=()=>{
-    // Select the native open-door launch frame before measuring either mouth.
-    e.attackPhase='launch';e.podRaise=1;e.lockProgress=1;e.podLaunch=.2;
-    const geometry=geo();
-    for(let i=0;i<2;i++){
-      const mount=geometry.podMuzzles[i],axis=geometry.podDirections[i],length=Math.hypot(axis.x,axis.y)||1;
-      shots.push({kind:'enemy-missile',team:'enemy',x:mount.x,y:mount.y,vx:axis.x/length*245,vy:axis.y/length*245,
-        damage:10,radius:6,life:5,hp:1,locking:true,age:0,trail:[{x:mount.x,y:mount.y}]});
-      event('enemy-missile',mount);
-    }
-  };
-  // Consume phase boundaries rather than dropping excess dt; fixed-step callers
-  // and occasional longer frames therefore keep the same attack cadence.
+  e.btMainClock??=e.cooldown??.72;e.btMainIndex??=0;
+  e.missileStock??=BT_TUNING.capacity;e.missileLoaded??=Array(BT_TUNING.capacity).fill(true);e.missileVolley??=0;e.missileQuiet??=0;e.missileRefill??=0;e.missileCooldown??=1.6;
+  e.missileQuiet+=dt;
+  if(e.missileQuiet>=BT_TUNING.refillDelay&&e.missileStock<BT_TUNING.capacity&&e.attackPhase!=='lock'&&e.attackPhase!=='launch'){
+    e.missileRefill+=dt;
+    while(e.missileRefill>=BT_TUNING.refillInterval&&e.missileStock<BT_TUNING.capacity){e.missileStock++;e.missileLoaded[e.missileLoaded.indexOf(false)]=true;e.missileRefill-=BT_TUNING.refillInterval;}
+  }
+  // Same heavy triple and interval as the playable BT, independent of the pods.
+  e.btMainClock-=dt;
+  while(e.btMainClock<=1e-9){gun();e.btMainIndex++;e.btMainClock+=e.btMainIndex%3===0?BT_TUNING.burstInterval-BT_TUNING.burstDuration:BT_TUNING.burstDuration/2;}
   let remaining=dt;
-  for(let transitions=0;remaining>1e-9&&transitions<24;transitions++){
-    if(e.attackPhase==='idle'){
-      const cooldown=Math.max(0,e.cooldown??0);
-      if(cooldown>remaining){e.cooldown=cooldown-remaining;break;}
-      remaining-=cooldown;e.cooldown=0;
-      if(e.nextAttack==='missile'){
-        e.attackPhase='lock';e.lockElapsed=0;e.lockProgress=0;e.podRaise=0;e.attackTimer=SALTIK_LOCK_TIME;
-        event('enemy-lock',geo().target);
-      }else{
-        e.attackPhase='burst';e.burstRemaining=2+Math.floor(randomDecision(e,'attackSeed')*3);
-        e.burstInterval=.11+randomDecision(e,'attackSeed')*.075;e.attackTimer=0;
-      }
+  for(let transitions=0;remaining>1e-9&&transitions<64;transitions++){
+    if(e.attackPhase!=='lock'&&e.attackPhase!=='launch'){
+      if(e.missileCooldown>remaining){e.missileCooldown-=remaining;break;}
+      remaining-=Math.max(0,e.missileCooldown);
+      if(e.missileStock<2){e.missileCooldown=.5;continue;}
+      e.missileSalvoCount=Math.min(e.missileStock,8,2**Math.min(3,e.missileVolley+1));e.missileSalvoFired=0;
+      e.attackPhase='lock';e.lockElapsed=0;e.lockProgress=0;e.podRaise=1;
+      e.missileLockDuration=SALTIK_LOCK_TIME+e.missileSalvoCount*BT_TUNING.acquire;e.attackTimer=e.missileLockDuration;
+      events.push({type:'enemy-lock',...geo().target,enemyId:e.id,salvoCount:e.missileSalvoCount});
       continue;
     }
-    if(e.attackPhase==='burst'){
-      const wait=Math.max(0,e.attackTimer??0);
-      if(wait>remaining){e.attackTimer=wait-remaining;break;}
-      remaining-=wait;gun();e.burstRemaining--;
-      if(e.burstRemaining>0)e.attackTimer=e.burstInterval;
-      else{e.attackPhase='idle';finishAttack(e,'gun');}
-      continue;
-    }
+    const elapsed=Math.min(remaining,Math.max(0,e.attackTimer));remaining-=elapsed;e.attackTimer-=elapsed;
     if(e.attackPhase==='lock'){
-      const elapsed=Math.min(remaining,e.attackTimer);e.attackTimer-=elapsed;remaining-=elapsed;e.lockElapsed+=elapsed;
-      e.lockProgress=clamp(e.lockElapsed/SALTIK_LOCK_TIME,0,1);e.podRaise=clamp(e.lockElapsed/.22,0,1);
+      e.lockElapsed+=elapsed;e.lockProgress=clamp(e.lockElapsed/e.missileLockDuration,0,1);
       if(e.attackTimer>1e-9)break;
-      missiles();e.attackTimer=.2;continue;
+      e.attackPhase='launch';e.podLaunch=.2;e.attackTimer=0;
     }
     if(e.attackPhase==='launch'){
-      const elapsed=Math.min(remaining,e.attackTimer);e.attackTimer-=elapsed;remaining-=elapsed;e.podLaunch=e.attackTimer;
       if(e.attackTimer>1e-9)break;
-      e.attackPhase='idle';finishAttack(e,'missile');e.lockProgress=0;e.lockElapsed=0;e.podRaise=0;e.podLaunch=0;
-      continue;
+      if(enemyProjectileCount+shots.length>=48){e.attackTimer=.16;break;}
+      const geometry=geo(),i=e.missileSalvoFired,tube=[0,4,1,5,2,6,3,7,8,12,9,13,10,14,11,15].find(index=>e.missileLoaded[index]),slot=geometry.btTubes?.[tube%8]??geometry.podSlots8?.[tube%8]??geometry.podSlots?.[tube%8];
+      const mount=slot?.muzzle??geometry.podMuzzles[i%2];
+      // The real mouth supplies the origin; the loft gives interception time.
+      shots.push({kind:'enemy-missile',team:'enemy',sourceEnemyId:e.id,x:mount.x,y:mount.y,
+        vx:(slot?.axis?.y<-.35?slot.axis.x:e.dir*.25)*245,vy:(slot?.axis?.y<-.35?slot.axis.y:-1)*245,damage:BT_TUNING.missileDamage,radius:6,life:7,hp:1,locking:true,hostileLoft:true,
+        age:0,salvoCount:e.missileSalvoCount,salvoIndex:i,trail:[{...mount}]});
+      event('enemy-missile',mount);e.missileLastTube=tube;e.missileLoaded[tube]=false;e.missileStock--;e.missileSalvoFired++;e.missileQuiet=0;e.missileRefill=0;
+      if(e.missileSalvoFired<e.missileSalvoCount)e.attackTimer=.16;
+      else{e.missileVolley++;e.attackPhase='idle';e.podLaunch=.2;e.podRaise=1;e.lockProgress=0;e.missileCooldown=4.4;}
     }
-    e.attackPhase='idle';e.cooldown=.5;
   }
   return {shots,events};
 }

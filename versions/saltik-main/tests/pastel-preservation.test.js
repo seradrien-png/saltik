@@ -31,15 +31,17 @@ test('V2 preserves V1 native pixels, walkable geometry, native motions and encou
    // Only explicitly scaled lunar enemies change size; defaults remain native.
    .replaceAll('*(e.artScale??1)','')
    // Gatling rockets share the existing projectile illustration only.
-   .replace(",'gatling-rocket'",'').replace(",'enemy-rocket'",'')
+   .replace(",'gatling-rocket'",'').replace(",'enemy-rocket'",'').replace(",'enemy-mirv'",'').replace(",'enemy-cluster'",'')
    // Only BT heavy rounds enlarge their existing projectile illustration.
-   .replace('if(s.btHeavy)c.scale(1.5,1.5);','')
+   .replace('if(s.btHeavy)c.scale(1.5,1.5);','').replace("if(s.kind==='enemy-cluster')c.scale(.65,.65);",'')
    // Numeric V1 ids retain the exact native animation; lunar text ids use a finite seed.
    .replace(' const bobSeed=Number.isFinite(e.id)?e.id:Number.isFinite(e.phase)?e.phase:0;\n const bob=walking?Math.sin(time*10+bobSeed)*.9:0;',
     ' const bob=walking?Math.sin(time*10+(e.id??0))*.9:0;'));
   // Recorded Striker reports replace their synthetic path only when decoded.
   // Strip that authorized sampler layer while verifying every original fallback.
   if(path==='src/audio.js')content=Buffer.from(content.toString()
+   // Requested score-only gain increase preserves every original effect branch.
+   .replace('music.volume=.32','music.volume=.20')
    // V51 changes only Striker firing gain, recorded reload and guided-hit reports.
    // Undo those exact additions before validating all original voices and effects.
    .replace("    if(e.strikerGuidedCompanion&&character==='striker')return;\n",'')

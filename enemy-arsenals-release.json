@@ -1,0 +1,221 @@
+{
+  "date": "2026-11-21",
+  "base_source_commit": "0480ad72eb7b71707c7b1dfe3da4ad6946b2f4bf",
+  "previous_github_commit": "2476b1ec0c0e14928e73b432ea44b084fdf20ca9",
+  "tests": {
+    "passed": 1014,
+    "failed": 0
+  },
+  "desktop": [
+    {
+      "character": "striker",
+      "defendedPositions": true,
+      "defenders": 96,
+      "allNativeArms": true,
+      "skullWalk": true,
+      "speechSubtitlesAbsent": true,
+      "pause": true,
+      "errors": [],
+      "missing": []
+    },
+    {
+      "character": "gatling",
+      "defendedPositions": true,
+      "defenders": 96,
+      "allNativeArms": true,
+      "skullWalk": true,
+      "speechSubtitlesAbsent": true,
+      "pause": true,
+      "errors": [],
+      "missing": []
+    },
+    {
+      "character": "bt",
+      "defendedPositions": true,
+      "defenders": 96,
+      "allNativeArms": true,
+      "skullWalk": true,
+      "speechSubtitlesAbsent": true,
+      "pause": true,
+      "errors": [],
+      "missing": []
+    }
+  ],
+  "mobile": {
+    "viewport": [
+      844,
+      390
+    ],
+    "dpr": 2,
+    "defendedPositions": true,
+    "defenders": 96,
+    "btMultitouchFireAndLocks": true,
+    "native16MissilePanic": true,
+    "touchMovement": true,
+    "noSubtitles": true,
+    "musicPlaybackAndPause": true,
+    "pause": true,
+    "errors": []
+  },
+  "package": {
+    "source_bytes": 390924093,
+    "runtime_bytes": 266265458,
+    "archive_bytes": 266874880
+  },
+  "review": "No critical or important findings; 21 focused checks passed.",
+  "source_commit": "d1b1c3d4c687f286752e64cba41684f8d17e54ec",
+  "version": 58,
+  "version_id": "appgprj_6ae77e1b6da081918600675fc2e2b738~appgver_e99ebf000b988191b07291a9b3522a66",
+  "deployment_id": "appgdep_6b0149c133008191a2817e5750755e5d",
+  "deployment_status": "succeeded",
+  "url": "https://saltik-v2-matin-dore.ser-adrien.chatgpt.site",
+  "backup_verified_files": 1967,
+  "digital_download_browser": {
+    "assembly_and_completion": true,
+    "music_volume": 0.4
+  },
+  "public_verification": {
+    "url": "https://saltik-v2-matin-dore.ser-adrien.chatgpt.site",
+    "files": [
+      {
+        "path": "index.html",
+        "status": 200,
+        "bytes": 17746,
+        "matches": true
+      },
+      {
+        "path": "android.html",
+        "status": 200,
+        "bytes": 17457,
+        "matches": true
+      },
+      {
+        "path": "menu/level4-gatling-default.webp",
+        "status": 200,
+        "bytes": 220430,
+        "matches": true
+      },
+      {
+        "path": "audio/gatling-brrrt-loop.ogg",
+        "status": 200,
+        "bytes": 47581,
+        "matches": true
+      },
+      {
+        "path": "audio/saltik_sable_rouge_v2.ogg",
+        "status": 200,
+        "bytes": 1572127,
+        "matches": true
+      },
+      {
+        "path": "src/audio.js",
+        "status": 200,
+        "bytes": 19894,
+        "matches": true
+      },
+      {
+        "path": "src/enemy-download.js",
+        "status": 200,
+        "bytes": 2366,
+        "matches": true
+      },
+      {
+        "path": "src/enemy-rust-striker-art.js",
+        "status": 200,
+        "bytes": 7592,
+        "matches": true
+      },
+      {
+        "path": "src/enemy-saltik.js",
+        "status": 200,
+        "bytes": 8284,
+        "matches": true
+      },
+      {
+        "path": "src/engine.js",
+        "status": 200,
+        "bytes": 83030,
+        "matches": true
+      },
+      {
+        "path": "src/gatling-art.js",
+        "status": 200,
+        "bytes": 11028,
+        "matches": true
+      },
+      {
+        "path": "src/grounded-bt-defeat.js",
+        "status": 200,
+        "bytes": 2980,
+        "matches": true
+      },
+      {
+        "path": "src/ink-actors.js",
+        "status": 200,
+        "bytes": 5879,
+        "matches": true
+      },
+      {
+        "path": "src/ink-enemy-saltik.js",
+        "status": 200,
+        "bytes": 17598,
+        "matches": true
+      },
+      {
+        "path": "src/ink-pods.js",
+        "status": 200,
+        "bytes": 7944,
+        "matches": true
+      },
+      {
+        "path": "src/modern-striker-art.js",
+        "status": 200,
+        "bytes": 9737,
+        "matches": true
+      },
+      {
+        "path": "src/music-tracks.js",
+        "status": 200,
+        "bytes": 676,
+        "matches": true
+      },
+      {
+        "path": "src/red-army.js",
+        "status": 200,
+        "bytes": 9160,
+        "matches": true
+      },
+      {
+        "path": "src/renderer.js",
+        "status": 200,
+        "bytes": 18286,
+        "matches": true
+      },
+      {
+        "path": "src/wheel-roll.js",
+        "status": 200,
+        "bytes": 1406,
+        "matches": true
+      },
+      {
+        "path": "assets/enemy-rust-striker.webp",
+        "status": 200,
+        "bytes": 1939706,
+        "matches": true
+      },
+      {
+        "path": "assets/gatling-desert-starless-atlas.webp",
+        "status": 200,
+        "bytes": 1947876,
+        "matches": true
+      },
+      {
+        "path": "assets/gatling-desert-starless-turn.webp",
+        "status": 200,
+        "bytes": 1744206,
+        "matches": true
+      }
+    ],
+    "passed": true
+  }
+}

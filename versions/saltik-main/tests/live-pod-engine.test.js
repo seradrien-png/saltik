@@ -24,18 +24,14 @@ test('three sequential native pod launches still deliver their three physical gu
  assert.equal(target.hp,76);assert.equal(g.stats.homingSalvos,1);
 });
 
-test('enemy pods visibly and physically empty as their two missiles leave, and pause freezes the second tube',async()=>{
+test('enemy BT stock empties sequentially and pause freezes the following launch',async()=>{
  const {createEnemySaltik}=await import('../src/enemy-saltik.js');
- const {inkEnemySaltikGeometry}=await import('../src/ink-enemy-saltik.js');
- const g=quiet(),e=createEnemySaltik({id:701,x:700},{y:620,random:.5});e.nextAttack='missile';e.cooldown=0;g.enemies=[e];
- for(let i=0;i<180&&!e.podCycle;i++)tick(g);
- assert.ok(e.podCycle);assert.deepEqual(e.podCycle.fired,[true,false]);
- const shot=g.projectiles.find(s=>s.kind==='enemy-missile'),mouth=inkEnemySaltikGeometry(e,g.time).podMuzzles[0];
- assert.ok(Math.hypot(shot.launchX-mouth.x,shot.launchY-mouth.y)<1e-6);
- const before=structuredClone(e.podCycle);g.status='paused';tick(g,{},60);assert.deepEqual(e.podCycle,before);
- g.status='playing';tick(g,{},14);assert.deepEqual(e.podCycle.fired,[true,true]);
+ const g=quiet(),e=createEnemySaltik({id:701,x:700},{y:620,random:.5});e.missileCooldown=0;g.enemies=[e];
+ for(let i=0;i<240&&!e.missileSalvoFired;i++)tick(g);
+ assert.equal(e.missileSalvoFired,1);assert.equal(e.missileStock,15);
+ const before=structuredClone(e);g.status='paused';tick(g,{},60);assert.deepEqual(e,before);
+ g.status='playing';tick(g,{},22);assert.equal(e.missileSalvoFired,2);assert.equal(e.missileStock,14);
  assert.equal(g.events.filter(event=>event.type==='enemy-missile').length,2);
- assert.equal(podSlotPresentation(e,0).round,0);assert.equal(podSlotPresentation(e,1).round,0);
 });
 
 test('starting a boss assault cancels reserved launches instead of firing them after the cinematic',async()=>{

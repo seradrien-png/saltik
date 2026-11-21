@@ -7,15 +7,15 @@
       "slug": "saltik-main",
       "repo": "saltik-v2-matin-dore",
       "title": "SALTIK V2 \u2014 Matin Dor\u00e9",
-      "commit": "0480ad72eb7b71707c7b1dfe3da4ad6946b2f4bf",
+      "commit": "d1b1c3d4c687f286752e64cba41684f8d17e54ec",
       "published_version": 57,
       "url": "https://saltik-v2-matin-dore.ser-adrien.chatgpt.site",
       "base_commit": "ce280f9394d382d728673a48c1994a18092e8c58",
       "source_path": "/workspace/sites/saltik-v2-matin-dore",
       "export_path": "versions/saltik-main",
       "web_entry": "versions/saltik-main/dist/index.html",
-      "file_count": 909,
-      "bytes": 410277421,
+      "file_count": 918,
+      "bytes": 410314181,
       "uncommitted_changes": "",
       "files": {
         ".gitignore": {
@@ -887,7 +887,7 @@
           "size": 3073
         },
         "dist/src/audio.js": {
-          "sha256": "c578ac55488f257fd3966e0079f66633ee84c67a01fc40875aefae0f63ae6bd0",
+          "sha256": "93f5b4b4917f1883d9ecd901cc143c9f26c798ebdd0b8de9b85dbe721ee15366",
           "size": 19894
         },
         "dist/src/background-motion.js": {
@@ -1018,25 +1018,29 @@
           "sha256": "ba88a220ad1a9e71d7eec1d6b20c4fccb4a386aef6b1fa52679d1e9be148d470",
           "size": 2223
         },
+        "dist/src/enemy-download.js": {
+          "sha256": "129426a4fc59afbbb4e7387f994ede773106cfde88346d03973596cbb2eec8cd",
+          "size": 2366
+        },
         "dist/src/enemy-rust-striker-art.js": {
-          "sha256": "aa10af9b0697cbadfd90cadb20bff18d439cfbb83831299171d3c5af2089dab3",
-          "size": 7083
+          "sha256": "f5d4d1a9eace379d937b3ffc3f550df46f1417e046ca4503f6ce680f555a862e",
+          "size": 7592
         },
         "dist/src/enemy-saltik-art.js": {
           "sha256": "200b8da03ea422343d6e1031c54d87cca80fde07c145ef0412cbd375d42501b2",
           "size": 2328
         },
         "dist/src/enemy-saltik.js": {
-          "sha256": "bf32bd368f9fe10915055011d42f0170b8a623c3d258511850cd9d5fd4323d8d",
-          "size": 7710
+          "sha256": "34a9afa74ec667f7fd18cc97ca18c33b47d1f873a0b5314c2a9a26258b870485",
+          "size": 8284
         },
         "dist/src/enemy-styles.js": {
           "sha256": "0a4ff72c5ca247de876459edd8f2eb2e2be0e8bfebfb2fc548eba75f152eca5b",
           "size": 3722
         },
         "dist/src/engine.js": {
-          "sha256": "d5824103a72ded779ae3aaf9a3e72e50cee07c2363ee030b2469d5e3a9c800af",
-          "size": 82559
+          "sha256": "fab1bee9413d6a5effd0247a7467dd3b3bb9aa5c3bf4908517b2b15b6a373005",
+          "size": 83030
         },
         "dist/src/evasion.js": {
           "sha256": "3b9e6a5daafd5098d12f20a67279e98eca7b85ef500b79b67ea5862199992aeb",
@@ -1047,8 +1051,8 @@
           "size": 1135
         },
         "dist/src/gatling-art.js": {
-          "sha256": "462b298dcb33377d83001ca5ca494727f2e7031e686bb6a826e9c87051f7d692",
-          "size": 10958
+          "sha256": "ff2804c7f9d926ae88885dccd110acd30f77a4366b9dc0b23a8ced350e7e1a2b",
+          "size": 11028
         },
         "dist/src/gatling-combat.js": {
           "sha256": "7b2ff13906b05051fda2ca79c2dee72ad3573f890d45802b0f766a138357809a",
@@ -1063,8 +1067,8 @@
           "size": 1765
         },
         "dist/src/grounded-bt-defeat.js": {
-          "sha256": "780839cbbcadb7a675605bddad7dbee56a95ae7fb38e63e20a9b06ba2938cf90",
-          "size": 1205
+          "sha256": "6ff623fb9c1b2734ab8bf553e03f898752046ddb6e4e2bbf4535aa63a36486f1",
+          "size": 2980
         },
         "dist/src/guided-navigation.js": {
           "sha256": "adc9ef558a36437adc80c58724fccafd63b1186a67b7bb1c81e308d5941e6957",
@@ -1075,8 +1079,8 @@
           "size": 748
         },
         "dist/src/ink-actors.js": {
-          "sha256": "90d8db4b3b2691819e6d6cebe373b98b218512c089f60196754ac2ced6af8e50",
-          "size": 5231
+          "sha256": "2c76444a4ef7a939521432057bda81aa1a9ffdd5c71a783f30f90f6e2a1d5967",
+          "size": 5879
         },
         "dist/src/ink-campaign-art.js": {
           "sha256": "d5f3478a5e6fb512aec695b6680b45fb6c22b953e61d3b798314409a816618fb",
@@ -1095,8 +1099,8 @@
           "size": 38557
         },
         "dist/src/ink-enemy-saltik.js": {
-          "sha256": "810780828e86c8f214b7c6bd8cb3214c91b3eaac47e87856e068bae627c9549b",
-          "size": 17240
+          "sha256": "c7a7523fc172c66c9822b9998d2e946a992fe6482b9ffca6131bdd0cbcb2ffeb",
+          "size": 17598
         },
         "dist/src/ink-hit-cache.js": {
           "sha256": "7e9903deb9b50802faa19d302bb0c118da012ebf4213be0882c5bc493b113a80",
@@ -1115,8 +1119,8 @@
           "size": 3627
         },
         "dist/src/ink-pods.js": {
-          "sha256": "59750052d4faff482bab85d50ac7233d1bc92ad27656bb0dfbd1f7c739f7aabc",
-          "size": 7705
+          "sha256": "e8ea0c8f0d526eef76438234a0d5be3555c47c590c8622180a0dc10f839e955e",
+          "size": 7944
         },
         "dist/src/ink-renderer.js": {
           "sha256": "182c0f84106451be54fc662ccd4e629394f81775b060c37ee0bb2f79641d1ed4",
@@ -1215,15 +1219,15 @@
           "size": 1708
         },
         "dist/src/modern-striker-art.js": {
-          "sha256": "968aec3d457951630d251c267d3441804d28237554dc45539dcec4c5fd0f0354",
-          "size": 9667
+          "sha256": "b48fefa1613ab3cc4a4a0b5076643e7d1b132c8d2594b01299a6bfc590ba37f6",
+          "size": 9737
         },
         "dist/src/motor-motion.js": {
           "sha256": "4cd5f7608a358e829486fb3044179c75876304c3623a922a6fb701055a468691",
           "size": 839
         },
         "dist/src/music-tracks.js": {
-          "sha256": "5d1a96b7a65800e8686897a3ce09f0aa3bf92b0de6e171befde5f4e7424e978a",
+          "sha256": "1ad38740670e6d9125bb3205d88d22ac669ae1a21c35f486657dfb32674100e2",
           "size": 676
         },
         "dist/src/native-turn-hitboxes.js": {
@@ -1255,8 +1259,8 @@
           "size": 633
         },
         "dist/src/red-army.js": {
-          "sha256": "dfb3a6c47e89a7e1217c592d9438692f02832f9399398256cbf2a497df686741",
-          "size": 7180
+          "sha256": "b9950a3ae716dd3536f81d2b0533acbc60b0a2db8898b9b5585801267100a5ed",
+          "size": 9160
         },
         "dist/src/red-wastes-layout.js": {
           "sha256": "93e8f248110da507bf906fdf071e0ab2a76b99f50442e5c0532b9ee8a27cde5e",
@@ -1275,8 +1279,8 @@
           "size": 4659
         },
         "dist/src/renderer.js": {
-          "sha256": "65cd53d088f93b0a2d5c7f2973636de65399d5f1cef3985ff6f12174044cb824",
-          "size": 18188
+          "sha256": "e7ad6f6a5604c64271a161a9ed9c54e04bed88b044e095294c6bd6fb2ce94946",
+          "size": 18286
         },
         "dist/src/royal-atmosphere.js": {
           "sha256": "6549bc33b686a549fca2ca66c1bab0ae792ee4321448195cb724c5b939564ffe",
@@ -1390,6 +1394,10 @@
           "sha256": "0323c6111e345b697cc71dc12412d73cfc2adb2ec70ec0af0fa5f3c4816b9350",
           "size": 4582
         },
+        "dist/src/wheel-roll.js": {
+          "sha256": "9580701aed7e026ce7ee0876a49b313a724833453faa16abcac56009609981b6",
+          "size": 1406
+        },
         "dist/src/world.js": {
           "sha256": "ff959b64c728949a139b0d0af69dbac30bf80981ddc572090ea1b0120ee051e6",
           "size": 9418
@@ -1457,6 +1465,14 @@
         "docs/dragon-velvet-validation.json": {
           "sha256": "fa1a48a391917a34014a5b7357b6536d39daf53fe997c4a30037f7b63b7bf0fb",
           "size": 3372
+        },
+        "docs/enemy-arsenals-validation.json": {
+          "sha256": "b515024ad41ade7adfa8fc50d5234cbddfdba9eeea59647431cbe785f50cf0d6",
+          "size": 1504
+        },
+        "docs/enemy-arsenals.md": {
+          "sha256": "04a5efc0ea1aa6e6fb4a554476ab68dd707bd9edca0a73b5ca5b18293fe202d0",
+          "size": 1937
         },
         "docs/epilogue/README.md": {
           "sha256": "f111bb2b4bbd03fc55432a40d8d4755288a5a33e4e3cbd9b8d7ee107b6d5354f",
@@ -2359,7 +2375,7 @@
           "size": 8603
         },
         "src/audio.js": {
-          "sha256": "c578ac55488f257fd3966e0079f66633ee84c67a01fc40875aefae0f63ae6bd0",
+          "sha256": "93f5b4b4917f1883d9ecd901cc143c9f26c798ebdd0b8de9b85dbe721ee15366",
           "size": 19894
         },
         "src/background-motion.js": {
@@ -2490,25 +2506,29 @@
           "sha256": "ba88a220ad1a9e71d7eec1d6b20c4fccb4a386aef6b1fa52679d1e9be148d470",
           "size": 2223
         },
+        "src/enemy-download.js": {
+          "sha256": "129426a4fc59afbbb4e7387f994ede773106cfde88346d03973596cbb2eec8cd",
+          "size": 2366
+        },
         "src/enemy-rust-striker-art.js": {
-          "sha256": "aa10af9b0697cbadfd90cadb20bff18d439cfbb83831299171d3c5af2089dab3",
-          "size": 7083
+          "sha256": "f5d4d1a9eace379d937b3ffc3f550df46f1417e046ca4503f6ce680f555a862e",
+          "size": 7592
         },
         "src/enemy-saltik-art.js": {
           "sha256": "200b8da03ea422343d6e1031c54d87cca80fde07c145ef0412cbd375d42501b2",
           "size": 2328
         },
         "src/enemy-saltik.js": {
-          "sha256": "bf32bd368f9fe10915055011d42f0170b8a623c3d258511850cd9d5fd4323d8d",
-          "size": 7710
+          "sha256": "34a9afa74ec667f7fd18cc97ca18c33b47d1f873a0b5314c2a9a26258b870485",
+          "size": 8284
         },
         "src/enemy-styles.js": {
           "sha256": "0a4ff72c5ca247de876459edd8f2eb2e2be0e8bfebfb2fc548eba75f152eca5b",
           "size": 3722
         },
         "src/engine.js": {
-          "sha256": "d5824103a72ded779ae3aaf9a3e72e50cee07c2363ee030b2469d5e3a9c800af",
-          "size": 82559
+          "sha256": "fab1bee9413d6a5effd0247a7467dd3b3bb9aa5c3bf4908517b2b15b6a373005",
+          "size": 83030
         },
         "src/evasion.js": {
           "sha256": "3b9e6a5daafd5098d12f20a67279e98eca7b85ef500b79b67ea5862199992aeb",
@@ -2519,8 +2539,8 @@
           "size": 1135
         },
         "src/gatling-art.js": {
-          "sha256": "462b298dcb33377d83001ca5ca494727f2e7031e686bb6a826e9c87051f7d692",
-          "size": 10958
+          "sha256": "ff2804c7f9d926ae88885dccd110acd30f77a4366b9dc0b23a8ced350e7e1a2b",
+          "size": 11028
         },
         "src/gatling-combat.js": {
           "sha256": "7b2ff13906b05051fda2ca79c2dee72ad3573f890d45802b0f766a138357809a",
@@ -2535,8 +2555,8 @@
           "size": 1765
         },
         "src/grounded-bt-defeat.js": {
-          "sha256": "780839cbbcadb7a675605bddad7dbee56a95ae7fb38e63e20a9b06ba2938cf90",
-          "size": 1205
+          "sha256": "6ff623fb9c1b2734ab8bf553e03f898752046ddb6e4e2bbf4535aa63a36486f1",
+          "size": 2980
         },
         "src/guided-navigation.js": {
           "sha256": "adc9ef558a36437adc80c58724fccafd63b1186a67b7bb1c81e308d5941e6957",
@@ -2547,8 +2567,8 @@
           "size": 748
         },
         "src/ink-actors.js": {
-          "sha256": "90d8db4b3b2691819e6d6cebe373b98b218512c089f60196754ac2ced6af8e50",
-          "size": 5231
+          "sha256": "2c76444a4ef7a939521432057bda81aa1a9ffdd5c71a783f30f90f6e2a1d5967",
+          "size": 5879
         },
         "src/ink-campaign-art.js": {
           "sha256": "d5f3478a5e6fb512aec695b6680b45fb6c22b953e61d3b798314409a816618fb",
@@ -2567,8 +2587,8 @@
           "size": 38557
         },
         "src/ink-enemy-saltik.js": {
-          "sha256": "810780828e86c8f214b7c6bd8cb3214c91b3eaac47e87856e068bae627c9549b",
-          "size": 17240
+          "sha256": "c7a7523fc172c66c9822b9998d2e946a992fe6482b9ffca6131bdd0cbcb2ffeb",
+          "size": 17598
         },
         "src/ink-hit-cache.js": {
           "sha256": "7e9903deb9b50802faa19d302bb0c118da012ebf4213be0882c5bc493b113a80",
@@ -2587,8 +2607,8 @@
           "size": 3627
         },
         "src/ink-pods.js": {
-          "sha256": "59750052d4faff482bab85d50ac7233d1bc92ad27656bb0dfbd1f7c739f7aabc",
-          "size": 7705
+          "sha256": "e8ea0c8f0d526eef76438234a0d5be3555c47c590c8622180a0dc10f839e955e",
+          "size": 7944
         },
         "src/ink-renderer.js": {
           "sha256": "182c0f84106451be54fc662ccd4e629394f81775b060c37ee0bb2f79641d1ed4",
@@ -2687,15 +2707,15 @@
           "size": 1708
         },
         "src/modern-striker-art.js": {
-          "sha256": "968aec3d457951630d251c267d3441804d28237554dc45539dcec4c5fd0f0354",
-          "size": 9667
+          "sha256": "b48fefa1613ab3cc4a4a0b5076643e7d1b132c8d2594b01299a6bfc590ba37f6",
+          "size": 9737
         },
         "src/motor-motion.js": {
           "sha256": "4cd5f7608a358e829486fb3044179c75876304c3623a922a6fb701055a468691",
           "size": 839
         },
         "src/music-tracks.js": {
-          "sha256": "5d1a96b7a65800e8686897a3ce09f0aa3bf92b0de6e171befde5f4e7424e978a",
+          "sha256": "1ad38740670e6d9125bb3205d88d22ac669ae1a21c35f486657dfb32674100e2",
           "size": 676
         },
         "src/native-turn-hitboxes.js": {
@@ -2727,8 +2747,8 @@
           "size": 633
         },
         "src/red-army.js": {
-          "sha256": "dfb3a6c47e89a7e1217c592d9438692f02832f9399398256cbf2a497df686741",
-          "size": 7180
+          "sha256": "b9950a3ae716dd3536f81d2b0533acbc60b0a2db8898b9b5585801267100a5ed",
+          "size": 9160
         },
         "src/red-wastes-layout.js": {
           "sha256": "93e8f248110da507bf906fdf071e0ab2a76b99f50442e5c0532b9ee8a27cde5e",
@@ -2747,8 +2767,8 @@
           "size": 4659
         },
         "src/renderer.js": {
-          "sha256": "65cd53d088f93b0a2d5c7f2973636de65399d5f1cef3985ff6f12174044cb824",
-          "size": 18188
+          "sha256": "e7ad6f6a5604c64271a161a9ed9c54e04bed88b044e095294c6bd6fb2ce94946",
+          "size": 18286
         },
         "src/royal-atmosphere.js": {
           "sha256": "6549bc33b686a549fca2ca66c1bab0ae792ee4321448195cb724c5b939564ffe",
@@ -2862,6 +2882,10 @@
           "sha256": "0323c6111e345b697cc71dc12412d73cfc2adb2ec70ec0af0fa5f3c4816b9350",
           "size": 4582
         },
+        "src/wheel-roll.js": {
+          "sha256": "9580701aed7e026ce7ee0876a49b313a724833453faa16abcac56009609981b6",
+          "size": 1406
+        },
         "src/world.js": {
           "sha256": "ff959b64c728949a139b0d0af69dbac30bf80981ddc572090ea1b0120ee051e6",
           "size": 9418
@@ -2879,8 +2903,8 @@
           "size": 4040
         },
         "tests/audio.test.js": {
-          "sha256": "07e5dfd0834a44330e09e719386d57db0cf815edc293fe234b6a64f7ee248072",
-          "size": 18007
+          "sha256": "be610b0f6be817f4a7f7defa59683a8cbd0d69f1a5cabc114971209eb70fdd14",
+          "size": 18019
         },
         "tests/background-motion.test.js": {
           "sha256": "b2ed18c174b699460961c74362aade366d189d00462dba78c0e885bd1b7ec050",
@@ -3123,8 +3147,8 @@
           "size": 5151
         },
         "tests/character-polish.test.js": {
-          "sha256": "d1d8ef402850704724dd1879664907473d46dbefa0e82dbd80b95cc4b5cd3ad6",
-          "size": 3970
+          "sha256": "d12adfef5ecdc154dab6dc531cbcdc422233314e325e990fd632439f5d0f65bf",
+          "size": 4085
         },
         "tests/combat-effects.test.js": {
           "sha256": "19618f04b0fe7339fa08a6cea89adc5cb1c69bf65007864a98454fb41df82bd5",
@@ -3186,9 +3210,17 @@
           "sha256": "d2a18da1e22d786c91ec1994903f3d25563073e3834fd68616fb6e69c785fe4b",
           "size": 3388
         },
+        "tests/enemy-arsenals.test.js": {
+          "sha256": "6e2be43690951892abe7c5a229473c39eaaa138066564ea48a7b4ec82b16c74c",
+          "size": 5958
+        },
         "tests/enemy-art.test.js": {
           "sha256": "05a69dc386ea5bf0f9316ccd16a6eb05d3b2669c6b22875d2a94293ef12ac64c",
           "size": 2934
+        },
+        "tests/enemy-download.test.js": {
+          "sha256": "8f21b203d79b59e665943aeaf7724f6623aab5dd058a51f4a7a695b5af7928b2",
+          "size": 3657
         },
         "tests/enemy-rust-striker-art.test.js": {
           "sha256": "a4790bb4a856f687aadc75f3b5eff141d2a3881ca76357110c6b9df411ccd3e4",
@@ -3199,8 +3231,8 @@
           "size": 2778
         },
         "tests/enemy-saltik.test.js": {
-          "sha256": "61459107602372cc79b09339a48fe8ebe8f956a2e910f1ce98f94d2f135ac63c",
-          "size": 9801
+          "sha256": "ee07b98cf0e025423369dac26f55334325891cebe9b83ca87f899b457983c8e8",
+          "size": 8231
         },
         "tests/enemy-styles.test.js": {
           "sha256": "54929a3982f615c03e8c87879e52607a64449b222d000bfbe4b6d4e478fbbb60",
@@ -3247,8 +3279,8 @@
           "size": 5319
         },
         "tests/grounded-bt-defeat.test.js": {
-          "sha256": "2f686e968574fc18e2ba33e0330da861fdf4aa685f750b31e720647c9c3d4a78",
-          "size": 2618
+          "sha256": "32f78c4ac033bd04a00120e74a65015c9bce348a997a06a5a602dcf7cd823507",
+          "size": 3849
         },
         "tests/guided-navigation.test.js": {
           "sha256": "bea7e471a2fcc7043ba2954a1daadb7ae57c75e743f7215f526ae8190fc98ec2",
@@ -3267,8 +3299,8 @@
           "size": 5061
         },
         "tests/ink-enemies.test.js": {
-          "sha256": "65df0cafd53b29543c8b03483010b81423cb0f72361187773aae51e1385e761c",
-          "size": 8992
+          "sha256": "ee03568b51c9a79be7de1cb50e3e023f263bcc65def0f7f2f6d26f4443d630f3",
+          "size": 8678
         },
         "tests/ink-player-hitbox.test.js": {
           "sha256": "2834d910fcddfd18b0445f01db74a398904ef4d13ad544d878bbbe85890022f3",
@@ -3319,8 +3351,8 @@
           "size": 4608
         },
         "tests/live-pod-engine.test.js": {
-          "sha256": "f6931319e1ea6f4c0a380f402e08675ac052b2b5c62d0834f366e2b27a5b4c69",
-          "size": 3543
+          "sha256": "9003e1f0649909fc35990f778ec6c21307eb35c8887ba3229085568c8e3d5aec",
+          "size": 3151
         },
         "tests/live-pods.test.js": {
           "sha256": "4b6a7c9dbcfae559a4e23493c72a1023c9e1bcbbc811f0f093015a94efa4216d",
@@ -3447,8 +3479,8 @@
           "size": 1507
         },
         "tests/pastel-preservation.test.js": {
-          "sha256": "ef2707f8222286a6dbf6dcca2e232bb9465ad7dc3bb713034d5d28077fa77015",
-          "size": 9283
+          "sha256": "f990eefb01c2ebdac5d0428f6567712b5053e414f799bbf478553959ffa39acb",
+          "size": 9534
         },
         "tests/pastel-rider.test.js": {
           "sha256": "969e183bb7a0573ab07b43dbac3990e1cf1a2fd28c0bc32f2f6a51cb665d11c5",
@@ -3463,11 +3495,11 @@
           "size": 9052
         },
         "tests/red-army.test.js": {
-          "sha256": "64df76bd25d4acaf35fd1858876289216c06c60e28464d4d95d26a0158300061",
-          "size": 8637
+          "sha256": "822446f7e3f69b30c149a5932d387d141dd300a781c3ad54fe9497a6c6c8affd",
+          "size": 8448
         },
         "tests/red-sand-music.test.js": {
-          "sha256": "38d5be00034bea5e4bbe2085e4eddfb78dfcc8f48fcea09fe41923e4fa3a9d49",
+          "sha256": "28573d779cc9d4437d4f1204ada94f9fce364622fc307e0a8579eb3edfaf87ac",
           "size": 2900
         },
         "tests/red-wastes-level.test.js": {
@@ -3653,6 +3685,10 @@
         "tests/walkable-routes.test.js": {
           "sha256": "0093dfda8aed420be006b09e0de0c4d2745b80fd069479c1ca5d89533598113e",
           "size": 12963
+        },
+        "tests/wheel-roll.test.js": {
+          "sha256": "c8dbb11ae0042bb25eb2479fcb3346ff1a150036047c2eaf87190e3622473440",
+          "size": 3432
         }
       },
       "levels": [

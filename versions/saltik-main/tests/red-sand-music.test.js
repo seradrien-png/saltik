@@ -9,13 +9,13 @@ test('only Fossiles rouges receives the supplied red sand score',()=>{
  const media={src:'',pauseCalls:0,loadCalls:0,playCalls:0,
   getAttribute(){return this.src;},pause(){this.pauseCalls++;},load(){this.loadCalls++;},play(){this.playCalls++;}};
  assert.equal(selectLevelMusic(5,media),true);
- assert.equal(media.src,'./audio/saltik_sable_rouge_v2.ogg');assert.equal(media.volume,.25);assert.equal(media.loop,true);
+ assert.equal(media.src,'./audio/saltik_sable_rouge_v2.ogg');assert.equal(media.volume,.40);assert.equal(media.loop,true);
  selectLevelMusic(5,media);assert.equal(media.loadCalls,1,'reselecting must reuse the same media element and track');
  assert.equal(media.playCalls,0,'playback remains owned by the audio bus');
  assert.equal(selectLevelMusic(4,media),false);
  assert.equal(selectLevelMusic(2,media),false);
- assert.equal(selectLevelMusic(3,media),true);assert.equal(media.src,'./audio/saltik_velours_01_mecanique.mp3');assert.equal(media.volume,.25);
- assert.equal(selectLevelMusic(1,media),true);assert.equal(media.src,'./audio/forest-loop.ogg');assert.equal(media.volume,.20);
+ assert.equal(selectLevelMusic(3,media),true);assert.equal(media.src,'./audio/saltik_velours_01_mecanique.mp3');assert.equal(media.volume,.40);
+ assert.equal(selectLevelMusic(1,media),true);assert.equal(media.src,'./audio/forest-loop.ogg');assert.equal(media.volume,.32);
  assert.equal(selectLevelMusic(5,null),false);
 });
 

@@ -7,15 +7,15 @@ test('soft slide emits a single friction cue without changing knockout/end timin
 
 test('painted waterfall flow stays confined to mapped water and freezes at a paused simulation time',async()=>{const {ROYAL_WATERFALLS,waterfallRibbons,drawRoyalWaterfalls}=await import('../src/royal-waterfalls.js');for(const zones of Object.values(ROYAL_WATERFALLS))for(const z of zones){const a=waterfallRibbons(z,1),b=waterfallRibbons(z,1.15);assert.deepEqual(a,waterfallRibbons(z,1));assert.notDeepEqual(a,b);for(const band of [...a,...b]){assert(band.sy>=z[1]);assert(band.sy+band.sh<=z[1]+z[3]);assert(band.dy>=z[1]);assert(band.dy+band.dh<=z[1]+z[3]);}}const calls=[],stack=[],c=new Proxy({globalAlpha:1,save(){stack.push(this.globalAlpha);},restore(){this.globalAlpha=stack.pop();},drawImage(...a){calls.push(a);}},{get:(t,k)=>k in t?t[k]:()=>{}});drawRoyalWaterfalls(c,{},'backdrop',{time:1});assert(calls.length>20&&calls.length<150);assert.equal(c.globalAlpha,1);});
 
-test('painted wheels do not rotate with accumulated travel on any playable Saltik or enemy BT',async()=>{
+test('wheel rolling preserves painted source images on playable Saltiks and enemy BT',async()=>{
  const {drawInkSaltik}=await import('../src/ink-saltik.js'),{drawInkEnemySaltik}=await import('../src/ink-enemy-saltik.js');
  const callsFor=fn=>{const calls=[],c=new Proxy({globalAlpha:1},{get:(t,k)=>k in t?t[k]:(...a)=>{calls.push([k,...a]);}});fn(c);return calls;};
  for(const character of ['striker','gatling','bt']){
   const p={...createInkScene({character}).player,x:500,y:500,vx:0,supportPose:null};
   const a=callsFor(c=>drawInkSaltik(c,{}, {...p,motionDistance:0}));
   const b=callsFor(c=>drawInkSaltik(c,{}, {...p,motionDistance:900}));
-  assert.deepEqual(a,b,character);
+  assert.deepEqual(a.filter(([k])=>k==='drawImage'),b.filter(([k])=>k==='drawImage'),character);
  }
  const e={x:500,y:500,hp:100,dir:1,vx:0};
- assert.deepEqual(callsFor(c=>drawInkEnemySaltik(c,{}, {...e,motionDistance:0})),callsFor(c=>drawInkEnemySaltik(c,{}, {...e,motionDistance:900})));
+ assert.deepEqual(callsFor(c=>drawInkEnemySaltik(c,{}, {...e,motionDistance:0})).filter(([k])=>k==='drawImage'),callsFor(c=>drawInkEnemySaltik(c,{}, {...e,motionDistance:900})).filter(([k])=>k==='drawImage'));
 });

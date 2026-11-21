@@ -1,3 +1,4 @@
+import {wheelRollPhase,drawWheelRoll} from './wheel-roll.js';
 import {drawJumpLegStrut,jumpLegOffset,jumpLegExtension,jumpLegPose,jumpLegPoint,applyJumpLegPose} from './jump-leg-pose.js';
 import {sampleSupportSurface} from './support-pose.js';
 import {plantInkWheel} from './ink-leg-support.js';
@@ -22,7 +23,7 @@ export function augmentModernGeometry(p,base,{camera=0,time=0,sampleGround}={}){
   return{...arm,rotation,extension,handPoint:q=>nativePoint(rot([q[0],q[1]+extension],arm.pivot,rotation))};});
  const modernLegs=profile.legs.map(part=>{const jumpPose=jumpLegPose(p,part,anchor[0]),legPoint=q=>nativePoint(jumpLegPoint(jumpPose,q));let offset=base.airborne?(p.jumpLegs?jumpLegExtension(p,k,base.scale):-15-base.compression*22):0,roll=jumpLegOffset(p,part.foot[0],anchor[0],k,base.scale),grounded=false;const splay=roll,native=legPoint([part.foot[0]+splay,part.foot[1]]);
   if(!base.airborne){const floor=at=>{const world=at+camera,support=sampleGround?.(world)??sampleSupportSurface(p.supportPose,world);if(p.supportPose?.surface&&!Number.isFinite(support))return NaN;return support??p.supportY??p.y;};({offset,roll,grounded}=plantInkWheel(native,{k,cos:co,sin:si,floor,orientation,maxOffset:220}));roll+=splay;}
-  return{...part,jumpPose,offset,roll,grounded,stretch:1+offset/(part.wheelTop-part.hinge),contact:legPoint([part.foot[0]+roll,part.foot[1]+offset]),spin:finite(p.motionDistance)/(part.hub[3]*nativeScale)*orientation,strut:split(part.polygon,part.wheelTop,false),wheel:split(part.polygon,part.wheelTop,true)};});
+  return{...part,jumpPose,offset,roll,grounded,stretch:1+offset/(part.wheelTop-part.hinge),contact:legPoint([part.foot[0]+roll,part.foot[1]+offset]),spin:wheelRollPhase(p,part.hub,nativeScale*base.scale,orientation),strut:split(part.polygon,part.wheelTop,false),wheel:split(part.polygon,part.wheelTop,true)};});
  const modernGuns=profile.guns.map((part,i)=>{let rotation=-(base.weaponsLocked?0:clamp(finite(p.cannonElevation),0,1.1)),recoil=-(i?finite(p.muzzle)/.07*4:finite(p.cannonRecoil)*7);if(p.modernAimTarget){const a=nativePoint(part.pivot),wx=p.modernAimTarget.x-camera-a.x,wy=p.modernAimTarget.y-a.y;rotation=Math.atan2((-wx*si+wy*co)/k,(wx*co+wy*si)/(k*orientation))-Math.atan2(part.muzzle[1]-part.pivot[1],part.muzzle[0]-part.pivot[0]);}
   const point=q=>nativePoint(rot(q,part.pivot,rotation,recoil)),muzzle=point(part.muzzle),pivot=point(part.pivot),length=Math.hypot(muzzle.x-pivot.x,muzzle.y-pivot.y)||1;return{...part,rotation,recoil,point,muzzle,direction:{x:(muzzle.x-pivot.x)/length,y:(muzzle.y-pivot.y)/length}};});
  const modernTubes=profile.rockets.map((q,i)=>{const muzzle=nativePoint(q),raw=nativePoint([q[0]-15,q[1]+28]);return{muzzle,base:raw,activeIndex:[2,4,7].indexOf(i)};});
@@ -39,7 +40,7 @@ export function drawModernStriker(c,image,p,geo,{time=0}={}){
  // Rigid tire patches remain planted; only the connecting suspension compresses.
  const drawLeg=()=>{c.save();for(const arm of arms){c.beginPath();c.rect(0,0,width,height);polygon(c,arm.polygon);c.clip('evenodd');}draw();c.restore();};
  for(const leg of legs){c.save();applyJumpLegPose(c,leg.jumpPose);drawJumpLegStrut(c,leg,leg.strut,drawLeg,!!p.jumpLegs?.spread);c.save();c.translate(leg.roll,leg.offset);c.beginPath();polygon(c,leg.wheel);c.clip();drawLeg();
- /* Original wheel painting stays fixed. */c.restore();c.restore();}
+ drawWheelRoll(c,leg,{disabled:!!p.groundedDefeat});c.restore();c.restore();}
  c.save();c.beginPath();c.rect(0,0,width,profile.id==='desert-striker'?height:image.velvetDragonCutout?724:540);c.clip();for(const part of [...legs,...arms,...guns]){c.beginPath();c.rect(0,0,width,height);polygon(c,part.polygon);c.clip('evenodd');}draw();c.restore();
  for(const [index,gun]of guns.entries()){c.save();transform(c,gun);c.beginPath();polygon(c,gun.polygon);c.clip();if(index===0){c.beginPath();c.rect(0,0,width,height);polygon(c,guns[1].polygon);c.clip('evenodd');}draw();c.restore();}
  for(const arm of arms){c.save();transform(c,arm);if(!arm.extension){c.beginPath();polygon(c,arm.polygon);c.clip();draw();}else{for(const [poly,kind]of [[split(arm.polygon,arm.stretchY,false),0],[split(split(arm.polygon,arm.stretchY,true),arm.wristY,false),1],[split(arm.polygon,arm.wristY,true),2]]){c.save();if(kind===1){c.translate(0,arm.stretchY);c.scale(1,1+arm.extension/(arm.wristY-arm.stretchY));c.translate(0,-arm.stretchY);}else if(kind===2)c.translate(0,arm.extension);c.beginPath();polygon(c,poly);c.clip();draw();c.restore();}}c.restore();}

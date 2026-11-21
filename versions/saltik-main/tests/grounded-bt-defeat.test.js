@@ -10,10 +10,11 @@ test('BT collapse keeps its lowest tire on the support in both directions and fr
   const contacts=[-60,0,70].map(x=>({x:e.x+x,y:e.y+x*slope}));
   for(const elapsed of [0,.12,.3,BT_COLLAPSE_SECONDS,10]){
    const pose=groundedBTDefeatPose(e,10+elapsed,{contacts}),co=Math.cos(pose.rotation),si=Math.sin(pose.rotation);
-   const gaps=contacts.map(point=>{const x=point.x-e.x,y=point.y-e.y,xx=e.x+x*co-y*si,yy=e.y+pose.offsetY+x*si+y*co;return yy-(600+(xx-500)*slope);});
+   const gaps=contacts.map(point=>{const x=point.x-e.x,y=point.y-e.y,xx=e.x+x*co-y*si,yy=e.y+pose.offsetY+(x*si+y*co)*pose.scaleY;return yy-(600+(xx-500)*slope);});
    near(Math.max(...gaps),0);assert.ok(gaps.every(gap=>gap<1e-7));
   }
   assert.deepEqual(groundedBTDefeatPose(e,11,{contacts}),groundedBTDefeatPose(e,100,{contacts}));
+  const settled=groundedBTDefeatPose(e,11,{contacts});near(Math.abs(settled.rotation),Math.PI/2);assert.ok(settled.scaleY<.5);
  }
 });
 
@@ -32,4 +33,18 @@ test('a defeated BT draws the original costume while leaving simulation and posi
  const geo=drawInkEnemySaltik(c,image,e,{camera:300,time:11});
  assert.ok(geo);assert.ok(calls.length>0);assert.ok(calls.every(call=>call[0]===image));assert.deepEqual(e,before);
  assert.equal(drawInkEnemySaltik(c,image,{...e,groundedDefeat:false}),null);
+});
+
+test('the complete horizontal wreck silhouette rests on ground in both facings without sinking its cabin',()=>{
+ const hull=[[-65,0],[65,0],[-58,-120],[58,-120],[-28,-155],[25,-155]];
+ for(const dir of [-1,1])for(const slope of [0,.12,-.1]){
+  const e={x:500,y:600,dir,defeatStartedAt:10,supportPose:{surface:{x:250,step:10,heights:Array.from({length:61},(_,i)=>600+(250+i*10-500)*slope)}}};
+  const silhouette=hull.map(([x,y])=>({x:e.x+x,y:e.y+y}));
+  const pose=groundedBTDefeatPose(e,11,{silhouette}),co=Math.cos(pose.rotation),si=Math.sin(pose.rotation);
+  const transformed=silhouette.map(p=>{const dx=p.x-e.x,dy=p.y-e.y;return{x:e.x+dx*co-dy*si,y:e.y+pose.offsetY+(dx*si+dy*co)*pose.scaleY};});
+  near(Math.max(...transformed.map(p=>p.y-(600+(p.x-500)*slope))),0);
+  const height=Math.max(...transformed.map(p=>p.y))-Math.min(...transformed.map(p=>p.y)),width=Math.max(...transformed.map(p=>p.x))-Math.min(...transformed.map(p=>p.x));
+  assert.ok(height/width<.42);assert.ok(transformed.every(p=>p.y<=600+(p.x-500)*slope+1e-7));
+  assert.equal(e.x,500);assert.equal(e.y,600);
+ }
 });

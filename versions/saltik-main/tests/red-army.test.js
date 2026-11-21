@@ -27,12 +27,11 @@ test('gunners hold ground while patrols and flankers move inside their defensive
  assert.equal(fixed.x,2000);assert.notEqual(patrol.x,2000);assert.notEqual(flanker.x,patrol.x);
  for(const e of [patrol,flanker])assert(e.x>=e.patrolMin&&e.x<=e.patrolMax);
 });
-test('three cannon reports are separated by reload gaps and heavy alternates rockets and guided pods',()=>{
+test('rust Striker streams its main with reload gaps and both guided pods and MIRV',()=>{
  const heavy=soldier('heavy','saltik');heavy.enemyModel='rust-striker';const {shots,events}=simulate(heavy,20);
- const reports=events.filter(e=>e.type==='red-army-cannon');assert(reports.length>=6);
- for(let i=0;i<3;i++)assert.equal(reports[i].burstIndex,i);
- assert(reports[3].time-reports[2].time>4);
- assert(shots.some(e=>e.kind==='enemy-missile'&&e.hp===1));assert(shots.some(e=>e.armyRocket&&e.kind==='enemy-rocket'&&e.splash>0));
+ const reports=events.filter(e=>e.type==='red-army-cannon');assert(reports.length>100);
+ assert(reports.some((e,i)=>i&&e.time-reports[i-1].time>1.3));
+ assert(shots.some(s=>s.kind==='enemy-missile'&&s.hp===1));assert(shots.some(s=>s.kind==='enemy-mirv'&&s.hp===1));
  assert(shots.every(s=>s.team==='enemy'&&s.damage>0&&s.life>0&&Number.isFinite(s.vx)&&Number.isFinite(s.vy)));
 });
 test('missile teams telegraph locks and fire real interceptable guided projectiles',()=>{
@@ -84,14 +83,12 @@ test('command posts retain three native BT supports beside three additional rust
  assert.deepEqual(bts.map(e=>e.armyGroup),['west-bunker','eye-passage','east-bunker']);
  assert(bts.every(e=>e.armyRole==='bt-support'&&e.platformId));
 });
-test('BT support holds its post and alternates three aimed cannon rounds with two guided missiles',()=>{
- const e=soldier('bt-support','saltik'),{shots}=simulate(e,11);
+test('BT support holds its post with independent heavy triples and rising guided salvos',()=>{
+ const e=soldier('bt-support','saltik'),{shots}=simulate(e,22);
  assert.equal(e.x,2000);assert.deepEqual(e.btAimTarget,{x:1500,y:585});
- const firstMissile=shots.findIndex(s=>s.kind==='enemy-missile');assert.equal(firstMissile,3);
- assert.equal(shots.slice(firstMissile,firstMissile+2).filter(s=>s.kind==='enemy-missile').length,2);
- assert.equal(shots[firstMissile+2].kind,'plasma');assert(!shots.some(s=>s.armyRocket));
+ assert(shots.filter(s=>s.kind==='plasma').every(s=>s.btHeavy&&s.damage===3));
+ assert(shots.some(s=>s.kind==='enemy-missile'&&s.salvoCount===8));assert(!shots.some(s=>s.armyRocket));
 });
-
 
 test('native BT and additional rust Striker both fall and persist on their support after real fire',()=>{
  const g=applyRedWastesLevel(createInkScene({level:5}));

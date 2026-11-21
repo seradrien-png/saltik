@@ -17,7 +17,7 @@ export function createAudio({onSpeech=()=>{}}={}){
   const music=document.getElementById('game-music');let playing=false,musicEnabled=true;
   // The local melancholic score uses the native media loop and existing lifecycle.
   // Effects retain a separate bus under the same protected output.
-  if(music){music.loop=true;music.volume=.20;}
+  if(music){music.loop=true;music.volume=.32;}
   function hold(param,time){
     if(param.cancelAndHoldAtTime)param.cancelAndHoldAtTime(time);
     else{const value=param.value;param.cancelScheduledValues(time);param.setValueAtTime(value,time);}
