@@ -17,10 +17,9 @@ import {createInkScene,updateInkScene as update} from './ink-scene.js';
 import {createRenderer,loadArt} from './ink-renderer.js';
 import {createInput,bindButton,bindDirectionalPad,KEY_ACTIONS} from './input.js';
 import {createAudio} from './audio.js';
-import {createSpeechCaptions} from './speech-captions.js';
 import {createVictoryFilm} from './victory-film.js';
 function createGame(options){const g=createInkScene(options);g.nextSaltikDuelVariant=readBTFinishCycle();return g;}
-const $=id=>document.getElementById(id),app=$('app'),renderer=createRenderer($('game')),input=createInput(),weaponInput=createInput(),captions=createSpeechCaptions($('speech-caption')),audio=createAudio({onSpeech:line=>line?captions.show(line.id,line.duration):captions.clear()});
+const $=id=>document.getElementById(id),app=$('app'),renderer=createRenderer($('game')),input=createInput(),weaponInput=createInput(),audio=createAudio();
 const btGamepad=createBTGamepad(input,weaponInput);
 // A dock replacement can discard every weapon source and buffered tap while
 // leaving the independently held movement sources untouched.
@@ -41,7 +40,7 @@ const requestedSkin=new URLSearchParams(location.search).get('skin');
 let selectedSkin=normalizeSkin(selectedCharacter,requestedSkin??savedSkins[selectedCharacter]);
 if(selectedSkin!=='default')game.player.cosmeticSkin=selectedSkin;
 try{best=Number(localStorage.getItem('feral-steel-best'))||0;audio.setEnabled(localStorage.getItem('feral-steel-sound')!=='off');}catch{}
-const victoryFilm=createVictoryFilm({overlay:$('victory-film'),video:$('victory-film-video'),playButton:$('victory-film-play'),pauseButton:$('victory-film-pause'),skipButton:$('victory-film-skip'),soundButton:$('victory-film-sound'),soundEnabled:()=>audio.enabled,onToggleSound:toggleSound,onOpen:()=>{clearInput();audio.setPlaying(false);captions.clear();},onComplete:showResult});
+const victoryFilm=createVictoryFilm({overlay:$('victory-film'),video:$('victory-film-video'),playButton:$('victory-film-play'),pauseButton:$('victory-film-pause'),skipButton:$('victory-film-skip'),soundButton:$('victory-film-sound'),soundEnabled:()=>audio.enabled,onToggleSound:toggleSound,onOpen:()=>{clearInput();audio.setPlaying(false);},onComplete:showResult});
 const inIntro=()=>game.introElapsed<game.introDuration;
 const inRoyalCombat=()=>game.royal?.finale?.active&&game.royal.finale.stage==='combat';
 const canDrive=()=>view==='playing'&&!game.duel&&!game.bossBreach&&!game.carrierShutdown&&!inIntro()&&!game.royal?.finale?.active;
@@ -267,7 +266,7 @@ function frame(now){const elapsed=clamp((now-lastFrame)/1000,0,.12);lastFrame=no
   for(const event of game.events){if(event.type==='duel-end')saveBTFinishCycle(game.nextSaltikDuelVariant??0);renderer.addEvent(event);const btSound={'bt-shot':'shot','bt-rocket':'homing','bt-panic':'missile','bt-lock':'reload-end','bt-empty':'no-target','bt-refill':'reload-end','desert-entry':'boss','desert-clear':'repair'}[event.type];audio.play(btSound?{...event,type:btSound}:event);}game.events.length=0;
   audio.syncMirv(view==='playing'&&selectedCharacter==='striker'?game.projectiles:[]);
   audio.setGatlingFiring(view==='playing'&&selectedCharacter==='gatling'&&(!!game.player.gatling?.firing||game.bossBreach?.phase==='fire')&&(!game.royal?.finale?.active||inRoyalCombat()));
-  captions.update(view);renderer.render(game,now,view);game.viewport={x:renderer.camera,y:-renderer.cameraY,w:renderer.width,h:renderer.height};if(now-uiAt>80){updateUI();uiAt=now;}if(resultAt&&now>=resultAt&&$('result-screen').hidden&&!victoryFilm.update(now))showResult();requestAnimationFrame(frame);
+  renderer.render(game,now,view);game.viewport={x:renderer.camera,y:-renderer.cameraY,w:renderer.width,h:renderer.height};if(now-uiAt>80){updateUI();uiAt=now;}if(resultAt&&now>=resultAt&&$('result-screen').hidden&&!victoryFilm.update(now))showResult();requestAnimationFrame(frame);
 }
 syncCharacterMenu();syncLevelMenu();soundUI();$('start').disabled=true;$('start').querySelector('span').textContent='PRÉPARATION DU SALTIK…';requestAnimationFrame(frame);
 loadArt(progress=>{$('start').querySelector('span').textContent=`PRÉPARATION ${Math.round(progress*100)} %`;}).then(()=>{artReady=true;$('start').disabled=false;$('start').querySelector('span').textContent='DÉPLOYER LE SALTIK';}).catch(error=>{$('start').querySelector('span').textContent='CHARGEMENT INTERROMPU';toast('Le Saltik Striker n’a pas pu être chargé. Rechargez la page pour réessayer.');console.error(error);});

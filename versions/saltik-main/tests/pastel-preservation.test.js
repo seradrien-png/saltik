@@ -31,7 +31,7 @@ test('V2 preserves V1 native pixels, walkable geometry, native motions and encou
    // Only explicitly scaled lunar enemies change size; defaults remain native.
    .replaceAll('*(e.artScale??1)','')
    // Gatling rockets share the existing projectile illustration only.
-   .replace(",'gatling-rocket'",'')
+   .replace(",'gatling-rocket'",'').replace(",'enemy-rocket'",'')
    // Only BT heavy rounds enlarge their existing projectile illustration.
    .replace('if(s.btHeavy)c.scale(1.5,1.5);','')
    // Numeric V1 ids retain the exact native animation; lunar text ids use a finite seed.

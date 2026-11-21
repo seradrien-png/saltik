@@ -1,3 +1,4 @@
+import {drawGroundedBTDefeat} from './grounded-bt-defeat.js';
 import {DESERT_BT} from './desert-bt-art.js';
 import {drawJumpLegStrut,jumpLegOffset,jumpLegExtension,jumpLegPose,jumpLegPoint,applyJumpLegPose} from './jump-leg-pose.js';
 import {sampleSupportSurface} from './support-pose.js';
@@ -78,7 +79,7 @@ export function inkEnemySaltikGeometry(e,time=0,{camera=0,scale=1,view='side'}={
  const k=(profile?.pixelScale??PIXEL_SCALE)*scale,flip=view==='front'?1:e.dir===-1?-1:1;
  const dodging=view==='side'&&e.guardFlash>0&&e.guardResponse==='dodge';
  const effort=dodging?Math.sin(Math.PI*clamp(e.guardFlash/.25)):0;
- const airborne=e.onGround===false,walking=!airborne&&view==='side'&&Math.abs(finite(e.vx))>5;
+ const airborne=e.onGround===false,walking=false;
  const distance=finite(e.motionDistance,walking?time*finite(e.vx):0),phase=distance/11;
  const x=finite(e.x)-camera,y=finite(e.y),dir=e.dir===1?1:-1;
  const back=sampleSupportSurface(e.supportPose,finite(e.x)-50),front=sampleSupportSurface(e.supportPose,finite(e.x)+50);
@@ -86,14 +87,14 @@ export function inkEnemySaltikGeometry(e,time=0,{camera=0,scale=1,view='side'}={
  const rotation=view==='side'?clamp(slope+finite(e.motionLean)-.13*effort*dir,-.34,.34):0;
  const offsetX=-dir*7*effort*scale;
  const heave=view==='side'?finite(e.supportPose?.heave)*scale:0;
- const bodyDrop=(walking?Math.sin(phase*2)*.65*scale:0)+(e.bt&&e.crouching?12*scale:0);
+ const bodyDrop=e.bt&&e.crouching?12*scale:0;
  const co=Math.cos(rotation),si=Math.sin(rotation);
  const sourcePoint=([px,py])=>{const xx=(px-frame.anchor[0])*k*flip,yy=(py-frame.anchor[1])*k;return{x:x+offsetX+xx*co-yy*si,y:y+heave+bodyDrop+xx*si+yy*co};};
  const legs=view==='front'?[]:parts.legs.map((part,index)=>{
-  const stride=walking?Math.sin(phase+(index===1?Math.PI:0))*10:0;
+  const stride=0;
   const jumpPose=jumpLegPose(e,part,frame.anchor[0]),legPoint=q=>sourcePoint(jumpLegPoint(jumpPose,q)),splay=jumpLegOffset(e,part.foot[0],frame.anchor[0],k,scale);
   const native=legPoint([part.foot[0]+stride+splay,part.foot[1]]);
-  const lift=walking?Math.max(0,Math.sin(phase+(index===1?Math.PI:0)))*1.8*scale:0;
+  const lift=0;
   let offset=airborne?(e.jumpLegs?jumpLegExtension(e,k,scale):-15):0,roll=stride+splay,grounded=false;
   // With no terrain supplied, leave the resting native leg exactly in place.
   // The duel masks these same pixels before drawing its held leg and hands.
@@ -161,7 +162,16 @@ export function inkEnemySaltikGeometry(e,time=0,{camera=0,scale=1,view='side'}={
 function polygon(c,points){c.moveTo(...points[0]);for(let i=1;i<points.length;i++)c.lineTo(...points[i]);c.closePath();}
 
 export function drawInkEnemySaltik(c,image,e,{camera=0,time=0,scale=1,view='side'}={}){
- if(!image||e.hp<=0)return null;
+ if(!image||e.hp<=0&&!e.groundedDefeat)return null;
+ if(e.groundedDefeat&&!e.drawingGroundedDefeat){
+  const resting={...e,hp:1,drawingGroundedDefeat:true,hit:0,guard:false,guardFlash:0,firePose:0,
+   vx:0,vy:0,onGround:true,jumpLegs:null,podCycle:null,bt:null,btAimTarget:null,btGripTargets:null,
+   motionLean:0,cannonRecoil:0,cannonElevation:0,attackPhase:'idle',podRaise:0,podLaunch:0};
+  const frozenTime=e.defeatStartedAt??time,geo=inkEnemySaltikGeometry(resting,frozenTime,{scale,view});
+  drawGroundedBTDefeat(c,()=>drawInkEnemySaltik(c,image,resting,{camera,time:frozenTime,scale,view}),e,
+   {camera,time,contacts:geo.legs.map(leg=>leg.contact)});
+  return geo;
+ }
  const geo=inkEnemySaltikGeometry(e,time,{camera,scale,view});scale=geo.scale;
  const hit=e.hit>0?inkHitImage(image):null;
  const draw=()=>c.drawImage(hit??image,...geo.crop,...geo.crop);
@@ -194,7 +204,7 @@ export function drawInkEnemySaltik(c,image,e,{camera=0,time=0,scale=1,view='side
    }else{c.beginPath();polygon(c,part.polygon);c.clip();draw();}c.restore();
   }
   // Faint light moves within the two existing eyes; no facial aperture moves.
-  c.globalAlpha*=.08+.035*Math.sin(time*1.7);c.fillStyle=hit?'#ffffff':'#fff4db';
+  c.globalAlpha*=e.groundedDefeat?0:.08+.035*Math.sin(time*1.7);c.fillStyle=hit?'#ffffff':'#fff4db';
   for(const [x,y] of geo.eyes??[[607,541],[704,541]]){c.beginPath();c.ellipse(x+Math.sin(time*.8)*1.4,y,2.4,3.2,0,0,Math.PI*2);c.fill();}
  }
  c.restore();

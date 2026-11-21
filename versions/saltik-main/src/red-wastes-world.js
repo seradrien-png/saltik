@@ -1,5 +1,5 @@
 import {redWastesGroundAt} from './red-wastes-level.js';
-import {RED_WASTES_SITES,structurePlacement} from './red-wastes-layout.js';
+import {RED_WASTES_SITES,structurePlacement,createRedWastesRoutes} from './red-wastes-layout.js';
 
 export const RED_WASTES_ART_ASSETS=Object.freeze(['red-wastes-sand-plane','red-wastes-skull','red-wastes-bunker']);
 const TAU=Math.PI*2;
@@ -48,7 +48,9 @@ function bunker(c,images,site,camera){
 
 const DISTANT_SKULLS=[{x:2650,w:880},{x:19300,w:1050,flip:true}];
 
-export function drawRedWastesWorld(c,images,g,{camera=0,width,height}){
+export function drawRedWastesWorld(c,images,g,{camera=0,width,height,beforeStructures}){
+ // Distant moving bones sit behind the opaque native dune crest and sites.
+ beforeStructures?.();
  sandPlane(c,images['red-wastes-sand-plane'],{camera,width,height});
  for(const p of DISTANT_SKULLS){
   const x=p.x-camera*.85;if(x+p.w/2<-80||x-p.w/2>width+80)continue;
@@ -72,8 +74,13 @@ export function drawRedWastesFrontStructures(c,images,g,{camera=0,width}){
   // Draw only the lower orbital lip in front of the wheels. A full-width
   // contour has no vertical clipping edge cutting through the original skull.
   c.save();c.beginPath();
-  const contour=[[0,1],[.39,1],[.43,.57],[.49,.60],[.60,.625],[.68,.60],[.72,.54],[.77,.66],[.84,.73],[.93,.81],[1,1]];
-  contour.forEach(([u,v],i)=>i?c.lineTo(x+u*b.w,y+v*b.h):c.moveTo(x+u*b.w,y+v*b.h));
+  const route=createRedWastesRoutes().find(route=>route.id===`${site.id}-tunnel`);
+  // Share the physical sill rather than a second approximate silhouette. The
+  // former mask rose 130px above the exit support and erased the native rig.
+  const points=[...route.walkableEntries[0].points,...route.points.slice(1),...route.walkableEntries[1].points.slice(0,-1).reverse()];
+  c.moveTo(x,y+b.h);
+  for(const [worldX,worldY]of points)c.lineTo(worldX-camera,worldY+4);
+  c.lineTo(x+b.w,y+b.h);
   c.closePath();c.clip();c.drawImage(image,x,y,b.w,b.h);c.restore();
  }
 }

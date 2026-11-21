@@ -47,3 +47,14 @@ test('heavy step events and brief shake follow actual alternating landings and f
  const count=g.events.length;g.status='paused';advanceDesertGiant(g,1);assert.equal(g.events.length,count);
  g.status='playing';advanceDesertGiant(g,1);assert.equal(g.events.length,count);
 });
+
+test('red giant contacts stay behind the playable lane with smaller distant landing shake',()=>{
+ const box={x:0,y:0,w:1000,h:700},calls=[],c=new Proxy({},{get:(_,key)=>(...args)=>calls.push([key,...args]),set:()=>true});
+ const g={level:5,status:'playing',introElapsed:0,introDuration:0,player:{x:9300,y:620},redWastes:{giant:{triggered:true,elapsed:2.4,complete:false}},events:[]};
+ drawDesertGiant(c,{},g,{box});
+ assert.equal(calls.filter(call=>call[0]==='ellipse').length,0,'no foreground shadow ellipse under a distant foot');
+ const ankles=calls.filter(call=>call[0]==='translate');assert.equal(ankles.length,4);
+ for(const ankle of ankles)assert(ankle[2]<box.h*.72,'ground contact remains visibly above playable lane');
+ g.redWastes.giant.elapsed=2.39;advanceDesertGiant(g,.02);
+ assert(g.events.length>0);assert(g.events[0].strength<.5);assert(g.shake<1.75);
+});

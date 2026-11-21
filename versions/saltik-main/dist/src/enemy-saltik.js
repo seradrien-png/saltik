@@ -72,12 +72,7 @@ export function advanceEnemySaltik(e,{player,dt,time=0,geometry=enemySaltikGeome
   if(!(dt>0)||e.hp<=0||e.neutralized||e.duelFinished||e.duelStarted||!player||player.hp<=0)return {shots,events};
   e.phase=(e.phase??0)+dt;e.firePose=Math.max(0,(e.firePose??0)-dt);
   e.guardFlash=Math.max(0,(e.guardFlash??0)-dt);
-  if(e.guard||e.hp<=SALTIK_GUARD_HP){
-    e.guard=true;e.attackPhase='idle';e.burstRemaining=0;e.attackTimer=0;
-    e.lockProgress=0;e.lockElapsed=0;e.podRaise=0;e.podLaunch=0;e.firePose=0;
-    moveOnRoute(e,player,dt,movement,true);e.dir=player.x>=e.x?1:-1;
-    return {shots,events};
-  }
+  e.guard=false;
   const inRange=Math.hypot(player.x-e.x,(player.y-32)-(e.y-43))<=1050;
   if(!inRange){
     // An interrupted lock must visibly earn the full telegraph after re-entry.

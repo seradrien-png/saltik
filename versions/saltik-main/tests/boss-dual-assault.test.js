@@ -145,7 +145,7 @@ test('pod rockets launch from their mouth together, with no cannon during the po
   assert.equal(p.hp>0,true);
 });
 
-test('enemy Saltik sighting and ready guard are voiced only when visible and once per enemy',()=>{
+test('enemy Saltik sighting is voiced once when visible without the retired grab invitation',()=>{
   const g=arena();g.boss=null;g.bossActivated=false;
   g.player.x=300;g.player.y=terrainHeight(300);
   const e=createEnemySaltik({id:72,x:1300,type:'saltik'},{y:terrainHeight(1300),random:0});
@@ -154,8 +154,8 @@ test('enemy Saltik sighting and ready guard are voiced only when visible and onc
   e.guard=true;e.hp=6;tick(g);assert.equal(g.events.some(v=>v.type==='saltik-grab-ready'),false);
   g.viewport={x:800,y:0,w:900,h:720};tick(g);
   assert.equal(g.events.filter(v=>v.type==='saltik-detected'&&v.enemyId===72).length,1);
-  assert.equal(g.events.filter(v=>v.type==='saltik-grab-ready'&&v.enemyId===72).length,1);
+  assert.equal(g.events.filter(v=>v.type==='saltik-grab-ready'&&v.enemyId===72).length,0);
   tick(g,{},30);
   assert.equal(g.events.filter(v=>v.type==='saltik-detected'&&v.enemyId===72).length,1);
-  assert.equal(g.events.filter(v=>v.type==='saltik-grab-ready'&&v.enemyId===72).length,1);
+  assert.equal(g.events.filter(v=>v.type==='saltik-grab-ready'&&v.enemyId===72).length,0);
 });

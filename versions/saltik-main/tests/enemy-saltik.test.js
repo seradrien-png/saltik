@@ -18,7 +18,7 @@ function encounter({seconds=12,sample=.25,step=1/120,x=700}={}){
   return{enemy,shots,events,frames};
 }
 
-test('Saltik factory preserves scheduled support with stronger armor and a 20 percent guard threshold',()=>{
+test('Saltik factory preserves scheduled support and its armor scale',()=>{
   assert.equal(typeof createEnemySaltik,'function','enemy Saltik API is missing');
   const e=createEnemySaltik({id:19,x:700,type:'turret',tier:1,platformId:'ledge'},{y:620,random:.25});
   assert.deepEqual([e.id,e.x,e.y,e.type,e.tier,e.platformId,e.hp,e.maxHp],[19,700,620,'saltik',1,'ledge',40,40]);
@@ -145,27 +145,19 @@ test('seeded movement repositions reproducibly and cannot cross blocked route se
   assert.ok(e.x>700&&e.x<=800,'a long frame crossed a blocked route gap');
 });
 
-test('guarded Saltik cancels its lock and actively closes to duel range without teleporting',()=>{
-  const e=createEnemySaltik({id:19,x:700,tier:0,platformId:null},{y:620,random:.25});
-  e.hp=8;e.guard=true;e.attackPhase='lock';e.attackTimer=.1;e.lockProgress=.9;e.podRaise=1;
+test('low armor retains normal weapons and movement without an invincible guard rush',()=>{
+  const e=createEnemySaltik({id:19,x:700},{y:620,random:.25});e.hp=8;e.guard=true;e.cooldown=0;
   const movement={minX:100,maxX:900,groundAt:()=>620};
-  let previous=e.x;
-  for(let frame=0;frame<720;frame++){
-    const result=advanceEnemySaltik(e,{player,dt:1/120,time:frame/120,movement});
-    assert.equal(result.shots.length,0);assert.equal(e.attackPhase,'idle');
-    assert.ok(Math.abs(e.x-previous)<=2,'guard pursuit teleported');
-    previous=e.x;
-  }
-  assert.ok(Math.abs(e.x-player.x)>=65&&Math.abs(e.x-player.x)<=75,'guard did not autonomously reach duel contact');
-  assert.equal(e.movementMode,'rush');assert.equal(e.vx,0);assert.equal(e.y,620);
-  assert.equal(e.lockProgress,0);assert.equal(e.podRaise,0);
+  const result=advanceEnemySaltik(e,{player,dt:.5,movement});
+  assert.equal(e.guard,false);assert.notEqual(e.movementMode,'rush');assert.ok(result.shots.length>0);
+  assert.ok(Math.abs(e.x-700)<50);assert.equal(e.y,620);
 });
 
-test('guard rush respects a disconnected route edge and inactive actors never move',()=>{
+test('normal movement respects route edges and inactive actors never move',()=>{
   const movement={minX:500,maxX:800,groundAt:()=>620};
-  const e=createEnemySaltik({id:19,x:700},{y:620,random:.25});e.hp=8;e.guard=true;
-  advanceEnemySaltik(e,{player,dt:8,movement});assert.equal(e.x,500);
-  for(const state of [{hp:0,duelStarted:false},{hp:8,duelStarted:true}]){
+  const e=createEnemySaltik({id:19,x:700},{y:620,random:.25});e.hp=8;
+  advanceEnemySaltik(e,{player,dt:8,movement});assert.ok(e.x>=500&&e.x<=800);
+  for(const state of [{hp:0,duelStarted:false},{hp:8,duelStarted:true},{hp:0,groundedDefeat:true,neutralized:true}]){
     Object.assign(e,state);const x=e.x;
     assert.equal(advanceEnemySaltik(e,{player,dt:1,movement}).shots.length,0);
     assert.equal(e.x,x);

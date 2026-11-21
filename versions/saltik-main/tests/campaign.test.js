@@ -10,7 +10,7 @@ test('a complete ordinary forward-and-fire run reaches victory in about 90 secon
     g.events.length=0;
   }
   assert.equal(g.status,'won');
-  assert.ok(g.time>=75&&g.time<=130,`run took ${g.time}s`);assert.ok(duels>0);
+  assert.ok(g.time>=75&&g.time<=130,`run took ${g.time}s`);assert.equal(duels,0);
   assert.ok(g.player.hp>0);assert.ok(g.stats.kills>20);
   assert.ok(g.boss&&g.boss.hp<=0);assert.equal(g.progress,1);
 });

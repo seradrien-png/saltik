@@ -1,137 +1,63 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {createGame,update,terrainHeight,surfaceHeight} from '../src/engine.js';
-import {createEnemySaltik,SALTIK_HP,SALTIK_GUARD_HP} from '../src/enemy-saltik.js';
-
-function quiet(){const g=createGame();g.schedule=[];g.obstacles=[];g.platforms=[];g.pickups=[];return g;}
-function saltik(g,{id=1,x=g.player.x+100,platformId=null,tier=0}={}){
-  const y=platformId?surfaceHeight(g.platforms.find(p=>p.id===platformId),x):terrainHeight(x);
-  return createEnemySaltik({id,x,platformId,tier},{y,random:0});
+import {createEnemySaltik,SALTIK_GUARD_HP} from '../src/enemy-saltik.js';
+import {groundedBTDefeatPose} from '../src/grounded-bt-defeat.js';
+function quiet(){const g=createGame();g.schedule=[];g.obstacles=[];g.platforms=[];g.pickups=[];g.player.melee.cooldown=99;return g;}
+function saltik(g,{id=1,x=g.player.x+400,platformId=null,tier=0}={}){
+ const y=platformId?surfaceHeight(g.platforms.find(p=>p.id===platformId),x):terrainHeight(x);
+ return createEnemySaltik({id,x,platformId,tier},{y,random:0});
 }
 const step=(g,input={},frames=1)=>{for(let i=0;i<frames;i++)update(g,input,1/60);};
 function strike(g,e,damage=100,kind='bullet'){
-  g.projectiles.push({kind,team:'player',x:e.x-100,y:e.y-43,vx:12000,vy:0,damage,radius:3,life:1});
-  step(g);
+ g.projectiles.push({kind,team:'player',x:e.x-100,y:e.y-43,vx:12000,vy:0,damage,radius:3,life:1});step(g);
 }
-
-test('the first oversized ranged hit clamps Saltik at 20% and later ranged hits deflect without kills',()=>{
-  const g=quiet(),e=saltik(g);g.enemies=[e];g.player.melee.cooldown=99;
-  strike(g,e,100);assert.equal(e.hp,SALTIK_GUARD_HP);assert.equal(e.guard,true);
-  assert.equal(g.events.filter(v=>v.type==='enemy-guard').length,1);
-  strike(g,e,100);assert.equal(e.hp,SALTIK_GUARD_HP);assert.equal(g.stats.kills,0);
-  assert.equal(g.events.filter(v=>v.type==='enemy-deflect').length,1);
+const noFinish=g=>{assert.equal(g.duel,null);assert.equal(g.events.some(v=>v.type.startsWith('duel-')||['enemy-guard','enemy-deflect'].includes(v.type)),false);};
+test('oversized ranged damage defeats a BT on its support without guard or QTE',()=>{
+ const g=quiet(),e=saltik(g);g.enemies=[e];strike(g,e);
+ assert.equal(e.hp,0);assert.equal(e.groundedDefeat,true);assert.equal(e.neutralized,true);assert.equal(e.harmless,true);
+ assert.equal(g.stats.kills,1);assert.equal(g.stats.score,250);assert.equal(g.stats.neutralized,1);noFinish(g);
 });
-
-test('Saltik takes ranged damage above 20% HP and guards only when the hit reaches 20%',()=>{
-  const g=quiet(),e=saltik(g,{x:g.player.x+400});g.enemies=[e];
-  strike(g,e,SALTIK_HP-SALTIK_GUARD_HP-1);assert.equal(e.hp,SALTIK_GUARD_HP+1);assert.equal(e.guard,false);
-  assert.equal(g.events.filter(event=>event.type==='enemy-guard').length,0);
-  strike(g,e,1);assert.equal(e.hp,SALTIK_GUARD_HP);assert.equal(e.guard,true);
-  assert.equal(g.events.filter(event=>event.type==='enemy-guard').length,1);
+test('damage crosses the former eight HP threshold normally and the final hit kills',()=>{
+ const g=quiet(),e=saltik(g);g.enemies=[e];strike(g,e,32);assert.equal(e.hp,SALTIK_GUARD_HP);assert.equal(e.guard,false);
+ strike(g,e,7);assert.equal(e.hp,1);strike(g,e,1);assert.equal(e.hp,0);assert.equal(g.stats.kills,1);noFinish(g);
 });
-
-test('an oversized melee hit also stops at 20% HP without killing the Saltik',()=>{
-  const g=quiet(),p=g.player,e=saltik(g,{x:p.x+65});g.enemies=[e];e.hp=SALTIK_GUARD_HP+1;
-  Object.assign(p.melee,{phase:'impact',elapsed:0,cooldown:99,targetKey:'enemy:1',hit:false});
-  step(g);
-  assert.equal(e.hp,SALTIK_GUARD_HP);assert.equal(e.guard,true);assert.equal(g.duel?.phase,'engage');
-  assert.equal(g.stats.kills,0);
+test('oversized melee damage kills before corpse contact can hurt the player',()=>{
+ const g=quiet(),p=g.player,e=saltik(g,{x:p.x+65});g.enemies=[e];e.hp=5;
+ Object.assign(p.melee,{phase:'impact',elapsed:0,cooldown:99,targetKey:'enemy:1',hit:false});step(g);
+ assert.equal(e.hp,0);assert.equal(e.groundedDefeat,true);assert.equal(p.hp,100);assert.equal(g.stats.kills,1);noFinish(g);
 });
-
-test('a single blast and sequential queued explosions cannot skip the guard',()=>{
-  const g=quiet(),e=saltik(g,{x:g.player.x+400});g.enemies=[e];
-  for(let i=0;i<3;i++)g.projectiles.push({kind:'grenade',team:'player',x:e.x,y:e.y-35,vx:0,vy:0,damage:100,radius:5,splash:100,life:.001});
-  step(g);assert.equal(e.hp,SALTIK_GUARD_HP);assert.equal(e.guard,true);assert.equal(g.stats.kills,0);
-  assert.equal(g.events.filter(v=>v.type==='enemy-guard').length,1);
-  assert.equal(g.events.filter(v=>v.type==='enemy-deflect').length,2);
+test('sequential queued explosions award one defeat and never damage the wreck again',()=>{
+ const g=quiet(),e=saltik(g);g.enemies=[e];
+ for(let i=0;i<3;i++)g.projectiles.push({kind:'grenade',team:'player',x:e.x,y:e.y-35,vx:0,vy:0,damage:100,radius:5,splash:100,life:.001});
+ step(g);strike(g,e);assert.equal(e.hp,0);assert.equal(g.stats.kills,1);assert.equal(g.stats.score,250);noFinish(g);
 });
-
-test('guard contact requires grounded feet on the same support, without moving either actor',()=>{
-  const g=quiet(),e=saltik(g,{x:g.player.x+65});g.enemies=[e];e.hp=SALTIK_GUARD_HP;e.guard=true;
-  const x=g.player.x,y=g.player.y;
-  g.player.y=y-80;g.player.onGround=false;step(g);assert.equal(g.duel,null);
-  g.player.onGround=true;g.player.y=y;g.player.vy=0;e.platformId='other';step(g);assert.equal(g.duel,null);
-  e.platformId=null;step(g);assert.equal(g.duel?.phase,'engage');
-  assert.deepEqual([g.player.x,g.player.y,e.x,e.y],[x,y,x+65,terrainHeight(x+65)]);
-  assert.equal(g.events.filter(v=>v.type==='duel-start').length,1);
+test('close low-HP contact never starts a live grapple',()=>{
+ const g=quiet(),e=saltik(g,{x:g.player.x+65});g.enemies=[e];e.hp=8;e.guard=true;
+ step(g,{},12);noFinish(g);assert.equal(e.guard,false);assert.equal(e.groundedDefeat,undefined);
 });
-
-test('two actors on the same sloped ledge can grapple at close range, but one below it cannot',()=>{
-  const g=createGame();g.schedule=[];g.obstacles=[];g.pickups=[];
-  const route=g.platforms.find(r=>r.tier===1),x=route.x1+200,p=g.player;
-  Object.assign(p,{x,y:terrainHeight(x),supportY:terrainHeight(x),platformId:null,tier:0});
-  const e=saltik(g,{id:44,x:x+65,platformId:route.id,tier:route.tier});e.hp=SALTIK_GUARD_HP;e.guard=true;g.enemies=[e];
-  step(g);assert.equal(g.duel,null);
-  Object.assign(p,{y:surfaceHeight(route,x),supportY:surfaceHeight(route,x),platformId:route.id,tier:route.tier,onGround:true,vy:0});
-  step(g);assert.equal(g.duel?.enemyId,44);
-  assert.equal(g.duel.playerY,surfaceHeight(route,x));assert.equal(g.duel.enemyY,surfaceHeight(route,x+65));
+test('a wreck keeps its world position while combat and camera continue',()=>{
+ const g=quiet(),e=saltik(g);g.enemies=[e];strike(g,e);const position=[e.x,e.y,e.defeatStartedAt];
+ Object.assign(g.player,{x:e.x+3000,y:terrainHeight(e.x+3000),supportY:terrainHeight(e.x+3000)});step(g,{right:true},120);
+ assert.ok(g.enemies.includes(e));assert.deepEqual([e.x,e.y,e.defeatStartedAt],position);assert.equal(g.stats.kills,1);noFinish(g);
 });
-
-test('duel freezes combat and pause, then scores one kill and permits a second encounter',()=>{
-  const g=quiet(),e=saltik(g,{x:g.player.x+65});g.enemies=[e];e.hp=SALTIK_GUARD_HP;e.guard=true;
-  step(g);assert.equal(g.duel?.phase,'engage');
-  const p=g.player;g.projectiles=[{kind:'plasma',team:'enemy',x:p.x,y:p.y-30,vx:100,vy:0,damage:100,radius:4,life:1}];
-  const frozen={x:p.x,hp:p.hp,fireSpent:p.fireSpent,projectileX:g.projectiles[0].x};
-  step(g,{right:true,fire:true,shift:true,missile:true,homing:true},30);
-  assert.deepEqual([p.x,p.hp,p.fireSpent,g.projectiles[0].x],[frozen.x,frozen.hp,frozen.fireSpent,frozen.projectileX]);
-  assert.equal(g.duel.phase,'qte');
-  g.status='paused';const paused=structuredClone(g.duel);step(g,{qte:true},180);assert.deepEqual(g.duel,paused);g.status='playing';
-  step(g,{qte:true},1);assert.equal(g.duel.taps,0,'pause cannot buffer a press');
-  for(let i=0;i<5;i++){step(g,{qte:false});step(g,{qte:true});}
-  assert.equal(g.duel.phase,'qte');
-  const effortBeforePause=[g.duel.effortsCompleted,g.duel.effortElapsed];
-  g.status='paused';step(g,{qte:true},120);
-  assert.deepEqual([g.duel.effortsCompleted,g.duel.effortElapsed],effortBeforePause);
-  g.status='playing';step(g,{},210);assert.equal(g.duel,null);
-  assert.equal(g.stats.kills,1);assert.equal(g.stats.score,250);
-  assert.equal(g.events.filter(v=>v.type==='duel-impact').length,1);
-  assert.equal(g.events.filter(v=>v.type==='duel-end').length,1);
-  const second=saltik(g,{id:2,x:p.x-65});second.guard=true;second.hp=SALTIK_GUARD_HP;g.enemies=[second];
-  step(g);assert.equal(g.duel?.enemyId,2);
-  step(g,{},30);
-  for(let i=0;i<5;i++){step(g,{qte:false});step(g,{qte:true});}
-  step(g,{},210);
-  assert.equal(g.duel,null);assert.equal(g.stats.kills,2);assert.equal(g.stats.score,500);
-  assert.equal(g.events.filter(v=>v.type==='duel-impact').length,2);
+test('collapse and damage flash use the paused game clock',()=>{
+ const g=quiet(),e=saltik(g);g.enemies=[e];strike(g,e);step(g,{},6);
+ const contacts=[{x:e.x-50,y:e.y},{x:e.x+50,y:e.y}],pose=groundedBTDefeatPose(e,g.time,{contacts}),time=g.time;
+ g.status='paused';step(g,{},120);assert.equal(g.time,time);assert.deepEqual(groundedBTDefeatPose(e,g.time,{contacts}),pose);
+ g.status='playing';step(g,{},60);assert.equal(groundedBTDefeatPose(e,g.time,{contacts}).progress,1);assert.equal(g.shake,0);
 });
-
-test('duel shake and damage flash decay on the game clock but freeze during pause',()=>{
-  const g=quiet(),e=saltik(g,{x:g.player.x+65});e.hp=SALTIK_GUARD_HP;e.guard=true;g.enemies=[e];step(g);
-  g.shake=9;g.flash=.24;step(g,{},6);
-  assert.ok(g.shake<9&&g.flash<.24);
-  g.status='paused';const frozen=[g.shake,g.flash,g.duel.elapsed];step(g,{},60);
-  assert.deepEqual([g.shake,g.flash,g.duel.elapsed],frozen);
-  g.status='playing';step(g,{},60);
-  assert.equal(g.shake,0);assert.equal(g.flash,0);assert.equal(g.duel.phase,'qte');
+test('an elevated defeated BT remains on its own ledge with no player relocation',()=>{
+ const g=quiet(),full=createGame(),route=full.platforms.find(r=>r.tier===1);g.platforms=[route];
+ const e=saltik(g,{x:route.x1+200,platformId:route.id,tier:route.tier});g.enemies=[e];const player=[g.player.x,g.player.y];strike(g,e);
+ assert.equal(e.groundedDefeat,true);assert.equal(e.y,surfaceHeight(route,e.x));assert.deepEqual([g.player.x,g.player.y],player);noFinish(g);
 });
-
-test('guarded Saltik autonomously closes the final gap and initiates its duel',()=>{
-  const g=quiet(),x=g.player.x+85,e=saltik(g,{x});e.hp=SALTIK_GUARD_HP;e.guard=true;g.enemies=[e];
-  step(g,{},12);
-  assert.ok(e.x<x);assert.equal(e.hp,SALTIK_GUARD_HP);assert.equal(g.duel?.enemyId,e.id);
+test('two successive BTs score independently without requiring any QTE input',()=>{
+ const g=quiet(),first=saltik(g);g.enemies=[first];strike(g,first);
+ const second=saltik(g,{id:2,x:first.x+200});g.enemies.push(second);strike(g,second);
+ assert.equal(g.stats.kills,2);assert.equal(g.stats.score,500);assert.ok(g.enemies.includes(first));noFinish(g);
 });
-
-test('a close melee threshold hit starts the duel before contact damage or weapons in the same tick',()=>{
-  const g=quiet(),p=g.player,e=saltik(g,{x:p.x+65});e.hp=SALTIK_GUARD_HP+1;g.enemies=[e];
-  Object.assign(p.melee,{phase:'impact',elapsed:0,cooldown:99,targetKey:'enemy:1',hit:false});
-  const position=[p.x,p.y,e.x,e.y];
-  step(g,{fire:true,missile:true,homing:true});
-  assert.equal(e.hp,SALTIK_GUARD_HP);assert.equal(e.guard,true);assert.equal(g.duel?.phase,'engage');
-  assert.equal(p.hp,100);assert.equal(g.stats.shots,0);assert.equal(g.stats.mirvs,0);
-  assert.deepEqual([p.x,p.y],position.slice(0,2));
-  assert.ok(Math.abs(e.x-position[2])<2,'AI moves only its physical per-step distance before the grapple');
-  assert.equal(e.y,terrainHeight(e.x));
-  assert.deepEqual(g.events.filter(event=>['enemy-guard','duel-start','damage'].includes(event.type)).map(event=>event.type),['enemy-guard','duel-start']);
-});
-
-test('a Saltik at twenty percent crosses the arena toward a stationary player and starts the duel by itself',()=>{
- const g=quiet(),e=saltik(g,{x:g.player.x+410});e.hp=SALTIK_GUARD_HP;e.guard=true;g.enemies=[e];g.player.melee.cooldown=99;
- const initial=e.x;step(g,{},180);
- assert.ok(e.x<initial-300);assert.equal(g.duel?.enemyId,e.id);assert.equal(g.player.hp,100);
- assert.equal(g.events.filter(event=>event.type==='duel-start').length,1);
-});
-test('a charging guarded Saltik clears an intervening destructible before reaching the player',()=>{
- const g=quiet(),e=saltik(g,{x:g.player.x+410});e.hp=SALTIK_GUARD_HP;e.guard=true;g.enemies=[e];g.player.melee.cooldown=99;
- const x=g.player.x+220,cover={id:'rush-cover',type:'barricade',x,y:terrainHeight(x),w:80,h:45,hp:7};g.obstacles=[cover];
- step(g,{},300);assert.equal(cover.hp,0);assert.equal(g.duel?.enemyId,e.id);assert.equal(g.player.hp,100);
+test('restarting creates a fresh level without old wrecks or defeat counters',()=>{
+ const g=quiet(),e=saltik(g);g.enemies=[e];strike(g,e);const restarted=createGame();
+ assert.deepEqual(restarted.enemies,[]);assert.equal(restarted.stats.kills,0);assert.equal(restarted.duel,null);
 });

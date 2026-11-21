@@ -1,0 +1,15 @@
+# Défenses organisées et Saltiks hors service
+
+La voix reste active mais le lecteur principal n’instancie plus de sous-titres et leur panneau est retiré de la page. Tous les Saltiks gardent une position roulante fixe : les cycles alternés de marche et le balancement associé sont retirés. Les suspensions suivent toujours le terrain, les sauts et l’accroupissement.
+
+Le BT ennemi reçoit des dégâts normaux jusqu’à zéro, s’effondre brièvement sur ses pneus et reste inerte au même emplacement. Il ne déclenche plus de saisie, QTE, projection, impact à l’écran ou fissure. Score et neutralisation ne sont attribués qu’une fois ; missiles, tirs et attaques en attente sont nettoyés. Les anciens helpers et dessins de projection restent archivés, sans usage dans le jeu actif.
+
+Dans Les Fossiles rouges, 18 groupes défendent dunes, approches et ouvrages : 90 soldats/gardiens, trois BT de soutien et trois Strikers rouillés additionnels, soit 96 ennemis. Les groupes existent hors écran avant leur visibilité ; les postes fixes restent en place, patrouilles et flankers restent dans leur secteur et les drones couvrent les hauteurs. Trois séquences d’attaque maximum peuvent se chevaucher ; le plafond est de 36 projectiles hostiles. Les soutiens alternent rafales et deux missiles guidés ; le nouveau Striker ajoute des salves de roquettes rectilignes. Les bouches de tir et les hitboxes suivent chaque modèle dessiné, y compris le départ des missiles des petits walkers.
+
+Le nouveau Striker ennemi reprend la référence orange rouillée, avec huit caches crème aux pods et sans étoiles militaires. Les caches montrent les départs et la recharge. La tenue du Striker joueur reste intacte. Le Gatling désert reçoit des matériaux sans étoiles, appliqués uniquement aux anciennes marques dans le cache graphique ; les autres costumes, dimensions, contours et pixels hors de ces zones restent inchangés.
+
+Le rebord du crâne utilise désormais les points de la surface praticable, à quatre unités sous les roues, au lieu d’un masque placé jusqu’à 130 unités trop haut. La sortie suit la crête de la joue ; les os solides vérifient aussi le canon et l’habitacle qui dépassent l’ancre. Les géants passent derrière le sable opaque et les monuments, environ 90 unités plus loin ; leurs appuis gardent leur rythme et une secousse atténuée.
+
+Validation : 996 tests passent, y compris les contrats actualisés de destruction sans QTE, les trois arsenaux, les soutiens et les trajectoires de missiles. Contrôle navigateur ordinateur des trois personnages et mobile paysage avec multitouch BT, seize missiles, mouvement, musique et pause. Parcours normal avec toutes les armes : 99,23 secondes, 86 destructions, aucune projection, 100 d’armure au terme. Les sauvegardes précédentes, voix, A10, musique fournie et autres éditions sont conservées.
+
+Le paquet publié exclut les trois anciens dessins de projection, devenus inutilisés. Ils restent présents dans les sources et les sauvegardes, ainsi que toutes les poses actives. Cette sélection respecte la limite de 256 Mio du service sans réduire la qualité des images ni modifier les sons.

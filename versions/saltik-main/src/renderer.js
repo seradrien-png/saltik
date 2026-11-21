@@ -39,8 +39,8 @@ function fern(c,x,y,size,color,lean=0){c.save();c.translate(x,y);c.rotate(lean);
 function cover(c,img,x,y,w,h,alpha=1){if(!img)return;const s=Math.max(w/img.width,h/img.height),iw=img.width*s,ih=img.height*s;c.save();c.globalAlpha*=alpha;c.drawImage(img,x+(w-iw)/2,y+(h-ih)/2,iw,ih);c.restore();}
 export function drawProjectile(c,s,camera,t){
   c.save();
-  if(s.kind==='mirv'||s.kind==='homing'||s.kind==='enemy-missile'){
-    const guided=s.kind==='homing',hostile=s.kind==='enemy-missile',trail=s.trail||[];
+  if(s.kind==='mirv'||s.kind==='homing'||s.kind==='enemy-missile'||s.kind==='enemy-rocket'){
+    const guided=s.kind==='homing',hostile=s.kind==='enemy-missile'||s.kind==='enemy-rocket',trail=s.trail||[];
     for(let i=1;i<trail.length;i++){
       c.strokeStyle=hostile?`rgba(255,144,106,${i/trail.length*.42})`:guided?`rgba(234,198,147,${i/trail.length*.46})`:`rgba(111,229,250,${i/trail.length*.65})`;
       c.lineWidth=guided?2+i/trail.length*2:2;c.beginPath();c.moveTo(trail[i-1].x-camera,trail[i-1].y);c.lineTo(trail[i].x-camera,trail[i].y);c.stroke();

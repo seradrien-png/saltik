@@ -21,8 +21,9 @@ test('Red Wastes authors a full native route with real patrols and unchanged pla
   assert.equal(g.player.hp,original.hp);assert.equal(g.player.maxHp,original.maxHp);
   for(const key of ['bt','gatling','mirvIn','homingIn','fireIn','evasion','weaponQueue','weaponHeld'])assert.deepEqual(g.player[key],original[key]);
   assert.equal(g.desertCombatHooks,undefined);assert.equal(g.desert,undefined);
-  assert.equal(g.schedule.filter(e=>e.type==='saltik').length,3);
-  assert.equal(g.schedule.filter(e=>e.type!=='saltik').length,32);
+  assert.equal(g.schedule.filter(e=>e.type==='saltik').length,6);
+  assert.equal(g.schedule.filter(e=>e.type!=='saltik').length,90);
+  assert(g.armyHooks&&g.schedule.every(e=>e.armyGroup));
   assert.equal(g.pickups.length,6);assert.equal(g.obstacles.length,0);
  }
  let previous=redWastesGroundAt(0);
@@ -31,16 +32,16 @@ test('Red Wastes authors a full native route with real patrols and unchanged pla
  }
 });
 
-test('native Striker traverses the patrols and normal Saltik duels in 90–120 seconds',()=>{
+test('native Striker traverses organized defensive sections without QTE in 90–120 seconds',()=>{
  const g=game();g.player.invulnerable=1000; // QA only: retain production armor and damage.
  let duelStarts=0;
  for(let i=0;i<60*120&&g.status==='playing';i++){
   g.events=[];
-  step(g,{right:true,fire:true,qte:i%2===0}); // Normal QTE presses finish the existing Saltik grapples.
+  step(g,{right:true,fire:true});
   duelStarts+=g.events.filter(e=>e.type==='duel-start').length;
  }
  assert.equal(g.status,'won');assert(g.time>=90&&g.time<=120,`duration ${g.time}`);
- assert(duelStarts>=1,'native grapples remain part of the route');assert(g.stats.kills>=25);
+ assert.equal(duelStarts,0,'defeated enemy machines collapse without a QTE');assert(g.stats.kills>=25);
  assert.equal(g.nextSpawn,g.schedule.length);assert.equal(g.player.x,RED_WASTES_END);
  assert.equal(g.progress,1);assert.equal(g.redWastes.complete,true);
 });

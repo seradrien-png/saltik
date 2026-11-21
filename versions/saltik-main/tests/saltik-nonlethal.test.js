@@ -11,24 +11,22 @@ function quiet(ink=true){
  Object.assign(g.player,{x:8700,y:600,supportY:600,invulnerable:999});g.maxX=8700;return g;
 }
 const tick=(g,n,input={})=>{for(let i=0;i<n;i++)updateInkScene(g,input,1/60);};
-function completeDuel(g,e){
- e.hp=SALTIK_GUARD_HP;e.guard=true;g.enemies=[e];tick(g,30);
- assert.equal(g.duel?.phase,'qte');
- for(let i=0;i<5;i++){tick(g,1,{qte:false});tick(g,1,{qte:true});}
- tick(g,210);assert.equal(g.duel,null);
+function defeatBT(g,e){
+ g.enemies=[e];g.player.melee.cooldown=99;
+ g.projectiles.push({kind:'bullet',team:'player',x:e.x-100,y:e.y-43,vx:12000,vy:0,damage:100,radius:3,life:1});
+ tick(g,1);assert.equal(g.duel,null);
 }
 
-test('the Ink duel neutralizes a Saltik once while preserving its original guard HP',()=>{
- const g=quiet(),e=createEnemySaltik({id:71,x:g.player.x+65},{y:600,random:0});
- completeDuel(g,e);
- assert.equal(e.hp,8);assert.equal(e.neutralized,true);assert.equal(e.harmless,true);assert.equal(e.duelFinished,true);
- assert.equal(g.stats.kills,0);assert.equal(g.stats.neutralized,1);assert.equal(g.stats.score,250);
- assert.equal(g.events.filter(event=>event.type==='duel-impact').length,1);
- assert.equal(g.events.filter(event=>event.type==='explosion').length,0);
- assert.ok(!navigationContext(g).targets.some(target=>target.id===e.id),'a defeated Saltik must not attract another guided lock');
+test('the Ink BT falls once, retains its costume and stops attracting locks or dealing damage',()=>{
+ const g=quiet(),e=createEnemySaltik({id:71,x:g.player.x+400},{y:600,random:0});e.btVariant='desert';
+ defeatBT(g,e);
+ assert.equal(e.hp,0);assert.equal(e.neutralized,true);assert.equal(e.harmless,true);assert.equal(e.groundedDefeat,true);assert.equal(e.btVariant,'desert');
+ assert.equal(g.stats.kills,1);assert.equal(g.stats.neutralized,1);assert.equal(g.stats.score,250);
+ assert.equal(g.events.filter(event=>event.type.startsWith('duel-')||event.type==='explosion').length,0);
+ assert.ok(!navigationContext(g).targets.some(target=>target.id===e.id));
  Object.assign(g.player,{x:e.x,y:e.y,onGround:true,invulnerable:0});
  const oldX=e.x,oldHp=g.player.hp;g.events=[];tick(g,90,{homing:true});
- assert.equal(g.duel,null);assert.equal(e.hp,8);assert.equal(e.x,oldX);assert.equal(g.player.hp,oldHp);assert.equal(g.stats.neutralized,1);
+ assert.equal(g.duel,null);assert.equal(e.hp,0);assert.equal(e.x,oldX);assert.equal(g.player.hp,oldHp);assert.equal(g.stats.neutralized,1);
  assert.equal(g.stats.homingSalvos,0);assert.equal(g.events.filter(event=>event.type.startsWith('saltik-')||event.type==='enemyshot').length,0);
 });
 

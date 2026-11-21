@@ -149,7 +149,7 @@ export function inkSaltikGeometry(p,{camera=0,time=0,scale=1,victoryAge=null,sam
   const compression=Math.max(explicitCompression,takeoff);
   const crouch=!!p.crouching,landing=clamp(finite(p.landingCompression),0,1);
   const speed=clamp(Math.abs(finite(p.vx))/230,0,1);
-  const gait=walking?Math.sin(time*14)*(1+.35*speed):Math.sin(time*1.8)*.24;
+  const gait=walking?0:Math.sin(time*1.8)*.24;
   const ceilingCompression=Number.isFinite(p.supportClearance)?clamp(INK_SALTIK_HEIGHT-p.supportClearance+4,0,20):0;
   let bodyDrop=(Math.max(crouch?12:0,ceilingCompression)+compression*7.4+landing*6.5+gait)*scale;
   const back=sampleSupportSurface(p.supportPose,finite(p.x)-50),front=sampleSupportSurface(p.supportPose,finite(p.x)+50);

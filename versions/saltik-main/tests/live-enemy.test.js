@@ -51,11 +51,12 @@ test('the three painted enemy wheels plant on real terrain in both directions an
  }
 });
 
-test('travel rolls native wheel details and alternates intentional lift while stationary duel pixels hold still',()=>{
+test('travel keeps the BT rolling stance planted and native limb pixels remain static',()=>{
  const enemy={...base,vx:70,motionDistance:0};enemy.supportPose=computeSupportPose(enemy,()=>620);
  const a=saltik.inkEnemySaltikGeometry(enemy,.1),b=saltik.inkEnemySaltikGeometry({...enemy,motionDistance:13},.8);
  assert.ok(a.legs?.some((leg,i)=>Math.abs(leg.spin-b.legs[i].spin)>.2),'wheel phase follows actual travel');
- assert.ok(b.legs.some(leg=>!leg.grounded&&leg.lift>0),'a swing wheel is deliberately lifted');
+ assert.ok(b.legs.every(leg=>leg.lift===0),'walking no longer lifts any wheel');
+ assert.deepEqual(a.legs.map(l=>[l.roll,l.offset,l.contact]),b.legs.map(l=>[l.roll,l.offset,l.contact]),'travel does not alternate the native legs');
  assert.ok(b.legs.some(leg=>leg.grounded),'the other wheels still support the cabin');
  for(const leg of b.legs)assert.ok(leg.contact.y<=620.001,'a moving wheel never sinks through flat ground');
  const stillA=saltik.inkEnemySaltikGeometry(base,0),stillB=saltik.inkEnemySaltikGeometry({...base,motionDistance:200},80);

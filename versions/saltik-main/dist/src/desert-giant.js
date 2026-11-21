@@ -21,7 +21,7 @@ export function advanceDesertGiant(g,dt){
    const foot=desertGiantPose(landing,{x:0,y:0,w:1,h:1})[index];
    const centre=foot.x+foot.footWidth*(g.level===5?1.4:1)*.24;
    if(centre>=-.08&&centre<=1.15){
-    const strength=Math.max(.45,1-Math.abs(centre-.5)*.5);
+    const strength=Math.max(.45,1-Math.abs(centre-.5)*.5)*(g.level===5?.48:1);
     g.shake=Math.max(g.shake??0,strength*3.5);
     g.events?.push({type:'desert-giant-step',x:g.player.x,y:g.groundAt?.(g.player.x)??g.player.y,index,strength,landing});
    }
@@ -49,9 +49,11 @@ export function drawDesertGiant(c,image,g,{box}){
  // Far leg first. Ground shadows contract as each foot rises and never follow
  // wall time, so pausing produces a pixel-identical articulated pose.
  for(const native of desertGiantPose(s.elapsed,box).reverse()){
-  const size=g.level===5?1.4:1,p={...native,footWidth:native.footWidth*size,shinWidth:native.shinWidth*size};
+  // The red desert uses a farther contact plane while retaining vast tibias.
+  // Its native sand pass supplies the occlusion, without a foreground shadow.
+  const size=g.level===5?1.4:1,p={...native,groundY:native.groundY-(g.level===5?box.h*.13:0),footWidth:native.footWidth*size,shinWidth:native.shinWidth*size};
   const k=p.footWidth/734,ankleY=p.groundY-p.lift-240*k;
-  c.fillStyle=p.index?'#752e20':'#63281d';c.beginPath();c.ellipse(p.x+p.footWidth*.24,p.groundY+2,p.footWidth*(.41-p.lift/box.h*.7),box.h*.009,0,0,TAU);c.fill();
+  if(g.level!==5){c.fillStyle=p.index?'#752e20':'#63281d';c.beginPath();c.ellipse(p.x+p.footWidth*.24,p.groundY+2,p.footWidth*(.41-p.lift/box.h*.7),box.h*.009,0,0,TAU);c.fill();}
   // Seat the tibia inside the socket, with overlap hidden by the foot rim.
   // The shaft artwork has transparent padding and a concave ankle end.
   c.save();c.translate(p.x,ankleY);c.rotate(p.shinAngle);

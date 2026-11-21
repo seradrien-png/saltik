@@ -43,7 +43,7 @@ export function createRedWastesRoutes(){
     {...ramp(site,'eye-entry',tunnel,null,0,780),stepRun:1,points:[
      [site.x,box.foot],painted(100,.75),painted(180,.68),painted(300,.61),painted(440,.56),painted(590,.43),painted(660,.53),painted(720,.59),painted(780,.60)]},
     {...ramp(site,'eye-exit',tunnel,null,1600,1050),stepRun:1,points:[
-     [site.x+1600,box.foot],painted(1500,.82),painted(1400,.81),painted(1300,.77),painted(1200,.72),painted(1150,.66),painted(1100,.60),painted(1050,.61)]}
+     [site.x+1600,box.foot],painted(1500,.82),painted(1400,.77),painted(1300,.71),painted(1200,.67),painted(1150,.64),painted(1100,.60),painted(1050,.61)]}
    ];
    const crown=cap(site,'crown',740,1120,box.y+.12*box.h,2);
    crown.kind='skull-crown';crown.points=[painted(740,.16),painted(900,.105),painted(1050,.12),painted(1120,.15)];
@@ -83,11 +83,27 @@ function solidHeight(solid,x){
  return a[1]+(b[1]-a[1])*(solid.smooth?smooth(t):t);
 }
 export function resolveRedWastesSolids(g,p,oldX,oldY,{finalPose=false}={}){
- let bodyHeight;
+ let bodyHeight,boxes;
  for(const solid of g.worldSolids??[]){
   const lo=Math.min(solid.points[0][0],solid.points.at(-1)[0]),hi=Math.max(solid.points[0][0],solid.points.at(-1)[0]);
-  if(p.x<lo||p.x>hi)continue;
-  bodyHeight??=Math.max(p.h,...(g.playerHitboxes?.(p,g.time)??[]).map(box=>p.y-box.y+8));
+  if(p.x<lo-300||p.x>hi+300)continue;
+  boxes??=g.playerHitboxes?.(p,g.time)??[{x:p.x-25,y:p.y-p.h,w:50,h:p.h}];
+  if(p.x<lo||p.x>hi){
+   // A cannon or cabin can reach the orbital arch before its anchor does.
+   // Include the actual native part extents when testing its underside.
+   const reaching=boxes.filter(box=>box.x<hi&&box.x+box.w>lo);
+   if(!reaching.length)continue;
+   if(solid.bottomPoints){
+    let correction=0;
+    for(const box of reaching)for(const x of [clamp(box.x,lo,hi),clamp(box.x+box.w/2,lo,hi),clamp(box.x+box.w,lo,hi)]){
+     const top=solidHeight(solid,x),bottom=solidHeight({...solid,points:solid.bottomPoints},x);
+     if(box.y<bottom&&box.y+box.h>top&&p.y>=bottom)correction=Math.max(correction,bottom-box.y+8);
+    }
+    if(correction){p.y+=correction;p.vy=Math.max(0,p.vy);}
+   }
+   continue;
+  }
+  bodyHeight??=Math.max(p.h,...boxes.map(box=>p.y-box.y+8));
   const top=solidHeight(solid,p.x),bottom=solid.bottomPoints?solidHeight({...solid,points:solid.bottomPoints},p.x):top+solid.depth;
   if(p.onGround&&(p.platformId===solid.platformId&&solid.platformId||p.rampId===solid.rampId&&solid.rampId))continue;
   if(p.y<=top||p.y-bodyHeight>=bottom)continue;

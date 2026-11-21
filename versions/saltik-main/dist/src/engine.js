@@ -26,6 +26,8 @@ import {createBossBreach,advanceBossBreach,BREACH_PHASE_SECONDS} from './boss-br
 import {selectGuidedTargets,initializeGuidedShot,steerGuidedProjectile} from './guided-navigation.js';
 import {createEnemySaltik,advanceEnemySaltik,SALTIK_GUARD_HP} from './enemy-saltik.js';
 import {enemySaltikGeometry} from './enemy-saltik-art.js';
+import {enemyRustStrikerGeometry} from './enemy-rust-striker-art.js';
+const saltikGeometry=(e,time=0)=>e.enemyModel==='rust-striker'?enemyRustStrikerGeometry(e,time):enemySaltikGeometry(e,time);
 import {createSaltikDuel,advanceSaltikDuel,nextSaltikDuelVariant} from './saltik-duel.js';
 import {createDroneCarrier,damageDroneCarrier,isCarrierTargetable,advanceDroneCarrier,advanceCarrierDrone} from './drone-carrier.js';
 import {createCarrierShutdown,advanceCarrierShutdown,CARRIER_SHUTDOWN_PHASE_SECONDS} from './carrier-shutdown.js';
@@ -79,7 +81,7 @@ function emit(g,type,x,y,extra={}){const event={type,x,y,...extra};g.desertComba
 function saltikVisible(g,e){
   const viewport=g.viewport;
   if(!viewport)return false;
-  const r=enemySaltikGeometry(e,g.time).bounds;
+  const r=saltikGeometry(e,g.time).bounds;
   return r.x<viewport.x+viewport.w&&r.x+r.w>viewport.x&&
     r.y<viewport.y+viewport.h&&r.y+r.h>viewport.y;
 }
@@ -92,7 +94,7 @@ function emitSaltikVoiceCues(g){
     }
   }
 }
-export function combatBounds(e,time=0){if(e.artScale&&e.artScale!==1&&e.type!=='carrier'){const r=combatBounds({...e,artScale:undefined},time),k=e.artScale;return{x:e.x+(r.x-e.x)*k,y:e.y+(r.y-e.y)*k,w:r.w*k,h:r.h*k};}if(e.type==='carrier')return inkCarrierGeometry(e,time).bounds;if(e.type==='saltik')return enemySaltikGeometry(e,time).bounds;if(e.w&&e.h)return{x:e.x-e.w/2,y:e.y-e.h,w:e.w,h:e.h};if(e.type==='boss')return bossGeometry(e).hitBounds;if(e.type==='drone'){const k=e.scale??1;return{x:e.x-34*k,y:e.y-22*k,w:68*k,h:44*k};}if(e.type==='crate')return{x:e.x-24,y:e.y-47,w:48,h:47};return enemyGeometry(e)?.bounds??{x:e.x-34,y:e.y-70,w:68,h:70};}
+export function combatBounds(e,time=0){if(e.artScale&&e.artScale!==1&&e.type!=='carrier'){const r=combatBounds({...e,artScale:undefined},time),k=e.artScale;return{x:e.x+(r.x-e.x)*k,y:e.y+(r.y-e.y)*k,w:r.w*k,h:r.h*k};}if(e.type==='carrier')return inkCarrierGeometry(e,time).bounds;if(e.type==='saltik')return saltikGeometry(e,time).bounds;if(e.w&&e.h)return{x:e.x-e.w/2,y:e.y-e.h,w:e.w,h:e.h};if(e.type==='boss')return bossGeometry(e).hitBounds;if(e.type==='drone'){const k=e.scale??1;return{x:e.x-34*k,y:e.y-22*k,w:68*k,h:44*k};}if(e.type==='crate')return{x:e.x-24,y:e.y-47,w:48,h:47};return enemyGeometry(e)?.bounds??{x:e.x-34,y:e.y-70,w:68,h:70};}
 const bounds=combatBounds;
 // Slab intersection tests the entire motion segment, preventing tunnelling.
 function segmentRectInterval(x0,y0,x1,y1,r,pad=0){
@@ -133,17 +135,17 @@ function hurtEnemy(g,e,damage,{ranged=false,bayIndex}={}){
     return;
   }
   if(e.type==='saltik'){
-    if(e.guard||e.hp<=SALTIK_GUARD_HP){
-      e.guard=true;
-      if(ranged){
-        e.guardCount=(e.guardCount??0)+1;e.guardResponse=e.guardCount%2?'deflect':'dodge';e.guardFlash=.25;
-        emit(g,'enemy-deflect',e.x,e.y-43,{enemyId:e.id,response:e.guardResponse});
-      }
-      return;
-    }
-    e.hp=Math.max(SALTIK_GUARD_HP,e.hp-damage);e.hit=.09;
-    if(e.hp===SALTIK_GUARD_HP){e.guard=true;e.guardFlash=.35;e.guardResponse='dodge';emit(g,'enemy-guard',e.x,e.y-43,{enemyId:e.id});}
-    else emit(g,'spark',e.x,e.y-40);
+    e.hp=Math.max(0,e.hp-damage);e.hit=.09;e.guard=false;e.guardFlash=0;
+    if(e.hp>0){emit(g,'spark',e.x,e.y-40);return;}
+    // A defeated BT stays on its own support for the rest of this level.
+    // Keep the archived duel helpers available without entering their sequence.
+    Object.assign(e,{groundedDefeat:true,defeatStartedAt:g.time,neutralized:true,neutralizedAt:g.time,harmless:true,
+      vx:0,vy:0,firePose:0,attackPhase:'idle',burstRemaining:0,attackTimer:0,lockProgress:0,lockElapsed:0,
+      podRaise:0,podLaunch:0,cannonRecoil:0,cannonElevation:0});
+    if(e.podCycle)e.podCycle.pending=[];
+    g.stats.kills++;g.stats.neutralized=(g.stats.neutralized??0)+1;g.stats.score+=250;
+    g.shake=Math.max(g.shake,3);emit(g,'land',e.x,e.y,{enemyId:e.id});
+    if(g.stats.kills%7===0)g.pickups.push({x:e.x,y:e.y-30,type:'repair'});
     return;
   }
   e.hp-=damage;e.hit=.09;if(e.hp>0){emit(g,'spark',e.x,e.type==='drone'?e.y:e.y-40);return;}g.stats.kills++;g.stats.score+=e.type==='boss'?5000:e.type==='crate'?100:250;emit(g,'explosion',e.x,e.type==='drone'?e.y:e.y-35,{big:e.type==='boss'});g.shake=e.type==='boss'?22:5;
@@ -166,13 +168,13 @@ function hurtObstacle(g,o,damage){
 }
 function hurtTarget(g,e,damage,options){if(e.w&&e.h)hurtObstacle(g,e,damage);else hurtEnemy(g,e,damage,options);}
 function canGrapple(p,e){
-  return e.type==='saltik'&&!e.neutralized&&!e.duelFinished&&e.hp===SALTIK_GUARD_HP&&e.guard&&!e.duelStarted&&p.onGround&&!p.obstacleId&&
-    (p.platformId??null)===(e.platformId??null)&&p.tier===(e.tier??0)&&
-    Math.abs(p.x-e.x)<=75&&Math.abs(p.y-e.y)<=48;
+  // Live BT combat ends in a grounded wreck; screen finishes remain archived.
+  return false;
 }
 function cancelMirvAim(p){p.mirvAiming=false;p.mirvAimElapsed=0;p.mirvPending=false;p.mirvPrepare=0;p.mirvPrepareFrom=0;p.cannonHold=0;p.cannonReturnFrom=p.cannonElevation;p.cannonReturnElapsed=0;}
 function parkTurret(p){cancelMirvAim(p);p.cannonElevation=0;p.cannonReturnFrom=0;p.cannonReturnElapsed=0;p.turretLift=0;p.turretReturnFrom=0;p.turretReturnElapsed=0;}
 function startDuel(g,e){
+  if(!canGrapple(g.player,e))return;
   const p=g.player;parkTurret(p);e.duelStarted=true;g.duel=createSaltikDuel(p,e,nextSaltikDuelVariant(g));
   g.duel.enemyPodCycle=e.podCycle?structuredClone(e.podCycle):null;
   if(p.podCycle)p.podCycle.pending=[];if(e.podCycle)e.podCycle.pending=[];
@@ -194,7 +196,7 @@ function finishDuelEnemy(g,enemyId){
   g.stats.score+=250;g.shake=Math.max(g.shake,9);
 }
 const carrierAim=e=>{const geo=inkCarrierGeometry(e);return !e.backDestroyed?(geo.bays.find(b=>!b.dead)?.muzzle??geo.target):geo.target;};
-const targetY=e=>e.type==='carrier'?carrierAim(e).y:e.type==='saltik'?enemySaltikGeometry(e).targetY:e.w?e.y-e.h*.65:e.type==='drone'?e.y:e.type==='boss'?bossGeometry(e).target.y:enemyGeometry(e)?.targetY??e.y-38;
+const targetY=e=>e.type==='carrier'?carrierAim(e).y:e.type==='saltik'?saltikGeometry(e).targetY:e.w?e.y-e.h*.65:e.type==='drone'?e.y:e.type==='boss'?bossGeometry(e).target.y:enemyGeometry(e)?.targetY??e.y-38;
 const targetable=e=>!e.harmless&&!e.neutralized&&!e.duelFinished&&(e.type!=='carrier'||isCarrierTargetable(e));
 const allTargets=g=>[...g.obstacles,...g.enemies,...(g.boss&&g.boss.hp>0?[g.boss]:[])].filter(targetable);
 const targetKey=e=>`${e.w&&e.h?'obstacle':e.type==='boss'?'boss':'enemy'}:${e.id}`;
@@ -320,7 +322,7 @@ function launchMirv(g){
   p.mirvIn=MIRV_RECHARGE;p.mirvFlash=.18;g.stats.mirvs++;emit(g,'missile',mount.x,mount.y,{dir:p.dir,...(shot.mirvSalvoId?{mirvAudio:true,projectileId:shot.id,salvoId:shot.mirvSalvoId}:{})});
 }
 export function combatTarget(e,time=0){
-  const geometry=e.type==='carrier'?{target:carrierAim(e)}:e.type==='saltik'?enemySaltikGeometry(e,time):enemyGeometry(e,time);
+  const geometry=e.type==='carrier'?{target:carrierAim(e)}:e.type==='saltik'?saltikGeometry(e,time):enemyGeometry(e,time);
   const rect=bounds(e,time),target=geometry?.target??{x:e.x,y:targetY(e)};
   return {id:e.id,type:e.type,hp:e.hp,x:e.x,y:e.y,vx:e.vx??0,vy:e.vy??0,bounds:rect,target};
 }
@@ -451,9 +453,9 @@ function spawn(g,s){
   if(g.enemyArtScale)s={...s,artScale:g.enemyArtScale};
   const route=g.platforms.find(p=>p.id===s.platformId),y=s.type==='drone'?terrainAt(g,s.x)-140:route?surfaceHeight(route,s.x):terrainAt(g,s.x);
   if(s.type==='carrier'){g.enemies.push(createDroneCarrier(s,{y,random:random(g)}));return;}
-  if(s.type==='saltik'){g.enemies.push(createEnemySaltik(g.inkCampaign&&[4,5].includes(g.level)?{...s,btVariant:'desert'}:s,{y,random:random(g)}));return;}
+  if(s.type==='saltik'){const enemy=createEnemySaltik(g.inkCampaign&&[4,5].includes(g.level)?{...s,btVariant:'desert'}:s,{y,random:random(g)});g.armyHooks?.initialize(enemy);g.enemies.push(enemy);return;}
   const hp={walker:5,soldier:5,drone:3,turret:9,crate:3}[s.type];
-  g.enemies.push({...s,y,origin:s.x,hp,maxHp:hp,cooldown:1.5+random(g)*1.4,phase:random(g)*6.28,hit:0,firePose:0});
+  const enemy={...s,y,origin:s.x,hp,maxHp:hp,cooldown:1.5+random(g)*1.4,phase:random(g)*6.28,hit:0,firePose:0};g.armyHooks?.initialize(enemy);g.enemies.push(enemy);
 }
 function obstacleHasWheelSupport(p,o){
   const top=o.y-o.h,pose=computeSupportPose({...p,y:top,onGround:true,turn:null,supportClearance:Infinity},
@@ -1147,7 +1149,7 @@ export function update(g,input={},dt=1/60){
   p.shiftHeld=!!input.shift;
   for(const o of g.obstacles)o.hit=Math.max(0,o.hit-dt);
   g.maxX=Math.max(g.maxX,p.x);g.progress=clamp(g.maxX/LEVEL_END,0,.96);
-  while(g.nextSpawn<g.schedule.length&&g.schedule[g.nextSpawn].x<g.maxX+940)spawn(g,g.schedule[g.nextSpawn++]);
+  while(g.nextSpawn<g.schedule.length&&g.schedule[g.nextSpawn].x<g.maxX+(g.armyHooks?.spawnAhead??940))spawn(g,g.schedule[g.nextSpawn++]);
   if(!g.disableBoss&&!g.bossActivated&&p.x>=BOSS_TRIGGER){g.bossActivated=true;g.boss=createBossTank(17520,g.groundAt??terrainHeight);emit(g,'boss',g.boss.x,g.boss.y);}
   emitSaltikVoiceCues(g);
   const grappler=g.enemies.find(e=>canGrapple(p,e));
@@ -1165,15 +1167,22 @@ export function update(g,input={},dt=1/60){
   }
   for(const e of g.enemies){e.hit=Math.max(0,(e.hit||0)-dt);if(e.type!=='saltik')e.firePose=Math.max(0,(e.firePose||0)-dt);if(e.hp<=0||e.neutralized||e.duelFinished||e.type==='crate'||e.type==='carrier')continue;if(e.type!=='saltik')e.phase+=dt;
     if(e.carrierId){const result=advanceCarrierDrone(e,{carrier:g.enemies.find(a=>a.id===e.carrierId),player:p,dt,time:g.time,groundAt:g.groundAt??terrainHeight,geometry:g.enemyWeaponGeometry});for(const shot of result.shots)projectile(g,shot,shot);g.events.push(...result.events);continue;}
+    if(g.armyHooks&&e.armyRole){
+      const route=g.platforms.find(a=>a.id===e.platformId),floor=x=>route?surfaceHeight(route,x):terrainAt(g,x);
+      const beforeX=e.x,beforeVx=e.vx;
+      const result=g.armyHooks.advance(e,{g,dt,groundAt:floor,geometry:e.enemyModel==='rust-striker'?enemyRustStrikerGeometry:e.type==='saltik'?(g.enemySaltikGeometry??enemySaltikGeometry):g.enemyWeaponGeometry});
+      if(result){
+        if(g.inkCampaign){
+          advanceMotorMotion(e,dt,{previousVx:beforeVx,distance:e.x-beforeX});
+          if(e.type==='saltik'&&(!e.supportPose||Math.abs(e.x-(e.supportPoseX??Infinity))>1)){e.supportPose=computeSupportPose({...e,onGround:true},floor,e.supportPose,dt,{retainSurface:true});e.supportPoseX=e.x;}
+        }
+        for(const shot of result.shots)projectile(g,shot,shot);g.events.push(...result.events);continue;
+      }
+    }
     if(e.type==='saltik'){
       const route=g.platforms.find(a=>a.id===e.platformId),floor=x=>route?surfaceHeight(route,x):terrainAt(g,x);
       e.y=floor(e.x);
       const blockers=g.obstacles.filter(o=>o.hp>0&&Math.abs(o.x-e.x)<220&&Math.abs(o.y-e.y)<60);
-      if(e.guard){
-        e.obstacleStrikeIn=Math.max(0,(e.obstacleStrikeIn??0)-dt);
-        const dir=Math.sign(p.x-e.x),cover=blockers.find(o=>dir*(o.x-e.x)>0&&Math.abs(o.x-e.x)<o.w/2+80);
-        if(cover&&e.obstacleStrikeIn<=0){hurtObstacle(g,cover,6);e.obstacleStrikeIn=.55;e.firePose=.14;}
-      }
       const movement={minX:route?route.x1+55:70,maxX:route?route.x2-55:(g.levelEnd??LEVEL_END)-150,groundAt:floor,
         canOccupy:x=>!blockers.some(o=>o.hp>0&&Math.abs(x-o.x)<o.w/2+46)};
       if(e.desertRoom!==undefined){movement.minX=Math.max(movement.minX,e.arenaMin);movement.maxX=Math.min(movement.maxX,e.arenaMax);}
@@ -1235,7 +1244,7 @@ export function update(g,input={},dt=1/60){
   // Weapons, motor poses and evasion can extend the visible cabin after the
   // movement pass. Reconcile that final silhouette against static bone too.
   if(g.worldSolids?.length)resolveRedWastesSolids(g,p,playerStart.x,playerStart.y,{finalPose:true});
-  g.enemies=g.enemies.filter(e=>(e.hp>0||e.type==='carrier'&&e.knockedOut)&&(e.lunarWave||e.royalSeal||e.desertRoom!==undefined||e.x>p.x-1800));
+  g.enemies=g.enemies.filter(e=>e.groundedDefeat||(e.hp>0||e.type==='carrier'&&e.knockedOut)&&(e.lunarWave||e.royalSeal||e.desertRoom!==undefined||e.x>p.x-1800));
   g.pickups=g.pickups.filter(item=>{if(Math.abs(item.x-p.x)<75&&Math.abs(item.y-(p.y-30))<80){p.hp=Math.min(p.maxHp,p.hp+30);g.stats.score+=75;emit(g,'repair',item.x,item.y);return false;}return item.x>p.x-1500;});
   if(g.events.length>200)g.events.splice(0,g.events.length-200);
 }

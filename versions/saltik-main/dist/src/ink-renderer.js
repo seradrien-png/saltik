@@ -1,3 +1,5 @@
+import {STARLESS_GATLING_ASSETS,prepareStarlessDesertGatling} from './gatling-starless.js';
+import {drawEnemyRustStriker} from './enemy-rust-striker-art.js';
 import {drawRedWastesTracks,drawRedWastesDust} from './red-wastes-sand.js';
 import {RED_WASTES_ART_ASSETS,drawRedWastesBackdrop,drawRedWastesWorld,drawRedWastesForeground,drawRedWastesFrontStructures} from './red-wastes-world.js';
 import {drawDesertGiant} from './desert-giant.js';
@@ -7,7 +9,6 @@ import {ROYAL_EEL_POSE_ASSETS,prepareRoyalEelFrames,drawRoyalEelSprite,royalEelB
 import {getRoyalFinalePose} from './royal-finale.js';
 import {royalEelVisual} from './royal-atmosphere.js';
 import {drawRoyalPov} from './royal-pov.js';
-import {prepareBTFinishFrames} from './bt-finish-frames.js';
 import {prepareRoyalEel} from './royal-atmosphere.js';
 import {prepareModernGatling} from './modern-gatling-skins.js';
 import {preparePlayerSkins} from './player-skins.js';
@@ -37,7 +38,7 @@ import {drawCarrierShutdown} from './carrier-shutdown-art.js';
 import {inkHitImage} from './ink-hit-cache.js';
 import {createMirvPreview} from './mirv-preview.js';
 const PAINT={...PASTEL_ENVIRONMENT_PAINT,...PASTEL_CHARACTER_PAINT};
-const BASE_ART=['desert-bt-finishes','desert-bt-body','desert-bt-turn','desert-striker-body','desert-striker-turn','desert-two-routes-vista','desert-giant-legs','royal-wheel-runoff','royal-wheel-rotor','dragon-velvet-body','dragon-velvet-turn','royal-eel-swim','royal-eel','bt-finish-frames','bt-impact-underside','modern-gatling-atlas','modern-gatling-turn-normal','modern-gatling-turn-lunar','modern-gatling-turn-velvet','modern-gatling-turn-desert','modern-gatling-limule-atlas','modern-gatling-limule-turn','modern-striker-turn-velvet','modern-striker-dragon-atlas','modern-striker-dragon-turn-material','modern-striker-atlas','modern-striker-turn-normal','modern-striker-turn-lunar','bt-turn-lunar-material','bt-turn-velvet-material','gatling-turn-lunar-material','gatling-turn-velvet-material','bt-turn','gatling-turn','dragon-striker-material','dragon-turn-material','limule-gatling-material','limule-gatling-turn-material','desert-red-vista','desert-c07-interior','desert-structures','gatling-snow','gatling-lunar-material','gatling-velvet-material','lunar-pennant','lunar-low-depth','royal-rail-mask','royal-organic-landmarks','lunar-hero-map','lunar-turn-map','royal-world','royal-velvet-ground','royal-structures','royal-quarter-bridge','royal-hero-map','royal-turn-map','boss-assault-atlas','lunar-natural-world','lunar-island-layers','lunar-sandstone','lunar-aqueduct','lunar-monuments','ink-canyon','ink-saltik','ink-enemies','ink-rock','ink-bridge','ink-turn','ink-observatory',...INK_LANDMARK_ASSETS.map(a=>a.name),'ink-enemy-saltik',INK_CARRIER_ASSET];
+const BASE_ART=[...STARLESS_GATLING_ASSETS,'enemy-rust-striker','desert-bt-body','desert-bt-turn','desert-striker-body','desert-striker-turn','desert-two-routes-vista','desert-giant-legs','royal-wheel-runoff','royal-wheel-rotor','dragon-velvet-body','dragon-velvet-turn','royal-eel-swim','royal-eel','modern-gatling-atlas','modern-gatling-turn-normal','modern-gatling-turn-lunar','modern-gatling-turn-velvet','modern-gatling-turn-desert','modern-gatling-limule-atlas','modern-gatling-limule-turn','modern-striker-turn-velvet','modern-striker-dragon-atlas','modern-striker-dragon-turn-material','modern-striker-atlas','modern-striker-turn-normal','modern-striker-turn-lunar','bt-turn-lunar-material','bt-turn-velvet-material','gatling-turn-lunar-material','gatling-turn-velvet-material','bt-turn','gatling-turn','dragon-striker-material','dragon-turn-material','limule-gatling-material','limule-gatling-turn-material','desert-red-vista','desert-c07-interior','desert-structures','gatling-snow','gatling-lunar-material','gatling-velvet-material','lunar-pennant','lunar-low-depth','royal-rail-mask','royal-organic-landmarks','lunar-hero-map','lunar-turn-map','royal-world','royal-velvet-ground','royal-structures','royal-quarter-bridge','royal-hero-map','royal-turn-map','boss-assault-atlas','lunar-natural-world','lunar-island-layers','lunar-sandstone','lunar-aqueduct','lunar-monuments','ink-canyon','ink-saltik','ink-enemies','ink-rock','ink-bridge','ink-turn','ink-observatory',...INK_LANDMARK_ASSETS.map(a=>a.name),'ink-enemy-saltik',INK_CARRIER_ASSET];
 BASE_ART.push(...ROYAL_EEL_POSE_ASSETS);
 BASE_ART.push('royal-eel-pov');
 BASE_ART.push(...RED_WASTES_ART_ASSETS);
@@ -67,7 +68,6 @@ export async function loadArt(onProgress=()=>{}){
   if(paint){original.onload=original.onerror=paint.onload=paint.onerror=null;original.src='';paint.src='';}
   report();
  });
- prepareBTFinishFrames(images);
  prepareRoyalEel(images);prepareRoyalEelFrames(images);
  images['ink-boss']=await load('pastel-boss');report();images['ink-boss-parts']=await load('pastel-boss-parts');report();
  for(const name of [...HD_MODULE_ASSETS,'royal-wheel-rotor','royal-wheel-runoff'])images[name]=bakeLunarLowDepth(images[name]);
@@ -88,7 +88,7 @@ export async function loadArt(onProgress=()=>{}){
  images['lunar-enemy-saltik'].lunarPennant=images['lunar-pennant'];
  // Prime native hit flashes during loading, ahead of the first crowded fight.
  inkHitImage(images['ink-enemies']);inkHitImage(images['ink-enemy-saltik']);
- preparePlayerSkins(images);prepareModernGatling(images);
+ preparePlayerSkins(images);prepareStarlessDesertGatling(images);prepareModernGatling(images);
  images['modern-striker-4']=images['modern-striker-5']=images['desert-striker-body'];
  images['modern-striker-turn-4']=images['modern-striker-turn-5']=images['desert-striker-turn'];
  setInkTerrainTexture(images['ink-rock']);
@@ -201,10 +201,10 @@ export function createRenderer(canvas){
   c.save();if(g.shake>0&&view==='playing')c.translate(Math.sin(time*103)*Math.min(g.shake,6)*.3,Math.cos(time*119)*Math.min(g.shake,6)*.2);
   c.translate(0,cameraY);const opts={camera,width,height:Math.max(900,height-cameraY),time};
   if(g.level===2)drawLunarLowDepth(c,{...opts,groundAt:g.groundAt,image:images['lunar-low-depth'],texture:images['lunar-sandstone']});
-  if(g.level===5){drawRedWastesWorld(c,images,g,opts);drawDesertGiant(c,images['desert-giant-legs'],g,{box:{x:0,y:-cameraY,w:width,h:(g.groundAt(g.player.x)+cameraY)/.82}});drawRedWastesTracks(c,g,opts);}else if(g.level===4)drawDesertWorld(c,g,{...opts,atlas:images['desert-structures'],hd:images,texture:images['desert-c07-interior'],vista:images['desert-red-vista']});else if(g.level===3)drawRoyalWorld(c,g,{...opts,art:royalArt});else if(g.level===2)drawLunarWorld(c,g,{...opts,texture:images['lunar-sandstone'],art:{atlas:images['lunar-monuments'],bridge:images['lunar-aqueduct'],hd:images}});else{drawInkRoutes(c,g,opts);drawInkGround(c,g,opts);drawInkObstacles(c,g,opts);}
+  if(g.level===5){drawRedWastesWorld(c,images,g,{...opts,beforeStructures:()=>drawDesertGiant(c,images['desert-giant-legs'],g,{box:{x:0,y:-cameraY,w:width,h:(g.groundAt(g.player.x)+cameraY)/.82}})});drawRedWastesTracks(c,g,opts);}else if(g.level===4)drawDesertWorld(c,g,{...opts,atlas:images['desert-structures'],hd:images,texture:images['desert-c07-interior'],vista:images['desert-red-vista']});else if(g.level===3)drawRoyalWorld(c,g,{...opts,art:royalArt});else if(g.level===2)drawLunarWorld(c,g,{...opts,texture:images['lunar-sandstone'],art:{atlas:images['lunar-monuments'],bridge:images['lunar-aqueduct'],hd:images}});else{drawInkRoutes(c,g,opts);drawInkGround(c,g,opts);drawInkObstacles(c,g,opts);}
   if(view!=='title'){
    for(const item of g.pickups){const x=item.x-camera;if(x<-20||x>width+20)continue;c.save();c.translate(x,item.y);c.fillStyle=INK;c.strokeStyle=PAPER;c.lineWidth=2;c.fillRect(-12,-13,24,26);c.strokeRect(-12,-13,24,26);c.fillStyle=PAPER;c.fillRect(-2,-8,4,16);c.fillRect(-8,-2,16,4);c.restore();}
-   for(const e of g.enemies)if(!(e.type==='saltik'&&e.neutralized)&&e.id!==g.duel?.enemyId&&e.x>camera-200&&e.x<camera+width+200){if(e.type==='saltik')drawInkEnemySaltik(c,playerImages['ink-enemy-saltik'],e,{camera,time});else if(e.type==='carrier')drawInkCarrier(c,playerImages['ink-carrier'],e,{camera,time,handsImage:images['ink-saltik']});else drawInkEnemy(c,playerImages['ink-enemies'],e,{camera,time});}
+   for(const e of g.enemies)if((!e.neutralized||e.groundedDefeat)&&e.id!==g.duel?.enemyId&&e.x>camera-200&&e.x<camera+width+200){if(e.enemyModel==='rust-striker')drawEnemyRustStriker(c,images['enemy-rust-striker'],e,{camera,time});else if(e.type==='saltik')drawInkEnemySaltik(c,playerImages['ink-enemy-saltik'],e,{camera,time});else if(e.type==='carrier')drawInkCarrier(c,playerImages['ink-carrier'],e,{camera,time,handsImage:images['ink-saltik']});else drawInkEnemy(c,playerImages['ink-enemies'],e,{camera,time});}
    drawInkBossTank(c,images,g.boss,{camera,time,breach:g.bossBreach});
    const paired=drawInkBossBreach(c,playerImages,g.bossBreach,g.boss,{camera,time,player:g.player});
    const disconnecting=drawCarrierShutdown(c,playerImages,g.carrierShutdown,g.enemies.find(e=>e.id===g.carrierShutdown?.enemyId),{camera,time,player:g.player});

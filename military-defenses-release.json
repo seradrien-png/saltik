@@ -1,0 +1,280 @@
+{
+  "date": "2026-11-21",
+  "base_source_commit": "acd956dc98ae24e7e6ee1726e7e6c141de21398f",
+  "previous_github_commit": "69bd05642ef661e3c1db822cea9adadd13b9aa5a",
+  "scope": {
+    "global": [
+      "No speech subtitles; original voice playback retained",
+      "No rolling leg cycles; crouch, jump, terrain articulation retained",
+      "BT damage kills at zero HP with persistent grounded wreck, no grapple or projection"
+    ],
+    "level5": [
+      "96 defenders in18 authored squads with3BT commandposts and3additional rustStrikers",
+      "Anchored guns, bounded patrol/flank/air motion, separated attack sequences, gun bursts/guided missiles/straight rockets",
+      "Same native player speed, arsenal, armor, cooldown and heat",
+      "Skull lip shares actual physical support and checks visible cabin extents",
+      "Giant behind opaque dunes and landmarks, farther contact plane"
+    ]
+  },
+  "tests": {
+    "passed": 996,
+    "failed": 0
+  },
+  "full_run_normal_armor": {
+    "status": "won",
+    "time": 99.23333333332899,
+    "hp": 100,
+    "stats": {
+      "kills": 86,
+      "shots": 736,
+      "mirvs": 15,
+      "homingSalvos": 8,
+      "meleeSwings": 12,
+      "meleeHits": 11,
+      "interceptions": 26,
+      "score": 22700,
+      "obstacles": 0
+    },
+    "duel": null,
+    "defenders": 96,
+    "btSupports": 3,
+    "rustStrikers": 3,
+    "peakEnemies": 13,
+    "peakHostile": 13
+  },
+  "desktop": [
+    {
+      "character": "striker",
+      "defendedPositions": true,
+      "defenders": 96,
+      "allNativeArms": true,
+      "skullWalk": true,
+      "speechSubtitlesAbsent": true,
+      "pause": true,
+      "errors": [],
+      "missing": []
+    },
+    {
+      "character": "gatling",
+      "defendedPositions": true,
+      "defenders": 96,
+      "allNativeArms": true,
+      "skullWalk": true,
+      "speechSubtitlesAbsent": true,
+      "pause": true,
+      "errors": [],
+      "missing": []
+    },
+    {
+      "character": "bt",
+      "defendedPositions": true,
+      "defenders": 96,
+      "allNativeArms": true,
+      "skullWalk": true,
+      "speechSubtitlesAbsent": true,
+      "pause": true,
+      "errors": [],
+      "missing": []
+    }
+  ],
+  "mobile": {
+    "viewport": [
+      844,
+      390
+    ],
+    "dpr": 2,
+    "defendedPositions": true,
+    "defenders": 96,
+    "btMultitouchFireAndLocks": true,
+    "native16MissilePanic": true,
+    "touchMovement": true,
+    "noSubtitles": true,
+    "musicPlaybackAndPause": true,
+    "pause": true,
+    "errors": []
+  },
+  "review": "No remaining important findings; walker missile mouth and axis regression reproduced before correction, passes with exact measured mount",
+  "package": {
+    "before_bytes": 390913529,
+    "after_bytes": 266254894,
+    "saved_bytes": 124658635,
+    "reduction_percent": 31.889,
+    "all_audio_video_icons_unchanged": true,
+    "originals_retained": true
+  },
+  "preservation": "Original assets and historical projection drawings retained; other editions unchanged. No original image rescaled or overwritten. Starless Gatling material clips only4body and10turn marking rectangles.",
+  "retired_projection_art_not_published": [
+    "bt-finish-frames",
+    "bt-impact-underside",
+    "desert-bt-finishes"
+  ],
+  "source_original_projection_art_retained": true,
+  "source_commit": "0480ad72eb7b71707c7b1dfe3da4ad6946b2f4bf",
+  "feature_source_commit": "f67e172963354d5cb538a9ec8175256129464594",
+  "published_version": 57,
+  "version_id": "appgprj_6ae77e1b6da081918600675fc2e2b738~appgver_369849333dd48191a504c630091864a4",
+  "deployment_id": "appgdep_6b012e2265f88191964dfe4ab41c76f4",
+  "deployment_status": "succeeded",
+  "published_verification": {
+    "url": "https://saltik-v2-matin-dore.ser-adrien.chatgpt.site",
+    "files": [
+      {
+        "path": "index.html",
+        "status": 200,
+        "bytes": 17746,
+        "matches": true
+      },
+      {
+        "path": "android.html",
+        "status": 200,
+        "bytes": 17457,
+        "matches": true
+      },
+      {
+        "path": "menu/level4-gatling-default.webp",
+        "status": 200,
+        "bytes": 220430,
+        "matches": true
+      },
+      {
+        "path": "audio/gatling-brrrt-loop.ogg",
+        "status": 200,
+        "bytes": 47581,
+        "matches": true
+      },
+      {
+        "path": "audio/saltik_sable_rouge_v2.ogg",
+        "status": 200,
+        "bytes": 1572127,
+        "matches": true
+      },
+      {
+        "path": "src/desert-giant.js",
+        "status": 200,
+        "bytes": 4153,
+        "matches": true
+      },
+      {
+        "path": "src/enemy-rust-striker-art.js",
+        "status": 200,
+        "bytes": 7083,
+        "matches": true
+      },
+      {
+        "path": "src/enemy-saltik.js",
+        "status": 200,
+        "bytes": 7710,
+        "matches": true
+      },
+      {
+        "path": "src/engine.js",
+        "status": 200,
+        "bytes": 82559,
+        "matches": true
+      },
+      {
+        "path": "src/gatling-art.js",
+        "status": 200,
+        "bytes": 10958,
+        "matches": true
+      },
+      {
+        "path": "src/gatling-starless.js",
+        "status": 200,
+        "bytes": 1765,
+        "matches": true
+      },
+      {
+        "path": "src/grounded-bt-defeat.js",
+        "status": 200,
+        "bytes": 1205,
+        "matches": true
+      },
+      {
+        "path": "src/ink-actors.js",
+        "status": 200,
+        "bytes": 5231,
+        "matches": true
+      },
+      {
+        "path": "src/ink-enemy-saltik.js",
+        "status": 200,
+        "bytes": 17240,
+        "matches": true
+      },
+      {
+        "path": "src/ink-renderer.js",
+        "status": 200,
+        "bytes": 31721,
+        "matches": true
+      },
+      {
+        "path": "src/ink-saltik.js",
+        "status": 200,
+        "bytes": 21312,
+        "matches": true
+      },
+      {
+        "path": "src/main.js",
+        "status": 200,
+        "bytes": 34910,
+        "matches": true
+      },
+      {
+        "path": "src/modern-striker-art.js",
+        "status": 200,
+        "bytes": 9667,
+        "matches": true
+      },
+      {
+        "path": "src/red-army.js",
+        "status": 200,
+        "bytes": 7180,
+        "matches": true
+      },
+      {
+        "path": "src/red-wastes-layout.js",
+        "status": 200,
+        "bytes": 6842,
+        "matches": true
+      },
+      {
+        "path": "src/red-wastes-level.js",
+        "status": 200,
+        "bytes": 2302,
+        "matches": true
+      },
+      {
+        "path": "src/red-wastes-world.js",
+        "status": 200,
+        "bytes": 4659,
+        "matches": true
+      },
+      {
+        "path": "src/renderer.js",
+        "status": 200,
+        "bytes": 18188,
+        "matches": true
+      },
+      {
+        "path": "assets/enemy-rust-striker.webp",
+        "status": 200,
+        "bytes": 1939706,
+        "matches": true
+      },
+      {
+        "path": "assets/gatling-desert-starless-atlas.webp",
+        "status": 200,
+        "bytes": 1947876,
+        "matches": true
+      },
+      {
+        "path": "assets/gatling-desert-starless-turn.webp",
+        "status": 200,
+        "bytes": 1744206,
+        "matches": true
+      }
+    ],
+    "passed": true
+  }
+}

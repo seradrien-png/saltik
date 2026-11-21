@@ -21,6 +21,8 @@ EXCLUDED = {
     'ink-carrier-two-eyes-dr01', 'lunar-archives-sky', 'lunar-archives-stone',
     'lunar-carrier-material', 'lunar-coherent-world', 'lunar-sky-layer',
     'royal-foreground-props', 'royal-flora',
+    # Screen projections were explicitly retired; source/backup drawings remain.
+    'bt-finish-frames', 'bt-impact-underside', 'desert-bt-finishes',
 }
 
 def digest(path):
