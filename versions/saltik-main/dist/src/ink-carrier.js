@@ -1,3 +1,4 @@
+import {wheelRollPhase,drawWheelRoll} from './wheel-roll.js';
 import {sampleSupportSurface,computeSupportPose} from './support-pose.js';
 import {inkSaltikGeometry} from './ink-saltik.js';
 import {plantInkWheel} from './ink-leg-support.js';
@@ -113,7 +114,7 @@ export function drawInkCarrier(c,image,e,{camera=0,time=0,scale=1,handsImage=nul
  for(const part of g.legs){
   if(part.occluded)continue;
   c.save();c.translate(0,part.hinge);c.transform(1,0,part.roll/(part.wheelTop-part.hinge),part.stretch,0,0);c.translate(0,-part.hinge);clipPart(c,part.strutPolygon,[g.headPart,...g.hands]);draw();c.restore();
-  c.save();c.translate(part.roll,part.offset);clipPart(c,part.wheelPolygon,g.hands);draw();/* Preserve the original tire painting without rotating highlights. */c.restore();
+  c.save();c.translate(part.roll,part.offset);clipPart(c,part.wheelPolygon,g.hands);draw();const hub=[...part.wheelCenter,...part.wheelRadius];drawWheelRoll(c,{hub,spin:wheelRollPhase(e,hub,g.k,g.flip)},{disabled:g.knockedOut});c.restore();
  }
  const head=g.headPart;c.save();c.translate(...head.pivot);c.rotate(head.rotation);c.translate(-head.pivot[0],-head.pivot[1]);clipPart(c,head.polygon,g.hands);draw();koEyes(c,g);c.restore();
  for(const part of g.hands){c.save();c.translate(...part.pivot);c.rotate(part.rotation);c.translate(-part.pivot[0],-part.pivot[1]);clipPart(c,part.polygon);draw();c.restore();}

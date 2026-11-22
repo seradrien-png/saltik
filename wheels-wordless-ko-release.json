@@ -1,0 +1,115 @@
+{
+  "date": "2026-11-22",
+  "base_source_commit": "d603332c1cfeb82a57d153973f2686366d16aca9",
+  "previous_github_commit": "f92a18f59f5a2381d960b1abb12afd3e8e40228d",
+  "tests": {
+    "passed": 1027,
+    "failed": 0
+  },
+  "browser": [
+    {
+      "character": "striker",
+      "mobile": [
+        844,
+        390
+      ],
+      "rollsWithTravel": true,
+      "stopsAtRest": true,
+      "pause": true,
+      "errors": []
+    },
+    {
+      "character": "gatling",
+      "mobile": [
+        844,
+        390
+      ],
+      "rollsWithTravel": true,
+      "stopsAtRest": true,
+      "pause": true,
+      "errors": []
+    },
+    {
+      "character": "bt",
+      "mobile": [
+        844,
+        390
+      ],
+      "rollsWithTravel": true,
+      "stopsAtRest": true,
+      "pause": true,
+      "errors": []
+    }
+  ],
+  "wordless_KO_verified": true,
+  "archive_bytes": 266209280,
+  "runtime_bytes": 265597256,
+  "no_asset_changes": true,
+  "source_commit": "b4219a05cc92c1eb6864caacf922e7572a974863",
+  "version": 63,
+  "version_id": "appgprj_6ae77e1b6da081918600675fc2e2b738~appgver_585846c6d62881919db50420397df61d",
+  "deployment_id": "appgdep_6b02cae7488481919f46861598ef719c",
+  "deployment_status": "succeeded",
+  "url": "https://saltik-v2-matin-dore.ser-adrien.chatgpt.site",
+  "backup_verified_files": 1985,
+  "public_verification": {
+    "url": "https://saltik-v2-matin-dore.ser-adrien.chatgpt.site",
+    "files": [
+      {
+        "path": "index.html",
+        "status": 200,
+        "bytes": 17746,
+        "matches": true
+      },
+      {
+        "path": "android.html",
+        "status": 200,
+        "bytes": 17457,
+        "matches": true
+      },
+      {
+        "path": "video/saltik-free-together.mp4",
+        "status": 200,
+        "bytes": 10708546,
+        "matches": true
+      },
+      {
+        "path": "video/saltik-free-together-poster.jpg",
+        "status": 200,
+        "bytes": 391382,
+        "matches": true
+      },
+      {
+        "path": "audio/gatling-brrrt-loop.ogg",
+        "status": 200,
+        "bytes": 47581,
+        "matches": true
+      },
+      {
+        "path": "audio/saltik_sable_rouge_v2.ogg",
+        "status": 200,
+        "bytes": 1572127,
+        "matches": true
+      },
+      {
+        "path": "src/ink-carrier.js",
+        "status": 200,
+        "bytes": 16193,
+        "matches": true
+      },
+      {
+        "path": "src/saltik-ko-feedback.js",
+        "status": 200,
+        "bytes": 1267,
+        "matches": true
+      },
+      {
+        "path": "src/wheel-roll.js",
+        "status": 200,
+        "bytes": 1803,
+        "matches": true
+      }
+    ],
+    "passed": true
+  }
+}

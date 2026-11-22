@@ -240,3 +240,7 @@ BT ennemi original vert et orange, nouveau Striker noir et doré avec canon/guid
 ## Publication v62 — 22 novembre 2026
 
 Vidéo de fin du niveau 1 refaite avec Striker et Gatling libres, BT/Striker noir-or/Longrange/DR-01 à libérer, tous en apparence de base. Durée36s,1280×720,30fps ; narration conservée. Visée MIRV par zone globale uniquement, petites bulles POUF/K.O. sur les ennemis assommés. Source d603332c1cfeb82a57d153973f2686366d16aca9. 1 026 tests réussis ; décodage complet de la vidéo et lecture Chromium jusqu’à la fin normale. 1 983 fichiers des cinq éditions et historiques vérifiés. Ancienne vidéo conservée dans l’historique GitHub ; autres éditions inchangées. Détails dans level-one-film-release.json.
+
+## Publication v63 — 22 novembre 2026
+
+Roues plus contrastées et motif asymétrique lisible sur mobile, phase liée à la distance parcourue, pattes fixes. DR-01 reçoit la même rotation. Suppression de POUF/K.O. et des bulles : spirales de vertige, yeux éteints et posture affaissée uniquement. Source b4219a05cc92c1eb6864caacf922e7572a974863. 1 027 tests réussis ; essais des trois personnages sur affichage mobile, arrêt au repos et pause. 1 985 fichiers et historiques vérifiés ; autres éditions inchangées. Détails dans wheels-wordless-ko-release.json.

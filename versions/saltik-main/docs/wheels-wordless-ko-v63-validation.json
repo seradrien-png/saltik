@@ -1,0 +1,48 @@
+{
+  "date": "2026-11-22",
+  "base_source_commit": "d603332c1cfeb82a57d153973f2686366d16aca9",
+  "previous_github_commit": "f92a18f59f5a2381d960b1abb12afd3e8e40228d",
+  "tests": {
+    "passed": 1027,
+    "failed": 0
+  },
+  "browser": [
+    {
+      "character": "striker",
+      "mobile": [
+        844,
+        390
+      ],
+      "rollsWithTravel": true,
+      "stopsAtRest": true,
+      "pause": true,
+      "errors": []
+    },
+    {
+      "character": "gatling",
+      "mobile": [
+        844,
+        390
+      ],
+      "rollsWithTravel": true,
+      "stopsAtRest": true,
+      "pause": true,
+      "errors": []
+    },
+    {
+      "character": "bt",
+      "mobile": [
+        844,
+        390
+      ],
+      "rollsWithTravel": true,
+      "stopsAtRest": true,
+      "pause": true,
+      "errors": []
+    }
+  ],
+  "wordless_KO_verified": true,
+  "archive_bytes": 266209280,
+  "runtime_bytes": 265597256,
+  "no_asset_changes": true
+}

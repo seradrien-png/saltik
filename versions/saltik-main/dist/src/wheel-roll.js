@@ -12,12 +12,18 @@ export function drawWheelRoll(c,{hub,spin=0}, {disabled=false}={}){
   return[x+xx*co-yy*si,y+xx*si+yy*co];
  };
  c.save();c.beginPath();c.ellipse(x,y,rx,ry,angle,0,Math.PI*2);c.clip();
- c.lineCap='round';c.lineWidth=Math.max(1.5,rx*.055);
- // Small alternating ribs follow the tread, with the same elliptical projection
- // as the source hub instead of spinning the entire oval wheel painting.
- c.strokeStyle='rgba(19,24,24,.52)';c.beginPath();
- for(let i=0;i<12;i++){const a=spin+i*Math.PI/6;c.moveTo(...point(a,.83));c.lineTo(...point(a+.055,.98));}c.stroke();
- c.strokeStyle='rgba(225,215,185,.44)';c.lineWidth=Math.max(1.5,rx*.065);c.beginPath();
- for(let i=0;i<5;i++){const a=spin+i*Math.PI*2/5;c.moveTo(...point(a,.18));c.lineTo(...point(a,.58));}c.stroke();
+ c.lineCap='round';
+ // Fewer, broader marks stay legible at phone size instead of becoming a
+ // nearly uniform blur. Their phase still follows real travelled distance.
+ c.strokeStyle='rgba(12,17,18,.94)';c.lineWidth=Math.max(3,rx*.16);c.beginPath();
+ for(let i=0;i<8;i++){const a=spin+i*Math.PI/4;c.moveTo(...point(a,.72));c.lineTo(...point(a+.065,.99));}c.stroke();
+ for(const [color,width]of [['rgba(12,17,18,.92)',.21],['rgba(239,224,187,.88)',.105]]){
+  c.strokeStyle=color;c.lineWidth=Math.max(2,rx*width);c.beginPath();
+  for(let i=0;i<3;i++){const a=spin+i*Math.PI*2/3;c.moveTo(...point(a,.15));c.lineTo(...point(a,.68));}c.stroke();
+ }
+ // One asymmetric bright rim segment makes forward/reverse rotation readable
+ // even when regular spokes would alias at a steady speed.
+ c.strokeStyle='rgba(245,229,192,.92)';c.lineWidth=Math.max(2.5,rx*.15);c.beginPath();
+ for(let i=0;i<=9;i++){const p=point(spin+.08*i,.87);if(i)c.lineTo(...p);else c.moveTo(...p);}c.stroke();
  c.restore();
 }
