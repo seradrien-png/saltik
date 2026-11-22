@@ -18,6 +18,17 @@ export function sceneArtImages(images,level,character='striker',skin='default',v
  if(visualModel==='modern-striker')player={...player,'ink-saltik':images[`modern-striker-${skin==='dragon'?'dragon-':''}${level}`]??player['ink-saltik'],'ink-turn':images[`modern-striker-${skin==='dragon'?'dragon-':''}turn-${level}`]??player['ink-turn']};
  if(visualModel==='modern-gatling')player={...player,'ink-saltik':images[`modern-gatling-${skin==='limule'?'limule-':''}${level}`]??player['ink-saltik'],'ink-turn':images[`modern-gatling-${skin==='limule'?'limule-':''}turn-${level}`]??player['ink-turn']};
  if(level===4&&images['desert-bt-body'])player={...player,'ink-enemy-saltik':images['desert-bt-body'],...(character==='bt'?{'ink-saltik':images['desert-bt-body'],'ink-turn':images['desert-bt-turn']}: {})};
+ // Player appearance is a choice, independent of the world's materials.
+ // Keep all historical sheets available while disabling automatic moon/velvet
+ // and desert costumes for playable Saltiks.
+ if(visualModel==='modern-striker'){
+  const body=skin==='military'?'desert-striker-body':`modern-striker-${skin==='dragon'?'dragon-':''}1`,turn=skin==='military'?'desert-striker-turn':`modern-striker-${skin==='dragon'?'dragon-':''}turn-1`;
+  player={...player,'ink-saltik':images[body]??images['ink-saltik'],'ink-turn':images[turn]??null};
+ }
+ if(visualModel==='modern-gatling'){
+  const variant=skin==='military'?4:1;player={...player,'ink-saltik':images[`modern-gatling-${variant}`]??images['gatling-snow'],'ink-turn':images[`modern-gatling-turn-${variant}`]??null};
+ }
+ if(character==='bt')player={...player,'ink-saltik':images['ink-enemy-saltik'],'ink-turn':images['bt-turn-1']??images['bt-turn']??null};
  if(!set)return player;
  const result={...player};for(const [native,name] of Object.entries(set))result[native]=images[name]??images[native];return result;
 }

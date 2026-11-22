@@ -9,11 +9,11 @@ import {RED_WASTES_SITES,structurePlacement,redWastesGroundAt} from '../src/red-
 function empty(character){
  const g=createInkScene({level:5,character});g.schedule=[];g.pickups=[];return g;
 }
-test('the native sand path alternates between foreground and middle distance with shallow shoulders',()=>{
+test('the native sand path alternates between foreground and middle distance with continuous rough sand shoulders',()=>{
  const ys=[];
  for(let x=0;x<=23000;x+=10){
   const y=redWastesGroundAt(x);ys.push(y);
-  assert(Math.abs(y-redWastesGroundAt(x+1))<.3);
+  assert(Math.abs(y-redWastesGroundAt(x+1))<.75);
  }
  assert(Math.max(...ys)-Math.min(...ys)>155);
  let turns=0,previous=0;
@@ -23,7 +23,7 @@ test('the native sand path alternates between foreground and middle distance wit
   if(direction)previous=direction;
  }
  assert(turns>=6);
- assert.equal(redWastesGroundAt(20500),redWastesGroundAt(23000));
+ assert.notEqual(redWastesGroundAt(20500),redWastesGroundAt(23000));
 });
 
 test('all three native characters walk each registered structure both ways, with planted wheels and 230 x speed',()=>{

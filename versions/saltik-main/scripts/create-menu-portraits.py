@@ -56,18 +56,20 @@ RENDER = """async()=>{
  const {createInkScene}=await import('/src/ink-scene.js');
  const {sceneArtImages}=await import('/src/enemy-styles.js');
  const {drawInkSaltik}=await import('/src/ink-saltik.js');
+ const {playerSkinOptions}=await import('/src/player-skins.js');
+ const {menuPortraitPath}=await import('/src/menu-portraits.js');
  await loadArt();
  if(!window.__portraitImages)throw new Error('Native image cache unavailable');
  const canvas=document.createElement('canvas');canvas.width=canvas.height=512;
  const c=canvas.getContext('2d'),result=[];
- for(const level of [1,2,3,4])for(const [character,skin] of [
-  ['striker','default'],['striker','dragon'],['gatling','default'],['gatling','limule'],['bt','default']]){
+ for(const character of ['striker','gatling','bt'])for(const [skin]of playerSkinOptions(character)){
+  const level=skin==='military'?4:1;
   const player=createInkScene({level,character,skin}).player;
   const art=sceneArtImages(window.__portraitImages,level,character,skin,player.visualModel);
   if(!art['ink-saltik'])throw new Error(`Missing ${level}/${character}/${skin} native texture`);
   c.clearRect(0,0,512,512);
   drawInkSaltik(c,art['ink-saltik'],inkTitlePlayer(player,256,490),{time:0,scale:level===4&&character==='bt'?2.8:3});
-  result.push({name:`level${level}-${character}-${skin}.webp`,level,character,skin,
+  result.push({name:menuPortraitPath({character,cosmeticSkin:skin}).split('/').at(-1),level,character,skin,
    visualModel:player.visualModel??'bt-native',png:canvas.toDataURL('image/png').split(',')[1]});
  }
  return result;

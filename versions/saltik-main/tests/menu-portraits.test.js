@@ -2,8 +2,8 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import {menuPortraitPath,drawMenuPortrait} from '../src/menu-portraits.js';
 test('loading menu selects the exact chassis, costume and level without a legacy fallback',()=>{
- for(const level of [1,2,3,4])for(const [character,skin]of [['striker','default'],['striker','dragon'],['gatling','default'],['gatling','limule'],['bt','default']]){
-  assert.equal(menuPortraitPath({level,character,cosmeticSkin:skin}),`../menu/level${level}-${character}-${skin}.webp`);
+ for(const level of [1,2,3,4])for(const [character,skin]of [['striker','default'],['striker','dragon'],['striker','military'],['gatling','default'],['gatling','military'],['bt','default']]){
+  assert.equal(menuPortraitPath({level,character,cosmeticSkin:skin}),`../menu/level${skin==='military'?4:1}-${character}-${skin==='military'?'default':skin}.webp`);
  }
  assert.equal(menuPortraitPath({level:999,character:'other',cosmeticSkin:'limule'}),'../menu/level1-striker-default.webp');
 });

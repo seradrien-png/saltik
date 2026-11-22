@@ -15,13 +15,17 @@ function duneAt(x){
  return a[1]+(b[1]-a[1])*smooth(clamp((x-a[0])/(b[0]-a[0]),0,1));
 }
 export function redWastesGroundAt(x){
- let y=duneAt(x);
+ let y=duneAt(x),roughness=1;
  for(const site of RED_WASTES_SITES){
   const outside=Math.max(site.x-x,x-site.x-site.w,0);
   const weight=1-smooth(clamp(outside/650,0,1));
   y+=(duneAt(site.x+site.w/2)-y)*weight;
+  roughness*=smooth(clamp(outside/200,0,1));
  }
- return y;
+ // Wheel-scale sand ridges are physical supports, not a timed body wobble.
+ // Fade only at concrete/bone junctions so their painted entries stay joined.
+ const ripples=10*Math.sin(x/59)+6*Math.sin(x/31+.7)+2*Math.sin(x/15+1.4);
+ return y+roughness*ripples;
 }
 export function structurePlacement(site){
  const foot=redWastesGroundAt(site.x+site.w/2);

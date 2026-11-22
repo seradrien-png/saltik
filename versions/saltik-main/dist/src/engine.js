@@ -618,9 +618,9 @@ function updateGatlingWeapons(g,input,dt){
 }
 function updateBTWeapons(g,input,dt){
  const p=g.player,context=navigationContext(g);
- // The desert machine's higher barrel uses the standard forward aim cone.
- // Rotate its actual painted cannon before sampling the projectile muzzle.
- if(p.btVariant==='desert'){
+ // Keep the BT barrel on the standard forward aim cone as its suspension
+ // follows rough ground. Sample the muzzle after rotating the painted cannon.
+ {
   const pose=g.weaponGeometry?.(p,g.time)??tachikomaGeometry(p,g.time),native=pose.btNative;
   const pivot=native?native.sourcePoint(native.cannonPart.pivot):pose.arm,a=aim(g,pivot);
   p.btAimTarget={x:pivot.x+Math.cos(a)*1000,y:pivot.y+Math.sin(a)*1000};

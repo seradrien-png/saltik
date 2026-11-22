@@ -11,12 +11,13 @@ test('sand painting joins continuously across every warped strip and reflected t
   let matrix=[1,0,0,1,0,0],stack=[],draws=[];
   const c={fillRect(){},save(){stack.push([...matrix]);},restore(){matrix=stack.pop();},
    transform(a,b,d,e,x,y){matrix=[a,b,d,e,x,y];},translate(x,y){matrix[4]+=x;matrix[5]+=y;},scale(){},
-   drawImage(img,sx,sy,sw,sh,x,y,w,h){if(img===image){assert(sx>=-1e-6&&sx+sw<=image.width+1e-6);draws.push({left:matrix[4]+(matrix[0]<0?-w:0),top:matrix[5]+(matrix[0]<0?matrix[1]*w:0),right:matrix[4]+(matrix[0]<0?0:w),end:matrix[5]+(matrix[0]<0?0:matrix[1]*w)});}}};
+   drawImage(img,sx,sy,sw,sh,x,y,w,h){if(img===image){assert(sx>=-1e-6&&sx+sw<=image.width+1e-6);const a=matrix[4]+matrix[0]*x,b=matrix[4]+matrix[0]*(x+w),ay=matrix[5]+matrix[1]*x,by=matrix[5]+matrix[1]*(x+w);draws.push({left:Math.min(a,b),top:a<b?ay:by,right:Math.max(a,b),end:a<b?by:ay});}}};
   drawRedWastesWorld(c,{'red-wastes-sand-plane':image},{},{camera,width:1280,height:900});
   draws.sort((a,b)=>a.left-b.left);assert(draws.length>20);
   for(let i=1;i<draws.length;i++){
-   const a=draws[i-1],b=draws[i],at=a.top+(a.end-a.top)*(b.left-a.left)/(a.right-a.left);
-   assert(Math.abs(at-b.top)<.01,`unjoined painted sand at camera ${camera}: ${at} vs ${b.top}`);
+   const a=draws[i-1],b=draws[i],join=(a.right+b.left)/2;
+   const at=a.top+(a.end-a.top)*(join-a.left)/(a.right-a.left),bt=b.top+(b.end-b.top)*(join-b.left)/(b.right-b.left);
+   assert(Math.abs(at-bt)<.01,`unjoined painted sand at camera ${camera}: ${at} vs ${bt}`);
   }
  }
 });

@@ -110,7 +110,7 @@ for(const [character,level,...points]of paintedTurnSamples)test(`${character} le
 test('desert Striker receives hits on all eight painted turn views',()=>{
  const samples=[[248,404],[236,404],[296,404],[188,404],[152,404],[116,404],[92,404],[116,404]];
  for(const [index,point]of samples.entries()){
-  const g=quiet(5,'striker');g.groundAt=()=>600;
+  const g=quiet(5,'striker');g.player.strikerVariant='desert';g.player.cosmeticSkin='military';g.groundAt=()=>600;
   Object.assign(g.player,{x:1000,y:600,supportY:600,supportPose:null,tilt:0,dir:index===0?-1:1,turn:{active:true,yaw:index*Math.PI/4}});
   incoming(g,turnPoint(g.player,point));update(g,{},.000001);
   assert.equal(g.player.hp,92,`desert Striker turn frame ${index}: painted native wheel`);

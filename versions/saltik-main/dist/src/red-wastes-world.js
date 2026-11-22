@@ -28,7 +28,11 @@ function sandPlane(c,image,{camera,width,height}){
    const left=redWastesGroundAt(world)-270,right=redWastesGroundAt(world+span)-270;
    const source=flip?w-local-span:local;
    c.save();c.transform(flip?-1:1,flip?-(right-left)/span:(right-left)/span,0,1,world-camera+(flip?span:0),flip?right:left);
-   c.drawImage(image,source/w*image.width,0,span/w*image.width,image.height,0,0,span,h);
+   // Filtering an exactly abutting crop exposes one-pixel columns on
+   // fractional cameras and rough slopes. Share source pixels across edges;
+   // the same affine plane carries both paddings without shifting the texture.
+   const padLeft=Math.min(.75,source),padRight=Math.min(.75,w-source-span);
+   c.drawImage(image,(source-padLeft)/w*image.width,0,(span+padLeft+padRight)/w*image.width,image.height,-padLeft,0,span+padLeft+padRight,h);
    c.restore();
   }
  }

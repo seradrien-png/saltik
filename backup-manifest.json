@@ -7,15 +7,15 @@
       "slug": "saltik-main",
       "repo": "saltik-v2-matin-dore",
       "title": "SALTIK V2 \u2014 Matin Dor\u00e9",
-      "commit": "cb4d7c137bf0690e4e41cf677f870ac1f7ca8f87",
+      "commit": "fdc813b7fe45f4efedbe50e3fd2e5dfa31ba4f87",
       "published_version": 57,
       "url": "https://saltik-v2-matin-dore.ser-adrien.chatgpt.site",
       "base_commit": "ce280f9394d382d728673a48c1994a18092e8c58",
       "source_path": "/workspace/sites/saltik-v2-matin-dore",
       "export_path": "versions/saltik-main",
       "web_entry": "versions/saltik-main/dist/index.html",
-      "file_count": 958,
-      "bytes": 412276471,
+      "file_count": 962,
+      "bytes": 412356912,
       "uncommitted_changes": "",
       "files": {
         ".gitignore": {
@@ -1075,12 +1075,12 @@
           "size": 7491
         },
         "dist/src/enemy-styles.js": {
-          "sha256": "0a4ff72c5ca247de876459edd8f2eb2e2be0e8bfebfb2fc548eba75f152eca5b",
-          "size": 3722
+          "sha256": "8630fdf15d0bbe64a79fded59b021448c06d721c534c76d9ef912094ad7d169a",
+          "size": 4630
         },
         "dist/src/engine.js": {
-          "sha256": "9c6ccb2a5c6813d9c3c082d213b246330a825f864b1ad3e55d802b4e375a6bcb",
-          "size": 83666
+          "sha256": "a32ea4d17ee550a41709330f0979223713550c81e8c4738452e97fb56fb94a3b",
+          "size": 83642
         },
         "dist/src/evasion.js": {
           "sha256": "3b9e6a5daafd5098d12f20a67279e98eca7b85ef500b79b67ea5862199992aeb",
@@ -1171,8 +1171,8 @@
           "size": 21516
         },
         "dist/src/ink-scene.js": {
-          "sha256": "6a565055abd9649c813b73671cd4077dcdad498370c0fc74818143004a08fd0f",
-          "size": 6106
+          "sha256": "ec4f4353874d34a486ad4a54c8e82b571c6573024408ea0f908e465c5ddde11e",
+          "size": 5986
         },
         "dist/src/ink-turn.js": {
           "sha256": "e2e281634ce901d5e484fe5c5a6770ddc9365574f832550ee3ee2ff1162f8050",
@@ -1227,16 +1227,16 @@
           "size": 4153
         },
         "dist/src/main.js": {
-          "sha256": "828d1c78027f78d6442dcee7ccaef816df5495a434d1a6d2185479bdd1d5f306",
-          "size": 34910
+          "sha256": "07e7c7c4b3c413e2862027a33b261ed1b5a042628dc8c1a40c5157c6b05e325a",
+          "size": 34445
         },
         "dist/src/melee-state.js": {
           "sha256": "f24e08a07354668edbe7d54291517edc973dd34f9dfa9653c4f5776fe2b1eb87",
           "size": 941
         },
         "dist/src/menu-portraits.js": {
-          "sha256": "b0d52ede131060847089d3fc0a44b41adaee679a82fc4f7117d6222e88b94c30",
-          "size": 1047
+          "sha256": "6672a16027aff04db2ece47d265291858583b3f3be16a4d3a7e7229ccb51cbf2",
+          "size": 1061
         },
         "dist/src/mirv-audio.js": {
           "sha256": "1c0770466555dde8a2c8f4f3e60c35ec3cf3ac20d72bc9acfc682a55a831dab2",
@@ -1295,8 +1295,8 @@
           "size": 2720
         },
         "dist/src/player-skins.js": {
-          "sha256": "e311d6c31538039dac9dc31069cd7e0809ebfde4d8e68b4e3ea511ed71d4291c",
-          "size": 4792
+          "sha256": "975fdc0f2ea54bf1ffaf51dbdf88ecb8339240f04a790999afee900d24be722f",
+          "size": 5054
         },
         "dist/src/real-weapon-paths.js": {
           "sha256": "19a515f49e6616cc96474ba0402cd7527d5d7576e359c744e5327730b2a56112",
@@ -1307,8 +1307,8 @@
           "size": 9160
         },
         "dist/src/red-wastes-layout.js": {
-          "sha256": "93e8f248110da507bf906fdf071e0ab2a76b99f50442e5c0532b9ee8a27cde5e",
-          "size": 6842
+          "sha256": "2ca1c7b2d9985f27d2ac391e1bcb27b711e613cd598f93b058227da46415cab3",
+          "size": 7147
         },
         "dist/src/red-wastes-level.js": {
           "sha256": "56ca7b538754a3fff7e0c425309e02cbf27ea2c95dc5b52cb167e87f1eb45ff6",
@@ -1319,8 +1319,8 @@
           "size": 2598
         },
         "dist/src/red-wastes-world.js": {
-          "sha256": "1b21fc6305786630af7751db737bc90228324b5655a225e3f03d426a216fc060",
-          "size": 4659
+          "sha256": "2475c9f427852c1238a7bb4577066411e14235d1850d57360a87ffed24d2c2aa",
+          "size": 5015
         },
         "dist/src/renderer.js": {
           "sha256": "e7ad6f6a5604c64271a161a9ed9c54e04bed88b044e095294c6bd6fb2ce94946",
@@ -1733,6 +1733,14 @@
         "docs/rolling-suspension-integration.md": {
           "sha256": "c7403cdb087234e0e361be6d67ba80180e4e190d2e7438158f1c79b405d5fa34",
           "size": 1644
+        },
+        "docs/rough-sand-and-skin-choices-validation.json": {
+          "sha256": "51da154902e7a8967a029985022a4cdba2ac85f0c5bcb1195bb48ca2cf1dbb6b",
+          "size": 65995
+        },
+        "docs/rough-sand-and-skin-choices.md": {
+          "sha256": "8ea937aacad17e2314c9d920f740a2a8e0fd67285b4ffa9f3f9287c309c6f030",
+          "size": 2100
         },
         "docs/royal-flight-v51-validation.json": {
           "sha256": "e8cb062ca61dcc077df4a1a1268937f94b4b20d5f880ee746bc08d01cc647658",
@@ -2359,8 +2367,8 @@
           "size": 7051
         },
         "scripts/create-menu-portraits.py": {
-          "sha256": "1e0e1124ac006b16677ecf7e91b0ea59616bc34f702ed53cd808e65bd1733217",
-          "size": 6678
+          "sha256": "f64b7891d46d30c35348373af10dbcbb2e98faa61939eb0f8d91a8a44b65bc61",
+          "size": 6801
         },
         "scripts/faithful-film/assets/commercial.wav": {
           "sha256": "345f6485fb55d651fc6605a9c1fe223d6a464ba6813c8d0532e24464341822a1",
@@ -2655,12 +2663,12 @@
           "size": 7491
         },
         "src/enemy-styles.js": {
-          "sha256": "0a4ff72c5ca247de876459edd8f2eb2e2be0e8bfebfb2fc548eba75f152eca5b",
-          "size": 3722
+          "sha256": "8630fdf15d0bbe64a79fded59b021448c06d721c534c76d9ef912094ad7d169a",
+          "size": 4630
         },
         "src/engine.js": {
-          "sha256": "9c6ccb2a5c6813d9c3c082d213b246330a825f864b1ad3e55d802b4e375a6bcb",
-          "size": 83666
+          "sha256": "a32ea4d17ee550a41709330f0979223713550c81e8c4738452e97fb56fb94a3b",
+          "size": 83642
         },
         "src/evasion.js": {
           "sha256": "3b9e6a5daafd5098d12f20a67279e98eca7b85ef500b79b67ea5862199992aeb",
@@ -2751,8 +2759,8 @@
           "size": 21516
         },
         "src/ink-scene.js": {
-          "sha256": "6a565055abd9649c813b73671cd4077dcdad498370c0fc74818143004a08fd0f",
-          "size": 6106
+          "sha256": "ec4f4353874d34a486ad4a54c8e82b571c6573024408ea0f908e465c5ddde11e",
+          "size": 5986
         },
         "src/ink-turn.js": {
           "sha256": "e2e281634ce901d5e484fe5c5a6770ddc9365574f832550ee3ee2ff1162f8050",
@@ -2807,16 +2815,16 @@
           "size": 4153
         },
         "src/main.js": {
-          "sha256": "828d1c78027f78d6442dcee7ccaef816df5495a434d1a6d2185479bdd1d5f306",
-          "size": 34910
+          "sha256": "07e7c7c4b3c413e2862027a33b261ed1b5a042628dc8c1a40c5157c6b05e325a",
+          "size": 34445
         },
         "src/melee-state.js": {
           "sha256": "f24e08a07354668edbe7d54291517edc973dd34f9dfa9653c4f5776fe2b1eb87",
           "size": 941
         },
         "src/menu-portraits.js": {
-          "sha256": "b0d52ede131060847089d3fc0a44b41adaee679a82fc4f7117d6222e88b94c30",
-          "size": 1047
+          "sha256": "6672a16027aff04db2ece47d265291858583b3f3be16a4d3a7e7229ccb51cbf2",
+          "size": 1061
         },
         "src/mirv-audio.js": {
           "sha256": "1c0770466555dde8a2c8f4f3e60c35ec3cf3ac20d72bc9acfc682a55a831dab2",
@@ -2875,8 +2883,8 @@
           "size": 2720
         },
         "src/player-skins.js": {
-          "sha256": "e311d6c31538039dac9dc31069cd7e0809ebfde4d8e68b4e3ea511ed71d4291c",
-          "size": 4792
+          "sha256": "975fdc0f2ea54bf1ffaf51dbdf88ecb8339240f04a790999afee900d24be722f",
+          "size": 5054
         },
         "src/real-weapon-paths.js": {
           "sha256": "19a515f49e6616cc96474ba0402cd7527d5d7576e359c744e5327730b2a56112",
@@ -2887,8 +2895,8 @@
           "size": 9160
         },
         "src/red-wastes-layout.js": {
-          "sha256": "93e8f248110da507bf906fdf071e0ab2a76b99f50442e5c0532b9ee8a27cde5e",
-          "size": 6842
+          "sha256": "2ca1c7b2d9985f27d2ac391e1bcb27b711e613cd598f93b058227da46415cab3",
+          "size": 7147
         },
         "src/red-wastes-level.js": {
           "sha256": "56ca7b538754a3fff7e0c425309e02cbf27ea2c95dc5b52cb167e87f1eb45ff6",
@@ -2899,8 +2907,8 @@
           "size": 2598
         },
         "src/red-wastes-world.js": {
-          "sha256": "1b21fc6305786630af7751db737bc90228324b5655a225e3f03d426a216fc060",
-          "size": 4659
+          "sha256": "2475c9f427852c1238a7bb4577066411e14235d1850d57360a87ffed24d2c2aa",
+          "size": 5015
         },
         "src/renderer.js": {
           "sha256": "e7ad6f6a5604c64271a161a9ed9c54e04bed88b044e095294c6bd6fb2ce94946",
@@ -3190,6 +3198,10 @@
           "sha256": "077d812c1211a216567013c2e1a69f3e459354781f0e1d14770c66bf108768fa",
           "size": 4361
         },
+        "tests/browser_rough_sand_skins.py": {
+          "sha256": "cc34c61f8800ed4a40b02218357ac37379f6fa7fcea7ba5f6ce50cbb75a6c6e3",
+          "size": 4662
+        },
         "tests/browser_routes.py": {
           "sha256": "2650d5961023d9caa10baf8f88767180e44add151613de0a8996531646a46228",
           "size": 6217
@@ -3223,8 +3235,8 @@
           "size": 3530
         },
         "tests/bt-art.test.js": {
-          "sha256": "4e429b0d262ec8e14dec4e4acfe18b0c9e36dc7226dce30e310cb3ed59634de8",
-          "size": 1550
+          "sha256": "88749bd2fdfb2f9d627e648e9c58ea2d7c511b1a10e91c2317f9d7347920cd3f",
+          "size": 1535
         },
         "tests/bt-combat.test.js": {
           "sha256": "1331da513647c00a5a85cc961e4583c053b210dc7d1835b136b71b57fa62d338",
@@ -3291,8 +3303,8 @@
           "size": 3485
         },
         "tests/character-customization.test.js": {
-          "sha256": "510c15a4aef16495bbcbea5bc2a6488564489b5c82d8be38d62deaf16ec7598c",
-          "size": 5151
+          "sha256": "2a242cc957bac391febf6ae8a9260b2d625edccefa5b1bf38686093b42a4d8fe",
+          "size": 5152
         },
         "tests/character-polish.test.js": {
           "sha256": "d12adfef5ecdc154dab6dc531cbcdc422233314e325e990fd632439f5d0f65bf",
@@ -3347,8 +3359,8 @@
           "size": 7210
         },
         "tests/desert-v56-integration.test.js": {
-          "sha256": "e3d997496b1635697da3d6c64400272203f6dbb59d24c593428f5af9659acc6b",
-          "size": 1628
+          "sha256": "51cc23a7819373e9a75d356d159355eafe2b8e8526930e0f14fe30827ed6c43c",
+          "size": 1597
         },
         "tests/desert-world.test.js": {
           "sha256": "ed582054c1b13a948ecab6406f105a03dab6c064c3161a60ed394c66cad8509c",
@@ -3427,8 +3439,8 @@
           "size": 1810
         },
         "tests/gatling-ui.test.js": {
-          "sha256": "1f17c6d981a3e36262901e2645c44095ac1ecab9e76e174d5cf23ac69299f3ed",
-          "size": 5319
+          "sha256": "5c41c5c4122b54611b1a9a89358fb8487ed925b954f753048b7420901f57f94a",
+          "size": 5365
         },
         "tests/grounded-bt-defeat.test.js": {
           "sha256": "47e690bc6d0ed91bc37cff760212369a0c10338e7b3592227cbedf8d3dd75b26",
@@ -3455,8 +3467,8 @@
           "size": 8678
         },
         "tests/ink-player-hitbox.test.js": {
-          "sha256": "2834d910fcddfd18b0445f01db74a398904ef4d13ad544d878bbbe85890022f3",
-          "size": 6987
+          "sha256": "93cb82023d83b6ccace128e5b980be054ec5ae941dff0fee6b77a4304a709f2c",
+          "size": 7053
         },
         "tests/ink-player-ko.test.js": {
           "sha256": "da48829a34f835e703aaaaad97eb59c1056f28c6d5cec7829a7e8f770050f12b",
@@ -3515,8 +3527,8 @@
           "size": 6534
         },
         "tests/longrange-specialists.test.js": {
-          "sha256": "b8d3a8c3664d4a0f21ec4b9ee448488036b63953e9aa863900f236ca9eccc831",
-          "size": 5396
+          "sha256": "c9127f44759dd6d438022c8be33945508212059bc9ea449299608c3baf3a5c60",
+          "size": 5398
         },
         "tests/lunar-architecture.test.js": {
           "sha256": "d34065fc65e093e639079f1057f606404e9a0df1133d2af47a45d4f187ef4b1f",
@@ -3571,8 +3583,8 @@
           "size": 6739
         },
         "tests/menu-portraits.test.js": {
-          "sha256": "86ad75ac3e015750791452a59c2e1ee2584ab849b4d7a464408874b64beaa378",
-          "size": 1091
+          "sha256": "c69609d76502cb598042bcac112055a7cfa8a175281d1c5251d0b37f2df213a1",
+          "size": 1160
         },
         "tests/mirv-aim.test.js": {
           "sha256": "fe8ecbb157d925b4865df8be385d2350677f19026ecc956c2db53dd3047867a1",
@@ -3599,8 +3611,8 @@
           "size": 4775
         },
         "tests/modern-gatling.test.js": {
-          "sha256": "76471cc5649db33fe6dd6582cf227d8fa57da19dc45370bd8b07f466c761acdd",
-          "size": 5498
+          "sha256": "31c7a2372ff290cb622ca684a8d44c67a0e3ee54ba465b0c2b44a23bb96f29d6",
+          "size": 5502
         },
         "tests/modern-striker.test.js": {
           "sha256": "637d6b4b6b827ea4aa7d0d3afcc393201b01ca877613c876196d3f9a4a531b3c",
@@ -3659,20 +3671,20 @@
           "size": 2900
         },
         "tests/red-wastes-level.test.js": {
-          "sha256": "5c950d90af82c03a4923c6f71da94e5fddb0bb6cca8d2aa7c938a1f0e21ad2f1",
-          "size": 8107
+          "sha256": "d1226a5a6a9d1b8642575ba6d049244082aa6d9581387b7a5e3f2a5349f9c76f",
+          "size": 8108
         },
         "tests/red-wastes-routes.test.js": {
-          "sha256": "7167345d125a0f7a36c019b2003d7576e8183afa07525f70764259ac5f4cd61d",
-          "size": 3592
+          "sha256": "3f4376f8a16da74102df87c5e7c79f8ab31cffcc6fcdaa34faaa07012b454512",
+          "size": 3610
         },
         "tests/red-wastes-sand.test.js": {
           "sha256": "0575a169caa759d14601ab9f831d4ac35def0d3abeed0c1b20b0024aee85827e",
           "size": 2471
         },
         "tests/red-wastes-terrain-registration.test.js": {
-          "sha256": "54e6853356e86ae7112255968e46f69e4b6dca76cb3c7010c30a3709b47d4e1a",
-          "size": 9701
+          "sha256": "0a0ca6cf4f322976dba12495f3293c4d49f026a641afb5d73a45516cb6c3f306",
+          "size": 9808
         },
         "tests/red-wastes-world.test.js": {
           "sha256": "8aa3f8564b7a40b8d50bc4e1087f578df1f93539c9158e4738b8cdecd70a7ac1",
@@ -3701,6 +3713,10 @@
         "tests/rolling-suspension.test.js": {
           "sha256": "f72a4fd25b133681a7619746847fbbc18030c4f33a0b4cf581c772ba311bc855",
           "size": 6081
+        },
+        "tests/rough-sand-skins.test.js": {
+          "sha256": "10bfb0b93d33c13613bb6b985d104c77f18e234490f23339d174540385cb067e",
+          "size": 4821
         },
         "tests/routes.test.js": {
           "sha256": "15d64c789b5942aae380f3fa69a9e4146c4fbd8ce5336d30fc4164519d4b6620",

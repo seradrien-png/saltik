@@ -33,9 +33,8 @@ export function inkWeaponGeometry(p,time){
 }
 export function createInkScene(options={}){
  const g=createGame(options);if(!g.player.character||g.player.character==='striker')g.player.visualModel='modern-striker';else if(g.player.character==='gatling')g.player.visualModel='modern-gatling';const cosmetic=normalizeSkin(options.character,options.skin);if(cosmetic!=='default')g.player.cosmeticSkin=cosmetic;g.inkPreview=true;g.inkCampaign=true;g.weaponGeometry=inkWeaponGeometry;
- if([4,5].includes(options.level)&&g.player.visualModel==='modern-striker'&&cosmetic==='default')g.player.strikerVariant='desert';
+ if(g.player.visualModel==='modern-striker'&&cosmetic==='military')g.player.strikerVariant='desert';
  g.playerHitboxes=inkPlayerHitboxes;
- if([4,5].includes(options.level)&&g.player.character==='bt')g.player.btVariant='desert';
  g.enemyWeaponGeometry=inkEnemyGeometry;
  g.enemySaltikGeometry=(enemy,...args)=>isSpecialist(enemy)?specialistGeometry(enemy,...args):inkEnemySaltikGeometry(enemy,...args);
  g.level=1;g.levelTitle='Le Canyon';

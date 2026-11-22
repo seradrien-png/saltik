@@ -1,5 +1,6 @@
 import {bakeEnemyArt} from './enemy-styles.js';
-export function normalizeSkin(character='striker',skin){return character==='striker'&&skin==='dragon'||character==='gatling'&&skin==='limule'?skin:'default';}
+export function normalizeSkin(character='striker',skin){return (character==='striker'&&skin==='dragon')||(['striker','gatling'].includes(character)&&skin==='military')?skin:'default';}
+export function playerSkinOptions(character){return [['default','Modèle de base'],...(character==='striker'?[['dragon','Dragon vert · modèle de base'],['military','Militaire']]:character==='gatling'?[['military','Militaire']]:[])];}
 export function finishMissionPixels(data,w,h,level){
  if(level===1)return data;
  for(let y=0;y<h;y++)for(let x=0;x<w;x++){

@@ -1,0 +1,2237 @@
+{
+  "tests": {
+    "command": "npm test",
+    "passed": 1042,
+    "failed": 0
+  },
+  "browser": {
+    "cases": [
+      {
+        "character": "striker",
+        "skin": "default",
+        "level": 1,
+        "menu": true
+      },
+      {
+        "character": "striker",
+        "skin": "dragon",
+        "level": 1,
+        "menu": true
+      },
+      {
+        "character": "striker",
+        "skin": "military",
+        "level": 1,
+        "menu": true
+      },
+      {
+        "character": "striker",
+        "skin": "default",
+        "level": 2,
+        "menu": true
+      },
+      {
+        "character": "striker",
+        "skin": "dragon",
+        "level": 2,
+        "menu": true
+      },
+      {
+        "character": "striker",
+        "skin": "military",
+        "level": 2,
+        "menu": true
+      },
+      {
+        "character": "striker",
+        "skin": "default",
+        "level": 3,
+        "menu": true
+      },
+      {
+        "character": "striker",
+        "skin": "dragon",
+        "level": 3,
+        "menu": true
+      },
+      {
+        "character": "striker",
+        "skin": "military",
+        "level": 3,
+        "menu": true
+      },
+      {
+        "character": "striker",
+        "skin": "default",
+        "level": 4,
+        "menu": true
+      },
+      {
+        "character": "striker",
+        "skin": "dragon",
+        "level": 4,
+        "menu": true
+      },
+      {
+        "character": "striker",
+        "skin": "military",
+        "level": 4,
+        "menu": true
+      },
+      {
+        "character": "striker",
+        "skin": "default",
+        "level": 5,
+        "menu": true
+      },
+      {
+        "character": "striker",
+        "skin": "dragon",
+        "level": 5,
+        "menu": true
+      },
+      {
+        "character": "striker",
+        "skin": "military",
+        "level": 5,
+        "menu": true
+      },
+      {
+        "character": "gatling",
+        "skin": "default",
+        "level": 1,
+        "menu": true
+      },
+      {
+        "character": "gatling",
+        "skin": "military",
+        "level": 1,
+        "menu": true
+      },
+      {
+        "character": "gatling",
+        "skin": "default",
+        "level": 2,
+        "menu": true
+      },
+      {
+        "character": "gatling",
+        "skin": "military",
+        "level": 2,
+        "menu": true
+      },
+      {
+        "character": "gatling",
+        "skin": "default",
+        "level": 3,
+        "menu": true
+      },
+      {
+        "character": "gatling",
+        "skin": "military",
+        "level": 3,
+        "menu": true
+      },
+      {
+        "character": "gatling",
+        "skin": "default",
+        "level": 4,
+        "menu": true
+      },
+      {
+        "character": "gatling",
+        "skin": "military",
+        "level": 4,
+        "menu": true
+      },
+      {
+        "character": "gatling",
+        "skin": "default",
+        "level": 5,
+        "menu": true
+      },
+      {
+        "character": "gatling",
+        "skin": "military",
+        "level": 5,
+        "menu": true
+      },
+      {
+        "character": "bt",
+        "skin": "default",
+        "level": 1,
+        "menu": true
+      },
+      {
+        "character": "bt",
+        "skin": "default",
+        "level": 2,
+        "menu": true
+      },
+      {
+        "character": "bt",
+        "skin": "default",
+        "level": 3,
+        "menu": true
+      },
+      {
+        "character": "bt",
+        "skin": "default",
+        "level": 4,
+        "menu": true
+      },
+      {
+        "character": "bt",
+        "skin": "default",
+        "level": 5,
+        "menu": true
+      },
+      {
+        "character": "striker",
+        "roughMotion": true,
+        "jump": true,
+        "samples": [
+          {
+            "player": {
+              "x": 734.166666666668,
+              "y": 578.4755542813396,
+              "onGround": true,
+              "turn": {
+                "yaw": 0,
+                "targetYaw": 0,
+                "active": false
+              },
+              "motionDistance": 134.166666666668
+            },
+            "legs": [
+              {
+                "offset": -9.318074422536668,
+                "roll": 0,
+                "suspension": {
+                  "knee": 513,
+                  "kneeRoll": -3.2613260478878336,
+                  "kneeOffset": -5.031760188169801
+                },
+                "contact": {
+                  "x": 685.0053538595753,
+                  "y": 575.3495555724588
+                }
+              },
+              {
+                "offset": -38.66735985149061,
+                "roll": 0,
+                "suspension": {
+                  "knee": 520.06,
+                  "kneeRoll": -11.48333333333333,
+                  "kneeOffset": -20.88037431980493
+                },
+                "contact": {
+                  "x": 720.8727577383967,
+                  "y": 574.3547785556838
+                }
+              },
+              {
+                "offset": 13.734542904331024,
+                "roll": 0,
+                "suspension": {
+                  "knee": 527.2,
+                  "kneeRoll": -4.8070900165158585,
+                  "kneeOffset": 7.416653168338753
+                },
+                "contact": {
+                  "x": 786.3790803832021,
+                  "y": 590.0426864941301
+                }
+              }
+            ],
+            "tilt": 0.12241867029333778
+          },
+          {
+            "player": {
+              "x": 868.333333333336,
+              "y": 578.3945928210966,
+              "onGround": true,
+              "turn": {
+                "yaw": 0,
+                "targetYaw": 0,
+                "active": false
+              },
+              "motionDistance": 268.333333333336
+            },
+            "legs": [
+              {
+                "offset": 7.341643474268284,
+                "roll": 0,
+                "suspension": {
+                  "knee": 513,
+                  "kneeRoll": 2.569575215993899,
+                  "kneeOffset": 3.9644874761048734
+                },
+                "contact": {
+                  "x": 820.6607094379959,
+                  "y": 590.3358915355203
+                }
+              },
+              {
+                "offset": 23.798417096359938,
+                "roll": 0,
+                "suspension": {
+                  "knee": 520.06,
+                  "kneeRoll": 5.741666666666665,
+                  "kneeOffset": 12.851145232034368
+                },
+                "contact": {
+                  "x": 855.6964457103624,
+                  "y": 583.9949446432754
+                }
+              },
+              {
+                "offset": 13.719962741512585,
+                "roll": 0,
+                "suspension": {
+                  "knee": 527.2,
+                  "kneeRoll": -4.801986959529405,
+                  "kneeOffset": 7.408779880416796
+                },
+                "contact": {
+                  "x": 919.3103699174831,
+                  "y": 562.8291421677254
+                }
+              }
+            ],
+            "tilt": -0.2636731073619367
+          },
+          {
+            "player": {
+              "x": 1002.500000000004,
+              "y": 554.1403801078441,
+              "onGround": true,
+              "turn": {
+                "yaw": 0,
+                "targetYaw": 0,
+                "active": false
+              },
+              "motionDistance": 402.500000000004
+            },
+            "legs": [
+              {
+                "offset": 1.5375517297722616,
+                "roll": 0,
+                "suspension": {
+                  "knee": 513,
+                  "kneeRoll": 0.5381431054202915,
+                  "kneeOffset": 0.8302779340770213
+                },
+                "contact": {
+                  "x": 953.1870868948357,
+                  "y": 561.5057579323147
+                }
+              },
+              {
+                "offset": -6.58259880159419,
+                "roll": 0,
+                "suspension": {
+                  "knee": 520.06,
+                  "kneeRoll": -2.303909580557966,
+                  "kneeOffset": -3.554603352860863
+                },
+                "contact": {
+                  "x": 988.197568113956,
+                  "y": 555.5791584608137
+                }
+              },
+              {
+                "offset": -1.1264444632248611,
+                "roll": 0,
+                "suspension": {
+                  "knee": 527.2,
+                  "kneeRoll": 0.3942555621287014,
+                  "kneeOffset": -0.6082800101414251
+                },
+                "contact": {
+                  "x": 1054.472674699123,
+                  "y": 546.1716106822895
+                }
+              }
+            ],
+            "tilt": -0.1258589695105912
+          },
+          {
+            "player": {
+              "x": 1136.6666666666686,
+              "y": 550.5406155808546,
+              "onGround": true,
+              "turn": {
+                "yaw": 0,
+                "targetYaw": 0,
+                "active": false
+              },
+              "motionDistance": 536.6666666666686
+            },
+            "legs": [
+              {
+                "offset": -20.462836737612466,
+                "roll": 0,
+                "suspension": {
+                  "knee": 513,
+                  "kneeRoll": -7.161992858164363,
+                  "kneeOffset": -11.049931838310732
+                },
+                "contact": {
+                  "x": 1087.9319013242985,
+                  "y": 539.5068399430368
+                }
+              },
+              {
+                "offset": -6.991438949641114,
+                "roll": 0,
+                "suspension": {
+                  "knee": 520.06,
+                  "kneeRoll": -2.4470036323743893,
+                  "kneeOffset": -3.7753770328062015
+                },
+                "contact": {
+                  "x": 1122.7198866492956,
+                  "y": 546.8905038081327
+                }
+              },
+              {
+                "offset": -0.8557027953758596,
+                "roll": 0,
+                "suspension": {
+                  "knee": 527.2,
+                  "kneeRoll": 0.29949597838155084,
+                  "kneeOffset": -0.4620795095029642
+                },
+                "contact": {
+                  "x": 1189.122505565573,
+                  "y": 555.3372406213211
+                }
+              }
+            ],
+            "tilt": 0.1398149115882658
+          },
+          {
+            "player": {
+              "x": 1270.8333333333326,
+              "y": 531.7384792208937,
+              "onGround": true,
+              "turn": {
+                "yaw": 0,
+                "targetYaw": 0,
+                "active": false
+              },
+              "motionDistance": 670.8333333333326
+            },
+            "legs": [
+              {
+                "offset": 18.1205340666424,
+                "roll": 0,
+                "suspension": {
+                  "knee": 513,
+                  "kneeRoll": 5.741666666666665,
+                  "kneeOffset": 9.785088395986897
+                },
+                "contact": {
+                  "x": 1224.202647683882,
+                  "y": 553.2346638376844
+                }
+              },
+              {
+                "offset": -7.458307685677952,
+                "roll": 0,
+                "suspension": {
+                  "knee": 520.06,
+                  "kneeRoll": -2.6104076899872832,
+                  "kneeOffset": -4.027486150266094
+                },
+                "contact": {
+                  "x": 1256.7886199287368,
+                  "y": 538.4465423536083
+                }
+              },
+              {
+                "offset": 29.15107858810596,
+                "roll": 0,
+                "suspension": {
+                  "knee": 527.2,
+                  "kneeRoll": -5.741666666666665,
+                  "kneeOffset": 15.74158243757722
+                },
+                "contact": {
+                  "x": 1322.1917395635744,
+                  "y": 523.4722657268093
+                }
+              }
+            ],
+            "tilt": -0.2949314337275046
+          },
+          {
+            "player": {
+              "x": 1404.9999999999966,
+              "y": 518.758908005083,
+              "onGround": true,
+              "turn": {
+                "yaw": 0,
+                "targetYaw": 0,
+                "active": false
+              },
+              "motionDistance": 804.9999999999966
+            },
+            "legs": [
+              {
+                "offset": -11.619950016440281,
+                "roll": 0,
+                "suspension": {
+                  "knee": 513,
+                  "kneeRoll": -4.0669825057540985,
+                  "kneeOffset": -6.2747730088777525
+                },
+                "contact": {
+                  "x": 1355.285085683518,
+                  "y": 519.0983904345196
+                }
+              },
+              {
+                "offset": 4.631248111174979,
+                "roll": 0,
+                "suspension": {
+                  "knee": 520.06,
+                  "kneeRoll": 1.6209368389112424,
+                  "kneeOffset": 2.5008739800344886
+                },
+                "contact": {
+                  "x": 1390.8838646681402,
+                  "y": 518.6374235498974
+                }
+              },
+              {
+                "offset": -8.586925774944271,
+                "roll": 0,
+                "suspension": {
+                  "knee": 527.2,
+                  "kneeRoll": 3.005424021230495,
+                  "kneeOffset": -4.636939918469907
+                },
+                "contact": {
+                  "x": 1457.0772854344327,
+                  "y": 507.77879625622523
+                }
+              }
+            ],
+            "tilt": -0.09652216886241907
+          }
+        ]
+      },
+      {
+        "character": "gatling",
+        "roughMotion": true,
+        "jump": true,
+        "samples": [
+          {
+            "player": {
+              "x": 734.166666666668,
+              "y": 578.4755542813396,
+              "onGround": true,
+              "turn": {
+                "yaw": 0,
+                "targetYaw": 0,
+                "active": false
+              },
+              "motionDistance": 134.166666666668
+            },
+            "legs": [
+              {
+                "offset": 9.131884034437743,
+                "roll": 0,
+                "suspension": {
+                  "knee": 415.34000000000003,
+                  "kneeRoll": 3.19615941205321,
+                  "kneeOffset": 4.931217378596381
+                },
+                "contact": {
+                  "x": 676.3876742173362,
+                  "y": 577.6735594772455
+                }
+              },
+              {
+                "offset": -32.32855423474161,
+                "roll": 0,
+                "suspension": {
+                  "knee": 428.18,
+                  "kneeRoll": -9.049999999999999,
+                  "kneeOffset": -17.45741928676047
+                },
+                "contact": {
+                  "x": 715.5065690494224,
+                  "y": 573.2609009338894
+                }
+              },
+              {
+                "offset": 1.8181878357653347,
+                "roll": 0,
+                "suspension": {
+                  "knee": 426.4,
+                  "kneeRoll": -0.6363657425178672,
+                  "kneeOffset": 0.9818214313132808
+                },
+                "contact": {
+                  "x": 793.849828612253,
+                  "y": 590.1816945477628
+                }
+              }
+            ],
+            "tilt": 0.12241867029333778
+          },
+          {
+            "player": {
+              "x": 868.333333333336,
+              "y": 578.3945928210966,
+              "onGround": true,
+              "turn": {
+                "yaw": 0,
+                "targetYaw": 0,
+                "active": false
+              },
+              "motionDistance": 268.333333333336
+            },
+            "legs": [
+              {
+                "offset": -1.7126302093331913,
+                "roll": 0,
+                "suspension": {
+                  "knee": 415.34000000000003,
+                  "kneeRoll": -0.5994205732666169,
+                  "kneeOffset": -0.9248203130399234
+                },
+                "contact": {
+                  "x": 812.1026633137294,
+                  "y": 590.3632183582273
+                }
+              },
+              {
+                "offset": 20.64173886909686,
+                "roll": 0,
+                "suspension": {
+                  "knee": 428.18,
+                  "kneeRoll": 4.5249999999999995,
+                  "kneeOffset": 11.146538989312305
+                },
+                "contact": {
+                  "x": 850.5396028160394,
+                  "y": 585.8404368720337
+                }
+              },
+              {
+                "offset": 13.219947473974983,
+                "roll": 0,
+                "suspension": {
+                  "knee": 426.4,
+                  "kneeRoll": -4.5249999999999995,
+                  "kneeOffset": 7.138771635946491
+                },
+                "contact": {
+                  "x": 926.9737695246405,
+                  "y": 562.7015004912208
+                }
+              }
+            ],
+            "tilt": -0.2636731073619367
+          },
+          {
+            "player": {
+              "x": 1002.500000000004,
+              "y": 554.1403801078441,
+              "onGround": true,
+              "turn": {
+                "yaw": 0,
+                "targetYaw": 0,
+                "active": false
+              },
+              "motionDistance": 402.500000000004
+            },
+            "legs": [
+              {
+                "offset": 2.066093962473966,
+                "roll": 0,
+                "suspension": {
+                  "knee": 415.34000000000003,
+                  "kneeRoll": 0.723132886865888,
+                  "kneeOffset": 1.1156907397359417
+                },
+                "contact": {
+                  "x": 944.9497307031895,
+                  "y": 562.2800515720684
+                }
+              },
+              {
+                "offset": -4.609910156436103,
+                "roll": 0,
+                "suspension": {
+                  "knee": 428.18,
+                  "kneeRoll": -1.613468554752636,
+                  "kneeOffset": -2.489351484475496
+                },
+                "contact": {
+                  "x": 982.7979773318956,
+                  "y": 556.3975071024005
+                }
+              },
+              {
+                "offset": -12.01509346589777,
+                "roll": 0,
+                "suspension": {
+                  "knee": 426.4,
+                  "kneeRoll": 4.20528271306422,
+                  "kneeOffset": -6.488150471584796
+                },
+                "contact": {
+                  "x": 1061.6867168049378,
+                  "y": 543.9821787935061
+                }
+              }
+            ],
+            "tilt": -0.1258589695105912
+          },
+          {
+            "player": {
+              "x": 1136.6666666666686,
+              "y": 550.5406155808546,
+              "onGround": true,
+              "turn": {
+                "yaw": 0,
+                "targetYaw": 0,
+                "active": false
+              },
+              "motionDistance": 536.6666666666686
+            },
+            "legs": [
+              {
+                "offset": -7.056835871779839,
+                "roll": 0,
+                "suspension": {
+                  "knee": 415.34000000000003,
+                  "kneeRoll": -2.469892555122944,
+                  "kneeOffset": -3.810691370761113
+                },
+                "contact": {
+                  "x": 1079.5145766674386,
+                  "y": 539.9789388592246
+                }
+              },
+              {
+                "offset": -9.131031328835757,
+                "roll": 0,
+                "suspension": {
+                  "knee": 428.18,
+                  "kneeRoll": -3.1958609650925145,
+                  "kneeOffset": -4.930756917571309
+                },
+                "contact": {
+                  "x": 1117.430654000902,
+                  "y": 545.2976010370433
+                }
+              },
+              {
+                "offset": -9.143486942696358,
+                "roll": 0,
+                "suspension": {
+                  "knee": 426.4,
+                  "kneeRoll": 3.2002204299437254,
+                  "kneeOffset": -4.937482949056033
+                },
+                "contact": {
+                  "x": 1196.572343900156,
+                  "y": 555.7295479643468
+                }
+              }
+            ],
+            "tilt": 0.1398149115882658
+          },
+          {
+            "player": {
+              "x": 1270.8333333333326,
+              "y": 531.7384792208937,
+              "onGround": true,
+              "turn": {
+                "yaw": 0,
+                "targetYaw": 0,
+                "active": false
+              },
+              "motionDistance": 670.8333333333326
+            },
+            "legs": [
+              {
+                "offset": 13.160952766110753,
+                "roll": 0,
+                "suspension": {
+                  "knee": 415.34000000000003,
+                  "kneeRoll": 4.5249999999999995,
+                  "kneeOffset": 7.106914493699807
+                },
+                "contact": {
+                  "x": 1216.0798785052727,
+                  "y": 554.9456867437125
+                }
+              },
+              {
+                "offset": -1.231956490794372,
+                "roll": 0,
+                "suspension": {
+                  "knee": 428.18,
+                  "kneeRoll": -0.4311847717780302,
+                  "kneeOffset": -0.6652565050289609
+                },
+                "contact": {
+                  "x": 1251.8781127544178,
+                  "y": 541.0650209825999
+                }
+              },
+              {
+                "offset": 23.408369621203317,
+                "roll": 0,
+                "suspension": {
+                  "knee": 426.4,
+                  "kneeRoll": -4.5249999999999995,
+                  "kneeOffset": 12.640519595449792
+                },
+                "contact": {
+                  "x": 1329.7143410916276,
+                  "y": 522.6671649598435
+                }
+              }
+            ],
+            "tilt": -0.2949314337275046
+          },
+          {
+            "player": {
+              "x": 1404.9999999999966,
+              "y": 518.758908005083,
+              "onGround": true,
+              "turn": {
+                "yaw": 0,
+                "targetYaw": 0,
+                "active": false
+              },
+              "motionDistance": 804.9999999999966
+            },
+            "legs": [
+              {
+                "offset": -5.888368186989864,
+                "roll": 0,
+                "suspension": {
+                  "knee": 415.34000000000003,
+                  "kneeRoll": -2.0609288654464524,
+                  "kneeOffset": -3.179718820974527
+                },
+                "contact": {
+                  "x": 1347.082566556233,
+                  "y": 520.1884941648533
+                }
+              },
+              {
+                "offset": 0.2710180351177251,
+                "roll": 0,
+                "suspension": {
+                  "knee": 428.18,
+                  "kneeRoll": 0.09485631229120378,
+                  "kneeOffset": 0.14634973896357156
+                },
+                "contact": {
+                  "x": 1385.3741109419855,
+                  "y": 518.3831826821971
+                }
+              },
+              {
+                "offset": -12.487985188413349,
+                "roll": 0,
+                "suspension": {
+                  "knee": 426.4,
+                  "kneeRoll": 4.370794815944672,
+                  "kneeOffset": -6.743512001743209
+                },
+                "contact": {
+                  "x": 1464.4733533161489,
+                  "y": 507.05066759219903
+                }
+              }
+            ],
+            "tilt": -0.09652216886241907
+          }
+        ]
+      },
+      {
+        "character": "bt",
+        "roughMotion": true,
+        "jump": true,
+        "samples": [
+          {
+            "player": {
+              "x": 734.166666666668,
+              "y": 578.4755542813396,
+              "onGround": true,
+              "turn": {
+                "yaw": 0,
+                "targetYaw": 0,
+                "active": false
+              },
+              "motionDistance": 134.166666666668
+            },
+            "legs": [
+              {
+                "offset": 51.94334974217984,
+                "roll": 0,
+                "suspension": {
+                  "knee": 617.44,
+                  "kneeRoll": 5.894999999999999,
+                  "kneeOffset": 28.049408860777117
+                },
+                "contact": {
+                  "x": 661.6785893875781,
+                  "y": 581.5433704854141
+                }
+              },
+              {
+                "offset": -40.2775124434238,
+                "roll": 0,
+                "suspension": {
+                  "knee": 636.1,
+                  "kneeRoll": -11.789999999999997,
+                  "kneeOffset": -21.749856719448854
+                },
+                "contact": {
+                  "x": 704.6141122178062,
+                  "y": 572.4294515873426
+                }
+              },
+              {
+                "offset": -2.680132386060769,
+                "roll": 0,
+                "suspension": {
+                  "knee": 640.96,
+                  "kneeRoll": 0.9380463351212691,
+                  "kneeOffset": -1.4472714884728155
+                },
+                "contact": {
+                  "x": 803.633061947053,
+                  "y": 590.2826073569091
+                }
+              }
+            ],
+            "tilt": 0.12241867029333778
+          },
+          {
+            "player": {
+              "x": 868.333333333336,
+              "y": 578.3945928210966,
+              "onGround": true,
+              "turn": {
+                "yaw": 0,
+                "targetYaw": 0,
+                "active": false
+              },
+              "motionDistance": 268.333333333336
+            },
+            "legs": [
+              {
+                "offset": -16.075424889182454,
+                "roll": 0,
+                "suspension": {
+                  "knee": 617.44,
+                  "kneeRoll": -5.6263987112138585,
+                  "kneeOffset": -8.680729440158526
+                },
+                "contact": {
+                  "x": 797.4321513835848,
+                  "y": 590.2207462449613
+                }
+              },
+              {
+                "offset": 25.24189786791888,
+                "roll": 0,
+                "suspension": {
+                  "knee": 636.1,
+                  "kneeRoll": 5.894999999999999,
+                  "kneeOffset": 13.630624848676195
+                },
+                "contact": {
+                  "x": 839.9742221373392,
+                  "y": 588.5728429572296
+                }
+              },
+              {
+                "offset": 32.54468927997537,
+                "roll": 0,
+                "suspension": {
+                  "knee": 640.96,
+                  "kneeRoll": -5.894999999999999,
+                  "kneeOffset": 17.5741322111867
+                },
+                "contact": {
+                  "x": 937.0208043549551,
+                  "y": 562.6146543030592
+                }
+              }
+            ],
+            "tilt": -0.2636731073619367
+          },
+          {
+            "player": {
+              "x": 1002.500000000004,
+              "y": 554.1403801078441,
+              "onGround": true,
+              "turn": {
+                "yaw": 0,
+                "targetYaw": 0,
+                "active": false
+              },
+              "motionDistance": 402.500000000004
+            },
+            "legs": [
+              {
+                "offset": 3.3477459963776264,
+                "roll": 0,
+                "suspension": {
+                  "knee": 617.44,
+                  "kneeRoll": 1.171711098732169,
+                  "kneeOffset": 1.8077828380439183
+                },
+                "contact": {
+                  "x": 930.7620943338118,
+                  "y": 562.6858585927787
+                }
+              },
+              {
+                "offset": -3.7300927593733166,
+                "roll": 0,
+                "suspension": {
+                  "knee": 636.1,
+                  "kneeRoll": -1.3055324657806606,
+                  "kneeOffset": -2.014250090061591
+                },
+                "contact": {
+                  "x": 972.0451523220056,
+                  "y": 558.3461164179183
+                }
+              },
+              {
+                "offset": -21.967508393953672,
+                "roll": 0,
+                "suspension": {
+                  "knee": 640.96,
+                  "kneeRoll": 7.688627937883785,
+                  "kneeOffset": -11.862454532734983
+                },
+                "contact": {
+                  "x": 1071.1666536938906,
+                  "y": 541.4529780734032
+                }
+              }
+            ],
+            "tilt": -0.1258589695105912
+          },
+          {
+            "player": {
+              "x": 1136.6666666666686,
+              "y": 550.5406155808546,
+              "onGround": true,
+              "turn": {
+                "yaw": 0,
+                "targetYaw": 0,
+                "active": false
+              },
+              "motionDistance": 536.6666666666686
+            },
+            "legs": [
+              {
+                "offset": 27.941235611786674,
+                "roll": 0,
+                "suspension": {
+                  "knee": 617.44,
+                  "kneeRoll": 5.894999999999999,
+                  "kneeOffset": 15.088267230364805
+                },
+                "contact": {
+                  "x": 1064.8126713080048,
+                  "y": 543.0794482334056
+                }
+              },
+              {
+                "offset": -21.468483524278707,
+                "roll": 0,
+                "suspension": {
+                  "knee": 636.1,
+                  "kneeRoll": -7.513969233497547,
+                  "kneeOffset": -11.592981103110503
+                },
+                "contact": {
+                  "x": 1106.837563757373,
+                  "y": 542.2647717784986
+                }
+              },
+              {
+                "offset": -18.069812366456524,
+                "roll": 0,
+                "suspension": {
+                  "knee": 640.96,
+                  "kneeRoll": 6.324434328259783,
+                  "kneeOffset": -9.757698677886523
+                },
+                "contact": {
+                  "x": 1206.3798614569748,
+                  "y": 555.8057645412248
+                }
+              }
+            ],
+            "tilt": 0.1398149115882658
+          },
+          {
+            "player": {
+              "x": 1270.8333333333326,
+              "y": 531.7384792208937,
+              "onGround": true,
+              "turn": {
+                "yaw": 0,
+                "targetYaw": 0,
+                "active": false
+              },
+              "motionDistance": 670.8333333333326
+            },
+            "legs": [
+              {
+                "offset": 6.795969738206037,
+                "roll": 0,
+                "suspension": {
+                  "knee": 617.44,
+                  "kneeRoll": 2.378589408372113,
+                  "kneeOffset": 3.6698236586312603
+                },
+                "contact": {
+                  "x": 1201.5930125715172,
+                  "y": 555.8573661842206
+                }
+              },
+              {
+                "offset": 8.940304345252045,
+                "roll": 0,
+                "suspension": {
+                  "knee": 636.1,
+                  "kneeRoll": 3.1291065208382154,
+                  "kneeOffset": 4.827764346436105
+                },
+                "contact": {
+                  "x": 1242.0346553411325,
+                  "y": 546.2045821482828
+                }
+              },
+              {
+                "offset": 40.28996030081897,
+                "roll": 0,
+                "suspension": {
+                  "knee": 640.96,
+                  "kneeRoll": -5.894999999999999,
+                  "kneeOffset": 21.756578562442243
+                },
+                "contact": {
+                  "x": 1339.4675560264702,
+                  "y": 521.3242730718466
+                }
+              }
+            ],
+            "tilt": -0.2949314337275046
+          },
+          {
+            "player": {
+              "x": 1404.9999999999966,
+              "y": 518.758908005083,
+              "onGround": true,
+              "turn": {
+                "yaw": 0,
+                "targetYaw": 0,
+                "active": false
+              },
+              "motionDistance": 804.9999999999966
+            },
+            "legs": [
+              {
+                "offset": 4.580126900505285,
+                "roll": 0,
+                "suspension": {
+                  "knee": 617.44,
+                  "kneeRoll": 1.60304441517685,
+                  "kneeOffset": 2.473268526272854
+                },
+                "contact": {
+                  "x": 1333.0881690018794,
+                  "y": 522.2336480343907
+                }
+              },
+              {
+                "offset": -8.515167432527718,
+                "roll": 0,
+                "suspension": {
+                  "knee": 636.1,
+                  "kneeRoll": -2.9803086013847016,
+                  "kneeOffset": -4.598190413564969
+                },
+                "contact": {
+                  "x": 1374.377466065639,
+                  "y": 518.0398898268401
+                }
+              },
+              {
+                "offset": -8.633331783561765,
+                "roll": 0,
+                "suspension": {
+                  "knee": 640.96,
+                  "kneeRoll": 3.0216661242466176,
+                  "kneeOffset": -4.661999163123354
+                },
+                "contact": {
+                  "x": 1474.2628628003918,
+                  "y": 507.2738364987842
+                }
+              }
+            ],
+            "tilt": -0.09652216886241907
+          }
+        ]
+      }
+    ],
+    "mobile": [
+      844,
+      390
+    ],
+    "errors": [],
+    "missing": []
+  },
+  "terrain_browser": {
+    "cases": [
+      {
+        "character": "striker",
+        "roughMotion": true,
+        "jump": true,
+        "samples": [
+          {
+            "player": {
+              "x": 734.166666666668,
+              "y": 578.4755542813396,
+              "onGround": true,
+              "turn": {
+                "yaw": 0,
+                "targetYaw": 0,
+                "active": false
+              },
+              "motionDistance": 134.166666666668
+            },
+            "legs": [
+              {
+                "offset": -9.318074422536668,
+                "roll": 0,
+                "suspension": {
+                  "knee": 513,
+                  "kneeRoll": -3.2613260478878336,
+                  "kneeOffset": -5.031760188169801
+                },
+                "contact": {
+                  "x": 685.0053538595753,
+                  "y": 575.3495555724588
+                }
+              },
+              {
+                "offset": -38.66735985149061,
+                "roll": 0,
+                "suspension": {
+                  "knee": 520.06,
+                  "kneeRoll": -11.48333333333333,
+                  "kneeOffset": -20.88037431980493
+                },
+                "contact": {
+                  "x": 720.8727577383967,
+                  "y": 574.3547785556838
+                }
+              },
+              {
+                "offset": 13.734542904331024,
+                "roll": 0,
+                "suspension": {
+                  "knee": 527.2,
+                  "kneeRoll": -4.8070900165158585,
+                  "kneeOffset": 7.416653168338753
+                },
+                "contact": {
+                  "x": 786.3790803832021,
+                  "y": 590.0426864941301
+                }
+              }
+            ],
+            "tilt": 0.12241867029333778
+          },
+          {
+            "player": {
+              "x": 868.333333333336,
+              "y": 578.3945928210966,
+              "onGround": true,
+              "turn": {
+                "yaw": 0,
+                "targetYaw": 0,
+                "active": false
+              },
+              "motionDistance": 268.333333333336
+            },
+            "legs": [
+              {
+                "offset": 7.341643474268284,
+                "roll": 0,
+                "suspension": {
+                  "knee": 513,
+                  "kneeRoll": 2.569575215993899,
+                  "kneeOffset": 3.9644874761048734
+                },
+                "contact": {
+                  "x": 820.6607094379959,
+                  "y": 590.3358915355203
+                }
+              },
+              {
+                "offset": 23.798417096359938,
+                "roll": 0,
+                "suspension": {
+                  "knee": 520.06,
+                  "kneeRoll": 5.741666666666665,
+                  "kneeOffset": 12.851145232034368
+                },
+                "contact": {
+                  "x": 855.6964457103624,
+                  "y": 583.9949446432754
+                }
+              },
+              {
+                "offset": 13.719962741512585,
+                "roll": 0,
+                "suspension": {
+                  "knee": 527.2,
+                  "kneeRoll": -4.801986959529405,
+                  "kneeOffset": 7.408779880416796
+                },
+                "contact": {
+                  "x": 919.3103699174831,
+                  "y": 562.8291421677254
+                }
+              }
+            ],
+            "tilt": -0.2636731073619367
+          },
+          {
+            "player": {
+              "x": 1002.500000000004,
+              "y": 554.1403801078441,
+              "onGround": true,
+              "turn": {
+                "yaw": 0,
+                "targetYaw": 0,
+                "active": false
+              },
+              "motionDistance": 402.500000000004
+            },
+            "legs": [
+              {
+                "offset": 1.5375517297722616,
+                "roll": 0,
+                "suspension": {
+                  "knee": 513,
+                  "kneeRoll": 0.5381431054202915,
+                  "kneeOffset": 0.8302779340770213
+                },
+                "contact": {
+                  "x": 953.1870868948357,
+                  "y": 561.5057579323147
+                }
+              },
+              {
+                "offset": -6.58259880159419,
+                "roll": 0,
+                "suspension": {
+                  "knee": 520.06,
+                  "kneeRoll": -2.303909580557966,
+                  "kneeOffset": -3.554603352860863
+                },
+                "contact": {
+                  "x": 988.197568113956,
+                  "y": 555.5791584608137
+                }
+              },
+              {
+                "offset": -1.1264444632248611,
+                "roll": 0,
+                "suspension": {
+                  "knee": 527.2,
+                  "kneeRoll": 0.3942555621287014,
+                  "kneeOffset": -0.6082800101414251
+                },
+                "contact": {
+                  "x": 1054.472674699123,
+                  "y": 546.1716106822895
+                }
+              }
+            ],
+            "tilt": -0.1258589695105912
+          },
+          {
+            "player": {
+              "x": 1136.6666666666686,
+              "y": 550.5406155808546,
+              "onGround": true,
+              "turn": {
+                "yaw": 0,
+                "targetYaw": 0,
+                "active": false
+              },
+              "motionDistance": 536.6666666666686
+            },
+            "legs": [
+              {
+                "offset": -20.462836737612466,
+                "roll": 0,
+                "suspension": {
+                  "knee": 513,
+                  "kneeRoll": -7.161992858164363,
+                  "kneeOffset": -11.049931838310732
+                },
+                "contact": {
+                  "x": 1087.9319013242985,
+                  "y": 539.5068399430368
+                }
+              },
+              {
+                "offset": -6.991438949641114,
+                "roll": 0,
+                "suspension": {
+                  "knee": 520.06,
+                  "kneeRoll": -2.4470036323743893,
+                  "kneeOffset": -3.7753770328062015
+                },
+                "contact": {
+                  "x": 1122.7198866492956,
+                  "y": 546.8905038081327
+                }
+              },
+              {
+                "offset": -0.8557027953758596,
+                "roll": 0,
+                "suspension": {
+                  "knee": 527.2,
+                  "kneeRoll": 0.29949597838155084,
+                  "kneeOffset": -0.4620795095029642
+                },
+                "contact": {
+                  "x": 1189.122505565573,
+                  "y": 555.3372406213211
+                }
+              }
+            ],
+            "tilt": 0.1398149115882658
+          },
+          {
+            "player": {
+              "x": 1270.8333333333326,
+              "y": 531.7384792208937,
+              "onGround": true,
+              "turn": {
+                "yaw": 0,
+                "targetYaw": 0,
+                "active": false
+              },
+              "motionDistance": 670.8333333333326
+            },
+            "legs": [
+              {
+                "offset": 18.1205340666424,
+                "roll": 0,
+                "suspension": {
+                  "knee": 513,
+                  "kneeRoll": 5.741666666666665,
+                  "kneeOffset": 9.785088395986897
+                },
+                "contact": {
+                  "x": 1224.202647683882,
+                  "y": 553.2346638376844
+                }
+              },
+              {
+                "offset": -7.458307685677952,
+                "roll": 0,
+                "suspension": {
+                  "knee": 520.06,
+                  "kneeRoll": -2.6104076899872832,
+                  "kneeOffset": -4.027486150266094
+                },
+                "contact": {
+                  "x": 1256.7886199287368,
+                  "y": 538.4465423536083
+                }
+              },
+              {
+                "offset": 29.15107858810596,
+                "roll": 0,
+                "suspension": {
+                  "knee": 527.2,
+                  "kneeRoll": -5.741666666666665,
+                  "kneeOffset": 15.74158243757722
+                },
+                "contact": {
+                  "x": 1322.1917395635744,
+                  "y": 523.4722657268093
+                }
+              }
+            ],
+            "tilt": -0.2949314337275046
+          },
+          {
+            "player": {
+              "x": 1404.9999999999966,
+              "y": 518.758908005083,
+              "onGround": true,
+              "turn": {
+                "yaw": 0,
+                "targetYaw": 0,
+                "active": false
+              },
+              "motionDistance": 804.9999999999966
+            },
+            "legs": [
+              {
+                "offset": -11.619950016440281,
+                "roll": 0,
+                "suspension": {
+                  "knee": 513,
+                  "kneeRoll": -4.0669825057540985,
+                  "kneeOffset": -6.2747730088777525
+                },
+                "contact": {
+                  "x": 1355.285085683518,
+                  "y": 519.0983904345196
+                }
+              },
+              {
+                "offset": 4.631248111174979,
+                "roll": 0,
+                "suspension": {
+                  "knee": 520.06,
+                  "kneeRoll": 1.6209368389112424,
+                  "kneeOffset": 2.5008739800344886
+                },
+                "contact": {
+                  "x": 1390.8838646681402,
+                  "y": 518.6374235498974
+                }
+              },
+              {
+                "offset": -8.586925774944271,
+                "roll": 0,
+                "suspension": {
+                  "knee": 527.2,
+                  "kneeRoll": 3.005424021230495,
+                  "kneeOffset": -4.636939918469907
+                },
+                "contact": {
+                  "x": 1457.0772854344327,
+                  "y": 507.77879625622523
+                }
+              }
+            ],
+            "tilt": -0.09652216886241907
+          }
+        ]
+      },
+      {
+        "character": "gatling",
+        "roughMotion": true,
+        "jump": true,
+        "samples": [
+          {
+            "player": {
+              "x": 734.166666666668,
+              "y": 578.4755542813396,
+              "onGround": true,
+              "turn": {
+                "yaw": 0,
+                "targetYaw": 0,
+                "active": false
+              },
+              "motionDistance": 134.166666666668
+            },
+            "legs": [
+              {
+                "offset": 9.131884034437743,
+                "roll": 0,
+                "suspension": {
+                  "knee": 415.34000000000003,
+                  "kneeRoll": 3.19615941205321,
+                  "kneeOffset": 4.931217378596381
+                },
+                "contact": {
+                  "x": 676.3876742173362,
+                  "y": 577.6735594772455
+                }
+              },
+              {
+                "offset": -32.32855423474161,
+                "roll": 0,
+                "suspension": {
+                  "knee": 428.18,
+                  "kneeRoll": -9.049999999999999,
+                  "kneeOffset": -17.45741928676047
+                },
+                "contact": {
+                  "x": 715.5065690494224,
+                  "y": 573.2609009338894
+                }
+              },
+              {
+                "offset": 1.8181878357653347,
+                "roll": 0,
+                "suspension": {
+                  "knee": 426.4,
+                  "kneeRoll": -0.6363657425178672,
+                  "kneeOffset": 0.9818214313132808
+                },
+                "contact": {
+                  "x": 793.849828612253,
+                  "y": 590.1816945477628
+                }
+              }
+            ],
+            "tilt": 0.12241867029333778
+          },
+          {
+            "player": {
+              "x": 868.333333333336,
+              "y": 578.3945928210966,
+              "onGround": true,
+              "turn": {
+                "yaw": 0,
+                "targetYaw": 0,
+                "active": false
+              },
+              "motionDistance": 268.333333333336
+            },
+            "legs": [
+              {
+                "offset": -1.7126302093331913,
+                "roll": 0,
+                "suspension": {
+                  "knee": 415.34000000000003,
+                  "kneeRoll": -0.5994205732666169,
+                  "kneeOffset": -0.9248203130399234
+                },
+                "contact": {
+                  "x": 812.1026633137294,
+                  "y": 590.3632183582273
+                }
+              },
+              {
+                "offset": 20.64173886909686,
+                "roll": 0,
+                "suspension": {
+                  "knee": 428.18,
+                  "kneeRoll": 4.5249999999999995,
+                  "kneeOffset": 11.146538989312305
+                },
+                "contact": {
+                  "x": 850.5396028160394,
+                  "y": 585.8404368720337
+                }
+              },
+              {
+                "offset": 13.219947473974983,
+                "roll": 0,
+                "suspension": {
+                  "knee": 426.4,
+                  "kneeRoll": -4.5249999999999995,
+                  "kneeOffset": 7.138771635946491
+                },
+                "contact": {
+                  "x": 926.9737695246405,
+                  "y": 562.7015004912208
+                }
+              }
+            ],
+            "tilt": -0.2636731073619367
+          },
+          {
+            "player": {
+              "x": 1002.500000000004,
+              "y": 554.1403801078441,
+              "onGround": true,
+              "turn": {
+                "yaw": 0,
+                "targetYaw": 0,
+                "active": false
+              },
+              "motionDistance": 402.500000000004
+            },
+            "legs": [
+              {
+                "offset": 2.066093962473966,
+                "roll": 0,
+                "suspension": {
+                  "knee": 415.34000000000003,
+                  "kneeRoll": 0.723132886865888,
+                  "kneeOffset": 1.1156907397359417
+                },
+                "contact": {
+                  "x": 944.9497307031895,
+                  "y": 562.2800515720684
+                }
+              },
+              {
+                "offset": -4.609910156436103,
+                "roll": 0,
+                "suspension": {
+                  "knee": 428.18,
+                  "kneeRoll": -1.613468554752636,
+                  "kneeOffset": -2.489351484475496
+                },
+                "contact": {
+                  "x": 982.7979773318956,
+                  "y": 556.3975071024005
+                }
+              },
+              {
+                "offset": -12.01509346589777,
+                "roll": 0,
+                "suspension": {
+                  "knee": 426.4,
+                  "kneeRoll": 4.20528271306422,
+                  "kneeOffset": -6.488150471584796
+                },
+                "contact": {
+                  "x": 1061.6867168049378,
+                  "y": 543.9821787935061
+                }
+              }
+            ],
+            "tilt": -0.1258589695105912
+          },
+          {
+            "player": {
+              "x": 1136.6666666666686,
+              "y": 550.5406155808546,
+              "onGround": true,
+              "turn": {
+                "yaw": 0,
+                "targetYaw": 0,
+                "active": false
+              },
+              "motionDistance": 536.6666666666686
+            },
+            "legs": [
+              {
+                "offset": -7.056835871779839,
+                "roll": 0,
+                "suspension": {
+                  "knee": 415.34000000000003,
+                  "kneeRoll": -2.469892555122944,
+                  "kneeOffset": -3.810691370761113
+                },
+                "contact": {
+                  "x": 1079.5145766674386,
+                  "y": 539.9789388592246
+                }
+              },
+              {
+                "offset": -9.131031328835757,
+                "roll": 0,
+                "suspension": {
+                  "knee": 428.18,
+                  "kneeRoll": -3.1958609650925145,
+                  "kneeOffset": -4.930756917571309
+                },
+                "contact": {
+                  "x": 1117.430654000902,
+                  "y": 545.2976010370433
+                }
+              },
+              {
+                "offset": -9.143486942696358,
+                "roll": 0,
+                "suspension": {
+                  "knee": 426.4,
+                  "kneeRoll": 3.2002204299437254,
+                  "kneeOffset": -4.937482949056033
+                },
+                "contact": {
+                  "x": 1196.572343900156,
+                  "y": 555.7295479643468
+                }
+              }
+            ],
+            "tilt": 0.1398149115882658
+          },
+          {
+            "player": {
+              "x": 1270.8333333333326,
+              "y": 531.7384792208937,
+              "onGround": true,
+              "turn": {
+                "yaw": 0,
+                "targetYaw": 0,
+                "active": false
+              },
+              "motionDistance": 670.8333333333326
+            },
+            "legs": [
+              {
+                "offset": 13.160952766110753,
+                "roll": 0,
+                "suspension": {
+                  "knee": 415.34000000000003,
+                  "kneeRoll": 4.5249999999999995,
+                  "kneeOffset": 7.106914493699807
+                },
+                "contact": {
+                  "x": 1216.0798785052727,
+                  "y": 554.9456867437125
+                }
+              },
+              {
+                "offset": -1.231956490794372,
+                "roll": 0,
+                "suspension": {
+                  "knee": 428.18,
+                  "kneeRoll": -0.4311847717780302,
+                  "kneeOffset": -0.6652565050289609
+                },
+                "contact": {
+                  "x": 1251.8781127544178,
+                  "y": 541.0650209825999
+                }
+              },
+              {
+                "offset": 23.408369621203317,
+                "roll": 0,
+                "suspension": {
+                  "knee": 426.4,
+                  "kneeRoll": -4.5249999999999995,
+                  "kneeOffset": 12.640519595449792
+                },
+                "contact": {
+                  "x": 1329.7143410916276,
+                  "y": 522.6671649598435
+                }
+              }
+            ],
+            "tilt": -0.2949314337275046
+          },
+          {
+            "player": {
+              "x": 1404.9999999999966,
+              "y": 518.758908005083,
+              "onGround": true,
+              "turn": {
+                "yaw": 0,
+                "targetYaw": 0,
+                "active": false
+              },
+              "motionDistance": 804.9999999999966
+            },
+            "legs": [
+              {
+                "offset": -5.888368186989864,
+                "roll": 0,
+                "suspension": {
+                  "knee": 415.34000000000003,
+                  "kneeRoll": -2.0609288654464524,
+                  "kneeOffset": -3.179718820974527
+                },
+                "contact": {
+                  "x": 1347.082566556233,
+                  "y": 520.1884941648533
+                }
+              },
+              {
+                "offset": 0.2710180351177251,
+                "roll": 0,
+                "suspension": {
+                  "knee": 428.18,
+                  "kneeRoll": 0.09485631229120378,
+                  "kneeOffset": 0.14634973896357156
+                },
+                "contact": {
+                  "x": 1385.3741109419855,
+                  "y": 518.3831826821971
+                }
+              },
+              {
+                "offset": -12.487985188413349,
+                "roll": 0,
+                "suspension": {
+                  "knee": 426.4,
+                  "kneeRoll": 4.370794815944672,
+                  "kneeOffset": -6.743512001743209
+                },
+                "contact": {
+                  "x": 1464.4733533161489,
+                  "y": 507.05066759219903
+                }
+              }
+            ],
+            "tilt": -0.09652216886241907
+          }
+        ]
+      },
+      {
+        "character": "bt",
+        "roughMotion": true,
+        "jump": true,
+        "samples": [
+          {
+            "player": {
+              "x": 734.166666666668,
+              "y": 578.4755542813396,
+              "onGround": true,
+              "turn": {
+                "yaw": 0,
+                "targetYaw": 0,
+                "active": false
+              },
+              "motionDistance": 134.166666666668
+            },
+            "legs": [
+              {
+                "offset": 51.94334974217984,
+                "roll": 0,
+                "suspension": {
+                  "knee": 617.44,
+                  "kneeRoll": 5.894999999999999,
+                  "kneeOffset": 28.049408860777117
+                },
+                "contact": {
+                  "x": 661.6785893875781,
+                  "y": 581.5433704854141
+                }
+              },
+              {
+                "offset": -40.2775124434238,
+                "roll": 0,
+                "suspension": {
+                  "knee": 636.1,
+                  "kneeRoll": -11.789999999999997,
+                  "kneeOffset": -21.749856719448854
+                },
+                "contact": {
+                  "x": 704.6141122178062,
+                  "y": 572.4294515873426
+                }
+              },
+              {
+                "offset": -2.680132386060769,
+                "roll": 0,
+                "suspension": {
+                  "knee": 640.96,
+                  "kneeRoll": 0.9380463351212691,
+                  "kneeOffset": -1.4472714884728155
+                },
+                "contact": {
+                  "x": 803.633061947053,
+                  "y": 590.2826073569091
+                }
+              }
+            ],
+            "tilt": 0.12241867029333778
+          },
+          {
+            "player": {
+              "x": 868.333333333336,
+              "y": 578.3945928210966,
+              "onGround": true,
+              "turn": {
+                "yaw": 0,
+                "targetYaw": 0,
+                "active": false
+              },
+              "motionDistance": 268.333333333336
+            },
+            "legs": [
+              {
+                "offset": -16.075424889182454,
+                "roll": 0,
+                "suspension": {
+                  "knee": 617.44,
+                  "kneeRoll": -5.6263987112138585,
+                  "kneeOffset": -8.680729440158526
+                },
+                "contact": {
+                  "x": 797.4321513835848,
+                  "y": 590.2207462449613
+                }
+              },
+              {
+                "offset": 25.24189786791888,
+                "roll": 0,
+                "suspension": {
+                  "knee": 636.1,
+                  "kneeRoll": 5.894999999999999,
+                  "kneeOffset": 13.630624848676195
+                },
+                "contact": {
+                  "x": 839.9742221373392,
+                  "y": 588.5728429572296
+                }
+              },
+              {
+                "offset": 32.54468927997537,
+                "roll": 0,
+                "suspension": {
+                  "knee": 640.96,
+                  "kneeRoll": -5.894999999999999,
+                  "kneeOffset": 17.5741322111867
+                },
+                "contact": {
+                  "x": 937.0208043549551,
+                  "y": 562.6146543030592
+                }
+              }
+            ],
+            "tilt": -0.2636731073619367
+          },
+          {
+            "player": {
+              "x": 1002.500000000004,
+              "y": 554.1403801078441,
+              "onGround": true,
+              "turn": {
+                "yaw": 0,
+                "targetYaw": 0,
+                "active": false
+              },
+              "motionDistance": 402.500000000004
+            },
+            "legs": [
+              {
+                "offset": 3.3477459963776264,
+                "roll": 0,
+                "suspension": {
+                  "knee": 617.44,
+                  "kneeRoll": 1.171711098732169,
+                  "kneeOffset": 1.8077828380439183
+                },
+                "contact": {
+                  "x": 930.7620943338118,
+                  "y": 562.6858585927787
+                }
+              },
+              {
+                "offset": -3.7300927593733166,
+                "roll": 0,
+                "suspension": {
+                  "knee": 636.1,
+                  "kneeRoll": -1.3055324657806606,
+                  "kneeOffset": -2.014250090061591
+                },
+                "contact": {
+                  "x": 972.0451523220056,
+                  "y": 558.3461164179183
+                }
+              },
+              {
+                "offset": -21.967508393953672,
+                "roll": 0,
+                "suspension": {
+                  "knee": 640.96,
+                  "kneeRoll": 7.688627937883785,
+                  "kneeOffset": -11.862454532734983
+                },
+                "contact": {
+                  "x": 1071.1666536938906,
+                  "y": 541.4529780734032
+                }
+              }
+            ],
+            "tilt": -0.1258589695105912
+          },
+          {
+            "player": {
+              "x": 1136.6666666666686,
+              "y": 550.5406155808546,
+              "onGround": true,
+              "turn": {
+                "yaw": 0,
+                "targetYaw": 0,
+                "active": false
+              },
+              "motionDistance": 536.6666666666686
+            },
+            "legs": [
+              {
+                "offset": 27.941235611786674,
+                "roll": 0,
+                "suspension": {
+                  "knee": 617.44,
+                  "kneeRoll": 5.894999999999999,
+                  "kneeOffset": 15.088267230364805
+                },
+                "contact": {
+                  "x": 1064.8126713080048,
+                  "y": 543.0794482334056
+                }
+              },
+              {
+                "offset": -21.468483524278707,
+                "roll": 0,
+                "suspension": {
+                  "knee": 636.1,
+                  "kneeRoll": -7.513969233497547,
+                  "kneeOffset": -11.592981103110503
+                },
+                "contact": {
+                  "x": 1106.837563757373,
+                  "y": 542.2647717784986
+                }
+              },
+              {
+                "offset": -18.069812366456524,
+                "roll": 0,
+                "suspension": {
+                  "knee": 640.96,
+                  "kneeRoll": 6.324434328259783,
+                  "kneeOffset": -9.757698677886523
+                },
+                "contact": {
+                  "x": 1206.3798614569748,
+                  "y": 555.8057645412248
+                }
+              }
+            ],
+            "tilt": 0.1398149115882658
+          },
+          {
+            "player": {
+              "x": 1270.8333333333326,
+              "y": 531.7384792208937,
+              "onGround": true,
+              "turn": {
+                "yaw": 0,
+                "targetYaw": 0,
+                "active": false
+              },
+              "motionDistance": 670.8333333333326
+            },
+            "legs": [
+              {
+                "offset": 6.795969738206037,
+                "roll": 0,
+                "suspension": {
+                  "knee": 617.44,
+                  "kneeRoll": 2.378589408372113,
+                  "kneeOffset": 3.6698236586312603
+                },
+                "contact": {
+                  "x": 1201.5930125715172,
+                  "y": 555.8573661842206
+                }
+              },
+              {
+                "offset": 8.940304345252045,
+                "roll": 0,
+                "suspension": {
+                  "knee": 636.1,
+                  "kneeRoll": 3.1291065208382154,
+                  "kneeOffset": 4.827764346436105
+                },
+                "contact": {
+                  "x": 1242.0346553411325,
+                  "y": 546.2045821482828
+                }
+              },
+              {
+                "offset": 40.28996030081897,
+                "roll": 0,
+                "suspension": {
+                  "knee": 640.96,
+                  "kneeRoll": -5.894999999999999,
+                  "kneeOffset": 21.756578562442243
+                },
+                "contact": {
+                  "x": 1339.4675560264702,
+                  "y": 521.3242730718466
+                }
+              }
+            ],
+            "tilt": -0.2949314337275046
+          },
+          {
+            "player": {
+              "x": 1404.9999999999966,
+              "y": 518.758908005083,
+              "onGround": true,
+              "turn": {
+                "yaw": 0,
+                "targetYaw": 0,
+                "active": false
+              },
+              "motionDistance": 804.9999999999966
+            },
+            "legs": [
+              {
+                "offset": 4.580126900505285,
+                "roll": 0,
+                "suspension": {
+                  "knee": 617.44,
+                  "kneeRoll": 1.60304441517685,
+                  "kneeOffset": 2.473268526272854
+                },
+                "contact": {
+                  "x": 1333.0881690018794,
+                  "y": 522.2336480343907
+                }
+              },
+              {
+                "offset": -8.515167432527718,
+                "roll": 0,
+                "suspension": {
+                  "knee": 636.1,
+                  "kneeRoll": -2.9803086013847016,
+                  "kneeOffset": -4.598190413564969
+                },
+                "contact": {
+                  "x": 1374.377466065639,
+                  "y": 518.0398898268401
+                }
+              },
+              {
+                "offset": -8.633331783561765,
+                "roll": 0,
+                "suspension": {
+                  "knee": 640.96,
+                  "kneeRoll": 3.0216661242466176,
+                  "kneeOffset": -4.661999163123354
+                },
+                "contact": {
+                  "x": 1474.2628628003918,
+                  "y": 507.2738364987842
+                }
+              }
+            ],
+            "tilt": -0.09652216886241907
+          }
+        ]
+      }
+    ],
+    "mobile": [
+      844,
+      390
+    ],
+    "errors": [],
+    "missing": []
+  },
+  "review": {
+    "important_issues": 0,
+    "sand_hairlines": "fixed with 0.75-unit source/destination overlap; fractional-camera regression and screenshots checked"
+  },
+  "assets_audio_video_unchanged": true,
+  "old_skins_preserved": true,
+  "speed_unchanged": 230,
+  "runtime_bytes": 265617804
+}

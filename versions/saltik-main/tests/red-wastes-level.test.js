@@ -28,7 +28,7 @@ test('Red Wastes authors a full native route with real patrols and unchanged pla
  }
  let previous=redWastesGroundAt(0);
  for(let x=1;x<=RED_WASTES_END;x++){
-  const y=redWastesGroundAt(x);assert(y>=480&&y<=650);assert(Math.abs(y-previous)<.3);previous=y;
+  const y=redWastesGroundAt(x);assert(y>=460&&y<=670);assert(Math.abs(y-previous)<.75);previous=y;
  }
 });
 

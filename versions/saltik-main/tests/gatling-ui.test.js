@@ -6,7 +6,7 @@ const main=readFileSync(new URL('../src/main.js',import.meta.url),'utf8');
 const html=readFileSync(new URL('../index.html',import.meta.url),'utf8');
 const css=readFileSync(new URL('../style.css',import.meta.url),'utf8');
 function selection(search,saved){
- const code=main.slice(main.indexOf('const validCharacter='),main.indexOf('let game=createGame'));
+ const code=main.slice(main.indexOf('const validCharacter='),main.indexOf('const requestedSkin='));
  return vm.runInNewContext(`${code};selectedCharacter`,{URLSearchParams,location:{search},localStorage:{getItem:()=>saved}});
 }
 test('character URL validates values and overrides saved choice without changing level URLs',()=>{
@@ -17,7 +17,7 @@ test('character URL validates values and overrides saved choice without changing
 test('every scene creation preserves selection including title, level, home and restart paths',()=>{
  const calls=[...main.matchAll(/createGame\(\{([^}]+)\}\)/g)];assert.ok(calls.length>=5);
  for(const call of calls)assert.match(call[1],/character:selectedCharacter/);
- assert.match(main,/function nextLevel\(\).*?selectedLevel\+\+;syncLevelMenu\(\);start\(\)/);
+ assert.match(main,/function nextLevel\(\).*?selectedLevel\+\+;selectedSkin='default';syncCharacterMenu\(\);syncLevelMenu\(\);start\(\)/);
  for(const id of ['start','replay','restart-pause'])assert.match(main,new RegExp(`\\$\\('${id}'\\)\\.addEventListener\\('click',start\\)`));
  assert.match(main,/return \{character:selectedCharacter,level:selectedLevel/);
 });

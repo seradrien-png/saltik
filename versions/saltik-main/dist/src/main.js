@@ -2,7 +2,7 @@ import {royalPovCombatSnapshot} from './royal-pov-combat.js';
 import {selectLevelMusic} from './music-tracks.js';
 import {readBTFinishCycle,saveBTFinishCycle} from './bt-finish-cycle-store.js';
 import {setupFullscreen} from './fullscreen.js';
-import {normalizeSkin} from './player-skins.js';
+import {normalizeSkin,playerSkinOptions} from './player-skins.js';
 import {desertMissionLabel} from './desert-level.js';
 import {projectDesertPlayer} from './desert-layout.js';
 import {createBTGamepad} from './bt-gamepad.js';
@@ -32,13 +32,10 @@ const characterParam=new URLSearchParams(location.search).get('character');
 let selectedCharacter='striker';
 try{const saved=localStorage.getItem('saltik-player-character');if(validCharacter(saved))selectedCharacter=saved;}catch{}
 if(characterParam!==null)selectedCharacter=validCharacter(characterParam)?characterParam:'striker';
-let game=createGame({level:selectedLevel,character:selectedCharacter}),view='title',lastFrame=0,accumulator=0,uiAt=0,resultAt=0,best=0,artReady=false,duelPhase=null,breachPhase=null,carrierActive=false,introActive=false;
-game.status='title';
-let savedSkins={};try{savedSkins=JSON.parse(localStorage.getItem('saltik-cosmetic-skins')||'{}')||{};}catch{}
-if(typeof savedSkins!=='object'||Array.isArray(savedSkins))savedSkins={};
 const requestedSkin=new URLSearchParams(location.search).get('skin');
-let selectedSkin=normalizeSkin(selectedCharacter,requestedSkin??savedSkins[selectedCharacter]);
-if(selectedSkin!=='default')game.player.cosmeticSkin=selectedSkin;
+let selectedSkin=normalizeSkin(selectedCharacter,requestedSkin);
+let game=createGame({level:selectedLevel,character:selectedCharacter,skin:selectedSkin}),view='title',lastFrame=0,accumulator=0,uiAt=0,resultAt=0,best=0,artReady=false,duelPhase=null,breachPhase=null,carrierActive=false,introActive=false;
+game.status='title';
 try{best=Number(localStorage.getItem('feral-steel-best'))||0;audio.setEnabled(localStorage.getItem('feral-steel-sound')!=='off');}catch{}
 const victoryFilm=createVictoryFilm({overlay:$('victory-film'),video:$('victory-film-video'),playButton:$('victory-film-play'),pauseButton:$('victory-film-pause'),skipButton:$('victory-film-skip'),soundButton:$('victory-film-sound'),soundEnabled:()=>audio.enabled,onToggleSound:toggleSound,onOpen:()=>{clearInput();audio.setPlaying(false);},onComplete:showResult});
 const inIntro=()=>game.introElapsed<game.introDuration;
@@ -144,16 +141,16 @@ function syncCharacterMenu(){
 }
 function chooseCharacter(character){
  if(view!=='title'||!validCharacter(character))return;
- selectedCharacter=character;selectedSkin=normalizeSkin(character,savedSkins[character]);try{localStorage.setItem('saltik-player-character',character);}catch{}
+ selectedCharacter=character;selectedSkin='default';try{localStorage.setItem('saltik-player-character',character);}catch{}
  game=createGame({level:selectedLevel,character:selectedCharacter,skin:selectedSkin});game.status='title';renderer.reset();syncCharacterMenu();syncLevelMenu();updateUI();
 }
 function syncSkinMenu(){
  const row=$('skin-picker'),select=$('cosmetic-skin'),bt=selectedCharacter==='bt';row.hidden=bt;select.disabled=bt;app.dataset.hasSkins=String(!bt);select.replaceChildren();
- for(const [value,label]of [['default','Classique'],...(selectedCharacter==='striker'?[['dragon','Dragon · or et turquoise']]:selectedCharacter==='gatling'?[['limule','Limule & Régalec · beige']]:[])]){const option=document.createElement('option');option.value=value;option.textContent=label;select.append(option);}select.value=selectedSkin;
+ for(const [value,label]of playerSkinOptions(selectedCharacter)){const option=document.createElement('option');option.value=value;option.textContent=label;select.append(option);}select.value=selectedSkin;
 }
-function chooseSkin(value){if(view!=='title')return;selectedSkin=normalizeSkin(selectedCharacter,value);savedSkins[selectedCharacter]=selectedSkin;try{localStorage.setItem('saltik-cosmetic-skins',JSON.stringify(savedSkins));}catch{}game=createGame({level:selectedLevel,character:selectedCharacter,skin:selectedSkin});game.status='title';renderer.reset();syncCharacterMenu();syncLevelMenu();updateUI();}
-function chooseLevel(level){if(view!=='title')return;selectedLevel=[1,2,3,4,5].includes(level)?level:1;game=createGame({level:selectedLevel,character:selectedCharacter,skin:selectedSkin});game.status='title';renderer.reset();syncLevelMenu();}
-function nextLevel(){if(view!=='won'||selectedLevel>=5)return;selectedLevel++;syncLevelMenu();start();}
+function chooseSkin(value){if(view!=='title')return;selectedSkin=normalizeSkin(selectedCharacter,value);game=createGame({level:selectedLevel,character:selectedCharacter,skin:selectedSkin});game.status='title';renderer.reset();syncCharacterMenu();syncLevelMenu();updateUI();}
+function chooseLevel(level){if(view!=='title')return;selectedLevel=[1,2,3,4,5].includes(level)?level:1;selectedSkin='default';syncCharacterMenu();game=createGame({level:selectedLevel,character:selectedCharacter,skin:selectedSkin});game.status='title';renderer.reset();syncLevelMenu();}
+function nextLevel(){if(view!=='won'||selectedLevel>=5)return;selectedLevel++;selectedSkin='default';syncCharacterMenu();syncLevelMenu();start();}
 function showResult(){if(!resultAt||!['dead','won'].includes(view))return;$('result-screen').hidden=false;syncLevelMenu();if(!document.hidden)$('replay').focus({preventScroll:true});}
 function finish(){clearInput();view=game.status;setView(view);resultAt=performance.now()+(view==='won'?4500:1500);if(selectedLevel===1)victoryFilm.arm(view,resultAt);else victoryFilm.cancel();const won=view==='won';if(won)audio.play({type:'won'});best=Math.max(best,game.stats.score);try{localStorage.setItem('feral-steel-best',String(best));}catch{}$('result-eyebrow').textContent=won?'V2 MATIN DORÉ / MISSION ACCOMPLIE':'SIGNAL PERDU / SALTIK HORS SERVICE';$('result-title').innerHTML=won?'MISSION<br><em>ACCOMPLIE.</em>':'BLINDAGE<br><em>CRITIQUE.</em>';$('result-copy').textContent=won?'Le Colosse est vaincu. Le canyon retrouve son calme.':'Le canyon résiste. Votre prochaine sortie fera la différence.';$('result-score').textContent=number(game.stats.score);$('result-kills').textContent=game.stats.kills;$('result-best').textContent=number(best);if(selectedLevel===2){$('result-eyebrow').textContent=won?'ARCHIVES LUNAIRES / PORTAIL OUVERT':'ARCHIVES LUNAIRES / SIGNAL PERDU';$('result-copy').textContent=won?'Les trois vagues sont repoussées. La Porte des Archives est ouverte.':`Les gardiens tiennent encore les ruines. Redéployez ${selectedCharacter==='gatling'?'Gatling':'Striker'} pour une nouvelle tentative.`;}if(selectedLevel===3){$('result-eyebrow').textContent=won?'JARDINS DE VELOURS / SANCTUAIRE LIBÉRÉ':'JARDINS DE VELOURS / SIGNAL PERDU';$('result-copy').textContent=won?'Le Saltik embarque sur l’anguille royale. Les jardins s’éloignent…':'Les gardiens protègent encore les jardins. Redéployez le Saltik doré.';}if(selectedLevel===4){$('result-eyebrow').textContent=won?'DÉSERT ROUGE / C-07 NETTOYÉ':'C-07 / SIGNAL PERDU';$('result-copy').textContent=won?'Le bunker est silencieux. Vous retrouvez la lumière et le premier plan du désert.':'Les gardes de C-07 tiennent encore le bâtiment. Redéployez votre Saltik.';}if(selectedLevel===5){$('result-eyebrow').textContent=won?'FOSSILES ROUGES / TRAVERSÉE ACCOMPLIE':'FOSSILES ROUGES / SIGNAL PERDU';$('result-copy').textContent=won?'Les géants poursuivent leur marche. La piste est libre.':'Les dunes restent sous surveillance. Redéployez votre Saltik.';}syncLevelMenu();$('result-screen').hidden=true;}
 function recharge(buttonId,textId,barId,remaining,total,ready,label){
