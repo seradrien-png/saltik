@@ -1,0 +1,37 @@
+{
+  "date": "2026-11-22",
+  "base_demo_commit": "b4543aaa945bd8b7542b0d2e855a223f946e362d",
+  "game_base_commit": "b4219a05cc92c1eb6864caacf922e7572a974863",
+  "previous_github_commit": "312ca49c69873f91612a6b08b9713eb75d292864",
+  "game_files_unchanged": true,
+  "integration_requires_user_choice": true,
+  "browser": {
+    "characters": [
+      "striker",
+      "gatling",
+      "bt"
+    ],
+    "animation": true,
+    "foreAftStride": true,
+    "groundContactAndSwing": true,
+    "slowMotion": true,
+    "pause": true,
+    "amplitudeControls": true,
+    "mobileButtons": true,
+    "errors": [],
+    "missing": []
+  },
+  "gait_checks": {
+    "horizontal_stride": true,
+    "two_simultaneous_supports": true,
+    "stance_matches_ground_speed": true,
+    "continuous_cycle": true,
+    "amplitudes": [
+      0.65,
+      1.8,
+      2.8
+    ]
+  },
+  "archive_bytes": 266229760,
+  "runtime_bytes": 265608927
+}

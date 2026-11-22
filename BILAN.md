@@ -248,3 +248,7 @@ Roues plus contrastées et motif asymétrique lisible sur mobile, phase liée à
 ## Démo de marche séparée — 22 novembre 2026, publication v64
 
 À la demande de l’utilisateur, un comparatif ajustable est disponible à /demo-marche.html avant toute intégration. Modèles Striker/Gatling/BT, pause et amplitudes. Aucun fichier de gameplay, asset, entrée, vidéo, son, style ou icône du jeu v63 ne change ; aucune nouvelle démarche n’est intégrée au jeu. Source b4543aaa945bd8b7542b0d2e855a223f946e362d. Contrôle Chromium desktop/mobile et comparaison Git byte-identique des fichiers du jeu. 1 991 fichiers et historiques vérifiés. La suite du travail attend le choix de l’utilisateur. Détails dans walking-demo-release.json.
+
+## Démo de marche articulée — publication v65, 22 novembre 2026
+
+Retour utilisateur pris en compte : vrai mouvement avant/arrière, appui au sol puis retour en arc, genou articulé et hanche fixe. Trois modèles, longueur du pas et ralenti. Page /demo-marche.html?v=2. Aucun changement aux fichiers de gameplay, entrées ou ressources du jeu v63 ; intégration en attente du choix utilisateur. Source4f077fae2c9f36e0828d0c32c26cb25aac3405d1. Contrôles de cycle/contacts et Chromium ordinateur/mobile. 1 995 fichiers et historiques vérifiés. Détails dans walking-demo-v2-release.json.
