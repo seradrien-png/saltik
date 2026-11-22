@@ -252,3 +252,7 @@ Roues plus contrastées et motif asymétrique lisible sur mobile, phase liée à
 ## Démo de marche articulée — publication v65, 22 novembre 2026
 
 Retour utilisateur pris en compte : vrai mouvement avant/arrière, appui au sol puis retour en arc, genou articulé et hanche fixe. Trois modèles, longueur du pas et ralenti. Page /demo-marche.html?v=2. Aucun changement aux fichiers de gameplay, entrées ou ressources du jeu v63 ; intégration en attente du choix utilisateur. Source4f077fae2c9f36e0828d0c32c26cb25aac3405d1. Contrôles de cycle/contacts et Chromium ordinateur/mobile. 1 995 fichiers et historiques vérifiés. Détails dans walking-demo-v2-release.json.
+
+## Démo de roulement amorti — publication v66, 22 novembre 2026
+
+Roues en contact continu, jambes articulées qui absorbent le relief et châssis amorti. Le réglage Plat arrête tout cycle de jambes ; comparaison avec l’essai de marche précédent, trois personnages, pause et ralenti. Démo /demo-marche.html?v=3, aucun changement dans le jeu v63. Contrôles géométriques et Chromium ordinateur/mobile réussis ; neuf fichiers publiés vérifiés par SHA. Source 4d96df5b635d9327121966511513d14946d4fb01. 1 999 fichiers et historiques préservés et vérifiés, les quatre autres éditions restent inchangées. Intégration au jeu en attente de validation utilisateur. Détails dans rolling-suspension-demo-release.json.

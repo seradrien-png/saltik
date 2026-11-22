@@ -1,0 +1,100 @@
+{
+  "date": "2026-11-22",
+  "source_commit": "4d96df5b635d9327121966511513d14946d4fb01",
+  "previous_github_commit": "b70d93983b4af76b01f7b9a26d251eed0a518240",
+  "game_base_commit": "b4219a05cc92c1eb6864caacf922e7572a974863",
+  "game_files_unchanged": true,
+  "gameplay_version_unchanged": 63,
+  "integration_requires_user_choice": true,
+  "browser": {
+    "characters": [
+      "striker",
+      "gatling",
+      "bt"
+    ],
+    "animation": true,
+    "rollingSuspension": true,
+    "flatTerrainStopsLegMotion": true,
+    "continuousWheelSupport": true,
+    "slowMotion": true,
+    "pause": true,
+    "amplitudeControls": true,
+    "mobileButtons": true,
+    "errors": [],
+    "missing": []
+  },
+  "suspension_checks": {
+    "deterministic": true,
+    "tire_rim_support": true,
+    "flat_terrain_no_leg_cycle": true,
+    "models": 3
+  },
+  "archive_bytes": 266229760,
+  "runtime_bytes": 265612459,
+  "version": 66,
+  "version_id": "appgprj_6ae77e1b6da081918600675fc2e2b738~appgver_5d9bd59ef3cc8191938d9bfeee067934",
+  "deployment_id": "appgdep_6b02f76aa0248191ad5fee18c266a262",
+  "deployment_status": "succeeded",
+  "url": "https://saltik-v2-matin-dore.ser-adrien.chatgpt.site/demo-marche.html?v=3",
+  "backup_verified_files": 1999,
+  "public_verification": {
+    "url": "https://saltik-v2-matin-dore.ser-adrien.chatgpt.site/demo-marche.html",
+    "files": [
+      {
+        "path": "demo-marche.html",
+        "status": 200,
+        "bytes": 2970,
+        "matches": true
+      },
+      {
+        "path": "demos/walk-v1.js",
+        "status": 200,
+        "bytes": 4819,
+        "matches": true
+      },
+      {
+        "path": "demos/walk-cycle.js",
+        "status": 200,
+        "bytes": 4510,
+        "matches": true
+      },
+      {
+        "path": "demos/rolling-suspension.js",
+        "status": 200,
+        "bytes": 2904,
+        "matches": true
+      },
+      {
+        "path": "index.html",
+        "status": 200,
+        "bytes": 17746,
+        "matches": true
+      },
+      {
+        "path": "src/engine.js",
+        "status": 200,
+        "bytes": 83666,
+        "matches": true
+      },
+      {
+        "path": "src/ink-saltik.js",
+        "status": 200,
+        "bytes": 21312,
+        "matches": true
+      },
+      {
+        "path": "src/wheel-roll.js",
+        "status": 200,
+        "bytes": 1803,
+        "matches": true
+      },
+      {
+        "path": "src/saltik-ko-feedback.js",
+        "status": 200,
+        "bytes": 1267,
+        "matches": true
+      }
+    ],
+    "passed": true
+  }
+}

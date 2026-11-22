@@ -1,0 +1,17 @@
+{
+  "characters": [
+    "striker",
+    "gatling",
+    "bt"
+  ],
+  "animation": true,
+  "rollingSuspension": true,
+  "flatTerrainStopsLegMotion": true,
+  "continuousWheelSupport": true,
+  "slowMotion": true,
+  "pause": true,
+  "amplitudeControls": true,
+  "mobileButtons": true,
+  "errors": [],
+  "missing": []
+}

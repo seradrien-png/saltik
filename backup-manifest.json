@@ -7,15 +7,15 @@
       "slug": "saltik-main",
       "repo": "saltik-v2-matin-dore",
       "title": "SALTIK V2 \u2014 Matin Dor\u00e9",
-      "commit": "4f077fae2c9f36e0828d0c32c26cb25aac3405d1",
+      "commit": "4d96df5b635d9327121966511513d14946d4fb01",
       "published_version": 57,
       "url": "https://saltik-v2-matin-dore.ser-adrien.chatgpt.site",
       "base_commit": "ce280f9394d382d728673a48c1994a18092e8c58",
       "source_path": "/workspace/sites/saltik-v2-matin-dore",
       "export_path": "versions/saltik-main",
       "web_entry": "versions/saltik-main/dist/index.html",
-      "file_count": 946,
-      "bytes": 412240118,
+      "file_count": 950,
+      "bytes": 412248479,
       "uncommitted_changes": "",
       "files": {
         ".gitignore": {
@@ -55,16 +55,20 @@
           "size": 183408
         },
         "demo-marche.html": {
-          "sha256": "94e1ac1fb6cdc186ef8ada732ed717a38894f4342f1155e3cc242474aeb916d3",
-          "size": 2880
+          "sha256": "de572cbc679c06a03e361eff9966df5f94ecf2ebc20510cff8975393d9b68960",
+          "size": 2970
+        },
+        "demos/rolling-suspension.js": {
+          "sha256": "c3cdb48d40c954611d7475226926a7c8f346d6f8b305810f45d0ceeacd84b19d",
+          "size": 2904
         },
         "demos/walk-cycle.js": {
-          "sha256": "f243181ed7b435d0dc87f187038c4ed6b253d3d0f9224156a847371e7620938d",
-          "size": 4084
+          "sha256": "bc0dd1a679e6b44101e34a4eb84b402ee896ecea55cf55901a288cdfd7ffa129",
+          "size": 4510
         },
         "demos/walk-v1.js": {
-          "sha256": "43a238090d046502ddbd3e625b08fcfa1ea632b3be7c86f116dbf8c8f6ea983a",
-          "size": 4703
+          "sha256": "a1e9e9fbceb8bfc62fd523c8f8e1474c06248e8f9603f0b2cfae6f5b5a356b46",
+          "size": 4815
         },
         "dist/android.html": {
           "sha256": "3f9c9ec874cf390ea1e09cd3cea02f61b25021da514a7d5d9623d70ac3a302d5",
@@ -783,16 +787,20 @@
           "size": 8131
         },
         "dist/demo-marche.html": {
-          "sha256": "94e1ac1fb6cdc186ef8ada732ed717a38894f4342f1155e3cc242474aeb916d3",
-          "size": 2880
+          "sha256": "de572cbc679c06a03e361eff9966df5f94ecf2ebc20510cff8975393d9b68960",
+          "size": 2970
+        },
+        "dist/demos/rolling-suspension.js": {
+          "sha256": "c3cdb48d40c954611d7475226926a7c8f346d6f8b305810f45d0ceeacd84b19d",
+          "size": 2904
         },
         "dist/demos/walk-cycle.js": {
-          "sha256": "f243181ed7b435d0dc87f187038c4ed6b253d3d0f9224156a847371e7620938d",
-          "size": 4084
+          "sha256": "bc0dd1a679e6b44101e34a4eb84b402ee896ecea55cf55901a288cdfd7ffa129",
+          "size": 4510
         },
         "dist/demos/walk-v1.js": {
-          "sha256": "43a238090d046502ddbd3e625b08fcfa1ea632b3be7c86f116dbf8c8f6ea983a",
-          "size": 4703
+          "sha256": "a1e9e9fbceb8bfc62fd523c8f8e1474c06248e8f9603f0b2cfae6f5b5a356b46",
+          "size": 4815
         },
         "dist/favicon.svg": {
           "sha256": "f33ef2761551fc1fe4a9573a30ad50894df7a882b6efd9e5ccb33f1580d7d12b",
@@ -1705,6 +1713,14 @@
         "docs/releases/SALTIK-reference-2026-10-28.md": {
           "sha256": "a3a0d3cca93e7b86607e4d29e0a36c8d8a04f4ef99f6d53a82e8f148582255d8",
           "size": 1106
+        },
+        "docs/rolling-suspension-demo-validation.json": {
+          "sha256": "bba85ffe9398249437499a481d896732cb7bb5f3e1153316d95929f5e0e9ea5e",
+          "size": 312
+        },
+        "docs/rolling-suspension-demo.md": {
+          "sha256": "e053f86a12743bb3f1fdd55449122fe0b062c6fd46d3b7b1cd4c9d482db85f3a",
+          "size": 985
         },
         "docs/royal-flight-v51-validation.json": {
           "sha256": "e8cb062ca61dcc077df4a1a1268937f94b4b20d5f880ee746bc08d01cc647658",
