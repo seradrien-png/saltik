@@ -7,11 +7,12 @@ test('MIRV scope never predicts or draws while idle and cancels immediately',()=
  assert.equal(typeof art.createMirvPreview,'function');let count=0;const overlay=art.createMirvPreview({predict:()=>{count++;return prediction;}}),g=game(),c=context();overlay.draw(c,g,{camera:0,width:1000,height:720});assert.equal(count,0);assert.equal(c.calls.length,0);
  g.player.mirvAiming=true;overlay.draw(c,g,{camera:0,width:1000,height:720});assert.equal(count,1);g.player.mirvAiming=false;const before=c.calls.length;overlay.draw(c,g,{camera:0,width:1000,height:720});assert.equal(c.calls.length,before);
 });
-test('scope displays actual world impacts at their sampled floor and bounds prediction work',()=>{
+test('scope shows one area without exposing individual impact markers and bounds prediction work',()=>{
  assert.equal(typeof art.createMirvPreview,'function');let count=0;const overlay=art.createMirvPreview({predict:()=>{count++;return prediction;}}),g=game(),c=context();g.player.mirvAiming=true;
  for(let i=0;i<60;i++){g.time=1+i/60;overlay.draw(c,g,{camera:100,width:900,height:720});}
  assert.ok(count<=14&&count>=10,'prediction must stay below one quarter of frame rate');
- assert.ok(c.calls.some(([fn,x,y])=>fn==='ellipse'&&Math.abs(x-350)<1&&Math.abs(y-610)<1),'a footprint sits on its actual sampled ground after camera projection');
+ const zones=c.calls.filter(([fn])=>fn==='ellipse').map(a=>a.slice(1,5));assert.equal(zones.length,60);for(const zone of zones)assert.deepEqual(zone,[350,605,197.5,13],'only the aggregate red area is drawn');
+ assert(!c.calls.some(([fn])=>fn==='arc'),'no individual impact circles');
  assert.equal(c.calls.filter(([fn])=>fn==='save').length,c.calls.filter(([fn])=>fn==='restore').length);
  const before=count;g.player.dir=-1;overlay.draw(c,g,{camera:100,width:900,height:720});assert.equal(count,before+1,'facing changes invalidate stale world shots');
 });

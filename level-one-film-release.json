@@ -1,0 +1,273 @@
+{
+  "render": {
+    "output": "/tmp/saltik-v62/film/saltik-free-together.mp4",
+    "duration": 36,
+    "frames": 1080,
+    "width": 1280,
+    "height": 720,
+    "bytes": 10708546,
+    "current_models": 6,
+    "heroes": [
+      "striker",
+      "gatling"
+    ],
+    "captives": [
+      "bt",
+      "gold",
+      "longrange",
+      "dr01"
+    ],
+    "errors": []
+  },
+  "media": {
+    "streams": [
+      {
+        "index": 0,
+        "codec_name": "h264",
+        "codec_long_name": "H.264 / AVC / MPEG-4 AVC / MPEG-4 part 10",
+        "profile": "High",
+        "codec_type": "video",
+        "codec_tag_string": "avc1",
+        "codec_tag": "0x31637661",
+        "width": 1280,
+        "height": 720,
+        "coded_width": 1280,
+        "coded_height": 720,
+        "closed_captions": 0,
+        "film_grain": 0,
+        "has_b_frames": 2,
+        "sample_aspect_ratio": "1:1",
+        "display_aspect_ratio": "16:9",
+        "pix_fmt": "yuv420p",
+        "level": 31,
+        "color_range": "tv",
+        "color_space": "bt709",
+        "chroma_location": "center",
+        "field_order": "progressive",
+        "refs": 1,
+        "is_avc": "true",
+        "nal_length_size": "4",
+        "id": "0x1",
+        "r_frame_rate": "30/1",
+        "avg_frame_rate": "30/1",
+        "time_base": "1/15360",
+        "start_pts": 0,
+        "start_time": "0.000000",
+        "duration_ts": 552960,
+        "duration": "36.000000",
+        "bit_rate": "2215506",
+        "bits_per_raw_sample": "8",
+        "nb_frames": "1080",
+        "extradata_size": 51,
+        "disposition": {
+          "default": 1,
+          "dub": 0,
+          "original": 0,
+          "comment": 0,
+          "lyrics": 0,
+          "karaoke": 0,
+          "forced": 0,
+          "hearing_impaired": 0,
+          "visual_impaired": 0,
+          "clean_effects": 0,
+          "attached_pic": 0,
+          "timed_thumbnails": 0,
+          "non_diegetic": 0,
+          "captions": 0,
+          "descriptions": 0,
+          "metadata": 0,
+          "dependent": 0,
+          "still_image": 0,
+          "multilayer": 0
+        },
+        "tags": {
+          "language": "und",
+          "handler_name": "VideoHandler",
+          "vendor_id": "[0][0][0][0]",
+          "encoder": "Lavc61.19.101 libx264"
+        },
+        "side_data_list": [
+          {
+            "side_data_type": "ICC Profile"
+          }
+        ]
+      },
+      {
+        "index": 1,
+        "codec_name": "aac",
+        "codec_long_name": "AAC (Advanced Audio Coding)",
+        "profile": "LC",
+        "codec_type": "audio",
+        "codec_tag_string": "mp4a",
+        "codec_tag": "0x6134706d",
+        "sample_fmt": "fltp",
+        "sample_rate": "44100",
+        "channels": 2,
+        "channel_layout": "stereo",
+        "bits_per_sample": 0,
+        "initial_padding": 0,
+        "id": "0x2",
+        "r_frame_rate": "0/0",
+        "avg_frame_rate": "0/0",
+        "time_base": "1/44100",
+        "start_pts": 0,
+        "start_time": "0.000000",
+        "duration_ts": 1587600,
+        "duration": "36.000000",
+        "bit_rate": "155419",
+        "nb_frames": "1548",
+        "extradata_size": 5,
+        "disposition": {
+          "default": 1,
+          "dub": 0,
+          "original": 0,
+          "comment": 0,
+          "lyrics": 0,
+          "karaoke": 0,
+          "forced": 0,
+          "hearing_impaired": 0,
+          "visual_impaired": 0,
+          "clean_effects": 0,
+          "attached_pic": 0,
+          "timed_thumbnails": 0,
+          "non_diegetic": 0,
+          "captions": 0,
+          "descriptions": 0,
+          "metadata": 0,
+          "dependent": 0,
+          "still_image": 0,
+          "multilayer": 0
+        },
+        "tags": {
+          "language": "und",
+          "handler_name": "SoundHandler",
+          "vendor_id": "[0][0][0][0]"
+        }
+      }
+    ],
+    "format": {
+      "filename": "/tmp/saltik-v62/film/saltik-free-together.mp4",
+      "nb_streams": 2,
+      "nb_programs": 0,
+      "nb_stream_groups": 0,
+      "format_name": "mov,mp4,m4a,3gp,3g2,mj2",
+      "format_long_name": "QuickTime / MOV",
+      "start_time": "0.000000",
+      "duration": "36.000000",
+      "size": "10708546",
+      "bit_rate": "2379676",
+      "probe_score": 100,
+      "tags": {
+        "major_brand": "isom",
+        "minor_version": "512",
+        "compatible_brands": "isomiso2avc1mp41",
+        "encoder": "Lavf61.7.103"
+      }
+    }
+  },
+  "previous": {
+    "saltik-free-together.mp4": {
+      "bytes": 10730352,
+      "sha256": "3a469276ab81b86dd566e1b48e623fcae3d7bbc0d25d14b5acc5b6e40b445352"
+    },
+    "saltik-free-together-poster.jpg": {
+      "bytes": 421478,
+      "sha256": "de77c185c42f5b31e582f895bda0a8e5ea1c54cc0f9670bef8946a7c2cf3c767"
+    }
+  },
+  "decode_errors": 0,
+  "date": "2026-11-22",
+  "base_source_commit": "17c86e6fae7e3d6d260c3f3cabec8073161b1bcb",
+  "previous_github_commit": "4138fa42acd8eb9c564093a6de4bd98266da64e5",
+  "tests": {
+    "passed": 1026,
+    "failed": 0
+  },
+  "browser": {
+    "KOFeedback": true,
+    "areaOnlyMirv": true,
+    "level1VictoryVideoAuto": true,
+    "videoPauseResume": true,
+    "newCaptivesDecodedAt19Seconds": true,
+    "videoEndedReturnsToResult": true,
+    "errors": [],
+    "missing": [],
+    "videoDecodedProof": {
+      "readyState": 4,
+      "time": 19.660393,
+      "decodedFrames": 144,
+      "colors": 5915
+    },
+    "videoCompletionReason": "ended"
+  },
+  "archive_bytes": 266209280,
+  "runtime_bytes": 265596745,
+  "source_video_sha256": "cd153c48cc313740063ace8092a17c8077a5ff2dc65b785893b202947c8b7c6c",
+  "source_commit": "d603332c1cfeb82a57d153973f2686366d16aca9",
+  "version": 62,
+  "version_id": "appgprj_6ae77e1b6da081918600675fc2e2b738~appgver_58ded5ee00dc8191adf1940299022c46",
+  "deployment_id": "appgdep_6b0295249e308191a56839d5416186a5",
+  "deployment_status": "succeeded",
+  "url": "https://saltik-v2-matin-dore.ser-adrien.chatgpt.site",
+  "backup_verified_files": 1983,
+  "public_verification": {
+    "url": "https://saltik-v2-matin-dore.ser-adrien.chatgpt.site",
+    "files": [
+      {
+        "path": "index.html",
+        "status": 200,
+        "bytes": 17746,
+        "matches": true
+      },
+      {
+        "path": "android.html",
+        "status": 200,
+        "bytes": 17457,
+        "matches": true
+      },
+      {
+        "path": "video/saltik-free-together.mp4",
+        "status": 200,
+        "bytes": 10708546,
+        "matches": true
+      },
+      {
+        "path": "video/saltik-free-together-poster.jpg",
+        "status": 200,
+        "bytes": 391382,
+        "matches": true
+      },
+      {
+        "path": "audio/gatling-brrrt-loop.ogg",
+        "status": 200,
+        "bytes": 47581,
+        "matches": true
+      },
+      {
+        "path": "audio/saltik_sable_rouge_v2.ogg",
+        "status": 200,
+        "bytes": 1572127,
+        "matches": true
+      },
+      {
+        "path": "src/ink-renderer.js",
+        "status": 200,
+        "bytes": 31845,
+        "matches": true
+      },
+      {
+        "path": "src/mirv-preview.js",
+        "status": 200,
+        "bytes": 2797,
+        "matches": true
+      },
+      {
+        "path": "src/saltik-ko-feedback.js",
+        "status": 200,
+        "bytes": 1282,
+        "matches": true
+      }
+    ],
+    "passed": true
+  }
+}

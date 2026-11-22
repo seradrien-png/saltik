@@ -236,3 +236,7 @@ Correction HS selon la référence : le corps descend entre ses pattes repliées
 ## Publication v61 — 21 novembre 2026
 
 BT ennemi original vert et orange, nouveau Striker noir et doré avec canon/guidés/MIRV, Longrange bleu et rouge à salves lointaines pré-déployées. PV ennemis +20 % ; HS animé avec yeux éteints et carcasse persistante. Source 17c86e6fae7e3d6d260c3f3cabec8073161b1bcb. 1 023 tests réussis, essais Chromium sur ordinateur et mobile simulé. 1 977 fichiers et les historiques vérifiés. Anciens dessins et versions conservés ; autres éditions inchangées. Détails dans enemy-specialists-release.json.
+
+## Publication v62 — 22 novembre 2026
+
+Vidéo de fin du niveau 1 refaite avec Striker et Gatling libres, BT/Striker noir-or/Longrange/DR-01 à libérer, tous en apparence de base. Durée36s,1280×720,30fps ; narration conservée. Visée MIRV par zone globale uniquement, petites bulles POUF/K.O. sur les ennemis assommés. Source d603332c1cfeb82a57d153973f2686366d16aca9. 1 026 tests réussis ; décodage complet de la vidéo et lecture Chromium jusqu’à la fin normale. 1 983 fichiers des cinq éditions et historiques vérifiés. Ancienne vidéo conservée dans l’historique GitHub ; autres éditions inchangées. Détails dans level-one-film-release.json.

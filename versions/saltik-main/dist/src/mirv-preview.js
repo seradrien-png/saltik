@@ -16,27 +16,17 @@ export function createMirvPreview({predict=predictMirvImpact}={}){
    cached=predict(g,p);lastGame=g;lastAt=g.time;lastX=p.x;lastY=p.y;lastDir=p.dir;lastAngle=p.cannonElevation;
   }
   if(!cached?.zone)return null;
-  const {zone,impacts=[],points=[]}=cached;
+  const {zone}=cached;
   const left=zone.minX-zone.radius-camera,right=zone.maxX+zone.radius-camera,x=zone.x-camera;
   const offscreen=x<24?-1:x>width-24?1:0;
   c.save();c.lineJoin='round';c.lineCap='round';
-  // The sampled arc is decoration; the same physical predictor supplies the
-  // ground footprints, including a platform or cover that catches a bomblet.
-  if(points.length>1){
-   c.strokeStyle=INK;c.globalAlpha=.9;c.lineWidth=7;c.setLineDash([7,8]);c.beginPath();
-   const stride=Math.max(1,Math.ceil(points.length/64));
-   for(let i=0;i<points.length;i+=stride){const p=points[i];if(i===0)c.moveTo(p.x-camera,p.y);else c.lineTo(p.x-camera+Math.sin(i*2.19)*.65,p.y+Math.cos(i*1.71)*.65);}
-   const end=points.at(-1);c.lineTo(end.x-camera,end.y);c.stroke();c.strokeStyle=CORAL;c.lineWidth=3.8;c.stroke();c.setLineDash([]);
-  }
+  // Show only the selectable area; individual predicted impacts stay private.
   if(right>=0&&left<=width){
    const rx=Math.max(28,(right-left)/2),cy=zone.y;
    c.globalAlpha=.20;c.fillStyle=CORAL;c.beginPath();c.ellipse(x,cy,rx,13,0,0,Math.PI*2);c.fill();
    c.globalAlpha=.95;c.strokeStyle=INK;c.lineWidth=7;roughOval(c,x,cy,rx,13);c.stroke();
    c.strokeStyle=CORAL;c.lineWidth=4;c.setLineDash([11,5]);roughOval(c,x,cy,rx,13);c.stroke();c.setLineDash([]);
-   for(const point of impacts){if(point.x-camera<-30||point.x-camera>width+30)continue;
-    c.globalAlpha=.95;c.strokeStyle=PAPER;c.lineWidth=6;c.beginPath();c.ellipse(point.x-camera,point.y,22,6,0,0,Math.PI*2);c.stroke();c.strokeStyle=CORAL;c.lineWidth=3.5;roughOval(c,point.x-camera,point.y,22,6,point.x*.01);c.stroke();
-    c.strokeStyle=CORAL;c.beginPath();c.moveTo(point.x-camera-5,point.y);c.lineTo(point.x-camera+5,point.y);c.moveTo(point.x-camera,point.y-5);c.lineTo(point.x-camera,point.y+5);c.stroke();
-   }
+
   }
   const bx=clamp(x,88,width-88),labelBand=clamp(height*.30,115,210)-cameraY;
   const by=offscreen?labelBand:Math.min(zone.y-36,labelBand);

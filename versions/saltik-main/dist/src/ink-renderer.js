@@ -1,3 +1,4 @@
+import {drawSaltikKO} from './saltik-ko-feedback.js';
 import {drawSpecialist,isSpecialist} from './enemy-specialists.js';
 import {STARLESS_GATLING_ASSETS,prepareStarlessDesertGatling} from './gatling-starless.js';
 import {drawEnemyRustStriker} from './enemy-rust-striker-art.js';
@@ -205,7 +206,7 @@ export function createRenderer(canvas){
   if(g.level===5){drawRedWastesWorld(c,images,g,{...opts,beforeStructures:()=>drawDesertGiant(c,images['desert-giant-legs'],g,{box:{x:0,y:-cameraY,w:width,h:(g.groundAt(g.player.x)+cameraY)/.82}})});drawRedWastesTracks(c,g,opts);}else if(g.level===4)drawDesertWorld(c,g,{...opts,atlas:images['desert-structures'],hd:images,texture:images['desert-c07-interior'],vista:images['desert-red-vista']});else if(g.level===3)drawRoyalWorld(c,g,{...opts,art:royalArt});else if(g.level===2)drawLunarWorld(c,g,{...opts,texture:images['lunar-sandstone'],art:{atlas:images['lunar-monuments'],bridge:images['lunar-aqueduct'],hd:images}});else{drawInkRoutes(c,g,opts);drawInkGround(c,g,opts);drawInkObstacles(c,g,opts);}
   if(view!=='title'){
    for(const item of g.pickups){const x=item.x-camera;if(x<-20||x>width+20)continue;c.save();c.translate(x,item.y);c.fillStyle=INK;c.strokeStyle=PAPER;c.lineWidth=2;c.fillRect(-12,-13,24,26);c.strokeRect(-12,-13,24,26);c.fillStyle=PAPER;c.fillRect(-2,-8,4,16);c.fillRect(-8,-2,16,4);c.restore();}
-   for(const e of g.enemies)if((!e.neutralized||e.groundedDefeat)&&e.id!==g.duel?.enemyId&&e.x>camera-200&&e.x<camera+width+200){if(isSpecialist(e))drawSpecialist(c,images['enemy-specialists'],e,{camera,time});else if(e.type==='saltik')drawInkEnemySaltik(c,images['ink-enemy-saltik'],e,{camera,time});else if(e.type==='carrier')drawInkCarrier(c,playerImages['ink-carrier'],e,{camera,time,handsImage:images['ink-saltik']});else drawInkEnemy(c,playerImages['ink-enemies'],e,{camera,time});}
+   for(const e of g.enemies)if((!e.neutralized||e.groundedDefeat)&&e.id!==g.duel?.enemyId&&e.x>camera-200&&e.x<camera+width+200){if(isSpecialist(e))drawSpecialist(c,images['enemy-specialists'],e,{camera,time});else if(e.type==='saltik')drawInkEnemySaltik(c,images['ink-enemy-saltik'],e,{camera,time});else if(e.type==='carrier')drawInkCarrier(c,playerImages['ink-carrier'],e,{camera,time,handsImage:images['ink-saltik']});else drawInkEnemy(c,playerImages['ink-enemies'],e,{camera,time});drawSaltikKO(c,e,{camera,time});}
    drawInkBossTank(c,images,g.boss,{camera,time,breach:g.bossBreach});
    const paired=drawInkBossBreach(c,playerImages,g.bossBreach,g.boss,{camera,time,player:g.player});
    const disconnecting=drawCarrierShutdown(c,playerImages,g.carrierShutdown,g.enemies.find(e=>e.id===g.carrierShutdown?.enemyId),{camera,time,player:g.player});
