@@ -1,0 +1,22 @@
+{
+  "date": "2026-11-22",
+  "base_game_source": "b4219a05cc92c1eb6864caacf922e7572a974863",
+  "previous_github_commit": "4e0882a3a18fb84dc6608d31c85668d32d9872f2",
+  "demo": {
+    "characters": [
+      "striker",
+      "gatling",
+      "bt"
+    ],
+    "animation": true,
+    "pause": true,
+    "amplitudeControls": true,
+    "mobileButtons": true,
+    "errors": [],
+    "missing": []
+  },
+  "game_files_unchanged": true,
+  "game_integration_requires_user_choice": true,
+  "archive_bytes": 266219520,
+  "runtime_bytes": 265605174
+}

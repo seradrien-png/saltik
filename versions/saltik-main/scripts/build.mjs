@@ -13,3 +13,7 @@ await writeFile('dist/android.html',browserPage);
 await cp('icons','dist/icons',{recursive:true});
 await cp('src','dist/src',{recursive:true});
 console.log('Buildless game prepared in dist/; local art preserved.');
+
+// Optional isolated visual demo; the game entrypoints and behavior stay unchanged.
+await copyFile('demo-marche.html','dist/demo-marche.html');
+await cp('demos','dist/demos',{recursive:true});

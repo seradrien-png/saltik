@@ -1,0 +1,78 @@
+{
+  "date": "2026-11-22",
+  "base_game_source": "b4219a05cc92c1eb6864caacf922e7572a974863",
+  "previous_github_commit": "4e0882a3a18fb84dc6608d31c85668d32d9872f2",
+  "demo": {
+    "characters": [
+      "striker",
+      "gatling",
+      "bt"
+    ],
+    "animation": true,
+    "pause": true,
+    "amplitudeControls": true,
+    "mobileButtons": true,
+    "errors": [],
+    "missing": []
+  },
+  "game_files_unchanged": true,
+  "game_integration_requires_user_choice": true,
+  "archive_bytes": 266219520,
+  "runtime_bytes": 265605174,
+  "source_commit": "b4543aaa945bd8b7542b0d2e855a223f946e362d",
+  "version": 64,
+  "version_id": "appgprj_6ae77e1b6da081918600675fc2e2b738~appgver_bf20214b30cc81918f12480186a50c10",
+  "deployment_id": "appgdep_6b02da9920708191a6d3ff9e74641918",
+  "deployment_status": "succeeded",
+  "url": "https://saltik-v2-matin-dore.ser-adrien.chatgpt.site/demo-marche.html",
+  "gameplay_version_unchanged": 63,
+  "backup_verified_files": 1991,
+  "public_verification": {
+    "url": "https://saltik-v2-matin-dore.ser-adrien.chatgpt.site/demo-marche.html",
+    "files": [
+      {
+        "path": "demo-marche.html",
+        "status": 200,
+        "bytes": 2853,
+        "matches": true
+      },
+      {
+        "path": "demos/walk-v1.js",
+        "status": 200,
+        "bytes": 5065,
+        "matches": true
+      },
+      {
+        "path": "index.html",
+        "status": 200,
+        "bytes": 17746,
+        "matches": true
+      },
+      {
+        "path": "src/engine.js",
+        "status": 200,
+        "bytes": 83666,
+        "matches": true
+      },
+      {
+        "path": "src/ink-saltik.js",
+        "status": 200,
+        "bytes": 21312,
+        "matches": true
+      },
+      {
+        "path": "src/wheel-roll.js",
+        "status": 200,
+        "bytes": 1803,
+        "matches": true
+      },
+      {
+        "path": "src/saltik-ko-feedback.js",
+        "status": 200,
+        "bytes": 1267,
+        "matches": true
+      }
+    ],
+    "passed": true
+  }
+}

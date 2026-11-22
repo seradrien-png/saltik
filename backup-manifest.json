@@ -7,15 +7,15 @@
       "slug": "saltik-main",
       "repo": "saltik-v2-matin-dore",
       "title": "SALTIK V2 \u2014 Matin Dor\u00e9",
-      "commit": "b4219a05cc92c1eb6864caacf922e7572a974863",
+      "commit": "b4543aaa945bd8b7542b0d2e855a223f946e362d",
       "published_version": 57,
       "url": "https://saltik-v2-matin-dore.ser-adrien.chatgpt.site",
       "base_commit": "ce280f9394d382d728673a48c1994a18092e8c58",
       "source_path": "/workspace/sites/saltik-v2-matin-dore",
       "export_path": "versions/saltik-main",
       "web_entry": "versions/saltik-main/dist/index.html",
-      "file_count": 936,
-      "bytes": 412211270,
+      "file_count": 942,
+      "bytes": 412229682,
       "uncommitted_changes": "",
       "files": {
         ".gitignore": {
@@ -53,6 +53,14 @@
         "audio-sources/striker-v51-source-kit.zip": {
           "sha256": "efbfc39b8737b0e37db13e589cd2ba7135cfc46be5e1eadb0dc3bfe856f77107",
           "size": 183408
+        },
+        "demo-marche.html": {
+          "sha256": "585a38b299e98066233dc672c0795daf666f5931dcdcb8088685809b9b47a1d9",
+          "size": 2853
+        },
+        "demos/walk-v1.js": {
+          "sha256": "882627e05dc01a24ae0b5ba799ef7b58b81b8178f774a6713902ec645caffe7e",
+          "size": 5061
         },
         "dist/android.html": {
           "sha256": "3f9c9ec874cf390ea1e09cd3cea02f61b25021da514a7d5d9623d70ac3a302d5",
@@ -769,6 +777,14 @@
         "dist/audio/voices/victory.ogg": {
           "sha256": "445a36e7ea48becead93377174ec37743a75bad2d3bff9987955144df38985cb",
           "size": 8131
+        },
+        "dist/demo-marche.html": {
+          "sha256": "585a38b299e98066233dc672c0795daf666f5931dcdcb8088685809b9b47a1d9",
+          "size": 2853
+        },
+        "dist/demos/walk-v1.js": {
+          "sha256": "882627e05dc01a24ae0b5ba799ef7b58b81b8178f774a6713902ec645caffe7e",
+          "size": 5061
         },
         "dist/favicon.svg": {
           "sha256": "f33ef2761551fc1fe4a9573a30ad50894df7a882b6efd9e5ccb33f1580d7d12b",
@@ -2174,6 +2190,14 @@
           "sha256": "c9b09f6ab7306f84ef7b7427d9d4f075c5784a2ee009662ae50d5b91fb10f0c7",
           "size": 2026
         },
+        "docs/walk-demo-v1-validation.json": {
+          "sha256": "c2829b984574a65fcced56650ee7a88c34f420a66456df6f57454398d2c2bbdb",
+          "size": 531
+        },
+        "docs/walk-demo-v1.md": {
+          "sha256": "9d277d2c99f54617620b9c645d0bd47208ece25dc8118b3e760c4998c487b555",
+          "size": 1859
+        },
         "docs/wheels-wordless-ko-v63-validation.json": {
           "sha256": "54e2dd90051c72fbfeab569b1df3fff91acc4f5a7f63da6a63c70dd8d212d0ba",
           "size": 934
@@ -2235,8 +2259,8 @@
           "size": 3073
         },
         "scripts/build.mjs": {
-          "sha256": "920f23a26c69366816a6d12e6c47cb1280189c0be6102c8fceb6b42bddc4b99b",
-          "size": 1084
+          "sha256": "2d50aaf27218403cb1764878fae705f2db7ba3108957740224c51af6d9025597",
+          "size": 1278
         },
         "scripts/carrier-preview/assets/proposed-carrier.png": {
           "sha256": "ee45864e7aa3947a187d8e137d86e8b660f95387d5671d4b547291db9117e31d",

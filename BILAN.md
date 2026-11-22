@@ -244,3 +244,7 @@ Vidéo de fin du niveau 1 refaite avec Striker et Gatling libres, BT/Striker noi
 ## Publication v63 — 22 novembre 2026
 
 Roues plus contrastées et motif asymétrique lisible sur mobile, phase liée à la distance parcourue, pattes fixes. DR-01 reçoit la même rotation. Suppression de POUF/K.O. et des bulles : spirales de vertige, yeux éteints et posture affaissée uniquement. Source b4219a05cc92c1eb6864caacf922e7572a974863. 1 027 tests réussis ; essais des trois personnages sur affichage mobile, arrêt au repos et pause. 1 985 fichiers et historiques vérifiés ; autres éditions inchangées. Détails dans wheels-wordless-ko-release.json.
+
+## Démo de marche séparée — 22 novembre 2026, publication v64
+
+À la demande de l’utilisateur, un comparatif ajustable est disponible à /demo-marche.html avant toute intégration. Modèles Striker/Gatling/BT, pause et amplitudes. Aucun fichier de gameplay, asset, entrée, vidéo, son, style ou icône du jeu v63 ne change ; aucune nouvelle démarche n’est intégrée au jeu. Source b4543aaa945bd8b7542b0d2e855a223f946e362d. Contrôle Chromium desktop/mobile et comparaison Git byte-identique des fichiers du jeu. 1 991 fichiers et historiques vérifiés. La suite du travail attend le choix de l’utilisateur. Détails dans walking-demo-release.json.
