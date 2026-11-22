@@ -1,3 +1,6 @@
+import {rollingLegPose} from './rolling-suspension.js';
+import {drawJumpLegStrut} from './jump-leg-pose.js';
+import {plantInkWheel} from './ink-leg-support.js';
 import {groundedBTDefeatPose,drawNativeKOEyes,clipDefeatedSupport} from './grounded-bt-defeat.js';
 import {sampleSupportSurface} from './support-pose.js';
 import {wheelRollPhase,drawWheelRoll} from './wheel-roll.js';
@@ -21,10 +24,10 @@ function polygon(c,points){c.moveTo(...points[0]);for(const p of points.slice(1)
 export const isSpecialist=e=>['rust-striker','black-gold','longrange'].includes(e.enemyModel);
 export function specialistGeometry(e,time=0,{camera=0,scale=1}={}){
  const p=profile(e),k=126/p.height*(e.artScale??1)*scale,flip=e.dir===-1?-1:1,x=e.x-camera,y=e.y;
- const dead=e.groundedDefeat,pose=dead?groundedBTDefeatPose(e,time):{settled:0,progress:0},drop=pose.settled*17;
+ const dead=e.groundedDefeat,pose=dead?groundedBTDefeatPose(e,time):{settled:0,progress:0},drop=pose.settled*17+(e.supportPose?.heave??0)*(e.artScale??1)*scale;
  const tilt=clamp(e.supportPose?.tilt??0,-.32,.32),co=Math.cos(tilt),si=Math.sin(tilt);
  const point=([px,py])=>{const xx=(px-p.anchor[0])*k*flip,yy=(py-p.anchor[1])*k;return{x:x+xx*co-yy*si,y:y+drop+xx*si+yy*co};};
- const legs=p.legs.map(l=>{const native=point(l.foot),floor=sampleSupportSurface(e.supportPose,native.x+camera),offset=((Number.isFinite(floor)?floor:y)-native.y)/(k*co);return{...l,offset,stretch:1+offset/(l.wheelTop-l.hinge),spin:wheelRollPhase(e,l.hub,k,flip),contact:point([l.foot[0],l.foot[1]+offset])};});
+ const legs=p.legs.map(l=>{const native=point(l.foot),floor=at=>{const v=sampleSupportSurface(e.supportPose,at+camera);return e.supportPose?.surface&&!Number.isFinite(v)?NaN:v??y;},planted=plantInkWheel(native,{k,cos:co,sin:si,floor,orientation:flip,maxOffset:180}),{roll,offset}=planted;return{...l,...planted,suspension:rollingLegPose({...l,roll,offset},k,p.anchor[0],!dead&&e.onGround!==false),stretch:1+offset/(l.wheelTop-l.hinge),spin:wheelRollPhase(e,l.hub,k,flip),contact:point([l.foot[0]+roll,l.foot[1]+offset])};});
  let gun=null;if(p.gun){const pivot=point(p.gun.pivot),target=e.armyAimTarget;let angle=0;if(target&&!dead)angle=clamp(Math.atan2((target.y-pivot.y)/k,(target.x-camera-pivot.x)/(k*flip)),-.65,.65);
  const ca=Math.cos(angle),sa=Math.sin(angle),gunPoint=q=>point([p.gun.pivot[0]+(q[0]-p.gun.pivot[0])*ca-(q[1]-p.gun.pivot[1])*sa,p.gun.pivot[1]+(q[0]-p.gun.pivot[0])*sa+(q[1]-p.gun.pivot[1])*ca]);const muzzle=gunPoint(p.gun.muzzle),base=point(p.gun.pivot),n=Math.hypot(muzzle.x-base.x,muzzle.y-base.y)||1;gun={...p.gun,angle,muzzle,direction:{x:(muzzle.x-base.x)/n,y:(muzzle.y-base.y)/n}};}
  const arms=p.arms.map(arm=>{let angle=0;if(dead)for(let i=0;i<35;i++){const co=Math.cos(angle),si=Math.sin(angle),bottom=Math.max(...arm.poly.map(([x,y])=>arm.pivot[1]+(x-arm.pivot[0])*si+(y-arm.pivot[1])*co));if(bottom<=p.anchor[1]-drop/k)break;angle-=.04;}return{...arm,angle};});
@@ -36,7 +39,7 @@ export function drawSpecialist(c,image,e,{camera=0,time=0}={}){
  if(!image)return;const g=specialistGeometry(e,time,{camera}),{p,k,flip}=g,draw=()=>c.drawImage(image,...p.crop,...p.crop);
  c.save();if(e.groundedDefeat)clipDefeatedSupport(c,e,{camera});c.translate(g.x,g.y+g.drop);c.rotate(g.tilt);c.scale(k*flip,k);c.translate(-p.anchor[0],-p.anchor[1]);
  c.save();c.beginPath();c.rect(...p.crop);for(const l of g.legs)polygon(c,l.poly);for(const arm of g.arms)polygon(c,arm.poly);if(g.gun)polygon(c,g.gun.poly);c.clip('evenodd');draw();c.restore();
- for(const l of g.legs){c.save();c.translate(0,l.hinge);c.scale(1,l.stretch);c.translate(0,-l.hinge);c.beginPath();polygon(c,split(l.poly,l.wheelTop,false));c.clip();draw();c.restore();c.save();c.translate(0,l.offset);c.beginPath();polygon(c,split(l.poly,l.wheelTop,true));c.clip();draw();drawWheelRoll(c,l,{disabled:e.groundedDefeat});c.restore();}
+ for(const l of g.legs){drawJumpLegStrut(c,l,split(l.poly,l.wheelTop,false),draw,false);c.save();c.translate(l.roll,l.offset);c.beginPath();polygon(c,split(l.poly,l.wheelTop,true));c.clip();draw();drawWheelRoll(c,l,{disabled:e.groundedDefeat});c.restore();}
  if(g.gun){c.save();c.translate(...g.gun.pivot);c.rotate(g.gun.angle);c.translate(-g.gun.pivot[0],-g.gun.pivot[1]);c.beginPath();polygon(c,g.gun.poly);c.clip();draw();c.restore();}
  for(const arm of g.arms){c.save();c.translate(...arm.pivot);c.rotate(arm.angle);c.translate(-arm.pivot[0],-arm.pivot[1]);c.beginPath();polygon(c,arm.poly);c.clip();draw();c.restore();}
  for(const [i,[px,py]]of p.slots.entries())if(e.armyPodSpent?.[i]||e.longrangeSpent?.[i]){c.fillStyle='#14181b';c.beginPath();c.ellipse(px,py,15,18,0,0,Math.PI*2);c.fill();c.strokeStyle='#575d60';c.lineWidth=2;c.stroke();}

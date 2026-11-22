@@ -1,3 +1,4 @@
+import {rollingLegPose,rollingBodyTilt,rollingStrutPoint} from './rolling-suspension.js';
 import {wheelRollPhase,drawWheelRoll} from './wheel-roll.js';
 import {drawGroundedBTDefeat,groundedBTDefeatPose,drawNativeKOEyes} from './grounded-bt-defeat.js';
 import {DESERT_BT} from './desert-bt-art.js';
@@ -85,7 +86,7 @@ export function inkEnemySaltikGeometry(e,time=0,{camera=0,scale=1,view='side'}={
  const x=finite(e.x)-camera,y=finite(e.y),dir=e.dir===1?1:-1;
  const back=sampleSupportSurface(e.supportPose,finite(e.x)-50),front=sampleSupportSurface(e.supportPose,finite(e.x)+50);
  const slope=Number.isFinite(back)&&Number.isFinite(front)?Math.atan2(front-back,100):finite(e.supportPose?.tilt);
- const rotation=view==='side'?clamp(slope+finite(e.motionLean)-.13*effort*dir,-.34,.34):0;
+ const rotation=view==='side'?clamp(rollingBodyTilt(slope,e.supportPose)+finite(e.motionLean)-.13*effort*dir,-.34,.34):0;
  const offsetX=-dir*7*effort*scale;
  const heave=view==='side'?finite(e.supportPose?.heave)*scale:0;
  const collapse=clamp(finite(e.defeatCollapse)),collapseDrop=Math.min(...parts.legs.map(p=>(p.wheelTop-p.hinge)*.82))*k*collapse;
@@ -109,7 +110,7 @@ export function inkEnemySaltikGeometry(e,time=0,{camera=0,scale=1,view='side'}={
    offset=Math.max(compressionLimit,planted.offset);roll+=planted.roll;grounded=planted.grounded&&offset===planted.offset&&lift<.001;
   }
   offset-=lift/(k*co);
-  return{...part,jumpPose,offset,roll,lift,grounded,stretch:1+offset/(part.wheelTop-part.hinge),
+  return{...part,suspension:rollingLegPose({...part,offset,roll},k,frame.anchor[0],!airborne&&!e.groundedDefeat&&!e.drawingGroundedDefeat&&!collapse),jumpPose,offset,roll,lift,grounded,stretch:1+offset/(part.wheelTop-part.hinge),
    spin:wheelRollPhase(e,part.hub,k,flip),
    contact:legPoint([part.foot[0]+roll,part.foot[1]+offset])};
  });
@@ -159,7 +160,7 @@ export function inkEnemySaltikGeometry(e,time=0,{camera=0,scale=1,view='side'}={
  const [sx,sy,sw,sh]=frame.crop,cropPolygon=[[sx,sy],[sx+sw,sy],[sx+sw,sy+sh],[sx,sy+sh]];
  const boundsPoints=[...cropPolygon.map(sourcePoint),
   ...legs.flatMap(part=>[
-   ...part.strutPolygon.map(([px,py])=>sourcePoint([px+(py-part.hinge)*part.roll/(part.wheelTop-part.hinge),part.hinge+(py-part.hinge)*part.stretch])),
+   ...part.strutPolygon.map(([px,py])=>sourcePoint(part.suspension?rollingStrutPoint(part,[px,py]):[px+(py-part.hinge)*part.roll/(part.wheelTop-part.hinge),part.hinge+(py-part.hinge)*part.stretch])),
    ...part.wheelPolygon.map(([px,py])=>sourcePoint([px+part.roll,py+part.offset])),
   ]),...arms.flatMap(part=>part.polygon.map(point=>sourcePoint(rotatePoint(point,part.pivot,part.rotation)))),
   ...(view==='side'?cannonPart.polygon.map(cannonPoint):[])];

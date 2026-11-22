@@ -29,14 +29,14 @@ test('the approved carrier keeps the hero footprint with raised empty pads and f
   assert.ok(g.bodyBounds.y>g.bounds.y+20);assert.ok(g.bays.every(b=>b.muzzle.y<g.targetY));
  }
 });
-test('moving native wheels articulate with distance while all four actual pixels remain planted',()=>{
+test('moving native wheels roll with distance while the suspension follows actual terrain',()=>{
  const surface={x:300,step:1,heights:Array.from({length:401},(_,i)=>620+(i-200)*.11)};
  for(const dir of [-1,1])for(const distance of [0,17,40]){
   const g=art.inkCarrierGeometry({...carrier,dir,vx:30,motionDistance:distance,supportPose:{heave:2,surface}},1);
   for(const leg of g.legs){assert.ok(leg.grounded);near(leg.contact.y,620+(leg.contact.x-500)*.11,.05);assert.ok(Number.isFinite(leg.wheelSpin));}
  }
  const a=art.inkCarrierGeometry({...carrier,vx:30,motionDistance:0}),b=art.inkCarrierGeometry({...carrier,vx:30,motionDistance:17});
- assert.notEqual(a.legs[0].wheelSpin,b.legs[0].wheelSpin);assert.notEqual(a.legs[0].roll,b.legs[0].roll);assert.ok(Math.abs(a.legs[0].contact.x-b.legs[0].contact.x)>2);
+ assert.notEqual(a.legs[0].wheelSpin,b.legs[0].wheelSpin);assert.equal(a.legs[0].roll,b.legs[0].roll);near(a.legs[0].contact.x,b.legs[0].contact.x);
  const g=art.inkCarrierGeometry(carrier);assert.ok(g.legs.every(l=>Math.abs(l.offset)<48&&l.stretch>.8&&l.stretch<1.2));
  for(const leg of g.legs)near(leg.contact.y,carrier.y,.01);
 });

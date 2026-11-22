@@ -1,3 +1,5 @@
+import {rollingLegPose} from './rolling-suspension.js';
+import {drawJumpLegStrut} from './jump-leg-pose.js';
 import {wheelRollPhase,drawWheelRoll} from './wheel-roll.js';
 // The additional hostile Striker has its own 1254px rust-orange painting.
 // Positions below are measured in that source, never in a player costume atlas.
@@ -23,14 +25,15 @@ function split(points,y,lower){const out=[],inside=p=>lower?p[1]>=y:p[1]<=y;for(
 const pointBounds=points=>{const xs=points.map(p=>p.x),ys=points.map(p=>p.y),x=Math.min(...xs),y=Math.min(...ys);return{x,y,w:Math.max(...xs)-x,h:Math.max(...ys)-y};};
 export function enemyRustStrikerGeometry(e,time=0,{camera=0,scale=1}={}){
  const p=ENEMY_RUST_STRIKER,k=126/p.height*scale*(e.artScale??1),flip=e.dir===-1?-1:1,x=finite(e.x)-camera,y=finite(e.y),rotation=clamp(finite(e.supportPose?.tilt),-.32,.32),co=Math.cos(rotation),si=Math.sin(rotation);
- const bodyDrop=Math.min(...p.legs.map(l=>(l.wheelTop-l.hinge)*.82))*k*clamp(finite(e.defeatCollapse));
+ const heave=(e.supportPose?.heave??0)*scale*(e.artScale??1);
+ const bodyDrop=heave+Math.min(...p.legs.map(l=>(l.wheelTop-l.hinge)*.82))*k*clamp(finite(e.defeatCollapse));
  const sourcePoint=([px,py])=>{const xx=(px-p.anchor[0])*k*flip,yy=(py-p.anchor[1])*k;return{x:x+xx*co-yy*si,y:y+bodyDrop+xx*si+yy*co};};
  const guns=p.guns.map((gun,index)=>{const pivot=sourcePoint(gun.pivot),target=e.armyAimTarget??e.aimTarget;let angle=0;
   if(target){const dx=target.x-camera-pivot.x,dy=target.y-pivot.y;angle=Math.atan2((-dx*si+dy*co)/k,(dx*co+dy*si)/(k*flip))-Math.atan2(gun.muzzle[1]-gun.pivot[1],gun.muzzle[0]-gun.pivot[0]);angle=clamp(angle,-.7,.7);}
   const recoil=-finite(e.firePose)/.13*(index?4:11),ca=Math.cos(angle),sa=Math.sin(angle),point=([px,py])=>{const dx=px-gun.pivot[0],dy=py-gun.pivot[1];return sourcePoint([gun.pivot[0]+dx*ca-dy*sa+recoil,gun.pivot[1]+dx*sa+dy*ca]);},muzzle=point(gun.muzzle),base=point(gun.pivot),n=Math.hypot(muzzle.x-base.x,muzzle.y-base.y)||1;
   return{...gun,angle,recoil,point,muzzle,direction:{x:(muzzle.x-base.x)/n,y:(muzzle.y-base.y)/n}};
  });
- const legs=p.legs.map(leg=>{const contact=sourcePoint(leg.foot),floor=at=>{const value=sampleSupportSurface(e.supportPose,at+camera);return Number.isFinite(value)?value:y;};const planted=plantInkWheel(contact,{k,cos:co,sin:si,floor,orientation:flip,maxOffset:180});return{...leg,...planted,spin:wheelRollPhase(e,leg.hub,k,flip),strut:split(leg.poly,leg.wheelTop,false),wheel:split(leg.poly,leg.wheelTop,true),stretch:1+planted.offset/(leg.wheelTop-leg.hinge),contact:sourcePoint([leg.foot[0]+planted.roll,leg.foot[1]+planted.offset])};});
+ const legs=p.legs.map(leg=>{const contact=sourcePoint(leg.foot),floor=at=>{const value=sampleSupportSurface(e.supportPose,at+camera);return Number.isFinite(value)?value:y;};const planted=plantInkWheel(contact,{k,cos:co,sin:si,floor,orientation:flip,maxOffset:180});return{...leg,...planted,suspension:rollingLegPose({...leg,roll:planted.roll,offset:planted.offset},k,p.anchor[0],!e.groundedDefeat&&!e.drawingGroundedDefeat&&e.onGround!==false),spin:wheelRollPhase(e,leg.hub,k,flip),strut:split(leg.poly,leg.wheelTop,false),wheel:split(leg.poly,leg.wheelTop,true),stretch:1+planted.offset/(leg.wheelTop-leg.hinge),contact:sourcePoint([leg.foot[0]+planted.roll,leg.foot[1]+planted.offset])};});
  const podSlots=p.slots.map(([px,py,rx,ry],index)=>{const muzzle=sourcePoint([px,py]),base=sourcePoint([px-18,py+30]),dx=muzzle.x-base.x,dy=muzzle.y-base.y,n=Math.hypot(dx,dy)||1;return{index,activeIndex:index===0?0:index===4?1:-1,muzzle,base,axis:{x:dx/n,y:dy/n},rx,ry,k};});
  const corners=[[10,20],[1248,20],[1248,1212],[10,1212]].map(sourcePoint),target=sourcePoint(p.target),muzzle=guns[0].muzzle;
  return{x,y,bodyDrop,k,flip,rotation,sourcePoint,legs,guns,muzzle,cannon:muzzle,muzzleDirection:guns[0].direction,cannonDirection:guns[0].direction,
@@ -48,7 +51,7 @@ export function drawEnemyRustStriker(c,image,e,{camera=0,time=0,scale=1}={}){
  const draw=()=>c.drawImage(image,0,0,...p.size,0,0,...p.size);
  // Preserve the original silhouette, masking only truly moving barrel and leg patches.
  c.save();c.beginPath();c.rect(0,0,...p.size);for(const part of [...g.guns,...g.legs])poly(c,part.polygon??part.poly);c.clip('evenodd');draw();c.restore();
- for(const leg of g.legs){c.save();c.translate(0,leg.hinge);c.transform(1,0,leg.roll/(leg.wheelTop-leg.hinge),leg.stretch,0,0);c.translate(0,-leg.hinge);c.beginPath();poly(c,leg.strut);c.clip();draw();c.restore();c.save();c.translate(leg.roll,leg.offset);c.beginPath();poly(c,leg.wheel);c.clip();draw();drawWheelRoll(c,leg,{disabled:dead||!!e.drawingGroundedDefeat});c.restore();}
+ for(const leg of g.legs){drawJumpLegStrut(c,leg,leg.strut,draw,false);c.save();c.translate(leg.roll,leg.offset);c.beginPath();poly(c,leg.wheel);c.clip();draw();drawWheelRoll(c,leg,{disabled:dead||!!e.drawingGroundedDefeat});c.restore();}
  for(const gun of g.guns){c.save();c.translate(gun.pivot[0]+gun.recoil,gun.pivot[1]);c.rotate(gun.angle);c.translate(-gun.pivot[0],-gun.pivot[1]);c.beginPath();poly(c,gun.polygon);c.clip();draw();c.restore();}
  if(!dead)for(const [index,[px,py,rx,ry]]of p.slots.entries()){
   if(!e.armyPodSpent?.[index])continue;const reload=clamp((finite(e.armyReloadProgress)-.85)/.15);

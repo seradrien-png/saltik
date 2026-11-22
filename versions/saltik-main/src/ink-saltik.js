@@ -1,3 +1,4 @@
+import {rollingLegPose,rollingBodyTilt} from './rolling-suspension.js';
 import {drawJumpLegStrut,jumpLegOffset,jumpLegExtension} from './jump-leg-pose.js';
 import {augmentModernGeometry,drawModernStriker} from './modern-striker-art.js';
 import {drawNativeTurn} from './character-turns.js';
@@ -157,7 +158,7 @@ export function inkSaltikGeometry(p,{camera=0,time=0,scale=1,victoryAge=null,sam
   // Momentum is smoothed by the fixed-step simulation. It changes only the
   // rigid cabin transform; the same support solver still plants every wheel.
   const motionLean=clamp(finite(p.motionLean),-.055,.055);
-  let tilt=clamp(slope+motionLean,-.42,.42);
+  let tilt=clamp(rollingBodyTilt(slope,p.supportPose)+motionLean,-.42,.42);
   let heave=(finite(p.supportPose?.heave)+clamp(finite(p.motionHeave),-1.35,1.35))*scale;
   if(!airborne&&Number.isFinite(p.supportClearance)){
     const rise=angle=>-Math.min(...CROP_POLYGON.map(([px,py])=>(px-INK_SALTIK_ANCHOR[0])*k*orientation*Math.sin(angle)+(py-INK_SALTIK_ANCHOR[1])*k*Math.cos(angle)));
@@ -189,7 +190,7 @@ export function inkSaltikGeometry(p,{camera=0,time=0,scale=1,victoryAge=null,sam
     // Travel rather than the animation clock turns the ink on the tire. A
     // stopped or paused Saltik does not spin its wheels in place.
     const wheelSpin=finite(p.motionDistance)/(part.wheelRadius[1]*PIXEL_SCALE)*orientation;
-    return {...part,offset,roll,stretch,grounded,wheelSpin,contact:sourcePoint([part.foot[0]+roll,part.foot[1]+offset])};
+    return {...part,suspension:rollingLegPose({...part,offset,roll},k,INK_SALTIK_ANCHOR[0],!airborne&&!p.groundedDefeat),offset,roll,stretch,grounded,wheelSpin,contact:sourcePoint([part.foot[0]+roll,part.foot[1]+offset])};
   });
   const elapsed=finite(p.deflect?.elapsed),parrying=!!p.deflect?.active;
   let nearRotation=0,farRotation=0;

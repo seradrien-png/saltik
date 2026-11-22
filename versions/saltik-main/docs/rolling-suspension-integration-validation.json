@@ -1,0 +1,174 @@
+{
+  "tests": {
+    "command": "npm test",
+    "passed": 1037,
+    "failed": 0
+  },
+  "browser": {
+    "cases": [
+      {
+        "character": "striker",
+        "level": 1,
+        "moves": true,
+        "suspension": true,
+        "stops": true,
+        "jump": true,
+        "turn": true,
+        "pause": true
+      },
+      {
+        "character": "striker",
+        "level": 2,
+        "moves": true,
+        "suspension": true,
+        "stops": true,
+        "jump": true,
+        "turn": true,
+        "pause": true
+      },
+      {
+        "character": "striker",
+        "level": 3,
+        "moves": true,
+        "suspension": true,
+        "stops": true,
+        "jump": true,
+        "turn": true,
+        "pause": true
+      },
+      {
+        "character": "striker",
+        "level": 4,
+        "moves": true,
+        "suspension": true,
+        "stops": true,
+        "jump": "preserved exterior restriction",
+        "turn": "preserved exterior facing",
+        "pause": true
+      },
+      {
+        "character": "striker",
+        "level": 5,
+        "moves": true,
+        "suspension": true,
+        "stops": true,
+        "jump": true,
+        "turn": true,
+        "pause": true
+      },
+      {
+        "character": "gatling",
+        "level": 1,
+        "moves": true,
+        "suspension": true,
+        "stops": true,
+        "jump": true,
+        "turn": true,
+        "pause": true
+      },
+      {
+        "character": "gatling",
+        "level": 2,
+        "moves": true,
+        "suspension": true,
+        "stops": true,
+        "jump": true,
+        "turn": true,
+        "pause": true
+      },
+      {
+        "character": "gatling",
+        "level": 3,
+        "moves": true,
+        "suspension": true,
+        "stops": true,
+        "jump": true,
+        "turn": true,
+        "pause": true
+      },
+      {
+        "character": "gatling",
+        "level": 4,
+        "moves": true,
+        "suspension": true,
+        "stops": true,
+        "jump": "preserved exterior restriction",
+        "turn": "preserved exterior facing",
+        "pause": true
+      },
+      {
+        "character": "gatling",
+        "level": 5,
+        "moves": true,
+        "suspension": true,
+        "stops": true,
+        "jump": true,
+        "turn": true,
+        "pause": true
+      },
+      {
+        "character": "bt",
+        "level": 1,
+        "moves": true,
+        "suspension": true,
+        "stops": true,
+        "jump": true,
+        "turn": true,
+        "pause": true
+      },
+      {
+        "character": "bt",
+        "level": 2,
+        "moves": true,
+        "suspension": true,
+        "stops": true,
+        "jump": true,
+        "turn": true,
+        "pause": true
+      },
+      {
+        "character": "bt",
+        "level": 3,
+        "moves": true,
+        "suspension": true,
+        "stops": true,
+        "jump": true,
+        "turn": true,
+        "pause": true
+      },
+      {
+        "character": "bt",
+        "level": 4,
+        "moves": true,
+        "suspension": true,
+        "stops": true,
+        "jump": "preserved exterior restriction",
+        "turn": "preserved exterior facing",
+        "pause": true
+      },
+      {
+        "character": "bt",
+        "level": 5,
+        "moves": true,
+        "suspension": true,
+        "stops": true,
+        "jump": true,
+        "turn": true,
+        "pause": true
+      }
+    ],
+    "mobile": [
+      844,
+      390
+    ],
+    "errors": [],
+    "missing": []
+  },
+  "review": {
+    "independent": true,
+    "important_found": 1,
+    "fixed": "Strong compression distributed proportionally across segment lengths; measured and actual three-model crouched checkpoint descent RED then GREEN"
+  },
+  "active_assets_audio_unchanged": true,
+  "physics_weapon_code_unchanged": true
+}

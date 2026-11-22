@@ -1,0 +1,272 @@
+{
+  "tests": {
+    "command": "npm test",
+    "passed": 1037,
+    "failed": 0
+  },
+  "browser": {
+    "cases": [
+      {
+        "character": "striker",
+        "level": 1,
+        "moves": true,
+        "suspension": true,
+        "stops": true,
+        "jump": true,
+        "turn": true,
+        "pause": true
+      },
+      {
+        "character": "striker",
+        "level": 2,
+        "moves": true,
+        "suspension": true,
+        "stops": true,
+        "jump": true,
+        "turn": true,
+        "pause": true
+      },
+      {
+        "character": "striker",
+        "level": 3,
+        "moves": true,
+        "suspension": true,
+        "stops": true,
+        "jump": true,
+        "turn": true,
+        "pause": true
+      },
+      {
+        "character": "striker",
+        "level": 4,
+        "moves": true,
+        "suspension": true,
+        "stops": true,
+        "jump": "preserved exterior restriction",
+        "turn": "preserved exterior facing",
+        "pause": true
+      },
+      {
+        "character": "striker",
+        "level": 5,
+        "moves": true,
+        "suspension": true,
+        "stops": true,
+        "jump": true,
+        "turn": true,
+        "pause": true
+      },
+      {
+        "character": "gatling",
+        "level": 1,
+        "moves": true,
+        "suspension": true,
+        "stops": true,
+        "jump": true,
+        "turn": true,
+        "pause": true
+      },
+      {
+        "character": "gatling",
+        "level": 2,
+        "moves": true,
+        "suspension": true,
+        "stops": true,
+        "jump": true,
+        "turn": true,
+        "pause": true
+      },
+      {
+        "character": "gatling",
+        "level": 3,
+        "moves": true,
+        "suspension": true,
+        "stops": true,
+        "jump": true,
+        "turn": true,
+        "pause": true
+      },
+      {
+        "character": "gatling",
+        "level": 4,
+        "moves": true,
+        "suspension": true,
+        "stops": true,
+        "jump": "preserved exterior restriction",
+        "turn": "preserved exterior facing",
+        "pause": true
+      },
+      {
+        "character": "gatling",
+        "level": 5,
+        "moves": true,
+        "suspension": true,
+        "stops": true,
+        "jump": true,
+        "turn": true,
+        "pause": true
+      },
+      {
+        "character": "bt",
+        "level": 1,
+        "moves": true,
+        "suspension": true,
+        "stops": true,
+        "jump": true,
+        "turn": true,
+        "pause": true
+      },
+      {
+        "character": "bt",
+        "level": 2,
+        "moves": true,
+        "suspension": true,
+        "stops": true,
+        "jump": true,
+        "turn": true,
+        "pause": true
+      },
+      {
+        "character": "bt",
+        "level": 3,
+        "moves": true,
+        "suspension": true,
+        "stops": true,
+        "jump": true,
+        "turn": true,
+        "pause": true
+      },
+      {
+        "character": "bt",
+        "level": 4,
+        "moves": true,
+        "suspension": true,
+        "stops": true,
+        "jump": "preserved exterior restriction",
+        "turn": "preserved exterior facing",
+        "pause": true
+      },
+      {
+        "character": "bt",
+        "level": 5,
+        "moves": true,
+        "suspension": true,
+        "stops": true,
+        "jump": true,
+        "turn": true,
+        "pause": true
+      }
+    ],
+    "mobile": [
+      844,
+      390
+    ],
+    "errors": [],
+    "missing": []
+  },
+  "review": {
+    "independent": true,
+    "important_found": 1,
+    "fixed": "Strong compression distributed proportionally across segment lengths; measured and actual three-model crouched checkpoint descent RED then GREEN"
+  },
+  "active_assets_audio_unchanged": true,
+  "physics_weapon_code_unchanged": true,
+  "date": "2026-11-22",
+  "source_commit": "cb4d7c137bf0690e4e41cf677f870ac1f7ca8f87",
+  "previous_github_commit": "c2c8668354ab84b071ebfbac77ce80dc496d841d",
+  "version": 67,
+  "version_id": "appgprj_6ae77e1b6da081918600675fc2e2b738~appgver_ecd3062694588191a61ef5960b5f077c",
+  "deployment_id": "appgdep_6b02fb5efc54819196e991e39e0c45d3",
+  "deployment_status": "succeeded",
+  "url": "https://saltik-v2-matin-dore.ser-adrien.chatgpt.site",
+  "runtime_bytes": 265616568,
+  "archive_bytes": 266240000,
+  "provider_archive_bytes": 265881600,
+  "backup_verified_files": 2007,
+  "public_verification": {
+    "url": "https://saltik-v2-matin-dore.ser-adrien.chatgpt.site",
+    "files": [
+      {
+        "path": "index.html",
+        "status": 200,
+        "bytes": 17746,
+        "matches": true
+      },
+      {
+        "path": "src/main.js",
+        "status": 200,
+        "bytes": 34910,
+        "matches": true
+      },
+      {
+        "path": "src/ink-saltik.js",
+        "status": 200,
+        "bytes": 21516,
+        "matches": true
+      },
+      {
+        "path": "src/rolling-suspension.js",
+        "status": 200,
+        "bytes": 2420,
+        "matches": true
+      },
+      {
+        "path": "src/jump-leg-pose.js",
+        "status": 200,
+        "bytes": 2936,
+        "matches": true
+      },
+      {
+        "path": "src/modern-striker-art.js",
+        "status": 200,
+        "bytes": 9888,
+        "matches": true
+      },
+      {
+        "path": "src/gatling-art.js",
+        "status": 200,
+        "bytes": 11172,
+        "matches": true
+      },
+      {
+        "path": "src/ink-enemy-saltik.js",
+        "status": 200,
+        "bytes": 18505,
+        "matches": true
+      },
+      {
+        "path": "src/ink-carrier.js",
+        "status": 200,
+        "bytes": 16431,
+        "matches": true
+      },
+      {
+        "path": "src/enemy-specialists.js",
+        "status": 200,
+        "bytes": 7491,
+        "matches": true
+      },
+      {
+        "path": "src/enemy-rust-striker-art.js",
+        "status": 200,
+        "bytes": 7803,
+        "matches": true
+      },
+      {
+        "path": "src/engine.js",
+        "status": 200,
+        "bytes": 83666,
+        "matches": true
+      },
+      {
+        "path": "src/audio.js",
+        "status": 200,
+        "bytes": 19894,
+        "matches": true
+      }
+    ],
+    "passed": true
+  },
+  "integration_authorized": true,
+  "gameplay_integration": true
+}

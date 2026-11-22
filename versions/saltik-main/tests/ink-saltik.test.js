@@ -20,7 +20,7 @@ test('the ink renderer reuses one measured cutout with exactly two original arm 
   assert.deepEqual(base,before,'rendering never changes simulation state');
   assert.equal(INK_SALTIK_PARTS.arms.length,2);
   assert.equal(INK_SALTIK_PARTS.legs.length,3,'the fourth native leg is occluded');
-  assert.equal(c.calls.length,11,'six suspension pieces, one body, roof cannon, small coax and two arms');
+  assert.equal(c.calls.length,17,'twelve anchored suspension pieces, one body, roof cannon, small coax and two arms');
   assert.ok(c.calls.every(args=>args[0]===image),'every articulated piece is original artwork');
   assert.ok(c.clips.includes('evenodd'),'the fixed body excludes all moving source pixels');
   assert.equal(geo.visibleHeight,126);

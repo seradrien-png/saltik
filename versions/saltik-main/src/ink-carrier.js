@@ -1,3 +1,5 @@
+import {rollingLegPose,rollingBodyTilt} from './rolling-suspension.js';
+import {drawJumpLegStrut} from './jump-leg-pose.js';
 import {wheelRollPhase,drawWheelRoll} from './wheel-roll.js';
 import {sampleSupportSurface,computeSupportPose} from './support-pose.js';
 import {inkSaltikGeometry} from './ink-saltik.js';
@@ -56,17 +58,17 @@ export function inkCarrierGeometry(e,time=0,{camera=0,scale=1}={}){
  const walking=!knockedOut&&Math.abs(finite(e.vx))>5,distance=finite(e.motionDistance,walking?time*finite(e.vx):0),phase=distance/12;
  const rear=sampleSupportSurface(e.supportPose,finite(e.x)-50),front=sampleSupportSurface(e.supportPose,finite(e.x)+50);
  const slope=Number.isFinite(rear)&&Number.isFinite(front)?Math.atan2(front-rear,100):finite(e.supportPose?.tilt);
- const tilt=clamp(slope+(knockedOut?0:finite(e.motionLean)),-.34,.34),co=Math.cos(tilt),si=Math.sin(tilt);
- const heave=finite(e.supportPose?.heave)*scale,bodyDrop=(17*koProgress+(walking?Math.sin(phase*2)*.55:0))*scale;
+ const tilt=clamp(rollingBodyTilt(slope,e.supportPose)+(knockedOut?0:finite(e.motionLean)),-.34,.34),co=Math.cos(tilt),si=Math.sin(tilt);
+ const heave=finite(e.supportPose?.heave)*scale,bodyDrop=17*koProgress*scale;
  const sourcePoint=([px,py])=>{const xx=(px-INK_CARRIER_ANCHOR[0])*k*ASPECT*paintFlip,yy=(py-INK_CARRIER_ANCHOR[1])*k;return{x:x+xx*co-yy*si,y:y+heave+bodyDrop+xx*si+yy*co};};
  const headPart={...INK_CARRIER_PARTS.head,rotation:knockedOut&&!settled?Math.sin(koTime*6.2)*.031*koProgress:0};
  const headPoint=point=>sourcePoint(rotate(point,headPart.pivot,headPart.rotation));
  const hands=INK_CARRIER_PARTS.hands.map((part,index)=>({...part,rotation:-.5*koProgress+(walking?Math.sin(phase+index*Math.PI)*.035:0)})),handPoint=(part,point)=>sourcePoint(rotate(point,part.pivot,part.rotation));
  const legs=INK_CARRIER_PARTS.legs.map((part,i)=>{
-  const stride=walking?Math.sin(phase+(i%2?Math.PI:0))*18:0,native=sourcePoint([part.foot[0]+stride,part.foot[1]]);
+  const stride=0,native=sourcePoint([part.foot[0]+stride,part.foot[1]]);
   const floor=at=>{const sampled=sampleSupportSurface(e.supportPose,finite(e.x)+(at-x)/scale);return e.supportPose?.surface&&!Number.isFinite(sampled)?NaN:y+((sampled??finite(e.supportY,y))-y)*scale;};
   const planted=plantInkWheel(native,{k,cos:co,sin:si,floor,orientation:paintFlip,maxOffset:240}),roll=stride+planted.roll/ASPECT;
-  return{...part,...planted,roll,stretch:1+planted.offset/(part.wheelTop-part.hinge),wheelSpin:walking?distance/(part.wheelRadius[1]*PIXEL_SCALE)*paintFlip:0,broken:false,contact:sourcePoint([part.foot[0]+roll,part.foot[1]+planted.offset])};
+  return{...part,...planted,roll,suspension:rollingLegPose({...part,roll,offset:planted.offset},k,INK_CARRIER_ANCHOR[0],!knockedOut&&e.onGround!==false),stretch:1+planted.offset/(part.wheelTop-part.hinge),wheelSpin:walking?distance/(part.wheelRadius[1]*PIXEL_SCALE)*paintFlip:0,broken:false,contact:sourcePoint([part.foot[0]+roll,part.foot[1]+planted.offset])};
  });
  const cannonPart={...INK_CARRIER_PARTS.cannon,rotation:knockedOut?0:clamp(finite(e.cannonElevation),-.15,.22),offsetX:knockedOut?0:-14*clamp(finite(e.cannonRecoil,finite(e.firePose)/.14))};
  const cannonPoint=point=>sourcePoint(rotate(point,cannonPart.pivot,cannonPart.rotation,cannonPart.offsetX));
@@ -113,7 +115,7 @@ export function drawInkCarrier(c,image,e,{camera=0,time=0,scale=1,handsImage=nul
  c.save();clipPart(c,rectangle(INK_CARRIER_CROP),[...g.legs,g.cannonPart,g.headPart,...g.hands]);draw();c.restore();
  for(const part of g.legs){
   if(part.occluded)continue;
-  c.save();c.translate(0,part.hinge);c.transform(1,0,part.roll/(part.wheelTop-part.hinge),part.stretch,0,0);c.translate(0,-part.hinge);clipPart(c,part.strutPolygon,[g.headPart,...g.hands]);draw();c.restore();
+  const drawStrut=()=>{c.save();for(const cut of [g.headPart,...g.hands]){c.beginPath();polygon(c,rectangle(INK_CARRIER_CROP));polygon(c,cut.polygon);c.clip('evenodd');}draw();c.restore();};drawJumpLegStrut(c,part,part.strutPolygon,drawStrut,false);
   c.save();c.translate(part.roll,part.offset);clipPart(c,part.wheelPolygon,g.hands);draw();const hub=[...part.wheelCenter,...part.wheelRadius];drawWheelRoll(c,{hub,spin:wheelRollPhase(e,hub,g.k,g.flip)},{disabled:g.knockedOut});c.restore();
  }
  const head=g.headPart;c.save();c.translate(...head.pivot);c.rotate(head.rotation);c.translate(-head.pivot[0],-head.pivot[1]);clipPart(c,head.polygon,g.hands);draw();koEyes(c,g);c.restore();

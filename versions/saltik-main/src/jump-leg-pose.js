@@ -1,3 +1,4 @@
+import {drawRollingLegStrut} from './rolling-suspension.js';
 const clamp=v=>Math.max(0,Math.min(1,v));
 const smooth=v=>{v=clamp(v);return v*v*(3-2*v);};
 // Simulation-time animation only: never changes movement or collision state.
@@ -49,6 +50,7 @@ function splitStrut(points,y,lower){
 // Keep the original cabin attachment pixels fixed. Shearing a mask above its
 // hinge moves its edge away from the unchanged body cutout and opens a seam.
 export function drawJumpLegStrut(c,part,points,draw,anchored){
+ if(part.suspension){drawRollingLegStrut(c,part,points,draw);return;}
  const paint=poly=>{if(poly.length<3)return;c.beginPath();c.moveTo(...poly[0]);for(const p of poly.slice(1))c.lineTo(...p);c.closePath();c.clip();draw();};
  if(anchored){c.save();paint(splitStrut(points,part.hinge,false));c.restore();}
  c.save();c.translate(0,part.hinge);c.transform(1,0,part.roll/(part.wheelTop-part.hinge),part.stretch,0,0);c.translate(0,-part.hinge);

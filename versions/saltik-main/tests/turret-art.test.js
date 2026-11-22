@@ -124,7 +124,7 @@ test('locked turn views retain their own resting native roof with no side overla
 
 test('resting turret keeps the original image draws and the legacy boss barrel mask',()=>{
  const c=canvas(),geo=drawInkSaltik(c,{},base);
- assert.equal(c.calls.length,11,'the resting native sprite takes the original draw path');assert.equal(geo.turretLift,0);
+ assert.equal(c.calls.length,17,'the grounded rig uses anchored two-segment struts and the original turret');assert.equal(geo.turretLift,0);
  assert.deepEqual(INK_SALTIK_PARTS.cannon.pivot,[913,270]);
  assert.equal(inside([650,300],INK_SALTIK_PARTS.cannon.polygon),false,'the boss barrel mask is not expanded to the whole roof');
  assert.deepEqual(INK_SALTIK_PARTS.cannon.muzzle,[1234,264]);

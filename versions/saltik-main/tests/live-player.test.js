@@ -75,7 +75,7 @@ test('animated native draw preserves simulation state and uses no new image laye
   const image={width:1422,height:1106};
   drawInkSaltik(c,image,p,{time:.7});
   assert.deepEqual(p,before);
-  assert.equal(images.length,11);
+  assert.equal(images.length,17);
   assert.ok(images.every(item=>item===image));
   assert.equal(fills.filter(fill=>fill.images<=6&&fill.color==='#fff4da').length,0,'painted tires have no added rotating highlights');
   assert.equal(INK_SALTIK_PARTS.arms.length,2);
