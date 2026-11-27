@@ -429,8 +429,13 @@ kbd{display:inline-flex;align-items:center;justify-content:center;min-width:19px
 
 /* Five independent missions; new desert keeps the native combat controls. */
 .level-picker{width:min(600px,100%);display:grid;grid-template-columns:repeat(5,minmax(0,1fr))}
-#app[data-level="5"] .title-content h1 em{color:#ed9d60;letter-spacing:.03em}
-#app[data-level="5"] .level-choice[aria-pressed="true"]{background:#efd4ae;color:#3c251d;border-color:#e3a76e}
-@media(max-height:520px){#app[data-level="5"] .title-content h1 em{font-size:.31em}}
+#app:is([data-level="5"],[data-level="6"]) .title-content h1 em{color:#ed9d60;letter-spacing:.03em}
+#app:is([data-level="5"],[data-level="6"]) .level-choice[aria-pressed="true"]{background:#efd4ae;color:#3c251d;border-color:#e3a76e}
+@media(max-height:520px){#app:is([data-level="5"],[data-level="6"]) .title-content h1 em{font-size:.31em}}
 /* The desert BT chooser uses the same current model as its large preview. */
 #app:is([data-level="4"],[data-level="5"]) .bt-thumbnail{background-image:url('./menu/level4-bt-default.webp');background-size:contain;background-position:center}
+
+.level-picker{flex-wrap:wrap}
+
+.level-picker{grid-template-columns:repeat(6,minmax(0,1fr))}
+@media(max-width:600px){.level-picker{grid-template-columns:repeat(3,minmax(0,1fr))}}

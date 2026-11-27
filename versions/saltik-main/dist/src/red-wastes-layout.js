@@ -1,5 +1,6 @@
 // Native world coordinates shared by painted landmarks and walkable supports.
 // A plateau at each buried structure registers its entrances with the sand.
+export const RED_WASTES_RELIEF=.6;
 export const RED_WASTES_SITES=Object.freeze([
  Object.freeze({id:'west-bunker',kind:'bunker',x:4200,w:1800,h:420}),
  Object.freeze({id:'eye-passage',kind:'skull',x:8400,w:1600,h:1067}),
@@ -24,7 +25,7 @@ export function redWastesGroundAt(x){
  }
  // Wheel-scale sand ridges are physical supports, not a timed body wobble.
  // Fade only at concrete/bone junctions so their painted entries stay joined.
- const ripples=10*Math.sin(x/59)+6*Math.sin(x/31+.7)+2*Math.sin(x/15+1.4);
+ const ripples=RED_WASTES_RELIEF*(10*Math.sin(x/77)+6*Math.sin(x/43+.7)+2*Math.sin(x/23+1.4));
  return y+roughness*ripples;
 }
 export function structurePlacement(site){

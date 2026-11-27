@@ -1,3 +1,4 @@
+import {applyRedCanyonLevel,advanceRedCanyonObjective} from './red-canyon-level.js';
 import {addLongrangePositions} from './longrange-enemy.js';
 import {isSpecialist,specialistGeometry} from './enemy-specialists.js';
 import {inkPlayerHitboxes} from './ink-player-hitbox.js';
@@ -38,6 +39,7 @@ export function createInkScene(options={}){
  g.enemyWeaponGeometry=inkEnemyGeometry;
  g.enemySaltikGeometry=(enemy,...args)=>isSpecialist(enemy)?specialistGeometry(enemy,...args):inkEnemySaltikGeometry(enemy,...args);
  g.level=1;g.levelTitle='Le Canyon';
+ if(options.level===6)return addLongrangePositions(applyRedCanyonLevel(g));
  if(options.level===5)return addLongrangePositions(applyRedWastesLevel(g));
  if(options.level===4)return addLongrangePositions(applyDesertLevel(g));
  if(options.level===2)return addLongrangePositions(applyLunarLevel(g));
@@ -75,8 +77,9 @@ export function updateInkScene(g,input,dt=1/60){
  update(g,desertInput(g,input),dt);
  if(g.level===2)advanceLunarObjective(g,g.time-before);
  if(g.level===4)advanceDesertObjective(g,g.time-before);
- if(g.level===5){
-  advanceRedWastesObjective(g,g.time-before);advanceDesertGiant(g,g.time-before);
+ if(g.level===6)advanceRedCanyonObjective(g,g.time-before);
+ if([5,6].includes(g.level)){
+  if(g.level===5)advanceRedWastesObjective(g,g.time-before);advanceDesertGiant(g,g.time-before);
   const pose=inkSaltikGeometry(g.player,{time:g.time}),feet=(pose.modernLegs??pose.btNative?.legs??pose.nativeLegs??pose.legs??[]).map(l=>l.contact);
   advanceRedWastesSand(g,g.time-before,feet);
  }

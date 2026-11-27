@@ -1,0 +1,120 @@
+{
+  "verified_date": "2026-11-27",
+  "tests": {
+    "command": "npm test",
+    "passed": 1049,
+    "failed": 0
+  },
+  "browser": {
+    "cases": [
+      {
+        "character": "striker",
+        "level": 6,
+        "position": 700,
+        "movement": true,
+        "jump": true
+      },
+      {
+        "character": "striker",
+        "level": 6,
+        "position": 3700,
+        "movement": true,
+        "jump": true
+      },
+      {
+        "character": "striker",
+        "level": 6,
+        "position": 7100,
+        "movement": true,
+        "jump": true
+      },
+      {
+        "character": "striker",
+        "level": 6,
+        "position": 9900,
+        "movement": true,
+        "jump": true
+      },
+      {
+        "character": "striker",
+        "level": 6,
+        "position": 15200,
+        "movement": true,
+        "jump": true
+      },
+      {
+        "character": "striker",
+        "level": 6,
+        "position": 18900,
+        "movement": true,
+        "jump": true
+      },
+      {
+        "character": "gatling",
+        "level": 6,
+        "position": 9900,
+        "movement": true,
+        "jump": true
+      },
+      {
+        "character": "gatling",
+        "level": 6,
+        "position": 18900,
+        "movement": true,
+        "jump": true
+      },
+      {
+        "character": "bt",
+        "level": 6,
+        "position": 9900,
+        "movement": true,
+        "jump": true
+      },
+      {
+        "character": "bt",
+        "level": 6,
+        "position": 18900,
+        "movement": true,
+        "jump": true
+      }
+    ],
+    "mobile": [
+      844,
+      390
+    ],
+    "errors": [],
+    "missing": []
+  },
+  "relief": {
+    "amplitude_scale": 0.6,
+    "reduction_percent": 40,
+    "wavelengths": [
+      77,
+      43,
+      23
+    ]
+  },
+  "new_level": {
+    "id": 6,
+    "title": "Fossiles rouges II",
+    "end": 21000,
+    "native_routes": "Matin Dore measured paths",
+    "extra_final_tiers": 2,
+    "normal_traversal_seconds": [
+      90,
+      100
+    ],
+    "real_striker_combat_seconds": [
+      90,
+      120
+    ],
+    "original_levels_preserved": true
+  },
+  "review": {
+    "fixed": [
+      "supported upper-east stair landing: RED-GREEN all3models in both directions",
+      "final Striker heavy role: RED-GREEN main/guided/MIRV"
+    ]
+  },
+  "new_media_assets": 0
+}

@@ -276,7 +276,7 @@ export function drawInkGround(c,g,{camera=0,width=1280,height=720}={}){
   const bottom=Math.max(960,Math.ceil((height+150)/64)*64);
   for(let n=Math.floor((camera-8)/TILE);n<Math.ceil((camera+width+8)/TILE);n++){
     const left=n*TILE-2,right=(n+1)*TILE+2;
-    cached(c,`ground:${g.inkPreview?"ink":"v1"}:${n}:${bottom}`,{x:left,y:300,w:right-left,h:bottom-299},camera,
+    cached(c,`ground:${g.level??1}:${g.inkPreview?"ink":"v1"}:${n}:${bottom}`,{x:left,y:300,w:right-left,h:bottom-299},camera,
       sc=>paintGround(sc,left,right,bottom,g.groundAt??terrainHeight));
   }
   // Treads are in front of the soil, on the identical support coordinates

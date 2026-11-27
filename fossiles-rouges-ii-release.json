@@ -1,0 +1,222 @@
+{
+  "verified_date": "2026-11-27",
+  "tests": {
+    "command": "npm test",
+    "passed": 1049,
+    "failed": 0
+  },
+  "browser": {
+    "cases": [
+      {
+        "character": "striker",
+        "level": 6,
+        "position": 700,
+        "movement": true,
+        "jump": true
+      },
+      {
+        "character": "striker",
+        "level": 6,
+        "position": 3700,
+        "movement": true,
+        "jump": true
+      },
+      {
+        "character": "striker",
+        "level": 6,
+        "position": 7100,
+        "movement": true,
+        "jump": true
+      },
+      {
+        "character": "striker",
+        "level": 6,
+        "position": 9900,
+        "movement": true,
+        "jump": true
+      },
+      {
+        "character": "striker",
+        "level": 6,
+        "position": 15200,
+        "movement": true,
+        "jump": true
+      },
+      {
+        "character": "striker",
+        "level": 6,
+        "position": 18900,
+        "movement": true,
+        "jump": true
+      },
+      {
+        "character": "gatling",
+        "level": 6,
+        "position": 9900,
+        "movement": true,
+        "jump": true
+      },
+      {
+        "character": "gatling",
+        "level": 6,
+        "position": 18900,
+        "movement": true,
+        "jump": true
+      },
+      {
+        "character": "bt",
+        "level": 6,
+        "position": 9900,
+        "movement": true,
+        "jump": true
+      },
+      {
+        "character": "bt",
+        "level": 6,
+        "position": 18900,
+        "movement": true,
+        "jump": true
+      }
+    ],
+    "mobile": [
+      844,
+      390
+    ],
+    "errors": [],
+    "missing": []
+  },
+  "relief": {
+    "amplitude_scale": 0.6,
+    "reduction_percent": 40,
+    "wavelengths": [
+      77,
+      43,
+      23
+    ]
+  },
+  "new_level": {
+    "id": 6,
+    "title": "Fossiles rouges II",
+    "end": 21000,
+    "native_routes": "Matin Dore measured paths",
+    "extra_final_tiers": 2,
+    "normal_traversal_seconds": [
+      90,
+      100
+    ],
+    "real_striker_combat_seconds": [
+      90,
+      120
+    ],
+    "original_levels_preserved": true
+  },
+  "review": {
+    "fixed": [
+      "supported upper-east stair landing: RED-GREEN all3models in both directions",
+      "final Striker heavy role: RED-GREEN main/guided/MIRV"
+    ]
+  },
+  "new_media_assets": 0,
+  "date": "2026-11-27",
+  "source_commit": "1df246932c49e85b015ee4f82fd33c3fc487c845",
+  "previous_github_commit": "0d157534b76e5bd06616ee8b12a125944b12c09f",
+  "version": 69,
+  "version_id": "appgprj_6ae77e1b6da081918600675fc2e2b738~appgver_38c3b31f11348191a75ce3e3547e1ada",
+  "deployment_id": "appgdep_6b092a85a62c8191a79993a4f982764c",
+  "deployment_status": "succeeded",
+  "url": "https://saltik-v2-matin-dore.ser-adrien.chatgpt.site/?level=6",
+  "runtime_bytes": 265624393,
+  "archive_bytes": 266250240,
+  "provider_archive_bytes": 265891840,
+  "backup_verified_files": 2019,
+  "public_verification": {
+    "url": "https://saltik-v2-matin-dore.ser-adrien.chatgpt.site/?level=6",
+    "files": [
+      {
+        "path": "index.html",
+        "status": 200,
+        "bytes": 17888,
+        "matches": true
+      },
+      {
+        "path": "android.html",
+        "status": 200,
+        "bytes": 17599,
+        "matches": true
+      },
+      {
+        "path": "style.css",
+        "status": 200,
+        "bytes": 48209,
+        "matches": true
+      },
+      {
+        "path": "src/main.js",
+        "status": 200,
+        "bytes": 35229,
+        "matches": true
+      },
+      {
+        "path": "src/ink-scene.js",
+        "status": 200,
+        "bytes": 6234,
+        "matches": true
+      },
+      {
+        "path": "src/red-canyon-level.js",
+        "status": 200,
+        "bytes": 3298,
+        "matches": true
+      },
+      {
+        "path": "src/red-canyon-world.js",
+        "status": 200,
+        "bytes": 1068,
+        "matches": true
+      },
+      {
+        "path": "src/red-wastes-layout.js",
+        "status": 200,
+        "bytes": 7202,
+        "matches": true
+      },
+      {
+        "path": "src/desert-giant.js",
+        "status": 200,
+        "bytes": 4228,
+        "matches": true
+      },
+      {
+        "path": "src/music-tracks.js",
+        "status": 200,
+        "bytes": 688,
+        "matches": true
+      },
+      {
+        "path": "src/ink-renderer.js",
+        "status": 200,
+        "bytes": 32338,
+        "matches": true
+      },
+      {
+        "path": "src/ink-world.js",
+        "status": 200,
+        "bytes": 39005,
+        "matches": true
+      },
+      {
+        "path": "src/engine.js",
+        "status": 200,
+        "bytes": 83642,
+        "matches": true
+      },
+      {
+        "path": "src/red-wastes-sand.js",
+        "status": 200,
+        "bytes": 2611,
+        "matches": true
+      }
+    ],
+    "passed": true
+  }
+}

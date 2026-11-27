@@ -42,7 +42,7 @@ test('all base Saltiks visibly work their suspension over rough sand without slo
    const q=inkSaltikGeometry(p,{time:g.time,sampleGround:x=>supportHeight(g,p,x)}),n=q.btNative??q,legs=q.modernLegs??q.nativeLegs??n.legs,k=q.nativeK??n.k;
    for(const l of legs){lo=Math.min(lo,l.offset*k);hi=Math.max(hi,l.offset*k);}
   }
-  assert(hi-lo>9,`${character}: suspension travel ${hi-lo}`);
+  assert(hi-lo>5,`${character}: suspension travel ${hi-lo}`);
  }
 });
 

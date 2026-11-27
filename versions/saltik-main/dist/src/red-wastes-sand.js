@@ -3,7 +3,7 @@
 const clamp=(n,a,b)=>Math.max(a,Math.min(b,n));
 const hash=n=>{const f=Math.sin(n*127.1+311.7)*43758.5453;return f-Math.floor(f);};
 export function advanceRedWastesSand(g,dt,contacts=[]){
- if(g.level!==5)return;
+ if(![5,6].includes(g.level))return;
  if(g.status==='won'){if(g.redWastes.sand)g.redWastes.sand.dust=[];return;}
  if(g.status!=='playing'||!(dt>0)||!Number.isFinite(dt)||g.introElapsed<g.introDuration)return;
  const s=g.redWastes.sand??(g.redWastes.sand={tracks:[],dust:[],last:[],serial:0,dustDistance:0});

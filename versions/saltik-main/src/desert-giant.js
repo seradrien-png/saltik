@@ -5,10 +5,10 @@ export const DESERT_GIANT_TRIGGER_X=2800;
 const TAU=Math.PI*2;
 const smooth=t=>t*t*(3-2*t);
 export function advanceDesertGiant(g,dt){
- if(![4,5].includes(g.level)||!(g.redWastes??g.desert))return;
+ if(![4,5,6].includes(g.level)||!(g.redWastes??g.desert))return;
  const d=g.redWastes??g.desert,s=d.giant??(d.giant={triggered:false,elapsed:0,complete:false});
  if(!(dt>0)||!Number.isFinite(dt)||g.status!=='playing'||(d.phase??'outbound')!=='outbound'||g.introElapsed<g.introDuration||g.duel||g.carrierShutdown)return;
- if(!s.triggered&&g.player.x>=(g.level===5?9200:DESERT_GIANT_TRIGGER_X))s.triggered=true;
+ if(!s.triggered&&g.player.x>=([5,6].includes(g.level)?9200:DESERT_GIANT_TRIGGER_X))s.triggered=true;
  if(!s.triggered||s.complete)return;
  const previous=s.elapsed;
  s.elapsed=Math.min(DESERT_GIANT_DURATION,s.elapsed+dt);
@@ -19,9 +19,9 @@ export function advanceDesertGiant(g,dt){
   if(Math.floor((previous+offset+1e-8)/2.4)<Math.floor((s.elapsed+offset+1e-8)/2.4)){
    const landing=Math.round((s.elapsed+offset)/2.4)*2.4-offset;
    const foot=desertGiantPose(landing,{x:0,y:0,w:1,h:1})[index];
-   const centre=foot.x+foot.footWidth*(g.level===5?1.4:1)*.24;
+   const centre=foot.x+foot.footWidth*([5,6].includes(g.level)?1.4:1)*.24;
    if(centre>=-.08&&centre<=1.15){
-    const strength=Math.max(.45,1-Math.abs(centre-.5)*.5)*(g.level===5?.48:1);
+    const strength=Math.max(.45,1-Math.abs(centre-.5)*.5)*([5,6].includes(g.level)?.48:1);
     g.shake=Math.max(g.shake??0,strength*3.5);
     g.events?.push({type:'desert-giant-step',x:g.player.x,y:g.groundAt?.(g.player.x)??g.player.y,index,strength,landing});
    }
@@ -51,9 +51,9 @@ export function drawDesertGiant(c,image,g,{box}){
  for(const native of desertGiantPose(s.elapsed,box).reverse()){
   // The red desert uses a farther contact plane while retaining vast tibias.
   // Its native sand pass supplies the occlusion, without a foreground shadow.
-  const size=g.level===5?1.4:1,p={...native,groundY:native.groundY-(g.level===5?box.h*.13:0),footWidth:native.footWidth*size,shinWidth:native.shinWidth*size};
+  const size=[5,6].includes(g.level)?1.4:1,p={...native,groundY:native.groundY-([5,6].includes(g.level)?box.h*.13:0),footWidth:native.footWidth*size,shinWidth:native.shinWidth*size};
   const k=p.footWidth/734,ankleY=p.groundY-p.lift-240*k;
-  if(g.level!==5){c.fillStyle=p.index?'#752e20':'#63281d';c.beginPath();c.ellipse(p.x+p.footWidth*.24,p.groundY+2,p.footWidth*(.41-p.lift/box.h*.7),box.h*.009,0,0,TAU);c.fill();}
+  if(![5,6].includes(g.level)){c.fillStyle=p.index?'#752e20':'#63281d';c.beginPath();c.ellipse(p.x+p.footWidth*.24,p.groundY+2,p.footWidth*(.41-p.lift/box.h*.7),box.h*.009,0,0,TAU);c.fill();}
   // Seat the tibia inside the socket, with overlap hidden by the foot rim.
   // The shaft artwork has transparent padding and a concave ankle end.
   c.save();c.translate(p.x,ankleY);c.rotate(p.shinAngle);
